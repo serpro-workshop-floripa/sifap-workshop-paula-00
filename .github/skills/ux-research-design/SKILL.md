@@ -4,7 +4,7 @@ description: "Use ao estabelecer quem usa a interface modernizada do SIFAP e do 
 ---
 # Pesquisa de UX e intenção de design
 
-## Quando usar
+## Quando invocar
 
 - "Quem de fato usa esta tela, e para fazer o quê?"
 - "Mapeie a jornada antes de desenharmos a página."
@@ -93,7 +93,7 @@ developer construírem.
 |---|---|---|
 ```
 
-## Critérios de qualidade
+## Gate de qualidade
 
 - [ ] Cada tela rastreia até pelo menos uma declaração de job.
 - [ ] Cada jornada inclui seus caminhos infelizes.

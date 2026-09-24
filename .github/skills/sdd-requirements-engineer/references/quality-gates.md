@@ -1,113 +1,113 @@
-# Unified SDD EARS quality gates
+# Gates de qualidade unificados para SDD e EARS
 
-Apply every relevant check. Mark a check `PASS`, `FAIL`, `BLOCKED`, or `NOT APPLICABLE` and cite the artifact, requirement ID, source ID, or evidence used. A package passes only when no applicable check fails or remains blocked.
+Aplique toda verificação pertinente. Marque cada uma como `PASS`, `FAIL`, `BLOCKED` ou `NOT APPLICABLE` e cite o artefato, o ID do requisito, o ID da fonte ou a evidência usada. Um pacote só passa quando nenhuma verificação aplicável falha ou permanece bloqueada.
 
-Apply the [kit binding](../SKILL.md#binding-to-this-participant-kit).
-FRD/NFRD and uppercase artifact names below are logical sections in `spec.md`,
-`plan.md`, and `tasks.md`, not a required parallel package. Use only the
-diagrams and checks relevant to the selected scope.
+Aplique o [vínculo com o kit](../SKILL.md#vínculo-com-este-kit-do-participante).
+FRD/NFRD e os nomes de artefatos em maiúsculas abaixo são seções lógicas em `spec.md`,
+`plan.md` e `tasks.md`, não um pacote paralelo obrigatório. Use somente os
+diagramas e verificações pertinentes ao escopo selecionado.
 
-## G1. Scope and evidence
+## G1. Escopo e evidências
 
-- [ ] G1.01 The operating mode and requested deliverables are explicit.
-- [ ] G1.02 The project context and system boundary are identified.
-- [ ] G1.03 Primary actors, permissions, and prohibited actions are known.
-- [ ] G1.04 The primary outcome and scope boundary are known.
-- [ ] G1.05 Existing repository artifacts and conventions were inspected.
-- [ ] G1.06 Every source has a stable `SRC-###` ID and source class.
-- [ ] G1.07 Assumptions have impact, owner, and confirmation state.
-- [ ] G1.08 Unsupported targets, policies, or approvals remain visible blockers.
-- [ ] G1.09 File creation occurred only when requested or explicitly authorized.
+- [ ] G1.01 O modo de operação e as entregas solicitadas estão explícitos.
+- [ ] G1.02 O contexto do projeto e o limite do sistema estão identificados.
+- [ ] G1.03 Os atores principais, as permissões e as ações proibidas são conhecidos.
+- [ ] G1.04 O resultado principal e o limite do escopo são conhecidos.
+- [ ] G1.05 Os artefatos e as convenções existentes no repositório foram inspecionados.
+- [ ] G1.06 Toda fonte tem um ID `SRC-###` estável e uma classe de fonte.
+- [ ] G1.07 As premissas têm impacto, responsável e estado de confirmação.
+- [ ] G1.08 Metas, políticas ou aprovações sem sustentação permanecem bloqueios visíveis.
+- [ ] G1.09 A criação de arquivos ocorreu somente quando solicitada ou explicitamente autorizada.
 
-## G2. EARS requirements
+## G2. Requisitos EARS
 
-- [ ] G2.01 Every normative requirement has a unique stable ID.
-- [ ] G2.02 Every normative requirement records exactly one EARS classification.
-- [ ] G2.03 Clause order matches the selected EARS pattern.
-- [ ] G2.04 The statement uses `shall` and names the responsible system or component.
-- [ ] G2.05 The statement has one observable response and no hidden compound behavior.
-- [ ] G2.06 Preconditions, triggers, optionality, and unwanted conditions are explicit when applicable.
-- [ ] G2.07 Functional requirements state behavior, not implementation.
-- [ ] G2.08 Every requirement has a source, rationale, priority, acceptance signal, verification method, and status.
-- [ ] G2.09 Every priority has an impact-based rationale.
-- [ ] G2.10 Error, invalid-input, timeout, dependency-failure, and recovery paths are covered where applicable.
-- [ ] G2.11 Lifecycle-dependent behavior has a state model and state-driven requirements.
-- [ ] G2.12 Terms and units are defined consistently.
-- [ ] G2.13 Every declared `REQ-NNN` has a CI-valid `source_legacy:`; supplementary source IDs do not replace it.
-- [ ] G2.14 Unanswered mysteries and unvalidated hypotheses were not promoted into requirements.
+- [ ] G2.01 Todo requisito normativo tem um ID estável e exclusivo.
+- [ ] G2.02 Todo requisito normativo registra exatamente uma classificação EARS.
+- [ ] G2.03 A ordem das cláusulas corresponde ao padrão EARS selecionado.
+- [ ] G2.04 A declaração usa `shall` e nomeia o sistema ou componente responsável.
+- [ ] G2.05 A declaração tem uma resposta observável e nenhum comportamento composto oculto.
+- [ ] G2.06 Pré-condições, gatilhos, opcionalidade e condições indesejadas estão explícitos quando aplicáveis.
+- [ ] G2.07 Requisitos funcionais declaram comportamento, não implementação.
+- [ ] G2.08 Todo requisito tem fonte, justificativa, prioridade, sinal de aceitação, método de verificação e status.
+- [ ] G2.09 Toda prioridade tem uma justificativa baseada em impacto.
+- [ ] G2.10 Caminhos de erro, entrada inválida, timeout, falha de dependência e recuperação estão cobertos quando aplicáveis.
+- [ ] G2.11 Comportamentos dependentes do ciclo de vida têm um modelo de estados e requisitos state-driven.
+- [ ] G2.12 Termos e unidades são definidos de forma consistente.
+- [ ] G2.13 Todo `REQ-NNN` declarado tem um `source_legacy:` válido para a CI; IDs de fonte complementares não o substituem.
+- [ ] G2.14 Mistérios sem resposta e hipóteses não validadas não foram promovidos a requisitos.
 
-## G3. FRD readiness
+## G3. Prontidão do FRD
 
-- [ ] G3.01 Problem, desired outcomes, success signals, in-scope items, and non-goals are explicit.
-- [ ] G3.02 Every actor participates in a requirement or is explicitly informational.
-- [ ] G3.03 Requirements are grouped by domain and preserve stable IDs.
-- [ ] G3.04 External interactions include contracts and failure behavior.
-- [ ] G3.05 Summary rows match normative records exactly.
-- [ ] G3.06 Delivery increments are dependency ordered and reviewable.
-- [ ] G3.07 Every P0 requirement is justified as essential to the named increment.
-- [ ] G3.08 Open questions identify owner and affected scope.
+- [ ] G3.01 Problema, resultados desejados, sinais de sucesso, itens no escopo e não objetivos estão explícitos.
+- [ ] G3.02 Todo ator participa de um requisito ou é explicitamente informativo.
+- [ ] G3.03 Os requisitos estão agrupados por domínio e preservam IDs estáveis.
+- [ ] G3.04 As interações externas incluem contratos e comportamento de falha.
+- [ ] G3.05 As linhas de resumo correspondem exatamente aos registros normativos.
+- [ ] G3.06 Os incrementos de entrega estão ordenados por dependência e podem ser revisados.
+- [ ] G3.07 Todo requisito P0 é justificado como essencial ao incremento nomeado.
+- [ ] G3.08 Perguntas em aberto identificam o responsável e o escopo afetado.
 
-## G4. NFRD readiness
+## G4. Prontidão do NFRD
 
-- [ ] G4.01 Every quality category has an applicability decision.
-- [ ] G4.02 Every applicable category has requirements or an explicit blocker.
-- [ ] G4.03 Every metric defines target, aggregation, window, workload, environment, instrumentation, and owner.
-- [ ] G4.04 Every numeric target cites evidence or accountable-owner approval.
-- [ ] G4.05 Every deployment context has coverage or a visible blocker.
-- [ ] G4.06 Authentication, authorization, data protection, and abuse or failure behavior are covered when applicable.
-- [ ] G4.07 Reliability requirements define detection, degradation, recovery, RTO, or RPO only when applicable and sourced.
-- [ ] G4.08 Compliance is applicable, not applicable, or blocked with an owner.
-- [ ] G4.09 Accessibility and localization scope is explicit for user-facing surfaces.
-- [ ] G4.10 Data quality, lineage, migration, retention, and deletion are covered when applicable.
-- [ ] G4.11 Technology constraints are sourced, justified, and have revisit triggers.
-- [ ] G4.12 For data migration, DBA/QA source readiness, complete beneficiary coverage, reconciliation, and recovery are addressed; seed/schema-only evidence is not accepted.
-- [ ] G4.13 Independent verification is assigned to another named participant, not the DBA changing to their QA persona; execution and sign-off remain planned or blocked until actually evidenced.
+- [ ] G4.01 Toda categoria de qualidade tem uma decisão de aplicabilidade.
+- [ ] G4.02 Toda categoria aplicável tem requisitos ou um bloqueio explícito.
+- [ ] G4.03 Toda métrica define meta, agregação, janela, carga de trabalho, ambiente, instrumentação e responsável.
+- [ ] G4.04 Toda meta numérica cita evidências ou aprovação do responsável.
+- [ ] G4.05 Todo contexto de implantação tem cobertura ou um bloqueio visível.
+- [ ] G4.06 Autenticação, autorização, proteção de dados e comportamento diante de abuso ou falha estão cobertos quando aplicáveis.
+- [ ] G4.07 Requisitos de confiabilidade definem detecção, degradação, recuperação, RTO ou RPO somente quando aplicáveis e com fonte.
+- [ ] G4.08 A conformidade é aplicável, não aplicável ou está bloqueada com um responsável.
+- [ ] G4.09 O escopo de acessibilidade e localização está explícito para superfícies voltadas ao usuário.
+- [ ] G4.10 Qualidade, linhagem, migração, retenção e exclusão de dados estão cobertas quando aplicáveis.
+- [ ] G4.11 Restrições tecnológicas têm fonte, justificativa e gatilhos de revisão.
+- [ ] G4.12 Para migração de dados, são tratadas a prontidão da fonte por DBA/QA, a cobertura completa de beneficiários, a reconciliação e a recuperação; evidências apenas de seed ou schema não são aceitas.
+- [ ] G4.13 A verificação independente é atribuída a outro participante nomeado, não ao DBA mudando para sua persona de QA; execução e aprovação permanecem planejadas ou bloqueadas até haver evidências reais.
 
-## G5. SDD artifact integrity
+## G5. Integridade dos artefatos SDD
 
-- [ ] G5.01 The existing repository constitution is reused or a justified governing artifact exists.
-- [ ] G5.02 `SPECIFICATION.md` contains the canonical active requirements.
-- [ ] G5.03 `ANALYSIS.md` records evidence, gaps, risks, and alternatives.
-- [ ] G5.04 `DESIGN.md` covers architecture, data, interfaces, security, failures, and trade-offs required by scope.
-- [ ] G5.05 Mermaid diagrams are present and valid when architecture, context, deployment, state, sequence, data flow, or lifecycle is material.
-- [ ] G5.06 `TASKS.md` is dependency ordered and every task has an expected evidence result.
-- [ ] G5.07 Every `[P]` task is independent in both dependencies and change surface.
-- [ ] G5.08 `CHECKLIST.md` contains review, implementation, verification, and release gates applicable to scope.
-- [ ] G5.09 `DECISIONS.md` records consequential choices, alternatives, consequences, evidence, and revisit triggers.
-- [ ] G5.10 Optional artifacts exist only when repository conventions or risk justify them.
-- [ ] G5.11 Every Mermaid type uses the universal light theme; graph-like diagrams carry the canonical default/zone/external classes and non-styleable types contain no `classDef`.
-- [ ] G5.12 `DESIGN.md` includes a delivery view mapping requirements through components, tasks/plan, dependencies, tests/evidence, and current-versus-target state.
-- [ ] G5.13 Every task has a checkbox, sequence marker, plan mapping, requirement trace, and change surface; the task DAG covers every task and checked tasks match the verification-sweep ledger.
+- [ ] G5.01 A constituição existente do repositório é reutilizada ou existe um artefato de governança justificado.
+- [ ] G5.02 `SPECIFICATION.md` contém os requisitos ativos canônicos.
+- [ ] G5.03 `ANALYSIS.md` registra evidências, lacunas, riscos e alternativas.
+- [ ] G5.04 `DESIGN.md` cobre arquitetura, dados, interfaces, segurança, falhas e trade-offs exigidos pelo escopo.
+- [ ] G5.05 Diagramas Mermaid estão presentes e válidos quando arquitetura, contexto, implantação, estado, sequência, fluxo de dados ou ciclo de vida forem relevantes.
+- [ ] G5.06 `TASKS.md` está ordenado por dependência, e toda tarefa tem um resultado de evidência esperado.
+- [ ] G5.07 Toda tarefa `[P]` é independente tanto nas dependências quanto na superfície de mudança.
+- [ ] G5.08 `CHECKLIST.md` contém gates de revisão, implementação, verificação e entrega aplicáveis ao escopo.
+- [ ] G5.09 `DECISIONS.md` registra escolhas relevantes, alternativas, consequências, evidências e gatilhos de revisão.
+- [ ] G5.10 Artefatos opcionais só existem quando as convenções do repositório ou o risco os justificam.
+- [ ] G5.11 Todo tipo Mermaid usa o tema claro universal; diagramas semelhantes a grafos contêm as classes canônicas default/zone/external, e tipos não estilizados não contêm `classDef`.
+- [ ] G5.12 `DESIGN.md` inclui uma visão de entrega que mapeia requisitos por componentes, tarefas ou plano, dependências, testes ou evidências e estado atual versus estado-alvo.
+- [ ] G5.13 Toda tarefa tem checkbox, marcador de sequência, mapeamento de plano, rastreio de requisito e superfície de mudança; o DAG de tarefas cobre todas elas, e tarefas marcadas correspondem ao registro da varredura de verificação.
 
-## G6. Traceability and lifecycle
+## G6. Rastreabilidade e ciclo de vida
 
-- [ ] G6.01 Every active requirement has one explicit primary-source row.
-- [ ] G6.02 Every active requirement maps to design, tasks, acceptance, and verification.
-- [ ] G6.03 Every design element maps to one or more governing requirements.
-- [ ] G6.04 Every implementation task maps to one or more requirements or a sourced governance obligation.
-- [ ] G6.05 Every verification item maps to a requirement and acceptance signal.
-- [ ] G6.06 No active requirement, design element, task, or verification item is orphaned.
-- [ ] G6.07 Copied summaries do not redefine or contradict canonical normative statements.
-- [ ] G6.08 Split, merged, transferred, superseded, and retired IDs have explicit dispositions.
-- [ ] G6.09 Stable historical IDs are not silently bulk-renamed.
-- [ ] G6.10 Cross-artifact counts and status values agree.
+- [ ] G6.01 Todo requisito ativo tem uma linha explícita de fonte primária.
+- [ ] G6.02 Todo requisito ativo é mapeado para design, tarefas, aceitação e verificação.
+- [ ] G6.03 Todo elemento de design é mapeado para um ou mais requisitos regentes.
+- [ ] G6.04 Toda tarefa de implementação é mapeada para um ou mais requisitos ou para uma obrigação de governança com fonte.
+- [ ] G6.05 Todo item de verificação é mapeado para um requisito e um sinal de aceitação.
+- [ ] G6.06 Nenhum requisito ativo, elemento de design, tarefa ou item de verificação está órfão.
+- [ ] G6.07 Resumos copiados não redefinem nem contradizem declarações normativas canônicas.
+- [ ] G6.08 IDs divididos, mesclados, transferidos, substituídos e retirados têm disposições explícitas.
+- [ ] G6.09 IDs históricos estáveis não são renomeados em massa silenciosamente.
+- [ ] G6.10 Contagens e valores de status entre artefatos concordam.
 
-## G7. Readiness and checkpoint
+## G7. Prontidão e checkpoint
 
-- [ ] G7.01 Artifact statuses do not exceed available approval or execution evidence.
-- [ ] G7.02 Failed and blocked checks include owner and corrective action.
-- [ ] G7.03 The approved implementation scope is an explicit set of requirement IDs.
-- [ ] G7.04 Dependencies and ordering are clear to an implementation agent.
-- [ ] G7.05 Required validation evidence and stop conditions are explicit.
-- [ ] G7.06 Current external behavior cites dated first-party evidence.
-- [ ] G7.07 The checkpoint excludes unresolved blockers.
-- [ ] G7.08 The delivery report follows the skill output template.
+- [ ] G7.01 Os status dos artefatos não excedem as evidências disponíveis de aprovação ou execução.
+- [ ] G7.02 Verificações com falha ou bloqueadas incluem responsável e ação corretiva.
+- [ ] G7.03 O escopo de implementação aprovado é um conjunto explícito de IDs de requisitos.
+- [ ] G7.04 As dependências e a ordem estão claras para um agente de implementação.
+- [ ] G7.05 As evidências de validação necessárias e as condições de parada estão explícitas.
+- [ ] G7.06 O comportamento externo atual cita evidências primárias datadas.
+- [ ] G7.07 O checkpoint exclui bloqueios não resolvidos.
+- [ ] G7.08 O relatório de entrega segue o modelo de saída da skill.
 
-## Decision rule
+## Regra de decisão
 
-- `PASS`: all applicable checks pass.
-- `READY FOR REVIEW`: no blockers remain, but accountable approval is pending.
-- `BLOCKED`: at least one required fact, decision, source, or mapping is absent.
-- `FAIL`: an applicable artifact or requirement violates a check that can be corrected from available evidence.
+- `PASS`: todas as verificações aplicáveis passam.
+- `READY FOR REVIEW`: não restam bloqueios, mas a aprovação responsável está pendente.
+- `BLOCKED`: pelo menos um fato, decisão, fonte ou mapeamento necessário está ausente.
+- `FAIL`: um artefato ou requisito aplicável viola uma verificação que pode ser corrigida com as evidências disponíveis.
 
-Do not convert `BLOCKED` or `FAIL` into success-shaped wording.
+Não converta `BLOCKED` ou `FAIL` em uma formulação com aparência de sucesso.

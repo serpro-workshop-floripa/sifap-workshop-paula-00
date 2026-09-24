@@ -49,7 +49,6 @@ Execute o script apropriado para sua plataforma:
 - **PowerShell**: `.specify/extensions/git/scripts/powershell/create-new-feature.ps1 -Json -ShortName "<short-name>" "<feature description>"`
 - **PowerShell (timestamp)**: `.specify/extensions/git/scripts/powershell/create-new-feature.ps1 -Json -Timestamp -ShortName "<short-name>" "<feature description>"`
 
-**IMPORTANT**:
 **IMPORTANTE**:
 - NÃO passe `--number` — o script determina automaticamente o próximo número correto
 - Sempre inclua a opção JSON (`--json` para Bash, `-Json` para PowerShell) para que a saída possa ser analisada de forma confiável

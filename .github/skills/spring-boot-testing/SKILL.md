@@ -224,7 +224,7 @@ class PaymentRepositoryTest {
 }
 ```
 
-## Critérios de qualidade
+## Gate de qualidade
 
 - [ ] É usada a fatia mais restrita que ofereça confiança (unitário -> fatia -> `@SpringBootTest`).
 - [ ] Os testes da camada de dados e de integração completa são executados contra um PostgreSQL 16 real via Testcontainers, não H2.

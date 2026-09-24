@@ -1,10 +1,10 @@
-# Non-Functional Requirements Document template
+# Modelo de Non-Functional Requirements Document
 
-Use this template for measurable quality constraints. Normative statements follow the [EARS notation](./ears-notation.md). Never fill a target with an industry-sounding default when workload evidence, policy, or an accountable owner has not supplied it.
+Use este modelo para restrições de qualidade mensuráveis. As declarações normativas seguem a [notação EARS](./ears-notation.md). Nunca preencha uma meta com um valor padrão que apenas pareça comum no setor quando não houver evidência de carga de trabalho, política ou definição de um responsável.
 
-Use these sections inside the feature's `spec.md`, following the
-[kit binding](../SKILL.md#binding-to-this-participant-kit). Non-functional
-category is metadata; requirements still use `REQ-NNN` and `source_legacy:`.
+Use estas seções dentro do `spec.md` da funcionalidade, seguindo o
+[vínculo com o kit](../SKILL.md#vínculo-com-este-kit-do-participante). A categoria
+não funcional é um metadado; os requisitos continuam usando `REQ-NNN` e `source_legacy:`.
 
 ```markdown
 ---
@@ -120,12 +120,12 @@ source_legacy: <actual supported source path or justified [GREENFIELD]>
 | <reviewer> | pending | <date> | <notes> |
 ```
 
-## Template checks
+## Verificações do modelo
 
-- Every applicable category has at least one requirement or an explicit rationale for having none.
-- Every numeric target has a source, owner, workload, environment, and observation method.
-- Every deployment context is covered by measurable requirements or a visible blocker.
-- Security identifies authentication, authorization, protection, and failure behavior when applicable.
-- Compliance is explicitly applicable, not applicable, or blocked; it is never silently assumed.
-- Technology constraints have evidence and a revisit trigger.
-- Approval status is not pre-populated.
+- Toda categoria aplicável tem pelo menos um requisito ou uma justificativa explícita para não ter nenhum.
+- Toda meta numérica tem fonte, responsável, carga de trabalho, ambiente e método de observação.
+- Todo contexto de implantação está coberto por requisitos mensuráveis ou por um bloqueio visível.
+- Segurança identifica autenticação, autorização, proteção e comportamento de falha quando aplicável.
+- A conformidade é explicitamente aplicável, não aplicável ou bloqueada; nunca é presumida silenciosamente.
+- Restrições tecnológicas têm evidências e um gatilho de revisão.
+- O status de aprovação não é preenchido previamente.

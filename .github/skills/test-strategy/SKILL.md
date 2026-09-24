@@ -49,7 +49,7 @@ description: "Use ao elaborar uma estratégia de testes, escolher o formato da p
 **Classificação de risco**: P0 <módulos> / P1 <módulos> / P2 <módulos>
 ```
 
-## Critérios de qualidade
+## Gate de qualidade
 
 - [ ] Cada módulo está classificado por risco (P0/P1/P2) e tem uma meta de cobertura.
 - [ ] A distribuição da pirâmide está definida por camada, e os desvios de 70/20/10 estão justificados.

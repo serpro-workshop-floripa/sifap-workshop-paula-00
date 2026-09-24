@@ -32,9 +32,9 @@ Em `.specify/extensions/git/git-config.yml`:
 
 ```yaml
 auto_commit:
-  default: false          # Chave global — defina true para ativar em todos os comandos
+  default: false          # Global toggle — set true to enable for all commands
   after_specify:
-    enabled: true          # Sobrescrita por comando
+    enabled: true          # Override per-command
     message: "[Spec Kit] Add specification"
   after_plan:
     enabled: false

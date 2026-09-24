@@ -24,10 +24,10 @@ Toda a configuração passa pelo arquivo de configuração da própria extensão
 `.specify/extensions/agent-context/agent-context-config.yml`:
 
 ```yaml
-# Caminho do arquivo de contexto do agente de codificação gerenciado por esta extensão
+# Path to the coding agent context file managed by this extension
 context_file: CLAUDE.md
 
-# Delimitadores da seção gerenciada do Spec Kit
+# Delimiters for the managed Spec Kit section
 context_markers:
   start: "<!-- SPECKIT START -->"
   end: "<!-- SPECKIT END -->"
@@ -44,7 +44,7 @@ O PyYAML acompanha a CLI `specify` e normalmente está disponível pelo mesmo in
 
 ```bash
 pip install pyyaml
-# ou use o interpretador específico utilizado pelo Spec Kit:
+# or target the specific interpreter Spec Kit uses:
 /path/to/speckit-python -m pip install pyyaml
 ```
 

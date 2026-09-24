@@ -1,8 +1,8 @@
 # [CHECKLIST TYPE] Checklist: [FEATURE NAME]
 
-**Purpose**: [Breve descrição do que este checklist abrange]
+**Purpose**: [Brief description of what this checklist covers]
 **Created**: [DATE]
-**Feature**: [Link para spec.md ou documentação relevante]
+**Feature**: [Link to spec.md or relevant documentation]
 
 **Note**: Este checklist é gerado pelo comando `/speckit.checklist` com base no contexto e nos requisitos da funcionalidade.
 

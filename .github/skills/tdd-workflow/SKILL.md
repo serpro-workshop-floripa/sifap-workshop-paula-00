@@ -74,7 +74,7 @@ void calculatesTaxForTaxExemptCustomer() {
 
 Sequência de registros por comportamento: `red: adicionar teste com falha` -> `green: fazer passar` -> `refactor: <melhoria>`.
 
-## Critérios de qualidade
+## Gate de qualidade
 
 - [ ] Nenhum código de produção foi escrito sem um teste com falha primeiro.
 - [ ] Apenas um teste fica vermelho por vez, e cada ciclo cobre um comportamento.

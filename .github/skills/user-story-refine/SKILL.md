@@ -62,7 +62,7 @@ Use estes padrões quando uma história for grande demais para ser concluída em
 **Dependências**: US-NNN (se houver)
 ```
 
-## Critérios de qualidade
+## Gate de qualidade
 
 - [ ] A história atende a todos os critérios INVEST.
 - [ ] Os critérios de aceitação estão escritos em Dado/Quando/Então e cobrem o fluxo de sucesso, um caso-limite e o fluxo de erro.

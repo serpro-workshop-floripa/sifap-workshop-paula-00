@@ -1,10 +1,10 @@
-# SDD artifact templates
+# Modelos de artefatos SDD
 
-These are the templates for **architect packages**: the specifications the `@architect` agent writes through its prompts and this skill. Requirement statements follow the [EARS notation](./ears-notation.md); presentation follows the [document and Mermaid standard](./sdd-document-and-mermaid-standard.md). Packages created with GitHub Spec-Kit commands use Spec-Kit's own templates in `.specify/templates/` and are not covered here.
+Estes são os modelos para **pacotes do architect**: as especificações que o agente `@architect` escreve por meio de seus prompts e desta skill. As declarações de requisitos seguem a [notação EARS](./ears-notation.md); a apresentação segue o [padrão de documentos e Mermaid](./sdd-document-and-mermaid-standard.md). Pacotes criados com comandos do GitHub Spec-Kit usam os próprios modelos do Spec-Kit em `.specify/templates/` e não são abordados aqui.
 
-`python3 .github/scripts/export-spec-library.py --new-package <NNN>-<slug>` writes every authored template below into a new package, and `python3 .github/scripts/generate-sdd-support-artifacts.py --package <NNN>` derives the generated files. A complete worked example that passes every gate lives in [`.github/scripts/tests/fixtures/kit-repo/.spec/001-sample-feature/`](../../../scripts/tests/fixtures/kit-repo/.spec/001-sample-feature/SPECIFICATION.md).
+`python3 .github/scripts/export-spec-library.py --new-package <NNN>-<slug>` grava cada modelo autoral abaixo em um novo pacote, e `python3 .github/scripts/generate-sdd-support-artifacts.py --package <NNN>` deriva os arquivos gerados. Um exemplo completo que passa por todos os gates está em [`.github/scripts/tests/fixtures/kit-repo/.spec/001-sample-feature/`](../../../scripts/tests/fixtures/kit-repo/.spec/001-sample-feature/SPECIFICATION.md).
 
-## Package layout
+## Layout do pacote
 
 ```text
 .spec/
@@ -34,26 +34,26 @@ These are the templates for **architect packages**: the specifications the `@arc
     └── VERIFICATION.md             # generated
 ```
 
-## Artifact responsibilities
+## Responsabilidades dos artefatos
 
-| File | Written by | Stage | Responsibility |
+| Arquivo | Escrito por | Etapa | Responsabilidade |
 | --- | --- | --- | --- |
-| `FRD.md` | `/write-ears-spec` | Requirements | Functional scope, actors, domain lifecycle, requirement summary; cites IDs, never restates them |
-| `NFRD.md` | `/write-ears-spec` | Requirements | Quality applicability, measurement envelopes, security and technology constraints |
-| `SPECIFICATION.md` | `/write-ears-spec` | Requirements | The only home of EARS statements, sources, acceptance IDs, and status |
-| `SOURCE_TRACEABILITY.md` | generator | Complete | Source register projected per requirement |
-| `ANALYSIS.md` | `/design-modular-monolith` | Design | Evidence inventory, gaps, options, risks |
-| `DESIGN.md` | `/design-modular-monolith` | Design | The 18-view design portfolio and delivery trace |
-| `DECISIONS.md` | `/generate-adr`, `/design-modular-monolith` | Design | `DR-NNN` decisions; repository-wide ones also become ADRs |
-| `contracts/` | `/design-modular-monolith` | Design | Interface contracts and `manifest.yaml` |
-| `checkpoints/spec-to-plan.yaml` | `/design-modular-monolith` | Design | Requirement to design component and plan item |
-| `TASKS.md` | `/break-down-tasks` | Complete | RED/GREEN checkbox tasks, dependency graph, ledger |
-| `TESTING.md` | `/break-down-tasks` | Complete | `TST-NNN` catalog, commands, failure, evidence contract |
-| `checkpoints/plan-to-tasks.yaml`, `test-coverage.yaml` | `/break-down-tasks` | Complete | Plan item to task; requirement to test |
-| `TDD.md`, `CHECKLIST.md`, `CROSS_ANALYSIS.md`, `VERIFICATION.md` | generator | Complete | Derived test plan, review gates, cross-analysis, verification |
-| `evidence/` | Stage 3 implementation | Complete | Dated run evidence cited by checked tasks |
+| `FRD.md` | `/write-ears-spec` | Requisitos | Escopo funcional, atores, ciclo de vida do domínio e resumo de requisitos; cita IDs, nunca os reformula |
+| `NFRD.md` | `/write-ears-spec` | Requisitos | Aplicabilidade de qualidade, envelopes de medição e restrições de segurança e tecnologia |
+| `SPECIFICATION.md` | `/write-ears-spec` | Requisitos | Único local das declarações EARS, fontes, IDs de aceitação e status |
+| `SOURCE_TRACEABILITY.md` | gerador | Completo | Registro de fontes projetado por requisito |
+| `ANALYSIS.md` | `/design-modular-monolith` | Design | Inventário de evidências, lacunas, opções e riscos |
+| `DESIGN.md` | `/design-modular-monolith` | Design | Portfólio de design com 18 visões e rastreio da entrega |
+| `DECISIONS.md` | `/generate-adr`, `/design-modular-monolith` | Design | Decisões `DR-NNN`; as válidas para todo o repositório também se tornam ADRs |
+| `contracts/` | `/design-modular-monolith` | Design | Contratos de interface e `manifest.yaml` |
+| `checkpoints/spec-to-plan.yaml` | `/design-modular-monolith` | Design | Requisito para componente de design e item de plano |
+| `TASKS.md` | `/break-down-tasks` | Completo | Tarefas RED/GREEN com checkbox, grafo de dependências e registro |
+| `TESTING.md` | `/break-down-tasks` | Completo | Catálogo `TST-NNN`, comandos, falhas e contrato de evidências |
+| `checkpoints/plan-to-tasks.yaml`, `test-coverage.yaml` | `/break-down-tasks` | Completo | Item de plano para tarefa; requisito para teste |
+| `TDD.md`, `CHECKLIST.md`, `CROSS_ANALYSIS.md`, `VERIFICATION.md` | gerador | Completo | Plano de testes, gates de revisão, análise cruzada e verificação derivados |
+| `evidence/` | Implementação da Etapa 3 | Completo | Evidências datadas de execução citadas por tarefas marcadas |
 
-Never hand-edit a generated file; change its sources and regenerate.
+Nunca edite manualmente um arquivo gerado; altere suas fontes e gere-o novamente.
 
 ## CONSTITUTION.md
 
@@ -331,7 +331,7 @@ flowchart TD
 Task closure: 0 of 2. No task is checked until acceptance evidence exists.
 ````
 
-A checked task adds `- Evidence: evidence/<date>-T001.md` and appears in a line `Marked complete by verification sweep: T001`.
+Uma tarefa marcada adiciona `- Evidence: evidence/<date>-T001.md` e aparece em uma linha `Marked complete by verification sweep: T001`.
 
 ## TESTING.md
 
@@ -363,7 +363,7 @@ Every test passes and its evidence is stored in `evidence/`.
 
 ## TDD.md
 
-Generated from the checkpoints by `generate-sdd-support-artifacts.py --include-supplements`. Hand-author it only when the team needs a different test-first narrative; the generator never overwrites a file without its marker.
+Gerado a partir dos checkpoints por `generate-sdd-support-artifacts.py --include-supplements`. Escreva-o manualmente somente quando a equipe precisar de uma narrativa test-first diferente; o gerador nunca sobrescreve um arquivo sem seu marcador.
 
 ```markdown
 # TDD: <Feature>
@@ -378,7 +378,7 @@ Generated from the checkpoints by `generate-sdd-support-artifacts.py --include-s
 
 ## CHECKLIST.md
 
-Generated. Run `python3 .github/scripts/generate-sdd-support-artifacts.py --package <NNN>`.
+Gerado. Execute `python3 .github/scripts/generate-sdd-support-artifacts.py --package <NNN>`.
 
 ```markdown
 # Checklist: <Feature>
@@ -388,7 +388,7 @@ Generated from SPECIFICATION.md, DESIGN.md, TASKS.md, TESTING.md, and the checkp
 
 ## CROSS_ANALYSIS.md
 
-Generated. It maps every requirement to design, plan items, tasks, and tests.
+Gerado. Ele mapeia cada requisito para design, itens de plano, tarefas e testes.
 
 ```markdown
 # Cross Analysis: <Feature>
@@ -398,7 +398,7 @@ Generated from the checkpoints; every gap is a hard error at generation time.
 
 ## VERIFICATION.md
 
-Generated. It records planned verification per requirement and never claims execution.
+Gerado. Ele registra a verificação planejada por requisito e nunca alega execução.
 
 ```markdown
 # Verification: <Feature>
@@ -408,7 +408,7 @@ Generated from test-coverage.yaml and TESTING.md.
 
 ## SOURCE_TRACEABILITY.md
 
-Generated. It projects the source register onto every requirement.
+Gerado. Ele projeta o registro de fontes em cada requisito.
 
 ```markdown
 # Source Traceability: <Feature>
@@ -446,7 +446,7 @@ tests:
   TST-001: {file: <test path>, command: "<targeted test command>"}
 ```
 
-Set `mapping_status: complete` only when every requirement, task, and test is mapped.
+Defina `mapping_status: complete` somente quando todos os requisitos, tarefas e testes estiverem mapeados.
 
 ## contracts/manifest.yaml
 
@@ -457,7 +457,7 @@ contracts:
   <resource>.openapi.yaml: {status: provided}
 ```
 
-A contract the feature does not expose uses `{status: not_applicable, reason: "<why, 40+ characters>", evidence: <repository path>, decision: DR-001}` and the file stays absent.
+Um contrato que a funcionalidade não expõe usa `{status: not_applicable, reason: "<why, 40+ characters>", evidence: <repository path>, decision: DR-001}`, e o arquivo permanece ausente.
 
 ## evidence/README.md
 
@@ -467,9 +467,9 @@ A contract the feature does not expose uses `{status: not_applicable, reason: "<
 Dated execution evidence for checked tasks. Empty until a task runs.
 ```
 
-## Consistency rules
+## Regras de consistência
 
-- One requirement ID has one normative statement, in `SPECIFICATION.md`; other files cite the ID mid-sentence or in table cells, never at the start of a line.
-- Every active requirement appears in `FRD.md` or `NFRD.md`, `DESIGN.md`, `TASKS.md`, `TESTING.md`, and all three checkpoints.
-- Status never exceeds evidence: `Implemented` needs every task checked and in the ledger; `Verified` also needs a test citing every requirement.
-- Unknown values stay `PENDING` or `BLOCKED` with an owner; an empty section states `NOT APPLICABLE: <reason>`.
+- Um ID de requisito tem uma declaração normativa, em `SPECIFICATION.md`; outros arquivos citam o ID no meio da frase ou em células de tabela, nunca no início de uma linha.
+- Todo requisito ativo aparece em `FRD.md` ou `NFRD.md`, `DESIGN.md`, `TASKS.md`, `TESTING.md` e nos três checkpoints.
+- O status nunca excede as evidências: `Implemented` exige todas as tarefas marcadas e presentes no registro; `Verified` também exige um teste que cite cada requisito.
+- Valores desconhecidos permanecem `PENDING` ou `BLOCKED`, com responsável; uma seção vazia declara `NOT APPLICABLE: <reason>`.

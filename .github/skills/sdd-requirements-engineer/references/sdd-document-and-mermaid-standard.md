@@ -1,34 +1,34 @@
-# SDD document and Mermaid standard
+# Padrão de documentos SDD e Mermaid
 
-Use this as a content reference for official Spec-Kit artifacts under `specs/`.
-The [kit binding](../SKILL.md#binding-to-this-participant-kit) is authoritative:
-uppercase names below describe responsibilities within `spec.md`, `plan.md`,
-and `tasks.md`, not required additional files or a parallel `.specs/` tree.
+Use este documento como referência de conteúdo para artefatos oficiais do Spec-Kit em `specs/`.
+O [vínculo com o kit](../SKILL.md#vínculo-com-este-kit-do-participante) é a autoridade:
+os nomes em maiúsculas abaixo descrevem responsabilidades em `spec.md`, `plan.md`
+e `tasks.md`, não arquivos adicionais obrigatórios nem uma árvore `.specs/` paralela.
 
-## Artifact responsibilities
+## Responsabilidades dos artefatos
 
-| Artifact | Required responsibility |
+| Artefato | Responsabilidade obrigatória |
 | --- | --- |
-| `SPECIFICATION.md` | Canonical REQ/NFR statements, acceptance, assumptions, dependencies, open decisions, and evidence-based implementation status |
-| `ANALYSIS.md` | Gate summary, bidirectional traceability, dated evidence, findings, approval conditions, and sign-off |
-| `DESIGN.md` | Architecture, context, components, deployment, state, sequences, data, interfaces, failures, security, observability, implementation surface, delivery traceability, and phased state |
-| `TASKS.md` | Pre-gate, execution rules, dependency DAG, test mapping, phased checkboxes, completion gate, and execution ledger |
-| `TESTING.md` | Named tests, deterministic commands, failure injection, evidence contract, exit criteria, and dated verification state |
-| `DECISIONS.md` | Stable decisions, status, context, alternatives, consequences, traces, evidence, and revisit triggers |
-| `checkpoints/` | Machine-readable requirement-to-plan-to-task-to-test closure |
-| `contracts/` | Versioned API/state contracts or a reviewed non-applicability manifest |
+| `SPECIFICATION.md` | Declarações canônicas REQ/NFR, aceitação, premissas, dependências, decisões em aberto e status de implementação baseado em evidências |
+| `ANALYSIS.md` | Resumo dos gates, rastreabilidade bidirecional, evidências datadas, achados, condições de aprovação e aprovação formal |
+| `DESIGN.md` | Arquitetura, contexto, componentes, implantação, estado, sequências, dados, interfaces, falhas, segurança, observabilidade, superfície de implementação, rastreabilidade da entrega e estado por fases |
+| `TASKS.md` | Gate prévio, regras de execução, DAG de dependências, mapeamento de testes, checkboxes por fase, gate de conclusão e registro de execução |
+| `TESTING.md` | Testes nomeados, comandos determinísticos, injeção de falhas, contrato de evidências, critérios de saída e estado de verificação datado |
+| `DECISIONS.md` | Decisões estáveis, status, contexto, alternativas, consequências, rastros, evidências e gatilhos de revisão |
+| `checkpoints/` | Fechamento legível por máquina de requisito para plano, tarefa e teste |
+| `contracts/` | Contratos versionados de API ou estado, ou manifesto revisado de não aplicabilidade |
 
-## Universal Mermaid theme
+## Tema Mermaid universal
 
-Follow the [kit documentation style guide](../../../../docs/DOC-STYLE-GUIDE.md).
-Begin Mermaid blocks with the kit's neutral directive:
+Siga o [guia de estilo da documentação do kit](../../../../docs/DOC-STYLE-GUIDE.md).
+Inicie blocos Mermaid com a diretiva neutra do kit:
 
 ```text
 %%{init: {'theme':'neutral','themeVariables':{'fontFamily':'ui-sans-serif, system-ui, sans-serif','primaryColor':'#F5F5F5','primaryTextColor':'#171717','primaryBorderColor':'#171717','lineColor':'#525252','secondaryColor':'#FFFFFF','tertiaryColor':'#FAFAFA','background':'#FFFFFF'}}}%%
 ```
 
-For `flowchart`, `graph`, and `classDiagram`, include these
-definitions exactly once:
+Para `flowchart`, `graph` e `classDiagram`, inclua estas
+definições exatamente uma vez:
 
 ```text
 classDef default fill:#F5F5F5,stroke:#171717,color:#171717
@@ -36,24 +36,24 @@ classDef zone fill:#FFFFFF,stroke:#525252,color:#171717
 classDef external fill:#FAFAFA,stroke:#A3A3A3,color:#404040
 ```
 
-Use `zone` for owned boundaries and logical groupings, and `external` for
-actors, external systems, neighboring specifications, or evidence sources
-outside the feature boundary. `stateDiagram`, `sequenceDiagram`, `erDiagram`,
-and `gantt` inherit the universal theme and must not contain `classDef`.
-Current `stateDiagram-v2` renderers treat `default` as a reserved token.
+Use `zone` para limites sob responsabilidade da funcionalidade e agrupamentos lógicos, e `external` para
+atores, sistemas externos, especificações vizinhas ou fontes de evidência
+fora do limite da funcionalidade. `stateDiagram`, `sequenceDiagram`, `erDiagram`
+e `gantt` herdam o tema universal e não devem conter `classDef`.
+Renderizadores atuais de `stateDiagram-v2` tratam `default` como token reservado.
 
-Keep diagrams reviewable:
+Mantenha os diagramas revisáveis:
 
-- fewer than 40 nodes per block;
-- short labels, with detail in adjacent tables;
-- quoted edge labels;
-- explicit subgraph IDs;
-- no chromatic colors;
-- separate current, partial, planned, blocked, and target states.
+- menos de 40 nós por bloco;
+- rótulos curtos, com detalhes em tabelas adjacentes;
+- rótulos de aresta entre aspas;
+- IDs explícitos de subgrafos;
+- nenhuma cor cromática;
+- estados atual, parcial, planejado, bloqueado e alvo separados.
 
-## Required design portfolio
+## Portfólio de design obrigatório
 
-When material to the feature, `DESIGN.md` includes:
+Quando forem relevantes para a funcionalidade, `DESIGN.md` inclui:
 
 1. Architecture Overview
 2. System Context
@@ -70,14 +70,14 @@ When material to the feature, `DESIGN.md` includes:
 13. Risks and Trade-Offs
 14. Phased Development
 
-The delivery view maps real REQ/NFR IDs to design components, plan items and
-tasks, dependency IDs or neighboring specs, tests/evidence, and
-current-versus-target state. Do not invent an implementation or approval to
-complete a diagram.
+A visão de entrega mapeia IDs REQ/NFR reais para componentes de design, itens de plano e
+tarefas, IDs de dependências ou especificações vizinhas, testes ou evidências e
+estado atual versus estado-alvo. Não invente implementação ou aprovação para
+completar um diagrama.
 
-## Task contract
+## Contrato de tarefas
 
-Use one checkbox entry per task:
+Use uma entrada com checkbox por tarefa:
 
 ```text
 - [ ] **T001 [S] [Plan:P1.1] RED** Add a failing contract test. Traces REQ-001.
@@ -85,23 +85,23 @@ Use one checkbox entry per task:
   - Acceptance: TST-C001 fails before implementation and passes afterward.
 ```
 
-- `[S]` means sequential; `[P]` means dependency- and change-surface independent.
-- The dependency DAG contains every task exactly once.
-- The test map names the governing requirements and planned or executed tests.
-- `[x]` is allowed only when the task appears in the dated
-  `Marked complete by verification sweep:` ledger and its acceptance evidence
-  exists.
-- Existing partial code stays unchecked until the complete acceptance signal is
-  demonstrated.
+- `[S]` significa sequencial; `[P]` significa independente nas dependências e na superfície de mudança.
+- O DAG de dependências contém cada tarefa exatamente uma vez.
+- O mapa de testes nomeia os requisitos regentes e os testes planejados ou executados.
+- `[x]` é permitido somente quando a tarefa aparece no registro datado
+  `Marked complete by verification sweep:` e sua evidência de aceitação
+  existe.
+- Código parcial existente permanece desmarcado até que o sinal completo de aceitação seja
+  demonstrado.
 
-## Required validation
+## Validação obrigatória
 
-Use the actual checks defined in
-[spec-quality.yml](../../../workflows/spec-quality.yml) and the existing
-primitive validator when primitives change. Inspect available scripts before
-running them. Generic SDD generators and validators are not shipped by this kit;
-do not claim they exist or fabricate their output. Use reviewed artifact
-evidence for checks that have no executable gate.
+Use as verificações reais definidas em
+[spec-quality.yml](../../../workflows/spec-quality.yml) e o validador de
+primitivos existente quando os primitivos mudarem. Inspecione os scripts disponíveis antes
+de executá-los. Geradores e validadores SDD genéricos não acompanham este kit;
+não alegue que existem nem fabrique sua saída. Use evidências revisadas dos artefatos
+para verificações sem gate executável.
 
-Report a failing or blocked check as such. Never weaken a gate, add a baseline,
-or create empty evidence merely to obtain a green result.
+Relate uma verificação com falha ou bloqueada como tal. Nunca enfraqueça um gate, adicione uma baseline
+nem crie evidência vazia apenas para obter um resultado verde.

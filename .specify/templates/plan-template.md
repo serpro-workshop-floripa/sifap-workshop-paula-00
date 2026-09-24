@@ -2,9 +2,9 @@
 
 **Branch**: `[###-feature-name]` | **Date**: [DATE] | **Spec**: [link]
 
-**Input**: Feature specification from `/specs/[###-feature-name]/spec.md`
+**Input**: Especificação da funcionalidade em `/specs/[###-feature-name]/spec.md`
 
-**Note**: This template is filled in by the `/speckit.plan` command. See `.specify/templates/plan-template.md` for the execution workflow.
+**Note**: Este template é preenchido pelo comando `/speckit.plan`. Consulte `.specify/templates/plan-template.md` para ver o workflow de execução.
 
 ## Summary
 
@@ -13,9 +13,9 @@
 ## Technical Context
 
 <!--
-  ACTION REQUIRED: Replace the content in this section with the technical details
-  for the project. The structure here is presented in advisory capacity to guide
-  the iteration process.
+  AÇÃO NECESSÁRIA: Substitua o conteúdo desta seção pelos detalhes técnicos
+  do projeto. A estrutura apresentada aqui tem caráter consultivo para orientar
+  o processo de iteração.
 -->
 
 **Language/Version**: [e.g., Python 3.11, Swift 5.9, Rust 1.75 or NEEDS CLARIFICATION]
@@ -38,7 +38,7 @@
 
 ## Constitution Check
 
-*GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
+*GATE: Deve ser aprovado antes da pesquisa da Fase 0. Verifique novamente após o design da Fase 1.*
 
 [Gates determined based on constitution file]
 
@@ -58,10 +58,10 @@ specs/[###-feature]/
 
 ### Source Code (repository root)
 <!--
-  ACTION REQUIRED: Replace the placeholder tree below with the concrete layout
-  for this feature. Delete unused options and expand the chosen structure with
-  real paths (e.g., apps/admin, packages/something). The delivered plan must
-  not include Option labels.
+  AÇÃO NECESSÁRIA: Substitua a árvore de placeholders abaixo pelo layout
+  concreto desta funcionalidade. Exclua as opções não utilizadas e expanda
+  a estrutura escolhida com caminhos reais (por exemplo, apps/admin,
+  packages/something). O plano entregue não deve incluir rótulos de opções.
 -->
 
 ```text
@@ -105,7 +105,7 @@ directories captured above]
 
 ## Complexity Tracking
 
-> **Fill ONLY if Constitution Check has violations that must be justified**
+> **Preencha SOMENTE se Constitution Check tiver violações que precisem ser justificadas**
 
 | Violation | Why Needed | Simpler Alternative Rejected Because |
 |-----------|------------|-------------------------------------|

@@ -1,10 +1,10 @@
-# Functional Requirements Document template
+# Modelo de Functional Requirements Document
 
-Use this template after gap analysis. Normative statements follow the [EARS notation](./ears-notation.md). Keep the document `Draft` or `Ready for review` until an accountable reviewer records approval.
+Use este modelo após a análise de lacunas. As declarações normativas seguem a [notação EARS](./ears-notation.md). Mantenha o documento como `Draft` ou `Ready for review` até que um revisor responsável registre a aprovação.
 
-In this kit, use these sections within `.spec/<NNN>-<feature>/spec.md`,
-not a parallel FRD file. Follow the [repository binding](../SKILL.md#binding-to-this-participant-kit);
-the source path and all requirement content are filled by the team after archaeology.
+Neste kit, use estas seções em `.spec/<NNN>-<feature>/spec.md`,
+não em um arquivo FRD paralelo. Siga o [vínculo com o repositório](../SKILL.md#vínculo-com-este-kit-do-participante);
+o path da fonte e todo o conteúdo dos requisitos são preenchidos pela equipe após a arqueologia.
 
 ```markdown
 ---
@@ -128,11 +128,11 @@ source_legacy: <actual supported source path or justified [GREENFIELD]>
 | <reviewer> | pending | <date> | <notes> |
 ```
 
-## Template checks
+## Verificações do modelo
 
-- Every actor is referenced by at least one requirement or explicitly declared informational.
-- Every P0 requirement has a release-impact rationale.
-- Error and recovery behavior is explicit for each primary action.
-- Requirements remain implementation-neutral and atomic.
-- Summary rows exactly match the normative requirement records.
-- Approval status is not pre-populated.
+- Todo ator é referenciado por pelo menos um requisito ou declarado explicitamente como informativo.
+- Todo requisito P0 tem uma justificativa de impacto na entrega.
+- O comportamento de erro e recuperação está explícito para cada ação principal.
+- Os requisitos permanecem neutros quanto à implementação e atômicos.
+- As linhas de resumo correspondem exatamente aos registros de requisitos normativos.
+- O status de aprovação não é preenchido previamente.

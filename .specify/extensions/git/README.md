@@ -50,14 +50,14 @@ Esta extensão fornece operações Git como um módulo opcional e autocontido. E
 A configuração é armazenada em `.specify/extensions/git/git-config.yml`:
 
 ```yaml
-# Estratégia de numeração de branches: "sequential" ou "timestamp"
+# Branch numbering strategy: "sequential" or "timestamp"
 branch_numbering: sequential
 
-# Mensagem de commit personalizada para git init
+# Custom commit message for git init
 init_commit_message: "[Spec Kit] Initial commit"
 
-# Commit automático por comando (todos desativados por padrão)
-# Exemplo: ativar commit automático após specify
+# Auto-commit per command (all disabled by default)
+# Example: enable auto-commit after specify
 auto_commit:
   default: false
   after_specify:
@@ -68,17 +68,17 @@ auto_commit:
 ## Instalação
 
 ```bash
-# Instala a extensão Git incluída (não requer rede)
+# Install the bundled git extension (no network required)
 specify extension add git
 ```
 
 ## Desativação
 
 ```bash
-# Desativa a extensão Git (a criação de especificações continua sem branches)
+# Disable the git extension (spec creation continues without branching)
 specify extension disable git
 
-# Reativa a extensão
+# Re-enable it
 specify extension enable git
 ```
 
