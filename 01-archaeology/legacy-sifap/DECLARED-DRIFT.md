@@ -1,88 +1,88 @@
-# Declared Drift — Contradictions That Are Deliberate
+# Divergência declarada — contradições que são deliberadas
 
-> **Path:** [Team Kit](../../README.md) › [Stage 1](../README.md) › [SIFAP Legacy](README.md) › **Declared Drift**
+> **Trilha:** [Kit do Time](../../README.md) › [Estágio 1](../README.md) › [Legado SIFAP](README.md) › **Divergência declarada**
 
-**A register of every place where a narrative document about SIFAP knowingly disagrees with the source it describes.** Documentation drift is the central lesson of Stage 1, so these divergences are preserved on purpose. This file records that they are intentional; it never records which side is correct.
+**Um registro de cada ponto em que um documento narrativo sobre o SIFAP discorda, de forma consciente, da fonte que descreve.** O desvio da documentação é a lição central do Estágio 1, por isso essas divergências são preservadas de propósito. Este arquivo registra que elas são intencionais; ele nunca registra qual lado está correto.
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| **Target audience** | Kit maintainers, facilitators, and the chronology CI gate |
-| **Prerequisites** | [Chronology](CHRONOLOGY.md) |
-| **Estimated time** | 5 min |
-| **Stage** | Stage 1 — Archaeology (maintenance artifact) |
-| **Expected outcome** | You can tell a designed divergence from a kit defect |
+| **Público-alvo** | Pessoas mantenedoras do kit, facilitadoras e o gate de cronologia na integração contínua |
+| **Pré-requisitos** | [Cronologia](CHRONOLOGY.md) |
+| **Tempo estimado** | 5 min |
+| **Estágio** | Estágio 1 — Arqueologia (artefato de manutenção) |
+| **Resultado esperado** | Você distingue uma divergência projetada de um defeito do kit |
 
 > [!IMPORTANT]
-> This register answers one question only: **"is this contradiction on purpose?"**
-> It does not say which document is right, what the code actually does, or which
-> business rule applies. Reading it removes no discovery work, because every
-> entry still requires the team to open the source and decide what the
-> difference means.
+> Este registro responde a uma única pergunta: **"esta contradição é proposital?"**
+> Ele não diz qual documento está certo, o que o código realmente faz ou qual
+> regra de negócio se aplica. Lê-lo não elimina nenhum trabalho de descoberta,
+> porque cada entrada ainda exige que a equipe abra a fonte e decida o que a
+> diferença significa.
 
 ---
 
-## 1. Why a register is necessary
+## 1. Por que um registro é necessário
 
-Without it, three failures are indistinguishable from each other:
+Sem ele, três falhas ficam indistinguíveis entre si:
 
-| Situation | Without the register | With the register |
+| Situação | Sem o registro | Com o registro |
 |---|---|---|
-| A period document misstates a date | Looks like a kit typo; someone "fixes" it and deletes the exercise | Preserved and cited as a finding |
-| A kit guide misstates a date | Looks like a designed puzzle; nobody fixes it and the map stays wrong | Fails CI immediately |
-| A team finds a real inconsistency | No way to tell whether it was known | Unregistered finding, recorded as a discovery |
+| Um documento de época informa uma data errada | Parece um erro de digitação do kit; alguém "corrige" e apaga o exercício | Preservado e citado como achado |
+| Um guia do kit informa uma data errada | Parece um enigma projetado; ninguém corrige e o mapa continua errado | Falha imediatamente na integração contínua |
+| Uma equipe encontra uma inconsistência real | Não há como saber se ela já era conhecida | Achado não registrado, anotado como descoberta |
 
-The rule that follows from the table:
+A regra que decorre da tabela:
 
-- **Narrative layer** (`legacy-docs/`, [`README.md`](README.md)) may drift, and every known drift appears below.
-- **Kit-truth layer** ([`CHRONOLOGY.md`](CHRONOLOGY.md), [`natural-programs/README.md`](natural-programs/README.md), stage guides) may never drift.
+- A **camada narrativa** (`legacy-docs/`, [`README.md`](README.md)) pode divergir, e toda divergência conhecida aparece abaixo.
+- A **camada de verdade do kit** ([`CHRONOLOGY.md`](CHRONOLOGY.md), [`natural-programs/README.md`](natural-programs/README.md), guias de estágio) nunca pode divergir.
 
 ---
 
-## 2. Register
+## 2. Registro
 
-`Claim` is what the narrative document states. `Source` is the artifact that
-records something different. Read both before concluding anything.
+`Afirmação` é o que o documento narrativo declara. `Fonte` é o artefato que
+registra algo diferente. Leia os dois antes de concluir qualquer coisa.
 
-| ID | Narrative document | Claim it makes | Source that differs | Why it is preserved |
+| ID | Documento narrativo | Afirmação que ele faz | Fonte que difere | Por que é preservado |
 |---|---|---|---|---|
-| `DRIFT-01` | [`README.md`](README.md) §2.1 | The reconciliation program arrived with the 2002 SIAFI integration | `BATCHCON.NSP` header | A retro-fitted timeline groups a program with the project that later justified it |
-| `DRIFT-02` | [`README.md`](README.md) §2.1 | The audit DDM was created during the 2005 platform migration | `AUDIT.ddm` header | A file can be defined years before the module that finally uses it |
-| `DRIFT-03` | [`README.md`](README.md) §2.1 | The audit report is part of the 2005 release | `RELAUDIT.NSP` header | Release notes written afterwards absorb earlier work |
-| `DRIFT-04` | [`README.md`](README.md) §2.1 | The deduction module is the 2015 "last significant feature" | `CALCDSCT.NSP` header and its change lines | A large change to an old program is often remembered as a new program |
-| `DRIFT-05` | [`README.md`](README.md) §3 | Names an original team roster | `* AUTHOR:` lines across the corpus | Institutional memory and code attribution diverge over three decades |
-| `DRIFT-06` | [`README.md`](README.md) §5 | Attributes an author, a year, and a last-change year per program | Member headers | An inventory compiled during a later documentation effort inherits its own errors |
-| `DRIFT-07` | [`README.md`](README.md) §5.6 | Lists shared subprograms and copycode by name | The members actually present in `natural-programs/` | A partial inventory is the most dangerous kind of inventory |
-| `DRIFT-08` | [`README.md`](README.md) §7.3 | Attributes a recovery procedure review to a named DBA | `* AUTHOR:` line in the four DDMs | Operational memory is rarely written down by the person who owns the artifact |
-| `DRIFT-09` | [`README.md`](README.md) §6 | States record volumes for a stated reference date | `FDT-150-BENEFICIARY.txt` run date | A printed report is a historical observation, never a current measurement |
-| `DRIFT-10` | [`legacy-docs/ORIGINAL-ARCHITECTURE-1997.md`](legacy-docs/ORIGINAL-ARCHITECTURE-1997.md) | Carries annotations describing events after its issue date | Its own front matter date | Long-lived documents accumulate later margin notes |
-| `DRIFT-11` | [`legacy-docs/TECHNICAL-MANUAL-SIFAP-2008.md`](legacy-docs/TECHNICAL-MANUAL-SIFAP-2008.md) | Describes behavior as of its publication | Change lines dated after it | A manual freezes; the code does not |
-| `DRIFT-12` | [`legacy-docs/BUSINESS-RULES-2012.md`](legacy-docs/BUSINESS-RULES-2012.md) | Documents business rules as of 2012, incompletely | Change lines dated after it | An abandoned discovery effort leaves a partial and aging record |
+| `DRIFT-01` | [`README.md`](README.md) §2.1 | O programa de conciliação chegou com a integração SIAFI de 2002 | Cabeçalho de `BATCHCON.NSP` | Uma linha do tempo reconstruída depois agrupa um programa com o projeto que só mais tarde o justificou |
+| `DRIFT-02` | [`README.md`](README.md) §2.1 | O DDM de auditoria foi criado durante a migração de plataforma de 2005 | Cabeçalho de `AUDIT.ddm` | Um arquivo pode ser definido anos antes do módulo que enfim o utiliza |
+| `DRIFT-03` | [`README.md`](README.md) §2.1 | O relatório de auditoria faz parte da entrega de 2005 | Cabeçalho de `RELAUDIT.NSP` | Notas de versão escritas depois absorvem trabalho anterior |
+| `DRIFT-04` | [`README.md`](README.md) §2.1 | O módulo de dedução é a "última funcionalidade relevante", de 2015 | Cabeçalho de `CALCDSCT.NSP` e suas linhas de alteração | Uma grande alteração em um programa antigo é frequentemente lembrada como um programa novo |
+| `DRIFT-05` | [`README.md`](README.md) §3 | Nomeia uma equipe original | Linhas `* AUTHOR:` em todo o acervo | A memória institucional e a autoria no código divergem ao longo de três décadas |
+| `DRIFT-06` | [`README.md`](README.md) §5 | Atribui autor, ano e ano da última alteração por programa | Cabeçalhos dos membros | Um inventário compilado em um esforço posterior de documentação herda os próprios erros |
+| `DRIFT-07` | [`README.md`](README.md) §5.6 | Lista subprogramas e copycode compartilhados pelo nome | Os membros realmente presentes em `natural-programs/` | Um inventário parcial é o tipo mais perigoso de inventário |
+| `DRIFT-08` | [`README.md`](README.md) §7.3 | Atribui a revisão de um procedimento de recuperação a um DBA nomeado | Linha `* AUTHOR:` nos quatro DDMs | A memória operacional raramente é escrita por quem é responsável pelo artefato |
+| `DRIFT-09` | [`README.md`](README.md) §6 | Declara volumes de registros para uma data de referência informada | Data de execução de `FDT-150-BENEFICIARY.txt` | Um relatório impresso é uma observação histórica, nunca uma medição atual |
+| `DRIFT-10` | [`legacy-docs/ORIGINAL-ARCHITECTURE-1997.md`](legacy-docs/ORIGINAL-ARCHITECTURE-1997.md) | Traz anotações que descrevem eventos posteriores à data de emissão | A própria data de abertura do documento | Documentos de vida longa acumulam anotações de margem posteriores |
+| `DRIFT-11` | [`legacy-docs/TECHNICAL-MANUAL-SIFAP-2008.md`](legacy-docs/TECHNICAL-MANUAL-SIFAP-2008.md) | Descreve o comportamento na data de publicação | Linhas de alteração datadas depois dele | Um manual congela; o código não |
+| `DRIFT-12` | [`legacy-docs/BUSINESS-RULES-2012.md`](legacy-docs/BUSINESS-RULES-2012.md) | Documenta regras de negócio de 2012, de forma incompleta | Linhas de alteração datadas depois dele | Um esforço de descoberta abandonado deixa um registro parcial que envelhece |
 
 ---
 
-## 3. What a team does with a drift it finds
+## 3. O que uma equipe faz com uma divergência que encontra
 
-- [ ] **Record it as a question, not a correction.** Use [`mysteries-found.md`](../mysteries-found.md) with evidence, impact, owner, and status.
-- [ ] **Cite both sides.** `path#Lstart-Lend` for the source and the section for the narrative claim.
-- [ ] **Mark the hypothesis as unconfirmed.** Only explicit human validation closes it.
-- [ ] **Never edit the legacy source.** The corpus is read-only, including the documents that are wrong.
-- [ ] **Never quietly align a period document to the code.** That deletes evidence.
-
----
-
-## 4. Adding or removing an entry
-
-- [ ] **Add an entry** when a new divergence is introduced on purpose into the narrative layer. State the document, the claim, and the differing source — never the resolution.
-- [ ] **Remove an entry** only when the underlying narrative document is removed from the corpus.
-- [ ] **Never add a kit guide to this register.** Kit truth is fixed, not declared.
-- [ ] **Re-run the gate** with `python3 .github/scripts/validate-chronology.py` after any change.
+- [ ] **Registre-a como pergunta, não como correção.** Use [`mysteries-found.md`](../mysteries-found.md) com evidência, impacto, pessoa responsável e status.
+- [ ] **Cite os dois lados.** `path#Lstart-Lend` para a fonte e a seção para a afirmação narrativa.
+- [ ] **Marque a hipótese como não confirmada.** Somente validação humana explícita a encerra.
+- [ ] **Nunca edite a fonte legada.** O acervo é somente leitura, inclusive os documentos que estão errados.
+- [ ] **Nunca alinhe em silêncio um documento de época ao código.** Isso apaga evidência.
 
 ---
 
-### Continue reading
+## 4. Como incluir ou remover uma entrada
 
-| Previous | Next |
+- [ ] **Inclua uma entrada** quando uma nova divergência for introduzida de propósito na camada narrativa. Informe o documento, a afirmação e a fonte que difere, nunca a resolução.
+- [ ] **Remova uma entrada** somente quando o documento narrativo correspondente for retirado do acervo.
+- [ ] **Nunca acrescente um guia do kit a este registro.** A verdade do kit é fixa, não declarada.
+- [ ] **Execute o gate novamente** com `python3 .github/scripts/validate-chronology.py` após qualquer alteração.
+
+---
+
+### Continue lendo
+
+| Anterior | Próximo |
 |---|---|
-| [Chronology](CHRONOLOGY.md)<br/><sub>Canonical dates, authors, and the name index.</sub> | [Natural Programs](natural-programs/README.md)<br/><sub>The 15 assigned members and 9 supporting members.</sub> |
+| [Cronologia](CHRONOLOGY.md)<br/><sub>Datas canônicas, autoria e o índice de nomes.</sub> | [Programas Natural](natural-programs/README.md)<br/><sub>Os 15 membros atribuídos e os 9 membros de apoio.</sub> |
 
-<sub>[Back to the kit index](../../README.md)</sub>
+<sub>[Voltar ao índice do kit](../../README.md)</sub>

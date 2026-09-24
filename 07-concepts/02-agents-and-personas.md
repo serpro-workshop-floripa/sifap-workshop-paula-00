@@ -1,56 +1,53 @@
-# Agents and Personas — The Two Context Layers
+# Agentes e personas — as duas camadas de contexto
 
-> **Path:** [Team Kit](../README.md) › [Concepts](00-README.md) › **Agents and Personas**
+> **Trilha:** [Kit do Time](../README.md) › [Conceitos](00-README.md) › **Agentes e personas**
 
-**Copilot Chat operates with two context layers at the same time: role skills, which define responsibilities you cover yourself, and the stage agent, which defines the current work framing. Knowing how to combine them is essential for relevant answers during the workshop.**
+**O GitHub Copilot opera com duas camadas de contexto ao mesmo tempo: a persona, que define o papel individual de cada participante, e o agente de estágio, que define o enquadramento compartilhado pelo time. Saber combiná-las é essencial para obter respostas relevantes durante a imersão.**
 
-![Concept 02](https://img.shields.io/badge/Concept-02-171717?style=flat-square) ![Used in All Stages](https://img.shields.io/badge/Used-All%20stages-737373?style=flat-square) ![Duration 20 min](https://img.shields.io/badge/Duration-20%20min-A3A3A3?style=flat-square)
+![Conceito 02](https://img.shields.io/badge/Conceito-02-171717?style=flat-square) ![Usado em todos os estágios](https://img.shields.io/badge/Uso-Todos%20os%20est%C3%A1gios-737373?style=flat-square) ![Duração 20 min](https://img.shields.io/badge/Dura%C3%A7%C3%A3o-20%20min-A3A3A3?style=flat-square)
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| **Target audience** | All participants |
-| **Prerequisites** | None—read before Stage 1 |
-| **Estimated time** | 20 minutes |
-| **Stage** | All stages |
-| **Expected outcome** | Know how to select a stage agent and rely on role skills in Copilot Chat |
+| **Público-alvo** | Todas as personas |
+| **Pré-requisitos** | Nenhum — leia antes do Estágio 1 |
+| **Tempo estimado** | 20 minutos |
+| **Estágio** | Todos os estágios |
+| **Resultado esperado** | Saber selecionar agente e persona e usá-los juntos no GitHub Copilot |
 
 ---
 
-## Concept
+## Conceito
 
-The workshop uses **two primitives that compose**, not two agents that compete:
+A imersão usa **duas primitivas que se compõem**, e não dois agentes que competem:
 
-- **Role skill** — the responsibility you personally carry. It lives in `.github/skills/` and loads **automatically** when your request matches its description. You never select it.
-- **Stage agent** — the phase you are working in. You select it with `@name` once per stage, and it stays selected.
+- **Skill de papel** — a responsabilidade que você carrega pessoalmente. Ela vive em `.github/skills/` e carrega **automaticamente** quando o seu pedido casa com a `description` dela. Você nunca a seleciona.
+- **Agente de estágio** — a fase em que todo o time está. Você o seleciona com `@nome` uma vez por estágio, e ele permanece selecionado.
 
-The layers coexist by design. You switch stage agents as the challenge advances, and the relevant role skill composes into the active agent whenever the work calls for that responsibility.
+As duas camadas coexistem por desenho. Você mantém o agente de estágio selecionado o dia inteiro, e a skill do seu papel se compõe com ele sempre que o trabalho exigir aquele papel.
 
 > [!IMPORTANT]
-> There are **five agents**, not fifteen: the four stage agents plus `@dba`. Every
-> other role is a skill, because a responsibility travels across the work while
-> an agent marks one. The data lifecycle is the exception that proves the rule —
-> it spans every stage, so it cannot live inside one. See
-> [ADR-0002](../docs/adr/0002-team-roles-as-skills-not-agents.md).
+> São **cinco agentes**, não quinze: os quatro agentes de estágio mais o `@dba`. Todo
+> outro papel do time é uma skill, porque um papel atravessa os quatro estágios
+> enquanto um agente marca apenas um. O ciclo de vida dos dados é a exceção que
+> confirma a regra — ele atravessa todos os estágios, então não cabe dentro de um
+> só. Consulte o [ADR-0002](../docs/adr/0002-team-roles-as-skills-not-agents.md).
 
 ---
 
-## Why it matters
+## Por que isso importa
 
-Without a stage agent, Copilot answers with generic framing and may suggest work for the wrong moment. Without the role knowledge, Copilot answers as a generic assistant that does not know the responsibility or its boundaries.
+Sem um agente de estágio, cada pessoa do time recebe respostas com enquadramentos diferentes, o que torna a consistência impossível. Sem o conhecimento do papel, o Copilot responde como um assistente genérico, que não conhece a sua responsabilidade nem as fronteiras dela.
 
-With both layers active, Copilot simultaneously knows:
+Com as duas camadas ativas, o Copilot sabe ao mesmo tempo:
 
-- **Who is asking** (role boundary, procedure, and quality gate)
-- **What context the work is in** (Stage 1: archaeology; Stage 2: specification; and so on)
+- **Quem está perguntando** (fronteira do papel, procedimento e critério de qualidade)
+- **Em que contexto o time está** (Estágio 1: arqueologia; Estágio 2: especificação; e assim por diante)
 
-The reason roles are skills is that a responsibility does not belong to only one stage.
-A design that forced you to re-select your role in every conversation — and then
-re-select the stage agent to get stage context back — made the two layers fight
-over one selector. Skills remove the selection entirely.
+Os papeis são skills porque uma pessoa não troca de papel entre um estágio e outro. Um desenho que obrigava a selecionar o seu papel de novo em cada conversa — e depois selecionar o agente de estágio outra vez para recuperar o contexto do estágio — colocava as duas camadas brigando por um único seletor. As skills eliminam a seleção por completo.
 
 ---
 
-## How they combine
+## Como elas se combinam
 
 ```mermaid
 %%{init: {'theme':'neutral','themeVariables':{'fontFamily':'ui-sans-serif, system-ui, sans-serif','primaryColor':'#F5F5F5','primaryTextColor':'#171717','primaryBorderColor':'#171717','lineColor':'#525252','secondaryColor':'#FFFFFF','tertiaryColor':'#FAFAFA','background':'#FFFFFF'}}}%%
@@ -59,9 +56,9 @@ flowchart LR
     classDef result fill:#FFFFFF,stroke:#171717,color:#171717,stroke-width:2px
     classDef muted fill:#FAFAFA,stroke:#A3A3A3,color:#404040
 
-    P["Role skill<br/><sub>.github/skills/persona-*/<br/>loads automatically by description</sub>"]:::step
-    A["Stage agent<br/><sub>@archaeologist | @architect<br/>@builder | @evolution | @dba</sub>"]:::step
-    C["Copilot Chat<br/><sub>Response framed by both<br/>the role AND the current stage</sub>"]:::result
+    P["Skill de papel<br/><sub>.github/skills/persona-*/<br/>carrega automaticamente pela description</sub>"]:::step
+    A["Agente de estágio<br/><sub>@archaeologist | @architect<br/>@builder | @evolution | @dba</sub>"]:::step
+    C["GitHub Copilot<br/><sub>Resposta enquadrada pelo papel<br/>E pelo estágio atual</sub>"]:::result
 
     P --> C
     A --> C
@@ -69,148 +66,140 @@ flowchart LR
 
 ---
 
-## Layer 1 — Roles (loaded automatically)
+## Camada 1 — Papeis (carregados automaticamente)
 
-Each participant covers **all 10 roles** in the individual challenge. The reference profile for each is in [`05-personas/`](../05-personas/); the operational knowledge is the matching skill under `.github/skills/`.
+Cada participante cobre **dois papeis** e mantém os dois ao longo da imersão. O perfil de referência de cada um está em [`05-personas/`](../05-personas/); o conhecimento operacional é a skill correspondente em `.github/skills/`.
 
-| Persona | Workshop role | Most active stage |
+| Persona | Papel na imersão | Estágio de maior atuação |
 |---|---|---|
-| **Product Owner** | Defines scope and validates requirements with the business | Stages 1 and 2 |
-| **Requirements Engineer** | Reads the legacy system and converts rules into EARS | Stages 1 and 2 |
-| **Enterprise Architect** | Provides the system-wide view (C4 L1 and L2) | Stage 2 |
-| **Software Architect** | Defines bounded contexts and API contracts | Stage 2 |
-| **Technical Lead** | Leads PR readiness and implementation decisions | Stage 3 |
-| **Developer** | Implements Java and Next.js code | Stage 3 |
-| **DBA** | Leads source readiness, discovery, mapping, population and recovery | Preparation and Stages 1-3 |
-| **QA Engineer** | Defines independent evidence checks, tests, reconciliation and consultation acceptance | Stages 1-3 and judge validation |
-| **DevOps Engineer** | Configures CI/CD, Terraform, and Actions | Post-challenge Stage 4 only |
-| **Tech Writer** | Documents APIs, ADRs, and runbooks | Stages 2 and 3 |
+| **Product Owner** | Define o escopo e valida requisitos com o negócio | Estágios 1 e 2 |
+| **Requirements Engineer** | Lê o legado e converte regras em EARS | Estágios 1 e 2 |
+| **Enterprise Architect** | Fornece a visão de sistema (C4 L1 e L2) | Estágio 2 |
+| **Software Architect** | Define bounded contexts e contratos de API | Estágio 2 |
+| **Technical Lead** | Conduz revisões de PR e decisões de implementação | Estágios 3 e 4 |
+| **Developer** | Implementa código Java e Next.js | Estágio 3 |
+| **DBA** | Modela dados, escreve migrações e otimiza consultas | Estágio 3 |
+| **QA Engineer** | Escreve e valida testes de equivalência | Estágio 3 |
+| **DevOps Engineer** | Configura CI/CD, Terraform e Actions | Estágio 4 |
+| **Tech Writer** | Documenta APIs, ADRs e runbooks | Estágios 2 e 4 |
 
-### What each role includes
+### O que cada papel inclui
 
-| Artifact | Location | Purpose |
+| Artefato | Localização | Finalidade |
 |---|---|---|
-| `PERSONA.md` | `05-personas/0X-name/` | Role profile: responsibilities, deliverables, and slash commands |
-| `SKILL.md` | `.github/skills/persona-*/` | The role's boundary, procedure, and quality gate — loaded automatically |
-| `*.prompt.md` | `.github/prompts/` | Role-specific slash commands, bound to the stage agent that owns their moment |
-| `*.instructions.md` | `.github/instructions/` | Rules applied automatically to matching file paths |
+| `PERSONA.md` | `05-personas/0X-name/` | Perfil do papel: responsabilidades, entregáveis e slash commands |
+| `SKILL.md` | `.github/skills/persona-*/` | Fronteira, procedimento e critério de qualidade do papel — carregados automaticamente |
+| `*.prompt.md` | `.github/prompts/` | Slash commands específicos do papel, vinculados ao agente de estágio dono daquele momento |
+| `*.instructions.md` | `.github/instructions/` | Regras aplicadas automaticamente aos caminhos de arquivo correspondentes |
 
 > [!IMPORTANT]
-> Review the role `PERSONA.md` files before starting the challenge. You do not
-> select a role skill: describe the work and it loads. Slash commands work
-> only when the repository context is loaded in Copilot Chat.
+> Leia os seus dois arquivos `PERSONA.md` antes de começar qualquer estágio. Você
+> não seleciona a skill do seu papel: descreva o trabalho e ela carrega. Os slash
+> commands só funcionam quando o contexto do repositório está carregado no GitHub
+> Copilot.
 
 ---
 
-## Layer 2 — Stage agents (shared kit)
+## Camada 2 — Agentes de estágio (kit compartilhado)
 
-At the start of each work block, select the matching stage agent in Copilot Chat. This keeps Copilot aligned with the current phase.
+No início de cada bloco de trabalho, todo o time seleciona o mesmo agente de estágio no GitHub Copilot. Isso garante que todas as pessoas recebam respostas com o mesmo enquadramento.
 
-| Stage | Agent | Thematic framing | Lead roles |
+| Estágio | Agente | Enquadramento temático | Papéis que lideram |
 |---|---|---|---|
-| Stage 1 — Archaeology | [`@archaeologist`](../06-stage-agents/01-archaeologist/) | Reading and interpreting legacy Natural/Adabas code | Requirements Engineer, Tech Writer |
-| Stage 2 — Specification | [`@architect`](../06-stage-agents/02-architect/) | EARS specifications, ADRs, and the C4 model | Enterprise Architect, Software Architect |
-| Stage 3 — Implementation | [`@builder`](../06-stage-agents/03-builder/) | Java 21, JPA, Testcontainers, and Next.js 15 code | Developer, DBA, QA Engineer |
-| Stage 4 — Evolution | [`@evolution`](../06-stage-agents/04-evolution/) | Delegation to Agent mode, IaC, and CI/CD | Kept for post-challenge work; not used in the individual challenge |
+| Estágio 1 — Arqueologia | [`@archaeologist`](../06-stage-agents/01-archaeologist/) | Leitura e interpretação do código legado Natural/Adabas | Requirements Engineer, Tech Writer |
+| Estágio 2 — Especificação | [`@architect`](../06-stage-agents/02-architect/) | Especificações EARS, ADRs e o modelo C4 | Enterprise Architect, Software Architect |
+| Estágio 3 — Implementação | [`@builder`](../06-stage-agents/03-builder/) | Código Java 21, JPA, Testcontainers e Next.js 15 | Developer, DBA, QA Engineer |
+| Estágio 4 — Evolução | [`@evolution`](../06-stage-agents/04-evolution/) | Delegação para o modo Agent, IaC e CI/CD | DevOps Engineer, Tech Writer |
 
-> [!NOTE]
-> Stage 4 — Evolution is kept in the kit for post-challenge work, but it is not used in the individual challenge. The challenge ends at Stage 3 and judge validation. See [ADR-0003](../docs/adr/0003-individual-challenge-format.md).
+### Diferença na prática
 
-### Practical difference
-
-| Without a selected stage agent | With a selected stage agent |
+| Sem agente de estágio selecionado | Com agente de estágio selecionado |
 |---|---|
-| Copilot responds in the repository's general context | Copilot adopts the current stage's framing |
-| Answers drift away from the current work block | Answers stay consistent with the selected stage |
-| It may suggest actions inappropriate for the moment (for example, code in Stage 1) | It remains within the current stage's scope |
+| O Copilot responde no contexto geral do repositório | O Copilot adota o enquadramento do estágio atual |
+| Cada pessoa recebe respostas com ênfases diferentes | O time recebe respostas consistentes entre si |
+| Pode sugerir ações inadequadas ao momento (por exemplo, código no Estágio 1) | Ele se mantém dentro do escopo do estágio atual |
 
 ---
 
-## How to select them
+## Como selecioná-los
 
-### Role skill
+### Skill de papel
 
-You do not select it. Describe the work in your own words and the matching skill
-loads from its `description`. Asking `@builder` "where are our coverage gaps?"
-loads the QA role without any selection.
+Você não a seleciona. Descreva o trabalho com as suas palavras e a skill correspondente carrega a partir da `description` dela. Perguntar ao `@builder` "onde estão as nossas lacunas de cobertura?" carrega o papel de QA sem seleção nenhuma.
 
-To force a specific role, name it: "use the `persona-qa-engineer` skill".
+Para forçar um papel específico, nomeie-o: "use a skill `persona-qa-engineer`".
 
-### Stage agent
+### Agente de estágio
 
-1. At the start of each stage, select the stage agent named in the challenge flow.
-2. Leave that agent selected until you reach the next self-checkpoint.
-3. Selecting another agent **replaces** the active one; agents do not stack. The
-   role skills continue to load into whichever agent is active.
-4. A prompt may select its own agent through `agent:`; preserve the current
-   stage's read/write boundaries.
+1. No início de cada estágio, o facilitador anuncia qual agente o time vai usar.
+2. Cada participante seleciona esse agente no GitHub Copilot e o mantém selecionado.
+3. Selecionar outro agente **substitui** o ativo; agentes não se empilham. As skills de papel continuam carregando dentro do agente que estiver ativo.
+4. Um prompt pode selecionar o próprio agente por meio de `agent:`; preserve as fronteiras de leitura e escrita do estágio atual.
 
-### The cross-stage exception
+### A exceção transversal
 
-`@dba` is an agent, not a skill, because the data lifecycle runs across the challenge and owns tool-scoped prompts. Select it when the work is data migration,
-reconciliation, or query auditing, then return to the stage agent.
+O `@dba` é um agente, e não uma skill, porque o ciclo de vida dos dados percorre os quatro estágios e possui prompts com escopo de ferramentas. Selecione-o quando o trabalho for migração de dados, reconciliação ou auditoria de consultas, e depois volte ao agente de estágio.
 
 ---
 
-## SIFAP example
+## Exemplo no SIFAP
 
-**Scenario:** You are covering Requirements Engineering in Stage 2. You have just completed C1 at the end of Stage 1.
+**Cenário:** você é a Requirements Engineer no Estágio 2. O time acabou de concluir o Estágio 1.
 
 ```
-1. The challenge flow says to select `@architect` in chat.
+1. O facilitador anuncia: "Selecionem @architect no chat."
 
-2. You select @architect.
-   Result: Copilot Chat now frames responses
-   in the specification and architecture context.
+2. Você seleciona @architect.
+   Resultado: o GitHub Copilot passa a enquadrar as respostas
+   no contexto de especificação e arquitetura.
 
-3. You use Ask mode for guidance:
-   "@architect, what is the recommended order for specifying
-   the rules in business-rules-catalog.md?"
+3. Você usa o modo Ask para se orientar:
+   "@architect, qual é a ordem recomendada para especificar
+   as regras de business-rules-catalog.md?"
 
-4. Use the appropriate stage/persona prompt with a reviewed rule:
-   /write-ears-spec feature=<NNN>-<feature>
-   Cite the actual source interval you read.
-   Do not supply a completed rule or a guessed program name.
+4. Com base na resposta, você roda o slash command do seu papel:
+   /ears-convert BR-042: <regra de cálculo do benefício>
+   Use CALCDSCT.NSP#L120-L198 como source_legacy.
 
-5. The EARS requirement includes a REQ-ID and source_legacy.
-   CI validates traceability in the PR.
+5. O requisito EARS inclui um REQ-ID e source_legacy.
+   O CI valida a rastreabilidade no PR.
 ```
 
 ---
 
-## Common mistakes and how to avoid them
+## Erros comuns e como evitá-los
 
-| Symptom | Cause | Correction |
+| Sintoma | Causa | Correção |
 |---|---|---|
-| Copilot suggests code during Stage 1 | Wrong or missing stage agent | Select `@archaeologist` and confirm the current stage |
-| Slash command is not recognized | Copilot window opened outside the repository root | Reopen VS Code at the repository root |
-| Answers do not match the current stage | The wrong agent is selected | Confirm the active agent at the start of each stage |
-| The role knowledge never appears | The request was too vague to match a skill description | Name the work, or name the skill: "use the `persona-qa-engineer` skill" |
-| Looking for `@product-owner` in the picker | Roles became skills; only stages and `@dba` are agents | Keep the stage agent and describe the role's work |
+| O Copilot sugere código durante o Estágio 1 | Agente de estágio errado ou ausente | Selecione `@archaeologist` e confirme com o time |
+| O slash command não é reconhecido | Janela do Copilot aberta fora da raiz do repositório | Reabra o VS Code na raiz do repositório |
+| Respostas inconsistentes entre as pessoas do time | Cada pessoa selecionou um agente diferente | Confirme o agente ativo no início de cada estágio |
+| O conhecimento do papel nunca aparece | O pedido foi vago demais para casar com a `description` de uma skill | Nomeie o trabalho, ou nomeie a skill: "use a skill `persona-qa-engineer`" |
+| Procurar `@product-owner` no seletor | Os papeis viraram skills; somente os estágios e o `@dba` são agentes | Mantenha o agente de estágio e descreva o trabalho do papel |
 
 ---
 
-## Activation checklist
+## Checklist de ativação
 
-- [ ] **Review the role `PERSONA.md` files.** Find them in `05-personas/`.
-- [ ] **Test a role slash command** in Copilot Chat to confirm the repository context is loaded.
-- [ ] **At the start of each stage, select the correct agent.**
-- [ ] **Confirm the active agent before asking critical technical questions.**
-
----
-
-## References
-
-- [Complete persona list](../05-personas/OVERVIEW.md)
-- [Stage agents](../06-stage-agents/)
-- [Copilot's 3 Modes cheat sheet](../09-cheat-sheets/copilot-3-modes.md)
+- [ ] **Leia os dois arquivos `PERSONA.md` atribuídos a você.** Eles estão em `05-personas/`.
+- [ ] **Teste um slash command da persona** no GitHub Copilot para confirmar que ela está ativa.
+- [ ] **No início de cada estágio, selecione o agente correto** junto com o restante do time.
+- [ ] **Confirme o agente ativo antes de fazer perguntas técnicas críticas.**
 
 ---
 
-### Continue reading
+## Referências
 
-| Previous | Next |
+- [Lista completa de personas](../05-personas/OVERVIEW.md)
+- [Agentes de estágio](../06-stage-agents/)
+- [Cartão dos 3 modos do Copilot](../09-cheat-sheets/copilot-3-modes.md)
+
+---
+
+### Continue lendo
+
+| Anterior | Próximo |
 |---|---|
-| [Spec-Driven Development](01-spec-driven-development.md)<br/><sub>Why to specify before coding and the Spec-Kit cycle.</sub> | [Visual Glossary](03-visual-glossary.md)<br/><sub>30+ terms with a definition, SIFAP example, and reference.</sub> |
+| [Spec-Driven Development](01-spec-driven-development.md)<br/><sub>Por que especificar antes de codificar e o ciclo do Spec-Kit.</sub> | [Glossário visual](03-visual-glossary.md)<br/><sub>Mais de 30 termos com definição, exemplo do SIFAP e referência.</sub> |
 
-<sub>[Back to the kit index](../README.md)</sub>
+<sub>[Voltar ao índice do kit](../README.md)</sub>

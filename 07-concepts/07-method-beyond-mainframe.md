@@ -1,47 +1,47 @@
-# 07 — The Method Beyond Mainframe
+# 07 — O método além do mainframe
 
-> **Path:** [Team Kit](../README.md) › [Core Concepts](00-README.md) › **Beyond Mainframe**
+> **Trilha:** [Kit do Time](../README.md) › [Conceitos](00-README.md) › **Além do mainframe**
 
-**The evidence-first method applies to any system nobody fully understands anymore, and SIFAP is only the corpus this kit happens to ship.** After reading this you can adapt the same approach to COBOL, Delphi, VB6, PL/SQL, or an undocumented Java or .NET monolith.
+**Os quatro estágios são um método para qualquer sistema que ninguém mais compreende por completo, e o SIFAP é apenas o acervo que este kit entrega.** Depois desta leitura, você consegue conduzir o mesmo dia contra COBOL, Delphi, VB6, PL/SQL ou um monólito Java ou .NET sem documentação.
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| **Target audience** | Anyone who will apply the method outside this workshop |
-| **Prerequisites** | [Spec-Driven Development](01-spec-driven-development.md), [Copilot's 3 modes](04-3-copilot-modes.md) |
-| **Estimated time** | 12 min |
-| **Stage** | All challenge stages — read after Stage 1, apply after the workshop |
-| **Expected outcome** | You can map each stage's technique onto your own legacy stack |
+| **Público-alvo** | Quem vai aplicar o método fora desta imersão |
+| **Pré-requisitos** | [Spec-Driven Development](01-spec-driven-development.md), [Os 3 modos do Copilot](04-3-copilot-modes.md) |
+| **Tempo estimado** | 12 min |
+| **Estágio** | Todos — leia depois do Estágio 1, aplique depois da imersão |
+| **Resultado esperado** | Você sabe mapear a técnica de cada estágio para a sua própria stack legada |
 
-![Concepts 07](https://img.shields.io/badge/Concept-07%20Beyond%20Mainframe-171717?style=flat-square) ![Audience Everyone](https://img.shields.io/badge/Audience-Everyone-737373?style=flat-square)
+![Conceito 07](https://img.shields.io/badge/Conceito-07%20Al%C3%A9m%20do%20mainframe-171717?style=flat-square) ![Público todos](https://img.shields.io/badge/P%C3%BAblico-Todos-737373?style=flat-square)
 
 ---
 
-## Concept: what is actually being taught
+## Conceito: o que realmente está sendo ensinado
 
-Natural and Adabas are incidental. What makes SIFAP hard is not its syntax; it is
-four conditions that have nothing to do with the mainframe:
+Natural e Adabas são acidentais. O que torna o SIFAP difícil não é a sintaxe; são
+quatro condições que nada têm a ver com o mainframe:
 
-| Condition | Why it defeats a rewrite | Where it also appears |
+| Condição | Por que derrota uma reescrita | Onde ela também aparece |
 |---|---|---|
-| Behavior lives only in code | No specification survived, so "what should it do" has no owner | Any undocumented system of any age |
-| The authors are gone | Intent cannot be asked for, only inferred | Any system older than its team |
-| Documentation drifted | Reading the manual produces confident wrong answers | Every system with a manual |
-| The data outlived the code | Schema, values, and rules disagree with each other | Every long-lived database |
+| O comportamento vive apenas no código | Nenhuma especificação sobreviveu, então "o que ele deveria fazer" não tem responsável | Qualquer sistema sem documentação, de qualquer idade |
+| As pessoas autoras não estão mais lá | A intenção não pode ser perguntada, apenas inferida | Qualquer sistema mais antigo que sua equipe |
+| A documentação divergiu | Ler o manual produz respostas erradas com confiança | Todo sistema que tem manual |
+| Os dados sobreviveram ao código | Schema, valores e regras discordam entre si | Todo banco de dados de vida longa |
 
-A system that meets these four conditions is a legacy system, whether it was
-written in 1997 in Natural or in 2016 in Spring Boot. The method answers those
-conditions, not the language.
+Um sistema que atende a essas quatro condições é um sistema legado, tenha sido
+escrito em 1997 em Natural ou em 2016 em Spring Boot. O método responde a essas
+condições, não à linguagem.
 
 > [!IMPORTANT]
-> The inverse also holds. A COBOL system with a current specification, its
-> original team, and reconciled data is not a modernization problem — it is an
-> ordinary refactor. Do not run this method where it is not needed.
+> O inverso também vale. Um sistema COBOL com especificação atualizada, sua equipe
+> original e dados conciliados não é um problema de modernização — é uma refatoração
+> comum. Não aplique este método onde ele não é necessário.
 
 ---
 
-## How the method translates
+## Como os quatro estágios se traduzem
 
-Each stage has one technique. Only the *file extensions* change between stacks.
+Cada estágio tem uma técnica. Só as *extensões de arquivo* mudam entre stacks.
 
 ```mermaid
 %%{init: {'theme':'neutral','themeVariables':{'fontFamily':'ui-sans-serif, system-ui, sans-serif','primaryColor':'#F5F5F5','primaryTextColor':'#171717','primaryBorderColor':'#171717','lineColor':'#525252','secondaryColor':'#FFFFFF','tertiaryColor':'#FAFAFA','background':'#FFFFFF'}}}%%
@@ -50,130 +50,129 @@ flowchart LR
     classDef muted fill:#FAFAFA,stroke:#A3A3A3,color:#404040
     classDef result fill:#FFFFFF,stroke:#171717,color:#171717,stroke-width:2px
 
-    A["Stage 1<br/>Inventory + read<br/><sub>evidence with line citations</sub>"]:::step
-    B["Stage 2<br/>Specify what to preserve<br/><sub>traceable requirements</sub>"]:::step
-    C["Stage 3<br/>Prove equivalence<br/><sub>tests + migrated data</sub>"]:::step
-    D["Post-challenge extension<br/><sub>one capability that was blocked</sub>"]:::step
-    L["Any legacy stack"]:::muted
-    R["A system you<br/>can now change"]:::result
+    A["Estágio 1<br/>Inventariar + ler<br/><sub>evidência com citação de linhas</sub>"]:::step
+    B["Estágio 2<br/>Especificar o que preservar<br/><sub>requisitos rastreáveis</sub>"]:::step
+    C["Estágio 3<br/>Provar a equivalência<br/><sub>testes + dados migrados</sub>"]:::step
+    D["Estágio 4<br/>Delegar e ampliar<br/><sub>uma capacidade que era bloqueada</sub>"]:::step
+    L["Qualquer stack legada"]:::muted
+    R["Um sistema que a equipe<br/>agora consegue mudar"]:::result
 
     L --> A --> B --> C --> D --> R
 ```
 
-### Stage 1 — Inventory and read
+### Estágio 1 — Inventariar e ler
 
-| Technique | Natural/Adabas | COBOL/CICS/DB2 | Delphi / VB6 | PL/SQL / Oracle Forms | Java or .NET monolith |
+| Técnica | Natural/Adabas | COBOL/CICS/DB2 | Delphi / VB6 | PL/SQL / Oracle Forms | Monólito Java ou .NET |
 |---|---|---|---|---|---|
-| Enumerate units | Library members `.NSP`, `.NSN` | Programs + `COPY` books | `.pas`, `.dfm`, `.frm` | Packages, procedures | Classes by package |
-| Find the entry points | JCL `CMSYNIN` | JCL `EXEC PGM=` | Form event handlers | Job schedules, triggers | Controllers, `main`, jobs |
-| Trace the call graph | `CALLNAT`, `INCLUDE`, `USING` | `CALL`, `COPY`, `EXEC CICS LINK` | `uses`, direct calls | Package dependencies | Import graph, DI wiring |
-| Read the data contract | DDM + FDT | Copybook + DCLGEN | Types embedded in the UI | Data dictionary views | ORM entities, DDL |
-| Cite evidence | `CALCBENF.NSN#L40-L58` | `PGM.cbl#L40-L58` | `Unit.pas#L40-L58` | `pkg_calc.sql#L40-L58` | `BenefitService.java#L40-L58` |
+| Enumerar as unidades | Membros de biblioteca `.NSP`, `.NSN` | Programas + livros `COPY` | `.pas`, `.dfm`, `.frm` | Packages, procedures | Classes por pacote |
+| Encontrar os pontos de entrada | `CMSYNIN` no JCL | `EXEC PGM=` no JCL | Tratadores de eventos de formulário | Agendamentos de job, triggers | Controllers, `main`, jobs |
+| Traçar o grafo de chamadas | `CALLNAT`, `INCLUDE`, `USING` | `CALL`, `COPY`, `EXEC CICS LINK` | `uses`, chamadas diretas | Dependências entre packages | Grafo de imports, wiring de DI |
+| Ler o contrato de dados | DDM + FDT | Copybook + DCLGEN | Tipos embutidos na interface | Views do dicionário de dados | Entidades do ORM, DDL |
+| Citar evidência | `CALCBENF.NSN#L40-L58` | `PGM.cbl#L40-L58` | `Unit.pas#L40-L58` | `pkg_calc.sql#L40-L58` | `BenefitService.java#L40-L58` |
 
-The output is identical in every column: a rule catalog where each row cites a
-file and a line range, plus a register of questions nobody can answer yet.
+A saída é idêntica em todas as colunas: um catálogo de regras em que cada linha cita
+um arquivo e um intervalo de linhas, mais um registro de perguntas que ninguém ainda
+consegue responder.
 
-### Stage 2 — Specify what to preserve
+### Estágio 2 — Especificar o que preservar
 
-The stage-2 question never changes: **which observed behavior is a business rule,
-and which is an accident of the platform?** The accidents differ by stack.
+A pergunta do Estágio 2 nunca muda: **qual comportamento observado é uma regra de
+negócio e qual é um acidente da plataforma?** Os acidentes variam por stack.
 
-| Stack | Typical accident that must not be preserved |
+| Stack | Acidente típico que não deve ser preservado |
 |---|---|
-| Natural/Adabas | Field widths driven by 3270 geometry; a century window added for Y2K |
-| COBOL | `PIC` clauses sized for tape records; `88`-level flags standing in for enums |
-| Delphi / VB6 | Validation living in a form event because there was nowhere else to put it |
-| PL/SQL | Business logic in a trigger because the application could not be redeployed |
-| Java or .NET monolith | A workaround for a framework version nobody can upgrade |
+| Natural/Adabas | Larguras de campo determinadas pela geometria do 3270; uma janela de século acrescentada para o Y2K |
+| COBOL | Cláusulas `PIC` dimensionadas para registros em fita; flags de nível `88` no lugar de enums |
+| Delphi / VB6 | Validação dentro de um evento de formulário porque não havia outro lugar para colocá-la |
+| PL/SQL | Lógica de negócio em um trigger porque a aplicação não podia ser reimplantada |
+| Monólito Java ou .NET | Uma solução de contorno para uma versão de framework que ninguém consegue atualizar |
 
-Every preserved behavior gets a requirement with a source citation. Every
-deliberate change gets a decision record stating what is being dropped and why.
+Todo comportamento preservado ganha um requisito com citação de fonte. Toda mudança
+deliberada ganha um registro de decisão que informa o que está sendo descartado e por quê.
 
-### Stage 3 — Prove equivalence
+### Estágio 3 — Provar a equivalência
 
-Equivalence is claimed with tests that run the same inputs through both
-descriptions of the behavior, and with data reconciliation from source to target.
-Neither depends on the source language. What changes is how you obtain a baseline:
+A equivalência é sustentada por testes que executam as mesmas entradas nas duas
+descrições do comportamento e pela conciliação de dados da origem ao destino.
+Nenhum dos dois depende da linguagem de origem. O que muda é como obter uma linha de base:
 
-| Baseline source | When to use it |
+| Origem da linha de base | Quando usá-la |
 |---|---|
-| Recorded production inputs and outputs | Available and authorized — the strongest baseline |
-| Test cases derived from the read code | The common case; weaker, and must say so |
-| Parallel run against the legacy system | Possible only when the legacy system is still running and authorized |
-| No baseline | Record the gap; do not claim equivalence |
+| Entradas e saídas registradas em produção | Disponíveis e autorizadas — a linha de base mais forte |
+| Casos de teste derivados do código lido | O caso comum; mais fraco, e isso precisa ser declarado |
+| Execução em paralelo com o sistema legado | Possível apenas quando o sistema legado ainda está em execução e autorizado |
+| Sem linha de base | Registre a lacuna; não afirme equivalência |
 
-### Post-challenge extension — Delegate and extend
+### Estágio 4 — Delegar e ampliar
 
-> [!NOTE]
-> Stage 4 — Evolution is kept in the kit for post-challenge work, but it is not used in the individual challenge. The challenge ends at Stage 3 and judge validation. See [ADR-0003](../docs/adr/0003-individual-challenge-format.md).
+A disciplina de delegação independe da stack: uma issue delimitada, uma execução
+autorizada e uma revisão humana do diff. O mesmo vale para o movimento final — uma
+capacidade que o sistema legado não conseguia oferecer, justificada por uma restrição
+que a equipe consegue citar.
 
-The delegation discipline is stack-independent: a bounded issue, an authorized
-run, and a human review of the diff. So is the closing move — one capability the
-legacy system could not offer, justified by a constraint the team can cite.
-
-| Stack | A constraint that typically blocks capability |
+| Stack | Uma restrição que costuma bloquear capacidade |
 |---|---|
-| Natural/Adabas | Fixed screen geometry; batch-only output paths |
-| COBOL | Record-oriented files without a query surface |
-| Delphi / VB6 | Desktop-only deployment; no remote access path |
-| PL/SQL | No API boundary — every consumer is a database client |
-| Java or .NET monolith | A single deployable that cannot be scaled or released independently |
+| Natural/Adabas | Geometria fixa de tela; saídas apenas por batch |
+| COBOL | Arquivos orientados a registro sem superfície de consulta |
+| Delphi / VB6 | Implantação apenas em desktop; sem caminho de acesso remoto |
+| PL/SQL | Sem fronteira de API — todo consumidor é um cliente de banco de dados |
+| Monólito Java ou .NET | Um único artefato implantável que não pode ser escalado ou liberado de forma independente |
 
 ---
 
-## Apply the method to your system
+## Aplique o método ao seu sistema
 
-Answer these before adopting the method anywhere. Blanks are findings, not
-failures.
+Responda a estas perguntas antes de adotar o método em qualquer lugar. Espaços em
+branco são achados, não falhas.
 
-- [ ] **Which four conditions hold?** Name them for your system, with evidence.
-- [ ] **What is the smallest unit of enumeration?** A member, a program, a form, a package, a class.
-- [ ] **Which four edge types build your call graph?** Name your equivalents of `CALLNAT`, `INCLUDE`, `USING`, and job scheduling.
-- [ ] **Where is the data contract declared, and does it still match the data?** Never assume it does.
-- [ ] **What is your evidence citation format?** Agree on it before anyone reads code.
-- [ ] **What baseline can you legitimately obtain?** Decide this before promising equivalence.
-- [ ] **Which capability is currently blocked, and by what?** If you cannot name the constraint, you do not yet have Act V.
-
----
-
-## Use cases
-
-**Use the method when** the system's behavior is undocumented, the original team
-is unavailable, and the data must survive the migration intact.
-
-**Do not use it when** a current specification exists and is trusted, when the
-system is small enough to read in an afternoon, or when the decision is to retire
-the system rather than migrate it. Archaeology on a system you are switching off
-is wasted effort.
+- [ ] **Quais das quatro condições valem?** Nomeie-as para o seu sistema, com evidência.
+- [ ] **Qual é a menor unidade de enumeração?** Um membro, um programa, um formulário, um package, uma classe.
+- [ ] **Quais quatro tipos de aresta formam o seu grafo de chamadas?** Nomeie os seus equivalentes de `CALLNAT`, `INCLUDE`, `USING` e agendamento de jobs.
+- [ ] **Onde o contrato de dados está declarado e ele ainda corresponde aos dados?** Nunca presuma que sim.
+- [ ] **Qual é o seu formato de citação de evidência?** Combine-o antes que alguém leia código.
+- [ ] **Qual linha de base você consegue obter legitimamente?** Decida isso antes de prometer equivalência.
+- [ ] **Qual capacidade está bloqueada hoje e por quê?** Se você não consegue nomear a restrição, ainda não tem o Ato V.
 
 ---
 
-## Common errors and how to avoid them
+## Casos de uso
 
-| Symptom | Cause | Correction |
+**Use o método quando** o comportamento do sistema não estiver documentado, a equipe
+original estiver indisponível e os dados precisarem sobreviver intactos à migração.
+
+**Não o use quando** existir uma especificação atual e confiável, quando o sistema for
+pequeno o bastante para ser lido em uma tarde ou quando a decisão for desativar o
+sistema em vez de migrá-lo. Arqueologia em um sistema que você vai desligar é esforço
+desperdiçado.
+
+---
+
+## Erros comuns e como evitá-los
+
+| Sintoma | Causa | Correção |
 |---|---|---|
-| You rewrite instead of reading | The stack looks familiar, so the four conditions are assumed away | Run the Stage 1 gate anyway; familiarity is not documentation |
-| Requirements have no source | The technique was ported but the traceability rule was dropped | Keep the citation requirement; it is the part that carries over |
-| Equivalence is claimed without a baseline | No recorded production behavior was available and nobody said so | Record the baseline's strength alongside the claim |
-| "Legacy" is used to mean "old" | The four conditions were never tested | A system qualifies by its conditions, not by its age or language |
-| The new capability has no justification | Act V was treated as a feature slot | Require a citable constraint, or drop the claim |
+| A equipe reescreve em vez de ler | A stack parece familiar, então as quatro condições são descartadas por suposição | Aplique o gate do Estágio 1 mesmo assim; familiaridade não é documentação |
+| Requisitos sem fonte | A técnica foi portada, mas a regra de rastreabilidade foi abandonada | Mantenha a exigência de citação; é a parte que se transfere |
+| Equivalência afirmada sem linha de base | Nenhum comportamento de produção registrado estava disponível e ninguém disse isso | Registre a força da linha de base junto com a afirmação |
+| "Legado" usado como sinônimo de "antigo" | As quatro condições nunca foram testadas | Um sistema se qualifica pelas suas condições, não pela idade ou pela linguagem |
+| A nova capacidade não tem justificativa | O Ato V foi tratado como uma vaga de funcionalidade | Exija uma restrição citável ou descarte a afirmação |
 
 ---
 
-## References
+## Referências
 
-- [Spec-Driven Development](01-spec-driven-development.md) — the specification cycle this method feeds
-- [Copilot's 3 modes](04-3-copilot-modes.md) — which mode carries which act
-- [EARS notation](05-ears-notation.md) — the requirement format and its traceability field
-- [Stage 1 — Archaeology](../01-archaeology/GUIDE.md) — the technique in its Natural/Adabas form
-- [Stage 4 — Evolution](../04-evolution/GUIDE.md) — post-challenge delegation and the closing capability
+- [Spec-Driven Development](01-spec-driven-development.md) — o ciclo de especificação que este método alimenta
+- [Os 3 modos do Copilot](04-3-copilot-modes.md) — qual modo sustenta cada ato
+- [Notação EARS](05-ears-notation.md) — o formato de requisito e seu campo de rastreabilidade
+- [Estágio 1 — Arqueologia](../01-archaeology/GUIDE.md) — a técnica na sua forma Natural/Adabas
+- [Estágio 4 — Evolução](../04-evolution/GUIDE.md) — delegação e a capacidade de fechamento
 
 ---
 
-### Continue reading
+### Continue lendo
 
-| Previous | Next |
+| Anterior | Próximo |
 |---|---|
-| [06 — Architecture Decision Records](06-architecture-decision-records.md)<br/><sub>How to record decisions for the future team.</sub> | [Stage 1 — Archaeology](../01-archaeology/GUIDE.md)<br/><sub>Run the method against this kit's corpus.</sub> |
+| [06 — Architecture Decision Records](06-architecture-decision-records.md)<br/><sub>Como registrar decisões para a equipe do futuro.</sub> | [Estágio 1 — Arqueologia](../01-archaeology/GUIDE.md)<br/><sub>Aplique o método ao acervo deste kit.</sub> |
 
-<sub>[Back to the kit index](../README.md)</sub>
+<sub>[Voltar ao índice do kit](../README.md)</sub>
