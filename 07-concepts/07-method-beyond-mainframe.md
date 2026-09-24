@@ -2,14 +2,14 @@
 
 > **Trilha:** [Kit do Time](../README.md) › [Conceitos](00-README.md) › **Além do mainframe**
 
-**Os quatro estágios são um método para qualquer sistema que ninguém mais compreende por completo, e o SIFAP é apenas o acervo que este kit entrega.** Depois desta leitura, você consegue conduzir o mesmo dia contra COBOL, Delphi, VB6, PL/SQL ou um monólito Java ou .NET sem documentação.
+**O método orientado por evidências se aplica a qualquer sistema que ninguém mais compreende por completo, e o SIFAP é apenas o acervo que este kit entrega.** Depois desta leitura, você consegue adaptar a mesma abordagem a COBOL, Delphi, VB6, PL/SQL ou a um monólito Java ou .NET sem documentação.
 
 | Campo | Valor |
 |---|---|
 | **Público-alvo** | Quem vai aplicar o método fora desta imersão |
 | **Pré-requisitos** | [Spec-Driven Development](01-spec-driven-development.md), [Os 3 modos do Copilot](04-3-copilot-modes.md) |
 | **Tempo estimado** | 12 min |
-| **Estágio** | Todos — leia depois do Estágio 1, aplique depois da imersão |
+| **Estágio** | Todos os estágios do desafio — leia depois do Estágio 1, aplique depois da imersão |
 | **Resultado esperado** | Você sabe mapear a técnica de cada estágio para a sua própria stack legada |
 
 ![Conceito 07](https://img.shields.io/badge/Conceito-07%20Al%C3%A9m%20do%20mainframe-171717?style=flat-square) ![Público todos](https://img.shields.io/badge/P%C3%BAblico-Todos-737373?style=flat-square)
@@ -39,7 +39,7 @@ condições, não à linguagem.
 
 ---
 
-## Como os quatro estágios se traduzem
+## Como o método se traduz
 
 Cada estágio tem uma técnica. Só as *extensões de arquivo* mudam entre stacks.
 
@@ -53,7 +53,7 @@ flowchart LR
     A["Estágio 1<br/>Inventariar + ler<br/><sub>evidência com citação de linhas</sub>"]:::step
     B["Estágio 2<br/>Especificar o que preservar<br/><sub>requisitos rastreáveis</sub>"]:::step
     C["Estágio 3<br/>Provar a equivalência<br/><sub>testes + dados migrados</sub>"]:::step
-    D["Estágio 4<br/>Delegar e ampliar<br/><sub>uma capacidade que era bloqueada</sub>"]:::step
+    D["Extensão posterior ao desafio<br/><sub>uma capacidade que era bloqueada</sub>"]:::step
     L["Qualquer stack legada"]:::muted
     R["Um sistema que a equipe<br/>agora consegue mudar"]:::result
 
@@ -103,7 +103,10 @@ Nenhum dos dois depende da linguagem de origem. O que muda é como obter uma lin
 | Execução em paralelo com o sistema legado | Possível apenas quando o sistema legado ainda está em execução e autorizado |
 | Sem linha de base | Registre a lacuna; não afirme equivalência |
 
-### Estágio 4 — Delegar e ampliar
+### Extensão posterior ao desafio — Delegar e ampliar
+
+> [!NOTE]
+> O Estágio 4 — Evolução permanece no kit para trabalho posterior ao desafio, mas não é usado no desafio individual. O desafio termina no Estágio 3 e na validação do juiz. Consulte o [ADR-0003](../docs/adr/0003-individual-challenge-format.md).
 
 A disciplina de delegação independe da stack: uma issue delimitada, uma execução
 autorizada e uma revisão humana do diff. O mesmo vale para o movimento final — uma
@@ -165,7 +168,7 @@ desperdiçado.
 - [Os 3 modos do Copilot](04-3-copilot-modes.md) — qual modo sustenta cada ato
 - [Notação EARS](05-ears-notation.md) — o formato de requisito e seu campo de rastreabilidade
 - [Estágio 1 — Arqueologia](../01-archaeology/GUIDE.md) — a técnica na sua forma Natural/Adabas
-- [Estágio 4 — Evolução](../04-evolution/GUIDE.md) — delegação e a capacidade de fechamento
+- [Estágio 4 — Evolução](../04-evolution/GUIDE.md) — delegação posterior ao desafio e a capacidade de fechamento
 
 ---
 

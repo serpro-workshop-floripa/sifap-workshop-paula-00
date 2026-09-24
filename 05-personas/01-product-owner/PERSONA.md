@@ -1,39 +1,39 @@
 # Persona — Product Owner
 
-> **Trail:** [Team Kit](../../README.md) › [Personas](../OVERVIEW.md) › [Product Owner](README.md) › **PERSONA**
+> <x5/> <x6/> › <x7/> › <x8/> › <x9/>
 
-**Complete profile for the Product Owner persona.** Defines the mission, responsibilities by stage, tools, self-check, and evaluation rubrics.
+<x1/> Define a missão, responsabilidades por fase, ferramentas, auto-controle e rubricas de avaliação.
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| **Role** | Product Owner |
-| **Role scope** | Vision responsibility (covered by the participant) |
-| **Active stages** | Stages 1-3 plus final judge validation: scope, acceptance criteria, and migrated-data acceptance |
-| **Artifacts produced** | Glossary contributions, prioritized scope, Scope/Out of Scope section, agreed beneficiary population, data acceptance or blockers |
-| **Artifacts consumed** | Rule catalog (Archaeology), integration map (EA), DBA/QA readiness and reconciliation evidence |
-| **Self-check focus** | C1/C2/C3 scope and acceptance evidence |
+|<x1/>|Product Owner|
+|<x1/>|Responsabilidade de visão (coberto pelo participante)|
+|<x1/>|Etapas 1-3 mais validação final do juiz: escopo, critérios de aceitação e aceitação de dados migrados|
+|<x1/>|Contribuições Glossárias, escopo priorizado, Scope/Out da seção Escopo, população beneficiária acordada, aceitação de dados ou bloqueadores|
+|<x1/>|Catálogo de regras (Arqueologia), mapa de integração (EA), DBA/QA evidência de prontidão e reconciliação|
+|<x1/>|C1/C2/C3 provas de âmbito e aceitação|
 
-![Stage 1](https://img.shields.io/badge/Stage-1%20Archaeology-171717?style=flat-square) ![Stage 2](https://img.shields.io/badge/Stage-2%20Specification-404040?style=flat-square)
-
----
-
-## Concept
-
-The Product Owner is responsible for translating business needs into executable scope. In the software industry, the PO defines the "why" — which problem the product solves — and decides what is included in or excluded from each delivery cycle.
-
-In a system with approximately 30 years of history, the PO connects priorities
-to reviewed evidence without inventing historical intent. Follow the
-[chronology policy](../../README.md#scenario-chronology-and-evidence) and
-distinguish a modern policy decision from proof of legacy behavior.
-
-**Team exercise:** review a candidate behavior from the participants' actual
-reading. Decide whether it belongs in the thin increment, with its dependencies
-and data coverage, or needs explicit deferral. No completed priority decision
-or source behavior is supplied here.
+<x2/> <x3/>
 
 ---
 
-## Where you work in the SDLC
+## Conceito
+
+O Product Owner é responsável pela tradução das necessidades de negócios para o escopo executável. Na indústria de software, o PO define o "porquê" — que problema o produto resolve — e decide o que está incluído ou excluído de cada ciclo de entrega.
+
+Em um sistema com aproximadamente 30 anos de história, o PO conecta prioridades
+revisaram provas sem inventar intenções históricas. Seguir o
+<x1/> e
+distinguir uma decisão política moderna da prova do comportamento legado.
+
+<x1/> reveja o comportamento de um candidato a partir do real dos participantes
+A ler. Decida se pertence ao incremento fino, com suas dependências
+e cobertura de dados, ou precisa de diferimento explícito. Nenhuma decisão prioritária concluída
+ou o comportamento da fonte é fornecido aqui.
+
+---
+
+## Onde você atua no SDLC
 
 ```mermaid
 %%{init: {'theme':'neutral','themeVariables':{'fontFamily':'ui-sans-serif, system-ui, sans-serif','primaryColor':'#F5F5F5','primaryTextColor':'#171717','primaryBorderColor':'#171717','lineColor':'#525252','secondaryColor':'#FFFFFF','tertiaryColor':'#FAFAFA','background':'#FFFFFF'}}}%%
@@ -42,140 +42,140 @@ flowchart LR
     classDef support fill:#FAFAFA,stroke:#A3A3A3,color:#404040
     classDef inactive fill:#FFFFFF,stroke:#E5E5E5,color:#A3A3A3
 
-    E1["Stage 1<br/>Archaeology"]:::active --> E2["Stage 2<br/>Specification"]:::active
-    E2 --> E3["Stage 3<br/>Implementation"]:::support
-    E3 --> E4["Judge<br/>validation"]:::support
+    E1["Fase 1 <x0/>Archaeology"]:::active --> E2["Fase 2 <x0/>Specification"]:::active
+    E2 --> E3["Fase 3 <x0/>Implementation"]:::support
+    E3 --> E4["Juiz<x0/>validation"]:::support
 ```
 
-- **Receives from:** no one — you open the cycle
-- **Hands off to:** Architecture responsibility (Architecture) in Stage 1; Implementation responsibility (Implementation) through scope approval
+- <x1/> ninguém — você abre o ciclo
+- Responsabilidade de arquitetura (Arquitectura) na Fase 1; Responsabilidade de implementação (Implementação) através da aprovação do escopo
 
 ---
 
-## Responsibilities by stage
+## Responsabilidades por estágio
 
-| **Stage** | What you do | Deliverable that depends on you |
+|<x1/>| O que você faz | Entrega que depende de você |
 |---|---|---|
-| **1 · Archaeology** | Lead glossary development and capture the "whys" behind the rules. Maintain a list of open business questions. With the DBA, agree the complete authorized beneficiary population and the related legacy data the feature must carry. | Glossary + prioritized list of points to clarify + agreed beneficiary population |
-| **2 · Specification** | Decide what is included in v1 and what becomes backlog. Cast the final vote on scope. Approve consultation coverage: authorized listing, search, and detail for every beneficiary in the agreed population. | "Scope and Out of Scope" section of the specification, with consultation acceptance criteria |
-| **3 · Implementation** | Validate that user stories still reflect the business as the code emerges. Unblock functional questions. Check real migrated-data flows, not mocks or seeds. | Functional acceptance criteria by feature |
-| **Final judge validation** | Review one bounded issue or draft and any available coding-agent PR. At the integrated validation, accept the reconciled data and consultation evidence or record explicit blockers. | A GitHub Issue/draft with traceable acceptance (templates are not issue output files); data acceptance record or blockers |
+|<x1/>|Liderar o desenvolvimento do glossário e capturar os "por quês" por trás das regras. Mantenha uma lista de questões de negócios abertos. Com o DBA, concordar com a população beneficiária autorizada completa e os dados legados relacionados que o recurso deve transportar.|Glossário + lista priorizada de pontos para esclarecer + população beneficiária acordada|
+|<x1/>|Decida o que está incluído no v1 e o que se torna backlog. Lançar a votação final sobre o âmbito de aplicativo. Aprovar cobertura de consulta: listagem, busca e detalhes autorizados para cada beneficiário na população acordada.|Secção "Escopo e Não Âmbito" do caderno de especificações, com critérios de aceitação da consulta|
+|<x1/>|Validar que histórias de usuários ainda refletem o negócio à medida que o código emerge. Desbloquear perguntas funcionais. Verificar fluxos de dados migrados reais, não simulados ou sementes.|Critérios funcionais de aceitação por recurso|
+|<x1/>|Reveja uma edição ou rascunho limitado e qualquer PR de agente de codificação disponível. Na validação integrada, aceitar os dados reconciliados e a evidência de consulta ou registrar bloqueadores explícitos.|Um GitHub Issue/draft com aceitação rastreável (templates não são arquivos de saída de emissão); registro de aceitação de dados ou bloqueadores|
 
 ---
 
-## Data acceptance: what you sign
+## Aceitação de dados: o que você assina
 
-The modernized SIFAP must hold and show the legacy data, not only reproduce its rules. Before you accept, ask the DBA and QA for the [reconciliation record](../../docs/data-migration/reconciliation.template.md) and confirm that:
+O modernizado SIFAP deve conter e mostrar os dados legados, não só reproduzir suas regras. Antes de aceitar, ask o DBA e QA para o <x1/> e confirmar que:
 
-- PostgreSQL was populated from the approved Adabas snapshot, not from a new seed or sample fixtures;
-- every source record in the agreed population was loaded or explicitly rejected, and unresolved rejects still block acceptance;
-- the legacy information the scope requires, such as identification, program, benefit status and values, dependents, and payments, matches the source record by record, not only in totals;
-- authorized listing, search, and detail reach every beneficiary in the agreed population, including records beyond the first page.
+- PostgreSQL foi povoado a partir do instantâneo aprovado Adabas, não a partir de uma nova semente ou de uma nova amostra;
+- cada registro de fonte na população acordada foi carregado ou explicitamente rejeitado, e os rejeitados não resolvidos ainda bloqueiam a aceitação;
+- as informações legadas que o escopo exige, tais como identificação, programa, status de benefício e valores, dependentes e pagamentos, correspondem ao registro fonte por registro, não apenas em totais;
+- listagem autorizada, busca e detalhes chegam a todos os beneficiários da população acordada, incluindo registros além da primeira página.
 
-Record acceptance or explicit blockers; never shrink the population to fit the clock. See the [data acceptance gates](../../docs/DATA-MIGRATION.md#self-check-and-acceptance-gates).
+Record aceitação ou bloqueadores explícitos; nunca encolher a população para caber o relógio. Ver o <x1/>.
 
 ---
 
-## Persona kit
+## Kit da persona
 
-| **Artifact** | Purpose |
+|<x1/>| Finalidade |
 |---|---|
-| `.github/skills/persona-product-owner/SKILL.md` | Role skill that loads automatically for specification, backlog, and acceptance |
-| `/spec` — `persona-product-owner-spec.prompt.md` | Writes a section of `.spec/<NNN>-<feature>/spec.md` from user stories in EARS |
-| `/update-spec` — `persona-product-owner-update-spec.prompt.md` | Updates the specification when a feature changes |
-| `/acceptance-check` — `persona-product-owner-acceptance-check.prompt.md` | Checks whether the code meets the acceptance criteria |
+|<x1/>|Capacidade de função que carrega automaticamente para especificação, backlog e aceitação|
+|<x2/> — <x3/>|Escreve uma seção de <x1/> de histórias de usuários em EARS|
+|<x2/> — <x3/>|Atualiza a especificação quando um recurso muda|
+|<x2/> — <x3/>|Verifica se o código satisfaz os critérios de aceitação|
 
 ---
 
-## Tools and primitives
+## Ferramentas e primitivas
 
-- **Copilot Chat** to refine user stories and acceptance criteria.
-- **GitHub Spec-Kit** in Stage 2: use `/speckit.specify` and `/speckit.clarify` to turn scope into testable requirements.
-- **Kit prompts and skills** — shortcuts for writing stories, scope cuts, and risk communication.
+- <x1/> para refinar histórias de usuários e critérios de aceitação.
+- <x3/> na Fase 2: utilizar <x4/> e <x5/> para transformar o escopo em requisitos testáveis.
+- <x1/> — atalhos para escrever histórias, cortes de escopo e comunicação de risco.
 
-**Relevant cheat sheets:**
+<x1/>
 
-- [`../../09-cheat-sheets/copilot-3-modes.md`](../../09-cheat-sheets/copilot-3-modes.md) — when to use Ask, Plan, and Agent.
-- [`../../09-cheat-sheets/spec-kit-workflow.md`](../../09-cheat-sheets/spec-kit-workflow.md) — `/speckit.specify` and `/speckit.clarify`.
-
----
-
-## Onboarding checklist
-
-- [ ] **Read this profile.** Mission, responsibilities, and self-check.
-- [ ] **Open the kit `README.md`.** Confirm that agents and prompts appear in Copilot Chat.
-- [ ] **Identify your current role focus.** See [00-TEAM-FLOW.md](../../00-TEAM-FLOW.md).
-- [ ] **Note the self-check.** Who you receive from and who you deliver to at the end of each stage.
-- [ ] **Have an example of a well-written issue.** See the template in [`../../04-evolution/GUIDE.md`](../../04-evolution/GUIDE.md).
-- [ ] **Read the data acceptance gates.** See [`../../docs/DATA-MIGRATION.md`](../../docs/DATA-MIGRATION.md); you sign the population and the final data acceptance.
+- <x1/> — quando utilizar Ask, Plan e Agente.
+- <x3/> — <x4/> e <x5/>.
 
 ---
 
-## How to succeed in this role
+## Checklist de integração
 
-- Say "that stays out of v1" three times a day without hesitation.
-- Connect every ADR to a concrete impact on the user or operation.
-- Protect the participant's focus when someone suggests refactoring something that already works.
-- Write the two final validation issues with enough context for Copilot to work without questions.
-- Accept migrated data only from evidence: a working screen does not prove that every beneficiary migrated.
+- [ ] Missão, responsabilidades e auto-controle.
+- [ ] <x1/> Confirme que agentes e prompts aparecem no chat do Copilot.
+- [ ] <x2/> Ver <x3/>.
+- [ ] <x1/> A quem recebe e a quem entrega no final de cada fase.
+- [ ] <x2/> Ver o modelo em <x3/>.
+- [ ] <x2/> Ver <x3/>; assina a população e a aceitação final dos dados.
 
 ---
 
-## Common mistakes and how to avoid them
+## Como ter sucesso neste papel
 
-| **Symptom** | Cause | Correction |
+- Diga "que fica fora do v1" três vezes por dia sem hesitação.
+- Conecte cada ADR a um impacto concreto no usuário ou operação.
+- Proteger o foco do participante quando alguém sugere refatorar algo que já funciona.
+- Escreva os dois problemas finais de validação com contexto suficiente para o Copilot trabalhar sem perguntas.
+- Aceitar dados migrados apenas a partir de evidências: uma tela de trabalho não prova que todos os beneficiários migraram.
+
+---
+
+## Erros comuns e como evitá-los
+
+|<x1/>| Causa | Correção |
 |---|---|---|
-| Team implementing low-value features | Scope was not explicitly cut | List out-of-scope items as clearly as in-scope items |
-| final validation Agent produces a generic result | Issues were written without business context | Include concrete acceptance criteria and a reference to the REQ-ID |
-| Stage 3 ends incomplete | No thin feature was prioritized | Choose one complete end-to-end feature, not half of three |
-| Technical discussions consume the PO's time | PO gets into implementation details | Redirect to the SA or TL and record the decision as an assumption |
-| Demo accepted because the screens show data | A seed, a sample, or the first page was checked instead of the migrated population | Ask for the reconciliation record and check beneficiaries beyond the first page |
+|Equipa que implementa funcionalidades de baixo valor|Âmbito de aplicativo não foi explicitamente cortado|Listar os itens fora do escopo tão claramente quanto os itens dentro do escopo|
+|validação final Agent produz um resultado genérico|As questões foram escritas sem contexto comercial|Incluir critérios de aceitação concretos e uma referência ao REQ-ID|
+|Fase 3 termina incompleta|Nenhum recurso fino foi priorizado|Escolha uma funcionalidade completa de ponta a ponta, não metade de três|
+|As discussões técnicas consomem o tempo PO|PO entra em detalhes de implementação|Redirecionar para o SA ou TL e registrar a decisão como uma suposição|
+|Demonstração aceita porque as telas mostram dados|Uma semente, uma amostra, ou a primeira página foi verificada em vez da população migrada|Ask para o registro de reconciliação e verificar os beneficiários para além da primeira página|
 
 ---
 
-## 3 prompt examples
+## 3 exemplos de prompts
 
-1. **(Chat)** "Analyze the programs I read and list the confirmed rules. For each one, propose a scope decision with justification."
-2. **(Chat)** "Review these 3 user stories and rewrite them as implementation tasks with context, functional requirements as a checklist, and acceptance criteria."
-3. **(Chat)** "The participant wants to implement more features than time allows. Help me prioritize using impact, risk, and available evidence."
+1. <x1/> "Analisar os programas que li e listar as regras confirmadas. Para cada um, propor uma decisão de escopo com justificação."
+2. <x1/> "Reveja essas 3 histórias de usuários e reescreva-as como tarefas de implementação com contexto, requisitos funcionais como uma lista de verificação e critérios de aceitação."
+3. <x1/> "O participante quer implementar mais recursos do que o tempo permite. Ajude-me a priorizar usando impacto, risco e evidências disponíveis."
 
 ---
 
-## If you get stuck
+## Se você ficar travado
 
-| **Situation** | What to do |
+|<x1/>| O que fazer |
 |---|---|
-| Stuck on prioritization | Compare impact, risk, dependencies, and available time; record the decision |
-| Do not know how to write a task | Use the Spec-Kit task format from the current feature plan and adapt it |
-| Team wants everything in scope | Say: "We have 70 minutes for implementation; choose one thin feature" |
-| Business question has no answer | Preserve an unconfirmed question, evidence and owner; block affected scope and continue only unrelated supported work |
+|Preso na priorização|Comparar impacto, risco, dependências e tempo disponível; registrar a decisão|
+|Não saber escrever uma tarefa|Use o formato de tarefa Spec-Kit do recurso atual plan e adapte-o|
+|Equipa quer tudo no âmbito|Diga: "Temos 70 minutos para implementação; escolha uma característica fina"|
+|Pergunta de negócios não tem resposta|Preservar uma pergunta, evidência e proprietário não confirmada; bloquear o escopo afetado e continuar apenas o trabalho suportado não relacionado|
 
 ---
 
-## Dependencies
+## Dependências
 
-| **Persona** | Relationship | Artifact |
+|<x1/>| Relação | Artefato |
 |---|---|---|
-| Requirements Engineer | Depends on you | Prioritization of rules to become EARS |
-| Technical Lead | Depends on you | Defined scope to calibrate Stage 3 |
-| Developer | Depends on you | Clear scope and acceptance criteria |
-| Enterprise Architect | You depend on them | Integration map for scope decisions |
-| DBA | Depends on you | Authorized beneficiary population and consultation coverage |
-| DBA + QA Engineer | You depend on them | Source readiness, reconciliation, and consultation evidence for data acceptance |
+|Requirements Engineer|Depende de ti.|Priorização das regras para se tornar EARS|
+|Technical Lead|Depende de ti.|Âmbito definido para calibrar a Etapa 3|
+|Developer|Depende de ti.|Âmbito claro e critérios de aceitação|
+|Enterprise Architect|Você depende deles.|Mapa de integração para as decisões de âmbito|
+|DBA|Depende de ti.|População beneficiária autorizada e cobertura de consultas|
+|DBA + QA Engineer|Você depende deles.|Provas de disponibilidade, reconciliação e consulta para aceitação dos dados|
 
 ---
 
-## How you are evaluated
+## Como você é avaliado
 
-- **Rubric A2 (Specification Coherence):** clear scope, documented out-of-scope items.
-- **Rubric A6 (Collaboration):** PO who protects the participant's focus.
+- <x1/> escopo claro, itens documentados fora do escopo.
+- <x1/> PO que protege o foco do participante.
 
 ---
 
-### Continue reading
+### Continue lendo
 
-| Previous | Next |
+| Anterior | Próximo |
 |---|---|
-| [OVERVIEW of the 10 personas](../OVERVIEW.md)<br/><sub>Comparison table: role focus, stage use, emergency defaults.</sub> | [Requirements Engineer](../02-requirements-engineer/PERSONA.md)<br/><sub>Vision responsibility · writes EARS with source_legacy.</sub> |
+|<x1/><x2/><x3/>Comparison tabela: foco de papel, uso de estágio, defaults de emergência.<x4/>|<x1/><x2/> <x3/>Vision responsabilidade · escreve EARS com source legacy.<x4/>|
 
-<sub>[Back to the kit index](../../README.md)</sub>
+<x1/><x2/><x3/>

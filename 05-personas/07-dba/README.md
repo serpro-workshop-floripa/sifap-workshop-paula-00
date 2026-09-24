@@ -1,51 +1,51 @@
-# DBA - Copilot Kit
+# DBA - Kit de copiloto
 
-> **Path:** [Team Kit](../../README.md) > [Personas](../OVERVIEW.md) > **DBA**
+> <x4/> <x5/> > <x6/> > <x7/>
 
-**Lead the migration of verified Adabas records to PostgreSQL, from discovery to complete beneficiary consultation.**
+<x1/>
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| Audience | DBA, with QA, architects, PO/RE, Developer, and DevOps |
-| Stage | Preparation and Stages 1-3 |
-| Expected outcome | Source-derived records, independent reconciliation, complete query coverage, and tested recovery |
+|Audiência|DBA, com QA, arquitetos, PO/RE, Developer, e DevOps|
+| Estágio |Preparação e Etapas 1-3|
+| Resultado esperado |Registros derivados da fonte, reconciliação independente, cobertura completa da consulta e recuperação testada|
 
-## Role
+## Papel
 
-The DBA owns the data lifecycle, not only schema creation. A working schema and
-test seed are supporting development artifacts; neither proves an Adabas
-migration. Start with the [persona profile](PERSONA.md) and
-[data migration guide](../../docs/DATA-MIGRATION.md).
+O DBA possui o ciclo de vida dos dados, não apenas criação de esquemas. Um esquema de trabalho e
+as sementes de teste suportam artefatos de desenvolvimento; nem provam uma Adabas
+migração. Comece com <x1/> e
+<x1/>.
 
-## Active kit
+## Kit ativo
 
-| Artifact | Purpose |
+| Artefato | Finalidade |
 |---|---|
-| [DBA agent](../../.github/agents/dba.agent.md) | Data ownership, safe modeling, and evidence-based acceptance |
-| [Source mapping prompt](../../.github/prompts/stage-archaeologist-map-source-data.prompt.md) | Guided Stage 1 source map, dictionary, and reading coverage |
-| [Migration prompt](../../.github/prompts/persona-dba-migration.prompt.md) | Readiness, planning, implementation, and validation |
-| [Query audit](../../.github/prompts/persona-dba-query-audit.prompt.md) | Query correctness, population coverage, authorization, and performance |
-| [Database instructions](../../.github/instructions/database.instructions.md) | Schema/pipeline separation and safe repositories |
-| [Blank data records](../../docs/data-migration/README.md) | Participant-owned evidence and decisions |
+|<x1/>|Propriedade de dados, modelagem segura e aceitação baseada em evidências|
+|<x1/>|Mapa de origem, dicionário e cobertura de leitura da Fase 1 guiada|
+|<x1/>|Prontidão, planejamento, implementação e validação|
+|<x1/>|Correção de consultas, cobertura populacional, autorização e desempenho|
+|<x1/>|Schema/pipeline separação e repositórios seguros|
+|<x1/>|Provas e decisões de participação|
 
-## First actions
+## Primeiras acções
 
-- [ ] Before Stage 1, coordinate with the source owner and verify populated Adabas and extraction readiness.
-- [ ] During archaeology, use `/map-source-data` with the readers; do not copy a completed mapping or answer mysteries.
-- [ ] In Stage 2, co-design the migration with architects and have QA define independent validation.
-- [ ] In Stage 3, load the approved snapshot and expose the resulting records through the real application.
-- [ ] In final validation, verify reconciliation, replay/resume, recovery, and all-beneficiary query coverage.
+- [ ] Antes da Fase 1, coordene com o proprietário da fonte e verifique a disponibilidade de extração com Adabas.
+- [ ] Durante a arqueologia, use <x1/> com os leitores; não copie um mapeamento completo ou responda mistérios.
+- [ ] Na Fase 2, co-projete a migração com arquitetos e tenha QA definir validação independente.
+- [ ] Na Etapa 3, carregar o instantâneo aprovado e expor os registros resultantes através da aplicativo real.
+- [ ] Na validação final, verificar reconciliação, replay/resume, recuperação e cobertura de consulta a todos os beneficiários.
 
-## Completion criteria
+## Critérios de conclusão
 
-- [ ] The source population and snapshot are evidenced.
-- [ ] The participant produced its own source map and reviewed target decisions.
-- [ ] No unresolved rejects or unexplained differences remain.
-- [ ] All authorized beneficiaries are queryable through approved application flows.
-- [ ] QA independently verifies evidence and PO records actual acceptance.
+- [ ] A população fonte e o instantâneo são evidenciados.
+- [ ] O participante produziu seu próprio mapa fonte e reviu as decisões-alvo.
+- [ ] Nenhuma rejeição não resolvida ou diferenças inexplicáveis permanecem.
+- [ ] Todos os beneficiários autorizados são questionáveis através de fluxos de aplicativo aprovados.
+- [ ] QA verifica de forma independente as provas e PO regista a aceitação efectiva.
 
-## References
+## Referências
 
-- [PostgreSQL 16 documentation](https://www.postgresql.org/docs/16/)
-- [DDM reading guide](../../01-archaeology/legacy-sifap/adabas-ddms/README.md)
-- [Persona profile](PERSONA.md)
+- <x1/>
+- <x1/>
+- <x1/>

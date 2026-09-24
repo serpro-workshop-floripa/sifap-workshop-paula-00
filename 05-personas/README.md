@@ -1,128 +1,128 @@
-# Persona Kits
+# Kits Persona
 
-> **Track:** [Team Kit](../README.md) › **Personas**
+> <x3/> <x4/> › <x5/>
 
-**Onboarding guide for the workshop's 10 role personas.** Each persona is a Copilot toolkit specialized for an SDLC responsibility. In the individual challenge, one participant covers all 10 responsibilities while the role skills load automatically.
+<x1/> Cada persona é um kit de ferramentas Copilot especializado para uma responsabilidade SDLC. No desafio individual, um participante cobre todas as 10 responsabilidades enquanto as habilidades de papel carregam automaticamente.
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| **Target audience** | Individual workshop participants |
-| **Prerequisites** | [00-SETUP.md](../00-SETUP.md) completed before 14:00 |
-| **Estimated time** | 15 min pre-work |
-| **Expected outcome** | Role responsibilities understood, `.github/` validated, Copilot reloaded |
+|<x1/>|Participantes individuais das workshops|
+|<x1/>|<x1/> completado antes das 14:00|
+|<x1/>|15 min pré-trabalho|
+|<x1/>|Responsabilidades de papel entendidas, <x1/> validadas, recarregadas pelo co-piloto|
 
-![Overview of persona responsibilities in the SIFAP workshop](../assets/personas-team.svg)
-
----
-
-## Concept
-
-A persona is a Copilot toolkit specialized for a specific responsibility in the development lifecycle. Each kit includes a **role skill**, prompts for recurring tasks, instructions, and the `PERSONA.md` profile. The skill guides how Copilot responds and loads **automatically** from its description, so you never select your role — it composes into whichever stage agent you selected.
-
-> [!IMPORTANT]
-> Roles are skills, not agents. The individual challenge uses three stage agents — `@archaeologist`, `@architect`, and `@builder` — plus cross-stage `@dba`. Looking for `@product-owner` in the agent picker means the model has changed under you; keep the stage agent selected and describe the role's work instead. See [ADR-0002](../docs/adr/0002-team-roles-as-skills-not-agents.md) and [ADR-0003](../docs/adr/0003-individual-challenge-format.md).
-
-In the SIFAP (Payment Inspection and Administration System) context, each role has direct responsibilities for concrete artifacts — from the Natural/Adabas rule catalog to acceptance tests and the CI pipeline. By studying the personas, you know what to produce and how to self-check at C1, C2, and C3.
+<x1/>
 
 ---
 
-## The 10 responsibilities
+## Conceito
 
-The challenge is not divided among people. Use the role kits as checklists for work you perform yourself.
+Uma persona é um kit de ferramentas Copilot especializado para uma responsabilidade específica no ciclo de vida do desenvolvimento. Cada kit inclui um <x3/>, prompts para tarefas recorrentes, instruções e o perfil <x4/>. A habilidade orienta como o Copilot responde e carrega <x5/> a partir de sua descrição, para que você nunca selecione seu papel — ele compõe em qualquer estágio agent que você selecionou.
 
-| Responsibility area | Personas | Kits |
+> [!Importante]
+> Funções são habilidades, não agentes. O desafio individual utiliza três agentes de fase — <x7/>, <x8/> e <x9/> — mais cross-stage <x10/>. Procurar por <x11/> no catador agent significa que o modelo mudou sob você; mantenha o estágio agent selecionado e descreva o trabalho do papel. Ver <x12/> e <x13/>.
+
+No contexto SIFAP (Sistema de Inspeção e Administração de Pagamentos), cada papel tem responsabilidades diretas para artefatos de concreto — desde o catálogo de regras Natural/Adabas até os ensaios de aceitação e o gasoduto CI. Estudando as personas, você sabe o que produzir e como autoverificar em C1, C2 e C3.
+
+---
+
+## As 10 responsabilidades
+
+O desafio não está dividido entre as pessoas. Use os kits de papel como checklists para o trabalho que você executar.
+
+|Domínio de responsabilidade|Personas|Kits|
 |---|---|---|
-| **Vision** | Product Owner + Requirements Engineer | `01-product-owner/` + `02-requirements-engineer/` |
-| **Architecture** | Enterprise Architect + Software Architect | `03-enterprise-architect/` + `04-software-architect/` |
-| **Implementation** | Technical Lead + Developer | `05-technical-lead/` + `06-developer/` |
-| **Quality and data** | DBA + QA Engineer | `07-dba/` + `08-qa-engineer/` |
-| **Submission support** | DevOps Engineer + Tech Writer | `09-devops-engineer/` + `10-tech-writer/` |
+|<x1/>|Product Owner + Requirements Engineer|<x2/> + <x3/>|
+|<x1/>|Enterprise Architect + Software Architect|<x2/> + <x3/>|
+|<x1/>|Technical Lead + Developer|<x2/> + <x3/>|
+|<x1/>|DBA + QA Engineer|<x2/> + <x3/>|
+|<x1/>|DevOps Engineer + Tech Writer|<x2/> + <x3/>|
 
 ---
 
-## What each kit contains
+## O que cada kit contém
 
-| **Artifact** | Purpose |
+|<x1/>| Finalidade |
 |---|---|
-| `PERSONA.md` | Complete profile: responsibilities, prompts, self-checks, and evaluation criteria |
-| `README.md` | Inventory of Copilot artifacts (paths under `.github/`) |
-| Optional integrations | Use only approved, actually configured tools; no executable MCP or hook configuration is installed from persona folders |
+|<x1/>|Perfil completo: responsabilidades, alertas, auto-controles e critérios de avaliação|
+|<x1/>|Inventário de artefatos copiloto (caminhos abaixo de <x1/>)|
+|Integração facultativa|Usar apenas ferramentas aprovadas, configuradas de fato; nenhuma configuração executável MCP ou gancho é instalada a partir de pastas persona|
 
-Active artifacts are consolidated in the root `.github/` directory:
+Os artefatos ativos são consolidados no diretório raiz <x1/>:
 
-| **Artifact** | Path |
+|<x1/>| Caminho |
 |---|---|
-| Role skill, loaded automatically by its description | `.github/skills/persona-*/SKILL.md` |
-| Prompts for recurring tasks | `.github/prompts/persona-*.prompt.md` |
-| Shared technique skills | `.github/skills/*/SKILL.md` |
-| File-type-specific rules | `.github/instructions/*.instructions.md` |
-| Stage agents plus cross-stage `dba`, selected with `@name` | `.github/agents/*.agent.md` |
+|Capacidade de função, carregada automaticamente pela sua descrição|<x1/>|
+|Perguntas para tarefas recorrentes|<x1/>|
+|Competências técnicas partilhadas|<x1/>|
+|Regras específicas do tipo de arquivo|<x1/>|
+|Agentes de estágio mais cross-stage <x2/>, selecionados com <x3/>|<x1/>|
 
 ---
 
-## Available kits
+## Kits disponíveis
 
-| **#** | Kit | Challenge responsibility |
+|<x1/>|Kit|Responsabilidade por desafios|
 |---|---|---|
-| 01 | [Product Owner](./01-product-owner/PERSONA.md) | Priority, scope, value, and migrated-data acceptance |
-| 02 | [Requirements Engineer](./02-requirements-engineer/PERSONA.md) | EARS requirements, acceptance criteria, and traceability |
-| 03 | [Enterprise Architect](./03-enterprise-architect/PERSONA.md) | External dependencies and scope decisions |
-| 04 | [Software Architect](./04-software-architect/PERSONA.md) | Technical plan, module boundaries, and ADRs when needed |
-| 05 | [Technical Lead](./05-technical-lead/PERSONA.md) | Standards, technical coordination, and PR self-review |
-| 06 | [Developer](./06-developer/PERSONA.md) | Java/TypeScript code, tests, and integration |
-| 07 | [DBA](./07-dba/PERSONA.md) | Source readiness, data discovery, migration design, PostgreSQL population, reconciliation, and recovery |
-| 08 | [QA Engineer](./08-qa-engineer/PERSONA.md) | Independent data reconciliation, consultation tests, coverage, and gates |
-| 09 | [DevOps Engineer](./09-devops-engineer/PERSONA.md) | CI green for submission and documented local execution |
-| 10 | [Tech Writer](./10-tech-writer/PERSONA.md) | Glossary, ADR clarity, README, and factual run notes |
+|01|<x1/>|Prioridade, escopo, valor e aceitação de dados migrados|
+|02|<x1/>|EARS requisitos, critérios de aceitação e rastreabilidade|
+|03|<x1/>|Dependências externas e decisões de âmbito|
+|04|<x1/>|Técnica plan, limites dos módulos e RAMs quando necessário|
+|05|<x1/>|Normas, coordenação técnica e auto-revisão de RP|
+|06|<x1/>|Java/TypeScript código, testes e integração|
+|07|<x1/>|Preparação da fonte, descoberta de dados, concepção de migração, população PostgreSQL, reconciliação e recuperação|
+|08|<x1/>|Reconciliação de dados independente, testes de consulta, cobertura e portões|
+|09|<x1/>|CI verde para submissão e execução local documentada|
+|10|<x1/>|Glossário, clareza ADR, README e notas de execução fatual|
 
 ---
 
-## How to activate the role skills
+## Como ativar as skills de papel
 
-![Five steps: read the profile, review the guide, verify .github, review optional permissions, reload Copilot](../assets/persona-onboarding.svg)
+<x1/>
 
-> [!IMPORTANT]
-> Complete [00-SETUP.md](../00-SETUP.md) before 14:00. The challenge starts directly in `@archaeologist`.
+> [!Importante]
+> Completar <x2/> antes das 14:00. O desafio começa diretamente em <x3/>.
 
-- [ ] **Skim all 10 personas.** Use [OVERVIEW.md](OVERVIEW.md) to understand the responsibilities you cover yourself.
-- [ ] **Read deeply for the current stage.** Open the personas most relevant to the stage before you switch agents.
-- [ ] **Validate the consolidated `.github/`.** Confirm that agents, prompts, instructions, and skills are present:
+- [ ] Use <x2/> para entender as responsabilidades que você se cobre.
+- [ ] <x1/> Abra a persona mais relevante para o palco antes de mudar de agente.
+- [ ] <x1/> Confirme que agentes, alertas, instruções e habilidades estão presentes:
 
   ```bash
   ls .github/agents .github/prompts .github/instructions .github/skills
   ```
 
-- [ ] **Review optional tool availability.** Persona folders do not contain runnable MCP or hook manifests. If a task needs an integration, verify its approved transport, permissions, credentials handling, and connectivity. Do not overwrite an existing `.vscode/mcp.json` or confuse a capability list with the VS Code `servers` configuration.
-- [ ] **Reload Copilot.** Open the Command Palette and run **Developer: Reload Window**.
-- [ ] **Verify agents and prompts.** Type `@` in the Copilot panel and confirm `@archaeologist`, `@architect`, `@builder`, and `@dba`. Type `/` and confirm the slash commands.
+- [ ] <x3/> As pastas Persona não contêm MCP ou os manifestos de gancho. Se uma tarefa precisa de uma integração, verifique seu transporte aprovado, permissões, manipulação de credenciais e conectividade. Não sobrescrever uma <x4/> existente ou confundir uma lista de capacidades com a configuração do Código VS <x5/>.
+- [ ] Abra a Paleta de Comando e execute <x3/>.
+- [ ] <x7/> Tipo <x8/> no painel do co-piloto e confirmar <x9/>, <x10/>, <x11/> e <x12/>. Digite <x13/> e confirme os comandos de barra.
 
 ---
 
-## How to study a kit in 10 minutes
+## Como estudar um kit em 10 minutos
 
-- [ ] **Read `PERSONA.md` first.** Mission, responsibilities, self-checks, and evaluation rubrics.
-- [ ] **Open the kit's `README.md`.** Inventory of prompts, skills, and instructions.
-- [ ] **Review the available prompts.** They are shortcuts for recurring tasks, not substitutes for judgment.
-- [ ] **Check skills and instructions.** Skills contain workflows; instructions apply rules by file type.
-- [ ] **Note the self-check outputs.** C1, C2, and C3 replace the former team gates in the individual challenge.
-
----
-
-## Installation Definition of Done
-
-- [ ] All 10 persona responsibilities have been skimmed; current-stage personas have been read.
-- [ ] The consolidated `.github/` contains agents, prompts, instructions, and skills.
-- [ ] Optional integrations were verified if needed; unavailable tools remain explicit, and no persona manifest was copied as configuration.
-- [ ] VS Code reloaded.
-- [ ] Stage agents appear when typing `@` in Copilot Chat.
-- [ ] Prompts appear when typing `/` in Copilot Chat.
+- [ ] <x1/> Missão, responsabilidades, auto-controles e rubricas de avaliação.
+- [ ] <x1/> Inventário de alertas, habilidades e instruções.
+- [ ] <x1/> São atalhos para tarefas recorrentes, não substitutos para julgamento.
+- [ ] <x1/> Habilidades contêm fluxos de trabalho; instruções aplicam regras por tipo de arquivo.
+- [ ] <x1/> C1, C2 e C3 substituem os antigos portões da equipe no desafio individual.
 
 ---
 
-### Continue reading
+## Definição de Pronto da instalação
 
-| Previous | Next |
+- [ ] Todas as 10 responsabilidades de persona foram ignoradas; as personas em fase atual foram lidas.
+- [ ] O consolidado <x1/> contém agentes, alertas, instruções e habilidades.
+- [ ] As integrações opcionais foram verificadas se necessário; as ferramentas não disponíveis permanecem explícitas e nenhum manifesto de persona foi copiado como configuração.
+- [ ] Código VS recarregado.
+- [ ] Os agentes de estágio aparecem ao digitar <x1/> no Copilot Chat.
+- [ ] Os prompts aparecem ao digitar <x1/> no chat Copilot.
+
+---
+
+### Continue lendo
+
+| Anterior | Próximo |
 |---|---|
-| [SETUP](../00-SETUP.md)<br/><sub>Pre-work setup: Git, VS Code, Copilot, Spec-Kit, branch protection.</sub> | [OVERVIEW of the 10 personas](OVERVIEW.md)<br/><sub>Role-by-stage responsibility checklist.</sub> |
+|<x1/><x2/><x3/>Pre-work configuração: Git, Código VS, Copiloto, Spec-Kit, proteção de ramificações.<x4/>|Lista de verificação da responsabilidade.|
 
-<sub>[Back to the kit index](../README.md)</sub>
+<x1/><x2/><x3/>

@@ -1,80 +1,80 @@
-# Developer — Copilot Kit
+# Developer — Kit de copiloto
 
-> **Track:** [Team Kit](../../README.md) › [Personas](../OVERVIEW.md) › **Developer**
+> <x4/> <x5/> › <x6/> › <x7/>
 
-**Reference kit for the Developer persona in the SIFAP modernization workshop.**
+<x1/>
 
-![Persona](https://img.shields.io/badge/Persona-Developer-171717?style=flat-square)
+<x1/>
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| **Target audience** | Person taking the Developer persona in the workshop |
-| **Focus** | Java 21 + Next.js 15 implementation, TDD, bug fixing |
-| **SDLC phase** | Stage 3: Java/TypeScript implementation, tests, and integration |
-| **Expected outcome** | Backend + frontend for the prioritized slice with passing tests |
+|<x1/>|Pessoa que toma a persona Developer na workshop|
+|<x1/>|Java 21 + Next.js 15 implementação, TDD, correção de erros|
+|<x1/>|Etapa 3: Java/TypeScript implementação, testes e integração|
+|<x1/>|Infraestrutura + interface para a fatia priorizada com testes de passagem|
 
-Read first: [PERSONA.md](PERSONA.md).
+Ler primeiro: <x1/>.
 
 ---
 
-## Concept
+## Conceito
 
-The Developer transforms EARS specifications into executable code. In the SIFAP (Payment Inspection and Administration System) modernization, this persona translates Natural programs and DDM/Adabas models into Java 21 with Spring Boot 3.3, JPA/Hibernate, and PostgreSQL 16, while also implementing the frontend in Next.js 15 with TypeScript.
+A Developer transforma as especificações EARS em código executável. Na modernização do SIFAP (Sistema de Inspeção e Administração de Pagamentos), essa persona traduz programas Natural e modelos DDM/Adabas para Java 21 com Spring Boot 3.3, JPA/Hibernate e PostgreSQL 16, enquanto implementa o frontend em Next.js 15 com TypeScript.
 
-Why it matters: without the Developer, requirements remain text. This persona turns the proof of concept into tested, mergeable software.
+Por que importa: sem o Developer, as exigências permanecem texto. Esta persona transforma a prova do conceito em software testado, fundível.
 
-## Persona kit
+## Kit da persona
 
-All active artifacts live in the repository root `.github/` directory. This folder is a reference; edit the files under `.github/` when maintenance is needed.
+Todos os artefatos ativos vivem no diretório root do repositório <x2/>. Esta pasta é uma referência; edite os arquivos em <x3/> quando a manutenção for necessária.
 
-| File | Type | Purpose |
+|Arquivo| Tipo | Finalidade |
 |---|---|---|
-| `PERSONA.md` | Profile | Developer responsibilities, stages, prompts, and rubrics |
-| `.github/skills/persona-developer/SKILL.md` | Skill | Implementation, TDD, and bug fixing |
-| `.github/prompts/persona-developer-implement.prompt.md` | Prompt | `/implement` |
-| `.github/prompts/persona-developer-fix-bug.prompt.md` | Prompt | `/fix-bug` |
-| `.github/prompts/persona-developer-tdd.prompt.md` | Prompt | `/tdd` |
-| `.github/prompts/persona-developer-refactor.prompt.md` | Prompt | `/refactor` |
+|<x1/>| Perfil |Developer responsabilidades, etapas, alertas e rubricas|
+|<x1/>| Skill |Implementação, TDD e correção de erros|
+|<x1/>| Prompt |<x1/>|
+|<x1/>| Prompt |<x1/>|
+|<x1/>| Prompt |<x1/>|
+|<x1/>| Prompt |<x1/>|
 
-> [!TIP]
-> Optional tools follow the [persona setup guidance](../README.md#how-to-activate-your-persona). No executable MCP configuration ships in this persona folder.
+> [!Dica]
+> As ferramentas opcionais seguem o <x1/>. Nenhum navio de configuração executável MCP nesta pasta persona.
 
-## Where active artifacts live
+## Onde vivem os artefatos activos
 
-- Agents: `.github/agents/`
-- Prompts: `.github/prompts/persona-*.prompt.md`
-- Skills: `.github/skills/`
-- Instructions: `.github/instructions/`
+- Agentes: <x1/>
+- Perguntas: <x1/>
+- Habilidades: <x1/>
+- Instruções: <x1/>
 
-## Best practices
+## Boas práticas
 
-- [ ] **Write tests before or alongside the code.** When the design is clear, write the test first. Every commit includes tests.
-- [ ] **Keep PRs small.** One topic per PR, reviewable in about 20 minutes.
-- [ ] **Separate refactoring from behavior changes.** Use distinct commits for each intent.
-- [ ] **Comment why, not what.** The code describes what it does; the comment explains the reason.
+- [ ] <x1/> Quando o desenho estiver claro, escreva o teste primeiro. Cada commit inclui testes.
+- [ ] <x1/> Um tópico por RP, revisável em cerca de 20 minutos.
+- [ ] <x1/> Use commits distintos para cada intenção.
+- [ ] <x1/> O código descreve o que ele faz; o comentário explica a razão.
 
-## Apply the workflow to SIFAP
+## Aplicar o fluxo de trabalho para SIFAP
 
-Select a task from the participant's approved `tasks.md`, reread its actual
-`source_legacy:`, and write the governing acceptance tests before implementation.
-Work with DBA and QA on the [data lifecycle](../../docs/DATA-MIGRATION.md):
-the real API/UI must query migrated PostgreSQL records, including all authorized
-beneficiaries across pages. No endpoint behavior or completed requirement is
-provided by this kit.
+Selecione uma tarefa do participante aprovado <x1/>, releia seu real
+<x1/>, e escreva os testes de aceitação antes da implementação.
+Trabalhar com DBA e QA no <x1/>:
+o real API/UI deve consultar registros migrados PostgreSQL, incluindo todos os autorizados
+Beneficiários através de páginas. Nenhum comportamento final ou requisito completo é
+fornecido por este kit.
 
-## References
+## Referências
 
-- [Clean Code — Robert C. Martin](https://www.oreilly.com/library/view/clean-code-a/9780136083238/)
-- [Refactoring — Martin Fowler](https://refactoring.com/)
-- [Test-Driven Development — Kent Beck](https://www.oreilly.com/library/view/test-driven-development/0321146530/)
-- [GitHub Copilot Best Practices](https://docs.github.com/en/copilot)
+- <x1/>
+- <x1/>
+- <x1/>
+- <x1/>
 
 ---
 
-### Continue reading
+### Continue lendo
 
-| Previous | Next |
+| Anterior | Próximo |
 |---|---|
-| [Persona overview](../OVERVIEW.md)<br/><sub>Role-by-stage checklist for the 10 personas.</sub> | [PERSONA.md](PERSONA.md)<br/><sub>Complete Developer persona profile.</sub> |
+|Lista de verificação para as 10 personas.|<x1/><x2/><x3/>Complete Developer persona perfil.<x4/>|
 
-<sub>[Back to the kit index](../../README.md)</sub>
+<x1/><x2/><x3/>

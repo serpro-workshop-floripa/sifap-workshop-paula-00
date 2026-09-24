@@ -1,80 +1,80 @@
-# Technical Lead — Copilot Kit
+# Technical Lead — Kit de copiloto
 
-> **Trail:** [Team Kit](../../README.md) › [Personas](../OVERVIEW.md) › **Technical Lead**
+> <x4/> <x5/> › <x6/> › <x7/>
 
-**Inventory of the Copilot kit for the Technical Lead persona.** Lists the active artifacts, where they live under `.github/`, and best practices specific to this role.
+<x2/> Lista os artefatos ativos, onde vivem sob <x3/>, e as melhores práticas específicas para esse papel.
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| **Target audience** | Person acting as Technical Lead in the workshop |
-| **Role scope** | Technical leadership responsibility (covered by the participant) |
-| **SDLC phase** | Stages 2-3: sequencing, standards, self-review, and submission readiness |
-| **Prerequisites** | [PERSONA.md](PERSONA.md) read |
-| **Expected outcome** | Kit validated, prompts accessible in Copilot Chat |
+|<x1/>|Pessoa agindo como Technical Lead na workshop|
+|<x1/>|Responsabilidade técnica de liderança (coberto pelo participante)|
+|<x1/>|Etapas 2-3: sequenciamento, padrões, auto-revisão e prontidão para submissão|
+|<x1/>|<x1/> lido|
+|<x1/>|Kit validado, alertas acessíveis em Copilot Chat|
 
-> [!IMPORTANT]
-> Read [PERSONA.md](PERSONA.md) before continuing. The profile explains the mission, self-check, and evaluation rubrics.
-
----
-
-## Concept
-
-The Technical Lead connects architecture to everyday code. This role defines implementation standards, unblocks the participant when someone gets stuck on a technical detail, and ensures that the application created by the participant actually runs end to end by the end of Stage 3. In SIFAP (Payment Inspection and Administration System), the TL maintains execution speed without compromising quality by choosing which technical battles are worth fighting.
+> [!Importante]
+> Leia <x1/> antes de continuar. O perfil explica a missão, auto-check, e rubrics avaliação.
 
 ---
 
-## Persona kit
+## Conceito
 
-| **Artifact** | Type | Purpose |
+O Technical Lead conecta arquitetura ao código diário. Esse papel define padrões de implementação, desbloqueia o participante quando alguém fica preso em um detalhe técnico, e garante que a aplicativo criada pelo participante realmente termina no final do estágio 3. Em SIFAP (Sistema de Inspeção e Administração de Pagamentos), o TL mantém a velocidade de execução sem comprometer a qualidade escolhendo quais batalhas técnicas valem a pena combater.
+
+---
+
+## Kit da persona
+
+|<x1/>| Tipo | Finalidade |
 |---|---|---|
-| `PERSONA.md` | Profile | Responsibilities, self-check, prompts, and rubric |
-| `.github/skills/persona-technical-lead/SKILL.md` | Skill | Technical governance |
-| `.github/prompts/persona-technical-lead-setup-project.prompt.md` | Prompt | `/setup-project` |
-| `.github/prompts/persona-technical-lead-routing-table.prompt.md` | Prompt | `/routing-table` |
-| `.github/prompts/persona-technical-lead-audit-context.prompt.md` | Prompt | `/audit-context` |
-| [CI conventions](../../.github/instructions/cicd.instructions.md) | Validation | Use real scoped test/build checks; do not suppress failures through sample hooks |
+|<x1/>| Perfil |Responsabilidades, auto-controle, prompts e rubric|
+|<x1/>| Skill |Governação técnica|
+|<x1/>| Prompt |<x1/>|
+|<x1/>| Prompt |<x1/>|
+|<x1/>| Prompt |<x1/>|
+|<x1/>|Validação|Usar verificações de âmbito real test/build; não suprimir falhas através de ganchos de amostra|
 
 ---
 
-## Where the artifacts live
+## Onde ficam os artefatos
 
-The active artifacts are consolidated under the root `.github/` directory:
+Os artefatos ativos estão consolidados sob o diretório raiz <x1/>:
 
-| **Type** | Path |
+|<x1/>| Caminho |
 |---|---|
-| Agents | `.github/agents/` |
-| Prompts | `.github/prompts/persona-*.prompt.md` |
-| Skills | `.github/skills/` |
-| Instructions | `.github/instructions/` |
+| Agentes |<x1/>|
+| Prompts |<x1/>|
+| Skills |<x1/>|
+| Instruções |<x1/>|
 
-Use this directory as the reference. Active files live only under the root `.github/` directory — edit them there when maintenance is needed.
+Use esta pasta como referência. Arquivos ativos vivem apenas sob o diretório root <x1/> — editá-los lá quando a manutenção é necessária.
 
-Optional integrations follow the [persona setup guidance](../README.md#how-to-activate-your-persona); preserve existing configuration and verify permissions.
-
----
-
-## Best practices
-
-- Block bad changes, not people; review the PR and protect reviewers' time.
-- `CODEMAP.md` is the participant's working memory; if it is outdated, the participant works without visibility.
-- Model routing matters: Opus for discovery, Sonnet for implementation, Haiku for mechanical transformations.
-- Cost per feature is an engineering metric; track it alongside coverage.
+As integrações opcionais seguem o <x1/>; preservam a configuração existente e verificam permissões.
 
 ---
 
-## References
+## Boas práticas
 
-- [Staff Engineer — Will Larson](https://staffeng.com/)
-- [The Manager's Path — Camille Fournier](https://www.oreilly.com/library/view/the-managers-path/9781491973882/)
-- [Accelerate — Forsgren, Humble, Kim](https://itrevolution.com/product/accelerate/)
-- [GitHub Copilot Best Practices](https://docs.github.com/en/copilot)
+- Bloqueie mudanças ruins, não as pessoas; reveja a RP e proteja o tempo dos revisores.
+- <x1/> é a memória de trabalho do participante; se estiver ultrapassada, o participante trabalha sem visibilidade.
+- Roteamento de modelo importa: Opus para descoberta, Sonnet para implementação, Haiku para transformações mecânicas.
+- Custo por recurso é uma métrica de engenharia; rastreá-lo ao lado da cobertura.
 
 ---
 
-### Continue reading
+## Referências
 
-| Previous | Next |
+- <x1/>
+- <x1/>
+- <x1/>
+- <x1/>
+
+---
+
+### Continue lendo
+
+| Anterior | Próximo |
 |---|---|
-| [OVERVIEW](../OVERVIEW.md)<br/><sub>Table of the 10 personas.</sub> | [PERSONA.md](PERSONA.md)<br/><sub>Profile for this persona.</sub> |
+|<x1/><x2/><x3/>Table das 10 personas.<x4/>|<x1/><x2/><x3/>Profile para esta persona. <x4/>|
 
-<sub>[Back to the kit index](../../README.md)</sub>
+<x1/><x2/><x3/>

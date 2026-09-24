@@ -1,90 +1,90 @@
 # Persona - DBA
 
-> **Path:** [Team Kit](../../README.md) > [Personas](../OVERVIEW.md) > [DBA](README.md) > **Persona**
+> <x5/> <x6/> > <x7/> > <x8/> > <x9/>
 
-**You are the principal owner of the data lifecycle, from populated Adabas to reconciled PostgreSQL and complete beneficiary consultation.**
+<x1/>
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| Role scope | Data lifecycle responsibility (covered by the participant with `@dba`) |
-| Active stages | Preparation and every stage |
-| Inputs | Actual source definitions/records, team reading evidence, reviewed requirements and architecture |
-| Outputs | Source readiness/map/dictionary, mapping and load plan, schema and record pipeline, reconciliation and recovery evidence |
-| Self-checks | C1 data evidence to Architecture; C2 design with architects/QA; C3 populated target and verified queries to Operations |
+| Escopo do papel |Responsabilidade pelo ciclo de vida dos dados (coberto pelo participante com <x1/>)|
+| Estágios ativos |Preparação e cada etapa|
+|Entradas|Fonte real definitions/records, evidência de leitura de equipe, requisitos revistos e arquitetura|
+|Saídas|Fonte readiness/map/dictionary, mapeamento e carga plan, esquema e pipeline de registro, evidência de reconciliação e recuperação|
+|Controlo automático|Dados de evidência C1 para arquitetura; projeto C2 com architects/QA; alvo C3 povoado e consultas verificadas para operações|
 
-## Where you work
+## Onde você trabalha
 
-| Stage | Your responsibility | Collaborators |
+| Estágio |A sua responsabilidade|Colaboradores|
 |---|---|---|
-| Preparation | Coordinate source population with its authorized owner; verify current data and extraction capability | Source owner, DevOps, QA |
-| 1 - Archaeology | Read DDM/FDT and program declarations, profile data, record uncertainty and actual coverage | Readers, RE, QA |
-| 2 - Specification | Design source-to-target mapping, snapshot/extraction, staging/load, rejects, replay/resume, and recovery | Architects, PO/RE, QA |
-| 3 - Implementation | Create the schema and execute the approved source-derived load with tests and lineage | Developer, QA |
-| 4 - final validation | Recheck reconciliation, real queries, recovery, and acceptance after changes | QA, PO, DevOps, Tech Writer |
+|Preparação|Coordene a população fonte com seu proprietário autorizado; verifique a capacidade de extração e dados atuais|Propriedade do código fonte, DevOps, QA|
+|1 - Arqueologia|Leia DDM/FDT e declarações de programas, dados de perfil, incerteza de registro e cobertura real|Leitores, RE, QA|
+|2 - Especificação|Desenho do mapeamento fonte-alvo, snapshot/extraction, staging/load, rejeita, replay/resume e recuperação|Arquitetos, PO/RE, QA|
+|3 - Execução|Crie o esquema e execute a carga aprovada derivada da fonte com testes e linhagem|Developer, QA|
+|4 - validação final|Verifique novamente a reconciliação, consultas reais, recuperação e aceitação após alterações|QA, PO, DevOps, Tech Writer|
 
-Follow the [data migration guide](../../docs/DATA-MIGRATION.md). All discovery
-documentation is generated during archaeology from actual reading; the kit
-provides blank templates, not the completed field catalogue or target model.
+Siga o <x1/>. Toda a descoberta
+a documentação é gerada durante a arqueologia a partir da leitura real; o kit
+Fornece modelos em branco, não o catálogo de campo completo ou o modelo-alvo.
 
-## Core principles
+## Princípios fundamentais
 
-- Normalize the relational model; do not simply copy Adabas file layouts.
-- Keep money exact and preserve identifiers, leading zeros, encoding, dates/nulls, and meaningful MU/PE occurrences.
-- Keep applied Flyway versions immutable. Schema history and data-run history are different.
-- Make data loads bounded, replay-safe, resumable, and recoverable.
-- Choose indexes and constraints from real queries and reviewed evidence.
-- Bind query parameters and preserve append-only audit history.
-- Never silently repair source inconsistencies or treat rejected beneficiaries as successfully available.
+- Normalizar o modelo relacional; não simplesmente copiar Adabas layouts de arquivos.
+- Mantenha o dinheiro exato e preservar identificadores, zeros principais, codificação, dates/nulls e ocorrências significativas MU/PE.
+- Mantenha-se aplicado Flyway versões imutáveis. Esquema histórico e histórico de execução de dados são diferentes.
+- Tornar as cargas de dados limitadas, replay-safe, reutilizáveis e recuperáveis.
+- Escolha índices e restrições de consultas reais e evidência revisada.
+- Parâmetros de consulta de ligação e preservar o histórico de auditoria somente do anexo.
+- Nunca reparar silenciosamente inconsistências da fonte ou tratar os beneficiários rejeitados como estando disponíveis com sucesso.
 
-## Prompts by stage
+## Perguntas por fase
 
-| Stage / intent | Prompt |
+|Estágio / intenção| Prompt |
 |---|---|
-| Confirm populated source and supported extraction | `/migration phase=readiness` |
-| Read source definitions and declarations with participants | `/map-source-data` with `@archaeologist` |
-| Record unanswered questions with reader-assigned IDs | `/catalog-mysteries` |
-| Design mappings, loads, and recovery with Architecture | `/migration phase=plan feature=<NNN>-<feature>` |
-| Implement reviewed migration tasks | `/migration phase=implement feature=<NNN>-<feature> req=REQ-NNN` |
-| Independently verify executed data movement | `/migration phase=validate feature=<NNN>-<feature>` |
-| Check real beneficiary query paths | `/query-audit query=<actual-file> feature=<NNN>-<feature>` |
+|Confirmar origem povoada e extração suportada|<x1/>|
+|Ler as definições e declarações da fonte com os participantes|<x2/> com <x3/>|
+|Gravar perguntas sem resposta com IDs atribuídos ao leitor|<x1/>|
+|Design mapeamentos, cargas e recuperação com arquitetura|<x1/>|
+|Aplicar tarefas de migração revistas|<x1/>|
+|Verificar independentemente o movimento de dados executado|<x1/>|
+|Verificar os caminhos reais de pesquisa do beneficiário|<x1/>|
 
-The [active kit index](README.md) links each prompt and the database instructions.
-Use Ask for understanding, Plan for decisions, and authorized execution only for
-reviewed work. Never assume an environment or database tool is available.
+O <x1/> liga cada prompt e as instruções do banco de dados.
+Use Ask para compreensão, Plan para decisões e execução autorizada apenas para
+trabalho revisto. Nunca assuma que um ambiente ou ferramenta de banco de dados esteja disponível.
 
-## Evidence and self-check
+## Provas e auto-controle
 
-| Reviewer | What they need from you |
+|Revisão|O que eles precisam de ti|
 |---|---|
-| PO / RE | Authorized population, consultation coverage, and unresolved business/data questions |
-| Architects | Source definitions, observed relationships, quality gaps, and migration constraints |
-| Developer | Reviewed target mappings and pipeline/query contracts, not guessed tables |
-| QA | Source snapshot identity, independent expected results, load accounting, and recovery procedure |
-| DevOps / Tech Writer | Sanitized commands and evidence for the participant's solution, without source administration details or secrets |
+|PO / RE|População autorizada, cobertura de consultas e questões não resolvidas business/data|
+|Arquitetos|Definições de origem, relações observadas, lacunas de qualidade e restrições de migração|
+|Developer|Mapas de alvos revistos e contratos pipeline/query, tabelas não adivinhadas|
+|QA|Identidade de instantâneo fonte, resultados esperados independentes, contabilidade de carga e procedimento de recuperação|
+|DevOps / Tech Writer|Comandos higiénicos e evidências para a solução do participante, sem detalhes ou segredos da administração da fonte|
 
-## When blocked
+## Quando bloqueado
 
-| Blocker | Correct response |
+|Bloqueador|Resposta correcta|
 |---|---|
-| Source empty or unavailable | Record owner and readiness blocker; do not generate substitute PostgreSQL data |
-| No supported extraction contract | Resolve with source owner and architects before migration acceptance |
-| DDM/FDT/program disagreement | Preserve both sources and an unconfirmed question; do not pick a convenient answer |
-| Unknown precision or identifier semantics | Establish format with source/runtime evidence before mapping |
-| Broken data load | Use tested checkpoint/resume or isolated target recovery; never reset Adabas |
-| Unexplained difference or missing beneficiary | Block acceptance and investigate with QA |
+|Fonte vazia ou indisponível|Titular do registro e bloqueador de prontidão; não gerar dados substitutos PostgreSQL|
+|Nenhum contrato de extração suportado|Resolver com o proprietário da fonte e arquitetos antes da aceitação da migração|
+|DDM/FDT/program discordância|Preservar ambas as fontes e uma pergunta não confirmada; não escolher uma resposta conveniente|
+|Precisão desconhecida ou semântica do identificador|Estabelecer formato com evidência source/runtime antes do mapeamento|
+|Carga de dados quebrada|Utilização testada checkpoint/resume ou recuperação de alvo isolada; nunca reiniciar Adabas|
+|Diferença inexplicável ou beneficiário em falta|Aceitação em bloco e investigar com QA|
 
-## Completion checks
+## Controlos de conclusão
 
-- [ ] Readiness and source-reading coverage are evidenced.
-- [ ] Target mappings and treatment of ambiguities were reviewed.
-- [ ] PostgreSQL is populated from the approved source snapshot, not test seeds.
-- [ ] QA independently reconciled keys, fields, relationships, and agreed aggregates.
-- [ ] All authorized beneficiaries can be listed, searched, and consulted.
-- [ ] Replay/resume and target recovery were tested independently of Flyway.
-- [ ] No raw records, sensitive logs, credentials, or fabricated approvals entered Git.
+- [ ] São evidenciadas disponibilidade e cobertura de leitura de fonte.
+- [ ] Mapeamentos-alvo e tratamento de ambiguidades foram revisados.
+- [ ] PostgreSQL é povoada a partir do instantâneo de origem aprovado, não sementes de ensaio.
+- [ ] QA chaves reconciliadas independentemente, campos, relacionamentos e agregados acordados.
+- [ ] Todos os beneficiários autorizados podem ser listados, pesquisados e consultados.
+- [ ] Replay/resume e a recuperação do alvo foram testadas independentemente da Flyway.
+- [ ] Nenhum registro bruto, registros sensíveis, credenciais ou aprovações fabricadas entrou em Git.
 
-## Continue reading
+## Continue lendo
 
-- [Stage 1 guide](../../01-archaeology/GUIDE.md)
-- [Data migration lifecycle](../../docs/DATA-MIGRATION.md)
-- [QA persona](../08-qa-engineer/PERSONA.md)
+- <x1/>
+- <x1/>
+- <x1/>

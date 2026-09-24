@@ -1,38 +1,38 @@
 # Persona — Software Architect
 
-> **Trail:** [Team Kit](../../README.md) › [Personas](../OVERVIEW.md) › [Software Architect](README.md) › **PERSONA**
+> <x5/> <x6/> › <x7/> › <x8/> › <x9/>
 
-**Complete profile for the Software Architect persona.** Defines the mission, responsibilities by stage, tools, self-check, and evaluation rubrics.
+<x1/> Define a missão, responsabilidades por fase, ferramentas, auto-controle e rubricas de avaliação.
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| **Role** | Software Architect |
-| **Role scope** | Software architecture responsibility (covered by the participant) |
-| **Active stages** | Stages 2-3: module boundaries, ADRs, and implementation design review |
-| **Artifacts produced** | Module design, ADRs when needed, implementation plan, architecture review notes |
-| **Artifacts consumed** | Dependency evidence (EA), REQ-IDs (RE) |
-| **Self-check focus** | C2 design and C3 implementation consistency |
+|<x1/>|Software Architect|
+|<x1/>|Responsabilidade de arquitetura de software (coberto pelo participante)|
+|<x1/>|Etapas 2-3: limites do módulo, RAMs e revisão do projeto de implementação|
+|<x1/>|Desenho do módulo, RAMs quando necessário, implementação plan, notas de revisão de arquitetura|
+|<x1/>|Evidências de dependência (EA), REQ-IDs (RE)|
+|<x1/>|Concepção C2 e consistência de implementação C3|
 
-![Stage 2](https://img.shields.io/badge/Stage-2%20Specification-171717?style=flat-square) ![Stage 3](https://img.shields.io/badge/Stage-3%20Implementation-404040?style=flat-square)
-
----
-
-## Concept
-
-The Software Architect defines the system's internal structure: how modules are organized, where bounded contexts (a Domain-Driven Design technique for separating responsibilities) begin and end, and which contracts are exposed between parts of the system.
-
-In the industry, this role is responsible for keeping the system truly modular — meaning that changes in one module do not unexpectedly break others. In a Modular Monolith (a single deployed process with code organized into independent modules), the SA ensures that code modularity is maintained even under deadline pressure.
-
-The SA and DBA determine the smallest necessary module boundaries from reviewed
-behavior, vocabulary, ownership and data access. This decision guides Stage 3.
-
-**Team exercise:** compare the participant's boundary hypotheses with actual source
-dependencies and data ownership. Record the accepted alternative and its
-trade-offs in `plan.md`; the kit supplies no predetermined SIFAP context map.
+<x2/> <x3/>
 
 ---
 
-## Where you work in the SDLC
+## Conceito
+
+O Software Architect define a estrutura interna do sistema: como os módulos são organizados, onde os contextos delimitados (uma técnica de Design Dirigido por Domínio para separar responsabilidades) começam e terminam, e quais contratos são expostos entre partes do sistema.
+
+Na indústria, esse papel é responsável por manter o sistema verdadeiramente modular — o que significa que as mudanças em um módulo não quebram inesperadamente outros. Em um Monolito Modular (um único processo implantado com código organizado em módulos independentes), o SA garante que a modularidade do código seja mantida mesmo sob pressão de prazo.
+
+Os SA e DBA determinam os menores limites necessários do módulo revisto
+comportamento, vocabulário, propriedade e acesso aos dados. Esta decisão orienta a Fase 3.
+
+<x1/> comparar hipóteses de fronteira do participante com fonte real
+dependências e propriedade de dados. Registar a alternativa aceite e o seu
+Trade-offs em <x1/>; o kit não fornece nenhum mapa de contexto predeterminado SIFAP.
+
+---
+
+## Onde você atua no SDLC
 
 ```mermaid
 %%{init: {'theme':'neutral','themeVariables':{'fontFamily':'ui-sans-serif, system-ui, sans-serif','primaryColor':'#F5F5F5','primaryTextColor':'#171717','primaryBorderColor':'#171717','lineColor':'#525252','secondaryColor':'#FFFFFF','tertiaryColor':'#FAFAFA','background':'#FFFFFF'}}}%%
@@ -41,126 +41,126 @@ flowchart LR
     classDef support fill:#FAFAFA,stroke:#A3A3A3,color:#404040
     classDef inactive fill:#FFFFFF,stroke:#E5E5E5,color:#A3A3A3
 
-    E1["Stage 1<br/>Archaeology"]:::support --> E2["Stage 2<br/>Specification"]:::active
-    E2 --> E3["Stage 3<br/>Implementation"]:::active
-    E3 --> E4["Judge<br/>validation"]:::inactive
+    E1["Fase 1 <x0/>Archaeology"]:::support --> E2["Fase 2 <x0/>Specification"]:::active
+    E2 --> E3["Fase 3 <x0/>Implementation"]:::active
+    E3 --> E4["Juiz<x0/>validation"]:::inactive
 ```
 
-- **Receives from:** Enterprise Architect (dependency evidence) and Requirements Engineer (REQ-IDs)
-- **Hands off to:** Implementation responsibility (Implementation) in Stage 2 — clear `plan.md` and first task
+- <x1/> Enterprise Architect (evidência de dependência) e Requirements Engineer (REQ-IDs)
+- <x2/> Responsabilidade de execução (Implementação) na Fase 2 — clara <x3/> e primeira tarefa
 
 ---
 
-## Responsibilities by stage
+## Responsabilidades por estágio
 
-| **Stage** | What you do | Deliverable that depends on you |
+|<x1/>| O que você faz | Entrega que depende de você |
 |---|---|---|
-| **1 · Archaeology** | Identify recurring concepts and dependencies relevant to the slice. | Evidence for discussing context boundaries |
-| **2 · Specification** | Write the feature's technical plan and record a decision only when it blocks the task. | `plan.md` and supporting ADR, if needed |
-| **3 · Implementation** | Establish the initial Spring project structure (packages, layers). Review PRs that cross context boundaries. | `pom.xml` + module layout + review of structural PRs |
-| **Final judge validation** | Validate that Copilot's PR respects the boundaries. Reject merges that break modularity. | Preserved modularity |
+|<x1/>|Identificar conceitos e dependências recorrentes relevantes para a fatia.|Evidências para discutir limites de contexto|
+|<x1/>|Escreva o recurso técnico plan e registre uma decisão somente quando bloquear a tarefa.|<x1/> e suporte de RAM, se necessário|
+|<x1/>|Estabelecer a estrutura inicial do projeto Primavera (pacotes, camadas). Reveja RPs que cruzam os limites do contexto.|<x1/> + layout do módulo + revisão das RP estruturais|
+|<x1/>|Validar que a RP do Copilot respeita os limites. Rejeitar mescla que quebra modularidade.|Modularidade preservada|
 
 ---
 
-## Persona kit
+## Kit da persona
 
-| **Artifact** | Purpose |
+|<x1/>| Finalidade |
 |---|---|
-| `.github/skills/persona-software-architect/SKILL.md` | Role skill that loads automatically for software architecture |
-| `/codemap` — `persona-software-architect-codemap.prompt.md` | Generates or updates the project's `CODEMAP.md` |
-| `/impl-plan` — `persona-software-architect-impl-plan.prompt.md` | Creates the technical implementation plan |
-| `/api-validate` — `persona-software-architect-api-validate.prompt.md` | Validates API contracts against the specification |
-| `.github/instructions/backend.instructions.md` | Java backend conventions |
-| `.github/instructions/frontend.instructions.md` | Next.js frontend conventions |
+|<x1/>|Capacidade de função que carrega automaticamente para arquitetura de software|
+|<x2/> — <x3/>|Gera ou atualiza o <x1/> do projeto|
+|<x2/> — <x3/>|Cria a implementação técnica plan|
+|<x2/> — <x3/>|Valida os contratos API contra a especificação|
+|<x1/>|Java Convenções de infraestrutura|
+|<x1/>|Next.js Convenções de frontend|
 
 ---
 
-## Tools and primitives
+## Ferramentas e primitivas
 
-- **Copilot Plan** to design module skeletons before implementation.
-- **GitHub Spec-Kit** — `/speckit.plan` and `/speckit.analyze` for plans, contracts, and consistency.
-- **Mermaid / C4** for context and component diagrams.
-- Kit skills — prompts for choosing between patterns (hexagonal vs. layered packages).
+- <x1/> para projetar esqueletos de módulos antes da implementação.
+- <x3/> — x4/> e <x5/> para planos, contratos e consistência.
+- <x1/> para diagramas de contexto e componentes.
+- Habilidades de kit — alertas para escolher entre padrões (pacotes hexagonais vs. em camadas).
 
-**Relevant cheat sheets:**
+<x1/>
 
-- [`../../09-cheat-sheets/spec-kit-workflow.md`](../../09-cheat-sheets/spec-kit-workflow.md) — `/speckit.plan`, `/speckit.tasks`, and `/speckit.analyze`.
-- [`../../09-cheat-sheets/model-routing.md`](../../09-cheat-sheets/model-routing.md) — Claude Opus 4.6 for decisions; Sonnet 4.6 for batch editing.
-
----
-
-## Onboarding checklist
-
-- [ ] **Read this profile.** Mission, responsibilities, and self-check.
-- [ ] **Open the kit `README.md`.** Confirm that agents and prompts appear in Copilot Chat.
-- [ ] **Identify your current role focus.** See [00-TEAM-FLOW.md](../../00-TEAM-FLOW.md).
-- [ ] **Align with the EA.** Define where each person's scope begins and ends.
-- [ ] **Note the self-check.** Know who receives `plan.md` and what it must contain.
+- <x4/> — <x5/>, <x6/> e <x7/>.
+- <x1/> — Claude Opus 4.6 para decisões; Sonnet 4.6 para edição em lote.
 
 ---
 
-## How to succeed in this role
+## Checklist de integração
 
-- The package layout reflects bounded contexts, not technical layers.
-- Your ADRs are short, specific, and cite the corresponding feature in `.spec/<NNN>-<feature>/` when relevant.
-- The Modular Monolith remains a monolith in deployment but modular in code.
-- You redraw boundaries when there is evidence, instead of "asking forgiveness later."
+- [ ] Missão, responsabilidades e auto-controle.
+- [ ] <x1/> Confirme que agentes e prompts aparecem no chat do Copilot.
+- [ ] <x2/> Ver <x3/>.
+- [ ] <x1/> Defina onde o escopo de cada pessoa começa e termina.
+- [ ] <x2/> Saiba quem recebe <x3/> e o que deve conter.
 
 ---
 
-## Common mistakes and how to avoid them
+## Como ter sucesso neste papel
 
-| **Symptom** | Cause | Correction |
+- O layout do pacote reflete contextos limitados, não camadas técnicas.
+- As RAMs são curtas, específicas e citam a característica correspondente em <x1/> quando relevante.
+- O Monolito Modular permanece um monolito em deploy, mas modular em código.
+- Você redesenha limites quando há provas, em vez de "pedir perdão mais tarde".
+
+---
+
+## Erros comuns e como evitá-los
+
+|<x1/>| Causa | Correção |
 |---|---|---|
-| Code organized by layers (controller/service/repository) | SA did not explicitly define bounded contexts | Create packages by business context, not technical type |
-| Generic ADR with no value | "We will use Spring Boot" is not an architectural decision | An SA ADR answers "how do we organize X?" or "which pattern do we use here?" |
-| Two contexts import each other's classes | Context boundary was not respected | Expose only public interfaces; never use direct imports between contexts |
-| Strict hexagonal architecture where it adds no value | Pattern applied by habit | Choose the pattern that best serves the context; record the choice |
+|Código organizado por camadas (controller/service/repository)|SA não definiu explicitamente contextos delimitados|Criar pacotes pelo contexto de negócios, não pelo tipo técnico|
+|ADR genérico sem valor|"Vamos usar Spring Boot" não é uma decisão arquitetônica|Uma ADR SA responde "como organizamos X?" ou "que padrão usamos aqui?"|
+|Dois contextos importam as aulas um do outro|O limite de contexto não foi respeitado|Expor apenas interfaces públicas; nunca usar importações diretas entre contextos|
+|Arquitetura hexagonal rígida onde não adiciona nenhum valor|Padrão aplicado pelo hábito|Escolha o padrão que melhor serve ao contexto; grave a escolha|
 
 ---
 
-## 3 prompt examples
+## 3 exemplos de prompts
 
-1. **(Chat)** "Based on these EARS requirements, propose context-boundary hypotheses. For each hypothesis, list evidence, entities, and dependencies."
-2. **(Plan)** "In the Spring Boot project, plan the package structure for a new 'notification' bounded context following the existing pattern (domain/application/infrastructure)."
-3. **(Chat)** "Review this PR and identify imports that cross bounded-context boundaries. For each violation, suggest how to isolate it."
+1. <x1/> "Com base nestes requisitos EARS, propor hipóteses de contexto-fronteiras. Para cada hipótese, listar evidências, entidades e dependências."
+2. <x1/> "No projeto Spring Boot, plan a estrutura do pacote para um novo contexto limitado de 'notificação' seguindo o padrão existente (domain/application/infrastructure)."
+3. <x1/> "Reveja esta RP e identifique as importações que cruzam limites de contexto limitado. Por cada violação, sugira como isolá-la."
 
 ---
 
-## If you get stuck
+## Se você ficar travado
 
-| **Situation** | What to do |
+|<x1/>| O que fazer |
 |---|---|
-| Bounded contexts are unclear | Start with evidence of cohesion, coupling, and frequency of change; do not assume boundaries |
-| Boundary decision is blocked | Return to legacy evidence and record the question; do not create a diagram as a substitute for confirmation |
-| Team organized by layers instead of contexts | Do not refactor now — document it in the ADR and fix it if time remains |
-| Unsure whether something is domain or application | "If it is a pure business rule, it is domain. If it orchestrates, it is application." |
+|Contextos delimitados não são claros|Começar com evidência de coesão, acoplamento e frequência de mudança; não assumir limites|
+|A decisão de limite está bloqueada|Retornar à evidência do legado e registrar a pergunta; não crie um diagrama como substituto para confirmação|
+|Equipe organizada por camadas em vez de contextos|Não refatorar agora — documentá-lo no ADR e corrigi-lo se o tempo permanecer|
+|Não sabe se algo é domínio ou aplicativo|"Se é uma regra de negócio pura, é domínio. Se orquestra, é aplicativo."|
 
 ---
 
-## Dependencies
+## Dependências
 
-| **Persona** | Relationship | Artifact |
+|<x1/>| Relação | Artefato |
 |---|---|---|
-| Enterprise Architect | You depend on them | Dependency evidence for the technical plan |
-| Developer | Depends on you | Package structure to implement |
-| Technical Lead | Depends on you | Module patterns for enforcement |
-| DBA | Depends on you | Context boundaries for the data model |
+|Enterprise Architect|Você depende deles.|Provas de dependência para a técnica plan|
+|Developer|Depende de ti.|Estrutura do pacote a implementar|
+|Technical Lead|Depende de ti.|Modelos de módulos para aplicativo|
+|DBA|Depende de ti.|Limites de contexto para o modelo de dados|
 
 ---
 
-## How you are evaluated
+## Como você é avaliado
 
-- **Rubric A2 (Specification):** technical plan coherent with requirements and evidence.
-- **Rubric A3 (Technical Integrity):** bounded contexts respected in code.
-- Criterion: "No import crosses a context boundary without justification."
+- <x1/> técnico plan coerente com requisitos e provas.
+- <x1/> contextos limitados respeitados em código.
+- Critério: "Nenhuma importação cruza um limite de contexto sem justificação."
 
 ---
 
-### Continue reading
+### Continue lendo
 
-| Previous | Next |
+| Anterior | Próximo |
 |---|---|
-| [Enterprise Architect](../03-enterprise-architect/PERSONA.md)<br/><sub>Architecture responsibility · C4 + structural ADRs.</sub> | [Technical Lead](../05-technical-lead/PERSONA.md)<br/><sub>Implementation responsibility · standards and review.</sub> |
+|<x1/><x2/> <x3/>Architecture responsabilidade · C4 + RAMs estruturais. <x4/>|<x1/><x2/> <x3/>Implementation responsabilidade · normas e revisão.<x4/>|
 
-<sub>[Back to the kit index](../../README.md)</sub>
+<x1/><x2/><x3/>

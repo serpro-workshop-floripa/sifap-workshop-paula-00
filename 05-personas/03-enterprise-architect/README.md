@@ -1,82 +1,82 @@
-# Enterprise Architect — Copilot Kit
+# Enterprise Architect — Kit de copiloto
 
-> **Trail:** [Team Kit](../../README.md) › [Personas](../OVERVIEW.md) › **Enterprise Architect**
+> <x4/> <x5/> › <x6/> › <x7/>
 
-**Inventory of the Copilot kit for the Enterprise Architect persona.** Lists the active artifacts, where they live under `.github/`, and best practices specific to this role.
+<x2/> Lista os artefatos ativos, onde vivem sob <x3/>, e as melhores práticas específicas para esse papel.
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| **Target audience** | Person acting as Enterprise Architect in the workshop |
-| **Role scope** | Enterprise architecture responsibility (covered by the participant) |
-| **SDLC phase** | Stages 1-3: context, integration constraints, and scope decisions |
-| **Prerequisites** | [PERSONA.md](PERSONA.md) read |
-| **Expected outcome** | Kit validated, prompts accessible in Copilot Chat |
+|<x1/>|Pessoa agindo como Enterprise Architect na workshop|
+|<x1/>|Responsabilidade pela arquitectura empresarial (coberto pelo participante)|
+|<x1/>|Etapas 1-3: contexto, restrições de integração e decisões de âmbito|
+|<x1/>|<x1/> lido|
+|<x1/>|Kit validado, alertas acessíveis em Copilot Chat|
 
-> [!IMPORTANT]
-> Read [PERSONA.md](PERSONA.md) before continuing. The profile explains the mission, self-check, and evaluation rubrics.
-
----
-
-## Concept
-
-The Enterprise Architect views the system within its ecosystem. In SIFAP (Payment Inspection and Administration System), this means mapping external dependencies — SIAFI, Banco do Brasil, INCRA, MDA — and ensuring that the target architecture respects existing contracts. The EA knows where the contracts are, which are fragile, and which can be changed without triggering a chain of unforeseen effects.
+> [!Importante]
+> Leia <x1/> antes de continuar. O perfil explica a missão, auto-check, e rubrics avaliação.
 
 ---
 
-## Persona kit
+## Conceito
 
-| **Artifact** | Type | Purpose |
+O Enterprise Architect vê o sistema dentro do seu ecossistema. Em SIFAP (Sistema de Inspeção e Administração de Pagamentos), isto significa mapear dependências externas — SIAFI, Banco do Brasil, INCRA, MDA — e garantir que a arquitetura alvo respeite os contratos existentes. O EA sabe onde estão os contratos, que são frágeis, e que podem ser alterados sem desencadear uma cadeia de efeitos imprevistos.
+
+---
+
+## Kit da persona
+
+|<x1/>| Tipo | Finalidade |
 |---|---|---|
-| `PERSONA.md` | Profile | Responsibilities, self-check, prompts, and rubric |
-| `.github/skills/persona-enterprise-architect/SKILL.md` | Skill | Architecture and security |
-| `.github/prompts/persona-enterprise-architect-create-constitution.prompt.md` | Prompt | `/create-constitution` |
-| `.github/prompts/persona-enterprise-architect-create-adr.prompt.md` | Prompt | `/create-adr` |
-| `.github/prompts/persona-enterprise-architect-architecture-review.prompt.md` | Prompt | `/architecture-review` |
-| `.github/instructions/security.instructions.md` | Instructions | Security conventions |
-| `.github/instructions/infrastructure.instructions.md` | Instructions | IaC conventions |
-| [Primitive standard](../../.github/PRIMITIVE-STANDARD.md) | Governance | Review active rules and actual enforcement; no persona hook is automatically installed |
+|<x1/>| Perfil |Responsabilidades, auto-controle, prompts e rubric|
+|<x1/>| Skill |Arquitetura e segurança|
+|<x1/>| Prompt |<x1/>|
+|<x1/>| Prompt |<x1/>|
+|<x1/>| Prompt |<x1/>|
+|<x1/>| Instruções |Convenções de segurança|
+|<x1/>| Instruções |Convenções IaC|
+|<x1/>|Governação|Reveja as regras ativas e a execução real; nenhum gancho de persona é instalado automaticamente|
 
 ---
 
-## Where the artifacts live
+## Onde ficam os artefatos
 
-The active artifacts are consolidated under the root `.github/` directory:
+Os artefatos ativos estão consolidados sob o diretório raiz <x1/>:
 
-| **Type** | Path |
+|<x1/>| Caminho |
 |---|---|
-| Agents | `.github/agents/` |
-| Prompts | `.github/prompts/persona-*.prompt.md` |
-| Skills | `.github/skills/` |
-| Instructions | `.github/instructions/` |
+| Agentes |<x1/>|
+| Prompts |<x1/>|
+| Skills |<x1/>|
+| Instruções |<x1/>|
 
-Use this directory as the reference. Active files live only under the root `.github/` directory — edit them there when maintenance is needed.
+Use esta pasta como referência. Arquivos ativos vivem apenas sob o diretório root <x1/> — editá-los lá quando a manutenção é necessária.
 
-Optional integrations follow the [persona setup guidance](../README.md#how-to-activate-your-persona); verify real configured tools and permissions.
-
----
-
-## Best practices
-
-- Use C4 L1/L2 for the executive view and L3/L4 for implementation.
-- Every architectural decision needs an ADR with context, decision, and consequences.
-- Prefer architecture that is predictable and operable in production.
-- Use the Azure Well-Architected pillars as review gates, not as a late checklist.
+As integrações opcionais seguem o <x1/>; verifique as ferramentas e permissões configuradas reais.
 
 ---
 
-## References
+## Boas práticas
 
-- [C4 Model — Simon Brown](https://c4model.com/)
-- [Microsoft Azure Well-Architected Framework](https://learn.microsoft.com/azure/well-architected/)
-- [Architecture Decision Records](https://adr.github.io/)
-- [Azure Architecture Center](https://learn.microsoft.com/azure/architecture/)
+- Use C4 L1/L2 para a visão executiva e L3/L4 para implementação.
+- Cada decisão arquitectónica necessita de um ADR com contexto, decisão e consequências.
+- Prefere a arquitetura que é previsível e operable na produção.
+- Utilizar o Azure Pilares bem arquitetados como portões de revisão, não como uma lista de verificação tardia.
 
 ---
 
-### Continue reading
+## Referências
 
-| Previous | Next |
+- <x1/>
+- <x1/>
+- <x1/>
+- <x1/>
+
+---
+
+### Continue lendo
+
+| Anterior | Próximo |
 |---|---|
-| [OVERVIEW](../OVERVIEW.md)<br/><sub>Table of the 10 personas.</sub> | [PERSONA.md](PERSONA.md)<br/><sub>Profile for this persona.</sub> |
+|<x1/><x2/><x3/>Table das 10 personas.<x4/>|<x1/><x2/><x3/>Profile para esta persona. <x4/>|
 
-<sub>[Back to the kit index](../../README.md)</sub>
+<x1/><x2/><x3/>

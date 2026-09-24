@@ -1,76 +1,76 @@
-# Overview of the 10 Personas
+# Visão geral das 10 personas
 
-> **Track:** [Team Kit](../README.md) › [Personas](README.md) › **OVERVIEW**
+> <x4/> <x5/> › <x6/> › <x7/>
 
-**One-page comparison of the 10 role personas.** In the individual challenge, one participant covers every role as a responsibility checklist while switching stage agents.
+<x1/> No desafio individual, um participante cobre cada papel como checklist de responsabilidade enquanto troca de agentes de palco.
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| **Target audience** | Individual workshop participants |
-| **Prerequisites** | None |
-| **Estimated time** | 5 min |
-| **Expected outcome** | You understand which responsibility to apply in each stage |
+|<x1/>|Participantes individuais das workshops|
+|<x1/>|Nenhum|
+|<x1/>|5 min|
+|<x1/>|Você entende que responsabilidade aplicar em cada etapa|
 
-> [!IMPORTANT]
-> The challenge is individual. You cover all 10 roles yourself; roles load as skills automatically. Select only the current stage agent (`@archaeologist`, `@architect`, `@builder`) and call on `@dba` for data discovery, migration design, and reconciliation.
+> [!Importante]
+> O desafio é individual. Você cobre todos os 10 papéis você mesmo; papéis carregam como habilidades automaticamente. Selecione apenas o estágio atual agent (<x4/>, <x5/>, <x6/>) e consulte <x7/> para descoberta de dados, projeto de migração e reconciliação.
 
 ---
 
-## The 10 role responsibilities
+## As 10 responsabilidades de papel
 
-![Distribution of persona responsibilities: vision, architecture, implementation, quality, and operations](../assets/personas-team.svg)
+<x1/>
 
-| **#** | Persona | Challenge focus | Most active stage(s) | Supports | Default when stuck |
+|<x1/>| Persona | Foco no desafio | Estágio(s) mais ativo(s) | Apoia | Padrão quando houver bloqueio |
 |---|---|---|---|---|---|
-| 01 | [Product Owner](01-product-owner/PERSONA.md) | Scope, value, and migrated-data acceptance | 1, 2, final validation | 3 | One thin feature; preserve data and verification gates |
-| 02 | [Requirements Engineer](02-requirements-engineer/PERSONA.md) | EARS requirements and traceability | 1, 2 | 3 | Trace every requirement to legacy evidence |
-| 03 | [Enterprise Architect](03-enterprise-architect/PERSONA.md) | External dependencies and scope decisions | 1, 2 | 3 | Record alternatives and assumptions explicitly |
-| 04 | [Software Architect](04-software-architect/PERSONA.md) | Module boundaries, technical plan, ADRs | 2 | 3 | Validate design assumptions against evidence |
-| 05 | [Technical Lead](05-technical-lead/PERSONA.md) | Standards, sequencing, and self-review | 3 | 1, 2 | Implement the prioritized EARS requirement |
-| 06 | [Developer](06-developer/PERSONA.md) | Java/TypeScript code, tests, and integration | 3 | 2 | Complete one end-to-end capability with tests |
-| 07 | [DBA](07-dba/PERSONA.md) | Source readiness, migration, reconciliation, recovery | 1, 2, 3 | All stages | Reconcile source records; never replace migration with a seed |
-| 08 | [QA Engineer](08-qa-engineer/PERSONA.md) | Tests, independent data checks, quality gates | 2, 3 | 1 | Happy path + error path for critical REQ-IDs |
-| 09 | [DevOps Engineer](09-devops-engineer/PERSONA.md) | Local execution and CI green for submission | 3 | 1, 2 | Fix the failing required check before adding scope |
-| 10 | [Tech Writer](10-tech-writer/PERSONA.md) | Glossary, README clarity, ADR/spec readability | 1, 2, 3 | All stages | Record the decision now, with evidence |
+|01|<x1/>|Âmbito, valor e aceitação de dados migrados|1, 2, validação final|3|Uma característica fina; preservar dados e portões de verificação|
+|02|<x1/>|Requisitos EARS e rastreabilidade|1, 2|3|Rastreie todos os requisitos para evidências legadas|
+|03|<x1/>|Dependências externas e decisões de âmbito|1, 2|3|Gravar explicitamente alternativas e pressupostos|
+|04|<x1/>|Limites do módulo, técnicas plan, RAMs|2|3|Validar os pressupostos de concepção contra os elementos de prova|
+|05|<x1/>|Padrões, sequenciamento e auto-revisão|3|1, 2|Implementar a exigência priorizada EARS|
+|06|<x1/>|Java/TypeScript código, testes e integração|3|2|Complete uma capacidade de ponta a ponta com testes|
+|07|<x1/>|Preparação da fonte, migração, reconciliação, recuperação|1, 2, 3|Todos os estágios|Reconcile os registros de origem; nunca substitua a migração por uma semente|
+|08|<x1/>|Testes, verificações independentes de dados, portões de qualidade|2, 3|1|Caminho feliz + caminho de erro para crítico REQ-IDs|
+|09|<x1/>|Execução local e CI verde para submissão|3|1, 2|Corrigir a verificação necessária antes de adicionar escopo|
+|10|<x1/>|Glossário, clareza README, ADR/spec legibilidade|1, 2, 3|Todos os estágios|Registre a decisão agora, com provas|
 
 ---
 
-## Role-by-stage checklist
+## Checklist de responsabilidades por estágio
 
-Use this as a one-person checklist. Budgets are summarized in [`00-TEAM-FLOW.md`](../00-TEAM-FLOW.md), the source of truth for the 14:00–17:40 challenge schedule.
+Use isto como uma lista de uma pessoa. Os orçamentos estão resumidos em <x1/>, a fonte da verdade para o calendário de desafios 14:00-17:40.
 
-| Stage | Agent | Responsibility checklist |
+| Estágio |Agent| Checklist de responsabilidades |
 |---|---|---|
-| **1 · Archaeology** | `@archaeologist` + `@dba` | Read the legacy sources for the target capability; capture rules, glossary terms, open questions, data fields, and source-population evidence. |
-| **C1 self-check** | — | Verify the discovery artifacts have cited legacy evidence and enough data facts to support requirements. |
-| **2 · Specification** | `@architect` + `@dba` | Convert evidence into EARS requirements with REQ-IDs and `source_legacy:`, define scope, architecture, data migration design, tests, and tasks. |
-| **C2 self-check** | — | Verify every formal requirement is traceable and implementation tasks are small enough for Stage 3. |
-| **3 · Implementation and data migration** | `@builder` + `@dba` | Implement the thin slice, migrate all agreed beneficiary data, reconcile source-to-target counts, run tests, and keep CI green. |
-| **C3 self-check / submission** | — | Verify CI, tests, traceability, data reconciliation, and listing/search/detail coverage before opening the PR to `develop`. |
+|<x1/>|<x2/> + <x3/>|Leia as fontes legadas para a capacidade de destino; capture regras, termos glossários, perguntas abertas, campos de dados e evidências de população-fonte.|
+|<x1/>|—|Verificar os artefatos de descoberta citaram evidências de legado e dados suficientes para suportar requisitos.|
+|<x1/>|<x2/> + <x3/>|Converta evidências em requisitos EARS com REQ-IDs e <x1/>, defina escopo, arquitetura, projeto de migração de dados, testes e tarefas.|
+|<x1/>|—|Verifique se cada requisito formal é rastreável e as tarefas de implementação são pequenas o suficiente para a Etapa 3.|
+|<x1/>|<x2/> + <x3/>|Implementar a fatia fina, migrar todos os dados de beneficiários acordados, conciliar as contagens de código-alvo, executar testes e manter CI verde.|
+|<x1/>|—|Verificar CI, testes, rastreabilidade, reconciliação de dados e cobertura listing/search/detail antes de abrir a RP para <x1/>.|
 
 ---
 
-## Emergency defaults (summary)
+## Padrões de emergência (resumo)
 
-Each `PERSONA.md` details a "When stuck" section. Here is one line per role:
+Cada <x1/> detalha uma seção "Quando preso". Aqui está uma linha por papel:
 
-- **PO:** Choose one thin capability and protect the migrated population and verification standard.
-- **RE:** Trace each EARS requirement to evidence and record gaps for clarification.
-- **EA:** Use an ADR only for real choices; record alternatives and consequences.
-- **SA:** Keep module boundaries simple and validate assumptions before coding.
-- **TL:** Stop refactoring without tests; focus on the submission gate.
-- **Dev:** One complete endpoint and test path is better than several broken partials.
-- **DBA:** Follow the [data lifecycle](../docs/DATA-MIGRATION.md); reconcile source records and rerun behavior.
-- **QA:** Verify one happy path and one error path for each critical REQ-ID.
-- **DevOps:** Keep the required CI jobs green for the submission PR.
-- **TW:** Ask yourself: "What decision or term did I just use that is not written down yet?"
+- <x1/> Escolha uma capacidade fina e proteja a população migrada e o padrão de verificação.
+- <x1/> Rastreie cada requisito EARS de evidência e registre lacunas para esclarecimento.
+- <x1/> Use uma RAM apenas para escolhas reais; registre alternativas e consequências.
+- <x1/> Mantenha os limites do módulo simples e valide suposições antes da codificação.
+- <x1/> Pare de refatorar sem testes; foque na porta de submissão.
+- <x1/> Um endpoint completo e o caminho do teste são melhores do que várias parciais quebradas.
+- <x2/> Siga o <x3/>; concilie os registros de origem e o comportamento de repetição.
+- Verificar um caminho feliz e um caminho de erro para cada REQ-ID crítico.
+- <x1/> Mantenha os empregos obrigatórios CI verdes para a RP de submissão.
+- <x1/> Ask você mesmo: "Que decisão ou termo acabei de usar que ainda não está escrito?"
 
 ---
 
-### Continue reading
+### Continue lendo
 
-| Previous | Next |
+| Anterior | Próximo |
 |---|---|
-| [SETUP](../00-SETUP.md)<br/><sub>Pre-work setup before 14:00.</sub> | [Stage 1 — Archaeology](../01-archaeology/GUIDE.md)<br/><sub>Read the legacy system and catalog business rules.</sub> |
+|<x1/><x2/><x3/>Pre-work configuração antes das 14:00.<x4/>|<x1/><x2/><x3/>Read o sistema legado e regras de negócios de catálogo.<x4/>|
 
-<sub>[Back to the kit index](../README.md)</sub>
+<x1/><x2/><x3/>

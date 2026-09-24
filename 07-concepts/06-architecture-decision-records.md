@@ -28,7 +28,7 @@ Um ADR formaliza o raciocínio em um arquivo Markdown guardado no repositório, 
 
 ## Por que isso importa no SIFAP
 
-O SIFAP tem 29 anos. O SIFAP 2.0 precisa durar pelo menos o mesmo tempo. Decisões tomadas durante a imersão — como representar grupos periódicos (PE) do Adabas, estruturar bounded contexts ou versionar a API — precisam ser registradas para que quem mantiver o sistema no futuro entenda por que ele foi construído assim.
+O SIFAP representa aproximadamente 30 anos de história. Registre decisões revisadas de mapeamento, módulos e contratos para que futuras pessoas mantenedoras entendam suas evidências e seus trade-offs. A imersão não estabelece um requisito de vida útil de 30 anos para a substituição.
 
 Sem ADRs, o custo de manutenção aumenta a cada troca de time.
 
@@ -108,46 +108,19 @@ Se duas ou mais respostas forem sim, escreva um ADR.
 
 ---
 
-## Exemplo no SIFAP
+## Aplique o método ao SIFAP
 
-O texto a seguir é um ADR realista que o time poderia escrever no Estágio 2 para uma decisão de mapeamento de dados:
+Architects e DBA investigam as definições DDM/FDT e os registros de origem reais antes de escolher uma representação. Use o [template de ADR em branco](../docs/adr/0000-template.md) e o [guia de migração de dados](../docs/DATA-MIGRATION.md).
 
-```markdown
-# ADR-003: Representação de grupos periódicos (PE) do Adabas no modelo relacional
+| Pergunta a investigar | Evidência fornecida pela equipe |
+|---|---|
+| Qual estrutura de origem exige uma decisão de mapeamento? | Path real da fonte, campos e ocorrências observadas |
+| Quais relacionamentos e ordenação precisam sobreviver? | Padrões de acesso dos programas e registros medidos na origem |
+| Quais opções de destino atendem às necessidades de consulta? | Alternativas, restrições e testes |
+| Como a equipe detectará dados perdidos ou alterados? | Critérios de reconciliação, reexecução e recuperação |
+| Quem aprovou a decisão? | Nomes das pessoas revisoras, data e status real |
 
-**Status:** Accepted
-**Data:** 2026-08-12
-**Autores:** Software Architect, DBA
-
-## Contexto
-
-O DDM HISTORICO_PAYMENTS.ddm define um grupo periódico (PE) com até
-12 ocorrências mensais dentro de cada registro de beneficiário.
-O modelo relacional do PostgreSQL 16 não suporta grupos periódicos nativamente.
-Precisamos decidir como preservar as ocorrências e a ordem delas no modelo moderno.
-
-## Decisão
-
-Mapear cada ocorrência do PE para uma linha na tabela historico_pagamentos,
-com chave estrangeira para beneficiarios e uma coluna competencia (DATE)
-para preservar a ordem cronológica.
-
-## Alternativas consideradas
-
-- **Coluna JSONB:** armazenar as 12 ocorrências como um array JSON.
-  Rejeitada: dificulta consultar e indexar por período e viola o princípio
-  de não reproduzir a complexidade do legado no novo modelo.
-- **Tabela filha (escolhida):** cada ocorrência vira uma linha com FK.
-  Aceita: consultas simples, indexável e compatível com JPA.
-
-## Consequências
-
-- Positiva: consultas eficientes por período; mapeamento JPA natural.
-- Negativa: registros de beneficiário com histórico completo geram 12 linhas por
-  beneficiário — uma contagem de linhas maior que no Adabas.
-- Observação: se o volume passar de 10 milhões de linhas, avaliar particionamento
-  por ano em um ADR futuro.
-```
+Não copie uma decisão aceita de uma solução de referência nem infira contagens de ocorrências de um exemplo ilustrativo. A própria equipe conclui a decisão.
 
 ---
 
@@ -191,8 +164,9 @@ Quais são os três argumentos mais fortes para REJEITAR esta decisão?"
 
 # Resolver um impasse do time
 /speckit.clarify
-"Não há consenso entre um Modular Monolith e microsserviços.
-Liste prós e contras objetivos de cada um no contexto do SIFAP."
+"Dentro do Modular Monolith obrigatório, compare as alternativas da equipe
+para este limite ainda não resolvido de módulo ou propriedade de dados.
+Mantenha a decisão pendente até que as pessoas revisoras responsáveis concordem."
 ```
 
 ---

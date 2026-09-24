@@ -26,13 +26,13 @@ O EARS resolve esse problema com seis padrões de sintaxe. Cada padrão correspo
 
 ## Por que isso importa no SIFAP
 
-O SIFAP tem 29 anos de regras implícitas distribuídas em 15 membros Natural atribuídos, 12 programas `.NSP` e três subprogramas `.NSN`, além de quatro DDMs. Sem EARS, cada pessoa do time interpreta as regras de um jeito. Com EARS, a regra extraída da linha 142 do `CALCDSCT.NSP` vira uma única declaração, com teste associado e rastreabilidade até o código legado que a originou.
+A leitura atribuída do SIFAP cobre 15 membros Natural e quatro DDMs, com fontes de apoio no acervo local. Sem EARS, cada pessoa pode interpretar as regras de um jeito. A equipe vincula cada regra confirmada à sua fonte e aos testes reais, em vez de copiar um exemplo pronto.
 
 ---
 
 ## Estrutura básica de um requisito
 
-Todo requisito da imersão usa este formato YAML:
+Use esta estrutura não preenchida para um requisito no `spec.md` da funcionalidade:
 
 ```yaml
 REQ-NNN:
@@ -49,7 +49,7 @@ REQ-NNN:
 
 ---
 
-## Os 5 padrões básicos EARS
+## Os padrões EARS
 
 ### Padrão 1 — Ubiquitous (sempre se aplica)
 
@@ -61,17 +61,7 @@ REQ-NNN:
 O sistema deve <ação>.
 ```
 
-**Exemplo no SIFAP:**
-
-```yaml
-REQ-001:
-  pattern: ubiquitous
-  text: "O sistema deve registrar a data e a hora de toda alteração em registros de beneficiários."
-  source_legacy: 01-archaeology/legacy-sifap/natural-programs/CADBENEF.NSP#L45-L52
-  acceptance:
-    - "Todo registro de beneficiário alterado contém um timestamp de modificação"
-    - "O timestamp usa o fuso horário UTC"
-```
+**Exercício da equipe:** identifique uma regra sempre aplicável na fonte e registre as evidências e os critérios de aceitação na estrutura não preenchida acima.
 
 **Exemplo ruim:**
 
@@ -93,17 +83,7 @@ Problema: "auditoria completa" não é testável.
 Quando <evento>, o sistema deve <ação>.
 ```
 
-**Exemplo no SIFAP:**
-
-```yaml
-REQ-042:
-  pattern: event-driven
-  text: "Quando um pagamento de benefício é processado, o sistema deve calcular o valor líquido descontando as contribuições vigentes."
-  source_legacy: 01-archaeology/legacy-sifap/natural-programs/CALCDSCT.NSP#L120-L198
-  acceptance:
-    - "Dado um beneficiário com valor bruto de R$ 1.000,00 e alíquota de contribuição de 11%, o valor líquido calculado é R$ 890,00"
-    - "O resultado é gravado na tabela pagamentos com status CALCULATED"
-```
+**Exercício da equipe:** identifique um evento de origem e sua resposta. Derive os valores esperados de evidências confirmadas; não invente alíquota, status nem tabela de destino.
 
 **Exemplo ruim:**
 
@@ -125,17 +105,7 @@ Problema: "processe" não descreve a ação esperada.
 Enquanto <condição de estado>, o sistema deve <ação>.
 ```
 
-**Exemplo no SIFAP:**
-
-```yaml
-REQ-078:
-  pattern: state-driven
-  text: "Enquanto o beneficiário estiver com status SUSPENDED, o sistema deve bloquear o processamento de novos pagamentos para esse beneficiário."
-  source_legacy: 01-archaeology/legacy-sifap/natural-programs/VALELEG.NSN#L33-L41
-  acceptance:
-    - "A tentativa de processar um pagamento para um beneficiário SUSPENDED retorna o erro BENEFICIARY_SUSPENSO"
-    - "Nenhum registro de pagamento é criado para um beneficiário SUSPENDED"
-```
+**Exercício da equipe:** encontre uma condição de estado observada e estabeleça o que muda enquanto ela vigora. Cite o programa real e teste os dois lados da condição.
 
 ---
 
@@ -149,24 +119,13 @@ REQ-078:
 Onde <funcionalidade opcional estiver presente>, o sistema deve <ação>.
 ```
 
-**Exemplo no SIFAP:**
-
-```yaml
-REQ-105:
-  pattern: optional
-  text: "Onde a pessoa operadora seleciona a exportação em CSV, o sistema deve gerar o arquivo com cabeçalho na primeira linha e codificação UTF-8."
-  source_legacy: 01-archaeology/legacy-sifap/natural-programs/BATCHREL.NSP#L201-L215
-  acceptance:
-    - "O arquivo gerado tem extensão .csv"
-    - "A primeira linha contém os nomes das colunas"
-    - "O conteúdo usa codificação UTF-8"
-```
+**Exercício da equipe:** estabeleça se uma opção existe na fonte. Se a equipe propuser uma capacidade nova, marque-a como `[GREENFIELD]` com uma justificativa, em vez de afirmar um equivalente no legado.
 
 ---
 
 ### Padrão 5 — Unwanted behavior (o que não pode acontecer)
 
-**Quando usar:** proibições explícitas, incluindo segurança, conformidade ou invariantes do sistema.
+**Quando usar:** o sistema precisa responder a uma condição indesejada ou falha.
 
 **Template:**
 
@@ -174,17 +133,7 @@ REQ-105:
 Se <condição indesejada>, então o sistema deve <resposta de mitigação>.
 ```
 
-**Exemplo no SIFAP:**
-
-```yaml
-REQ-200:
-  pattern: unwanted
-  text: "O sistema não deve expor o CPF completo do beneficiário nas respostas da API — deve exibir apenas os quatro últimos dígitos."
-  source_legacy: 01-archaeology/legacy-sifap/natural-programs/CADBENEF.NSP#L88-L90
-  acceptance:
-    - "O endpoint GET /api/v1/beneficiarios/{id} retorna o CPF no formato ***.***.***-XX"
-    - "Os logs da aplicação nunca registram o CPF"
-```
+**Exercício da equipe:** diferencie o tratamento de erro observado de um requisito de segurança proposto. Registre a evidência real ou a justificativa greenfield; não atribua um comportamento moderno de API a uma linha de fonte não relacionada.
 
 ---
 
@@ -198,17 +147,7 @@ O sexto padrão EARS combina condições de estado, evento e opção em um únic
 Enquanto <estado>, quando <evento>, onde <opção>, o sistema deve <ação>.
 ```
 
-**Exemplo no SIFAP:**
-
-```yaml
-REQ-250:
-  pattern: complex
-  text: "Enquanto o beneficiário estiver com status ACTIVE, quando um novo pagamento é processado, onde o método selecionado é crédito em conta, o sistema deve registrar o número da conta bancária no histórico de pagamentos."
-  source_legacy: 01-archaeology/legacy-sifap/natural-programs/VALELEG.NSN#L55-L72
-  acceptance:
-    - "Um pagamento de beneficiário ACTIVE com crédito em conta registra a conta bancária no histórico"
-    - "Um pagamento para um beneficiário SUSPENDED não dispara esse fluxo"
-```
+**Exercício da equipe:** combine somente condições sustentadas pelos achados da equipe. Verifique se requisitos separados seriam mais claros antes de escolher este padrão.
 
 > [!TIP]
 > Use o padrão Complex com parcimônia. Se um requisito combina no máximo duas condições sem perder clareza, o Complex pode ser adequado. Se ficar difícil de ler, divida em dois REQ-IDs.
@@ -244,12 +183,12 @@ Antes de considerar um requisito EARS concluído, pergunte:
 
 Se a resposta for vaga ou inexistente, o requisito está incompleto.
 
-| Requisito vago | Requisito testável |
+| Requisito vago | Pergunta necessária antes de escrevê-lo |
 |---|---|
-| O sistema deve ser seguro | O sistema não deve expor o CPF completo nas respostas da API |
-| Processar os dados | Quando um pagamento é processado, calcular o valor líquido conforme a fórmula X |
-| Auditoria completa | Quando um beneficiário é alterado, registrar a pessoa operadora, a data, os valores anteriores e os novos valores |
-| Funcionar bem | Quando uma requisição é recebida, responder em até dois segundos sob carga normal |
+| O sistema deve ser seguro | Qual fronteira, ameaça e resposta observável o requisito cobre? |
+| Processar os dados | Qual entrada, transformação e resultado esperado sustentado pela fonte se aplicam? |
+| Auditoria completa | Quais eventos e campos são obrigatórios, e onde isso está estabelecido? |
+| Funcionar bem | Qual limite mensurável e carga de trabalho foram aprovados pelas partes interessadas? |
 
 ---
 
@@ -280,12 +219,12 @@ Se a resposta for vaga ou inexistente, o requisito está incompleto.
 
 ```text
 # Converter uma regra do catálogo para EARS
-/ears-convert BR-042: <texto da regra confirmada pelo time>.
-Use CALCDSCT.NSP#L120-L198 como source_legacy.
+/ears-convert BR-NNN: <texto da regra confirmada pela equipe>.
+Use <path real da fonte e intervalo de linhas verificado> como source_legacy.
 
 # Validar um requisito EARS já escrito
 "@architect, este requisito EARS é testável? Como você escreveria o teste?
-REQ-042: <texto do requisito>"
+REQ-NNN: <texto do requisito>"
 
 # Identificar lacunas de cobertura
 /speckit.analyze

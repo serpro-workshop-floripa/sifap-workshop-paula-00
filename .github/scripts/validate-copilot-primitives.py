@@ -786,16 +786,11 @@ PORTUGUESE_SECTION_NAMES = {
     "O que este agente NÃO sabe": "What This Agent Does NOT Know",
     "Prompts disponíveis": "Available Prompts",
     "Antipadrões que este agente rejeita": "Anti-Patterns This Agent Rejects",
-    "O que este agent sabe": "What This Agent Knows",
-    "O que este agent NÃO sabe": "What This Agent Does NOT Know",
-    "Antipadrões rejeitados por este agent":
-        "Anti-Patterns This Agent Rejects",
     "Integração com Spec-Kit": "Spec-Kit Integration",
     "Objetivo": "Objective",
     "Quando invocar": "When to Invoke",
     "Pré-condições": "Preconditions",
     "Entradas que a equipe deve fornecer": "Inputs the Team Must Provide",
-    "Inputs que a equipe deve fornecer": "Inputs the Team Must Provide",
     "O que farei": "What I Will Do",
     "O que NÃO farei": "What I Will NOT Do",
     "Formato de saída": "Output Format",
@@ -819,8 +814,6 @@ def canonical_section_title(title: str) -> str:
     if language not in {"en", "es", "pt-br"}:
         raise ValueError(f"Unsupported repository language: {language}")
     if language == "pt-br":
-        if title in PORTUGUESE_SECTION_NAMES:
-            return PORTUGUESE_SECTION_NAMES[title]
         if title.startswith("Definição de pronto"):
             return f"{title} Definition of Done"
         return PORTUGUESE_SECTION_NAMES.get(title, title)

@@ -1,80 +1,80 @@
-# Product Owner — Copilot Kit
+# Product Owner — Kit de copiloto
 
-> **Trail:** [Team Kit](../../README.md) › [Personas](../OVERVIEW.md) › **Product Owner**
+> <x4/> <x5/> › <x6/> › <x7/>
 
-**Inventory of the Copilot kit for the Product Owner persona.** Lists the active artifacts, where they live under `.github/`, and best practices specific to this role.
+<x2/> Lista os artefatos ativos, onde vivem sob <x3/>, e as melhores práticas específicas para esse papel.
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| **Target audience** | Person acting as Product Owner in the workshop |
-| **Role scope** | Vision responsibility (covered by the participant) |
-| **SDLC phase** | Stages 1-3 plus final judge validation: scope, acceptance criteria, and migrated-data acceptance |
-| **Prerequisites** | [PERSONA.md](PERSONA.md) read |
-| **Expected outcome** | Kit validated, prompts accessible in Copilot Chat |
+|<x1/>|Pessoa agindo como Product Owner na workshop|
+|<x1/>|Responsabilidade de visão (coberto pelo participante)|
+|<x1/>|Etapas 1-3 mais validação final do juiz: escopo, critérios de aceitação e aceitação de dados migrados|
+|<x1/>|<x1/> lido|
+|<x1/>|Kit validado, alertas acessíveis em Copilot Chat|
 
-> [!IMPORTANT]
-> Read [PERSONA.md](PERSONA.md) before continuing. The profile explains the mission, self-check, and evaluation rubrics.
-
----
-
-## Concept
-
-The Product Owner is responsible for translating business needs into executable scope. In a legacy modernization process such as SIFAP (Payment Inspection and Administration System), this function is critical: legacy systems accumulate implicit rules that only make sense when someone knows "why" they exist. The PO connects every technical decision to business evidence.
+> [!Importante]
+> Leia <x1/> antes de continuar. O perfil explica a missão, auto-check, e rubrics avaliação.
 
 ---
 
-## Persona kit
+## Conceito
 
-| **Artifact** | Type | Purpose |
+O Product Owner é responsável pela tradução das necessidades de negócios para o escopo executável. Em um processo de modernização legado como SIFAP (Sistema de Inspeção de Pagamento e Administração), essa função é crítica: sistemas legados acumulam regras implícitas que só fazem sentido quando alguém sabe "por que" eles existem. O PO liga todas as decisões técnicas a provas comerciais.
+
+---
+
+## Kit da persona
+
+|<x1/>| Tipo | Finalidade |
 |---|---|---|
-| `PERSONA.md` | Profile | Responsibilities, self-check, prompts, and rubric |
-| `.github/skills/persona-product-owner/SKILL.md` | Skill | Product Owner role guidance for specification, backlog, and acceptance |
-| `.github/prompts/persona-product-owner-spec.prompt.md` | Prompt | `/spec` — writes a section of `.spec/<NNN>-<feature>/spec.md` from user stories in EARS |
-| `.github/prompts/persona-product-owner-update-spec.prompt.md` | Prompt | `/update-spec` — updates the specification when a feature changes |
-| `.github/prompts/persona-product-owner-acceptance-check.prompt.md` | Prompt | `/acceptance-check` — checks whether the code meets the acceptance criteria |
-| [Optional integration guidance](../README.md#how-to-activate-your-persona) | Reference | Verify real configured tools; no persona manifest is installed |
+|<x1/>| Perfil |Responsabilidades, auto-controle, prompts e rubric|
+|<x1/>| Skill |Product Owner guia de funções para especificação, atraso e aceitação|
+|<x1/>| Prompt |<x2/> — escreve uma seção de <x3/> de histórias de usuários em EARS|
+|<x1/>| Prompt |<x1/> — atualiza a especificação quando um recurso muda|
+|<x1/>| Prompt |<x1/> — verifica se o código satisfaz os critérios de aceitação|
+|<x1/>| Referência |Verificar as ferramentas configuradas reais; nenhum manifesto de persona está instalado|
 
 ---
 
-## Where the artifacts live
+## Onde ficam os artefatos
 
-The active artifacts are consolidated under the root `.github/` directory:
+Os artefatos ativos estão consolidados sob o diretório raiz <x1/>:
 
-| **Type** | Path |
+|<x1/>| Caminho |
 |---|---|
-| Agents | `.github/agents/` |
-| Prompts | `.github/prompts/persona-*.prompt.md` |
-| Skills | `.github/skills/` |
-| Instructions | `.github/instructions/` |
+| Agentes |<x1/>|
+| Prompts |<x1/>|
+| Skills |<x1/>|
+| Instruções |<x1/>|
 
-Use this directory as the reference. Active files live only under the root `.github/` directory — edit them there when maintenance is needed.
+Use esta pasta como referência. Arquivos ativos vivem apenas sob o diretório root <x1/> — editá-los lá quando a manutenção é necessária.
 
-Optional integrations follow the [persona setup guidance](../README.md#how-to-activate-your-persona); never copy a descriptive manifest as executable configuration.
-
----
-
-## Best practices
-
-- Write requirements in EARS so that every sentence is testable.
-- Keep every user story tied to a measurable outcome.
-- Mark assumptions explicitly — a hidden assumption becomes a production bug.
-- Treat `.specify/memory/constitution.md` as the source of truth for non-negotiable items.
+As integrações opcionais seguem o <x1/>; nunca copie um manifesto descritivo como configuração executável.
 
 ---
 
-## References
+## Boas práticas
 
-- [EARS Notation — Alistair Mavin](https://alistairmavin.com/ears/)
-- [Spec-Driven Development (Spec-Kit)](https://github.com/github/spec-kit)
-- [User Story Mapping — Jeff Patton](https://www.jpattonassociates.com/user-story-mapping/)
-- [GitHub Copilot for PMs](https://docs.github.com/en/copilot)
+- Escrever requisitos em EARS para que cada frase seja testável.
+- Mantenha cada história de usuário ligada a um resultado mensurável.
+- Marque suposições explicitamente — uma suposição oculta se torna um bug de produção.
+- Tratar <x1/> como fonte de verdade para itens não negociáveis.
 
 ---
 
-### Continue reading
+## Referências
 
-| Previous | Next |
+- <x1/>
+- <x1/>
+- <x1/>
+- <x1/>
+
+---
+
+### Continue lendo
+
+| Anterior | Próximo |
 |---|---|
-| [OVERVIEW](../OVERVIEW.md)<br/><sub>Table of the 10 personas.</sub> | [PERSONA.md](PERSONA.md)<br/><sub>Profile for this persona.</sub> |
+|<x1/><x2/><x3/>Table das 10 personas.<x4/>|<x1/><x2/><x3/>Profile para esta persona. <x4/>|
 
-<sub>[Back to the kit index](../../README.md)</sub>
+<x1/><x2/><x3/>

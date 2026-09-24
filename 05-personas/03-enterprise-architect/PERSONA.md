@@ -1,37 +1,37 @@
 # Persona — Enterprise Architect
 
-> **Trail:** [Team Kit](../../README.md) › [Personas](../OVERVIEW.md) › [Enterprise Architect](README.md) › **PERSONA**
+> <x5/> <x6/> › <x7/> › <x8/> › <x9/>
 
-**Complete profile for the Enterprise Architect persona.** Defines the mission, responsibilities by stage, tools, self-check, and evaluation rubrics.
+<x1/> Define a missão, responsabilidades por fase, ferramentas, auto-controle e rubricas de avaliação.
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| **Role** | Enterprise Architect |
-| **Role scope** | Enterprise architecture responsibility (covered by the participant) |
-| **Active stages** | Stages 1-3: context, integration constraints, and scope decisions |
-| **Artifacts produced** | System context, integration assumptions, structural ADRs when needed |
-| **Artifacts consumed** | Rule catalog (Vision responsibility), integration requirements (RE) |
-| **Self-check focus** | C1/C2 architecture and integration assumptions |
+|<x1/>|Enterprise Architect|
+|<x1/>|Responsabilidade pela arquitectura empresarial (coberto pelo participante)|
+|<x1/>|Etapas 1-3: contexto, restrições de integração e decisões de âmbito|
+|<x1/>|Contexto do sistema, pressupostos de integração, RAM estruturais quando necessário|
+|<x1/>|Catálogo de regras (responsabilidade da visão), requisitos de integração (RE)|
+|<x1/>|C1/C2 pressupostos de arquitetura e integração|
 
-![Stage 1](https://img.shields.io/badge/Stage-1%20Archaeology-171717?style=flat-square) ![Stage 2](https://img.shields.io/badge/Stage-2%20Specification-404040?style=flat-square)
-
----
-
-## Concept
-
-The Enterprise Architect views the system within its organizational and technical ecosystem. In the industry, this role ensures that new solutions fit the existing context — contracts with external systems, corporate security standards, and governance requirements.
-
-In SIFAP, investigate external parties and contracts from the supplied sources.
-A name in a historical document does not establish a live integration, current
-ownership, or permission to call it. Record missing contracts as explicit gaps.
-
-**Team exercise:** trace an actual external boundary, its input/output contract,
-and the evidence for its execution model. Review coexistence options only when
-the selected requirement needs them; do not invent an endpoint or source member.
+<x2/> <x3/>
 
 ---
 
-## Where you work in the SDLC
+## Conceito
+
+O Enterprise Architect vê o sistema dentro de seu ecossistema organizacional e técnico. No setor, esse papel garante que novas soluções se encaixem no contexto existente — contratos com sistemas externos, padrões de segurança corporativa e requisitos de governança.
+
+Em SIFAP, investigar as partes externas e contratos das fontes fornecidas.
+Um nome em um documento histórico não estabelece uma integração ao vivo, atual
+propriedade, ou permissão para chamá-lo. Gravar os contratos em falta como lacunas explícitas.
+
+<x1/> traçar um limite externo real, o seu contrato input/output,
+e as provas do seu modelo de execução. Rever as opções de coexistência apenas quando
+o requisito selecionado precisa deles; não invente um endpoint ou um membro fonte.
+
+---
+
+## Onde você atua no SDLC
 
 ```mermaid
 %%{init: {'theme':'neutral','themeVariables':{'fontFamily':'ui-sans-serif, system-ui, sans-serif','primaryColor':'#F5F5F5','primaryTextColor':'#171717','primaryBorderColor':'#171717','lineColor':'#525252','secondaryColor':'#FFFFFF','tertiaryColor':'#FAFAFA','background':'#FFFFFF'}}}%%
@@ -40,126 +40,126 @@ flowchart LR
     classDef support fill:#FAFAFA,stroke:#A3A3A3,color:#404040
     classDef inactive fill:#FFFFFF,stroke:#E5E5E5,color:#A3A3A3
 
-    E1["Stage 1<br/>Archaeology"]:::support --> E2["Stage 2<br/>Specification"]:::active
-    E2 --> E3["Stage 3<br/>Implementation"]:::support
-    E3 --> E4["Judge<br/>validation"]:::support
+    E1["Fase 1 <x0/>Archaeology"]:::support --> E2["Fase 2 <x0/>Specification"]:::active
+    E2 --> E3["Fase 3 <x0/>Implementation"]:::support
+    E3 --> E4["Juiz<x0/>validation"]:::support
 ```
 
-- **Receives from:** Vision responsibility (Vision) in Stage 1 — rule catalog and scope
-- **Hands off to:** Implementation responsibility (Implementation) and Quality responsibility (Quality) in Stage 2; Submission support responsibility (Operations) for Terraform
+- <x1/> Responsabilidade de visão (Visão) na Fase 1 — catálogo de regras e âmbito
+- <x1/> Responsabilidade de implementação (Implementação) e Qualidade (Qualidade) na Fase 2; Responsabilidade de apoio à submissão (Operações) para Terraform
 
 ---
 
-## Responsibilities by stage
+## Responsabilidades por estágio
 
-| **Stage** | What you do | Deliverable that depends on you |
+|<x1/>| O que você faz | Entrega que depende de você |
 |---|---|---|
-| **1 · Archaeology** | Identify dependencies and external contracts that affect the slice. | Relevant integration evidence |
-| **2 · Specification** | Record only topology decisions that block the plan. | Topology ADR or scope decision when needed |
-| **3 · Implementation** | Validate that the implementation respects the designed contracts. Support DevOps with high-level Terraform. | Validation of the deployed layout |
-| **Final judge validation** | Assess whether final validation issues have architectural implications that require prior review. | Impact assessment |
+|<x1/>|Identificar dependências e contratos externos que afetam a fatia.|Provas de integração relevantes|
+|<x1/>|Registre apenas decisões topológicas que bloqueiam o plano.|Topologia ADR ou decisão de âmbito quando necessário|
+|<x1/>|Validar que a execução respeita os contratos concebidos. Suporte DevOps com Terraform de alto nível.|Validação da disposição implantada|
+|<x1/>|Avaliar se as questões finais de validação têm implicações arquitetônicas que requerem revisão prévia.|Avaliação do impacto|
 
 ---
 
-## Persona kit
+## Kit da persona
 
-| **Artifact** | Purpose |
+|<x1/>| Finalidade |
 |---|---|
-| `.github/skills/persona-enterprise-architect/SKILL.md` | Role skill that loads automatically for architecture and security |
-| `/create-constitution` — `persona-enterprise-architect-create-constitution.prompt.md` | Creates or updates `.specify/memory/constitution.md` |
-| `/create-adr` — `persona-enterprise-architect-create-adr.prompt.md` | Creates an ADR from a team decision |
-| `/architecture-review` — `persona-enterprise-architect-architecture-review.prompt.md` | Reviews a proposed design against contracts and risks |
-| `.github/instructions/security.instructions.md` | Security conventions |
-| `.github/instructions/infrastructure.instructions.md` | IaC conventions |
+|<x1/>|Capacidade de função que carrega automaticamente para arquitetura e segurança|
+|<x2/> — <x3/>|Cria ou atualiza <x1/>|
+|<x2/> — <x3/>|Cria um ADR a partir de uma decisão de equipe|
+|<x2/> — <x3/>|Revisão de um projeto proposto contra contratos e riscos|
+|<x1/>|Convenções de segurança|
+|<x1/>|Convenções IaC|
 
 ---
 
-## Tools and primitives
+## Ferramentas e primitivas
 
-- **Mermaid** and **C4** for context and container diagrams.
-- **Copilot Chat** to pressure-test topology decisions.
-- **GitHub Spec-Kit** with `/speckit.plan` — turns the specification into a technical plan, decisions, and reviewable contracts.
-- Kit skills — structured prompts for dependency analysis.
+- <x2/> e <x3/> para diagramas de contexto e recipiente.
+- <x1/> para decisões de topologia de teste de pressão.
+- <x2/> com <x3/> — transforma a especificação em uma técnica plan, decisões e contratos reavaliados.
+- Competências de kit — impulsos estruturados para análise de dependência.
 
-**Relevant cheat sheets:**
+<x1/>
 
-- [`../../09-cheat-sheets/spec-kit-workflow.md`](../../09-cheat-sheets/spec-kit-workflow.md) — `/speckit.plan` and `/speckit.analyze`.
-- [`../../09-cheat-sheets/model-routing.md`](../../09-cheat-sheets/model-routing.md) — use Claude Opus 4.6 for architectural impact analysis.
-
----
-
-## Onboarding checklist
-
-- [ ] **Read this profile.** Mission, responsibilities, and self-check.
-- [ ] **Open the kit `README.md`.** Confirm that agents and prompts appear in Copilot Chat.
-- [ ] **Identify your current role focus.** See [00-TEAM-FLOW.md](../../00-TEAM-FLOW.md).
-- [ ] **Map external integrations.** List SIAFI, BB, INCRA, and other systems present in the assigned `.NSN` programs.
-- [ ] **Note the self-check.** Know who receives the dependency map and for which artifact.
+- <x3/> — <x4/> e <x5/>.
+- <x1/> — use Claude Opus 4.6 para análise de impacto arquitetônico.
 
 ---
 
-## How to succeed in this role
+## Checklist de integração
 
-- The C4 level 1 diagram is readable by any nontechnical participant in 30 seconds.
-- Your ADRs name the "path not taken" and explain why.
-- You anchor the Strangler Fig strategy — coexistence of legacy SIFAP with SIFAP 2.0 — in technical reasoning, not fashion.
-- You align with the Software Architect on where your scope ends and theirs begins.
+- [ ] Missão, responsabilidades e auto-controle.
+- [ ] <x1/> Confirme que agentes e prompts aparecem no chat do Copilot.
+- [ ] <x2/> Ver <x3/>.
+- [ ] Lista SIAFI, BB, INCRA e outros sistemas presentes nos programas atribuídos <x3/>.
+- [ ] <x1/> Saiba quem recebe o mapa de dependência e para qual artefato.
 
 ---
 
-## Common mistakes and how to avoid them
+## Como ter sucesso neste papel
 
-| **Symptom** | Cause | Correction |
+- O diagrama C4 nível 1 é legível por qualquer participante não técnico em 30 segundos.
+- As suas RAMs nomeiam o "caminho não tomado" e explicam porquê.
+- Você ancora a estratégia Estrangulador Fig - coexistência de legado SIFAP com SIFAP 2.0 — no raciocínio técnico, não na moda.
+- Você se alinha com o Software Architect onde seu escopo termina e o deles começa.
+
+---
+
+## Erros comuns e como evitá-los
+
+|<x1/>| Causa | Correção |
 |---|---|---|
-| Diagram is incomprehensible to nontechnical people | C4 L3/L4 used where L1/L2 was enough | Use L1 first; go deeper only for a specific technical question |
-| Real integrations are ignored | Excessive focus on internal structure | List SIAFI, BB, and others during Archaeology |
-| Work duplicated with the Software Architect | Responsibility boundary not defined | Agree at the start: EA handles external concerns; SA handles internal concerns |
-| Generic ADR with no value | "We will use Spring Boot" is not an EA decision | An EA ADR answers "how do we connect to X?" not "which framework do we use?" |
+|O diagrama é incompreensível para pessoas não técnicas|C4 L3/L4 utilizado quando L1/L2 era suficiente|Usar L1 primeiro; ir mais fundo apenas para uma questão técnica específica|
+|As integrações reais são ignoradas|Foco excessivo na estrutura interna|Lista SIAFI, BB e outros durante a Arqueologia|
+|Trabalho duplicado com o Software Architect|Limite de responsabilidade não definido|Concordo no início: EA lida com preocupações externas; SA lida com preocupações internas|
+|ADR genérico sem valor|"Vamos usar Spring Boot" não é uma decisão EA|Uma ADR EA responde "como nos conectamos ao X?" não "que framework usamos?"|
 
 ---
 
-## 3 prompt examples
+## 3 exemplos de prompts
 
-1. **(Chat)** "Create a C4 Level 1 diagram with the actors and external systems confirmed by the participant."
-2. **(Chat)** "For this external dependency, which availability risks must we assess? Propose alternatives and their trade-offs."
-3. **(Chat)** "Compare the integration options raised by the participant and structure an ADR without anticipating the decision."
+1. <x1/> "Criar um diagrama C4 Nível 1 com os atores e sistemas externos confirmados pelo participante."
+2. <x1/> "Para esta dependência externa, que riscos de disponibilidade devemos avaliar? Propor alternativas e suas trocas."
+3. <x1/> "Comparar as opções de integração levantadas pelo participante e estruturar um ADR sem antecipar a decisão."
 
 ---
 
-## If you get stuck
+## Se você ficar travado
 
-| **Situation** | What to do |
+|<x1/>| O que fazer |
 |---|---|
-| Unfamiliar with C4 | Use a simple Mermaid flowchart: boxes = systems, arrows = integrations. Label the arrows |
-| Spent too much time on C4 Level 3 | Stop. Level 1 + Level 2 are sufficient for this workshop |
-| Unfamiliar with Mermaid | Ask Copilot: "Create a C4 level 1 diagram in Mermaid from these confirmed actors and integrations" |
-| Disagreement with the Software Architect | Write an ADR with both options and ask the participant to vote |
+|Não familiar com C4|Use um fluxograma Mermaid simples: caixas = sistemas, setas = integrações. Marcar as setas|
+|Passou muito tempo em C4 Nível 3|Stop. Nível 1 + Nível 2 são suficientes para esta workshop|
+|Infamiliar com Sereia|Ask Copiloto: "Criar um diagrama C4 nível 1 na Sereia a partir destes atores confirmados e integrações"|
+|Discordo com o Software Architect|Escreva um ADR com ambas as opções e ask o participante a votar|
 
 ---
 
-## Dependencies
+## Dependências
 
-| **Persona** | Relationship | Artifact |
+|<x1/>| Relação | Artefato |
 |---|---|---|
-| Software Architect | Depends on you | Dependencies and decisions that affect the slice |
-| DevOps Engineer | Depends on you | Topology for Terraform |
-| Developer | Depends on you (indirectly) | Integration contracts |
-| Requirements Engineer | You depend on them | Integration requirements |
+|Software Architect|Depende de ti.|Dependências e decisões que afetam a fatia|
+|DevOps Engineer|Depende de ti.|Topologia para Terraform|
+|Developer|Depende de você (indirectamente)|Contratos de integração|
+|Requirements Engineer|Você depende deles.|Requisitos de integração|
 
 ---
 
-## How you are evaluated
+## Como você é avaliado
 
-- **Rubric A1 (Archaeology):** dependency map readable by nontechnical people.
-- **Rubric A2 (Specification Coherence):** ADRs name the "path not taken."
-- Criterion: "Scope decisions and relevant dependencies are traceable."
+- <x1/> mapa de dependência legível por pessoas não técnicas.
+- <x1/> RAMs nomeiam a "caminho não tomado".
+- Critério: "Decisões de escopo e dependências relevantes são rastreáveis."
 
 ---
 
-### Continue reading
+### Continue lendo
 
-| Previous | Next |
+| Anterior | Próximo |
 |---|---|
-| [Requirements Engineer](../02-requirements-engineer/PERSONA.md)<br/><sub>Vision responsibility · writes EARS with source_legacy.</sub> | [Software Architect](../04-software-architect/PERSONA.md)<br/><sub>Architecture responsibility · bounded contexts and modules.</sub> |
+|<x1/><x2/> <x3/>Vision responsabilidade · escreve EARS com source legacy.<x4/>|<x1/><x2/> <x3/>Architecture responsabilidade · contextos e módulos limitados.<x4/>|
 
-<sub>[Back to the kit index](../../README.md)</sub>
+<x1/><x2/><x3/>

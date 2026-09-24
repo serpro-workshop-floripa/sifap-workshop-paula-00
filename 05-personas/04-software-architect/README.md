@@ -1,81 +1,81 @@
-# Software Architect — Copilot Kit
+# Software Architect — Kit de copiloto
 
-> **Trail:** [Team Kit](../../README.md) › [Personas](../OVERVIEW.md) › **Software Architect**
+> <x4/> <x5/> › <x6/> › <x7/>
 
-**Inventory of the Copilot kit for the Software Architect persona.** Lists the active artifacts, where they live under `.github/`, and best practices specific to this role.
+<x2/> Lista os artefatos ativos, onde vivem sob <x3/>, e as melhores práticas específicas para esse papel.
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| **Target audience** | Person acting as Software Architect in the workshop |
-| **Role scope** | Software architecture responsibility (covered by the participant) |
-| **SDLC phase** | Stages 2-3: module boundaries, ADRs, and implementation design review |
-| **Prerequisites** | [PERSONA.md](PERSONA.md) read |
-| **Expected outcome** | Kit validated, prompts accessible in Copilot Chat |
+|<x1/>|Pessoa agindo como Software Architect na workshop|
+|<x1/>|Responsabilidade de arquitetura de software (coberto pelo participante)|
+|<x1/>|Etapas 2-3: limites do módulo, RAMs e revisão do projeto de implementação|
+|<x1/>|<x1/> lido|
+|<x1/>|Kit validado, alertas acessíveis em Copilot Chat|
 
-> [!IMPORTANT]
-> Read [PERSONA.md](PERSONA.md) before continuing. The profile explains the mission, self-check, and evaluation rubrics.
-
----
-
-## Concept
-
-The Software Architect owns the system's internal structure. This role defines how modules are organized, where bounded contexts (Domain-Driven Design boundaries) begin and end, and which abstractions are exposed. In SIFAP (Payment Inspection and Administration System), this role produces the technical plan the implementation team will follow — `CODEMAP.md`, the package structure, and internal design ADRs.
+> [!Importante]
+> Leia <x1/> antes de continuar. O perfil explica a missão, auto-check, e rubrics avaliação.
 
 ---
 
-## Persona kit
+## Conceito
 
-| **Artifact** | Type | Purpose |
+O Software Architect possui a estrutura interna do sistema. Este papel define como os módulos são organizados, onde os contextos delimitados (limites de Design Domain-Driven) começam e terminam, e quais abstrações são expostas. Em SIFAP (Sistema de Inspeção e Administração de Pagamentos), essa função produz a equipe técnica plan que será seguida — <x1/>, a estrutura do pacote e as RAMs de projeto interno.
+
+---
+
+## Kit da persona
+
+|<x1/>| Tipo | Finalidade |
 |---|---|---|
-| `PERSONA.md` | Profile | Responsibilities, self-check, prompts, and rubric |
-| `.github/skills/persona-software-architect/SKILL.md` | Skill | Software architecture |
-| `.github/prompts/persona-software-architect-codemap.prompt.md` | Prompt | `/codemap` |
-| `.github/prompts/persona-software-architect-impl-plan.prompt.md` | Prompt | `/impl-plan` |
-| `.github/prompts/persona-software-architect-api-validate.prompt.md` | Prompt | `/api-validate` |
-| `.github/instructions/backend.instructions.md` | Instructions | Backend conventions |
-| `.github/instructions/frontend.instructions.md` | Instructions | Frontend conventions |
+|<x1/>| Perfil |Responsabilidades, auto-controle, prompts e rubric|
+|<x1/>| Skill |Arquitetura de software|
+|<x1/>| Prompt |<x1/>|
+|<x1/>| Prompt |<x1/>|
+|<x1/>| Prompt |<x1/>|
+|<x1/>| Instruções |Convenções de infra- estrutura|
+|<x1/>| Instruções |Convenções de frontend|
 
 ---
 
-## Where the artifacts live
+## Onde ficam os artefatos
 
-The active artifacts are consolidated under the root `.github/` directory:
+Os artefatos ativos estão consolidados sob o diretório raiz <x1/>:
 
-| **Type** | Path |
+|<x1/>| Caminho |
 |---|---|
-| Agents | `.github/agents/` |
-| Prompts | `.github/prompts/persona-*.prompt.md` |
-| Skills | `.github/skills/` |
-| Instructions | `.github/instructions/` |
+| Agentes |<x1/>|
+| Prompts |<x1/>|
+| Skills |<x1/>|
+| Instruções |<x1/>|
 
-Use this directory as the reference. Active files live only under the root `.github/` directory — edit them there when maintenance is needed.
+Use esta pasta como referência. Arquivos ativos vivem apenas sob o diretório root <x1/> — editá-los lá quando a manutenção é necessária.
 
-Optional integrations follow the [persona setup guidance](../README.md#how-to-activate-your-persona); no persona manifest is an installable server configuration.
-
----
-
-## Best practices
-
-- Prefer composition over inheritance, clear boundaries over generic abstractions, and clear data over clever code.
-- API contracts are a public commitment; break them only with versioning and a migration guide.
-- Keep business rules out of the database and framework.
-- A growing `util` directory usually indicates a missing bounded context.
+As integrações opcionais seguem o <x1/>; nenhum persona manifest é uma configuração de servidor instalável.
 
 ---
 
-## References
+## Boas práticas
 
-- [Clean Architecture — Robert C. Martin](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
-- [Domain-Driven Design — Eric Evans](https://www.domainlanguage.com/ddd/)
-- [Hexagonal Architecture — Alistair Cockburn](https://alistair.cockburn.us/hexagonal-architecture/)
-- [Microsoft .NET Architecture Guides](https://learn.microsoft.com/dotnet/architecture/)
+- Prefere composição sobre herança, limites claros sobre abstrações genéricas e dados claros sobre código inteligente.
+- API contratos são um compromisso público; quebre-os apenas com versioning e um guia de migração.
+- Mantenha as regras de negócios fora da base de dados e framework.
+- Um diretório crescente <x1/> geralmente indica um contexto limitado em falta.
 
 ---
 
-### Continue reading
+## Referências
 
-| Previous | Next |
+- <x1/>
+- <x1/>
+- <x1/>
+- <x1/>
+
+---
+
+### Continue lendo
+
+| Anterior | Próximo |
 |---|---|
-| [OVERVIEW](../OVERVIEW.md)<br/><sub>Table of the 10 personas.</sub> | [PERSONA.md](PERSONA.md)<br/><sub>Profile for this persona.</sub> |
+|<x1/><x2/><x3/>Table das 10 personas.<x4/>|<x1/><x2/><x3/>Profile para esta persona. <x4/>|
 
-<sub>[Back to the kit index](../../README.md)</sub>
+<x1/><x2/><x3/>
