@@ -778,6 +778,33 @@ SPANISH_SECTION_NAMES = {
 }
 
 
+PORTUGUESE_SECTION_NAMES = {
+    "Missão": "Mission",
+    "Personas líderes": "Lead Personas",
+    "Princípios operacionais": "Operating Principles",
+    "O que este agente sabe": "What This Agent Knows",
+    "O que este agente NÃO sabe": "What This Agent Does NOT Know",
+    "Prompts disponíveis": "Available Prompts",
+    "Antipadrões que este agente rejeita": "Anti-Patterns This Agent Rejects",
+    "Integração com Spec-Kit": "Spec-Kit Integration",
+    "Objetivo": "Objective",
+    "Quando invocar": "When to Invoke",
+    "Pré-condições": "Preconditions",
+    "Entradas que a equipe deve fornecer": "Inputs the Team Must Provide",
+    "O que farei": "What I Will Do",
+    "O que NÃO farei": "What I Will NOT Do",
+    "Formato de saída": "Output Format",
+    "Definição de pronto": "Definition of Done",
+    "Corpo do prompt": "Prompt Body",
+    "Exemplo de invocação": "Invocation Example",
+    "Modelo de saída": "Output template",
+    "Gate de qualidade": "Quality gate",
+    "Convenções": "Conventions",
+    "Faça / Não faça": "Do / Do Not",
+    "Checklist antes de abrir um PR": "Checklist Before Opening a PR",
+}
+
+
 def canonical_section_title(title: str) -> str:
     language_file = REPO_ROOT / ".github/language.json"
     if not language_file.is_file():
@@ -786,6 +813,10 @@ def canonical_section_title(title: str) -> str:
         encoding="utf-8"))["language"]
     if language not in {"en", "es", "pt-br"}:
         raise ValueError(f"Unsupported repository language: {language}")
+    if language == "pt-br":
+        if title.startswith("Definição de pronto"):
+            return f"{title} Definition of Done"
+        return PORTUGUESE_SECTION_NAMES.get(title, title)
     if language != "es":
         return title
     if title.startswith("Definición de terminado de la Etapa "):
