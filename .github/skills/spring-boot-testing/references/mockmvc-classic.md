@@ -88,28 +88,28 @@ void shouldDeleteOrder() throws Exception {
 .andExpect(status().isUnauthorized()) // 401
 .andExpect(status().isForbidden())    // 403
 .andExpect(status().isNotFound())     // 404
-.andExpect(status().is(422))          // código arbitrário
+.andExpect(status().is(422))          // arbitrary code
 ```
 
 ## Asserções JSON Path
 
 ```java
-// Valor exato
+// Exact value
 .andExpect(jsonPath("$.status").value("PENDING"))
 
-// Existência
+// Existence
 .andExpect(jsonPath("$.id").exists())
 .andExpect(jsonPath("$.deletedAt").doesNotExist())
 
-// Tamanho do array
+// Array size
 .andExpect(jsonPath("$.items").isArray())
 .andExpect(jsonPath("$.items", hasSize(3)))
 
-// Campo aninhado
+// Nested field
 .andExpect(jsonPath("$.customer.name").value("John Doe"))
 .andExpect(jsonPath("$.customer.address.city").value("Berlin"))
 
-// Com comparadores do Hamcrest
+// With Hamcrest matchers
 .andExpect(jsonPath("$.total", greaterThan(0.0)))
 .andExpect(jsonPath("$.description", containsString("order")))
 ```
@@ -135,15 +135,15 @@ void shouldDeleteOrder() throws Exception {
 ## Parâmetros e cabeçalhos da solicitação
 
 ```java
-// Parâmetros de consulta
+// Query parameters
 mvc.perform(get("/orders").param("status", "PENDING").param("page", "0"))
   .andExpect(status().isOk());
 
-// Variáveis de caminho
+// Path variables
 mvc.perform(get("/orders/{id}", 1L))
   .andExpect(status().isOk());
 
-// Cabeçalhos da solicitação
+// Request headers
 mvc.perform(get("/orders/1").header("X-Api-Key", "secret"))
   .andExpect(status().isOk());
 ```
@@ -170,7 +170,7 @@ void shouldReturnCreatedId() throws Exception {
 
 ```java
 mvc.perform(get("/orders/1"))
-  .andDo(print())              // exibe solicitação/resposta no console (depuração)
+  .andDo(print())              // prints request/response to console (debug)
   .andExpect(status().isOk());
 ```
 

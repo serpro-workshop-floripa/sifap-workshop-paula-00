@@ -11,16 +11,18 @@
 ## User Scenarios & Testing *(mandatory)*
 
 <!--
-  IMPORTANT: User stories should be PRIORITIZED as user journeys ordered by importance.
-  Each user story/journey must be INDEPENDENTLY TESTABLE - meaning if you implement just ONE of them,
-  you should still have a viable MVP (Minimum Viable Product) that delivers value.
+  IMPORTANTE: As histórias de usuário devem ser PRIORIZADAS como jornadas de
+  usuário ordenadas por importância. Cada história/jornada de usuário deve ser
+  TESTÁVEL DE FORMA INDEPENDENTE — isso significa que, se você implementar apenas
+  UMA delas, ainda deverá ter um MVP (Produto Mínimo Viável) que entregue valor.
 
-  Assign priorities (P1, P2, P3, etc.) to each story, where P1 is the most critical.
-  Think of each story as a standalone slice of functionality that can be:
-  - Developed independently
-  - Tested independently
-  - Deployed independently
-  - Demonstrated to users independently
+  Atribua prioridades (P1, P2, P3 etc.) a cada história, em que P1 é a mais
+  crítica. Considere cada história como uma fatia independente de funcionalidade
+  que possa ser:
+  - Desenvolvida de forma independente
+  - Testada de forma independente
+  - Implantada de forma independente
+  - Demonstrada aos usuários de forma independente
 -->
 
 ### User Story 1 - [Brief Title] (Priority: P1)
@@ -71,32 +73,32 @@
 ### Edge Cases
 
 <!--
-  ACTION REQUIRED: The content in this section represents placeholders.
-  Fill them out with the right edge cases.
+  AÇÃO NECESSÁRIA: O conteúdo desta seção representa placeholders.
+  Preencha-os com os casos extremos adequados.
 -->
 
-- What happens when [boundary condition]?
-- How does system handle [error scenario]?
+- O que acontece quando [boundary condition]?
+- Como o sistema trata [error scenario]?
 
 ## Requirements *(mandatory)*
 
 <!--
-  ACTION REQUIRED: The content in this section represents placeholders.
-  Fill them out with the right functional requirements.
+  AÇÃO NECESSÁRIA: O conteúdo desta seção representa placeholders.
+  Preencha-os com os requisitos funcionais adequados.
 -->
 
 ### Functional Requirements
 
-- **FR-001**: System MUST [specific capability, e.g., "allow users to create accounts"]
-- **FR-002**: System MUST [specific capability, e.g., "validate email addresses"]
-- **FR-003**: Users MUST be able to [key interaction, e.g., "reset their password"]
-- **FR-004**: System MUST [data requirement, e.g., "persist user preferences"]
-- **FR-005**: System MUST [behavior, e.g., "log all security events"]
+- **FR-001**: O sistema DEVE [specific capability, e.g., "allow users to create accounts"]
+- **FR-002**: O sistema DEVE [specific capability, e.g., "validate email addresses"]
+- **FR-003**: Os usuários DEVEM poder [key interaction, e.g., "reset their password"]
+- **FR-004**: O sistema DEVE [data requirement, e.g., "persist user preferences"]
+- **FR-005**: O sistema DEVE [behavior, e.g., "log all security events"]
 
-*Example of marking unclear requirements:*
+*Exemplo de marcação de requisitos pouco claros:*
 
-- **FR-006**: System MUST authenticate users via [NEEDS CLARIFICATION: auth method not specified - email/password, SSO, OAuth?]
-- **FR-007**: System MUST retain user data for [NEEDS CLARIFICATION: retention period not specified]
+- **FR-006**: O sistema DEVE autenticar usuários por [NEEDS CLARIFICATION: auth method not specified - email/password, SSO, OAuth?]
+- **FR-007**: O sistema DEVE reter os dados do usuário por [NEEDS CLARIFICATION: retention period not specified]
 
 ### Key Entities *(include if feature involves data)*
 
@@ -106,8 +108,8 @@
 ## Success Criteria *(mandatory)*
 
 <!--
-  ACTION REQUIRED: Define measurable success criteria.
-  These must be technology-agnostic and measurable.
+  AÇÃO NECESSÁRIA: Defina critérios de sucesso mensuráveis.
+  Eles devem ser independentes de tecnologia e mensuráveis.
 -->
 
 ### Measurable Outcomes
@@ -120,9 +122,10 @@
 ## Assumptions
 
 <!--
-  ACTION REQUIRED: The content in this section represents placeholders.
-  Fill them out with the right assumptions based on reasonable defaults
-  chosen when the feature description did not specify certain details.
+  AÇÃO NECESSÁRIA: O conteúdo desta seção representa placeholders.
+  Preencha-os com as premissas adequadas, baseadas em padrões razoáveis
+  escolhidos quando a descrição da funcionalidade não especificar determinados
+  detalhes.
 -->
 
 - [Assumption about target users, e.g., "Users have stable internet connectivity"]

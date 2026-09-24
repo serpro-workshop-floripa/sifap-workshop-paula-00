@@ -1,49 +1,49 @@
-# Architecture
+# Arquitetura
 
-## Core Sections (Required)
+## Seções principais (obrigatórias)
 
-### 1) Architectural Style
+### 1) Estilo arquitetural
 
-- Primary style: [layered/feature/event-driven/other]
-- Why this classification: [short evidence-backed rationale]
-- Primary constraints: [2-3 constraints that shape design]
+- Estilo principal: [camadas/funcionalidades/orientado a eventos/outro]
+- Motivo desta classificação: [justificativa breve baseada em evidências]
+- Restrições principais: [2 a 3 restrições que moldam o design]
 
-### 2) System Flow
+### 2) Fluxo do sistema
 
 ```text
-[entry] -> [processing] -> [domain logic] -> [data/integration] -> [response/output]
+[entrada] -> [processamento] -> [lógica de domínio] -> [dados/integração] -> [resposta/saída]
 ```
 
-Describe the flow in 4-6 steps using file-backed evidence.
+Descreva o fluxo em 4 a 6 etapas com evidências provenientes de arquivos.
 
-### 3) Layer/Module Responsibilities
+### 3) Responsabilidades das camadas ou dos módulos
 
-| Layer or module | Owns | Must not own | Evidence |
-|-----------------|------|--------------|----------|
-| [name] | [responsibility] | [non-responsibility] | [file] |
+| Camada ou módulo | Responsável por | Não deve ser responsável por | Evidência |
+|------------------|-----------------|-------------------------------|-----------|
+| [nome] | [responsabilidade] | [não responsabilidade] | [arquivo] |
 
-### 4) Reused Patterns
+### 4) Padrões reutilizados
 
-| Pattern | Where found | Why it exists |
-|---------|-------------|---------------|
-| [singleton/repository/adapter/etc] | [path] | [reason] |
+| Padrão | Onde foi encontrado | Por que existe |
+|--------|----------------------|----------------|
+| [singleton/repository/adapter/etc] | [path] | [motivo] |
 
-### 5) Known Architectural Risks
+### 5) Riscos arquiteturais conhecidos
 
-- [Risk 1 + impact]
-- [Risk 2 + impact]
+- [Risco 1 + impacto]
+- [Risco 2 + impacto]
 
-### 6) Evidence
+### 6) Evidências
 
 - [path/to/entrypoint]
 - [path/to/main-layer-files]
 - [path/to/data-or-integration-layer]
 
-## Extended Sections (Optional)
+## Seções estendidas (opcionais)
 
-Add only when needed:
+Adicione somente quando necessário:
 
-- Startup or initialization order details
-- Async/event topology diagrams
-- Anti-pattern catalog with refactoring paths
-- Failure-mode analysis and resilience posture
+- Detalhes da ordem de inicialização
+- Diagramas da topologia assíncrona ou orientada a eventos
+- Catálogo de antipadrões com caminhos de refatoração
+- Análise de modos de falha e postura de resiliência

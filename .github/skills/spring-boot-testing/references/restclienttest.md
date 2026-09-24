@@ -38,7 +38,7 @@ class WeatherServiceTest {
 
   @Test
   void shouldFetchWeather() {
-    // Dado
+    // Given
     server.expect(requestTo("https://api.weather.com/v1/current"))
       .andExpect(method(HttpMethod.GET))
       .andExpect(queryParam("city", "Berlin"))
@@ -46,10 +46,10 @@ class WeatherServiceTest {
         .contentType(MediaType.APPLICATION_JSON)
         .body("{\"temperature\": 22, \"condition\": \"Sunny\"}"));
 
-    // Quando
+    // When
     Weather weather = weatherService.getCurrentWeather("Berlin");
 
-    // Então
+    // Then
     assertThat(weather.getTemperature()).isEqualTo(22);
     assertThat(weather.getCondition()).isEqualTo("Sunny");
   }
@@ -159,11 +159,11 @@ server.expect(requestTo("/users/999"))
 
 server.expect(requestTo("/users"))
   .andRespond(withServerError()
-    .body("Erro interno do servidor"));
+    .body("Internal Server Error"));
 
 server.expect(requestTo("/users"))
   .andRespond(withStatus(HttpStatus.BAD_REQUEST)
-    .body("{\"error\": \"Entrada inválida\"}"));
+    .body("{\"error\": \"Invalid input\"}"));
 ```
 
 ## Verificação de solicitações
@@ -177,7 +177,7 @@ void shouldCallApi() {
 
   service.fetchData();
 
-  server.verify(); // Verifica se todas as expectativas foram atendidas
+  server.verify(); // Verify all expectations met
 }
 ```
 
@@ -190,7 +190,7 @@ void shouldHandleMultipleCalls() {
     requestTo(matchesPattern("/api/.*")))
     .andRespond(withSuccess());
 
-  // Várias chamadas permitidas
+  // Multiple calls allowed
   service.callApi();
   service.callApi();
   service.callApi();
@@ -214,7 +214,7 @@ server.expect(requestTo("/slow-endpoint"))
     .body("{\"data\": \"test\"}")
     .delay(100, TimeUnit.MILLISECONDS));
 
-// Testa o tratamento do limite de tempo
+// Test timeout handling
 ```
 
 ## Práticas recomendadas

@@ -1,69 +1,70 @@
-# Agents Index
+# Índice de agents
 
-This directory contains the GitHub Copilot custom agents for the workshop — **5** in total, each in its own `<name>.agent.md`.
+Este diretório contém os agents personalizados do GitHub Copilot para o workshop — **5** no total, cada um em seu próprio `<name>.agent.md`.
 
 > [!NOTE]
-> Copilot discovers `*.agent.md` files in `.github/agents/`. Invoke an agent by its `name` with `@<name>` (for example `@archaeologist`). The `name` also binds prompts: a `*.prompt.md` file selects its agent through the `agent:` frontmatter key, so an agent's id is a contract, not a label.
+> O Copilot descobre arquivos `*.agent.md` em `.github/agents/`. Invoque um agent pelo `name` com `@<name>` (por exemplo, `@archaeologist`). O `name` também vincula prompts: um arquivo `*.prompt.md` seleciona seu agent pela chave `agent:` do frontmatter; portanto, o ID de um agent é um contrato, não um rótulo.
 
-## The two-layer model
+## O modelo de duas camadas
 
-The kit separates **when** you are working from **which role** you are covering.
+O kit separa **quando** você está trabalhando de **qual papel** está exercendo.
 
-| Layer | Primitive | How it loads | Why |
+| Camada | Primitivo | Como é carregado | Por quê |
 |---|---|---|---|
-| **Stage** — the phase the participant is in | Agent, invoked with `@name` | You select it deliberately, once per stage | A stage has a start, a definition of done, and a self-checkpoint |
-| **Role** — the responsibility you personally own | Skill, in [`../skills/`](../skills/) | Loads automatically from its `description` | You carry your role into every stage; nobody should have to remember to re-select it |
+| **Etapa** — a fase em que o participante está | Agent, invocado com `@name` | Você o seleciona deliberadamente, uma vez por etapa | Uma etapa tem início, definição de pronto e checkpoint próprio |
+| **Papel** — a responsabilidade que você assume pessoalmente | Skill, em [`../skills/`](../skills/) | É carregada automaticamente por sua `description` | Você leva seu papel para todas as etapas; ninguém precisa se lembrar de selecioná-lo novamente |
 
-One exception carries a dedicated agent: **`dba`**. The data lifecycle spans all
-four stages rather than sitting inside one, so it cannot be a stage agent, and it
-owns tool-scoped prompts that a skill cannot bind. Every other team role is a
-skill.
+Uma exceção tem um agent dedicado: **`dba`**. O ciclo de vida dos dados atravessa
+as quatro etapas em vez de pertencer a apenas uma; por isso, ele não pode ser um
+agent de etapa e é responsável por prompts com escopo de ferramentas que uma
+skill não pode vincular. Todos os demais papéis da equipe são skills.
 
 > [!TIP]
-> Keep the stage agent selected all day and let your role skill compose into it.
-> Selecting `@builder` and asking for coverage gaps loads the QA role on its own.
+> Mantenha o agent de etapa selecionado durante todo o dia e deixe a skill do seu
+> papel compor-se com ele. Selecionar `@builder` e pedir lacunas de cobertura
+> carrega automaticamente o papel de QA.
 
-## Stage agents
+## Agents de etapa
 
-Three challenge agents run in sequence through the `handoffs:` frontmatter key — `archaeologist -> architect -> builder`. The retained Stage 4 agent (`evolution`) is not used in the individual challenge.
+Três agents do desafio são executados em sequência pela chave `handoffs:` do frontmatter — `archaeologist -> architect -> builder`. O agent preservado da Etapa 4 (`evolution`) não é usado no desafio individual.
 
-| Stage | Agent | Invoke | Bound prompts | Description |
+| Etapa | Agent | Invoque | Prompts vinculados | Descrição |
 | --- | --- | --- | --- | --- |
-| Stage 1 | [`archaeologist`](archaeologist.agent.md) | `@archaeologist` | 6 | Guides actual source/data reading, records coverage, dependencies and unanswered questions |
-| Stage 2 | [`architect`](architect.agent.md) | `@architect` | 16 | Defines bounded contexts, writes EARS specifications, generates ADRs, and designs a Modular Monolith architecture |
-| Stage 3 | [`builder`](builder.agent.md) | `@builder` | 19 | Translates Natural to Java, generates JPA from FDTs, writes equivalence tests, and builds REST + Next.js |
-| Stage 4 (not used in challenge) | [`evolution`](evolution.agent.md) | `@evolution` | 16 | Retained for post-challenge workflows; the individual challenge ends at Stage 3 and judge validation |
+| Etapa 1 | [`archaeologist`](archaeologist.agent.md) | `@archaeologist` | 6 | Orienta a leitura real de fontes e dados, registra cobertura, dependências e perguntas sem resposta |
+| Etapa 2 | [`architect`](architect.agent.md) | `@architect` | 16 | Define contextos delimitados, escreve especificações EARS, gera ADRs e projeta uma arquitetura de Monólito Modular |
+| Etapa 3 | [`builder`](builder.agent.md) | `@builder` | 19 | Traduz Natural para Java, gera JPA a partir de FDTs, escreve testes de equivalência e constrói REST + Next.js |
+| Etapa 4 (não usada no desafio) | [`evolution`](evolution.agent.md) | `@evolution` | 16 | Preservado para fluxos posteriores ao desafio; o desafio individual termina na Etapa 3 e na validação do juiz |
 
-## Cross-stage agent
+## Agent transversal
 
-| Agent | Invoke | Bound prompts | Description |
+| Agent | Invoque | Prompts vinculados | Descrição |
 | --- | --- | --- | --- |
-| [`dba`](dba.agent.md) | `@dba` | 4 | Adabas data discovery, source readiness, PostgreSQL migration and reconciliation, safe schema evolution, and evidence-based query auditing |
+| [`dba`](dba.agent.md) | `@dba` | 4 | Descoberta de dados Adabas, prontidão da fonte, migração e reconciliação no PostgreSQL, evolução segura do schema e auditoria de queries baseada em evidências |
 
-## Role skills that replaced persona agents
+## Skills de papel que substituíram agents de persona
 
-Nine persona agents and three specialist agents were converted to skills. The
-slash commands did not change; only the agent that hosts them did.
+Nove agents de persona e três agents especialistas foram convertidos em skills.
+Os comandos de barra não mudaram; mudou apenas o agent que os hospeda.
 
-| Former agent | Now this skill | Prompts moved to |
+| Agent anterior | Skill atual | Prompts movidos para |
 | --- | --- | --- |
-| `se-ux-ui-designer` | [`ux-research-design`](../skills/ux-research-design/SKILL.md) | owned no prompts |
+| `se-ux-ui-designer` | [`ux-research-design`](../skills/ux-research-design/SKILL.md) | não possuía prompts |
 
-The rationale and the trade-offs are recorded in [ADR-0002](../../docs/adr/0002-team-roles-as-skills-not-agents.md).
+A justificativa e os trade-offs estão registrados na [ADR-0002](../../docs/adr/0002-team-roles-as-skills-not-agents.md).
 
-## Prompt ownership
+## Responsabilidade pelos prompts
 
-The 61 prompts in [`../prompts/`](../prompts/) bind to an agent through their `agent:` key:
+Os 61 prompts em [`../prompts/`](../prompts/) vinculam-se a um agent por sua chave `agent:`:
 
-- All **61** bind to one of the **5** agents above — no prompt is left on the generic built-in `agent: "agent"`. The per-agent counts are in the tables' **Bound prompts** columns.
-- A prompt whose work belongs to a team role opens its body by loading that role's skill, so the role knowledge travels with the task.
+- Todos os **61** vinculam-se a um dos **5** agents acima — nenhum prompt permanece no `agent: "agent"` genérico integrado. As contagens por agent estão nas colunas **Prompts vinculados** das tabelas.
+- Um prompt cujo trabalho pertence a um papel da equipe inicia seu corpo carregando a skill desse papel, de modo que o conhecimento do papel acompanhe a tarefa.
 
-Regenerate the counts with `grep -h '^agent:' ../prompts/*.prompt.md | sort | uniq -c`.
+Gere novamente as contagens com `grep -h '^agent:' ../prompts/*.prompt.md | sort | uniq -c`.
 
-## Maintenance Rule
+## Regra de manutenção
 
-- Renaming an agent silently breaks **every** prompt bound to it via `agent:`; rename the agent and all its prompt bindings together, then re-run the validator.
-- `description` is the only frontmatter key the gate strictly requires; `handoffs` is for challenge Stage agents only and only when a next stage exists.
-- Adding a new agent needs a reason the two-layer model does not already cover. A new **role** is a skill; a new **phase** is an agent.
-- The required body sections (`Mission`, `Lead Personas`, `Operating Principles`, `What This Agent Knows`, `What This Agent Does NOT Know`, `Available Prompts`, a `Definition of Done` heading, `Anti-Patterns This Agent Rejects`, `Spec-Kit Integration`) and the full schema are defined in [`../PRIMITIVE-STANDARD.md`](../PRIMITIVE-STANDARD.md) and enforced by [`../scripts/validate-copilot-primitives.py`](../scripts/validate-copilot-primitives.py).
-- When you add an agent, add its row to the correct layer above and, if a prompt should invoke it, set that prompt's `agent:` to this `name`.
+- Renomear um agent interrompe silenciosamente **todos** os prompts vinculados a ele por `agent:`; renomeie juntos o agent e todos os seus vínculos de prompt e execute novamente o validator.
+- `description` é a única chave de frontmatter estritamente exigida pelo gate; `handoffs` destina-se apenas aos agents de etapa do desafio e somente quando existe uma próxima etapa.
+- Adicionar um novo agent exige uma razão que o modelo de duas camadas ainda não cubra. Um novo **papel** é uma skill; uma nova **fase** é um agent.
+- As seções obrigatórias do corpo (`Missão`, `Personas líderes`, `Princípios operacionais`, `O que este agent sabe`, `O que este agent NÃO sabe`, `Prompts disponíveis`, um heading de `Definição de pronto`, `Antipadrões rejeitados por este agent`, `Integração com Spec-Kit`) e o schema completo estão definidos em [`../PRIMITIVE-STANDARD.md`](../PRIMITIVE-STANDARD.md) e são aplicados por [`../scripts/validate-copilot-primitives.py`](../scripts/validate-copilot-primitives.py).
+- Ao adicionar um agent, inclua sua linha na camada correta acima e, se um prompt precisar invocá-lo, defina o `agent:` desse prompt com este `name`.

@@ -40,8 +40,8 @@ class PriceCalculatorTest {
 ```java
 @WebMvcTest(OrderController.class)
 class OrderControllerTest {
-  @Autowired private MockMvcTester mvc;
-  @MockitoBean private OrderService orderService;
+  @Autowired private MockMvc mvc;
+  @MockBean private OrderService orderService;
 }
 ```
 
@@ -94,9 +94,8 @@ class OrderJsonTest {
 
 ```java
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-@AutoConfigureRestTestClient
 class OrderIntegrationTest {
-  @Autowired private RestTestClient restClient;
+  @Autowired private TestRestTemplate restClient;
 }
 ```
 
@@ -130,7 +129,7 @@ void shouldHandleDifferentOrderTypes() {
   switch (order) {
     case PhysicalOrder po -> assertThat(po.getShippingAddress()).isNotNull();
     case DigitalOrder do_ -> assertThat(do_.getDownloadLink()).isNotNull();
-    default -> throw new IllegalStateException("Tipo de pedido desconhecido");
+    default -> throw new IllegalStateException("Unknown order type");
   }
 }
 ```
@@ -177,7 +176,7 @@ void shouldReturnOrdersInSequence() {
 <!-- WebMvcTest -->
 <dependency>
   <groupId>org.springframework.boot</groupId>
-  <artifactId>spring-boot-starter-webmvc-test</artifactId>
+  <artifactId>spring-boot-starter-test</artifactId>
   <scope>test</scope>
 </dependency>
 
@@ -187,12 +186,7 @@ void shouldReturnOrdersInSequence() {
   <artifactId>spring-boot-starter-data-jpa</artifactId>
 </dependency>
 
-<!-- RestClientTest -->
-<dependency>
-  <groupId>org.springframework.boot</groupId>
-  <artifactId>spring-boot-starter-restclient-test</artifactId>
-  <scope>test</scope>
-</dependency>
+<!-- RestClientTest is also provided by spring-boot-starter-test in Boot 3.3. -->
 
 <!-- Testcontainers -->
 <dependency>

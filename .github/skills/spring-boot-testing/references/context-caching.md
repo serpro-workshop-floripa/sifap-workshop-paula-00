@@ -29,7 +29,7 @@ class OrderControllerTest1 {
 class OrderControllerTest2 {
   @MockitoBean private OrderService orderService;
 }
-// O mesmo contexto é reutilizado
+// Same context reused
 ```
 
 ### Chave diferente (novo contexto)
@@ -42,7 +42,7 @@ class OrderControllerTest1 { }
 @WebMvcTest(OrderController.class)
 @ActiveProfiles("integration")
 class OrderControllerTest2 { }
-// Contextos diferentes são carregados
+// Different contexts loaded
 ```
 
 ## Visualização das estatísticas do cache
@@ -69,14 +69,13 @@ logging.level.org.springframework.test.context.cache=DEBUG
 
 ### Agrupe os testes por configuração
 
-```text
+```
  tests/
    unit/           # Sem contexto
    web/            # @WebMvcTest
    repository/     # @DataJpaTest
    integration/    # @SpringBootTest
 ```
-
 ### Minimize variações de @TestPropertySource
 
 **Ruim (vários contextos):**
@@ -102,7 +101,7 @@ Somente quando o estado do contexto realmente mudar:
 
 ```java
 @Test
-@DirtiesContext // Força a reconstrução do contexto após o teste
+@DirtiesContext // Forces context rebuild after test
 void testThatModifiesBeanDefinitions() { }
 ```
 

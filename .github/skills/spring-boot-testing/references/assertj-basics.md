@@ -80,7 +80,7 @@ void shouldThrowException() {
 
   assertThatThrownBy(() -> service.findById(999L))
     .isInstanceOf(OrderNotFoundException.class)
-    .hasMessage("Pedido 999 não encontrado")
+    .hasMessage("Order 999 not found")
     .hasMessageContaining("999");
 }
 ```
@@ -114,7 +114,7 @@ public class OrderAssert extends AbstractAssert<OrderAssert, Order> {
   public OrderAssert isPending() {
     isNotNull();
     if (!"PENDING".equals(actual.getStatus())) {
-      failWithMessage("Esperava status PENDING para o pedido, mas era %s", actual.getStatus());
+      failWithMessage("Expected order status to be PENDING but was %s", actual.getStatus());
     }
     return this;
   }
@@ -122,7 +122,7 @@ public class OrderAssert extends AbstractAssert<OrderAssert, Order> {
   public OrderAssert hasTotal(BigDecimal expected) {
     isNotNull();
     if (!expected.equals(actual.getTotal())) {
-      failWithMessage("Esperava total %s, mas era %s", expected, actual.getTotal());
+      failWithMessage("Expected total %s but was %s", expected, actual.getTotal());
     }
     return this;
   }
@@ -154,7 +154,7 @@ void shouldValidateOrder() {
 }
 ```
 
-## Padrão `satisfies`
+## Padrão satisfies
 
 ```java
 assertThat(order)

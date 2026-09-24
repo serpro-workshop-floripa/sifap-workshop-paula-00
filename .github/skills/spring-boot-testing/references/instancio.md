@@ -26,14 +26,14 @@ Gere automaticamente objetos de teste complexos. Use quando entidades ou DTOs ti
 
 ```java
 final var order = Instancio.create(Order.class);
-// Todos os campos são preenchidos com dados aleatórios
+// All fields populated with random data
 ```
 
 ### Lista de objetos
 
 ```java
 final var orders = Instancio.ofList(Order.class).size(5).create();
-// Cinco pedidos com dados aleatórios
+// 5 orders with random data
 ```
 
 ## Personalização de valores
@@ -59,7 +59,7 @@ final var order = Instancio.of(Order.class)
 
 ```java
 final var order = Instancio.of(Order.class)
-  .ignore(field(Order::getId)) // Deixa o banco gerar
+  .ignore(field(Order::getId)) // Let DB generate
   .create();
 ```
 
@@ -77,9 +77,9 @@ final var order = Instancio.of(Order.class)
 ### Todos os campos aleatórios
 
 ```java
-// Quando forem necessários dados totalmente aleatórios, mas válidos
+// When you need fully random but valid data
 final var randomOrder = Instancio.create(Order.class);
-// Cliente, itens e endereços: todos preenchidos
+// Customer, items, addresses - all populated
 ```
 
 ## Integração com Spring Boot
@@ -101,7 +101,7 @@ class OrderRepositoryTest {
 
   @Test
   void shouldFindOrdersByStatus() {
-    // Dado: cria dez pedidos aleatórios com status PENDING
+    // Given: Create 10 random orders with PENDING status
     final var orders = Instancio.ofList(Order.class)
       .size(10)
       .set(field(Order::getStatus), "PENDING")
@@ -109,10 +109,10 @@ class OrderRepositoryTest {
 
     orderRepository.saveAll(orders);
 
-    // Quando
+    // When
     final var found = orderRepository.findByStatus("PENDING");
 
-    // Então
+    // Then
     assertThat(found).hasSize(10);
   }
 }
@@ -132,14 +132,14 @@ class OrderControllerTest {
 
   @Test
   void shouldReturnOrder() {
-    // Dado: pedido aleatório com um ID específico
+    // Given: Random order with specific ID
     Order order = Instancio.of(Order.class)
       .set(field(Order::getId), 1L)
       .create();
 
     given(orderService.findById(1L)).willReturn(order);
 
-    // Quando/Então
+    // When/Then
     assertThat(mvc.get().uri("/orders/1"))
       .hasStatus(HttpStatus.OK)
       .bodyJson()
@@ -156,7 +156,7 @@ class OrderControllerTest {
 ### Alternativa ao padrão Construtor (Builder)
 
 ```java
-// Em vez de:
+// Instead of:
 Order order = Order.builder()
   .id(1L)
   .status("PENDING")
@@ -172,17 +172,17 @@ Order order = Instancio.of(Order.class)
   .set(field(Order::getId), 1L)
   .set(field(Order::getStatus), "PENDING")
   .create();
-// Cliente e itens gerados automaticamente
+// Customer and items auto-generated
 ```
 
 ### Dados com semente de geração
 
 ```java
-// Dados "aleatórios" consistentes para testes reproduzíveis
+// Consistent "random" data for reproducible tests
 Order order = Instancio.of(Order.class)
   .withSeed(12345L)
   .create();
-// Os mesmos dados em cada execução com a semente 12345
+// Same data every test run with seed 12345
 ```
 
 ## Padrões comuns

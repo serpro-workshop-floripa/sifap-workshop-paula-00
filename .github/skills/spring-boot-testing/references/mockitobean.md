@@ -36,7 +36,7 @@ void shouldReturnOrder() {
   Order order = new Order(1L, "PENDING");
   given(orderService.findById(1L)).willReturn(order);
 
-  // Código do teste
+  // Test code
 }
 ```
 
@@ -117,7 +117,7 @@ class OrderServiceIntegrationTest {
   void shouldProcessOrder() {
     doReturn(true).when(paymentClient).processPayment(any());
 
-    // Testa com serviço real, mas cliente de pagamento simulado
+    // Test with real service but mocked payment client
   }
 }
 ```
@@ -156,7 +156,7 @@ class OrderServiceTest {
   @Test
   void shouldWorkWithPrototype() {
     given(orderProcessor.process()).willReturn("mocked");
-    // Código do teste
+    // Test code
   }
 }
 ```

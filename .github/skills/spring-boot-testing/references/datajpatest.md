@@ -35,17 +35,17 @@ class OrderRepositoryTest {
 ```java
 @Test
 void shouldFindOrdersByStatus() {
-  // Dado: uso de var para deixar o código mais limpo
+  // Given - Using var for cleaner code
   var pending = new Order("PENDING");
   var completed = new Order("COMPLETED");
   entityManager.persist(pending);
   entityManager.persist(completed);
   entityManager.flush();
 
-  // Quando
+  // When
   var pendingOrders = orderRepository.findByStatus("PENDING");
 
-  // Então: uso dos métodos de coleções sequenciadas
+  // Then - Using sequenced collection methods
   assertThat(pendingOrders).hasSize(1);
   assertThat(pendingOrders.getFirst().getStatus()).isEqualTo("PENDING");
 }
@@ -71,7 +71,7 @@ void shouldExecuteNativeQuery() {
 ```java
 @Test
 void shouldReturnPagedResults() {
-  // Insere 20 pedidos usando IntStream
+  // Insert 20 orders using IntStream
   IntStream.range(0, 20).forEach(i -> {
     entityManager.persist(new Order("PENDING"));
   });
@@ -94,12 +94,12 @@ void shouldLazyLoadOrderItems() {
   order.addItem(new OrderItem("Product", 2));
   entityManager.persist(order);
   entityManager.flush();
-  entityManager.clear(); // Desanexa do contexto de persistência
+  entityManager.clear(); // Detach from persistence context
 
   var found = orderRepository.findById(order.getId());
 
   assertThat(found).isPresent();
-  // Isto acionará o carregamento tardio
+  // This will trigger lazy loading
   assertThat(found.get().getItems()).hasSize(1);
   assertThat(found.get().getItems().getFirst().getProduct()).isEqualTo("Product");
 }
@@ -154,9 +154,9 @@ void shouldFindRecentOrders() {
 ### H2 (padrão, não recomendado para paridade com produção)
 
 ```java
-@DataJpaTest // Usa H2 integrado por padrão
+@DataJpaTest // Uses embedded H2 by default
 class OrderRepositoryH2Test {
-  // Rápido, mas pode não detectar problemas específicos do banco
+  // Fast but may miss DB-specific issues
 }
 ```
 
@@ -179,10 +179,10 @@ Os testes são @Transactional por padrão e executam reversão após cada teste.
 
 ```java
 @Test
-@Rollback(false) // Não executa reversão (raramente necessário)
+@Rollback(false) // Don't roll back (rarely needed)
 void shouldPersistData() {
   orderRepository.save(new Order("PENDING"));
-  // Os dados permanecerão no banco após o teste
+  // Data will remain in database after test
 }
 ```
 

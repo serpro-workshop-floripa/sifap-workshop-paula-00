@@ -156,7 +156,7 @@ void anonymousUserShouldBeForbidden() {
 ```java
 @WebMvcTest({OrderController.class, ProductController.class})
 class WebLayerTest {
-  // Testa vários controladores em uma fatia
+  // Tests multiple controllers in one slice
 }
 ```
 
@@ -164,9 +164,9 @@ class WebLayerTest {
 
 ```java
 @WebMvcTest(OrderController.class)
-@AutoConfigureMockMvc(addFilters = false) // Ignora os filtros de segurança
+@AutoConfigureMockMvc(addFilters = false) // Skip security filters
 class OrderControllerWithoutSecurityTest {
-  // Testa sem filtros de segurança
+  // Tests without security filters
 }
 ```
 

@@ -1,4 +1,4 @@
-# Inventário do legado — Equipe `<preencher>`
+# Inventário do legado — Equipe PAULA SILVA
 
 > **Trilha:** [Kit da Equipe](../README.md) › [Etapa 1](README.md) › **Inventário**
 

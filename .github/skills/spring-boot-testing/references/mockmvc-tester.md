@@ -196,15 +196,15 @@ assertThat(mvc.get().uri("/orders/1"))
 ## Parâmetros da solicitação
 
 ```java
-// Parâmetros de consulta
+// Query parameters
 assertThat(mvc.get().uri("/orders?status=PENDING&page=0"))
   .hasStatusOk();
 
-// Parâmetros de path
+// Path parameters
 assertThat(mvc.get().uri("/orders/{id}", 1L))
   .hasStatusOk();
 
-// Cabeçalhos
+// Headers
 assertThat(mvc.get().uri("/orders/1")
   .header("X-Api-Key", "secret"))
   .hasStatusOk();
@@ -240,7 +240,7 @@ void shouldReturnValidationErrors() {
     .bodyJson()
     .convertTo(ErrorResponse.class)
     .satisfies(error -> {
-      assertThat(error.getMessage()).isEqualTo("Pedido 999 não encontrado");
+      assertThat(error.getMessage()).isEqualTo("Order 999 not found");
       assertThat(error.getCode()).isEqualTo("ORDER_NOT_FOUND");
     });
 }

@@ -24,19 +24,19 @@ assertThat(orders).hasSizeLessThanOrEqualTo(10);
 ## Asserções de contenção
 
 ```java
-// Contém (qualquer ordem, permite itens adicionais)
+// Contains (any order, allows extras)
 assertThat(orders).contains(order1, order2);
 
-// Contém exatamente estes elementos nesta ordem (sem itens adicionais)
+// Contains exactly these elements in this order (no extras)
 assertThat(statuses).containsExactly("NEW", "PENDING", "COMPLETED");
 
-// Contém exatamente estes elementos em qualquer ordem (sem itens adicionais)
+// Contains exactly these elements in any order (no extras)
 assertThat(statuses).containsExactlyInAnyOrder("COMPLETED", "NEW", "PENDING");
 
-// Contém qualquer um destes elementos (pelo menos uma correspondência)
+// Contains any of these elements (at least one match required)
 assertThat(statuses).containsAnyOf("NEW", "CANCELLED");
 
-// Não contém
+// Does not contain
 assertThat(statuses).doesNotContain("DELETED");
 ```
 
@@ -71,7 +71,7 @@ assertThat(orders)
   .extracting(Order::getId)
   .containsExactlyInAnyOrder(1L, 3L);
 
-// Filtra pelo valor do campo
+// Filter by field value
 assertThat(orders)
   .filteredOn("status", "PENDING")
   .hasSize(2);
@@ -84,7 +84,7 @@ assertThat(orders).allMatch(o -> o.getTotal().compareTo(BigDecimal.ZERO) > 0);
 assertThat(orders).anyMatch(o -> o.getStatus().equals("COMPLETED"));
 assertThat(orders).noneMatch(o -> o.getStatus().equals("DELETED"));
 
-// Com descrição para mensagens de falha
+// With description for failure messages
 assertThat(orders)
   .allSatisfy(o -> assertThat(o.getId()).isPositive());
 ```
@@ -107,7 +107,7 @@ assertThat(orders).satisfiesExactly(
 ## Coleções aninhadas e planas
 
 ```java
-// flatExtracting: achata um nível de coleções aninhadas
+// flatExtracting: flatten one level of nested collections
 assertThat(orders)
   .flatExtracting(Order::getItems)
   .extracting(OrderItem::getProduct)
@@ -123,7 +123,7 @@ assertThat(orders)
   .usingRecursiveFieldByFieldElementComparator()
   .containsExactlyInAnyOrder(expectedOrder1, expectedOrder2);
 
-// Ignora campos específicos (por exemplo, IDs gerados ou timestamps)
+// Ignore specific fields (e.g. generated IDs or timestamps)
 assertThat(orders)
   .usingRecursiveFieldByFieldElementComparatorIgnoringFields("id", "createdAt")
   .containsExactly(expectedOrder1, expectedOrder2);

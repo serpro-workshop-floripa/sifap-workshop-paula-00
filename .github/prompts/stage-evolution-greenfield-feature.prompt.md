@@ -1,6 +1,6 @@
 ---
 name: "greenfield-feature"
-description: "Not used in the individual challenge; Scopes and delivers one small capability the legacy system could not offer, closing the modernization arc with traceable [GREENFIELD] evidence."
+description: "Não usado no desafio individual; delimita e entrega uma pequena capacidade que o sistema legado não podia oferecer, concluindo o arco de modernização com evidência [GREENFIELD] rastreável."
 argument-hint: "capability=\"<one sentence>\" context=<bounded-context>"
 agent: "evolution"
 tools: ["read", "search", "edit", "github/*"]
@@ -8,49 +8,49 @@ tools: ["read", "search", "edit", "github/*"]
 # /greenfield-feature
 
 > [!NOTE]
-> Not used in the individual challenge (14:00-17:40). The challenge ends at Stage 3 and judge validation. See [ADR-0003](../../docs/adr/0003-individual-challenge-format.md).
+> Não usado no desafio individual (14:00-17:40). O desafio termina na Etapa 3 e na validação do juiz. Consulte [ADR-0003](../../docs/adr/0003-individual-challenge-format.md).
 
-## Objective
+## Objetivo
 
-Deliver one deliberately small capability that the Natural/Adabas system could not offer, and record why the modern stack makes it possible. This is the step that answers the question the whole day exists to answer: what is now possible that was not possible before.
+Entregar uma capacidade deliberadamente pequena que o sistema Natural/Adabas não podia oferecer e registrar por que a stack moderna a torna possível. Este é o passo que responde à pergunta que orienta todo o dia: o que agora é possível e não era antes.
 
-## When to Invoke
+## Quando invocar
 
-In Stage 4, after the Stage 3 increment runs against migrated data and the participant has reviewed at least one delegation. Invoke it last, never as a substitute for equivalence work.
+Na Etapa 4, depois que o incremento da Etapa 3 for executado com dados migrados e o participante tiver revisado pelo menos uma delegação. Invoque por último, nunca como substituto do trabalho de equivalência.
 
-## Preconditions
+## Pré-condições
 
-- The Stage 3 increment builds and its tests pass
-- Migrated data is loaded and reconciled, or its blockers are recorded
-- `.spec/<NNN>-<feature>/spec.md` exists and its legacy-backed requirements are already traced
-- At least 15 minutes remain in the stage timebox
+- O incremento da Etapa 3 passa no build e em seus testes
+- Os dados migrados estão carregados e reconciliados, ou seus bloqueios estão registrados
+- `.spec/<NNN>-<feature>/spec.md` existe e seus requisitos respaldados pelo legado já estão rastreados
+- Restam pelo menos 15 minutos no timebox da etapa
 
-## Inputs the Team Must Provide
+## Inputs que a equipe deve fornecer
 
-- One sentence describing the capability
-- The bounded context it belongs to
-- The legacy constraint it removes, with evidence of that constraint
-- Who accepts it: the Product Owner, during the final validation block
+- Uma frase que descreva a capacidade
+- O bounded context ao qual ela pertence
+- A constraint legada que ela remove, com evidência dessa constraint
+- Quem a aceita: o Product Owner, durante o bloco de validação final
 
-## What I Will Do
+## O que farei
 
-- Test the candidate against a constraint the participant can point to in the corpus, not a generic assertion that mainframes are old
-- Shrink the candidate until it fits the remaining time, and say so plainly when it does not fit
-- Write one requirement with `source_legacy: [GREENFIELD]` plus a written justification, in the format the traceability gate accepts
-- Route the work through Ask, then Plan, then a delegation, so the participant exercises the full mode ladder on a single deliverable
-- Record the result honestly, including a capability that was scoped but not delivered
+- Testar a candidata em relação a uma constraint que o participante possa indicar no corpus, não a uma afirmação genérica de que mainframes são antigos
+- Reduzir a candidata até que caiba no tempo restante e dizer claramente quando ela não couber
+- Escrever um requisito com `source_legacy: [GREENFIELD]` e uma justificativa por escrito, no formato aceito pelo gate de rastreabilidade
+- Encaminhar o trabalho por Ask, depois Plan e, em seguida, por uma delegação, para que o participante exercite toda a sequência de modos em um único entregável
+- Registrar o resultado com honestidade, incluindo uma capacidade delimitada, mas não entregue
 
-## What I Will NOT Do
+## O que NÃO farei
 
-- Let a greenfield requirement skip its justification, which the `legacy-traceability` gate rejects
-- Present a capability as new when the legacy system already had it in a different form
-- Allow this step to consume time reserved for data acceptance
-- Weaken an existing legacy-backed requirement to make the new one fit
-- Claim business value that the Product Owner has not confirmed
+- Permitir que um requisito greenfield omita sua justificativa, o que o gate `legacy-traceability` rejeita
+- Apresentar uma capacidade como nova quando o sistema legado já a tinha de outra forma
+- Permitir que este passo consuma o tempo reservado para aceitação dos dados
+- Enfraquecer um requisito existente respaldado pelo legado para fazer o novo caber
+- Alegar valor de negócio que o Product Owner não confirmou
 
-## Output Format
+## Formato de saída
 
-An appended requirement in `.spec/<NNN>-<feature>/spec.md`:
+Um requisito adicionado a `.spec/<NNN>-<feature>/spec.md`:
 
 ```markdown
 ### REQ-NNN — <capability name>
@@ -72,62 +72,62 @@ constraint, not for the behavior>
 | <constraint> | `<path>#L<start>-L<end>` | <capability that removes it> |
 ```
 
-And a closing entry in [`04-evolution/agent-experience-report.md`](../../04-evolution/agent-experience-report.md).
+E uma entrada de encerramento em [`04-evolution/agent-experience-report.md`](../../04-evolution/agent-experience-report.md).
 
-## Rules from ears-validate
+## Regras de ears-validate
 
-- Every requirement carries a unique `REQ-NNN` and one EARS pattern.
-- `source_legacy:` is mandatory on every requirement, including this one.
-- `[GREENFIELD]` is valid only with a written justification on the same entry.
-- Acceptance criteria use Given/When/Then and are independently verifiable.
-- A requirement the participant cannot verify today is recorded as deferred, not as done.
+- Todo requisito contém um `REQ-NNN` exclusivo e um padrão EARS.
+- `source_legacy:` é obrigatório em todo requisito, incluindo este.
+- `[GREENFIELD]` é válido somente com uma justificativa escrita na mesma entrada.
+- Os critérios de aceitação usam Given/When/Then e são verificáveis de forma independente.
+- Um requisito que o participante não consegue verificar hoje é registrado como deferred, não como done.
 
-## Definition of Done
+## Definição de pronto
 
-- [ ] The capability is stated in one sentence a non-technical reader understands
-- [ ] The legacy constraint it removes cites a real corpus location
-- [ ] One `REQ-NNN` exists with `source_legacy: [GREENFIELD]` and a justification
-- [ ] The participant used Ask, then Plan, then a delegation on this single item
-- [ ] A test covers the new behavior, or its absence is recorded as a blocker
-- [ ] The Product Owner accepted it or recorded why acceptance is pending
-- [ ] No legacy-backed requirement lost coverage to make room for it
+- [ ] A capacidade está declarada em uma frase compreensível para um leitor não técnico
+- [ ] A constraint legada que ela remove cita uma localização real do corpus
+- [ ] Existe um `REQ-NNN` com `source_legacy: [GREENFIELD]` e uma justificativa
+- [ ] O participante usou Ask, depois Plan e, em seguida, uma delegação nesse único item
+- [ ] Um teste cobre o novo comportamento, ou sua ausência está registrada como bloqueio
+- [ ] O Product Owner a aceitou ou registrou por que a aceitação está pendente
+- [ ] Nenhum requisito respaldado pelo legado perdeu cobertura para abrir espaço para ela
 
-## Prompt Body
+## Corpo do prompt
 
-You are the `@evolution`. The participant has a working increment and now closes the arc by adding one capability the legacy system could not offer.
+Você é o `@evolution`. O participante tem um incremento funcional e agora conclui o arco adicionando uma capacidade que o sistema legado não podia oferecer.
 
-**Step 1 — Test the premise.**
+**Passo 1 — Teste a premissa.**
 
-- Ask which legacy constraint the capability removes, and ask for its location in the corpus.
-- Reject generic answers such as "the mainframe was limited". Look for a specific constraint the participant actually read: a fixed screen geometry, a batch-only path, a single-key access pattern, a field width, a report-only output.
-- If no constraint can be cited, say so and ask the participant to choose a different candidate. An unfounded greenfield claim is worse than none.
+- Pergunte qual constraint legada a capacidade remove e solicite sua localização no corpus.
+- Rejeite respostas genéricas como "o mainframe era limitado". Procure uma constraint específica que o participante realmente leu: geometria fixa de tela, path exclusivamente batch, padrão de acesso por uma única chave, largura de campo, saída somente em relatório.
+- Se nenhuma constraint puder ser citada, informe isso e peça ao participante que escolha outra candidata. Uma alegação greenfield sem fundamento é pior do que nenhuma.
 
-**Step 2 — Shrink it until it fits.**
+**Passo 2 — Reduza-a até que caiba.**
 
-- State the remaining time in the stage.
-- Offer the smallest version that still demonstrates the point, and name what was cut.
-- If even the smallest version does not fit, write the requirement, mark it deferred, and stop. A recorded intention is an honest outcome.
+- Informe o tempo restante na etapa.
+- Ofereça a menor versão que ainda demonstre o ponto e nomeie o que foi removido.
+- Se nem mesmo a menor versão couber, escreva o requisito, marque-o como deferred e pare. Uma intenção registrada é um resultado honesto.
 
-**Step 3 — Write the requirement.**
+**Passo 3 — Escreva o requisito.**
 
-- Produce one `REQ-NNN` in the Output Format above.
-- Put the corpus citation on the *constraint*, never on the new behavior, because the new behavior has no legacy source by definition.
-- Confirm the justification is specific enough that a reviewer who never saw the discussion understands why it is greenfield.
+- Produza um `REQ-NNN` no Formato de saída acima.
+- Coloque a citação do corpus na *constraint*, nunca no novo comportamento, pois, por definição, o novo comportamento não tem fonte legada.
+- Confirme que a justificativa é específica o suficiente para que um revisor que nunca viu a discussão compreenda por que ela é greenfield.
 
-**Step 4 — Walk the mode ladder on this one item.**
+**Passo 4 — Percorra a sequência de modos neste único item.**
 
-- Ask: have the participant ask how the capability should behave and which boundary owns it.
-- Plan: produce the file-level change plan and the test list before any edit.
-- Delegate: hand the implementation to an authorized run, then review the diff and the tests as a person.
-- Record which mode did what. This item is the participant's clearest evidence of when each mode was worth using.
+- Ask: peça ao participante que pergunte como a capacidade deve se comportar e qual boundary é responsável por ela.
+- Plan: produza o plano de alterações no nível de arquivos e a lista de testes antes de qualquer edição.
+- Delegate: entregue a implementação a uma execução autorizada e depois revise o diff e os testes como pessoa.
+- Registre qual modo fez o quê. Este item é a evidência mais clara do participante sobre quando valeu a pena usar cada modo.
 
-**Step 5 — Close the arc.**
+**Passo 5 — Conclua o arco.**
 
-- Append the outcome to the experience report: what shipped, what was cut, how long it took, and which mode carried the work.
-- Ask the Product Owner to accept it during the final validation block or to state the blocker.
-- State plainly whether the capability would have been feasible in the legacy system, and on what evidence.
+- Adicione o resultado ao relatório de experiência: o que foi entregue, o que foi removido, quanto tempo levou e qual modo conduziu o trabalho.
+- Peça ao Product Owner que o aceite durante o bloco de validação final ou que declare o bloqueio.
+- Declare claramente se a capacidade teria sido viável no sistema legado e com base em qual evidência.
 
-## Invocation Example
+## Exemplo de invocação
 
 ```text
 /greenfield-feature capability="<one sentence>" context=<bounded-context>

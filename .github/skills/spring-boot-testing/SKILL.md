@@ -64,7 +64,7 @@ Esta habilidade ajuda a escolher a técnica de teste do Spring Boot adequada par
 
 ## Árvore de decisão rápida
 
-```text
+```
 Testando um ponto de acesso de controlador?
   Sim → @WebMvcTest com MockMvc clássico (MockMvcTester exige Spring Boot 3.4+)
 
@@ -83,7 +83,6 @@ Testando mapeamento JSON?
 Precisa de um teste de integração completo?
   Sim → @SpringBootTest com configuração mínima de contexto
 ```
-
 ## APIs mais recentes fora do escopo do kit (Spring Boot 3.4+/4.0)
 
 O kit está fixado em **Spring Boot 3.3 + JUnit 5**. As APIs mais recentes a seguir são listadas
@@ -110,13 +109,13 @@ Quando um método ou uma classe for complexo demais para ser testado com eficác
 **Exemplo de recomendação de refatoração:**
 
 ```java
-// Antes: método complexo e difícil de testar
+// Before: Complex method hard to test
 public Order processOrder(OrderRequest request) {
-  // Validação, cálculo de desconto, pagamento, estoque, notificação...
-  // Mais de 50 linhas com responsabilidades misturadas
+  // Validation, discount calculation, payment, inventory, notification...
+  // 50+ lines of mixed concerns
 }
 
-// Depois: refatorado em unidades testáveis
+// After: Refactored into testable units
 public Order processOrder(OrderRequest request) {
   validateOrder(request);
   var order = createOrder(request);
@@ -138,11 +137,11 @@ Use nomes de exibição descritivos para esclarecer a intenção do teste:
 
 ```java
 @Test
-@DisplayName("Deve calcular o desconto para cliente VIP")
+@DisplayName("Should calculate discount for VIP customer")
 void shouldCalculateDiscountForVip() { }
 
 @Test
-@DisplayName("Deve rejeitar o pedido quando o cliente não tiver crédito suficiente")
+@DisplayName("Should reject order when customer has insufficient credit")
 void shouldRejectOrderForInsufficientCredit() { }
 ```
 
@@ -188,7 +187,7 @@ suporte do Testcontainers para executar `@DataJpaTest` / `@SpringBootTest` contr
   <scope>test</scope>
 </dependency>
 
-<!-- Suporte do Testcontainers (PostgreSQL real para @DataJpaTest / @SpringBootTest) -->
+<!-- Testcontainers support (real PostgreSQL for @DataJpaTest / @SpringBootTest) -->
 <dependency>
   <groupId>org.springframework.boot</groupId>
   <artifactId>spring-boot-testcontainers</artifactId>

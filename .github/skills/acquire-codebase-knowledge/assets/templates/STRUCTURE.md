@@ -1,44 +1,44 @@
-# Codebase Structure
+# Estrutura da base de código
 
-## Core Sections (Required)
+## Seções principais (obrigatórias)
 
-### 1) Top-Level Map
+### 1) Mapa de alto nível
 
-List only meaningful top-level directories and files.
+Liste somente arquivos e diretórios relevantes do nível superior.
 
-| Path | Purpose | Evidence |
-|------|---------|----------|
-| [path/] | [purpose] | [source] |
+| Path | Finalidade | Evidência |
+|------|------------|-----------|
+| [path/] | [finalidade] | [fonte] |
 
-### 2) Entry Points
+### 2) Pontos de entrada
 
-- Main runtime entry: [FILE]
-- Secondary entry points (worker/cli/jobs): [FILES or NONE]
-- How entry is selected (script/config): [NOTE]
+- Ponto de entrada principal do runtime: [ARQUIVO]
+- Pontos de entrada secundários (worker/cli/jobs): [ARQUIVOS ou NENHUM]
+- Como o ponto de entrada é selecionado (script/configuração): [OBSERVAÇÃO]
 
-### 3) Module Boundaries
+### 3) Limites dos módulos
 
-| Boundary | What belongs here | What must not be here |
-|----------|-------------------|------------------------|
-| [module/layer] | [responsibility] | [forbidden logic] |
+| Limite | O que pertence aqui | O que não deve estar aqui |
+|--------|----------------------|---------------------------|
+| [módulo/camada] | [responsabilidade] | [lógica proibida] |
 
-### 4) Naming and Organization Rules
+### 4) Regras de nomenclatura e organização
 
-- File naming pattern: [kebab/camel/Pascal + examples]
-- Directory organization pattern: [feature/layer/domain]
-- Import aliasing or path conventions: [RULE]
+- Padrão de nomes de arquivos: [kebab/camel/Pascal + exemplos]
+- Padrão de organização de diretórios: [funcionalidade/camada/domínio]
+- Convenções de aliases de import ou paths: [REGRA]
 
-### 5) Evidence
+### 5) Evidências
 
 - [path/to/root-tree-source]
 - [path/to/entry-config]
 - [path/to/key-module]
 
-## Extended Sections (Optional)
+## Seções estendidas (opcionais)
 
-Add only when repository complexity requires it:
+Adicione somente quando a complexidade do repositório exigir:
 
-- Subdirectory deep maps by feature/layer
-- Middleware/boot order details
-- Generated-vs-source layout boundaries
-- Monorepo workspace-level structure maps
+- Mapas detalhados de subdiretórios por funcionalidade ou camada
+- Detalhes da ordem de middleware e inicialização
+- Limites entre layouts gerados e código-fonte
+- Mapas de estrutura por workspace do monorepo

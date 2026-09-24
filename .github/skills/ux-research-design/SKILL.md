@@ -33,7 +33,7 @@ developer construírem.
 
 **Etapa 2 — Escreva o job, não a funcionalidade.**
 
-- Formato: `Quando <situação>, quero <motivação>, para que eu possa <resultado esperado>`.
+- Formato: `When <situation>, I want to <motivation>, so I can <expected outcome>`.
 - Um job sobrevive a um redesenho. Uma funcionalidade não.
 
 **Etapa 3 — Mapeie a jornada de ponta a ponta.**
@@ -92,7 +92,6 @@ developer construírem.
 | Campo | Estado padrão | Revelar exige |
 |---|---|---|
 ```
-
 ## Gate de qualidade
 
 - [ ] Cada tela rastreia até pelo menos uma declaração de job.

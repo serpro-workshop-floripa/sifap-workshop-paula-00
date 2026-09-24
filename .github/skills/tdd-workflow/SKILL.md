@@ -12,12 +12,11 @@ description: "Use ao praticar desenvolvimento orientado a testes, escrever prime
 
 ## O ciclo
 
-```text
+```
 VERMELHO → escreva o menor teste com falha que expresse o próximo comportamento
 VERDE → escreva a menor quantidade de código que faça o teste passar
 REFATORAR → melhore o projeto enquanto os testes permanecem verdes
 ```
-
 Faça um commit em cada etapa verde. Cubra um comportamento por ciclo.
 
 ## Regras
@@ -60,19 +59,19 @@ Ordene os testes para orientar o projeto:
 ## Modelo de saída
 
 ```java
-// REQ-NNN: <comportamento testado>
+// REQ-NNN: <behavior under test>
 @Test
 void calculatesTaxForTaxExemptCustomer() {
-    // Preparar
+    // Arrange
     var customer = new Customer(TAX_EXEMPT);
-    // Agir
+    // Act
     var tax = calculator.taxFor(customer);
-    // Verificar
+    // Assert
     assertThat(tax).isEqualTo(Money.ZERO);
 }
 ```
 
-Sequência de registros por comportamento: `red: adicionar teste com falha` -> `green: fazer passar` -> `refactor: <melhoria>`.
+Sequência de registros por comportamento: `red: add failing test` -> `green: make it pass` -> `refactor: <improvement>`.
 
 ## Gate de qualidade
 

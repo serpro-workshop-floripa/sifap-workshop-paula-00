@@ -18,7 +18,7 @@ O Testcontainers fornece instâncias reais de bancos de dados em contêineres Do
 </dependency>
 <dependency>
   <groupId>org.testcontainers</groupId>
-  <artifactId>testcontainers-postgresql</artifactId>
+  <artifactId>postgresql</artifactId>
   <scope>test</scope>
 </dependency>
 ```
@@ -123,7 +123,7 @@ class MigrationTest {
   @Test
   void shouldApplyMigrations() {
     flyway.migrate();
-    // Código do teste
+    // Test code
   }
 }
 ```
@@ -170,25 +170,25 @@ class OrderRepositoryTest {
 
   @Test
   void shouldFindOrdersByStatus() {
-    // Dado
+    // Given
     entityManager.persist(new Order("PENDING"));
     entityManager.persist(new Order("COMPLETED"));
     entityManager.flush();
 
-    // Quando
+    // When
     List<Order> pending = orderRepository.findByStatus("PENDING");
 
-    // Então
+    // Then
     assertThat(pending).hasSize(1);
     assertThat(pending.get(0).getStatus()).isEqualTo("PENDING");
   }
 
   @Test
   void shouldSupportPostgresSpecificFeatures() {
-    // Pode usar recursos específicos do Postgres, como:
-    // - colunas JSONB
-    // - tipos array
-    // - busca textual
+    // Can use Postgres-specific features like:
+    // - JSONB columns
+    // - Array types
+    // - Full-text search
   }
 }
 ```

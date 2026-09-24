@@ -1,56 +1,56 @@
-# Codebase Concerns
+# Pontos de atenção da base de código
 
-## Core Sections (Required)
+## Seções principais (obrigatórias)
 
-### 1) Top Risks (Prioritized)
+### 1) Principais riscos (priorizados)
 
-| Severity | Concern | Evidence | Impact | Suggested action |
-|----------|---------|----------|--------|------------------|
-| [high/med/low] | [issue] | [file or scan output] | [impact] | [next action] |
+| Severidade | Ponto de atenção | Evidência | Impacto | Ação sugerida |
+|------------|------------------|-----------|---------|---------------|
+| [alta/média/baixa] | [problema] | [arquivo ou saída da varredura] | [impacto] | [próxima ação] |
 
-### 2) Technical Debt
+### 2) Dívida técnica
 
-List the most important debt items only.
+Liste somente os itens de dívida mais importantes.
 
-| Debt item | Why it exists | Where | Risk if ignored | Suggested fix |
-|-----------|---------------|-------|-----------------|---------------|
-| [item] | [reason] | [path] | [risk] | [fix] |
+| Item de dívida | Por que existe | Onde | Risco se ignorado | Correção sugerida |
+|----------------|----------------|------|-------------------|-------------------|
+| [item] | [motivo] | [path] | [risco] | [correção] |
 
-### 3) Security Concerns
+### 3) Pontos de atenção de segurança
 
-| Risk | OWASP category (if applicable) | Evidence | Current mitigation | Gap |
-|------|--------------------------------|----------|--------------------|-----|
-| [risk] | [A01/A03/etc or N/A] | [path] | [what exists] | [what is missing] |
+| Risco | Categoria OWASP (se aplicável) | Evidência | Mitigação atual | Lacuna |
+|-------|---------------------------------|-----------|-----------------|--------|
+| [risco] | [A01/A03/etc ou N/A] | [path] | [o que existe] | [o que falta] |
 
-### 4) Performance and Scaling Concerns
+### 4) Pontos de atenção de desempenho e escalabilidade
 
-| Concern | Evidence | Current symptom | Scaling risk | Suggested improvement |
-|---------|----------|-----------------|-------------|-----------------------|
-| [issue] | [path/metric] | [symptom] | [risk] | [action] |
+| Ponto de atenção | Evidência | Sintoma atual | Risco de escalabilidade | Melhoria sugerida |
+|------------------|-----------|--------------|------------------------|-------------------|
+| [problema] | [path/métrica] | [sintoma] | [risco] | [ação] |
 
-### 5) Fragile/High-Churn Areas
+### 5) Áreas frágeis ou com muitas alterações
 
-| Area | Why fragile | Churn signal | Safe change strategy |
-|------|-------------|-------------|----------------------|
-| [path] | [reason] | [recent churn evidence] | [approach] |
+| Área | Por que é frágil | Sinal de alterações frequentes | Estratégia segura de alteração |
+|------|------------------|--------------------------------|-------------------------------|
+| [path] | [motivo] | [evidência de alterações recentes] | [abordagem] |
 
-### 6) `[ASK USER]` Questions
+### 6) Perguntas `[ASK USER]`
 
-Add unresolved intent-dependent questions as a numbered list.
+Adicione as perguntas não resolvidas que dependem da intenção da equipe em uma lista numerada.
 
-1. [ASK USER] [question]
+1. [ASK USER] [pergunta]
 
-### 7) Evidence
+### 7) Evidências
 
-- [scan output section reference]
+- [referência à seção da saída da varredura]
 - [path/to/code-file]
 - [path/to/config-or-history-evidence]
 
-## Extended Sections (Optional)
+## Seções estendidas (opcionais)
 
-Add only when needed:
+Adicione somente quando necessário:
 
-- Full bug inventory
-- Component-level remediation roadmap
-- Cost/effort estimates by concern
-- Dependency-risk and ownership mapping
+- Inventário completo de bugs
+- Roteiro de correção por componente
+- Estimativas de custo e esforço por ponto de atenção
+- Mapeamento de riscos e responsáveis por dependências

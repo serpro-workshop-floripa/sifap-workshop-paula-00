@@ -1,56 +1,56 @@
-# Technology Stack
+# Stack de tecnologia
 
-## Core Sections (Required)
+## Seções principais (obrigatórias)
 
-### 1) Runtime Summary
+### 1) Resumo do ambiente de execução
 
-| Area | Value | Evidence |
-|------|-------|----------|
-| Primary language | [VALUE] | [FILE_PATH] |
-| Runtime + version | [VALUE] | [FILE_PATH] |
-| Package manager | [VALUE] | [FILE_PATH] |
-| Module/build system | [VALUE] | [FILE_PATH] |
+| Área | Valor | Evidência |
+|------|-------|-----------|
+| Linguagem principal | [VALOR] | [FILE_PATH] |
+| Runtime + versão | [VALOR] | [FILE_PATH] |
+| Gerenciador de pacotes | [VALOR] | [FILE_PATH] |
+| Sistema de módulos/build | [VALOR] | [FILE_PATH] |
 
-### 2) Production Frameworks and Dependencies
+### 2) Frameworks e dependências de produção
 
-List only high-impact production dependencies (frameworks, data, transport, auth).
+Liste somente dependências de produção de alto impacto, como frameworks, dados, transporte e autenticação.
 
-| Dependency | Version | Role in system | Evidence |
-|------------|---------|----------------|----------|
-| [NAME] | [VERSION] | [ROLE] | [FILE_PATH] |
+| Dependência | Versão | Papel no sistema | Evidência |
+|-------------|--------|------------------|-----------|
+| [NOME] | [VERSÃO] | [PAPEL] | [FILE_PATH] |
 
-### 3) Development Toolchain
+### 3) Toolchain de desenvolvimento
 
-| Tool | Purpose | Evidence |
-|------|---------|----------|
-| [TOOL] | [LINT/FORMAT/TEST/BUILD] | [FILE_PATH] |
+| Ferramenta | Finalidade | Evidência |
+|------------|------------|-----------|
+| [FERRAMENTA] | [LINT/FORMAT/TEST/BUILD] | [FILE_PATH] |
 
-### 4) Key Commands
+### 4) Comandos principais
 
 ```bash
-[install command]
-[build command]
-[test command]
-[lint command]
+[comando de instalação]
+[comando de build]
+[comando de teste]
+[comando de lint]
 ```
 
-### 5) Environment and Config
+### 5) Ambiente e configuração
 
-- Config sources: [LIST FILES]
-- Required env vars: [VAR_1], [VAR_2], [TODO]
-- Deployment/runtime constraints: [SHORT NOTE]
+- Fontes de configuração: [LISTE OS ARQUIVOS]
+- Variáveis de ambiente obrigatórias: [VAR_1], [VAR_2], [TODO]
+- Restrições de implantação e runtime: [OBSERVAÇÃO BREVE]
 
-### 6) Evidence
+### 6) Evidências
 
 - [path/to/manifest]
 - [path/to/runtime-config]
 - [path/to/build-or-ci-config]
 
-## Extended Sections (Optional)
+## Seções estendidas (opcionais)
 
-Add only when needed for complex repos:
+Adicione somente quando necessário para repositórios complexos:
 
-- Full dependency taxonomy by category
-- Detailed compiler/runtime flags
-- Environment matrix (dev/stage/prod)
-- Process manager and container runtime details
+- Taxonomia completa de dependências por categoria
+- Flags detalhadas do compilador e do runtime
+- Matriz de ambientes (dev/stage/prod)
+- Detalhes do gerenciador de processos e do runtime de contêineres

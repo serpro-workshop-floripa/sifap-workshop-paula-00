@@ -48,7 +48,6 @@ description: "Use ao elaborar uma estratégia de testes, escolher o formato da p
 **Orçamento de testes instáveis**: <=1% (acima disso, quarentena)
 **Classificação de risco**: P0 <módulos> / P1 <módulos> / P2 <módulos>
 ```
-
 ## Gate de qualidade
 
 - [ ] Cada módulo está classificado por risco (P0/P1/P2) e tem uma meta de cobertura.

@@ -61,7 +61,6 @@ Use estes padrões quando uma história for grande demais para ser concluída em
 **Esforço**: S / M / L
 **Dependências**: US-NNN (se houver)
 ```
-
 ## Gate de qualidade
 
 - [ ] A história atende a todos os critérios INVEST.

@@ -118,7 +118,7 @@ restClient
   .isBadRequest()   // 400
   .isNotFound()     // 404
   .is5xxServerError() // 5xx
-  .isEqualTo(200);  // Código específico
+  .isEqualTo(200);  // Specific code
 ```
 
 ### Cabeçalhos da resposta
@@ -211,7 +211,7 @@ class OrderMockMvcTest {
 
   @Test
   void shouldWorkWithMockMvc() {
-    // Usa MockMvc internamente, sem iniciar o servidor
+    // Uses MockMvc under the hood - no server startup
     restClient
       .get()
       .uri("/orders/1")

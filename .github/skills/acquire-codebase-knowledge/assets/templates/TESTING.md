@@ -1,57 +1,57 @@
-# Testing Patterns
+# Padrões de testes
 
-## Core Sections (Required)
+## Seções principais (obrigatórias)
 
-### 1) Test Stack and Commands
+### 1) Stack e comandos de testes
 
-- Primary test framework: [NAME + VERSION]
-- Assertion/mocking tools: [TOOLS]
-- Commands:
+- Framework de teste principal: [NOME + VERSÃO]
+- Ferramentas de assertions e mocks: [FERRAMENTAS]
+- Comandos:
 
 ```bash
-[run all tests]
-[run unit tests]
-[run integration/e2e tests]
-[run coverage]
+[executar todos os testes]
+[executar testes unitários]
+[executar testes de integração/e2e]
+[executar cobertura]
 ```
 
-### 2) Test Layout
+### 2) Organização dos testes
 
-- Test file placement pattern: [co-located/tests folder/etc]
-- Naming convention: [pattern]
-- Setup files and where they run: [paths]
+- Padrão de localização dos arquivos de teste: [junto ao código/pasta tests/etc]
+- Convenção de nomenclatura: [padrão]
+- Arquivos de setup e onde são executados: [paths]
 
-### 3) Test Scope Matrix
+### 3) Matriz de escopo dos testes
 
-| Scope | Covered? | Typical target | Notes |
-|-------|----------|----------------|-------|
-| Unit | [yes/no] | [modules/services] | [notes] |
-| Integration | [yes/no] | [API/data boundaries] | [notes] |
-| E2E | [yes/no] | [user flows] | [notes] |
+| Escopo | Coberto? | Alvo típico | Observações |
+|--------|----------|-------------|-------------|
+| Unitário | [sim/não] | [módulos/serviços] | [observações] |
+| Integração | [sim/não] | [fronteiras de API/dados] | [observações] |
+| E2E | [sim/não] | [fluxos de usuário] | [observações] |
 
-### 4) Mocking and Isolation Strategy
+### 4) Estratégia de mocks e isolamento
 
-- Main mocking approach: [module/class/network]
-- Isolation guarantees: [what is reset and when]
-- Common failure mode in tests: [short note]
+- Principal abordagem de mocks: [módulo/classe/rede]
+- Garantias de isolamento: [o que é redefinido e quando]
+- Modo de falha comum nos testes: [observação breve]
 
-### 5) Coverage and Quality Signals
+### 5) Sinais de cobertura e qualidade
 
-- Coverage tool + threshold: [value or TODO]
-- Current reported coverage: [value or TODO]
-- Known gaps/flaky areas: [list]
+- Ferramenta e limite de cobertura: [valor ou TODO]
+- Cobertura atual informada: [valor ou TODO]
+- Lacunas conhecidas ou áreas instáveis: [lista]
 
-### 6) Evidence
+### 6) Evidências
 
 - [path/to/test-config]
 - [path/to/representative-test-file]
 - [path/to/ci-or-coverage-config]
 
-## Extended Sections (Optional)
+## Seções estendidas (opcionais)
 
-Add only when needed:
+Adicione somente quando necessário:
 
-- Framework-specific suite patterns
-- Detailed mock recipes per dependency type
-- Historical flaky test catalog
-- Test performance bottlenecks and optimization ideas
+- Padrões de suítes específicos do framework
+- Receitas detalhadas de mocks por tipo de dependência
+- Catálogo histórico de testes instáveis
+- Gargalos de desempenho dos testes e ideias de otimização

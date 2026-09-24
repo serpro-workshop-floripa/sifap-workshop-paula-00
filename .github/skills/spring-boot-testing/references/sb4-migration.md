@@ -137,7 +137,7 @@ public class OrderProcessor { }
 @SpringBootTest
 class OrderServiceTest {
   @MockitoBean
-  private OrderProcessor orderProcessor; // Agora funciona!
+  private OrderProcessor orderProcessor; // Now works!
 }
 ```
 
@@ -151,7 +151,7 @@ Se os testes falharem com classes @Nested:
 @SpringExtensionConfig(useTestClassScopedExtensionContext = true)
 @SpringBootTest
 class OrderTest {
-  // Usa o comportamento antigo
+  // Use old behavior
 }
 ```
 
