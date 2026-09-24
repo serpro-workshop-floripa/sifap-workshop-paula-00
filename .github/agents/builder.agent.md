@@ -1,7 +1,7 @@
 ---
 name: "builder"
 description: "Agent da Etapa 3 — traduz Natural para Java, gera JPA a partir de FDTs, escreve testes de equivalência e constrói REST + Next.js"
-tools: [read, search, edit, agent/runSubagent, execute]
+tools: [execute, read, agent, ms-python.python/getPythonEnvironmentInfo, ms-python.python/getPythonExecutableCommand, ms-python.python/installPythonPackage, ms-python.python/configurePythonEnvironment, edit, search, com.microsoft/azure/search]
 ---
 # @builder-agent
 

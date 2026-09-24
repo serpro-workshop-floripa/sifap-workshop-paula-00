@@ -1,7 +1,7 @@
 ---
 name: "dba"
 description: "Assistente de DBA para descoberta de dados Adabas, prontidão da fonte, migração e reconciliação no PostgreSQL, evolução segura do schema e auditoria de queries baseada em evidências."
-tools: [read, agent/runSubagent, edit, search]
+tools: [read, agent, ms-python.python/getPythonEnvironmentInfo, ms-python.python/getPythonExecutableCommand, ms-python.python/installPythonPackage, ms-python.python/configurePythonEnvironment, edit, search, com.microsoft/azure/search]
 ---
 # @dba-agent
 

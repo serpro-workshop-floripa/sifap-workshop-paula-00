@@ -1,7 +1,7 @@
 ---
 name: "architect"
 description: "Agent da Etapa 2 — transforma descobertas revisadas e evidências de dados em especificações EARS rastreáveis, projeto de migração, ADRs e um plano de Monólito Modular."
-tools: [read, search, edit, execute, agent/runSubagent]
+tools: [execute, read, agent, ms-python.python/getPythonEnvironmentInfo, ms-python.python/getPythonExecutableCommand, ms-python.python/installPythonPackage, ms-python.python/configurePythonEnvironment, edit, search, com.microsoft/azure/search]
 handoffs:
   - label: "Iniciar Etapa 3"
     agent: builder

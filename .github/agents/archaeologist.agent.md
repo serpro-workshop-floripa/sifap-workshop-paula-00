@@ -1,7 +1,7 @@
 ---
 name: "archaeologist"
 description: "Agente da Etapa 1 - orienta a leitura Natural/Adabas, registra evidências de regras e dados, acompanha a cobertura real de leitura e preserva questões em aberto."
-tools: [read, edit, search]
+tools: [execute, read, agent, ms-python.python/getPythonEnvironmentInfo, ms-python.python/getPythonExecutableCommand, ms-python.python/installPythonPackage, ms-python.python/configurePythonEnvironment, edit, search, com.microsoft/azure/search]
 handoffs:
   - label: "Iniciar Etapa 2"
     agent: architect
