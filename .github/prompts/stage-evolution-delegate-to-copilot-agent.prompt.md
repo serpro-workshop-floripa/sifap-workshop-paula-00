@@ -1,6 +1,6 @@
 ---
 name: "delegate-to-copilot-agent"
-description: "Not used in the individual challenge; Delegates an issue to the GitHub Copilot Agent in the cloud and tracks the resulting PR."
+description: "Não usado no desafio individual; delega uma issue ao GitHub Copilot Agent na nuvem e acompanha o PR resultante."
 argument-hint: "issue=04-evolution/issues/<slug>.md"
 agent: "evolution"
 tools: ["read", "search", "edit", "github/*"]
@@ -8,44 +8,44 @@ tools: ["read", "search", "edit", "github/*"]
 # /delegate-to-copilot-agent
 
 > [!NOTE]
-> Not used in the individual challenge (14:00-17:40). The challenge ends at Stage 3 and judge validation. See [ADR-0003](../../docs/adr/0003-individual-challenge-format.md).
+> Não usado no desafio individual (14:00-17:40). O desafio termina na Etapa 3 e na validação do juiz. Consulte [ADR-0003](../../docs/adr/0003-individual-challenge-format.md).
 
-## Objective
+## Objetivo
 
-Guide the participant in posting a reviewed issue on GitHub and preparing a watch list to monitor the AI-generated PR. This is a delegation workflow — the participant owns the review and merge.
+Orientar o participante a publicar uma issue revisada no GitHub e preparar uma watch list para monitorar o PR gerado por IA. Este é um workflow de delegação — o participante é responsável pela revisão e pelo merge.
 
-## When to Invoke
+## Quando invocar
 
-After the participant has reviewed and approved an issue draft from `/write-github-issue`.
+Depois que o participante tiver revisado e aprovado um rascunho de issue de `/write-github-issue`.
 
-## Preconditions
+## Pré-condições
 
-- An issue draft exists at `04-evolution/issues/<slug>.md`
-- The participant reviewed and approved the draft
-- The participant has push access to the GitHub repository
-- The repository and account permit assigning work to GitHub's coding agent; local VS Code Agent mode alone does not establish this
+- Existe um rascunho de issue em `04-evolution/issues/<slug>.md`
+- O participante revisou e aprovou o rascunho
+- O participante tem acesso de push ao repositório GitHub
+- O repositório e a conta permitem atribuir trabalho ao coding agent do GitHub; o modo Agent local do VS Code, isoladamente, não estabelece isso
 
-## Inputs the Team Must Provide
+## Inputs que a equipe deve fornecer
 
-- The file path of the issue draft
-- Confirmation that the draft is ready to post
+- O path do arquivo de rascunho da issue
+- A confirmação de que o rascunho está pronto para publicação
 
-## What I Will Do
+## O que farei
 
-- Guide the participant through posting the issue on GitHub
-- Prepare a watch-list document with expected results
-- Provide a review guide for when the PR arrives
+- Orientar o participante na publicação da issue no GitHub
+- Preparar um documento de watch list com os resultados esperados
+- Fornecer um guia de revisão para quando o PR chegar
 
-## What I Will NOT Do
+## O que NÃO farei
 
-- Post the issue for the participant — they do it manually to understand the workflow
-- Assume the AI PR will be correct — I prepare the participant to review it critically
-- Merge any PR — the participant makes the merge decision
-- Skip the review guide — every delegated PR requires human review
+- Publicar a issue pelo participante — ele faz isso manualmente para compreender o workflow
+- Presumir que o PR da IA estará correto — preparo o participante para revisá-lo criticamente
+- Fazer merge de qualquer PR — o participante toma a decisão de merge
+- Ignorar o guia de revisão — todo PR delegado exige revisão humana
 
-## Output Format
+## Formato de saída
 
-A delegation tracking file at `04-evolution/delegations/<issue-slug>.md`:
+Um arquivo de acompanhamento da delegação em `04-evolution/delegations/<issue-slug>.md`:
 
 ```markdown
 # Delegation: [Issue Title]
@@ -56,29 +56,29 @@ A delegation tracking file at `04-evolution/delegations/<issue-slug>.md`:
 ## Participant Responsibility
 ```
 
-## Definition of Done
+## Definição de pronto
 
-- [ ] The participant has instructions for posting the issue manually
-- [ ] The watch-list document exists with expected changed files and added tests
-- [ ] The review guide includes typical AI failure modes to check
-- [ ] The participant understands that it owns the review and merge decision
-- [ ] The delegation file tracks the issue URL after it is posted
+- [ ] O participante tem instruções para publicar a issue manualmente
+- [ ] O documento de watch list existe com os arquivos que devem ser alterados e os testes que devem ser adicionados
+- [ ] O guia de revisão inclui modos de falha típicos de IA a verificar
+- [ ] O participante compreende que é responsável pela revisão e pela decisão de merge
+- [ ] O arquivo de delegação registra a URL da issue após sua publicação
 
-## Prompt Body
+## Corpo do prompt
 
-You are the `@evolution`. The participant approved an issue draft and is ready to delegate it to the Copilot Agent.
+Você é o `@evolution`. O participante aprovou um rascunho de issue e está pronto para delegá-lo ao Copilot Agent.
 
-**Step 1 — Confirm readiness.**
-Ask the participant to confirm:
+**Passo 1 — Confirme a prontidão.**
+Peça ao participante que confirme:
 
-1. Have you reviewed the issue draft at `[path]`?
-2. Are the acceptance criteria clear and testable?
-3. Is the scope small enough for a single PR?
+1. Você revisou o rascunho da issue em `[path]`?
+2. Os critérios de aceitação estão claros e são testáveis?
+3. O escopo é pequeno o suficiente para um único PR?
 
-If any answer is "no," redirect the participant to `/write-github-issue` for revision.
+Se alguma resposta for "não", redirecione o participante para `/write-github-issue` para revisão.
 
-**Step 2 — Provide posting instructions.**
-Tell the participant how to post the issue:
+**Passo 2 — Forneça instruções de publicação.**
+Informe ao participante como publicar a issue:
 
 ```bash
 # Option 1: GitHub CLI
@@ -93,35 +93,35 @@ gh issue create --title "[title]" --body-file 04-evolution/issues/<slug>.md --la
 #    when available. A mention in the issue body is not assignment.
 ```
 
-Emphasize that the participant posts this manually. This is deliberate — delegating work to AI is a skill that requires understanding the delegation context.
+Enfatize que o participante publica isso manualmente. Isso é intencional — delegar trabalho à IA é uma habilidade que exige compreender o contexto da delegação.
 
-**Step 3 — Prepare the watch list.**
-Based on the issue's "Files Likely Affected" section, create a watch list:
+**Passo 3 — Prepare a watch list.**
+Com base na seção "Files Likely Affected" da issue, crie uma watch list:
 
-- **Expected files created**: list with paths
-- **Expected files modified**: list with paths
-- **Expected tests added**: list test classes and what they should verify
-- **Expected PR size**: estimate (small: <100 lines, medium: 100-300, large: 300+)
-- **Observed status/time**: record the actual assignment/start state; do not promise a PR within the 40-minute stage
+- **Arquivos que devem ser criados**: lista com paths
+- **Arquivos que devem ser modificados**: lista com paths
+- **Testes que devem ser adicionados**: liste as classes de teste e o que devem verificar
+- **Tamanho esperado do PR**: estimativa (pequeno: <100 linhas, médio: 100-300, grande: 300+)
+- **Status/tempo observado**: registre o estado real da atribuição/início; não prometa um PR dentro da etapa de 40 minutos
 
-**Step 4 — Write the review guide.**
-Prepare a checklist of typical AI failure modes the participant should watch for:
+**Passo 4 — Escreva o guia de revisão.**
+Prepare um checklist de modos de falha típicos de IA que o participante deve observar:
 
-- [ ] **Hallucinated imports**: Does the PR import packages that do not exist in the project?
-- [ ] **Fabricated API calls**: Does the code call methods that are not defined in the target class?
-- [ ] **Tests that test nothing**: Do test assertions verify meaningful behavior, or are they tautologies?
-- [ ] **Comments contradicting code**: Do comments describe behavior that the code does not implement?
-- [ ] **Scope creep**: Does the PR change files not listed in the issue?
-- [ ] **Missing error handling**: Does the PR add happy-path code without error handling?
-- [ ] **Style violations**: Does the PR follow project conventions (records for DTOs, constructor injection, etc.)?
+- [ ] **Imports alucinados**: o PR importa packages que não existem no projeto?
+- [ ] **Chamadas de API fabricadas**: o código chama métodos que não estão definidos na classe de destino?
+- [ ] **Testes que não testam nada**: as assertions verificam comportamento significativo ou são tautologias?
+- [ ] **Comentários que contradizem o código**: os comentários descrevem um comportamento que o código não implementa?
+- [ ] **Scope creep**: o PR altera arquivos não listados na issue?
+- [ ] **Tratamento de erros ausente**: o PR adiciona código de happy path sem tratamento de erros?
+- [ ] **Violações de estilo**: o PR segue as convenções do projeto (records para DTOs, constructor injection etc.)?
 
-**Step 5 — Document participant responsibility.**
-Write a clear statement: "This is delegation, not automation. The participant owns the review, the merge decision, and any consequences. Copilot Agent is a contributor, not an approver."
+**Passo 5 — Documente a responsabilidade do participante.**
+Escreva uma declaração clara: "Isto é delegação, não automação. O participante é responsável pela revisão, pela decisão de merge e por quaisquer consequências. O Copilot Agent é um colaborador, não um aprovador."
 
-**Step 6 — Write the delegation file.**
-Generate the output at `04-evolution/delegations/<issue-slug>.md`. Leave a placeholder for the issue URL that the participant will fill in after posting.
+**Passo 6 — Escreva o arquivo de delegação.**
+Gere a saída em `04-evolution/delegations/<issue-slug>.md`. Deixe um placeholder para a URL da issue que o participante preencherá após a publicação.
 
-## Invocation Example
+## Exemplo de invocação
 
 ```
 /delegate-to-copilot-agent issue=04-evolution/issues/<slug>.md

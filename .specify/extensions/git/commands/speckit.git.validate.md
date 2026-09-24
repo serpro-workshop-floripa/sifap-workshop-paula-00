@@ -1,49 +1,49 @@
 ---
-description: "Validate current branch follows feature branch naming conventions"
+description: "Valida se a branch atual segue as convenções de nomenclatura de branches de funcionalidade"
 ---
 
-# Validate Feature Branch
+# Validar branch de funcionalidade
 
-Validate that the current Git branch follows the expected feature branch naming conventions.
+Valide se a branch Git atual segue as convenções esperadas de nomenclatura de branches de funcionalidade.
 
-## Prerequisites
+## Pré-requisitos
 
-- Check if Git is available by running `git rev-parse --is-inside-work-tree 2>/dev/null`
-- If Git is not available, output a warning and skip validation:
+- Verifique se o Git está disponível executando `git rev-parse --is-inside-work-tree 2>/dev/null`
+- Se o Git não estiver disponível, exiba um aviso e ignore a validação:
   ```
   [specify] Warning: Git repository not detected; skipped branch validation
   ```
 
-## Validation Rules
+## Regras de validação
 
-Get the current branch name:
+Obtenha o nome da branch atual:
 
 ```bash
 git rev-parse --abbrev-ref HEAD
 ```
 
-The branch name must match one of these patterns:
+O nome da branch deve corresponder a um destes padrões:
 
-1. **Sequential**: `^[0-9]{3,}-` (e.g., `001-feature-name`, `042-fix-bug`, `1000-big-feature`)
-2. **Timestamp**: `^[0-9]{8}-[0-9]{6}-` (e.g., `20260319-143022-feature-name`)
+1. **Sequencial**: `^[0-9]{3,}-` (por exemplo, `001-feature-name`, `042-fix-bug`, `1000-big-feature`)
+2. **Timestamp**: `^[0-9]{8}-[0-9]{6}-` (por exemplo, `20260319-143022-feature-name`)
 
-## Execution
+## Execução
 
-If on a feature branch (matches either pattern):
-- Output: `✓ On feature branch: <branch-name>`
-- Check if the corresponding spec directory exists under `specs/`:
-  - For sequential branches, look for `specs/<prefix>-*` where prefix matches the numeric portion
-  - For timestamp branches, look for `specs/<prefix>-*` where prefix matches the `YYYYMMDD-HHMMSS` portion
-- If spec directory exists: `✓ Spec directory found: <path>`
-- If spec directory missing: `⚠ No spec directory found for prefix <prefix>`
+Se estiver em uma branch de funcionalidade (corresponder a qualquer um dos padrões):
+- Saída: `✓ On feature branch: <branch-name>`
+- Verifique se o diretório de especificação correspondente existe em `specs/`:
+  - Para branches sequenciais, procure `specs/<prefix>-*`, em que o prefixo corresponde à parte numérica
+  - Para branches com timestamp, procure `specs/<prefix>-*`, em que o prefixo corresponde à parte `YYYYMMDD-HHMMSS`
+- Se o diretório de especificação existir: `✓ Spec directory found: <path>`
+- Se o diretório de especificação estiver ausente: `⚠ No spec directory found for prefix <prefix>`
 
-If NOT on a feature branch:
-- Output: `✗ Not on a feature branch. Current branch: <branch-name>`
-- Output: `Feature branches should be named like: 001-feature-name or 20260319-143022-feature-name`
+Se NÃO estiver em uma branch de funcionalidade:
+- Saída: `✗ Not on a feature branch. Current branch: <branch-name>`
+- Saída: `Feature branches should be named like: 001-feature-name or 20260319-143022-feature-name`
 
-## Graceful Degradation
+## Degradação controlada
 
-If Git is not installed or the directory is not a Git repository:
-- Check the `SPECIFY_FEATURE` environment variable as a fallback
-- If set, validate that value against the naming patterns
-- If not set, skip validation with a warning
+Se o Git não estiver instalado ou o diretório não for um repositório Git:
+- Verifique a variável de ambiente `SPECIFY_FEATURE` como alternativa
+- Se estiver definida, valide o valor em relação aos padrões de nomenclatura
+- Se não estiver definida, ignore a validação com um aviso

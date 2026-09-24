@@ -1,49 +1,49 @@
 ---
-description: "Initialize a Git repository with an initial commit"
+description: "Inicializa um repositório Git com um commit inicial"
 ---
 
-# Initialize Git Repository
+# Inicializar repositório Git
 
-Initialize a Git repository in the current project directory if one does not already exist.
+Inicialize um repositório Git no diretório atual do projeto caso ainda não exista.
 
-## Execution
+## Execução
 
-Run the appropriate script from the project root:
+Execute o script apropriado a partir da raiz do projeto:
 
 - **Bash**: `.specify/extensions/git/scripts/bash/initialize-repo.sh`
 - **PowerShell**: `.specify/extensions/git/scripts/powershell/initialize-repo.ps1`
 
-If the extension scripts are not found, fall back to:
+Se os scripts da extensão não forem encontrados, use como alternativa:
 - **Bash**: `git init && git add . && git commit -m "Initial commit from Specify template"`
 - **PowerShell**: `git init; git add .; git commit -m "Initial commit from Specify template"`
 
-The script handles all checks internally:
-- Skips if Git is not available
-- Skips if already inside a Git repository
-- Runs `git init`, `git add .`, and `git commit` with an initial commit message
+O script realiza todas as verificações internamente:
+- Ignora se o Git não estiver disponível
+- Ignora se já estiver dentro de um repositório Git
+- Executa `git init`, `git add .` e `git commit` com uma mensagem de commit inicial
 
-## Customization
+## Personalização
 
-Replace the script to add project-specific Git initialization steps:
-- Custom `.gitignore` templates
-- Default branch naming (`git config init.defaultBranch`)
-- Git LFS setup
-- Git hooks installation
-- Commit signing configuration
-- Git Flow initialization
+Substitua o script para adicionar etapas de inicialização do Git específicas do projeto:
+- Templates `.gitignore` personalizados
+- Nomenclatura da branch padrão (`git config init.defaultBranch`)
+- Configuração do Git LFS
+- Instalação de hooks do Git
+- Configuração de assinatura de commits
+- Inicialização do Git Flow
 
-## Output
+## Saída
 
-On success:
+Em caso de sucesso:
 - `[OK] Git repository initialized`
 
-## Graceful Degradation
+## Degradação controlada
 
-If Git is not installed:
-- Warn the user
-- Skip repository initialization
-- The project continues to function without Git (specs can still be created under `specs/`)
+Se o Git não estiver instalado:
+- Avise o usuário
+- Ignore a inicialização do repositório
+- O projeto continua funcionando sem Git (as especificações ainda podem ser criadas em `specs/`)
 
-If Git is installed but `git init`, `git add .`, or `git commit` fails:
-- Surface the error to the user
-- Stop this command rather than continuing with a partially initialized repository
+Se o Git estiver instalado, mas `git init`, `git add .` ou `git commit` falhar:
+- Apresente o erro ao usuário
+- Interrompa este comando em vez de continuar com um repositório parcialmente inicializado

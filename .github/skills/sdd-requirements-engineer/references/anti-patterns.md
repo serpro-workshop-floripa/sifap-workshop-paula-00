@@ -1,43 +1,43 @@
-# SDD and EARS anti-patterns
+# Antipadrões de SDD e EARS
 
-Use this catalog during repair and validation. Fix the underlying requirement, evidence, or traceability defect rather than polishing only the prose.
+Use este catálogo durante correções e validações. Corrija o defeito subjacente no requisito, na evidência ou na rastreabilidade, em vez de apenas aprimorar a prosa.
 
-## Requirement defects
+## Defeitos em requisitos
 
-| Anti-pattern | Why it fails | Corrective action |
+| Antipadrão | Por que falha | Ação corretiva |
 | --- | --- | --- |
-| User story treated as a requirement | Intent is not a normative system response. | Preserve the story as context and derive one or more EARS requirements. |
-| `should`, `may`, `will`, or vague `must` | Obligation or timing is ambiguous. | Use the appropriate EARS pattern with `shall`. |
-| Compound response joined by `and` | One change or test can pass while another fails. | Split into atomic requirements with separate IDs. |
-| Pronoun subject such as "it" | The responsible system boundary is unclear. | Name the system or component. |
-| Hidden trigger or state | Reviewers must infer when behavior applies. | Add `when`, `while`, `where`, or `if...then` clauses. |
-| Technology in a functional requirement | Behavior and implementation become coupled. | Move a sourced mandatory choice to NFRD constraints; otherwise defer to design. |
-| Vague quality wording | "Fast", "secure", and "available" cannot be verified. | Add an evidence-backed measurement envelope or a blocker. |
-| Invented numeric target | The document creates unsupported business or operational policy. | Cite measured workload or accountable-owner approval. |
-| Missing unwanted behavior | The happy path hides error, timeout, and recovery obligations. | Add unwanted or complex EARS requirements. |
-| Unstable or duplicate IDs | Traceability and change history break. | Preserve IDs and record split, merge, replacement, or retirement dispositions. |
+| História de usuário tratada como requisito | A intenção não é uma resposta normativa do sistema. | Preserve a história como contexto e derive um ou mais requisitos EARS. |
+| `should`, `may`, `will` ou `must` vago | A obrigação ou o momento é ambíguo. | Use o padrão EARS apropriado com `shall`. |
+| Resposta composta unida por `and` | Uma mudança ou teste pode passar enquanto o outro falha. | Divida em requisitos atômicos com IDs separados. |
+| Sujeito pronominal como "it" | O limite do sistema responsável não está claro. | Nomeie o sistema ou componente. |
+| Gatilho ou estado oculto | Revisores precisam inferir quando o comportamento se aplica. | Adicione cláusulas `when`, `while`, `where` ou `if...then`. |
+| Tecnologia em requisito funcional | Comportamento e implementação ficam acoplados. | Mova uma escolha obrigatória com fonte para as restrições do NFRD; caso contrário, adie para o design. |
+| Formulação vaga de qualidade | Termos como "rápido", "seguro" e "disponível" não podem ser verificados. | Adicione um envelope de medição sustentado por evidências ou um bloqueio. |
+| Meta numérica inventada | O documento cria uma política operacional ou de negócio sem sustentação. | Cite a carga de trabalho medida ou a aprovação do responsável. |
+| Comportamento indesejado ausente | O caminho feliz oculta obrigações de erro, timeout e recuperação. | Adicione requisitos EARS unwanted ou complex. |
+| IDs instáveis ou duplicados | A rastreabilidade e o histórico de mudanças se rompem. | Preserve IDs e registre disposições de divisão, mesclagem, substituição ou retirada. |
 
-## Artifact and workflow defects
+## Defeitos em artefatos e no fluxo de trabalho
 
-| Anti-pattern | Why it fails | Corrective action |
+| Antipadrão | Por que falha | Ação corretiva |
 | --- | --- | --- |
-| Pre-populated `Approved` status | The artifact claims a review that did not occur. | Start as `Draft` or `Ready for review`; link approval evidence later. |
-| Design-first without recovered requirements | Architecture choices become the unreviewed source of truth. | Derive and review requirements before checkpoint C2. |
-| Feature-local constitution conflicts with repository governance | Two authorities can impose incompatible rules. | Reuse the repository constitution or record an explicit amendment. |
-| Full requirement text copied into every artifact | Copies drift and create multiple normative sources. | Keep one canonical statement and link by stable ID. |
-| Requirement with no design, task, or verification | The specification cannot drive implementation or evidence. | Add mappings or remove the item from active scope. |
-| Task with no requirement | Work enters scope without an approved need. | Trace it to a requirement or classify it as governance/enablement with evidence. |
-| `[P]` based only on task wording | Parallel work can still conflict on dependencies or files. | Verify dependency and change-surface independence. |
-| Mermaid diagram with unlabeled boundaries | Reviewers cannot assess ownership or trust. | Label actors, components, data stores, external systems, and trust boundaries. |
-| NFR repeated across contexts without a measurement envelope | A target may mean different things in each environment. | Define workload, environment, aggregation, window, and instrumentation. |
-| Strong status without evidence | "Implemented" or "Verified" becomes success-shaped fiction. | Link repository or execution evidence and retain a weaker status otherwise. |
-| Arbitrary P0 count rule | Mechanical limits hide release risk or force misclassification. | Justify each P0 and split the increment when the set is not reviewable. |
-| Broken relative resource link | The skill cannot load its own guidance after installation. | Use a path relative to the current skill package and validate that it exists. |
+| Status `Approved` preenchido previamente | O artefato alega uma revisão que não ocorreu. | Comece como `Draft` ou `Ready for review`; vincule a evidência de aprovação depois. |
+| Design primeiro sem requisitos recuperados | Escolhas arquiteturais tornam-se a fonte de verdade não revisada. | Derive e revise os requisitos antes do checkpoint C2. |
+| Constituição local da funcionalidade em conflito com a governança do repositório | Duas autoridades podem impor regras incompatíveis. | Reutilize a constituição do repositório ou registre uma emenda explícita. |
+| Texto completo do requisito copiado em cada artefato | As cópias divergem e criam várias fontes normativas. | Mantenha uma declaração canônica e vincule-a por ID estável. |
+| Requisito sem design, tarefa ou verificação | A especificação não consegue orientar a implementação nem as evidências. | Adicione mapeamentos ou remova o item do escopo ativo. |
+| Tarefa sem requisito | Trabalho entra no escopo sem uma necessidade aprovada. | Rastreie-o até um requisito ou classifique-o como governança ou habilitação com evidências. |
+| `[P]` baseado apenas no texto da tarefa | O trabalho paralelo ainda pode conflitar em dependências ou arquivos. | Verifique a independência das dependências e da superfície de mudança. |
+| Diagrama Mermaid com limites sem rótulos | Revisores não conseguem avaliar propriedade ou confiança. | Rotule atores, componentes, armazenamentos de dados, sistemas externos e limites de confiança. |
+| NFR repetido entre contextos sem envelope de medição | Uma meta pode significar coisas diferentes em cada ambiente. | Defina carga de trabalho, ambiente, agregação, janela e instrumentação. |
+| Status forte sem evidências | "Implemented" ou "Verified" vira uma ficção com aparência de sucesso. | Vincule evidências do repositório ou de execução e mantenha um status mais fraco caso contrário. |
+| Regra arbitrária de quantidade de P0 | Limites mecânicos ocultam risco de entrega ou forçam classificação incorreta. | Justifique cada P0 e divida o incremento quando o conjunto não puder ser revisado. |
+| Link relativo de recurso quebrado | A skill não consegue carregar a própria orientação após a instalação. | Use um path relativo ao pacote atual da skill e valide sua existência. |
 
-## Review questions
+## Perguntas de revisão
 
-1. Is there exactly one canonical normative statement per active requirement ID?
-2. Can a reviewer find the primary source and accountable owner for every requirement?
-3. Can a tester derive a pass/fail check without inventing missing behavior?
-4. Does every downstream artifact preserve scope and meaning?
-5. Are blockers visible where unsupported assumptions would otherwise appear?
+1. Existe exatamente uma declaração normativa canônica por ID de requisito ativo?
+2. Um revisor consegue encontrar a fonte primária e o responsável por cada requisito?
+3. Um testador consegue derivar uma verificação de aprovação ou reprovação sem inventar comportamento ausente?
+4. Todo artefato posterior preserva o escopo e o significado?
+5. Os bloqueios estão visíveis onde, de outro modo, surgiriam premissas sem sustentação?

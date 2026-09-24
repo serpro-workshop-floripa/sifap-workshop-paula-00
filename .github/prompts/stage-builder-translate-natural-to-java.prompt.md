@@ -1,115 +1,115 @@
 ---
 name: "translate-natural-to-java"
-description: "Translates a Natural program into idiomatic Java 21 + Spring Boot 3.3 while preserving business semantics."
+description: "Traduz um programa Natural para Java 21 + Spring Boot 3.3 idiomático, preservando a semântica de negócio."
 argument-hint: "file=01-archaeology/legacy-sifap/natural-programs/<PROGRAM>.NSN context=<context> package=<java.package>"
 agent: "builder"
 tools: ["read", "search", "edit", "execute"]
 ---
 # /translate-natural-to-java
 
-## Objective
+## Objetivo
 
-Translate a Natural program into idiomatic Java 21 + Spring Boot 3.3 while preserving business semantics (not syntax). The output is compilable Java with Javadoc that traces back to the Natural source.
+Traduzir um programa Natural para Java 21 + Spring Boot 3.3 idiomático, preservando a semântica de negócio (não a sintaxe). A saída é Java compilável com Javadoc rastreável até o código-fonte Natural.
 
-## When to Invoke
+## Quando invocar
 
-At the beginning of Stage 3, when the team starts implementing bounded contexts from the Stage 2 design.
+No início da Etapa 3, quando a equipe começa a implementar bounded contexts com base no design da Etapa 2.
 
-## Preconditions
+## Pré-condições
 
-- `.spec/<NNN>-<feature>/plan.md` exists with the required package structure
-- `.spec/<NNN>-<feature>/spec.md` exists with EARS requirements
-- The bounded context and target package are known
-- The Natural source file is accessible in `01-archaeology/legacy-sifap/`
+- `.spec/<NNN>-<feature>/plan.md` existe com a estrutura de packages exigida
+- `.spec/<NNN>-<feature>/spec.md` existe com requisitos EARS
+- O bounded context e o package de destino são conhecidos
+- O arquivo-fonte Natural está acessível em `01-archaeology/legacy-sifap/`
 
-## Inputs the Team Must Provide
+## Inputs que a equipe deve fornecer
 
-- The path to the Natural program file (for example, `01-archaeology/legacy-sifap/natural-programs/PGXXXXXX.NSN`)
-- The bounded context and target Java package
-- Any related EARS requirements (REQ-IDs)
+- O path do arquivo do programa Natural (por exemplo, `01-archaeology/legacy-sifap/natural-programs/PGXXXXXX.NSN`)
+- O bounded context e o package Java de destino
+- Quaisquer requisitos EARS relacionados (REQ-IDs)
 
-## What I Will Do
+## O que farei
 
-- Read the Natural program block by block
-- Identify the business purpose of each procedural block
-- Translate it into idiomatic Java 21 (records for DTOs, sealed interfaces, constructor injection)
-- Generate Javadoc linking to the Natural source file and line range
-- Flag orphan logic (code without a corresponding EARS requirement) for a team decision
-- Write and run behavior tests before implementing the corresponding approved logic
+- Ler o programa Natural bloco a bloco
+- Identificar o propósito de negócio de cada bloco procedural
+- Traduzir para Java 21 idiomático (records para DTOs, sealed interfaces, constructor injection)
+- Gerar Javadoc vinculado ao arquivo-fonte Natural e ao intervalo de linhas
+- Sinalizar lógica órfã (código sem um requisito EARS correspondente) para decisão da equipe
+- Escrever e executar testes de comportamento antes de implementar a lógica aprovada correspondente
 
-## What I Will NOT Do
+## O que NÃO farei
 
-- Mirror Natural syntax line by line in Java ("JOBOL" — Java that looks like Natural)
-- Silently merge multiple Natural concepts into one Java class
-- Invent business meaning for unclear code — orphan logic is flagged, not interpreted
-- Skip reading the EARS requirements first — every translated block must map to a REQ-ID
+- Espelhar a sintaxe Natural linha a linha em Java ("JOBOL" — Java que se parece com Natural)
+- Mesclar silenciosamente vários conceitos Natural em uma única classe Java
+- Inventar significado de negócio para código pouco claro — a lógica órfã é sinalizada, não interpretada
+- Ignorar a leitura prévia dos requisitos EARS — todo bloco traduzido deve ser mapeado para um REQ-ID
 
-## Output Format
+## Formato de saída
 
-Java files under the approved `backend/src/main/java/` package and meaningful
-tests under `backend/src/test/java/`, with source and REQ-ID traceability.
+Arquivos Java no package aprovado em `backend/src/main/java/` e testes
+significativos em `backend/src/test/java/`, com rastreabilidade de código-fonte e REQ-ID.
 
-## Definition of Done
+## Definição de pronto
 
-- [ ] Java files compile without errors
-- [ ] Every public method has Javadoc citing the Natural source file and line range
-- [ ] Every business rule from the relevant EARS requirements has a corresponding method
-- [ ] Orphan logic (code without a REQ) is documented with `// ORPHAN: [file:line] - Team decision required`
-- [ ] Required behavior tests have meaningful assertions and pass; unimplemented stubs or unresolved expectations are not reported as complete
-- [ ] No line-by-line Natural port — the translation uses Java 21 idioms
+- [ ] Os arquivos Java compilam sem erros
+- [ ] Todo método público tem Javadoc que cita o arquivo-fonte Natural e o intervalo de linhas
+- [ ] Toda regra de negócio dos requisitos EARS relevantes tem um método correspondente
+- [ ] A lógica órfã (código sem um REQ) está documentada com `// ORPHAN: [file:line] - Team decision required`
+- [ ] Os testes de comportamento exigidos têm assertions significativas e passam; stubs não implementados ou expectativas não resolvidas não são relatados como concluídos
+- [ ] Não há port linha a linha do Natural — a tradução usa recursos idiomáticos do Java 21
 
-## Prompt Body
+## Corpo do prompt
 
-You are the `@builder`. The team selected a Natural program to translate into Java.
+Você é o `@builder`. A equipe selecionou um programa Natural para traduzir para Java.
 
-**Step 1 — Read the EARS requirements first.**
-Before touching the Natural file, read `.spec/<NNN>-<feature>/spec.md` and
-identify all requirements relevant to this program. List them. These
-requirements define what the Java code *must* do.
+**Passo 1 — Leia primeiro os requisitos EARS.**
+Antes de alterar o arquivo Natural, leia `.spec/<NNN>-<feature>/spec.md` e
+identifique todos os requisitos relevantes para esse programa. Liste-os. Esses
+requisitos definem o que o código Java *deve* fazer.
 
-**Step 2 — Read the Natural program.**
-Open the specified file. Read the `DEFINE DATA` section to understand the data model. Then read the main logic block by block:
+**Passo 2 — Leia o programa Natural.**
+Abra o arquivo especificado. Leia a seção `DEFINE DATA` para compreender o modelo de dados. Depois, leia a lógica principal bloco a bloco:
 
-- For each `IF...THEN...ELSE...END-IF`, identify the business decision
-- For each `READ` or `FIND`, identify the data access pattern
-- For each `CALLNAT`, note the dependency (but do not translate the target — that is a separate invocation)
-- For each `PERFORM`, identify the internal subroutine
+- Para cada `IF...THEN...ELSE...END-IF`, identifique a decisão de negócio
+- Para cada `READ` ou `FIND`, identifique o padrão de acesso a dados
+- Para cada `CALLNAT`, registre a dependência (mas não traduza o destino — essa é uma invocação separada)
+- Para cada `PERFORM`, identifique a sub-rotina interna
 
-**Step 3 — Map blocks to requirements.**
-For each identified block, find the EARS requirement it implements. If a block has no corresponding requirement, mark it as orphan logic:
+**Passo 3 — Mapeie os blocos para os requisitos.**
+Para cada bloco identificado, encontre o requisito EARS que ele implementa. Se um bloco não tiver requisito correspondente, marque-o como lógica órfã:
 
 ```java
 // ORPHAN: [natural-file.NSN:L42-58] - No matching REQ. Team decision required: keep, modify, or remove?
 ```
 
-Ask the team what to do with orphan logic before proceeding.
+Pergunte à equipe o que fazer com a lógica órfã antes de prosseguir.
 
-**Step 4 — Write the test, then translate into Java.**
-Use `/generate-equivalence-tests` to establish source-derived expectations
-independently of the implementation. Write a failing test first; a missing
-test oracle is a blocker, not an invitation to guess.
+**Passo 4 — Escreva o teste e depois traduza para Java.**
+Use `/generate-equivalence-tests` para estabelecer expectativas derivadas do
+código-fonte, independentemente da implementação. Escreva primeiro um teste que
+falha; a ausência de um oráculo de teste é um bloqueio, não um convite à suposição.
 
-For each block with a corresponding requirement, write the Java equivalent:
+Para cada bloco com requisito correspondente, escreva o equivalente em Java:
 
-- `DEFINE DATA LOCAL` variables → method parameters or local variables with appropriate types
-- `IF...THEN...ELSE` → Java `if/else` expressions or `switch` (Java 21 pattern matching when appropriate)
-- `READ LOGICAL BY` → Spring Data JPA `findBy*` method
-- `FIND WITH` → JPA `@Query` with named parameters
-- `CALLNAT` → service method call (inject the dependency)
-- Packed decimal calculations → `BigDecimal` with explicit scale and rounding mode
-- String operations → Java `String` methods, noting charset differences
+- Variáveis de `DEFINE DATA LOCAL` → parâmetros de método ou variáveis locais com tipos apropriados
+- `IF...THEN...ELSE` → expressões Java `if/else` ou `switch` (pattern matching do Java 21 quando apropriado)
+- `READ LOGICAL BY` → método `findBy*` do Spring Data JPA
+- `FIND WITH` → `@Query` JPA com parâmetros nomeados
+- `CALLNAT` → chamada de método de serviço (injete a dependência)
+- Cálculos de packed decimal → `BigDecimal` com escala e modo de arredondamento explícitos
+- Operações com strings → métodos de `String` do Java, observando diferenças de charset
 
-Use Java 21 idioms:
+Use recursos idiomáticos do Java 21:
 
-- Records for DTOs and value objects
-- Sealed interfaces for discriminated unions when required by the domain
-- `Optional` for nullable returns
-- Constructor injection (no field-level `@Autowired`)
-- `@Valid` for input validation in the controller layer
-- `@Transactional` only on service methods, never repositories
+- Records para DTOs e value objects
+- Sealed interfaces para discriminated unions quando exigidas pelo domínio
+- `Optional` para retornos anuláveis
+- Constructor injection (sem `@Autowired` em campos)
+- `@Valid` para validação de entrada na camada de controller
+- `@Transactional` somente em métodos de serviço, nunca em repositórios
 
-**Step 5 — Generate Javadoc.**
-Every public method receives Javadoc that includes:
+**Passo 5 — Gere Javadoc.**
+Todo método público recebe Javadoc que inclui:
 
 ```java
 /**
@@ -120,18 +120,19 @@ Every public method receives Javadoc that includes:
  */
 ```
 
-**Step 6 — Complete and run the tests.**
-Run the behavior and mapping tests written for this change. Check boundary,
-error, and data-preservation outcomes against reviewed expectations. Do not leave
-`TODO`, `fail(...)`, or disabled stubs and claim translation is complete.
+**Passo 6 — Conclua e execute os testes.**
+Execute os testes de comportamento e mapeamento escritos para esta alteração.
+Verifique resultados de limite, erro e preservação de dados em relação às
+expectativas revisadas. Não deixe `TODO`, `fail(...)` ou stubs desabilitados e
+declare a tradução como concluída.
 
-**Step 7 — Verify the increment.**
-Run the relevant existing build/test commands and record actual results.
-Compilation alone does not prove equivalence or a successful data migration.
+**Passo 7 — Verifique o incremento.**
+Execute os comandos existentes relevantes de build/teste e registre os resultados
+reais. A compilação por si só não comprova equivalência nem uma migração de dados bem-sucedida.
 
-If a Natural construct has no clean Java idiom, present two alternatives to the team and let them choose. Do not choose silently.
+Se uma construção Natural não tiver um recurso idiomático Java claro, apresente duas alternativas à equipe e deixe que ela escolha. Não escolha silenciosamente.
 
-## Invocation Example
+## Exemplo de invocação
 
 ```
 /translate-natural-to-java file=01-archaeology/legacy-sifap/natural-programs/<PROGRAM>.NSN context=<context> package=<java.package>

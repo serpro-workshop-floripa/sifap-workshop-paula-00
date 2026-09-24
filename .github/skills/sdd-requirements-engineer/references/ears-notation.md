@@ -1,37 +1,37 @@
-# EARS notation
+# Notação EARS
 
-EARS, the Easy Approach to Requirements Syntax, constrains natural-language requirements into a predictable clause order. Use it for normative functional and non-functional requirements so a reviewer can identify the trigger, system, response, and verification target without inferring hidden behavior.
+EARS, Easy Approach to Requirements Syntax, restringe requisitos em linguagem natural a uma ordem previsível de cláusulas. Use-a em requisitos normativos funcionais e não funcionais para que um revisor identifique o gatilho, o sistema, a resposta e o alvo de verificação sem inferir comportamentos ocultos.
 
-## Generic syntax
+## Sintaxe genérica
 
-The generic clause order is:
+A ordem genérica das cláusulas é:
 
 ```text
 While <optional precondition>, when <optional trigger>, the <system name> shall <system response>.
 ```
 
-For this skill, keep one observable system response per requirement even though the general EARS rules allow multiple responses. Atomic requirements produce clearer traceability, change impact, and test outcomes.
+Nesta skill, mantenha uma resposta observável do sistema por requisito, mesmo que as regras gerais de EARS permitam várias respostas. Requisitos atômicos produzem rastreabilidade, impacto de mudança e resultados de teste mais claros.
 
-## Six patterns
+## Seis padrões
 
-| Pattern | Canonical template | Use when |
+| Padrão | Modelo canônico | Use quando |
 | --- | --- | --- |
-| Ubiquitous | `The <system> shall <response>.` | The behavior or quality constraint is always active. |
-| Event-driven | `When <trigger>, the <system> shall <response>.` | A discrete event causes a response. |
-| State-driven | `While <state>, the <system> shall <response>.` | The behavior holds during a state. |
-| Optional | `Where <feature or configuration is present>, the <system> shall <response>.` | The behavior applies only to an included capability. |
-| Unwanted | `If <undesired condition>, then the <system> shall <mitigation>.` | The system must detect, reject, recover, or degrade safely. |
-| Complex | `While <state>, when <trigger>, the <system> shall <response>.` | Both a precondition and an event govern the response. |
+| Ubiquitous | `The <system> shall <response>.` | O comportamento ou a restrição de qualidade está sempre ativo. |
+| Event-driven | `When <trigger>, the <system> shall <response>.` | Um evento discreto causa uma resposta. |
+| State-driven | `While <state>, the <system> shall <response>.` | O comportamento permanece válido durante um estado. |
+| Optional | `Where <feature or configuration is present>, the <system> shall <response>.` | O comportamento aplica-se apenas a uma capacidade incluída. |
+| Unwanted | `If <undesired condition>, then the <system> shall <mitigation>.` | O sistema precisa detectar, rejeitar, recuperar ou degradar com segurança. |
+| Complex | `While <state>, when <trigger>, the <system> shall <response>.` | Uma pré-condição e um evento regem a resposta. |
 
-An unwanted complex requirement may combine clauses:
+Um requisito complexo unwanted pode combinar cláusulas:
 
 ```text
 While <state>, if <undesired condition>, then the <system> shall <mitigation>.
 ```
 
-Classify a statement as complex only when more than one EARS keyword is necessary. Do not add clauses merely to make the requirement look detailed.
+Classifique uma declaração como complex somente quando mais de uma palavra-chave EARS for necessária. Não adicione cláusulas apenas para fazer o requisito parecer detalhado.
 
-## Requirement record
+## Registro do requisito
 
 ```markdown
 ### REQ-NNN: <short title>
@@ -52,38 +52,38 @@ source_legacy: <actual supported source path or [GREENFIELD] with justification>
 - <test|inspection|analysis|measurement>: <planned evidence>
 ```
 
-Non-functional requirements also use `REQ-NNN`; record their category separately.
-Their acceptance signal additionally defines the measurement envelope. Follow
-the [kit binding](../SKILL.md#binding-to-this-participant-kit), and preserve existing IDs.
+Requisitos não funcionais também usam `REQ-NNN`; registre sua categoria separadamente.
+Seu sinal de aceitação também define o envelope de medição. Siga o
+[vínculo com o kit](../SKILL.md#vínculo-com-este-kit-do-participante) e preserve os IDs existentes.
 
-## Authoring rules
+## Regras de escrita
 
-1. Name a concrete system or component as the subject. Avoid pronouns such as "it".
-2. Use `shall` in the normative response. Avoid `should`, `may`, `could`, `would`, and predictive `will`.
-3. Write one response per requirement. Split hidden conjunctions such as "validate and notify".
-4. Make the response externally observable or objectively inspectable.
-5. Keep implementation choices out of functional requirements.
-6. State preconditions and triggers explicitly and in canonical order.
-7. Define terms consistently. Link ambiguous domain terms to a glossary or data definition.
-8. Give every requirement a stable ID, source, rationale, priority, acceptance signal, verification method, and lifecycle status.
-9. Use a numeric target only when evidence or an accountable owner supplies it.
-10. Record error, timeout, invalid-input, dependency-failure, and recovery behavior with unwanted or complex patterns when applicable.
+1. Nomeie um sistema ou componente concreto como sujeito. Evite pronomes como "it".
+2. Use `shall` na resposta normativa. Evite `should`, `may`, `could`, `would` e o `will` preditivo.
+3. Escreva uma resposta por requisito. Separe conjunções ocultas, como "validate and notify".
+4. Torne a resposta externamente observável ou objetivamente inspecionável.
+5. Mantenha escolhas de implementação fora dos requisitos funcionais.
+6. Declare pré-condições e gatilhos explicitamente e na ordem canônica.
+7. Defina termos de modo consistente. Vincule termos de domínio ambíguos a um glossário ou definição de dados.
+8. Dê a cada requisito ID estável, fonte, justificativa, prioridade, sinal de aceitação, método de verificação e status do ciclo de vida.
+9. Use uma meta numérica somente quando ela vier de evidências ou de um responsável.
+10. Registre comportamentos de erro, timeout, entrada inválida, falha de dependência e recuperação com padrões unwanted ou complex, quando aplicável.
 
-## Classification method
+## Método de classificação
 
-1. If behavior is always active, use ubiquitous.
-2. If a discrete event starts behavior, use event-driven.
-3. If behavior holds while a state is true, use state-driven.
-4. If behavior exists only with a selected feature or configuration, use optional.
-5. If the condition is undesirable and requires mitigation, use unwanted.
-6. If two necessary clauses govern the behavior, use complex.
+1. Se o comportamento estiver sempre ativo, use ubiquitous.
+2. Se um evento discreto iniciar o comportamento, use event-driven.
+3. Se o comportamento permanecer válido enquanto um estado for verdadeiro, use state-driven.
+4. Se o comportamento existir apenas com uma funcionalidade ou configuração selecionada, use optional.
+5. Se a condição for indesejada e exigir mitigação, use unwanted.
+6. Se duas cláusulas necessárias regerem o comportamento, use complex.
 
-Exactly one classification is recorded for each requirement, including complex variants.
+Registre exatamente uma classificação para cada requisito, inclusive variantes complexas.
 
-## Examples
+## Exemplos
 
-These generic syntax illustrations are not SIFAP requirements, source evidence,
-accepted decisions, or solutions to the participant exercises.
+Estas ilustrações genéricas de sintaxe não são requisitos do SIFAP, evidências de fonte,
+decisões aceitas nem soluções dos exercícios do participante.
 
 - Ubiquitous: `The audit service shall record the actor, action, target, outcome, and timestamp for each privileged operation.`
 - Event-driven: `When a user submits valid credentials, the identity service shall create an authenticated session.`
@@ -92,20 +92,20 @@ accepted decisions, or solutions to the participant exercises.
 - Unwanted: `If an uploaded file exceeds the approved size limit, then the upload service shall reject the file and identify the violated limit.`
 - Complex: `While an account is locked, when a login attempt occurs, the identity service shall deny authentication without validating the submitted password.`
 
-## Common defects
+## Defeitos comuns
 
-| Defect | Bad example | Correction |
+| Defeito | Exemplo ruim | Correção |
 | --- | --- | --- |
-| Vague quality | "The system shall be fast." | Define a sourced metric and measurement envelope, or keep an explicit blocker. |
-| Compound response | "The system shall validate the order and email the user." | Split validation and notification into separate requirements. |
-| Passive behavior | "Authentication shall be supported." | Name the system and the observable authentication response. |
-| Hidden condition | "The system shall show an error." | State the event or unwanted condition that causes the error. |
-| Implementation leakage | "The system shall store sessions in Redis." | State the required session behavior; move a sourced technology constraint to the NFRD. |
-| Unowned threshold | "The API shall respond in 500 ms." | Cite workload evidence or an accountable-owner-approved SLO. |
-| Untraceable statement | A correct sentence with no ID or source | Add the requirement record metadata and source mapping. |
+| Qualidade vaga | "The system shall be fast." | Defina uma métrica e um envelope de medição com fonte ou mantenha um bloqueio explícito. |
+| Resposta composta | "The system shall validate the order and email the user." | Separe validação e notificação em requisitos distintos. |
+| Comportamento passivo | "Authentication shall be supported." | Nomeie o sistema e a resposta de autenticação observável. |
+| Condição oculta | "The system shall show an error." | Declare o evento ou a condição indesejada que causa o erro. |
+| Vazamento de implementação | "The system shall store sessions in Redis." | Declare o comportamento de sessão exigido; mova uma restrição tecnológica com fonte para o NFRD. |
+| Limite sem responsável | "The API shall respond in 500 ms." | Cite evidências da carga de trabalho ou um SLO aprovado pelo responsável. |
+| Declaração sem rastreabilidade | Uma frase correta sem ID ou fonte | Adicione os metadados do registro do requisito e o mapeamento da fonte. |
 
-## References
+## Referências
 
-- Alistair Mavin, [EARS overview and pattern definitions](https://alistairmavin.com/ears/), reviewed 2026-08-25.
+- Alistair Mavin, [visão geral de EARS e definições dos padrões](https://alistairmavin.com/ears/), revisado em 2026-08-25.
 - A. Mavin, P. Wilkinson, A. Harwood, and M. Novak, "Easy Approach to Requirements Syntax (EARS)," *17th IEEE International Requirements Engineering Conference*, 2009, pp. 317-322, [doi:10.1109/RE.2009.9](https://doi.org/10.1109/RE.2009.9).
-- University of Manchester Research Explorer, [bibliographic record for "Easy Approach to Requirements Syntax (EARS)"](https://research.manchester.ac.uk/en/publications/easy-approach-to-requirements-syntax-ears/), reviewed 2026-08-25.
+- University of Manchester Research Explorer, [registro bibliográfico de "Easy Approach to Requirements Syntax (EARS)"](https://research.manchester.ac.uk/en/publications/easy-approach-to-requirements-syntax-ears/), revisado em 2026-08-25.

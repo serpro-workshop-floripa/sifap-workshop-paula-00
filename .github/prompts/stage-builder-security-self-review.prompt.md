@@ -1,50 +1,50 @@
 ---
 name: "security-self-review"
-description: "Self-review checklist for security and OWASP Top 10 issues in a newly built feature."
+description: "Checklist de autorrevisão de segurança e de problemas do OWASP Top 10 em uma funcionalidade recém-construída."
 argument-hint: "context=<context> files=<Controller>.java,<Service>.java,<Entity>.java"
 agent: "builder"
 tools: ["read", "search", "edit"]
 ---
 # /security-self-review
 
-## Objective
+## Objetivo
 
-Scan a newly built feature for common security issues aligned with the OWASP Top 10. The output is a prioritized report — the agent does not fix issues automatically; the team decides.
+Examinar uma funcionalidade recém-construída em busca de problemas comuns de segurança alinhados ao OWASP Top 10. A saída é um relatório priorizado — o agent não corrige problemas automaticamente; a equipe decide.
 
-## When to Invoke
+## Quando invocar
 
-After a bounded context has been implemented (entities, services, controllers, tests) and before checkpoint C3 and the submission PR.
+Depois que um bounded context tiver sido implementado (entities, services, controllers, testes) e antes do checkpoint C3 e do PR de submissão.
 
-## Preconditions
+## Pré-condições
 
-- The feature code exists and compiles
-- The team specifies which controller(s), service(s), and entity/entities to review
+- O código da funcionalidade existe e compila
+- A equipe especifica quais controllers, services e entities devem ser revisados
 
-## Inputs the Team Must Provide
+## Inputs que a equipe deve fornecer
 
-- The feature scope: which controller, service, and entity classes to review
-- The bounded context name
+- O escopo da funcionalidade: quais classes de controller, service e entity revisar
+- O nome do bounded context
 
-## What I Will Do
+## O que farei
 
-- Scan for hardcoded secrets (strings that resemble keys, passwords, or tokens)
-- Check for SQL injection vectors (string concatenation in queries)
-- Check authentication/authorization annotations on endpoints
-- Check input validation coverage
-- Look for sensitive data in logs or error responses
-- Identify missing rate limits on write endpoints
-- Flag dependency areas where a real security scan should be run
+- Procurar secrets diretamente no código (strings semelhantes a chaves, senhas ou tokens)
+- Verificar vetores de SQL injection (concatenação de strings em queries)
+- Verificar annotations de authentication/authorization nos endpoints
+- Verificar a cobertura de validação de entrada
+- Procurar dados sensíveis em logs ou respostas de erro
+- Identificar rate limits ausentes em endpoints de escrita
+- Sinalizar áreas de dependências em que uma análise de segurança real deve ser executada
 
-## What I Will NOT Do
+## O que NÃO farei
 
-- Run a real security scanner (I perform static analysis by reading code)
-- Fix problems automatically — the team reviews and decides what to fix
-- Fabricate severity ratings — each rating is justified by the finding
-- Guarantee completeness — this is a self-review, not a formal audit
+- Executar um scanner de segurança real (realizo análise estática pela leitura do código)
+- Corrigir problemas automaticamente — a equipe revisa e decide o que corrigir
+- Fabricar classificações de severidade — cada classificação é justificada pelo achado
+- Garantir completude — esta é uma autorrevisão, não uma auditoria formal
 
-## Output Format
+## Formato de saída
 
-A Markdown report at `03-implementation/security-review-[context].md`:
+Um relatório Markdown em `03-implementation/security-review-[context].md`:
 
 ```markdown
 # Security Self-Review — [Bounded Context]
@@ -56,73 +56,73 @@ Findings: N total | High: N | Medium: N | Low: N
 ## Approval
 ```
 
-## Definition of Done
+## Definição de pronto
 
-- [ ] Every controller endpoint was checked for authentication annotations
-- [ ] Every query was checked for SQL injection
-- [ ] No hardcoded secrets were found (or all are flagged)
-- [ ] Input validation coverage is assessed for each endpoint
-- [ ] The report has severity ratings justified by findings
-- [ ] At least one "area requiring external scanning" is identified
+- [ ] Todo endpoint de controller foi verificado quanto a annotations de authentication
+- [ ] Toda query foi verificada quanto a SQL injection
+- [ ] Nenhum secret diretamente no código foi encontrado (ou todos estão sinalizados)
+- [ ] A cobertura de validação de entrada foi avaliada para cada endpoint
+- [ ] O relatório tem classificações de severidade justificadas pelos achados
+- [ ] Pelo menos uma "área que exige análise externa" foi identificada
 
-## Prompt Body
+## Corpo do prompt
 
-You are the `@builder` performing a security self-review. This is not a formal audit — it is a quick check before the participant reaches checkpoint C3 and opens the submission PR.
+Você é o `@builder` realizando uma autorrevisão de segurança. Esta não é uma auditoria formal — é uma verificação rápida antes que o participante alcance o checkpoint C3 e abra o PR de submissão.
 
-**Step 1 — Scan for hardcoded secrets.**
-Search the specified files for patterns that suggest hardcoded secrets:
+**Passo 1 — Procure secrets diretamente no código.**
+Pesquise nos arquivos especificados padrões que sugiram secrets diretamente no código:
 
-- Strings containing "password", "secret", "key", "token", or "api_key" (case-insensitive)
-- Strings that resemble Base64-encoded tokens (long alphanumeric strings)
-- Properties or environment variable references defined with literal values instead of `${ENV_VAR}`
-- Files named `.env` committed to the repository
+- Strings contendo "password", "secret", "key", "token" ou "api_key" (sem diferenciar maiúsculas de minúsculas)
+- Strings semelhantes a tokens codificados em Base64 (strings alfanuméricas longas)
+- Propriedades ou referências a variáveis de ambiente definidas com valores literais em vez de `${ENV_VAR}`
+- Arquivos chamados `.env` commitados no repositório
 
-For each finding: file path, line number, suspicious pattern (redacted if it appears to be a real secret), and severity (High).
+Para cada achado: path do arquivo, número da linha, padrão suspeito (mascarado caso pareça ser um secret real) e severidade (Alta).
 
-**Step 2 — Check for SQL injection.**
-Search for:
+**Passo 2 — Verifique SQL injection.**
+Pesquise:
 
-- String concatenation in SQL queries (`"SELECT..." + variable`)
-- `@Query` annotations with string interpolation instead of named parameters
-- Any use of `nativeQuery = true` (flag for manual review; do not reject automatically)
-- Use of `JdbcTemplate` with string concatenation
+- Concatenação de strings em queries SQL (`"SELECT..." + variable`)
+- Annotations `@Query` com interpolação de strings em vez de parâmetros nomeados
+- Qualquer uso de `nativeQuery = true` (sinalize para revisão manual; não rejeite automaticamente)
+- Uso de `JdbcTemplate` com concatenação de strings
 
-For each finding: file, line, vulnerable pattern, and remediation (use named parameters or derived queries).
+Para cada achado: arquivo, linha, padrão vulnerável e remediação (use parâmetros nomeados ou derived queries).
 
-**Step 3 — Check authentication and authorization.**
-For each `@RestController` endpoint:
+**Passo 3 — Verifique authentication e authorization.**
+Para cada endpoint de `@RestController`:
 
-- Check whether `@PreAuthorize`, `@Secured`, or method-level security is present
-- Check whether the controller is under a path covered by Spring Security filter chains
-- Flag any publicly accessible endpoint without an apparent justification
+- Verifique se `@PreAuthorize`, `@Secured` ou method-level security está presente
+- Verifique se o controller está em um path coberto pelas filter chains do Spring Security
+- Sinalize qualquer endpoint acessível publicamente sem justificativa aparente
 
-For each unprotected endpoint: file, line, endpoint method and path, and severity (High if it modifies data, Medium if read-only).
+Para cada endpoint desprotegido: arquivo, linha, método e path do endpoint e severidade (Alta se modificar dados, Média se for somente leitura).
 
-**Step 4 — Check input validation.**
-For each endpoint that accepts a request body:
+**Passo 4 — Verifique a validação de entrada.**
+Para cada endpoint que aceita um request body:
 
-- Check whether `@Valid` is present on the parameter
-- Check whether the request DTO has Bean Validation annotations
-- Look for any `String` field without `@Size` or `@Pattern` constraints
+- Verifique se `@Valid` está presente no parâmetro
+- Verifique se o DTO de request tem annotations Bean Validation
+- Procure qualquer campo `String` sem constraints `@Size` ou `@Pattern`
 
-For each gap: file, line, unvalidated field, and remediation.
+Para cada lacuna: arquivo, linha, campo não validado e remediação.
 
-**Step 5 — Check for sensitive data exposure.**
-Search for:
+**Passo 5 — Verifique a exposição de dados sensíveis.**
+Pesquise:
 
-- Logging statements that may emit sensitive fields (passwords, tokens, personal data)
-- Error responses that expose stack traces or internal details
-- Response DTOs that include fields such as `password`, `token`, or `ssn`
+- Instruções de logging que possam emitir campos sensíveis (senhas, tokens, dados pessoais)
+- Respostas de erro que exponham stack traces ou detalhes internos
+- DTOs de response que incluam campos como `password`, `token` ou `ssn`
 
-**Step 6 — Identify rate-limiting opportunities.**
-Flag any write endpoint (POST, PUT, DELETE) without rate limiting. Note: the team may not implement rate limiting during the workshop, but it must be documented as a production concern.
+**Passo 6 — Identifique oportunidades de rate limiting.**
+Sinalize qualquer endpoint de escrita (POST, PUT, DELETE) sem rate limiting. Observação: a equipe pode não implementar rate limiting durante o workshop, mas ele deve ser documentado como uma preocupação de produção.
 
-**Step 7 — Compile the report.**
-Write to `03-implementation/security-review-[context].md`, with all findings ordered by severity (High first). Include a summary count and a section listing areas where a real scanner (SAST/DAST) should be run.
+**Passo 7 — Compile o relatório.**
+Escreva em `03-implementation/security-review-[context].md`, com todos os achados ordenados por severidade (Alta primeiro). Inclua uma contagem resumida e uma seção que liste as áreas em que um scanner real (SAST/DAST) deve ser executado.
 
-This report informs C3 readiness. The participant decides which findings to fix now and which to defer.
+Este relatório informa a prontidão para C3. O participante decide quais achados corrigir agora e quais adiar.
 
-## Invocation Example
+## Exemplo de invocação
 
 ```
 /security-self-review context=<context> files=<Controller>.java,<Service>.java,<Entity>.java

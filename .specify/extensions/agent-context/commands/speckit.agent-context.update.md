@@ -1,26 +1,26 @@
 ---
-description: "Refresh the managed Spec Kit section in the coding agent context file"
+description: "Atualiza a seção gerenciada do Spec Kit no arquivo de contexto do agente de codificação"
 ---
 
-# Update Coding Agent Context
+# Atualizar contexto do agente de codificação
 
-Refresh the managed Spec Kit section inside the active coding agent's context/instruction file (e.g. `CLAUDE.md`, `.github/copilot-instructions.md`, `AGENTS.md`).
+Atualize a seção gerenciada do Spec Kit no arquivo de contexto/instruções do agente de codificação ativo (por exemplo, `CLAUDE.md`, `.github/copilot-instructions.md`, `AGENTS.md`).
 
-## Behavior
+## Comportamento
 
-The script reads the agent-context extension config at
-`.specify/extensions/agent-context/agent-context-config.yml` to discover:
+O script lê a configuração da extensão agent-context em
+`.specify/extensions/agent-context/agent-context-config.yml` para identificar:
 
-- `context_file` — the path of the coding agent context file to manage.
-- `context_markers.start` / `.end` — the delimiters surrounding the managed section. Defaults to `<!-- SPECKIT START -->` and `<!-- SPECKIT END -->` when the field is missing.
+- `context_file` — o caminho do arquivo de contexto do agente de codificação a ser gerenciado.
+- `context_markers.start` / `.end` — os delimitadores que envolvem a seção gerenciada. Os padrões são `<!-- SPECKIT START -->` e `<!-- SPECKIT END -->` quando o campo está ausente.
 
-It then creates, replaces, or appends the managed block so that the section points at the most recent plan path when one can be discovered (`specs/<feature>/plan.md`).
+Em seguida, ele cria, substitui ou acrescenta o bloco gerenciado para que a seção aponte para o caminho do plano mais recente quando for possível identificá-lo (`specs/<feature>/plan.md`).
 
-If `context_file` is empty or the file cannot be located, the command reports nothing to do and exits successfully.
+Se `context_file` estiver vazio ou o arquivo não puder ser localizado, o comando informa que não há nada a fazer e termina com sucesso.
 
-## Execution
+## Execução
 
 - **Bash**: `.specify/extensions/agent-context/scripts/bash/update-agent-context.sh [plan_path]`
 - **PowerShell**: `.specify/extensions/agent-context/scripts/powershell/update-agent-context.ps1 [plan_path]`
 
-When `plan_path` is omitted, the script auto-detects the most recently modified `specs/*/plan.md`.
+Quando `plan_path` é omitido, o script detecta automaticamente o arquivo `specs/*/plan.md` modificado mais recentemente.

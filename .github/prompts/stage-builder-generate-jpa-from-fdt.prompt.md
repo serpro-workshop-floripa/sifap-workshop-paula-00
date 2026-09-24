@@ -1,94 +1,94 @@
 ---
 name: "generate-jpa-from-fdt"
-description: "Implements DBA-reviewed source-to-target mappings as JPA entities and Flyway schema changes, preserving source semantics and leaving data-load acceptance to the migration workflow."
+description: "Implementa mapeamentos source-to-target revisados pelo DBA como entities JPA e alterações de schema Flyway, preservando a semântica da fonte e deixando a aceitação da carga de dados para o workflow de migração."
 argument-hint: "ddm=01-archaeology/legacy-sifap/adabas-ddms/<DDM>.ddm context=<context> package=<java.package> dateformat=<format>"
 agent: "builder"
 tools: ["read", "search", "edit", "execute"]
 ---
 # /generate-jpa-from-fdt
 
-## Objective
+## Objetivo
 
-Implement the approved mapping from source DDM/FDT and program evidence into JPA
-entities and corresponding Flyway schema changes. Do not decide a new data model
-or default MU/PE data to JSONB during code generation.
+Implementar o mapeamento aprovado da evidência do DDM/FDT de origem e dos
+programas em entities JPA e alterações correspondentes de schema Flyway. Não
+decida um novo modelo de dados nem use JSONB como padrão para dados MU/PE durante a geração de código.
 
-## When to Invoke
+## Quando invocar
 
-At the beginning of Stage 3, when the team is setting up the data layer for a bounded context.
+No início da Etapa 3, quando a equipe estiver configurando a camada de dados de um bounded context.
 
-## Preconditions
+## Pré-condições
 
-- The feature's `.spec/<NNN>-<feature>/spec.md`, `plan.md`, and `tasks.md` contain the approved data ownership, mappings, and requirements
-- The DDM file is accessible in `01-archaeology/legacy-sifap/adabas-ddms/`
-- The team selected the target package based on the modular monolith design
-- DBA and architects reviewed source-key lineage, precision, null/date semantics, and MU/PE treatment; unresolved mappings remain blockers
+- `.spec/<NNN>-<feature>/spec.md`, `plan.md` e `tasks.md` da funcionalidade contêm a propriedade dos dados, os mapeamentos e os requisitos aprovados
+- O arquivo DDM está acessível em `01-archaeology/legacy-sifap/adabas-ddms/`
+- A equipe selecionou o package de destino com base no design do monólito modular
+- O DBA e os arquitetos revisaram a linhagem das chaves de origem, a precisão, a semântica de valores nulos/datas e o tratamento de MU/PE; mapeamentos não resolvidos permanecem como bloqueios
 
-## Inputs the Team Must Provide
+## Inputs que a equipe deve fornecer
 
-- The path to the DDM file (for example, `01-archaeology/legacy-sifap/adabas-ddms/DDMXXXXX.ddm`)
-- The bounded context and target Java package
-- The date format used in the legacy system (for example, packed `YYYYMMDD` or alpha `YYYY-MM-DD`)
-- The actual source map, declaration dictionary, reviewed source-to-target record, and governing REQ-IDs
+- O path do arquivo DDM (por exemplo, `01-archaeology/legacy-sifap/adabas-ddms/DDMXXXXX.ddm`)
+- O bounded context e o package Java de destino
+- O formato de data usado no sistema legado (por exemplo, packed `YYYYMMDD` ou alpha `YYYY-MM-DD`)
+- O mapa de origem real, o dicionário de declarações, o registro source-to-target revisado e os REQ-IDs aplicáveis
 
-## What I Will Do
+## O que farei
 
-- Read the DDM and available physical FDT as distinct sources, alongside program declarations
-- Map each field to the appropriate Java/JPA type
-- Handle MU fields using the reviewed normalized mapping; use JSONB only with an approved evidence-backed exception
-- Handle PE groups as embedded `@OneToMany` entities
-- Generate the Flyway migration that creates the PostgreSQL table
-- Return unknown field semantics to DBA/Architecture rather than generating guessed production fields
+- Ler o DDM e o FDT físico disponível como fontes distintas, junto com as declarações dos programas
+- Mapear cada campo para o tipo Java/JPA apropriado
+- Tratar campos MU usando o mapeamento normalizado revisado; usar JSONB somente com uma exceção aprovada e respaldada por evidências
+- Tratar grupos PE como entities `@OneToMany` incorporadas
+- Gerar a migration Flyway que cria a tabela PostgreSQL
+- Devolver semânticas de campos desconhecidas ao DBA/à Arquitetura, em vez de gerar campos de produção presumidos
 
-## What I Will NOT Do
+## O que NÃO farei
 
-- Invent business meaning for cryptic field names - unresolved semantics return to DBA/Architecture
-- Assume date formats — the team must confirm them
-- Create stored procedures — all business logic remains in Java
-- Skip MU/PE fields — they are the most difficult part and must be handled explicitly
+- Inventar significado de negócio para nomes de campos crípticos — semânticas não resolvidas retornam ao DBA/à Arquitetura
+- Presumir formatos de data — a equipe deve confirmá-los
+- Criar stored procedures — toda a lógica de negócio permanece em Java
+- Ignorar campos MU/PE — eles são a parte mais difícil e devem ser tratados explicitamente
 
-## Output Format
+## Formato de saída
 
-Two files:
+Dois arquivos:
 
-1. JPA entity under the owning backend module's approved persistence package.
-2. Flyway migration under `backend/src/main/resources/db/migration/`.
+1. Entity JPA no package de persistência aprovado do módulo backend proprietário.
+2. Migration Flyway em `backend/src/main/resources/db/migration/`.
 
-These outputs create schema, not migrated records. Follow
-/migration phase=implement and QA reconciliation
-for source-to-target population and complete beneficiary consultation.
+Essas saídas criam o schema, não os registros migrados. Siga
+/migration phase=implement e a reconciliação de QA
+para a população source-to-target e a consulta completa de beneficiários.
 
-## Definition of Done
+## Definição de pronto
 
-- [ ] The entity compiles without errors
-- [ ] Every mapped source field has its approved target or explicit treatment; no silent loss
-- [ ] MU fields follow the reviewed normalized mapping; any JSONB exception has evidence and an ADR
-- [ ] PE groups use `@OneToMany` with a separate entity class
-- [ ] The Flyway migration is valid PostgreSQL 16 DDL
-- [ ] No unresolved semantics were replaced by guessed field names, lengths, or types
-- [ ] Cryptic fields are referred for human recording as open questions when necessary
+- [ ] A entity compila sem erros
+- [ ] Todo campo de origem mapeado tem seu destino aprovado ou tratamento explícito; não há perda silenciosa
+- [ ] Os campos MU seguem o mapeamento normalizado revisado; qualquer exceção JSONB tem evidência e uma ADR
+- [ ] Os grupos PE usam `@OneToMany` com uma classe de entity separada
+- [ ] A migration Flyway é um DDL PostgreSQL 16 válido
+- [ ] Nenhuma semântica não resolvida foi substituída por nomes, tamanhos ou tipos de campo presumidos
+- [ ] Campos crípticos são encaminhados para registro humano como questões em aberto quando necessário
 
-## Prompt Body
+## Corpo do prompt
 
-You are the `@builder`. The team needs to create a JPA entity from an Adabas DDM.
+Você é o `@builder`. A equipe precisa criar uma entity JPA a partir de um DDM Adabas.
 
-**Step 1 — Review source definitions and the approved mapping.**
-Open the specified DDM, available FDT, program declarations, and reviewed
-source-to-target record. Extract the mapped definitions without confusing their formats:
+**Passo 1 — Revise as definições de origem e o mapeamento aprovado.**
+Abra o DDM especificado, o FDT disponível, as declarações dos programas e o
+registro source-to-target revisado. Extraia as definições mapeadas sem confundir seus formatos:
 
-- Level number (01 = top-level, 02+ = children)
-- Short name (two-character Adabas name)
-- Long name (if present in comments or documentation)
-- Format: A (alpha), N (numeric), P (packed), B (binary), D (date), T (time)
-- Length
-- Descriptor type: DE (searchable), MU (multi-value), PE (periodic group), SU (super-descriptor)
+- Número do nível (01 = nível superior, 02+ = filhos)
+- Nome curto (nome Adabas de dois caracteres)
+- Nome longo (se presente em comentários ou documentação)
+- Formato: A (alpha), N (numeric), P (packed), B (binary), D (date), T (time)
+- Tamanho
+- Tipo de descriptor: DE (pesquisável), MU (multi-value), PE (periodic group), SU (super-descriptor)
 
-Confirm these definitions with the DBA before generating code. If the planned
-mapping or source semantics is unresolved, stop that field's implementation and
-record the blocker; do not create a guessed column with a FIXME.
+Confirme essas definições com o DBA antes de gerar código. Se o mapeamento
+planejado ou a semântica da fonte não estiver resolvido, interrompa a implementação
+desse campo e registre o bloqueio; não crie uma coluna presumida com um FIXME.
 
-**Step 2 — Map types.**
-Apply these mapping rules:
+**Passo 2 — Mapeie os tipos.**
+Aplique estas regras de mapeamento:
 
 | Adabas | Java | JPA | Notes |
 |--------|------|-----|-------|
@@ -102,53 +102,54 @@ Apply these mapping rules:
 | MU field | Reviewed collection type | Related table by default | JSONB only with a reviewed exception |
 | PE group | `List<EmbeddedEntity>` | `@OneToMany` | Separate entity class |
 
-Implement the Stage 2 choice. If alternatives remain undecided, return to
-`/migration phase=plan` rather than making an implicit architecture decision.
+Implemente a escolha da Etapa 2. Se ainda houver alternativas não decididas,
+retorne a `/migration phase=plan` em vez de tomar uma decisão de arquitetura implícita.
 
-**Step 3 — Handle PE groups.**
-For each PE group, create a separate `@Entity` class with:
+**Passo 3 — Trate os grupos PE.**
+Para cada grupo PE, crie uma classe `@Entity` separada com:
 
-- Its own table
-- A `@ManyToOne` back-reference to the parent entity
-- All fields within the PE group mapped as in Step 2
-- An index field that tracks the occurrence number
+- Sua própria tabela
+- Uma back-reference `@ManyToOne` para a entity pai
+- Todos os campos do grupo PE mapeados como no Passo 2
+- Um campo de índice que rastreia o número da ocorrência
 
-**Step 4 — Handle super-descriptors.**
-Implement only indexes justified by the approved query pattern. A source
-superdescriptor does not automatically imply an equivalent PostgreSQL index:
+**Passo 4 — Trate os super-descriptors.**
+Implemente somente índices justificados pelo padrão de query aprovado. Um
+superdescriptor de origem não implica automaticamente um índice PostgreSQL equivalente:
 
 ```java
 @Table(indexes = @Index(columnList = "field_a, field_b"))
 ```
 
-**Step 5 — Preserve unresolved questions.**
-For any unclear field, return its source evidence and ambiguity to DBA and the
-architects. Do not invent its English meaning, length, or type.
+**Passo 5 — Preserve as questões não resolvidas.**
+Para qualquer campo pouco claro, devolva sua evidência de origem e ambiguidade ao
+DBA e aos arquitetos. Não invente seu significado em inglês, tamanho ou tipo.
 
-If the field is not yet in `01-archaeology/mysteries-found.md`, tell the team
-that a person must record it as an open question with `path:line` evidence. Do not
-describe an answer, confirm a hypothesis, or change the catalog status.
+Se o campo ainda não estiver em `01-archaeology/mysteries-found.md`, informe à
+equipe que uma pessoa deve registrá-lo como questão em aberto com evidência
+`path:line`. Não descreva uma resposta, confirme uma hipótese nem altere o status do catálogo.
 
-**Step 6 — Generate the Flyway migration.**
-Write a PostgreSQL 16 DDL script:
+**Passo 6 — Gere a migration Flyway.**
+Escreva um script DDL PostgreSQL 16:
 
-- Table name derived from the entity name (snake_case)
-- Column types corresponding to the JPA mappings
-- JSONB columns for MU fields (if JSONB was selected)
-- Separate table for PE groups with a foreign key
-- Reviewed keys, relationships, and evidence-backed indexes
-- Constraints approved in the plan; null suppression or a comment alone does not establish `NOT NULL`
+- Nome da tabela derivado do nome da entity (snake_case)
+- Tipos de coluna correspondentes aos mapeamentos JPA
+- Colunas JSONB para campos MU (se JSONB tiver sido selecionado)
+- Tabela separada para grupos PE com uma foreign key
+- Chaves, relacionamentos e índices respaldados por evidências e revisados
+- Constraints aprovadas no plano; a supressão de valores nulos ou apenas um comentário não estabelece `NOT NULL`
 
-Number the migration: `V[NNN]__create_[table_name].sql`.
+Numere a migration: `V[NNN]__create_[table_name].sql`.
 
-**Step 7 — Verify compilation.**
-Ensure that the entity class compiles. Report any problems.
+**Passo 7 — Verifique a compilação.**
+Garanta que a classe da entity compile. Relate quaisquer problemas.
 
-Run the existing targeted mapping/repository tests against PostgreSQL. Keep
-source population, record migration, independent reconciliation, and real
-beneficiary queries as separate required checks in the [data lifecycle](../../docs/DATA-MIGRATION.md).
+Execute os testes direcionados existentes de mapeamento/repositório no PostgreSQL.
+Mantenha a população da origem, a migração de registros, a reconciliação
+independente e as queries reais de beneficiários como verificações obrigatórias
+separadas no [ciclo de vida dos dados](../../docs/DATA-MIGRATION.md).
 
-## Invocation Example
+## Exemplo de invocação
 
 ```
 /generate-jpa-from-fdt ddm=01-archaeology/legacy-sifap/adabas-ddms/<DDM>.ddm context=<context> package=<java.package> dateformat=<format>

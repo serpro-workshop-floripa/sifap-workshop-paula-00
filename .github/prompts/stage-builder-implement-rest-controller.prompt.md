@@ -1,83 +1,83 @@
 ---
 name: "implement-rest-controller"
-description: "Implements a Spring REST controller from an OpenAPI endpoint definition and connects it to the bounded context services."
+description: "Implementa um controller REST Spring a partir da definição de um endpoint OpenAPI e o conecta aos serviços do bounded context."
 argument-hint: "endpoint=\"<METHOD /api/v1/resource>\" context=<context> service=<Service>"
 agent: "builder"
 tools: ["read", "search", "edit", "execute"]
 ---
 # /implement-rest-controller
 
-## Objective
+## Objetivo
 
-Generate a Spring Boot REST controller from an OpenAPI endpoint definition. The controller is a thin adapter: it validates input, delegates to a service, and returns the response. It contains no business logic.
+Gerar um controller REST Spring Boot a partir da definição de um endpoint OpenAPI. O controller é um adaptador fino: valida a entrada, delega a um serviço e retorna a resposta. Ele não contém lógica de negócio.
 
-## When to Invoke
+## Quando invocar
 
-After the service layer for a bounded context exists, when the team is ready to expose it as a REST API.
+Depois que a camada de serviço de um bounded context existir, quando a equipe estiver pronta para expô-la como uma API REST.
 
-## Preconditions
+## Pré-condições
 
-- The OpenAPI definition created by the team contains the endpoint
-- The bounded context service class (or its interface) exists
-- The request/response DTOs are defined (or will be generated as records)
+- A definição OpenAPI criada pela equipe contém o endpoint
+- A classe de serviço do bounded context (ou sua interface) existe
+- Os DTOs de request/response estão definidos (ou serão gerados como records)
 
-## Inputs the Team Must Provide
+## Inputs que a equipe deve fornecer
 
-- The endpoint to implement (method + path from the OpenAPI definition)
-- The bounded context and target package
-- The service class to delegate to
+- O endpoint a implementar (método + path da definição OpenAPI)
+- O bounded context e o package de destino
+- A classe de serviço à qual delegar
 
-## What I Will Do
+## O que farei
 
-- Read the OpenAPI definition for the specified endpoint
-- Generate a `@RestController` class with the appropriate annotations
-- Create request/response record DTOs with Jakarta Bean Validation
-- Connect the controller to the service through constructor injection
-- Add `@ControllerAdvice` error handling if it is not already present
-- Run a build to verify compilation
+- Ler a definição OpenAPI do endpoint especificado
+- Gerar uma classe `@RestController` com as annotations apropriadas
+- Criar DTOs record de request/response com Jakarta Bean Validation
+- Conectar o controller ao serviço por meio de constructor injection
+- Adicionar tratamento de erros com `@ControllerAdvice` se ainda não existir
+- Executar um build para verificar a compilação
 
-## What I Will NOT Do
+## O que NÃO farei
 
-- Put business logic in the controller — it delegates to the service layer
-- Skip input validation — every endpoint has `@Valid` on its request body
-- Use field injection with `@Autowired` — use constructor injection only
-- Hardcode error messages — use RFC 7807 `ProblemDetail` responses
-- Fabricate endpoint behavior not defined in the OpenAPI specification
+- Colocar lógica de negócio no controller — ele delega à camada de serviço
+- Ignorar a validação de entrada — todo endpoint tem `@Valid` em seu request body
+- Usar field injection com `@Autowired` — usar apenas constructor injection
+- Colocar mensagens de erro diretamente no código — usar respostas RFC 7807 `ProblemDetail`
+- Fabricar comportamento de endpoint não definido na especificação OpenAPI
 
-## Output Format
+## Formato de saída
 
-Java files:
+Arquivos Java:
 
-1. Controller at `src/main/java/[package]/api/[Name]Controller.java`
-2. Request/response DTOs at `src/main/java/[package]/api/dto/[Name]Request.java` and `[Name]Response.java`
-3. Global exception handler at `src/main/java/[package]/shared/exception/GlobalExceptionHandler.java` (if it does not exist)
+1. Controller em `src/main/java/[package]/api/[Name]Controller.java`
+2. DTOs de request/response em `src/main/java/[package]/api/dto/[Name]Request.java` e `[Name]Response.java`
+3. Handler global de exceções em `src/main/java/[package]/shared/exception/GlobalExceptionHandler.java` (se não existir)
 
-## Definition of Done
+## Definição de pronto
 
-- [ ] The controller compiles without errors
-- [ ] The OpenAPI `operationId` is referenced in the Javadoc
-- [ ] The request DTO has Jakarta Bean Validation annotations (`@NotNull`, `@Size`, etc.)
-- [ ] The response uses the correct HTTP status codes (201 for POST, 200 for GET, 204 for DELETE)
-- [ ] The controller body contains no business logic — only validation, delegation, and response mapping
-- [ ] Error responses use RFC 7807 `ProblemDetail`
-- [ ] Related REQ-IDs are documented in the Javadoc
+- [ ] O controller compila sem erros
+- [ ] O `operationId` da OpenAPI é referenciado no Javadoc
+- [ ] O DTO de request tem annotations Jakarta Bean Validation (`@NotNull`, `@Size` etc.)
+- [ ] A resposta usa os HTTP status codes corretos (201 para POST, 200 para GET, 204 para DELETE)
+- [ ] O corpo do controller não contém lógica de negócio — apenas validação, delegação e mapeamento da resposta
+- [ ] As respostas de erro usam RFC 7807 `ProblemDetail`
+- [ ] Os REQ-IDs relacionados estão documentados no Javadoc
 
-## Prompt Body
+## Corpo do prompt
 
-You are the `@builder`. The team needs a REST controller for an endpoint defined in the OpenAPI specification.
+Você é o `@builder`. A equipe precisa de um controller REST para um endpoint definido na especificação OpenAPI.
 
-**Step 1 — Read the OpenAPI definition.**
-Open the OpenAPI definition identified by the team. Find the specified endpoint. Extract:
+**Passo 1 — Leia a definição OpenAPI.**
+Abra a definição OpenAPI identificada pela equipe. Encontre o endpoint especificado. Extraia:
 
-- HTTP method and path
-- Operation ID and summary
-- Request body schema (if any)
-- Response schema
-- Path/query parameters
-- Related REQ-IDs (from the description or tags)
+- Método HTTP e path
+- Operation ID e resumo
+- Schema do request body (se houver)
+- Schema da resposta
+- Parâmetros de path/query
+- REQ-IDs relacionados (da descrição ou das tags)
 
-**Step 2 — Generate request/response records.**
-Create Java records for the request and response:
+**Passo 2 — Gere os records de request/response.**
+Crie records Java para a request e a response:
 
 ```java
 public record [RequestName](
@@ -90,10 +90,10 @@ public record [ResponseName](
 ) {}
 ```
 
-Use Jakarta Bean Validation annotations based on field types and any constraints in the OpenAPI schema.
+Use annotations Jakarta Bean Validation com base nos tipos dos campos e em quaisquer constraints do schema OpenAPI.
 
-**Step 3 — Generate the controller.**
-Create the controller class:
+**Passo 3 — Gere o controller.**
+Crie a classe do controller:
 
 ```java
 @RestController
@@ -122,22 +122,22 @@ public class [Name]Controller {
 }
 ```
 
-**Step 4 — Ensure error handling exists.**
-Check whether `GlobalExceptionHandler` exists in the shared package. If not, generate it with handlers for:
+**Passo 4 — Garanta que exista tratamento de erros.**
+Verifique se `GlobalExceptionHandler` existe no package compartilhado. Caso contrário, gere-o com handlers para:
 
-- `MethodArgumentNotValidException` → 400 with validation details
+- `MethodArgumentNotValidException` → 400 com detalhes da validação
 - `EntityNotFoundException` → 404
-- `IllegalStateException` → 409 (conflict)
-- `Exception` → 500 (catch-all with a safe error message and no exposed stack trace)
+- `IllegalStateException` → 409 (conflito)
+- `Exception` → 500 (catch-all com uma mensagem de erro segura e sem stack trace exposta)
 
-All error responses use `ProblemDetail` (RFC 7807).
+Todas as respostas de erro usam `ProblemDetail` (RFC 7807).
 
-**Step 5 — Verify compilation.**
-Run `mvn compile` (or the equivalent build command). Report and fix any errors.
+**Passo 5 — Verifique a compilação.**
+Execute `mvn compile` (ou o comando de build equivalente). Relate e corrija quaisquer erros.
 
-If the service interface does not yet exist, generate a minimal interface with the required method signature and a TODO implementation. The team will fill in the logic.
+Se a interface de serviço ainda não existir, gere uma interface mínima com a assinatura de método exigida e uma implementação TODO. A equipe preencherá a lógica.
 
-## Invocation Example
+## Exemplo de invocação
 
 ```
 /implement-rest-controller endpoint="<METHOD /api/v1/resource>" context=<context> service=<Service>

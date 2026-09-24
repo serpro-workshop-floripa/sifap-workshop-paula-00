@@ -1,57 +1,57 @@
-# Coding Agent Context Extension
+# Extensão de contexto do agente de codificação
 
-This bundled extension manages the **coding agent context/instruction file** (e.g. `CLAUDE.md`, `.github/copilot-instructions.md`, `AGENTS.md`, `GEMINI.md`, …) for the active integration.
+Esta extensão incluída gerencia o **arquivo de contexto/instruções do agente de codificação** (por exemplo, `CLAUDE.md`, `.github/copilot-instructions.md`, `AGENTS.md`, `GEMINI.md`, …) para a integração ativa.
 
-It owns the lifecycle of the managed section delimited by the configurable start/end markers (defaults: `<!-- SPECKIT START -->` / `<!-- SPECKIT END -->`).
+Ela controla o ciclo de vida da seção gerenciada delimitada pelos marcadores configuráveis de início/fim (padrões: `<!-- SPECKIT START -->` / `<!-- SPECKIT END -->`).
 
-## Why an extension?
+## Por que uma extensão?
 
-Not every Spec Kit user wants Spec Kit to write into the coding agent's context file. Extracting this behavior into a dedicated extension lets users:
+Nem todo usuário do Spec Kit deseja que o Spec Kit escreva no arquivo de contexto do agente de codificação. Extrair esse comportamento para uma extensão dedicada permite:
 
-- **Opt out** entirely with `specify extension disable agent-context` — Spec Kit will then never create or modify the agent context file.
-- **Customize the markers** by editing `.specify/extensions/agent-context/agent-context-config.yml` — both the Python layer and the bundled scripts honor the same `context_markers` value.
-- **Refresh on demand** with `/speckit.agent-context.update`, or automatically through the hooks declared in `extension.yml` (`after_specify`, `after_plan`).
+- **Desativar** completamente com `specify extension disable agent-context` — assim, o Spec Kit nunca criará nem modificará o arquivo de contexto do agente.
+- **Personalizar os marcadores** editando `.specify/extensions/agent-context/agent-context-config.yml` — tanto a camada Python quanto os scripts incluídos respeitam o mesmo valor de `context_markers`.
+- **Atualizar sob demanda** com `/speckit.agent-context.update` ou automaticamente por meio dos hooks declarados em `extension.yml` (`after_specify`, `after_plan`).
 
-## Commands
+## Comandos
 
-| Command | Description |
+| Comando | Descrição |
 |---------|-------------|
-| `speckit.agent-context.update` | Refresh the managed section in the agent context file with the current plan path. |
+| `speckit.agent-context.update` | Atualiza a seção gerenciada no arquivo de contexto do agente com o caminho do plano atual. |
 
-## Configuration
+## Configuração
 
-All configuration flows through the extension's own config file at
+Toda a configuração passa pelo arquivo de configuração da própria extensão em
 `.specify/extensions/agent-context/agent-context-config.yml`:
 
 ```yaml
-# Path to the coding agent context file managed by this extension
+# Caminho do arquivo de contexto do agente de codificação gerenciado por esta extensão
 context_file: CLAUDE.md
 
-# Delimiters for the managed Spec Kit section
+# Delimitadores da seção gerenciada do Spec Kit
 context_markers:
   start: "<!-- SPECKIT START -->"
   end: "<!-- SPECKIT END -->"
 ```
 
-- `context_file` — the project-relative path to the coding agent context file, written by `specify init` and `specify integration install`.
-- `context_markers.start` / `.end` — the delimiters around the managed section. Edit these to use custom markers.
+- `context_file` — o caminho relativo ao projeto do arquivo de contexto do agente de codificação, gravado por `specify init` e `specify integration install`.
+- `context_markers.start` / `.end` — os delimitadores ao redor da seção gerenciada. Edite-os para usar marcadores personalizados.
 
-## Requirements
+## Requisitos
 
-The bundled update scripts require **Python 3** with **PyYAML** for YAML/upsert processing (PowerShell can also use `ConvertFrom-Yaml` when available).
+Os scripts de atualização incluídos exigem **Python 3** com **PyYAML** para o processamento de YAML/upsert (o PowerShell também pode usar `ConvertFrom-Yaml` quando disponível).
 
-PyYAML ships with the `specify` CLI and is normally available via the same `python3` interpreter. If a hook reports *"PyYAML is required … not available in the current Python environment"*, it means the system `python3` differs from the one used to install Spec Kit. To resolve, run:
+O PyYAML acompanha a CLI `specify` e normalmente está disponível pelo mesmo interpretador `python3`. Se um hook informar *"PyYAML is required … not available in the current Python environment"*, isso significa que o `python3` do sistema é diferente daquele usado para instalar o Spec Kit. Para resolver, execute:
 
 ```bash
 pip install pyyaml
-# or target the specific interpreter Spec Kit uses:
+# ou use o interpretador específico utilizado pelo Spec Kit:
 /path/to/speckit-python -m pip install pyyaml
 ```
 
-## Disable
+## Desativação
 
 ```bash
 specify extension disable agent-context
 ```
 
-When disabled, Spec Kit skips context file creation, updates, and removal (the gates are inside `upsert_context_section()` and `remove_context_section()`).
+Quando desativado, o Spec Kit ignora a criação, atualização e remoção do arquivo de contexto (os gates ficam em `upsert_context_section()` e `remove_context_section()`).

@@ -1,45 +1,45 @@
 ---
-description: "Detect Git remote URL for GitHub integration"
+description: "Detecta a URL do remoto Git para integração com o GitHub"
 ---
 
-# Detect Git Remote URL
+# Detectar URL do remoto Git
 
-Detect the Git remote URL for integration with GitHub services (e.g., issue creation).
+Detecte a URL do remoto Git para integração com serviços do GitHub (por exemplo, criação de issue).
 
-## Prerequisites
+## Pré-requisitos
 
-- Check if Git is available by running `git rev-parse --is-inside-work-tree 2>/dev/null`
-- If Git is not available, output a warning and return empty:
+- Verifique se o Git está disponível executando `git rev-parse --is-inside-work-tree 2>/dev/null`
+- Se o Git não estiver disponível, exiba um aviso e retorne vazio:
   ```
   [specify] Warning: Git repository not detected; cannot determine remote URL
   ```
 
-## Execution
+## Execução
 
-Run the following command to get the remote URL:
+Execute o comando a seguir para obter a URL do remoto:
 
 ```bash
 git config --get remote.origin.url
 ```
 
-## Output
+## Saída
 
-Parse the remote URL and determine:
+Analise a URL do remoto e determine:
 
-1. **Repository owner**: Extract from the URL (e.g., `github` from `https://github.com/github/spec-kit.git`)
-2. **Repository name**: Extract from the URL (e.g., `spec-kit` from `https://github.com/github/spec-kit.git`)
-3. **Is GitHub**: Whether the remote points to a GitHub repository
+1. **Proprietário do repositório**: extraia da URL (por exemplo, `github` de `https://github.com/github/spec-kit.git`)
+2. **Nome do repositório**: extraia da URL (por exemplo, `spec-kit` de `https://github.com/github/spec-kit.git`)
+3. **É GitHub**: indica se o remoto aponta para um repositório do GitHub
 
-Supported URL formats:
+Formatos de URL compatíveis:
 - HTTPS: `https://github.com/<owner>/<repo>.git`
 - SSH: `git@github.com:<owner>/<repo>.git`
 
 > [!CAUTION]
-> ONLY report a GitHub repository if the remote URL actually points to github.com.
-> Do NOT assume the remote is GitHub if the URL format doesn't match.
+> Informe um repositório do GitHub SOMENTE se a URL do remoto realmente apontar para github.com.
+> NÃO presuma que o remoto seja do GitHub se o formato da URL não corresponder.
 
-## Graceful Degradation
+## Degradação controlada
 
-If Git is not installed, the directory is not a Git repository, or no remote is configured:
-- Return an empty result
-- Do NOT error — other workflows should continue without Git remote information
+Se o Git não estiver instalado, o diretório não for um repositório Git ou nenhum remoto estiver configurado:
+- Retorne um resultado vazio
+- NÃO gere erro — outros workflows devem continuar sem informações do remoto Git
