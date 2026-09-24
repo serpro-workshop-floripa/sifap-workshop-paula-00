@@ -1,0 +1,29 @@
+{
+    "$comment": "SDD gate settings for this kit. Every key is optional; see .github/scripts/sdd_lib.py DEFAULT_CONFIG for the portable defaults.",
+    "specRoot": ".spec",
+    "sourceKeys": [
+        "source_legacy"
+    ],
+    "sourcePathPatterns": [
+        "01-archaeology/legacy-sifap/natural-programs/[A-Za-z0-9_-]+\\.(?:NSP|NSN|NSS|NSA|NSL|NSC|NSM|jcl)(?:#L[1-9]\\d*(?:-L[1-9]\\d*)?)?",
+        "01-archaeology/legacy-sifap/adabas-ddms/[A-Za-z0-9_-]+\\.(?:NSD|ddm|txt)(?:#L[1-9]\\d*(?:-L[1-9]\\d*)?)?"
+    ],
+    "earsKeywords": [
+        "shall"
+    ],
+    "tdd": "required",
+    "constitutionPaths": [
+        ".spec/CONSTITUTION.md",
+        ".specify/memory/constitution.md"
+    ],
+    "generatedAuthor": "SIFAP modernization team",
+    "docReferenceExclude": [
+        ".github/agents",
+        ".github/instructions",
+        ".github/prompts",
+        ".github/skills",
+        ".github/scripts/tests/fixtures",
+        ".specify",
+        "01-archaeology/legacy-sifap"
+    ]
+}

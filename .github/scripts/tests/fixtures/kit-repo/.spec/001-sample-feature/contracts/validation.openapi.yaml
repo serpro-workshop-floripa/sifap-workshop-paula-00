@@ -1,0 +1,7 @@
+openapi: 3.1.0
+info: {title: Sample validation, version: 0.1.0}
+paths:
+  /api/v1/registrations:
+    post:
+      responses:
+        "422": {description: DOC-01 invalid document}

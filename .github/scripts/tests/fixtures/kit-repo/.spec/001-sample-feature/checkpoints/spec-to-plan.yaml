@@ -1,0 +1,5 @@
+feature: {id: "001", slug: sample-feature}
+checkpoint: {generated_on: "2026-09-24", mapping_status: complete}
+requirements:
+  REQ-001: {design_components: [C-01], plan_items: [P1.1]}
+  NFR-001: {design_components: [C-01], plan_items: [P1.2]}

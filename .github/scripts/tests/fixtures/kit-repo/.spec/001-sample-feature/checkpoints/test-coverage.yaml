@@ -1,0 +1,8 @@
+feature: {id: "001", slug: sample-feature}
+checkpoint: {generated_on: "2026-09-24", mapping_status: complete}
+requirements:
+  REQ-001: {tests: [TST-001]}
+  NFR-001: {tests: [TST-002]}
+tests:
+  TST-001: {file: tests/test_sample.py, command: "python3 -m pytest tests/test_sample.py -k document"}
+  TST-002: {file: tests/test_sample.py, command: "python3 -m pytest tests/test_sample.py -k budget"}

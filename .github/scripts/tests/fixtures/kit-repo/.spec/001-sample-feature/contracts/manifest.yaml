@@ -1,0 +1,4 @@
+schema_version: 1
+feature: {id: "001", slug: sample-feature}
+contracts:
+  validation.openapi.yaml: {status: provided}

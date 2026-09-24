@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" font-family="Inter, system-ui, sans-serif">
+  <rect width="1200" height="520" fill="#F7F7F5"/>
+
+  <text x="60" y="58" fill="#737373" font-family="JetBrains Mono, monospace" font-size="16" font-weight="500" letter-spacing="1.4">INDIVIDUAL · 1 PARTICIPANT · 10 ROLES · SKILLS</text>
+  <text x="60" y="108" fill="#1A1A1A" font-size="42" font-weight="500">Ten Roles You Cover</text>
+  <text x="60" y="146" fill="#737373" font-size="20">One participant covers all roles as skills while switching stage agents.</text>
+
+  <g transform="translate(40, 200)">
+    <rect width="208" height="270" rx="4" fill="#FFFFFF" stroke="#E5E5E0" stroke-width="1"/>
+    <rect x="0" y="0" width="208" height="6" fill="#F25022"/>
+    <text x="18" y="44" fill="#B33816" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" letter-spacing="1.1">VISION SKILLS</text>
+    <text x="18" y="82" fill="#1A1A1A" font-size="25" font-weight="500">Vision</text>
+    <text x="18" y="112" fill="#737373" font-size="14">You define value and scope.</text>
+    <g transform="translate(18, 150)">
+      <circle cx="8" cy="8" r="6" fill="#F25022"/>
+      <text x="24" y="13" fill="#1A1A1A" font-size="15">Product Owner</text>
+    </g>
+    <g transform="translate(18, 184)">
+      <circle cx="8" cy="8" r="6" fill="#F25022"/>
+      <text x="24" y="13" fill="#1A1A1A" font-size="15">Requirements Engineer</text>
+    </g>
+  </g>
+
+  <g transform="translate(268, 200)">
+    <rect width="208" height="270" rx="4" fill="#FFFFFF" stroke="#E5E5E0" stroke-width="1"/>
+    <rect x="0" y="0" width="208" height="6" fill="#FFB900"/>
+    <text x="18" y="44" fill="#B88500" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" letter-spacing="1.1">ARCHITECTURE SKILLS</text>
+    <text x="18" y="82" fill="#1A1A1A" font-size="25" font-weight="500">Architecture</text>
+    <text x="18" y="112" fill="#737373" font-size="13">You design bounds and decisions.</text>
+    <g transform="translate(18, 150)">
+      <circle cx="8" cy="8" r="6" fill="#FFB900"/>
+      <text x="24" y="13" fill="#1A1A1A" font-size="15">Enterprise Architect</text>
+    </g>
+    <g transform="translate(18, 184)">
+      <circle cx="8" cy="8" r="6" fill="#FFB900"/>
+      <text x="24" y="13" fill="#1A1A1A" font-size="15">Software Architect</text>
+    </g>
+  </g>
+
+  <g transform="translate(496, 200)">
+    <rect width="208" height="270" rx="4" fill="#FFFFFF" stroke="#E5E5E0" stroke-width="1"/>
+    <rect x="0" y="0" width="208" height="6" fill="#7FBA00"/>
+    <text x="18" y="44" fill="#5A8500" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" letter-spacing="1.1">DELIVERY SKILLS</text>
+    <text x="18" y="82" fill="#1A1A1A" font-size="25" font-weight="500">Delivery</text>
+    <text x="18" y="112" fill="#737373" font-size="13">You coordinate and ship code.</text>
+    <g transform="translate(18, 150)">
+      <circle cx="8" cy="8" r="6" fill="#7FBA00"/>
+      <text x="24" y="13" fill="#1A1A1A" font-size="15">Technical Lead</text>
+    </g>
+    <g transform="translate(18, 184)">
+      <circle cx="8" cy="8" r="6" fill="#7FBA00"/>
+      <text x="24" y="13" fill="#1A1A1A" font-size="15">Developer</text>
+    </g>
+  </g>
+
+  <g transform="translate(724, 200)">
+    <rect width="208" height="270" rx="4" fill="#FFFFFF" stroke="#E5E5E0" stroke-width="1"/>
+    <rect x="0" y="0" width="208" height="6" fill="#00A4EF"/>
+    <text x="18" y="44" fill="#0076AC" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" letter-spacing="1.1">QUALITY SKILLS</text>
+    <text x="18" y="82" fill="#1A1A1A" font-size="25" font-weight="500">Quality</text>
+    <text x="18" y="112" fill="#737373" font-size="13">You lead data across stages.</text>
+    <g transform="translate(18, 150)">
+      <circle cx="8" cy="8" r="6" fill="#00A4EF"/>
+      <text x="24" y="13" fill="#1A1A1A" font-size="15">DBA</text>
+    </g>
+    <g transform="translate(18, 184)">
+      <circle cx="8" cy="8" r="6" fill="#00A4EF"/>
+      <text x="24" y="13" fill="#1A1A1A" font-size="15">QA Engineer</text>
+    </g>
+  </g>
+
+  <g transform="translate(952, 200)">
+    <rect width="208" height="270" rx="4" fill="#FFFFFF" stroke="#E5E5E0" stroke-width="1"/>
+    <rect x="0" y="0" width="208" height="6" fill="#1B1B1F"/>
+    <text x="18" y="44" fill="#555555" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" letter-spacing="1.1">OPERATIONS SKILLS</text>
+    <text x="18" y="82" fill="#1A1A1A" font-size="25" font-weight="500">Operations</text>
+    <text x="18" y="112" fill="#737373" font-size="14">You run and document.</text>
+    <g transform="translate(18, 150)">
+      <circle cx="8" cy="8" r="6" fill="#1B1B1F"/>
+      <text x="24" y="13" fill="#1A1A1A" font-size="15">DevOps Engineer</text>
+    </g>
+    <g transform="translate(18, 184)">
+      <circle cx="8" cy="8" r="6" fill="#1B1B1F"/>
+      <text x="24" y="13" fill="#1A1A1A" font-size="15">Tech Writer</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,6 @@
+feature: {id: "001", slug: sample-feature}
+checkpoint: {generated_on: "2026-09-24", mapping_status: complete}
+gate: {status: open, reason: "Requirements are still in draft."}
+plan_items:
+  P1.1: {requirements: [REQ-001], tasks: [T001, T002]}
+  P1.2: {requirements: [NFR-001], tasks: [T003, T004]}
