@@ -1,133 +1,120 @@
 ---
-description: "Use when creating, editing, or reviewing Spec-Driven Development packages under .spec/ — the architect package (FRD, NFRD, SPECIFICATION, ANALYSIS, DESIGN, DECISIONS, TASKS, TDD, TESTING, derived files, checkpoints, contracts, evidence) or a Spec-Kit package — plus the constitution, EARS records, traceability, and status."
+description: "Use ao criar, editar ou revisar pacotes de Spec-Driven Development em .spec/ ou a constituição do Spec-Kit, incluindo EARS, rastreabilidade e status."
 applyTo: ".spec/**,.specify/memory/**"
 ---
 
-# Spec-Driven Development Artifacts — Guide
+# Artefatos de Spec-Driven Development — Guia
 
-This file opens for every file under `.spec/` and for the Spec-Kit constitution. It owns the package layout and file contracts. The [sdd-requirements-engineer](../skills/sdd-requirements-engineer/SKILL.md) skill owns the procedure and the [templates](../skills/sdd-requirements-engineer/references/spec-templates.md); the `@architect` agent and its prompts write the files; the scripts in `.github/scripts/` and [spec-quality.yml](../workflows/spec-quality.yml) enforce them. A [worked package](../scripts/tests/fixtures/kit-repo/.spec/001-sample-feature/SPECIFICATION.md) passes every gate.
+Este arquivo define layouts e contratos em `.spec/`. A skill [sdd-requirements-engineer](../skills/sdd-requirements-engineer/SKILL.md) define o procedimento e os templates. O agente `@architect`, scripts em `.github/scripts/` e [spec-quality.yml](../workflows/spec-quality.yml) produzem e validam os arquivos.
 
-## Choose One Workflow per Package
+## Escolha um workflow por pacote
 
-| | Option A — architect workflow | Option B — Spec-Kit workflow |
+| | Workflow architect | Workflow Spec-Kit |
 |---|---|---|
-| Driven by | `@architect` prompts and the SDD skill | Installed `/speckit.*` commands |
-| Folder | `.spec/<NNN>-<feature>/` | `.spec/<NNN>-<feature>/` (moved from Spec-Kit's `specs/` output) |
-| Files | Uppercase architect package below | `spec.md`, `plan.md`, `research.md`, `data-model.md`, `contracts/`, `quickstart.md`, `tasks.md`, `checklists/` |
-| Detected by | `SPECIFICATION.md` | `spec.md` |
+| Conduzido por | Prompts `@architect` e skill SDD | Comandos `/speckit.*` |
+| Pasta | `.spec/<NNN>-<feature>/` | `.spec/<NNN>-<feature>/` |
+| Arquivos | Pacote uppercase | `spec.md`, `plan.md`, `tasks.md` e derivados |
+| Detectado por | `SPECIFICATION.md` | `spec.md` |
 
-Record the choice in `02-modern-spec/scope-decisions.md`. A package with both `SPECIFICATION.md` and `spec.md` fails the gates.
+Registre a escolha em `02-modern-spec/scope-decisions.md`. Um pacote com os dois arquivos falha.
 
-## Architect Package Layout
+## Layout do pacote architect
 
 ```text
 .spec/
 ├── CONSTITUTION.md
 └── <NNN>-<feature>/
-    ├── checkpoints/   spec-to-plan.yaml, plan-to-tasks.yaml, test-coverage.yaml
-    ├── contracts/     manifest.yaml + contract files
-    ├── evidence/      README.md + dated run evidence
+    ├── checkpoints/
+    ├── contracts/
+    ├── evidence/
     ├── ANALYSIS.md
-    ├── CHECKLIST.md             generated
-    ├── CROSS_ANALYSIS.md        generated
     ├── DECISIONS.md
     ├── DESIGN.md
     ├── FRD.md
     ├── NFRD.md
-    ├── SOURCE_TRACEABILITY.md   generated
     ├── SPECIFICATION.md
     ├── TASKS.md
-    ├── TDD.md                   generated unless hand-authored
-    ├── TESTING.md
-    └── VERIFICATION.md          generated
+    ├── TDD.md
+    └── TESTING.md
 ```
 
-| Stage | Files that must exist | Prompt |
-|---|---|---|
-| Requirements | `FRD.md`, `NFRD.md`, `SPECIFICATION.md` | `/write-ears-spec` |
-| Design | + `ANALYSIS.md`, `DESIGN.md`, `DECISIONS.md`, `contracts/manifest.yaml`, `checkpoints/spec-to-plan.yaml` | `/design-modular-monolith`, `/generate-adr` |
-| Complete | + `TASKS.md`, `TDD.md`, `TESTING.md`, `SOURCE_TRACEABILITY.md`, `CHECKLIST.md`, `CROSS_ANALYSIS.md`, `VERIFICATION.md`, the other two checkpoints, `evidence/` | `/break-down-tasks`, `/validate-spec` |
+Crie o pacote com `python3 .github/scripts/export-spec-library.py --new-package <NNN>-<feature>`. Gere derivados com `python3 .github/scripts/generate-sdd-support-artifacts.py --package <NNN> --include-supplements`; não os edite manualmente.
 
-Start a package with `python3 .github/scripts/export-spec-library.py --new-package <NNN>-<feature>`; it writes every authored template and never overwrites. Derive the generated files with `python3 .github/scripts/generate-sdd-support-artifacts.py --package <NNN> --include-supplements`; never edit them by hand.
+## Completude
 
-## Completeness
+- Cada arquivo autoral contém todas as seções H2 do template, na ordem.
+- Use `NOT APPLICABLE: <reason>` quando não se aplicar.
+- Use `PENDING` ou `BLOCKED` com owner para desconhecidos.
+- Nunca invente atores, regras, diagramas, decisões ou aprovações para preencher seções.
 
-- Every authored file contains every H2 section of its template, in template order.
-- A section without applicable content holds `NOT APPLICABLE: <reason>`; an unknown value is `PENDING` or `BLOCKED` with an owner. An empty section or an unfilled `<placeholder>` fails the gate.
-- Completeness never licenses invention: no target, actor, rule, diagram, decision, or approval is created to fill a section.
+## Registros de requisitos
 
-## Requirement Records
-
-`SPECIFICATION.md` is the only home of a normative statement:
+`SPECIFICATION.md` é o único local de declarações normativas.
 
 ```markdown
 - **REQ-001:** When <trigger>, the <system> shall <one observable response>.
   source_legacy: 01-archaeology/legacy-sifap/natural-programs/<MEMBER>.NSN#L<start>-L<end>
-  - Priority: P0. Source: SRC-001. Status: Draft.
-  - Pattern: Event-driven
-  - Rationale: <why>
   - Acceptance: AC-REQ-001-01 Given <state>, When <trigger>, Then <outcome>.
   - Verification: TST-001
 ```
 
-- `REQ-NNN` is functional and `NFR-NNN` non-functional; both are unique across `.spec/`.
-- One EARS pattern and exactly one `shall` per record; the unwanted pattern needs `If … then`.
-- `source_legacy:` sits within 20 lines of the declaration, is not a list item, has no backticks, and cites a real legacy path with a valid line range or `[GREENFIELD] <justification>`. `SRC-###` in the metadata line points at the source register.
-- Outside `SPECIFICATION.md`, cite IDs mid-sentence or in table cells; a line that starts with an ID is read as a second declaration.
-- Every active ID appears in `FRD.md` or `NFRD.md`, `DESIGN.md`, `TASKS.md`, `TESTING.md`, and all three checkpoints; tests cite it in a comment (`// REQ-001`).
+- `REQ-NNN` é funcional e `NFR-NNN` não funcional; ambos são exclusivos.
+- Use um padrão EARS e exatamente um `shall` por registro.
+- `source_legacy:` fica próximo da declaração, sem backticks, e cita path real com linhas válidas ou `[GREENFIELD] <justification>`.
+- Fora de `SPECIFICATION.md`, cite IDs no meio de frases ou células.
+- Cada ID ativo aparece em requisitos, design, tasks, testes e checkpoints; testes o citam em comentário.
 
-## Tasks, Tests, and Evidence
+## Tasks, testes e evidências
 
-- One checkbox per task: `- [ ] **T001 [S] [Plan:P1.1] RED** <action>. Traces REQ-001.` with `Files:` and `Acceptance:` sub-bullets. RED precedes GREEN for every requirement; `[P]` never depends directly on another `[P]`.
-- The Mermaid dependency graph names only real tasks; dependencies form no cycle.
-- A task is checked only with an `Evidence:` sub-bullet citing a file in `evidence/` and its ID in the `Marked complete by verification sweep:` ledger. `validate-red-phase.py -- <test command>` proves the RED step.
-- `TESTING.md` declares each `TST-NNN` in its catalog table; `test-coverage.yaml` maps every requirement to tests.
-- Status never exceeds evidence: `Implemented` needs every task checked and in the ledger; `Verified` also needs a test citing every requirement.
+- Use uma checkbox por task com ID, fase RED/GREEN, plan e rastreabilidade.
+- RED precede GREEN.
+- Uma task só é concluída com `Evidence:` e entrada no ledger.
+- `TESTING.md` declara cada `TST-NNN`; `test-coverage.yaml` mapeia requisitos.
+- Status nunca excede evidência. `Implemented` exige tasks concluídas; `Verified` também exige testes.
 
-## Spec-Kit Packages
+## Pacotes Spec-Kit
 
-Spec-Kit's templates in `.specify/templates/` own the lowercase files. `/speckit.specify` writes to Spec-Kit's dot-less `specs` folder; move the feature folder into `.spec/` with `git mv` and point `.specify/feature.json` at it. The shared requirement, source, TDD, status, and Mermaid rules above still apply. If both constitutions exist, `.specify/memory/constitution.md` is a symlink to `.spec/CONSTITUTION.md`.
+Os templates em `.specify/templates/` controlam arquivos lowercase. Mova a saída `specs/` para `.spec/` com `git mv` e atualize `.specify/feature.json`. As regras compartilhadas de requisitos, fontes, TDD, status e Mermaid continuam válidas.
 
-## Executable Gates
+## Gates executáveis
 
-| Command | Proves |
+| Comando | O que comprova |
 |---|---|
-| `python3 .github/scripts/validate-specs.py [--package NNN] [--strict]` | Runs every gate below plus checkpoint and contract closure |
-| `validate-spec-artifacts.py` | Layout per workflow and stage, required sections, empty sections, placeholders, one constitution |
-| `validate-sdd-documents.py` | EARS shape, sources, acceptance IDs, single declaration, cross-file coverage |
-| `validate-task-graph.py` | Task IDs, dependencies, cycles, RED before GREEN, ledger |
-| `validate-spec-status.py` | Status never exceeds evidence |
-| `validate-test-bindings.py`, `validate-testing-evidence.py`, `audit-task-evidence.py` | Tests cite requirements; cited tests and evidence exist |
-| `validate-design-diagrams.py`, `format-sdd-mermaid.py` | Neutral Mermaid theme and classes |
-| `generate-sdd-support-artifacts.py --include-supplements --check` | Generated files are current |
+| `python3 .github/scripts/validate-specs.py [--package NNN] [--strict]` | Executa todos os gates |
+| `validate-spec-artifacts.py` | Layout, seções e placeholders |
+| `validate-sdd-documents.py` | EARS, fontes e cobertura entre arquivos |
+| `validate-task-graph.py` | Tasks, dependências, ciclos e RED/GREEN |
+| `validate-spec-status.py` | Status coerente com evidências |
+| `validate-test-bindings.py` | Testes citam requisitos |
+| `generate-sdd-support-artifacts.py --include-supplements --check` | Derivados atualizados |
 
-Text gates do not prove EARS meaning, human approval, rendering, or behavioral equivalence; review those explicitly.
+Gates textuais não comprovam significado EARS, aprovação humana, renderização ou equivalência comportamental.
 
 ## Convenções
 
-| Rule | Rationale |
+| Regra | Motivo |
 |---|---|
-| Packages are `.spec/<NNN>-<kebab-slug>/`, zero-padded and never renumbered | Stable references and branch names |
-| One workflow per package | The gates and generators rely on one layout |
-| Generated files are regenerated, never edited | Derived views cannot drift from their sources |
-| Stable IDs: `REQ-`, `NFR-`, `AC-<ID>-NN`, `SRC-`, `RISK-`, `DR-`, `T`, `TST-`, `CON-` | Cross-file references survive edits |
-| Evidence is dated and redacts CPF, NIS, benefit amounts, and secrets | Security rule for every artifact |
+| Pacotes em `.spec/<NNN>-<kebab-slug>/` | Mantém referências estáveis |
+| Um workflow por pacote | Gates dependem de um layout |
+| Arquivos derivados são regenerados | Evita drift |
+| IDs estáveis | Preserva referências entre arquivos |
+| Evidências datadas e sem dados sensíveis | Protege informações reguladas |
 
 ## Faça / Não faça
 
-| Do | Do not |
+| Faça | Não faça |
 |---|---|
-| Scaffold with `export-spec-library.py` and fill every section | Leave a template section or placeholder unfilled |
-| Keep each EARS statement only in `SPECIFICATION.md` | Copy or reword a normative statement elsewhere |
-| Regenerate derived files after any source change | Hand-edit `CHECKLIST.md`, `CROSS_ANALYSIS.md`, `VERIFICATION.md`, or `SOURCE_TRACEABILITY.md` |
-| State `NOT APPLICABLE: <reason>` | Delete a section that does not apply |
-| Report failing gates as failing | Mark planned work done or simulate approval |
+| Crie o pacote pelo script e preencha seções | Deixe placeholders |
+| Mantenha EARS apenas em `SPECIFICATION.md` | Duplique declarações normativas |
+| Regenere derivados após mudanças | Edite arquivos gerados |
+| Use `NOT APPLICABLE: <reason>` | Exclua seção inaplicável |
+| Relate gates falhando | Simule aprovação ou conclusão |
 
 ## Checklist antes de abrir um PR
 
-- [ ] The package follows one workflow and has every file its stage requires.
-- [ ] Every section has content or a justified `NOT APPLICABLE`, and no placeholder remains.
-- [ ] Every requirement has one EARS statement, a valid `source_legacy:`, and an acceptance ID.
-- [ ] RED precedes GREEN, and checked tasks carry evidence and ledger entries.
-- [ ] Generated files are current.
-- [ ] `python3 .github/scripts/validate-specs.py --package <NNN> --strict` passes, or its failures are listed in the PR.
+- [ ] O pacote usa um workflow e contém os arquivos exigidos.
+- [ ] Cada seção tem conteúdo ou `NOT APPLICABLE`.
+- [ ] Cada requisito tem EARS, `source_legacy:` e acceptance ID.
+- [ ] RED precede GREEN e tasks concluídas têm evidências.
+- [ ] Arquivos gerados estão atualizados.
+- [ ] `python3 .github/scripts/validate-specs.py --package <NNN> --strict` passa ou as falhas estão no PR.

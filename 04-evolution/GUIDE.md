@@ -1,46 +1,47 @@
-# Stage 4 — Evolution with Agents (40 min)
+# Etapa 4 — Evolução com Agents (40 min)
 
-> **Path:** [Team Kit](../README.md) › [Stage 4](README.md) › **GUIDE**
+> **Caminho:** [Kit da equipe](../README.md) › [Etapa 4](README.md) › **GUIA**
 
-**This guide leads the participant through experimenting with GitHub Copilot Agent mode: writing a well-formed Issue, delegating it to the Agent, reviewing the resulting PR, and recording honest evidence of what worked.**
+**Este guia conduz o participante por um experimento com o modo Agent do GitHub Copilot: escrever uma Issue bem formada, delegá-la ao Agent, revisar a PR resultante e registrar evidências honestas do que funcionou.**
 
-![Stage 4](https://img.shields.io/badge/Stage-4%20%C2%B7%20Evolution-171717?style=flat-square) ![Duration 40 min](https://img.shields.io/badge/Duration-40%20min-737373?style=flat-square) ![Time not used in the individual challenge](https://img.shields.io/badge/Time-16%3A10--16%3A50-A3A3A3?style=flat-square)
+![Etapa 4](https://img.shields.io/badge/Etapa-4%20%C2%B7%20Evolu%C3%A7%C3%A3o-171717?style=flat-square) ![Duração 40 min](https://img.shields.io/badge/Dura%C3%A7%C3%A3o-40%20min-737373?style=flat-square) ![Horário não usado no desafio individual](https://img.shields.io/badge/Hor%C3%A1rio-n%C3%A3o%20usado%20no%20desafio-A3A3A3?style=flat-square)
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| **Target audience** | the participant (DevOps + Tech Writer) leads; Developer responsibilities co-leads the technical review |
-| **Prerequisites** | C3 checkpoint received; functional Stage 3 prototype; known build command |
-| **Estimated time** | 40 min |
-| **Stage** | Stage 4 — Evolution |
-| **Expected outcome** | Issue created, delegation recorded, experience report completed |
+| **Público-alvo** | O participante (DevOps + Tech Writer) lidera; as responsabilidades de Desenvolvimento colideram a revisão técnica |
+| **Pré-requisitos** | Checkpoint C3 recebido; protótipo funcional da Etapa 3; comando de build conhecido |
+| **Tempo estimado** | 40 min |
+| **Etapa** | Etapa 4 — Evolução |
+| **Resultado esperado** | Issue criada, delegação registrada e relatório de experiência concluído |
 
 > [!NOTE]
-> Official time: not used in the individual challenge in [`00-TEAM-FLOW.md`](../00-TEAM-FLOW.md). the participant leads, and Developer responsibilities co-leads the technical review.
+> Horário oficial: não utilizado no desafio individual em [`00-TEAM-FLOW.md`](../00-TEAM-FLOW.md). O participante lidera, e as responsabilidades de Desenvolvimento colideram a revisão técnica.
 
 ---
 
-## Concept: local Agent mode and GitHub coding agent
+## Conceito: modo Agent local e coding agent do GitHub
 
-VS Code Agent mode performs authorized actions in the local workspace.
-GitHub's coding agent is a separate issue-to-PR workflow that requires repository
-availability and permissions. Selecting Agent mode locally does not assign a
-GitHub issue or automatically create a remote PR.
+O modo Agent do VS Code executa ações autorizadas no workspace local.
+O coding agent do GitHub é um fluxo separado de Issue para PR que exige
+disponibilidade do repositório e permissões. Selecionar o modo Agent localmente
+não atribui uma Issue do GitHub nem cria automaticamente uma PR remota.
 
-Stage 4 explores the coding agent when available. Otherwise, record a reviewed
-issue draft and an explicit continuation step; do not invent a remote run.
+A Etapa 4 explora o coding agent quando disponível. Caso contrário, registre um
+rascunho de Issue revisado e uma etapa explícita de continuação; não invente uma
+execução remota.
 
-**Why it matters:** the Agent does not invent requirements. It reads what you wrote in the Issue and `spec.md`. If the Issue is vague, the PR will be vague. If the Issue is precise, the PR has a chance of approval without major changes.
+**Por que isso importa:** o Agent não inventa requisitos. Ele lê o que você escreveu na Issue e em `spec.md`. Se a Issue for vaga, a PR será vaga. Se a Issue for precisa, a PR terá chance de aprovação sem grandes alterações.
 
-**Differences between Copilot modes:**
+**Diferenças entre os modos do Copilot:**
 
-| Mode | When to use it | Human control |
+| Modo | Quando usar | Controle humano |
 |---|---|---|
-| **Ask** | Questions, explanations, and targeted inquiries | Total |
-| **Plan** | Plan a change before execution | High |
-| **Agent (local)** | Implement an authorized workspace task | Tool approvals and diff/test review |
-| **Coding agent (GitHub)** | Delegate an issue in the repository | Separate availability checks and human PR review |
+| **Ask** | Perguntas, explicações e consultas direcionadas | Total |
+| **Plan** | Planejar uma alteração antes da execução | Alto |
+| **Agent (local)** | Implementar uma tarefa autorizada no workspace | Aprovações de ferramentas e revisão do diff/testes |
+| **Coding agent (GitHub)** | Delegar uma Issue no repositório | Verificações separadas de disponibilidade e revisão humana da PR |
 
-**Issue → Agent → PR → Review cycle:**
+**Ciclo Issue → Agent → PR → Revisão:**
 
 ```mermaid
 %%{init: {'theme':'neutral','themeVariables':{'fontFamily':'ui-sans-serif, system-ui, sans-serif','primaryColor':'#F5F5F5','primaryTextColor':'#171717','primaryBorderColor':'#171717','lineColor':'#525252','secondaryColor':'#FFFFFF','tertiaryColor':'#FAFAFA','background':'#FFFFFF'}}}%%
@@ -49,69 +50,70 @@ flowchart LR
     classDef result fill:#FFFFFF,stroke:#171717,color:#171717,stroke-width:2px
     classDef muted fill:#FAFAFA,stroke:#A3A3A3,color:#404040
 
-    A["Well-formed Issue<br/>(REQ-IDs + criteria)"]:::step --> B["Copilot Agent<br/>reads the repository"]:::step
-    B --> C["PR opened<br/>by the Agent"]:::step
-    C --> D["Human review<br/>(Developer responsibilities + the participant)"]:::step
-    D --> E["Merge into develop<br/>or next step"]:::result
-    D --> F["Manual changes<br/>if needed"]:::muted
+    A["Issue bem formada<br/>(REQ-IDs + critérios)"]:::step --> B["Copilot Agent<br/>lê o repositório"]:::step
+    B --> C["PR aberta<br/>pelo Agent"]:::step
+    C --> D["Revisão humana<br/>(Desenvolvimento + participante)"]:::step
+    D --> E["Merge em develop<br/>ou próxima etapa"]:::result
+    D --> F["Alterações manuais<br/>se necessário"]:::muted
     F --> D
 ```
 
 ---
 
-## Concept: IaC with Terraform and CI/CD with GitHub Actions
+## Conceito: IaC com Terraform e CI/CD com GitHub Actions
 
-**Terraform** is the infrastructure-as-code (IaC) tool used in this workshop. It describes Azure resources (App Service, PostgreSQL, and Key Vault) in `.tf` files and creates them in a repeatable, auditable way.
+**Terraform** é a ferramenta de infraestrutura como código (IaC) usada neste workshop. Ela descreve recursos do Azure (App Service, PostgreSQL e Key Vault) em arquivos `.tf` e os cria de maneira repetível e auditável.
 
 > [!CAUTION]
-> Never run `terraform apply` during the workshop. Validate with `terraform plan` and document the result. Actual infrastructure provisioning is outside the workshop scope.
+> Nunca execute `terraform apply` durante o workshop. Valide com `terraform plan` e documente o resultado. O provisionamento real de infraestrutura está fora do escopo do workshop.
 
-**GitHub Actions** is the CI/CD engine. A well-configured pipeline automatically validates every PR: it compiles, tests, checks traceability (the presence of `source_legacy:`), and optionally deploys.
-
----
-
-## Objective
-
-Experiment with one small delegation and leave honest evidence of the outcome. This stage does not promise that an Agent will open a PR, that Terraform will be created, or that a merge will happen before final acceptance.
-
-In parallel, DBA leads the [data acceptance checks](../docs/DATA-MIGRATION.md):
-QA independently rechecks reconciliation and rerun/recovery, Developer verifies
-the beneficiary queries, and PO accepts the observed results or records blockers.
-This is participant validation, not a presentation or an instructor exercise.
+**GitHub Actions** é o mecanismo de CI/CD. Um pipeline bem configurado valida automaticamente toda PR: compila, testa, verifica a rastreabilidade (a presença de `source_legacy:`) e, opcionalmente, faz deploy.
 
 ---
 
-## Concept: closing the arc with something the legacy could not do
+## Objetivo
 
-Stages 1 to 3 prove the modern system behaves like the old one. That is necessary
-and it is not the point. A migration that only reproduces 1997 behavior has spent
-a day to arrive where the organization already was.
+Experimente uma pequena delegação e deixe evidências honestas do resultado. Esta etapa não promete que um Agent abrirá uma PR, que Terraform será criado ou que um merge acontecerá antes da aceitação final.
 
-Stage 4 adds the missing half of the argument: **one capability the legacy system
-could not offer**, delivered on evidence, in the time that remains.
+Em paralelo, o DBA lidera as [verificações de aceitação de dados](../docs/DATA-MIGRATION.md):
+QA verifica novamente e de forma independente a reconciliação e a reexecução/recuperação,
+Desenvolvimento verifica as consultas de beneficiários, e o PO aceita os resultados
+observados ou registra bloqueios. Esta é uma validação do participante, não uma
+apresentação nem um exercício do instrutor.
 
-| Stage | Question it answers | What it proves |
+---
+
+## Conceito: fechar o ciclo com algo que o legado não podia fazer
+
+As Etapas 1 a 3 comprovam que o sistema moderno se comporta como o antigo. Isso é
+necessário, mas não é o objetivo final. Uma migração que apenas reproduz o comportamento
+de 1997 gastou um dia para chegar onde a organização já estava.
+
+A Etapa 4 acrescenta a metade que faltava ao argumento: **uma capacidade que o sistema
+legado não podia oferecer**, entregue com base em evidências, no tempo restante.
+
+| Etapa | Pergunta que responde | O que comprova |
 |---|---|---|
-| 1 — Archaeology | What does the system actually do? | The participant reads evidence instead of assuming |
-| 2 — Specification | What do we preserve, and what do we deliberately change? | Behavior is traceable to a source |
-| 3 — Implementation | Does the new system behave like the old one? | Equivalence on migrated data |
-| **4 — Evolution** | **What is now possible that was not possible before?** | **The modernization bought something** |
+| 1 — Arqueologia | O que o sistema realmente faz? | O participante lê evidências em vez de supor |
+| 2 — Especificação | O que preservamos e o que alteramos deliberadamente? | O comportamento é rastreável até uma origem |
+| 3 — Implementação | O novo sistema se comporta como o antigo? | Equivalência nos dados migrados |
+| **4 — Evolução** | **O que agora é possível e antes não era?** | **A modernização trouxe algum benefício** |
 
-The rule that keeps this honest: a capability is greenfield only when the participant can
-**point at what prevented it**. A fixed 24x80 screen, a batch-only output path, a
-single-key access pattern, a field width — a constraint somebody actually read in
-the corpus. "Mainframes are old" is not evidence, and the agent rejects it.
+A regra que mantém isso honesto: uma capacidade só é greenfield quando o participante
+consegue **apontar o que a impedia**. Uma tela fixa 24x80, um caminho de saída apenas em
+batch, um padrão de acesso por chave única, a largura de um campo — uma restrição que
+alguém realmente leu no corpus. "Mainframes são antigos" não é evidência, e o Agent rejeita isso.
 
-The traceability gate already supports this. A requirement with no legacy
-equivalent is written as `source_legacy: [GREENFIELD]` **plus a written
-justification**; without the justification, CI rejects the PR exactly as it would
-for a missing source. The escape hatch is narrow on purpose.
+O gate de rastreabilidade já oferece suporte a isso. Um requisito sem equivalente no
+legado é escrito como `source_legacy: [GREENFIELD]` **mais uma justificativa por escrito**;
+sem a justificativa, a CI rejeita a PR exatamente como faria se a origem estivesse ausente.
+Essa exceção é estreita de propósito.
 
 > [!WARNING]
-> One capability, deliberately small. This step never displaces data acceptance,
-> and it never weakens a legacy-backed requirement to fit the clock. A capability
-> that was scoped, written as a requirement, and explicitly deferred is a valid
-> and honest outcome.
+> Uma capacidade, deliberadamente pequena. Esta atividade nunca substitui a aceitação
+> dos dados e nunca enfraquece um requisito apoiado pelo legado para caber no tempo.
+> Uma capacidade cujo escopo foi definido, que foi escrita como requisito e explicitamente
+> adiada é um resultado válido e honesto.
 
 ---
 

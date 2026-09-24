@@ -1,128 +1,128 @@
-# Legacy exploration checklist
+# Checklist de exploração do legado
 
-> **Path:** [Team Kit](../README.md) › [Stage 1](README.md) › **Exploration checklist**
+> **Caminho:** [Kit da Equipe](../README.md) › [Etapa 1](README.md) › **Checklist de exploração**
 
-**Required gate before Stage 2.** This checklist ensures that the participant has read the Natural programs and DDMs needed for the fixed target capability and that candidate rules are traceable to the legacy code.
+**Gate obrigatório antes da Etapa 2.** Este checklist garante que o participante tenha lido os programas Natural e DDMs necessários à capacidade-alvo fixa e que as regras candidatas sejam rastreáveis ao código legado.
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| **Target audience** | Individual participant, complete during Stage 1 |
-| **Prerequisites** | Access to `legacy-sifap/natural-programs/` and `adabas-ddms/` |
-| **Estimated time** | Completed throughout the 50-minute stage |
-| **Stage** | Stage 1: Archaeology |
-| **Expected outcome** | Complete capability reading matrix and verified C1 criteria |
+| **Público-alvo** | Participante individual; preencher durante a Etapa 1 |
+| **Pré-requisitos** | Acesso a `legacy-sifap/natural-programs/` e `adabas-ddms/` |
+| **Tempo estimado** | Preenchido ao longo da etapa de 50 minutos |
+| **Etapa** | Etapa 1: Arqueologia |
+| **Resultado esperado** | Matriz completa de leitura da capacidade e critérios C1 verificados |
 
 > [!IMPORTANT]
-> **Required gate before Stage 2.** No EARS requirement is accepted without a reference to a Natural program or DDM file. Greenfield requirements (with no legacy equivalent) must be marked `[GREENFIELD]` and justified in writing in the specification.
+> **Gate obrigatório antes da Etapa 2.** Nenhum requisito EARS é aceito sem referência a um programa Natural ou arquivo DDM. Requisitos greenfield (sem equivalente legado) devem ser marcados como `[GREENFIELD]` e justificados por escrito na especificação.
 
 > [!WARNING]
-> In the previous workshop edition, several teams skipped legacy exploration and wrote specifications based only on the modernization brief. The resulting specifications did not preserve the actual business rules from SIFAP's 29-year history as the Payment Inspection and Administration System. This gate is required.
+> Na edição anterior do workshop, várias equipes pularam a exploração do legado e escreveram especificações baseadas somente no briefing de modernização. As especificações resultantes não preservaram as regras de negócio reais dos 29 anos de história do SIFAP como Payment Inspection and Administration System. Este gate é obrigatório.
 
 ---
 
-## 1. The traceability rule
+## 1. A regra de rastreabilidade
 
-Every `REQ-ID` in `.spec/<NNN>-<feature>/spec.md` needs a `source_legacy:` line that points to one of these options:
+Cada `REQ-ID` em `.spec/<NNN>-<feature>/spec.md` precisa de uma linha `source_legacy:` que aponte para uma destas opções:
 
-- a Natural member, such as an `.NSP` or `.NSN` file, in `01-archaeology/legacy-sifap/natural-programs/` (preferably with a line range);
-- a specific `.ddm` file in `01-archaeology/legacy-sifap/adabas-ddms/`;
-- `[GREENFIELD]` with a one-line justification.
+- um membro Natural, como um arquivo `.NSP` ou `.NSN`, em `01-archaeology/legacy-sifap/natural-programs/` (preferencialmente com intervalo de linhas);
+- um arquivo `.ddm` específico em `01-archaeology/legacy-sifap/adabas-ddms/`;
+- `[GREENFIELD]` com uma justificativa de uma linha.
 
-CI rejects PRs to `develop` when any `REQ-ID` lacks a `source_legacy:` line. Judge validation checks this after submission, and C2 self-check catches it before implementation.
+A CI rejeita PRs para `develop` quando algum `REQ-ID` não tem uma linha `source_legacy:`. A validação do juiz verifica isso após a submissão, e a autoavaliação C2 detecta o problema antes da implementação.
 
 ---
 
-## 2. Fixed target capability: what to read
+## 2. Capacidade-alvo fixa: o que ler
 
-The participant reads only the programs and DDMs needed to consult, search, and view details for **all beneficiaries migrated from Adabas to PostgreSQL**, applying discovered legacy validation rules. Every source member used as evidence must have a recorded reading interval.
+O participante lê somente os programas e DDMs necessários para consultar, pesquisar e visualizar detalhes de **todos os beneficiários migrados do Adabas para o PostgreSQL**, aplicando as regras legadas de validação descobertas. Todo membro de origem usado como evidência deve ter um intervalo de leitura registrado.
 
-| Investigation area | Typical source evidence | Open-question IDs | Why |
+| Área de investigação | Evidência típica da origem | IDs de questões em aberto | Motivo |
 |---|---|---|---|
-| Registration and beneficiary identity | `CADBENEF.NSP`, `CADDEPEN.NSP`, `CADPROG.NSP` when they support beneficiary fields or relationships | `SIFAP-M-01` … `M-04` | Registration logic defines central entities and identifiers. |
-| Batch and migration boundaries | `BATCHPGT.NSP`, `BATCHREL.NSP`, `BATCHCON.NSP` when they affect source population or reconciliation | `SIFAP-M-05` … `M-08` | Batch flows reveal source movement and module boundaries. |
-| Calculation and derived values | `CALCBENF.NSN`, `CALCCORR.NSP`, `CALCDSCT.NSP` when values must be shown or reconciled | `SIFAP-M-09` … `M-12` | Calculations explain migrated values and acceptance aggregates. |
-| Validation | `VALBENEF.NSN`, `VALDOCS.NSP`, `VALELEG.NSN` | `SIFAP-M-13` … `M-16` | Validations become tests and legacy rules for beneficiary consultation. |
-| Queries, reports, and audit | `CONSBENF.NSP`, `RELPGT.NSP`, `RELAUDIT.NSP` when they define list/search/detail expectations | `SIFAP-M-17` … `M-20` | Read paths feed the consultation API/UI, glossary, and runbook. |
+| Cadastro e identidade do beneficiário | `CADBENEF.NSP`, `CADDEPEN.NSP`, `CADPROG.NSP` quando sustentarem campos ou relacionamentos de beneficiários | `SIFAP-M-01` … `M-04` | A lógica de cadastro define entidades e identificadores centrais. |
+| Limites de batch e migração | `BATCHPGT.NSP`, `BATCHREL.NSP`, `BATCHCON.NSP` quando afetarem a população da origem ou a reconciliação | `SIFAP-M-05` … `M-08` | Fluxos batch revelam a movimentação da origem e os limites dos módulos. |
+| Cálculo e valores derivados | `CALCBENF.NSN`, `CALCCORR.NSP`, `CALCDSCT.NSP` quando os valores precisarem ser exibidos ou reconciliados | `SIFAP-M-09` … `M-12` | Os cálculos explicam valores migrados e agregados de aceitação. |
+| Validação | `VALBENEF.NSN`, `VALDOCS.NSP`, `VALELEG.NSN` | `SIFAP-M-13` … `M-16` | As validações se tornam testes e regras legadas para a consulta de beneficiários. |
+| Consultas, relatórios e auditoria | `CONSBENF.NSP`, `RELPGT.NSP`, `RELAUDIT.NSP` quando definirem expectativas de lista/pesquisa/detalhe | `SIFAP-M-17` … `M-20` | Caminhos de leitura alimentam a API/UI de consulta, o glossário e o runbook. |
 
 > [!IMPORTANT]
-> **There are 20 canonical open-question slots.** This is the only numeric target in Stage 1. The IDs and areas are in [`mysteries-checklist.md`](mysteries-checklist.md); record the ones relevant to the capability in [`mysteries-found.md`](mysteries-found.md). Findings outside the list count as bonuses and **do not** change the denominator.
+> **Há 20 espaços canônicos de questões em aberto.** Esta é a única meta numérica da Etapa 1. Os IDs e as áreas estão em [`mysteries-checklist.md`](mysteries-checklist.md); registre os relevantes à capacidade em [`mysteries-found.md`](mysteries-found.md). Achados fora da lista contam como bônus e **não** alteram o denominador.
 
-### Checklist for each program
+### Checklist para cada programa
 
-For each program or DDM used as evidence, record enough reading notes to confirm that you examined it:
+Para cada programa ou DDM usado como evidência, registre anotações de leitura suficientes para confirmar que ele foi examinado:
 
-- [ ] **Identify the program.** Record its name, author, and year of last modification.
-- [ ] **Map the inputs.** Record which DDMs it reads.
-- [ ] **Map the outputs.** Record which DDMs it writes.
-- [ ] **Record the calls.** Record other programs called through `CALLNAT`.
-- [ ] **Catalog candidate rules.** When the program contains a rule relevant to the scope, record it in `business-rules-catalog.md` with `Programa de origem` and a line range.
+- [ ] **Identifique o programa.** Registre nome, autor e ano da última modificação.
+- [ ] **Mapeie as entradas.** Registre quais DDMs ele lê.
+- [ ] **Mapeie as saídas.** Registre em quais DDMs ele grava.
+- [ ] **Registre as chamadas.** Registre outros programas chamados por `CALLNAT`.
+- [ ] **Catalogue regras candidatas.** Quando o programa contiver uma regra relevante ao escopo, registre-a em `business-rules-catalog.md` com `Programa de origem` e intervalo de linhas.
 
 > [!WARNING]
-> A row without `Programa de origem` does not support an EARS requirement.
+> Uma linha sem `Programa de origem` não sustenta um requisito EARS.
 
 ---
 
-## 3. The four DDMs: field mapping
+## 3. Os quatro DDMs: mapeamento de campos
 
-The participant covers DBA and QA responsibilities and records evidence for the DDMs required by the consultation capability.
+O participante assume as responsabilidades de DBA e QA e registra evidências para os DDMs exigidos pela capacidade de consulta.
 
-| DDM | Owner | Target artifact in PostgreSQL |
+| DDM | Responsável | Artefato-alvo no PostgreSQL |
 |---|---|---|
-| `BENEFIC.ddm` | Participant | <!-- define from evidence --> |
-| `PAYMENT.ddm` | Participant | <!-- define from evidence --> |
-| `SOCPROG.ddm` | Participant | <!-- define from evidence --> |
-| `AUDIT.ddm` | Participant | <!-- define from evidence --> |
+| `BENEFIC.ddm` | Participante | <!-- definir a partir das evidências --> |
+| `PAYMENT.ddm` | Participante | <!-- definir a partir das evidências --> |
+| `SOCPROG.ddm` | Participante | <!-- definir a partir das evidências --> |
+| `AUDIT.ddm` | Participante | <!-- definir a partir das evidências --> |
 
-Review the DDMs required by the selected feature. The complete PostgreSQL mapping belongs to planning and implementation; it is not a prerequisite for starting the specification.
+Revise os DDMs exigidos pela funcionalidade selecionada. O mapeamento PostgreSQL completo pertence ao planejamento e à implementação; ele não é pré-requisito para iniciar a especificação.
 
-The participant also inventories the measured population of the relevant files. Use the [data migration records](../docs/data-migration/) to distinguish current counts from historical documentation or seed definitions. Record keys, related records, data-quality findings, and the supported snapshot/extraction route. The C1 self-check confirms coverage of all authorized beneficiaries and preserves constraints for mapping and migration planning.
+O participante também inventaria a população medida dos arquivos relevantes. Use os [registros de migração de dados](../docs/data-migration/) para diferenciar contagens atuais de documentação histórica ou definições de seed. Registre chaves, registros relacionados, achados de qualidade de dados e a rota de snapshot/extração suportada. A autoavaliação C1 confirma a cobertura de todos os beneficiários autorizados e preserva restrições para o mapeamento e o planejamento da migração.
 
 ---
 
-## 4. Open-question register
+## 4. Registro de questões em aberto
 
-Use [`mysteries-checklist.md`](mysteries-checklist.md) to record open questions without anticipating answers. The register is a catalog of uncertainties, not an answer key or a source of rules.
+Use [`mysteries-checklist.md`](mysteries-checklist.md) para registrar questões em aberto sem antecipar respostas. O registro é um catálogo de incertezas, não um gabarito nem uma fonte de regras.
 
-Record only questions that affect the scope in `mysteries-found.md`. Each entry must contain:
+Registre em `mysteries-found.md` somente questões que afetem o escopo. Cada entrada deve conter:
 
-| Field | Description |
+| Campo | Descrição |
 |---|---|
-| Open question | The question text, without a conclusion |
-| Evidence | `path:line` |
-| Impact | Effect on the scope |
-| Hypothesis | Explicitly marked as unconfirmed |
-| Owner | Person or area that can validate it |
-| Status | `open` / `awaiting human validation` / `closed after human validation` |
+| Questão em aberto | O texto da questão, sem conclusão |
+| Evidência | `caminho:linha` |
+| Impacto | Efeito no escopo |
+| Hipótese | Explicitamente marcada como não confirmada |
+| Responsável | Pessoa ou área que pode validá-la |
+| Status | `aberta` / `aguardando validação humana` / `encerrada após validação humana` |
 
-A question can be closed or used as the basis for a rule only after explicit human validation supported by the recorded evidence.
+Uma questão só pode ser encerrada ou usada como base para uma regra após validação humana explícita sustentada pelas evidências registradas.
 
 ---
 
-## 5. C1 verification before starting Stage 2
+## 5. Verificação C1 antes de iniciar a Etapa 2
 
-At 14:50, the participant checks their own work against this matrix. A red row blocks progression to Stage 2 until recorded as a blocker or fixed.
+Às 14:50, o participante confere o próprio trabalho com esta matriz. Uma linha vermelha bloqueia o avanço para a Etapa 2 até ser registrada como bloqueio ou corrigida.
 
-| Check | Gate criterion |
+| Verificação | Critério do gate |
 |---|---|
-| Capability reading | The participant confirmed that they read the source members needed for beneficiary consultation and validation rules. |
-| Rule catalog | Every in-scope candidate rule has `Programa de origem` completed. |
-| Scope | The discovery report identifies a small feature and what was deferred. |
-| Open questions | Relevant uncertainties were recorded without becoming requirements. |
-| Source data | Pre-work confirmed a populated, authorized Adabas source and a supported, consistent extraction route; the participant recorded baseline evidence for judge verification. |
-| Population coverage | The PO confirmed all authorized beneficiaries and the necessary related data; no sample replaced the agreed population. |
+| Leitura da capacidade | O participante confirmou que leu os membros de origem necessários à consulta de beneficiários e às regras de validação. |
+| Catálogo de regras | Toda regra candidata no escopo tem `Programa de origem` preenchido. |
+| Escopo | O relatório de descoberta identifica uma funcionalidade pequena e o que foi adiado. |
+| Questões em aberto | Incertezas relevantes foram registradas sem se tornarem requisitos. |
+| Dados de origem | O trabalho prévio confirmou uma origem Adabas autorizada e populada e uma rota de extração suportada e consistente; o participante registrou evidências de linha de base para verificação do juiz. |
+| Cobertura da população | O PO confirmou todos os beneficiários autorizados e os dados relacionados necessários; nenhuma amostra substituiu a população acordada. |
 
 ---
 
-## 6. Required Stage 2 format
+## 6. Formato obrigatório da Etapa 2
 
-Write EARS requirements only in `.spec/<NNN>-<feature>/spec.md`, using Spec-Kit. Every `REQ-ID` needs an EARS pattern, Given/When/Then criteria, and `source_legacy:`. Do not finalize a requirement until the participant has confirmed the source or greenfield justification during C2.
+Escreva requisitos EARS somente em `.spec/<NNN>-<feature>/spec.md`, usando Spec-Kit. Todo `REQ-ID` precisa de um padrão EARS, critérios Given/When/Then e `source_legacy:`. Não finalize um requisito até o participante confirmar a origem ou a justificativa greenfield durante o C2.
 
 ---
 
-### Continue reading
+### Continue lendo
 
-| Previous | Next |
+| Anterior | Próximo |
 |---|---|
-| [Stage 1 guide](GUIDE.md)<br/><sub>Timed schedule.</sub> | [Templates](templates/)<br/><sub>Fillable models for the stage artifacts.</sub> |
+| [Guia da Etapa 1](GUIDE.md)<br/><sub>Cronograma.</sub> | [Templates](templates/)<br/><sub>Modelos preenchíveis para os artefatos da etapa.</sub> |
 
-<sub>[Back to the Team Kit index](../README.md)</sub>
+<sub>[Voltar ao índice do Kit da Equipe](../README.md)</sub>
