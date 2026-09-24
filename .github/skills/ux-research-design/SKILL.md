@@ -1,103 +1,103 @@
 ---
 name: "ux-research-design"
-description: "Use when establishing who uses the modernized SIFAP interface and what they need — Jobs-to-be-Done, user journeys, information architecture, and accessibility requirements that feed the frontend build. Produces research documents, never component code. Triggers include \"user journey\", \"jobs to be done\", \"UX research\", \"accessibility spec\", and \"who uses this screen\"."
+description: "Use ao estabelecer quem usa a interface modernizada do SIFAP e do que essas pessoas precisam — Jobs-to-be-Done, jornadas de usuário, arquitetura de informação e requisitos de acessibilidade que alimentam a construção do frontend. Produz documentos de pesquisa, nunca código de componente. Os gatilhos incluem \"jornada de usuário\", \"jobs to be done\", \"pesquisa de UX\", \"especificação de acessibilidade\" e \"quem usa esta tela\"."
 ---
-# UX research and design intent
+# Pesquisa de UX e intenção de design
 
-## When to invoke
+## Quando usar
 
-- "Who actually uses this screen, and to do what?"
-- "Map the journey before we design the page."
-- "What are the accessibility requirements for this flow?"
-- "Is this information architecture right?"
+- "Quem de fato usa esta tela, e para fazer o quê?"
+- "Mapeie a jornada antes de desenharmos a página."
+- "Quais são os requisitos de acessibilidade deste fluxo?"
+- "Esta arquitetura de informação está correta?"
 
-## Role boundary
+## Limite do papel
 
-| This produces | This never produces |
+| Isto produz | Isto nunca produz |
 |---|---|
-| Research documents in Markdown | `.tsx` files or Tailwind classes |
-| Job statements and journeys | Component implementations |
-| Accessibility acceptance criteria | Visual design assets |
-| Information architecture | Framework or library choices |
+| Documentos de pesquisa em Markdown | Arquivos `.tsx` ou classes Tailwind |
+| Declarações de job e jornadas | Implementações de componentes |
+| Critérios de aceitação de acessibilidade | Ativos de design visual |
+| Arquitetura de informação | Escolhas de framework ou biblioteca |
 
-Hand the output to the react-nextjs-frontend skill or the developer skill to
-build it.
+Entregue a saída para a habilidade react-nextjs-frontend ou para a habilidade
+developer construírem.
 
-## Procedure
+## Procedimento
 
-**Step 1 — Establish the user before the screen.**
+**Etapa 1 — Estabeleça quem usa antes da tela.**
 
-- A wireframe without a job statement is rejected.
-- For the SIFAP domain, name the actual operator: who opens this, from where, under what time pressure, and what happens if they get it wrong.
-- Ground the role in evidence where it exists. The legacy 3270 transaction codes and screen flows describe real work; cite them rather than inventing a persona.
+- Um wireframe sem declaração de job é rejeitado.
+- No domínio do SIFAP, nomeie a pessoa que opera de verdade: quem abre isto, de onde, sob qual pressão de tempo e o que acontece se errar.
+- Fundamente o papel em evidência onde ela existe. Os códigos de transação 3270 e os fluxos de tela legados descrevem trabalho real; cite-os em vez de inventar uma persona.
 
-**Step 2 — Write the job, not the feature.**
+**Etapa 2 — Escreva o job, não a funcionalidade.**
 
-- Shape: `When <situation>, I want to <motivation>, so I can <expected outcome>`.
-- A job survives a redesign. A feature does not.
+- Formato: `Quando <situação>, quero <motivação>, para que eu possa <resultado esperado>`.
+- Um job sobrevive a um redesenho. Uma funcionalidade não.
 
-**Step 3 — Map the journey end to end.**
+**Etapa 3 — Mapeie a jornada de ponta a ponta.**
 
-| Stage | What the user does | What they need | Where it fails today |
+| Etapa | O que a pessoa faz | Do que precisa | Onde falha hoje |
 |---|---|---|---|
 
-- Include the unhappy paths: not found, ambiguous match, stale data, partial permission.
-- The legacy failure modes are evidence. A modern design that silently repeats them has not improved anything.
+- Inclua os caminhos infelizes: não encontrado, correspondência ambígua, dado desatualizado, permissão parcial.
+- Os modos de falha legados são evidência. Um design moderno que os repete em silêncio não melhorou nada.
 
-**Step 4 — Make accessibility a requirement, not a review.**
+**Etapa 4 — Faça da acessibilidade um requisito, não uma revisão.**
 
-- Keyboard path for every action, visible focus, and a logical tab order.
-- Semantic structure and labels, not ARIA patched over a `div`.
-- Contrast and target sizes meeting WCAG 2.2 AA.
-- Error messages that state what to do next, not just what failed.
-- Write these as acceptance criteria so they can fail a test.
+- Caminho por teclado para cada ação, foco visível e ordem de tabulação lógica.
+- Estrutura e rótulos semânticos, não ARIA remendado sobre uma `div`.
+- Contraste e tamanhos de alvo que atendam ao WCAG 2.2 AA.
+- Mensagens de erro que digam o que fazer a seguir, não apenas o que falhou.
+- Escreva isto como critérios de aceitação, para que possam reprovar em um teste.
 
-**Step 5 — Respect the data rules.**
+**Etapa 5 — Respeite as regras de dados.**
 
-- Sensitive data such as CPF and benefit amounts is masked by default, revealed only by an explicit authorized action.
-- A screen that shows everything to everybody is a security finding, not a convenience.
+- Dados sensíveis como CPF e valores de benefício ficam mascarados por padrão, revelados apenas por uma ação autorizada explícita.
+- Uma tela que mostra tudo para todo mundo é um achado de segurança, não uma conveniência.
 
-## Anti-patterns to reject
+## Antipadrões a rejeitar
 
-| Request | Response |
+| Solicitação | Resposta |
 |---|---|
-| "Design the screen" with no user named | Establish the job first. |
-| An invented persona with invented pain | Cite the legacy flow, or mark it as an assumption. |
-| Accessibility as a final review pass | Write it as acceptance criteria up front. |
-| A happy path only | Map not-found, ambiguous, and partial-permission paths. |
-| A layout proposal written as component code | This skill produces research; hand it off to build. |
+| "Desenhe a tela" sem ninguém nomeado | Estabeleça o job primeiro. |
+| Uma persona inventada com dor inventada | Cite o fluxo legado, ou marque como suposição. |
+| Acessibilidade como passe final de revisão | Escreva-a como critérios de aceitação desde o início. |
+| Apenas o caminho feliz | Mapeie os caminhos de não encontrado, ambíguo e permissão parcial. |
+| Uma proposta de layout escrita como código de componente | Esta habilidade produz pesquisa; entregue para a construção. |
 
-## Output template
+## Modelo de saída
 
 ```markdown
-## Job statements
+## Declarações de job
 
-- When <situation>, I want to <motivation>, so I can <expected outcome>.
+- Quando <situação>, quero <motivação>, para que eu possa <resultado esperado>.
 
-## Journey — <flow name>
+## Jornada — <nome do fluxo>
 
-| Stage | User action | Needs | Failure mode today | Evidence |
+| Etapa | Ação da pessoa | Necessidades | Modo de falha hoje | Evidência |
 |---|---|---|---|---|
 
-## Information architecture
+## Arquitetura de informação
 
-<What is grouped, what is primary, what is progressive disclosure.>
+<O que é agrupado, o que é primário, o que é divulgação progressiva.>
 
-## Accessibility acceptance criteria
+## Critérios de aceitação de acessibilidade
 
-- Given <context>, when <action> by keyboard only, then <observable result>.
+- Dado <contexto>, quando <ação> apenas por teclado, então <resultado observável>.
 
-## Data exposure rules
+## Regras de exposição de dados
 
-| Field | Default state | Reveal requires |
+| Campo | Estado padrão | Revelar exige |
 |---|---|---|
 ```
 
-## Quality gate
+## Critérios de qualidade
 
-- [ ] Every screen traces to at least one job statement.
-- [ ] Each journey includes its unhappy paths.
-- [ ] Accessibility is written as testable acceptance criteria, not as a principle.
-- [ ] Sensitive fields have an explicit default state and reveal rule.
-- [ ] Claims about current behavior cite the corpus or are labelled assumptions.
-- [ ] The deliverable is a research document, not component code.
+- [ ] Cada tela rastreia até pelo menos uma declaração de job.
+- [ ] Cada jornada inclui seus caminhos infelizes.
+- [ ] A acessibilidade está escrita como critérios de aceitação testáveis, não como princípio.
+- [ ] Campos sensíveis têm um estado padrão explícito e uma regra de revelação.
+- [ ] Afirmações sobre o comportamento atual citam o acervo ou estão rotuladas como suposições.
+- [ ] A entrega é um documento de pesquisa, não código de componente.

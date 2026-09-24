@@ -1,62 +1,62 @@
 ---
 name: "test-strategy"
-description: "Use when designing a test strategy, choosing the test-pyramid shape, defining coverage targets, or evaluating testing investments across unit, integration, and E2E layers. Triggers include \"test strategy\", \"test pyramid\", \"coverage target\", \"E2E vs integration\", and \"testing investment\"."
+description: "Use ao elaborar uma estratégia de testes, escolher o formato da pirâmide de testes, definir metas de cobertura ou avaliar investimentos em testes nas camadas unitária, de integração e de ponta a ponta (E2E). Os gatilhos incluem \"estratégia de testes\", \"pirâmide de testes\", \"meta de cobertura\", \"E2E versus integração\" e \"investimento em testes\"."
 ---
-# Test strategy
+# Estratégia de testes
 
-## When to invoke
+## Quando invocar
 
-- "Design a test strategy for…"
-- "How much unit vs integration vs E2E testing?"
-- "What coverage target is right?"
-- "Audit our test pyramid."
+- "Elabore uma estratégia de testes para..."
+- "Qual deve ser a proporção de testes unitários, de integração e de ponta a ponta (E2E)?"
+- "Qual é a meta de cobertura adequada?"
+- "Audite nossa pirâmide de testes."
 
-## Workflow
+## Fluxo de trabalho
 
-1. **Inventory** the code under test: modules, public APIs, external integrations, and critical paths.
-2. **Classify risk** by module (P0 / P1 / P2) based on the blast radius if it fails.
-3. **Allocate tests by risk**: prefer fast focused tests, real persistence integration checks, and only the necessary end-to-end flows; do not invent a mandatory percentage mix.
-4. **Use the kit C3 floors**: 70% backend and 60% frontend line coverage, plus meaningful critical-branch and REQ-ID checks. Stricter targets need an explicit participant decision.
-5. **Review flaky tests** under the team-approved policy; no automatic percentage-triggered quarantine or deletion of required verification.
-6. **Reuse existing approved tools**: JUnit 5, Testcontainers, Vitest and Testing Library. Additional tools require a reviewed need and dependency decision.
-7. **Output**: a one-page strategy document with per-layer targets, tools, coverage thresholds, and quarantine rules.
+1. **Faça o inventário** do código testado: módulos, APIs públicas, integrações externas e fluxos críticos.
+2. **Classifique o risco** por módulo (P0 / P1 / P2) com base no raio de impacto de uma falha.
+3. **Distribua a pirâmide**: use inicialmente 70% de testes unitários, 20% de integração e 10% E2E; justifique os desvios.
+4. **Defina metas de cobertura**: linha de base de 80% de cobertura de linhas e 90% para módulos P0, acompanhando a cobertura de ramificações separadamente.
+5. **Defina o orçamento de testes instáveis**: taxa máxima de 1%; qualquer valor acima disso aciona a quarentena.
+6. **Escolha as ferramentas por camada**: unitária (Vitest/JUnit/pytest), integração (Testcontainers) e E2E (Playwright).
+7. **Produza a saída**: um documento de estratégia de uma página com metas, ferramentas, limites de cobertura e regras de quarentena por camada.
 
-## Heuristics
+## Heurísticas
 
-- If an E2E test can be rewritten as an integration + contract test, do it—E2E is expensive and flaky.
-- Contract tests beat mocks for anything that crosses a service boundary.
-- Mutation testing can supplement review of assertions when already approved; it is not the only way to assess test quality or permission to add new tooling.
+- Se um teste E2E puder ser reescrito como testes de integração e contrato, faça isso. Testes E2E são caros e instáveis.
+- Testes de contrato são melhores que objetos simulados para tudo que cruza os limites de um serviço.
+- Testes de mutação (Stryker, PIT) são a única forma honesta de detectar testes que não comprovam nada.
 
-## Anti-patterns
+## Antipadrões
 
-- Inverted pyramid: many slow E2E tests sitting on top of few unit tests.
-- One global coverage number with no higher target for P0 modules.
-- Mocked service boundaries that never catch a real integration break.
-- Coverage treated as the goal instead of a proxy for confidence.
+- Pirâmide invertida: muitos testes E2E lentos sobre poucos testes unitários.
+- Um único número global de cobertura, sem meta superior para módulos P0.
+- Limites de serviço simulados que nunca detectam uma falha real de integração.
+- Cobertura tratada como objetivo, não como indicador de confiança.
 
-## Output template
+## Modelo de saída
 
 ```markdown
-## Test strategy - <system or module>
+## Estratégia de testes - <sistema ou módulo>
 
-| Layer | Target mix | Tools | Coverage target |
+| Camada | Distribuição-alvo | Ferramentas | Meta de cobertura |
 |---|---|---|---|
-| Unit | <risk-based scope> | JUnit 5 / Vitest | <REQ-ID and critical-branch coverage> |
-| Integration | <required persistence/data paths> | Testcontainers | <source-to-target and query checks> |
-| UI / end-to-end | <approved user flows> | <existing approved tools> | <observable acceptance> |
+| Unitária | 70% | JUnit 5 / Vitest | 80% de linhas (90% para P0) |
+| Integração | 20% | Testcontainers | fluxos críticos |
+| E2E | 10% | Playwright | principais jornadas de usuário |
 
-**Flaky-test policy**: <reviewed owner, evidence, review date and replacement verification>
-**Risk classification**: P0 <modules> / P1 <modules> / P2 <modules>
+**Orçamento de testes instáveis**: <=1% (acima disso, quarentena)
+**Classificação de risco**: P0 <módulos> / P1 <módulos> / P2 <módulos>
 ```
 
-## Quality gate
+## Critérios de qualidade
 
-- [ ] Every module is risk-classified (P0/P1/P2) with a coverage target.
-- [ ] The test mix follows actual risk and available tools, not an arbitrary 70/20/10 quota.
-- [ ] Each layer names its tool and threshold.
-- [ ] A flaky-test budget and quarantine rule are defined.
+- [ ] Cada módulo está classificado por risco (P0/P1/P2) e tem uma meta de cobertura.
+- [ ] A distribuição da pirâmide está definida por camada, e os desvios de 70/20/10 estão justificados.
+- [ ] Cada camada indica sua ferramenta e seu limite.
+- [ ] Há um orçamento de testes instáveis e uma regra de quarentena definidos.
 
-## References
+## Referências
 
 - [Google Testing Blog - Test Sizes](https://testing.googleblog.com/2010/12/test-sizes.html)
 - [ISTQB Foundation Syllabus](https://www.istqb.org/certifications/certified-tester-foundation-level)
