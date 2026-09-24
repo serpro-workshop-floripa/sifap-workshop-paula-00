@@ -1,60 +1,60 @@
-# Individual challenge Git workflow
+# Fluxo de trabalho Git do desafio individual
 
-> **Track:** [Individual challenge kit](README.md) › **Git workflow**
+> **Trilha:** [Kit do desafio individual](README.md) › **Fluxo de trabalho Git**
 
-Use one repository per participant. Work starts from `develop`, and the judge reviews the final submission PR.
+Use um repositório por participante. O trabalho começa a partir de `develop`, e a banca avalia o PR final de envio.
 
-![Guide](https://img.shields.io/badge/Guide-Git%20workflow-171717?style=flat-square) ![Audience: individual](https://img.shields.io/badge/Audience-Individual-737373?style=flat-square) ![Use: challenge](https://img.shields.io/badge/Use-14%3A00%E2%80%9317%3A40-A3A3A3?style=flat-square)
+![Guia](https://img.shields.io/badge/Guia-Fluxo%20Git-171717?style=flat-square) ![Público: individual](https://img.shields.io/badge/P%C3%BAblico-Individual-737373?style=flat-square) ![Uso: desafio](https://img.shields.io/badge/Uso-14%3A00%E2%80%9317%3A40-A3A3A3?style=flat-square)
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| **Target audience** | One participant working in their own repository |
-| **Prerequisites** | Git installed, repository cloned, `develop` available |
-| **Estimated time** | 10 minutes of reading |
-| **Expected result** | You can create the spec branch, create the implementation branch, and submit the judged PR |
+| **Público-alvo** | Um participante trabalhando em seu próprio repositório |
+| **Pré-requisitos** | Git instalado, repositório clonado, `develop` disponível |
+| **Tempo estimado** | 10 minutos de leitura |
+| **Resultado esperado** | Você consegue criar a branch de especificação, criar a branch de implementação e enviar o PR para avaliação |
 
 ---
 
-## Branches used in the challenge
+## Branches usadas no desafio
 
-| Branch | Purpose | Origin | PR target |
+| Branch | Finalidade | Origem | Destino do PR |
 |---|---|---|---|
-| `main` | Stable validated branch | Repository default | Not used for the timed submission |
-| `develop` | Integration branch for the challenge | From `main` during setup | Judge reviews submissions into this branch |
-| `spec/<NNN>-<feature>` | Stage 2 specification artifacts | `develop` | `develop` |
-| `impl/<NNN>-<feature>` | Stage 3 implementation, tests, and migration | `develop` after the spec is ready | `develop` |
+| `main` | Branch estável e validada | Padrão do repositório | Não usada para o envio durante o desafio |
+| `develop` | Branch de integração do desafio | Criada a partir de `main` durante a configuração | A banca avalia os envios para esta branch |
+| `spec/<NNN>-<feature>` | Artefatos de especificação da Etapa 2 | `develop` | `develop` |
+| `impl/<NNN>-<feature>` | Implementação, testes e migração da Etapa 3 | `develop`, depois que a especificação estiver pronta | `develop` |
 
-Only `spec/` and `impl/` prefixes are used in the individual challenge. `infra/`, `agent/<issue-NN>`, and separate documentation branches are outside the timed challenge path.
+Somente os prefixos `spec/` e `impl/` são usados no desafio individual. `infra/`, `agent/<issue-NN>` e branches separadas de documentação estão fora do percurso cronometrado do desafio.
 
 > [!IMPORTANT]
-> Every `impl/<NNN>-<feature>` branch starts from `develop`, never from `spec/*`. There is no `stage` branch.
+> Toda branch `impl/<NNN>-<feature>` começa a partir de `develop`, nunca de `spec/*`. Não existe uma branch `stage`.
 
 ---
 
-## Visual branch tree
+## Árvore visual de branches
 
 ```mermaid
 %%{init: {'theme':'neutral','themeVariables':{'fontFamily':'ui-sans-serif, system-ui, sans-serif','primaryColor':'#F5F5F5','primaryTextColor':'#171717','primaryBorderColor':'#171717','lineColor':'#525252','secondaryColor':'#FFFFFF','tertiaryColor':'#FAFAFA','background':'#FFFFFF'}}}%%
 gitGraph
-   commit id: "start"
+   commit id: "início"
    branch develop
    checkout develop
    branch spec/001-beneficiary-consultation
    checkout spec/001-beneficiary-consultation
-   commit id: "EARS + plan"
+   commit id: "EARS + plano"
    checkout develop
    merge spec/001-beneficiary-consultation tag: "C2"
    branch impl/001-beneficiary-consultation
    checkout impl/001-beneficiary-consultation
-   commit id: "tests + code"
-   commit id: "migration + reconciliation"
+   commit id: "testes + código"
+   commit id: "migração + reconciliação"
    checkout develop
-   merge impl/001-beneficiary-consultation tag: "judge accepted"
+   merge impl/001-beneficiary-consultation tag: "aceito pela banca"
 ```
 
 ---
 
-## Stage 2: create the spec branch
+## Etapa 2: crie a branch de especificação
 
 ```bash
 git checkout develop
@@ -62,7 +62,7 @@ git pull
 git checkout -b spec/<NNN>-<feature>
 ```
 
-Commit specification work with clear messages:
+Faça commits do trabalho de especificação com mensagens claras:
 
 ```bash
 git add .spec docs/adr 02-modern-spec
@@ -70,13 +70,13 @@ git commit -m "docs: drafts REQ-XXX beneficiary consultation spec"
 git push -u origin spec/<NNN>-<feature>
 ```
 
-Open a PR to `develop` when C2 is ready. The PR records the specification; it is not the final judged submission.
+Abra um PR para `develop` quando o C2 estiver pronto. O PR registra a especificação; ele não é o envio final para avaliação.
 
 ---
 
-## Stage 3: create the implementation branch
+## Etapa 3: crie a branch de implementação
 
-After the specification branch is merged or otherwise available on `develop`:
+Depois que a branch de especificação tiver sido integrada ou estiver disponível em `develop`:
 
 ```bash
 git checkout develop
@@ -84,7 +84,7 @@ git pull
 git checkout -b impl/<NNN>-<feature>
 ```
 
-Commit tests, implementation, migration scripts, and evidence in small steps:
+Faça commits dos testes, da implementação, dos scripts de migração e das evidências em etapas pequenas:
 
 ```bash
 git add backend frontend infra .spec docs
@@ -96,23 +96,23 @@ git push -u origin impl/<NNN>-<feature>
 
 ---
 
-## Submission PR
+## PR de envio
 
-The judged submission is always:
+O envio para avaliação é sempre:
 
 ```text
 impl/<NNN>-<feature> -> develop
 ```
 
-Before opening it, verify:
+Antes de abri-lo, verifique:
 
-- [ ] CI is green locally as far as possible.
-- [ ] Backend `mvn verify` passes; frontend tests pass if a frontend was built.
-- [ ] Every requirement has REQ-ID, EARS wording, and `source_legacy:`.
-- [ ] Data reconciliation proves source count = loaded + explained rejects, no unexplained losses, and rerun without duplicates.
-- [ ] Listing, search, and detail cover the complete migrated beneficiary population.
+- [ ] A CI está verde localmente, na medida do possível.
+- [ ] O comando `mvn verify` do backend passa; os testes do frontend passam, caso um frontend tenha sido criado.
+- [ ] Todo requisito tem REQ-ID, redação EARS e `source_legacy:`.
+- [ ] A reconciliação de dados comprova contagem da origem = carregados + rejeições explicadas, nenhuma perda sem explicação e reexecução sem duplicidades.
+- [ ] Listagem, pesquisa e detalhes cobrem toda a população migrada de beneficiários.
 
-Open the PR:
+Abra o PR:
 
 ```bash
 gh pr create \
@@ -122,19 +122,19 @@ gh pr create \
   --body-file .github/PULL_REQUEST_TEMPLATE.md
 ```
 
-Then complete the checklist in GitHub and notify the judge. The PR creation time is the submission timestamp. The first two accepted submissions win; a rejected submission can be fixed and resubmitted with a new timestamp.
+Depois, preencha o checklist no GitHub e notifique a banca. O horário de criação do PR é o horário do envio. Os dois primeiros envios aceitos vencem; um envio rejeitado pode ser corrigido e reenviado com um novo horário.
 
 ---
 
-## Commit message rules
+## Regras para mensagens de commit
 
-- First line has at most 72 characters.
-- Start with a type: `feat:` `fix:` `docs:` `test:` `db:` `refactor:` `chore:`.
-- Cite the REQ-ID when behavior, tests, or migration work implements a requirement.
-- Do not use `wip` or `temp`.
-- Never include secrets, credentials, CPF, NIS, benefit amounts, or other sensitive data.
+- A primeira linha tem no máximo 72 caracteres.
+- Comece com um tipo: `feat:` `fix:` `docs:` `test:` `db:` `refactor:` `chore:`.
+- Cite o REQ-ID quando um comportamento, teste ou trabalho de migração implementar um requisito.
+- Não use `wip` nem `temp`.
+- Nunca inclua segredos, credenciais, CPF, NIS, valores de benefícios ou outros dados sensíveis.
 
-Examples:
+Exemplos:
 
 ```bash
 git commit -m "docs: records ADR-0003 challenge branch flow"
@@ -145,37 +145,37 @@ git commit -m "db: reconciles migrated beneficiaries for REQ-009"
 
 ---
 
-## Golden rules
+## Regras de ouro
 
 > [!IMPORTANT]
-> No exceptions during the challenge.
+> Sem exceções durante o desafio.
 
-1. Never commit directly to `main`.
-2. Start every branch from `develop`.
-3. Use only `spec/` and `impl/` branch prefixes for the timed challenge.
-4. Do not run parallel sub-agent orchestration.
-5. CI red does not win; fix it before notifying the judge.
-6. A PR without the submission checklist filled is not ready for validation.
-
----
-
-## Emergency commands
-
-| Situation | Command |
-|---|---|
-| I committed on `develop` by mistake | `git reset --soft HEAD~1 && git switch -c impl/<NNN>-<feature> && git commit` |
-| Rebase got stuck | `git rebase --abort` |
-| Merge conflict | Open the file, resolve `<<<<<<<`, then `git add <file> && git rebase --continue` |
-| I deleted a branch by mistake | `git reflog`, find the SHA, then `git checkout -b <name> <sha>` |
-
-If you are stuck for 20 minutes, ask workshop support and record the blocker.
+1. Nunca faça commit diretamente em `main`.
+2. Inicie todas as branches a partir de `develop`.
+3. Use somente os prefixos de branch `spec/` e `impl/` no desafio cronometrado.
+4. Não execute orquestração paralela de subagentes.
+5. CI vermelha não vence; corrija-a antes de notificar a banca.
+6. Um PR sem o checklist de envio preenchido não está pronto para validação.
 
 ---
 
-### Continue reading
+## Comandos de emergência
 
-| Previous | Next |
+| Situação | Comando |
 |---|---|
-| [Challenge flow](00-TEAM-FLOW.md)<br/><sub>14:00-17:40 schedule and finish line.</sub> | [Stage 1: archaeology](01-archaeology/GUIDE.md)<br/><sub>Read the legacy system and catalog business rules.</sub> |
+| Fiz commit em `develop` por engano | `git reset --soft HEAD~1 && git switch -c impl/<NNN>-<feature> && git commit` |
+| O rebase travou | `git rebase --abort` |
+| Conflito de merge | Abra o arquivo, resolva `<<<<<<<` e execute `git add <file> && git rebase --continue` |
+| Excluí uma branch por engano | Execute `git reflog`, encontre o SHA e depois execute `git checkout -b <name> <sha>` |
 
-<sub>[Back to the kit index](README.md)</sub>
+Se estiver travado por 20 minutos, peça ajuda ao suporte do workshop e registre o bloqueio.
+
+---
+
+### Continue a leitura
+
+| Anterior | Próximo |
+|---|---|
+| [Fluxo do desafio](00-TEAM-FLOW.md)<br/><sub>Cronograma das 14:00 às 17:40 e linha de chegada.</sub> | [Etapa 1: arqueologia](01-archaeology/GUIDE.md)<br/><sub>Leia o sistema legado e catalogue as regras de negócio.</sub> |
+
+<sub>[Voltar ao índice do kit](README.md)</sub>
