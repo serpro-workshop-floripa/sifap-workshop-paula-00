@@ -102,7 +102,7 @@ if (error) return <ErrorState onRetry={refetch} />;
 
 Use semantic elements (`<button>`, `<nav>`, `<table>`) before reaching for ARIA; add ARIA only when native semantics are missing.
 
-## Conventions
+## Convenções
 
 | Rule | Rationale |
 |---|---|
@@ -112,7 +112,7 @@ Use semantic elements (`<button>`, `<nav>`, `<table>`) before reaching for ARIA;
 | Colocate the test beside the component | Behavior and coverage stay together |
 | Explicit loading/empty/error states | No dead ends in the UI |
 
-## Do / Do Not
+## Faça / Não faça
 
 | Do | Do not |
 |---|---|
@@ -121,7 +121,7 @@ Use semantic elements (`<button>`, `<nav>`, `<table>`) before reaching for ARIA;
 | Label every control | Rely on placeholder text as the label |
 | Format money/dates with a locale | Render raw numbers or ISO strings to users |
 
-## Checklist Before Opening a PR
+## Checklist antes de abrir um PR
 
 - [ ] Components use named exports and fully typed props
 - [ ] `'use client'` is confined to the smallest interactive component

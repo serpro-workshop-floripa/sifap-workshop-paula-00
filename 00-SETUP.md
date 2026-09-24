@@ -1,55 +1,55 @@
-# Setup guide: individual challenge readiness
+# Guia de configuração: preparação para o desafio individual
 
-> **Track:** [Individual challenge kit](README.md) › **Setup**
+> **Trilha:** [Kit do desafio individual](README.md) › **Configuração**
 
-Complete these checks before 14:00. The timed challenge starts directly in `@archaeologist`; setup is pre-work.
+Conclua estas verificações antes das 14:00. O desafio cronometrado começa diretamente em `@archaeologist`; a configuração é uma atividade prévia.
 
-![Setup](https://img.shields.io/badge/Setup-00-171717?style=flat-square) ![Duration: 45 min](https://img.shields.io/badge/Duration-45%20min-737373?style=flat-square) ![When: before 14:00](https://img.shields.io/badge/When-Before%2014%3A00-A3A3A3?style=flat-square)
+![Configuração](https://img.shields.io/badge/Configura%C3%A7%C3%A3o-00-171717?style=flat-square) ![Duração: 45 min](https://img.shields.io/badge/Dura%C3%A7%C3%A3o-45%20min-737373?style=flat-square) ![Quando: antes das 14:00](https://img.shields.io/badge/Quando-Antes%20das%2014%3A00-A3A3A3?style=flat-square)
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| **Target audience** | One participant on their own laptop |
-| **Prerequisites** | GitHub account with Copilot enabled |
-| **Estimated time** | 45 minutes after tools and access are available |
-| **Expected result** | Verified laptop, repository, Copilot, Spec-Kit, and source-data readiness |
+| **Público-alvo** | Um participante em seu próprio computador |
+| **Pré-requisitos** | Conta do GitHub com o Copilot habilitado |
+| **Tempo estimado** | 45 minutos depois que as ferramentas e os acessos estiverem disponíveis |
+| **Resultado esperado** | Computador, repositório, Copilot, Spec-Kit e preparação dos dados de origem verificados |
 
 > [!WARNING]
-> Windows users: terminal blocks with heredoc or `for` assume Git Bash or WSL. Do not use PowerShell or CMD for those blocks.
+> Usuários do Windows: blocos de terminal com heredoc ou `for` pressupõem Git Bash ou WSL. Não use PowerShell nem CMD para esses blocos.
 
 ---
 
-## 1. Check laptop prerequisites
+## 1. Verifique os pré-requisitos do computador
 
-| Tool | Minimum version | How to check | If missing |
+| Ferramenta | Versão mínima | Como verificar | Se estiver ausente |
 |---|---|---|---|
 | Git | 2.40+ | `git --version` | <https://git-scm.com/downloads> |
 | GitHub CLI | 2.40+ | `gh --version` | <https://cli.github.com> |
-| VS Code | Current supported Stable or Insiders | Help -> About; verify Ask, Plan, Agent, and custom agents | <https://code.visualstudio.com/download> |
-| Docker Desktop | 4.30+ | `docker --version` and open the app | <https://www.docker.com/products/docker-desktop> |
+| VS Code | Versão Stable ou Insiders atualmente suportada | Help -> About; verifique Ask, Plan, Agent e agentes personalizados | <https://code.visualstudio.com/download> |
+| Docker Desktop | 4.30+ | `docker --version` e abra o aplicativo | <https://www.docker.com/products/docker-desktop> |
 | Java 21 JDK | 21 | `java -version` | <https://learn.microsoft.com/java/openjdk/download> |
-| Node.js | 20 for the shipped CI pin | `node --version` | <https://nodejs.org/en/download> |
-| pnpm | 9 for the shipped frontend CI | `pnpm --version` | <https://pnpm.io/installation> |
+| Node.js | 20, conforme a versão fixada na CI fornecida | `node --version` | <https://nodejs.org/en/download> |
+| pnpm | 9, conforme a CI de frontend fornecida | `pnpm --version` | <https://pnpm.io/installation> |
 
-These versions are the exercise baseline, not a production support statement. Evaluate runtime support separately before any real deployment.
-
----
-
-## 2. Create your participant repository
-
-Use the public kit as a template for your own private repository.
-
-1. Open the [public kit](https://github.com/workshop-gbb/datacorp-sifap-modernization-team-kit/tree/main).
-2. Click **Use this template** -> **Create a new repository**.
-3. Choose the workshop organization provided by facilitators.
-4. Use the repository name assigned to you.
-5. Set visibility to **Private**.
-6. Leave **Include all branches** unchecked unless facilitators say otherwise.
-
-Never push to the public kit. Your work happens only in your private repository.
+Essas versões são a linha de base do exercício, não uma declaração de suporte para produção. Avalie o suporte de runtime separadamente antes de qualquer implantação real.
 
 ---
 
-## 3. Clone and create `develop`
+## 2. Crie seu repositório de participante
+
+Use o kit público como template para seu próprio repositório privado.
+
+1. Abra o [kit público](https://github.com/workshop-gbb/datacorp-sifap-modernization-team-kit/tree/main).
+2. Clique em **Use this template** -> **Create a new repository**.
+3. Escolha a organização do workshop indicada pelos facilitadores.
+4. Use o nome de repositório atribuído a você.
+5. Defina a visibilidade como **Private**.
+6. Deixe **Include all branches** desmarcado, a menos que os facilitadores orientem o contrário.
+
+Nunca faça push para o kit público. Seu trabalho ocorre somente em seu repositório privado.
+
+---
+
+## 3. Clone e crie `develop`
 
 ```bash
 mkdir -p ~/Code && cd ~/Code
@@ -60,62 +60,62 @@ git checkout -b develop
 git push -u origin develop
 ```
 
-Protect `main` and `develop` if your repository permissions allow it. Require PRs, conversation resolution, and the real CI checks once they have run.
+Proteja `main` e `develop` caso as permissões de seu repositório permitam. Exija PRs, resolução de conversas e as verificações reais da CI assim que elas tiverem sido executadas.
 
 ---
 
-## 4. Turn on GitHub Copilot in VS Code
+## 4. Ative o GitHub Copilot no VS Code
 
-1. Open the repository root with `code .`.
-2. Sign in to GitHub Copilot from VS Code.
-3. Open Copilot Chat.
-4. Verify Ask, Plan, and Agent modes are available.
-5. Ask:
+1. Abra a raiz do repositório com `code .`.
+2. Entre no GitHub Copilot pelo VS Code.
+3. Abra o Copilot Chat.
+4. Verifique se os modos Ask, Plan e Agent estão disponíveis.
+5. Pergunte:
 
 ```text
 What stack are we using in this project?
 ```
 
-The answer should include Java 21, Spring Boot 3.3, Next.js 15, PostgreSQL 16, and the SIFAP modernization context. If not, confirm `.github/copilot-instructions.md` is loaded and reload VS Code.
+A resposta deve incluir Java 21, Spring Boot 3.3, Next.js 15, PostgreSQL 16 e o contexto de modernização do SIFAP. Caso contrário, confirme se `.github/copilot-instructions.md` foi carregado e recarregue o VS Code.
 
 ---
 
-## 5. Validate stage agents and role skills
+## 5. Valide os agentes de etapa e as skills de função
 
 ```bash
 ls .github/agents .github/prompts .github/instructions .github/skills
 ```
 
-Open these before 14:00:
+Abra estes itens antes das 14:00:
 
 - [`06-stage-agents/README.md`](06-stage-agents/README.md)
 - [`05-personas/`](05-personas/)
 - [`09-cheat-sheets/copilot-3-modes.md`](09-cheat-sheets/copilot-3-modes.md)
 
-You cover all role responsibilities yourself. Do not add a participant roster to globally loaded instructions.
+Você cobre sozinho todas as responsabilidades das funções. Não adicione uma lista de participantes às instruções carregadas globalmente.
 
 ---
 
-## 6. Install official Spec-Kit
+## 6. Instale o Spec-Kit oficial
 
 ```bash
 uv tool install specify-cli --from git+https://github.com/github/spec-kit.git@vX.Y.Z
 specify version
 ```
 
-Replace `vX.Y.Z` with the facilitator-approved release. Confirm command options with `--help`; they can change between releases.
+Substitua `vX.Y.Z` pela versão aprovada pelos facilitadores. Confirme as opções dos comandos com `--help`; elas podem mudar entre versões.
 
-Initialize once at the repository root if `.specify/` is not already present:
+Inicialize uma vez na raiz do repositório caso `.specify/` ainda não esteja presente:
 
 ```bash
 specify init . --integration copilot
 ```
 
-Do not rerun initialization blindly over existing artifacts.
+Não execute novamente a inicialização sem verificar os artefatos existentes.
 
 ---
 
-## 7. Understand challenge branch strategy
+## 7. Entenda a estratégia de branches do desafio
 
 ```text
 main                    <- stable, protected
@@ -124,77 +124,77 @@ spec/NNN-feature        <- Stage 2 specification work
 impl/NNN-feature        <- Stage 3 implementation and judged submission
 ```
 
-Only `spec/` and `impl/` prefixes are used during the timed challenge. The final submission PR is `impl/<NNN>-<feature>` -> `develop`. See [`00-GIT-WORKFLOW.md`](00-GIT-WORKFLOW.md).
+Somente os prefixos `spec/` e `impl/` são usados durante o desafio cronometrado. O PR final de envio é `impl/<NNN>-<feature>` -> `develop`. Consulte [`00-GIT-WORKFLOW.md`](00-GIT-WORKFLOW.md).
 
 ---
 
-## 8. Source-data readiness before 14:00
+## 8. Preparação dos dados de origem antes das 14:00
 
-The local Natural sources, DDMs, FDT, and historical documents are read-only evidence. They are not a running Adabas database or a current record export.
+Os fontes Natural locais, DDMs, FDT e documentos históricos são evidências somente para leitura. Eles não constituem um banco de dados Adabas em execução nem uma exportação atual de registros.
 
-- [ ] Confirm the authorized source owner, version, synthetic dataset provenance, and measured population.
-- [ ] Confirm participant access permits read-only queries and supported extraction.
-- [ ] Establish a supported extraction route and consistent snapshot boundary.
-- [ ] Agree the complete authorized beneficiary population and related data required for consultation.
-- [ ] Record baseline counts, representative read queries, anomalies, and restricted evidence locations without copying personal data into Git.
+- [ ] Confirme o proprietário autorizado da origem, a versão, a procedência do conjunto de dados sintéticos e a população medida.
+- [ ] Confirme se o acesso do participante permite consultas somente para leitura e extração suportada.
+- [ ] Estabeleça uma rota de extração suportada e um limite consistente para o snapshot.
+- [ ] Defina a população completa e autorizada de beneficiários e os dados relacionados necessários para a consulta.
+- [ ] Registre contagens de referência, consultas de leitura representativas, anomalias e locais restritos de evidências sem copiar dados pessoais para o Git.
 
-If the source is empty, unavailable, or cannot be extracted consistently, record the blocker. Source reading can continue, but migration acceptance remains blocked.
-
----
-
-## 9. Pre-challenge smoke test
-
-- [ ] Repository opens in VS Code at the root.
-- [ ] `git status` works on `develop`.
-- [ ] `gh auth status` succeeds.
-- [ ] Java, Node, pnpm, Docker, and Specify versions are visible.
-- [ ] Copilot answers with the correct stack and project context.
-- [ ] `/speckit.*` commands appear in Copilot if Spec-Kit is initialized.
-- [ ] Opening **New issue** on GitHub shows the shipped templates.
-- [ ] `.github/agents`, `.github/prompts`, `.github/instructions`, and `.github/skills` are present.
-- [ ] [`00-TEAM-FLOW.md`](00-TEAM-FLOW.md) and [`00-START-HERE.md`](00-START-HERE.md) have been read.
-- [ ] Source-data readiness is verified or explicitly blocked.
-
-When these checks are complete, you are ready to open `@archaeologist` at 14:00.
+Se a origem estiver vazia, indisponível ou não puder ser extraída de maneira consistente, registre o bloqueio. A leitura dos fontes pode continuar, mas a aceitação da migração permanece bloqueada.
 
 ---
 
-## Troubleshooting
+## 9. Teste rápido antes do desafio
 
-### Copilot does not read project instructions
+- [ ] O repositório abre no VS Code pela raiz.
+- [ ] `git status` funciona em `develop`.
+- [ ] `gh auth status` é executado com sucesso.
+- [ ] As versões de Java, Node, pnpm, Docker e Specify estão visíveis.
+- [ ] O Copilot responde com a stack e o contexto corretos do projeto.
+- [ ] Os comandos `/speckit.*` aparecem no Copilot caso o Spec-Kit esteja inicializado.
+- [ ] Ao abrir **New issue** no GitHub, os templates fornecidos são exibidos.
+- [ ] `.github/agents`, `.github/prompts`, `.github/instructions` e `.github/skills` estão presentes.
+- [ ] [`00-TEAM-FLOW.md`](00-TEAM-FLOW.md) e [`00-START-HERE.md`](00-START-HERE.md) foram lidos.
+- [ ] A preparação dos dados de origem foi verificada ou explicitamente bloqueada.
 
-- Open VS Code at the repository root.
-- Restart or reload VS Code.
-- Confirm `github.copilot.chat.useProjectInstructions` is enabled.
+Quando essas verificações estiverem concluídas, você estará pronto para abrir `@archaeologist` às 14:00.
 
-### `specify init` fails or commands do not appear
+---
 
-- Confirm `uv`, Python 3.11+, and Git are installed.
-- Run `specify version`.
-- Inspect `.specify/` before rerunning initialization.
-- Reload VS Code.
+## Solução de problemas
 
-### Docker is unavailable when needed
+### O Copilot não lê as instruções do projeto
 
-Check ports and stop only the specific process that conflicts:
+- Abra o VS Code na raiz do repositório.
+- Reinicie ou recarregue o VS Code.
+- Confirme se `github.copilot.chat.useProjectInstructions` está habilitado.
+
+### `specify init` falha ou os comandos não aparecem
+
+- Confirme se `uv`, Python 3.11+ e Git estão instalados.
+- Execute `specify version`.
+- Inspecione `.specify/` antes de executar novamente a inicialização.
+- Recarregue o VS Code.
+
+### O Docker está indisponível quando necessário
+
+Verifique as portas e interrompa somente o processo específico que estiver causando conflito:
 
 ```bash
 lsof -i :5432 -i :8080 -i :3000
 kill <PID>
 ```
 
-Do not use broad process-kill commands.
+Não use comandos que encerrem processos de maneira abrangente.
 
-### Permission denied when pushing to `main`
+### Permissão negada ao fazer push para `main`
 
-Branch protection is working. Push a `spec/` or `impl/` branch and open a PR.
+A proteção de branch está funcionando. Faça push de uma branch `spec/` ou `impl/` e abra um PR.
 
 ---
 
-### Continue reading
+### Continue a leitura
 
-| Previous | Next |
+| Anterior | Próximo |
 |---|---|
-| [Start here](00-START-HERE.md)<br/><sub>Pre-work and 14:00 launch.</sub> | [Git workflow](00-GIT-WORKFLOW.md)<br/><sub>Branch and submission rules.</sub> |
+| [Comece aqui](00-START-HERE.md)<br/><sub>Atividades prévias e início às 14:00.</sub> | [Fluxo de trabalho Git](00-GIT-WORKFLOW.md)<br/><sub>Regras de branch e envio.</sub> |
 
-<sub>[Back to the kit index](README.md)</sub>
+<sub>[Voltar ao índice do kit](README.md)</sub>

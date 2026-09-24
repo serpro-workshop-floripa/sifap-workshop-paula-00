@@ -1,82 +1,84 @@
 ---
 
-title: "Template: Agent Experience Report"
-description: "Retrospective skeleton with 5 questions for /final-experience-report"
+title: "Modelo: Relatório de Experiência com o Agent"
+description: "Estrutura de retrospectiva com perguntas para /final-experience-report"
 author: "Paula Silva, AI-Native Software Engineer, Americas Global Black Belt at Microsoft"
 date: "2026-04-29"
 version: "1.0.0"
-status: "approved"
-tags: ["template", "retrospective", "evolution", "stage-4"]
+status: "aprovado"
+tags: ["modelo", "retrospectiva", "evolução", "etapa-4"]
 ---
 
-<!-- How to use: run /final-experience-report. The participant answers; the agent formats. -->
+<!-- Como usar: execute /final-experience-report. O participante responde; o Agent formata. -->
 
-# Agent Experience Report — <!-- placeholder: Participant Name -->
+# Relatório de Experiência com o Agent — <!-- espaço reservado: Nome do participante -->
 
-![Agent-experience-report template](https://img.shields.io/badge/Template-agent--experience--report-737373?style=flat-square) ![Copy — do not edit the original](https://img.shields.io/badge/Copy-do%20not%20edit%20the%20original-A3A3A3?style=flat-square)
+![Modelo de relatório de experiência com o Agent](https://img.shields.io/badge/Modelo-relat%C3%B3rio%20do%20Agent-737373?style=flat-square) ![Copie — não edite o original](https://img.shields.io/badge/Copie-n%C3%A3o%20edite%20o%20original-A3A3A3?style=flat-square)
 
-> **Path:** [Team Kit](../../README.md) › [Stage 4](../README.md) › Templates › **agent-experience-report**
+> **Caminho:** [Kit da equipe](../../README.md) › [Etapa 4](../README.md) › Modelos › **agent-experience-report**
 
 > [!NOTE]
-> This file is a TEMPLATE. Use its reflection sections in the existing participant
-> report; preserve issue and PR observations. Record Stage 4 status first and
-> collect unanswered reflections during the 17:10-17:40 judge validation.
-> Confidence scores are opinions, not evidence of production readiness.
+> Este arquivo é um MODELO. Use suas seções de reflexão no relatório existente do
+> participante; preserve as observações sobre Issues e PRs. Registre primeiro o
+> status da Etapa 4 e colete as reflexões sem resposta durante a validação do juiz,
+> das 17:10 às 17:40. Pontuações de confiança são opiniões, não evidências de
+> prontidão para produção.
 
 ---
 
-## Metadata
+## Metadados
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| **Participant** | `<!-- placeholder -->` |
-| **Date** | `<!-- placeholder -->` |
-| **Completed stages** | `<!-- placeholder -->` |
-| **Agents used** | `<!-- placeholder -->` |
+| **Participante** | `<!-- espaço reservado -->` |
+| **Data** | `<!-- espaço reservado -->` |
+| **Etapas concluídas** | `<!-- espaço reservado -->` |
+| **Agents usados** | `<!-- espaço reservado -->` |
 
 ---
 
-## Reflections
+## Reflexões
 
-### 1. Most useful agent
+### 1. Agent mais útil
 
-`<!-- placeholder: participant response -->`
+`<!-- espaço reservado: resposta do participante -->`
 
-### 2. Most surprising failure mode
+### 2. Modo de falha mais surpreendente
 
-`<!-- placeholder: participant response -->`
+`<!-- espaço reservado: resposta do participante -->`
 
-### 3. What you would change
+### 3. O que você mudaria
 
-`<!-- placeholder: participant response -->`
+`<!-- espaço reservado: resposta do participante -->`
 
-### 4. Production confidence level
+### 4. Nível de confiança para produção
 
-`<!-- placeholder: participant response — score from 1 to 10 and explanation -->`
+`<!-- espaço reservado: resposta do participante — pontuação de 1 a 10 e explicação -->`
 
-### 5. One thing to take back
+### 5. Algo para levar consigo
 
-`<!-- placeholder: participant response -->`
+`<!-- espaço reservado: resposta do participante -->`
 
-### 6. What is now possible that was not possible before
+### 6. O que agora é possível e antes não era
 
-Name the capability, the legacy constraint it removes, and where that constraint
-is visible in the corpus. State plainly whether it shipped, or was scoped and
-deferred. "Nothing yet" is a valid answer; an unfounded claim is not.
+Nomeie a capacidade, a restrição do legado que ela remove e onde essa restrição
+está visível no corpus. Declare claramente se ela foi entregue ou se teve o escopo
+definido e foi adiada. "Nada ainda" é uma resposta válida; uma afirmação sem
+fundamento não é.
 
-`<!-- placeholder: capability, constraint, evidence path, shipped or deferred -->`
+`<!-- espaço reservado: capacidade, restrição, caminho da evidência, entregue ou adiada -->`
 
 ---
 
 > [!IMPORTANT]
-> Definition of Done: all 6 questions answered in the participant's own words; metadata complete.
+> Definition of Done: todas as 6 perguntas respondidas com as próprias palavras do participante; metadados completos.
 
 ---
 
-### Continue reading
+### Continue lendo
 
-| Previous | Next |
+| Anterior | Próximo |
 |---|---|
-| [Stage 4 GUIDE](../GUIDE.md)<br/><sub>Step-by-step instructions.</sub> | [Participant report](../agent-experience-report.md)<br/><sub>Where you fill it in.</sub> |
+| [GUIA da Etapa 4](../GUIDE.md)<br/><sub>Instruções passo a passo.</sub> | [Relatório do participante](../agent-experience-report.md)<br/><sub>Onde preenchê-lo.</sub> |
 
-<sub>[Back to the kit index](../../README.md)</sub>
+<sub>[Voltar ao índice do kit](../../README.md)</sub>

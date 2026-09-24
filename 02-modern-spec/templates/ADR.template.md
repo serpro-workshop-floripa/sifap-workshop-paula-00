@@ -1,90 +1,90 @@
 ---
 
-title: "Template: Architecture Decision Record"
-description: "MADR-format ADR skeleton for /generate-adr"
+title: "Modelo: Registro de Decisão Arquitetural"
+description: "Estrutura de ADR no formato MADR para /generate-adr"
 author: "Paula Silva, AI-Native Software Engineer, Americas Global Black Belt at Microsoft"
 date: "2026-04-29"
 version: "1.0.0"
-status: "approved"
-tags: ["template", "adr", "architect", "stage-2"]
+status: "aprovado"
+tags: ["modelo", "adr", "architect", "etapa-2"]
 ---
 
-<!-- How to use: run /generate-adr. A minimum of 2 options is required. -->
+<!-- Como usar: execute /generate-adr. São necessárias pelo menos 2 opções. -->
 
-# ADR-<!-- placeholder: NNN -->: <!-- placeholder: Title -->
+# ADR-<!-- espaço reservado: NNN -->: <!-- espaço reservado: Título -->
 
-![ADR Template](https://img.shields.io/badge/Template-ADR-737373?style=flat-square) ![Copy — do not edit the original](https://img.shields.io/badge/Copy-do%20not%20edit%20the%20original-A3A3A3?style=flat-square)
+![Modelo de ADR](https://img.shields.io/badge/Modelo-ADR-737373?style=flat-square) ![Copie — não edite o original](https://img.shields.io/badge/Copie-n%C3%A3o%20edite%20o%20original-A3A3A3?style=flat-square)
 
-> **Path:** [Team Kit](../../README.md) › [Stage 2](../README.md) › Templates › **ADR**
+> **Caminho:** [Kit da equipe](../../README.md) › [Etapa 2](../README.md) › Modelos › **ADR**
 
 > [!NOTE]
-> This file is a TEMPLATE. Copy it to your participant's repository and fill it with actual data. Do not edit the original.
+> Este arquivo é um MODELO. Copie-o para o repositório do participante e preencha-o com dados reais. Não edite o original.
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| **Status** | `Proposed` / `Accepted` / `Rejected` / `Superseded` |
-| **Date** | `YYYY-MM-DD` |
-| **Related feature** | `.spec/<NNN>-<feature>/` |
+| **Status** | `Proposta` / `Aceita` / `Rejeitada` / `Substituída` |
+| **Data** | `YYYY-MM-DD` |
+| **Funcionalidade relacionada** | `.spec/<NNN>-<feature>/` |
 
 ---
 
-## Context
+## Contexto
 
-<!-- placeholder: why this decision is necessary -->
+<!-- espaço reservado: por que esta decisão é necessária -->
 
 ---
 
-## Options considered
+## Opções consideradas
 
-### Option 1: <!-- placeholder -->
+### Opção 1: <!-- espaço reservado -->
 
-| Aspect | Assessment |
+| Aspecto | Avaliação |
 |---|---|
-| **Pros** | <!-- placeholder: participant-specific --> |
-| **Cons** | <!-- placeholder: participant-specific --> |
+| **Prós** | <!-- espaço reservado: específico do participante --> |
+| **Contras** | <!-- espaço reservado: específico do participante --> |
 
-### Option 2: <!-- placeholder -->
+### Opção 2: <!-- espaço reservado -->
 
-| Aspect | Assessment |
+| Aspecto | Avaliação |
 |---|---|
-| **Pros** | <!-- placeholder --> |
-| **Cons** | <!-- placeholder --> |
+| **Prós** | <!-- espaço reservado --> |
+| **Contras** | <!-- espaço reservado --> |
 
 ---
 
-## Decision
+## Decisão
 
-<!-- placeholder: selected option + rationale -->
-
----
-
-## Consequences
-
-### Positive
-
-- <!-- placeholder -->
-
-### Negative
-
-- <!-- placeholder -->
+<!-- espaço reservado: opção selecionada + justificativa -->
 
 ---
 
-## Related requirements
+## Consequências
 
-- `<!-- placeholder: REQ-NNN -->`
+### Positivas
+
+- <!-- espaço reservado -->
+
+### Negativas
+
+- <!-- espaço reservado -->
+
+---
+
+## Requisitos relacionados
+
+- `<!-- espaço reservado: REQ-NNN -->`
 
 ---
 
 > [!IMPORTANT]
-> ADR Definition of Done: MADR format, at least 2 options, participant-specific pros/cons, and a dated decision.
+> Definition of Done da ADR: formato MADR, pelo menos 2 opções, prós/contras específicos do participante e uma decisão datada.
 
 ---
 
-### Continue reading
+### Continue lendo
 
-| Previous | Next |
+| Anterior | Próximo |
 |---|---|
-| [Stage 2 GUIDE](../GUIDE.md)<br/><sub>Step-by-step instructions.</sub> | [Stage 2 GUIDE](../GUIDE.md)<br/><sub>Lead the decision with the participant.</sub> |
+| [GUIA da Etapa 2](../GUIDE.md)<br/><sub>Instruções passo a passo.</sub> | [GUIA da Etapa 2](../GUIDE.md)<br/><sub>Conduza a decisão com o participante.</sub> |
 
-<sub>[Back to the kit index](../../README.md)</sub>
+<sub>[Voltar ao índice do kit](../../README.md)</sub>

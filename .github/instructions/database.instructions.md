@@ -95,7 +95,7 @@ joins can change pagination semantics and must be verified.
 isolated representative data; it is not a safe inspection wrapper for arbitrary
 writes or side-effecting functions. Keep plans and logs sanitized.
 
-## Conventions
+## Convenções
 
 | Rule | Rationale |
 |---|---|
@@ -106,7 +106,7 @@ writes or side-effecting functions. Keep plans and logs sanitized.
 | Measured indexes and reviewed constraints | Preserve meaning without speculative performance changes |
 | Replay/resume and isolated recovery tests | Reliable data movement without source mutation |
 
-## Do / Do Not
+## Faça / Não faça
 
 | Do | Do not |
 |---|---|
@@ -116,7 +116,7 @@ writes or side-effecting functions. Keep plans and logs sanitized.
 | Verify query coverage and authorization | Accept a mocked or sample-only screen |
 | Test recovery with actual tools | Assume schema rollback restores the dataset |
 
-## Checklist Before Opening a PR
+## Checklist antes de abrir um PR
 
 - [ ] Source definitions and approved mappings trace to actual evidence.
 - [ ] Applied Flyway files remain unchanged; schema and record pipelines are distinct.

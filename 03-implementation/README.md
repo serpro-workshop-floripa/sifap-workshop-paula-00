@@ -1,47 +1,47 @@
-# Stage 3 — Implementation
+# Etapa 3 — Implementação
 
-> **Path:** [Team Kit](../README.md) › **Stage 3 — Implementation**
+> **Caminho:** [Kit da equipe](../README.md) › **Etapa 3 — Implementação**
 
-**In this stage, the participant build the SIFAP 2.0 prototype from scratch: a Java 21 + Spring Boot 3.3 backend, a Next.js 15 frontend, and PostgreSQL 16, guided by the REQ-IDs from Stage 2.**
+**Nesta etapa, o participante constrói do zero o protótipo do SIFAP 2.0: um backend Java 21 + Spring Boot 3.3, um frontend Next.js 15 e PostgreSQL 16, orientado pelos REQ-IDs da Etapa 2.**
 
-![Stage 3](https://img.shields.io/badge/Stage-3%20%C2%B7%20Implementation-171717?style=flat-square) ![Led by the participant](https://img.shields.io/badge/Lead-Participants%203%20and%204-404040?style=flat-square) ![Deliverable Code and Tests](https://img.shields.io/badge/Deliverable-Code%20%2B%20Tests-737373?style=flat-square)
+![Etapa 3](https://img.shields.io/badge/Etapa-3%20%C2%B7%20Implementa%C3%A7%C3%A3o-171717?style=flat-square) ![Conduzida pelo participante](https://img.shields.io/badge/Lideran%C3%A7a-Participante-404040?style=flat-square) ![Entrega Código e testes](https://img.shields.io/badge/Entrega-C%C3%B3digo%20%2B%20testes-737373?style=flat-square)
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| **Target audience** | Participants 3 (TL+Dev) and 4 (DBA+QA); the participant scaffolds CI |
-| **Prerequisites** | C2 checkpoint accepted; `spec.md`, `plan.md`, and `tasks.md` ready |
-| **Estimated time** | 100 min (15:30–17:10) |
-| **Stage** | Stage 3 — Implementation |
-| **Expected outcome** | Functional application with PostgreSQL populated from Adabas, reconciled data, beneficiary queries, and tests traced to REQ-IDs |
+| **Público-alvo** | Responsabilidades de TL + Dev e DBA + QA; o participante prepara a estrutura de CI |
+| **Pré-requisitos** | Checkpoint C2 aceito; `spec.md`, `plan.md` e `tasks.md` prontos |
+| **Tempo estimado** | 100 min (15:30–17:10) |
+| **Etapa** | Etapa 3 — Implementação |
+| **Resultado esperado** | Aplicação funcional com PostgreSQL populado a partir do Adabas, dados reconciliados, consultas de beneficiários e testes rastreados até os REQ-IDs |
 
 ---
 
-## Where this fits in the day's flow
+## Onde isto se encaixa no fluxo do dia
 
-![Day timeline: pre-event, 4 stages, and integrated validation, with the three C1, C2, and C3 checkpoints](../assets/timeline-stages.svg)
+![Linha do tempo do dia: pré-evento, 4 etapas e validação integrada, com os três checkpoints C1, C2 e C3](../assets/timeline-stages.svg)
 
-## Who works here
+## Quem trabalha aqui
 
-![Persona distribution by pair: vision, architecture, implementation, quality, and operations](../assets/personas-participant.svg)
+![Distribuição de personas por dupla: visão, arquitetura, implementação, qualidade e operações](../assets/personas-participant.svg)
 
-## Contents of this folder
+## Conteúdo desta pasta
 
-DBA executes the approved snapshot-to-PostgreSQL migration; QA independently
-reconciles it and Developer exposes authorized listing, search, and detail
-queries for all beneficiaries in the agreed population. Flyway schema history
-and test seeds alone do not meet C3. Follow the
-[data migration guide](../docs/DATA-MIGRATION.md).
+O DBA executa a migração aprovada do snapshot para o PostgreSQL; QA a reconcilia
+de forma independente, e Desenvolvimento disponibiliza consultas autorizadas de
+listagem, pesquisa e detalhes para todos os beneficiários da população acordada.
+Somente o histórico de schema do Flyway e seeds de teste não atendem ao C3. Siga o
+[guia de migração de dados](../docs/DATA-MIGRATION.md).
 
-| File | Purpose |
+| Arquivo | Finalidade |
 |---|---|
-| [`GUIDE.md`](GUIDE.md) | Stage step-by-step guide |
+| [`GUIDE.md`](GUIDE.md) | Guia passo a passo da etapa |
 
 ---
 
-### Continue reading
+### Continue lendo
 
-| Previous | Next |
+| Anterior | Próximo |
 |---|---|
-| [Stage 2 — Specification](../02-modern-spec/README.md)<br/><sub>Modern specification summary and links to ADR templates.</sub> | [Stage 3 — GUIDE](GUIDE.md)<br/><sub>15:30–17:10 · Java 21 + Spring Boot + Next.js, with tests.</sub> |
+| [Etapa 2 — Especificação](../02-modern-spec/README.md)<br/><sub>Resumo da especificação moderna e links para modelos de ADR.</sub> | [Etapa 3 — GUIA](GUIDE.md)<br/><sub>15:30–17:10 · Java 21 + Spring Boot + Next.js, com testes.</sub> |
 
-<sub>[Back to the kit index](../README.md)</sub>
+<sub>[Voltar ao índice do kit](../README.md)</sub>

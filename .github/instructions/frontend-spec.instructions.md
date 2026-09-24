@@ -143,7 +143,7 @@ describe('ResourceCard', () => {
 These generic syntax examples do not supply SIFAP page behavior or acceptance
 results; the team derives those from its specification.
 
-## Conventions
+## Convenções
 
 | Rule | Rationale |
 |---|---|
@@ -154,7 +154,7 @@ results; the team derives those from its specification.
 | Tailwind and shadcn/ui | Consistent UI without competing styling stacks |
 | Behavior-focused tests | Verify observable outcomes and failure handling |
 
-## Do / Do Not
+## Faça / Não faça
 
 | Do | Do not |
 |---|---|
@@ -165,7 +165,7 @@ results; the team derives those from its specification.
 | Keep secrets in server-only configuration | Expose secrets through client props or public variables |
 | Verify full query coverage with DBA/QA | Accept sample-only screens as migrated-data consultation |
 
-## Checklist Before Opening a PR
+## Checklist antes de abrir um PR
 
 - [ ] TypeScript stays strict and boundary data is validated.
 - [ ] Client code is limited to components that require interaction.

@@ -138,7 +138,7 @@ assertIterableEquals(List.of("alpha", "beta"), resourceService.labels()); // ord
 assertArrayEquals(expectedBytes, actualBytes);
 ```
 
-## Conventions
+## Convenções
 
 | Rule | Rationale |
 |---|---|
@@ -150,7 +150,7 @@ assertArrayEquals(expectedBytes, actualBytes);
 | `assertInstanceOf` over `assertTrue(... instanceof ...)` | Returns the cast value and fails with a useful message |
 | Import from `org.junit.jupiter.api.Assertions` only | JUnit 4 `org.junit.Assert` has different argument orders |
 
-## Do / Do Not
+## Faça / Não faça
 
 | Do | Do not |
 |---|---|
@@ -162,7 +162,7 @@ assertArrayEquals(expectedBytes, actualBytes);
 | Keep `assertTimeoutPreemptively` off transactional code | Wrap a `@Transactional` persistence call and lose the `EntityManager` |
 | Let assertions fail loudly | Catch `AssertionError` to hide a failure |
 
-## Checklist Before Opening a PR
+## Checklist antes de abrir um PR
 
 - [ ] Every `assertEquals` lists `expected` first and `actual` second
 - [ ] `BigDecimal` and other monetary values are compared by value, not scale-sensitive `equals`

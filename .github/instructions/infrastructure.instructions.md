@@ -107,7 +107,7 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD} # from .env, never hardcoded
 ```
 
-## Conventions
+## Convenções
 
 | Rule | Rationale |
 |---|---|
@@ -118,7 +118,7 @@ services:
 | Managed Identity for service auth | No stored passwords between services |
 | `fmt` + per-module `validate` clean | Matches the CI infra gate |
 
-## Do / Do Not
+## Faça / Não faça
 
 | Do | Do not |
 |---|---|
@@ -127,7 +127,7 @@ services:
 | Pin Compose images by digest | Use `postgres:latest` |
 | Authenticate via Managed Identity | Embed a password in a connection string |
 
-## Checklist Before Opening a PR
+## Checklist antes de abrir um PR
 
 - [ ] Provider is `azurerm ~> 3.x` with a pinned `required_version`
 - [ ] Every resource carries `project`, `environment`, and `owner` tags

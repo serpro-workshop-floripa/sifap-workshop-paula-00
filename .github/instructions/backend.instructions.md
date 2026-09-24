@@ -118,7 +118,7 @@ class GlobalExceptionHandler {
 log.info("payment processed correlationId={} resourceId={}", correlationId, id);
 ```
 
-## Conventions
+## Convenções
 
 | Rule | Rationale |
 |---|---|
@@ -129,7 +129,7 @@ log.info("payment processed correlationId={} resourceId={}", correlationId, id);
 | `Optional` for absent results | Eliminates `NullPointerException` from public APIs |
 | `ProblemDetail` (RFC 7807) for every error | One machine-readable error shape |
 
-## Do / Do Not
+## Faça / Não faça
 
 | Do | Do not |
 |---|---|
@@ -138,7 +138,7 @@ log.info("payment processed correlationId={} resourceId={}", correlationId, id);
 | Inject dependencies by constructor | Use field `@Autowired` |
 | Mask CPF and amounts in logs | Log entities, request bodies, or tokens |
 
-## Checklist Before Opening a PR
+## Checklist antes de abrir um PR
 
 - [ ] Every endpoint uses `/api/v1/{resource}`, the right verb, and the right status code
 - [ ] Every endpoint has OpenAPI annotations and a validated `record` request body

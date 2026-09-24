@@ -104,7 +104,7 @@ export const config = { matcher: ['/dashboard/:path*'] };
 
 An AI agent or automation never grants itself new permissions and never touches a production database without explicit human approval. Changes to auth, roles, or secret handling require peer review before merge.
 
-## Conventions
+## Convenções
 
 | Rule | Rationale |
 |---|---|
@@ -115,7 +115,7 @@ An AI agent or automation never grants itself new permissions and never touches 
 | Secrets from env/Key Vault, Managed Identity | No credentials in code or logs |
 | Mask CPF and amounts everywhere | Protects regulated data |
 
-## Do / Do Not
+## Faça / Não faça
 
 | Do | Do not |
 |---|---|
@@ -124,7 +124,7 @@ An AI agent or automation never grants itself new permissions and never touches 
 | Keep secrets server-side | Prefix a secret with `NEXT_PUBLIC_` |
 | Mask sensitive fields before logging | Put CPF/amounts in logs or query strings |
 
-## Checklist Before Opening a PR
+## Checklist antes de abrir um PR
 
 - [ ] Endpoints authenticate via Spring Security; no custom token parsing
 - [ ] Every request is authorized, denying by default, with ownership checks where relevant

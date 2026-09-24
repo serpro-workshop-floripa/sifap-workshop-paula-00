@@ -142,7 +142,7 @@ Document the coexistence boundary for the selected increment. Do not invent
 an available legacy HTTP proxy or implement a facade the requirements do not
 need. A planned integration is not an executed production cutover.
 
-## Conventions
+## Convenções
 
 | Rule | Rationale |
 |---|---|
@@ -153,7 +153,7 @@ need. A planned integration is not an executed production cutover.
 | `@Transactional` only in services and constructor injection everywhere | Keeps persistence boundaries and dependencies explicit |
 | `ProblemDetail` for errors | Gives every module one machine-readable error shape |
 
-## Do / Do Not
+## Faça / Não faça
 
 | Do | Do not |
 |---|---|
@@ -164,7 +164,7 @@ need. A planned integration is not an executed production cutover.
 | Return `Optional` when a result may be absent | Return `null` from public methods |
 | Support partial migration with a Strangler Fig facade | Assume the whole legacy system is migrated at once |
 
-## Checklist Before Opening a PR
+## Checklist antes de abrir um PR
 
 - [ ] New code is inside one Spring Boot deployable and organized by business capability
 - [ ] No module imports another module's internal classes directly; interfaces or events define the boundary

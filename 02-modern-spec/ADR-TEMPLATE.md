@@ -1,119 +1,119 @@
-# ADR-XXX: Decision Title
+# ADR-XXX: Título da decisão
 
-> **Path:** [Team Kit](../README.md) › [Stage 2](README.md) › **ADR Template**
+> **Caminho:** [Kit da equipe](../README.md) › [Etapa 2](README.md) › **Modelo de ADR**
 
 > [!NOTE]
-> This file is a supporting template. Copy it to `ADR-NNN-title.md` and fill it in. Do not edit the original.
-> Use this template when an architectural decision blocks the feature's `plan.md`.
+> Este arquivo é um modelo de apoio. Copie-o para `ADR-NNN-title.md` e preencha-o. Não edite o original.
+> Use este modelo quando uma decisão arquitetural bloquear o `plan.md` da funcionalidade.
 
-![Stage 2](https://img.shields.io/badge/Stage-2%20%C2%B7%20Specification-171717?style=flat-square) ![Type ADR Template](https://img.shields.io/badge/Type-ADR%20Template-737373?style=flat-square)
+![Etapa 2](https://img.shields.io/badge/Etapa-2%20%C2%B7%20Especifica%C3%A7%C3%A3o-171717?style=flat-square) ![Tipo Modelo de ADR](https://img.shields.io/badge/Tipo-Modelo%20de%20ADR-737373?style=flat-square)
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| **Date** | `YYYY-MM-DD` |
-| **Status** | Proposed / Accepted / Rejected / Superseded by ADR-YYY |
-| **Decision-makers** | Names of the participant members involved |
-| **Related feature** | `.spec/<NNN>-<feature>/` |
+| **Data** | `YYYY-MM-DD` |
+| **Status** | Proposta / Aceita / Rejeitada / Substituída pela ADR-YYY |
+| **Responsáveis pela decisão** | Nomes dos participantes envolvidos |
+| **Funcionalidade relacionada** | `.spec/<NNN>-<feature>/` |
 
 ---
 
-## Concept: ADR (Architecture Decision Record)
+## Conceito: ADR (Architecture Decision Record)
 
-An ADR is the formal record of a significant architectural decision. It documents the context that led to the decision, the alternatives assessed, the selected option, and the expected consequences.
+Uma ADR é o registro formal de uma decisão arquitetural significativa. Ela documenta o contexto que levou à decisão, as alternativas avaliadas, a opção selecionada e as consequências esperadas.
 
-**Why it matters:** technical decisions made verbally during the workshop get lost. A two-page ADR ensures that any PR reviewer understands why the system was designed in a particular way, without asking the person who made the decision at 14:30 on a busy day.
+**Por que isso importa:** decisões técnicas tomadas verbalmente durante o workshop se perdem. Uma ADR de duas páginas garante que qualquer pessoa que revise a PR entenda por que o sistema foi projetado de determinada maneira, sem precisar perguntar a quem tomou a decisão às 14:30 de um dia corrido.
 
-**Golden rule:** always list the "path not taken." Without it, the ADR becomes an implementation description rather than a decision record.
+**Regra de ouro:** sempre liste o "caminho não escolhido". Sem isso, a ADR se torna uma descrição de implementação, em vez de um registro de decisão.
 
-**When to create one:** only when the decision blocks `plan.md`. If the decision fits in a commit comment, it does not need an ADR.
-
----
-
-## Context
-
-> Describe the problem or need that motivated this decision.
-> Include relevant constraints, requirements, and information.
-> Be specific: "we need a database" is not enough.
-
-<!-- fill in -->
+**Quando criar uma:** somente quando a decisão bloquear `plan.md`. Se a decisão couber em um comentário de commit, ela não precisa de uma ADR.
 
 ---
 
-## Options considered
+## Contexto
 
-### Option 1: <!-- name -->
+> Descreva o problema ou a necessidade que motivou esta decisão.
+> Inclua restrições, requisitos e informações relevantes.
+> Seja específico: "precisamos de um banco de dados" não é suficiente.
 
-| Aspect | Assessment |
+<!-- preencha -->
+
+---
+
+## Opções consideradas
+
+### Opção 1: <!-- nome -->
+
+| Aspecto | Avaliação |
 |---|---|
-| **Description** | How it would work |
-| **Advantages** | List them |
-| **Disadvantages** | List them |
+| **Descrição** | Como funcionaria |
+| **Vantagens** | Liste-as |
+| **Desvantagens** | Liste-as |
 
-### Option 2: <!-- name -->
+### Opção 2: <!-- nome -->
 
-| Aspect | Assessment |
+| Aspecto | Avaliação |
 |---|---|
-| **Description** | How it would work |
-| **Advantages** | List them |
-| **Disadvantages** | List them |
+| **Descrição** | Como funcionaria |
+| **Vantagens** | Liste-as |
+| **Desvantagens** | Liste-as |
 
-### Option 3: <!-- name, optional -->
+### Opção 3: <!-- nome, opcional -->
 
-| Aspect | Assessment |
+| Aspecto | Avaliação |
 |---|---|
-| **Description** | How it would work |
-| **Advantages** | List them |
-| **Disadvantages** | List them |
+| **Descrição** | Como funcionaria |
+| **Vantagens** | Liste-as |
+| **Desvantagens** | Liste-as |
 
 ---
 
-## Decision
+## Decisão
 
-**We decided to** <!-- selected action or choice -->.
-
----
-
-## Rationale
-
-> Explain why this option was selected over the others.
-> Connect it to requirements, constraints, and context.
-
-<!-- fill in -->
+**Decidimos** <!-- ação ou escolha selecionada -->.
 
 ---
 
-## Consequences
+## Justificativa
 
-### Positive
+> Explique por que esta opção foi selecionada em vez das demais.
+> Relacione-a aos requisitos, às restrições e ao contexto.
 
-- <!-- positive consequence 1 -->
-
-### Negative
-
-- <!-- negative consequence 1, and how to mitigate it -->
-
-### Risks
-
-- <!-- identified risk and contingency plan -->
+<!-- preencha -->
 
 ---
 
-## References
+## Consequências
 
-- <!-- relevant link or document -->
-- Related EARS requirement: `REQ-XXX`
+### Positivas
+
+- <!-- consequência positiva 1 -->
+
+### Negativas
+
+- <!-- consequência negativa 1 e como mitigá-la -->
+
+### Riscos
+
+- <!-- risco identificado e plano de contingência -->
+
+---
+
+## Referências
+
+- <!-- link ou documento relevante -->
+- Requisito EARS relacionado: `REQ-XXX`
 
 > [!IMPORTANT]
-> This template contains no accepted decision. The participant supplies evidence,
-> alternatives, rationale, and review status. For data migration, architects and
-> DBA use measured source evidence and the [data migration guide](../docs/DATA-MIGRATION.md).
+> Este modelo não contém nenhuma decisão aceita. O participante fornece evidências,
+> alternativas, justificativa e status da revisão. Para migração de dados, arquitetos e
+> DBA usam evidências medidas da origem e o [guia de migração de dados](../docs/DATA-MIGRATION.md).
 
 ---
 
-### Continue reading
+### Continue lendo
 
-| Previous | Next |
+| Anterior | Próximo |
 |---|---|
-| [Stage 2 GUIDE](GUIDE.md)<br/><sub>Stage step-by-step instructions.</sub> | [Stage 2 GUIDE](GUIDE.md)<br/><sub>Lead the decision with the participant.</sub> |
+| [GUIA da Etapa 2](GUIDE.md)<br/><sub>Instruções passo a passo da etapa.</sub> | [GUIA da Etapa 2](GUIDE.md)<br/><sub>Conduza a decisão com o participante.</sub> |
 
-<sub>[Back to the kit index](../README.md)</sub>
+<sub>[Voltar ao índice do kit](../README.md)</sub>

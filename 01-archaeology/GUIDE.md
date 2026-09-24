@@ -1,117 +1,117 @@
-# Stage 1: Digital archaeology (50 min)
+# Etapa 1: Arqueologia digital (50 min)
 
-> **Path:** [Team Kit](../README.md) › [Stage 1](README.md) › **GUIDE**
+> **Caminho:** [Kit da Equipe](../README.md) › [Etapa 1](README.md) › **GUIA**
 
-**A 50-minute schedule for reading only the Natural programs and DDMs needed for the fixed consultation capability, recording traceable evidence, and preparing C1.**
+**Um cronograma de 50 minutos para ler somente os programas Natural e DDMs necessários à capacidade fixa de consulta, registrar evidências rastreáveis e preparar o C1.**
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| **Target audience** | Individual participant covering archaeology, DBA, QA, Vision, and Architecture responsibilities |
-| **Prerequisites** | Read [`README.md`](README.md), access the `legacy-sifap/` directory, and complete source-data readiness pre-work before 14:00 |
-| **Estimated time** | 50 min (14:00–14:50) |
-| **Stage** | Stage 1: Archaeology |
-| **Expected outcome** | Candidate rule catalog, measured data baseline, discovery report, and completed C1 self-check |
+| **Público-alvo** | Participante individual responsável por arqueologia, DBA, QA, Visão e Arquitetura |
+| **Pré-requisitos** | Ler [`README.md`](README.md), acessar o diretório `legacy-sifap/` e concluir antes das 14:00 o trabalho prévio de prontidão dos dados de origem |
+| **Tempo estimado** | 50 min (14:00–14:50) |
+| **Etapa** | Etapa 1: Arqueologia |
+| **Resultado esperado** | Catálogo de regras candidatas, linha de base de dados medida, relatório de descoberta e autoavaliação C1 concluída |
 
 > [!IMPORTANT]
-> **Required gate.** Before writing EARS requirements in Stage 2, the participant must read the Natural programs and DDMs needed for the fixed target capability and have evidence for every selected behavior. Each subsequent formal requirement needs a valid `source_legacy:` or a justified `[GREENFIELD]` marker. The gate is not a quantity target.
+> **Gate obrigatório.** Antes de escrever requisitos EARS na Etapa 2, o participante deve ler os programas Natural e DDMs necessários à capacidade-alvo fixa e ter evidências para cada comportamento selecionado. Cada requisito formal posterior precisa de um `source_legacy:` válido ou de um marcador `[GREENFIELD]` justificado. O gate não é uma meta quantitativa.
 
 ---
 
-## Objective
+## Objetivo
 
-Read the Natural programs and DDMs needed for the fixed target capability, record traceable evidence, and define the beneficiary consultation slice that can become a feature. The objective is not to explain the entire SIFAP Payment Inspection and Administration System, produce encyclopedic documentation, or solve open questions.
+Ler os programas Natural e DDMs necessários à capacidade-alvo fixa, registrar evidências rastreáveis e definir o recorte de consulta de beneficiários que pode se tornar uma funcionalidade. O objetivo não é explicar todo o SIFAP Payment Inspection and Administration System, produzir documentação enciclopédica nem resolver questões em aberto.
 
-The modern system must later hold and show the legacy records of the agreed beneficiary population, not only reproduce its rules. The authorized populated Adabas source and extraction route are pre-work completed before 14:00; during Stage 1, record the measured data baseline that the Stage 3 migration starts from.
+O sistema moderno deverá posteriormente armazenar e exibir os registros legados da população de beneficiários acordada, e não apenas reproduzir suas regras. A origem Adabas autorizada e populada e a rota de extração fazem parte do trabalho prévio concluído antes das 14:00; durante a Etapa 1, registre a linha de base de dados medida da qual partirá a migração da Etapa 3.
 
 ---
 
-## Timed schedule
+## Cronograma
 
-| Time | Activity | Minimum outcome |
+| Horário | Atividade | Resultado mínimo |
 |---|---|---|
-| 14:00–14:05 | Start directly in `@archaeologist`; confirm the fixed target capability and the pre-work source readiness evidence. | Scope and readiness evidence or blocker recorded. |
-| 14:05–14:30 | Guided reading: consultation programs, validation rules, DDMs, inputs, outputs, calls, and domain decisions needed for all-beneficiary list/search/detail. | Notes with paths and line ranges. |
-| 14:30–14:40 | Record candidate rules and questions without inferring absent behavior. | Evidence in the catalog and explicit open items. |
-| 14:40–14:47 | Consolidate only evidence that supports beneficiary consultation and migration readiness. | Updated catalog and discovery report. |
-| 14:47–14:50 | Complete C1 self-check before switching to `@architect`. | Sources, scope, data evidence, and blockers reviewed against the C1 checklist. |
+| 14:00–14:05 | Comece diretamente em `@archaeologist`; confirme a capacidade-alvo fixa e as evidências prévias de prontidão da origem. | Escopo e evidências de prontidão ou bloqueio registrados. |
+| 14:05–14:30 | Leitura orientada: programas de consulta, regras de validação, DDMs, entradas, saídas, chamadas e decisões de domínio necessárias para listar, pesquisar e detalhar todos os beneficiários. | Anotações com caminhos e intervalos de linhas. |
+| 14:30–14:40 | Registre regras candidatas e questões sem inferir comportamentos ausentes. | Evidências no catálogo e itens em aberto explícitos. |
+| 14:40–14:47 | Consolide somente evidências que sustentem a consulta de beneficiários e a prontidão da migração. | Catálogo e relatório de descoberta atualizados. |
+| 14:47–14:50 | Conclua a autoavaliação C1 antes de mudar para `@architect`. | Fontes, escopo, evidências de dados e bloqueios revisados conforme o checklist C1. |
 
 ---
 
-## Reading scope
+## Escopo de leitura
 
-The participant reads only the programs and DDMs needed for the fixed target capability: consult, search, and view details for **all beneficiaries migrated from Adabas to PostgreSQL**, applying the legacy validation rules discovered in the source. Focus on domain decisions and traceability. Do not try to translate every Natural command at this stage.
+O participante lê somente os programas e DDMs necessários à capacidade-alvo fixa: consultar, pesquisar e visualizar detalhes de **todos os beneficiários migrados do Adabas para o PostgreSQL**, aplicando as regras legadas de validação descobertas na origem. Concentre-se nas decisões de domínio e na rastreabilidade. Não tente traduzir todos os comandos Natural nesta etapa.
 
-Start with the consultation and validation paths, then add registration, dependency, payment, program, audit, or batch members only when they provide evidence for fields, filters, validation, related records, or migration readiness. Review the required DDMs for the selected evidence. Mapping every field or proposing the complete PostgreSQL schema is not required at this stage.
+Comece pelos caminhos de consulta e validação; depois, adicione membros de cadastro, dependência, pagamento, programa, auditoria ou batch somente quando fornecerem evidências sobre campos, filtros, validação, registros relacionados ou prontidão da migração. Revise os DDMs necessários às evidências selecionadas. Mapear todos os campos ou propor o esquema PostgreSQL completo não é necessário nesta etapa.
 
-The participant records the data inventory of the relevant Adabas files: measured population, keys, related records, data-quality findings, and the supported snapshot/extraction route. Record them in the [data migration records](../docs/data-migration/). The [synthetic legacy dataset](legacy-seed-data/README.md) documents the records the source was populated from; it does not prove what the source currently contains.
+O participante registra o inventário de dados dos arquivos Adabas relevantes: população medida, chaves, registros relacionados, achados de qualidade de dados e a rota de snapshot/extração suportada. Registre-os nos [registros de migração de dados](../docs/data-migration/). O [conjunto de dados legado sintético](legacy-seed-data/README.md) documenta os registros usados para popular a origem; ele não comprova o conteúdo atual da origem.
 
 ---
 
-## What to record
+## O que registrar
 
-Use the [templates](templates/) for support. For each in-scope candidate rule, record at least:
+Use os [templates](templates/) como apoio. Para cada regra candidata no escopo, registre pelo menos:
 
-- a short description of the observed behavior;
-- the `.NSN` or `.ddm` path and, when possible, the line range;
-- the question that still prevents a conclusion, without turning it into a requirement;
-- the rule's impact on the prioritized feature.
+- uma descrição breve do comportamento observado;
+- o caminho do `.NSN` ou `.ddm` e, quando possível, o intervalo de linhas;
+- a questão que ainda impede uma conclusão, sem transformá-la em requisito;
+- o impacto da regra na funcionalidade priorizada.
 
-The `business-rules-catalog.md` file is the input to the formal specification. Use the [catalog template](templates/business-rules-catalog.template.md) if the file does not exist yet. You can enrich the glossary, dependency map, and open-question register when they help define the scope, but numeric targets do not block the handoff.
+O arquivo `business-rules-catalog.md` é a entrada da especificação formal. Use o [template do catálogo](templates/business-rules-catalog.template.md) se o arquivo ainda não existir. Você pode enriquecer o glossário, o mapa de dependências e o registro de questões em aberto quando ajudarem a definir o escopo, mas metas numéricas não bloqueiam a transição.
 
 > [!IMPORTANT]
-> **Exception: open questions have a fixed denominator.** SIFAP contains **20 canonical open-question slots** grouped by investigation area. Use the IDs relevant to the capability you actually read, and record them in [`mysteries-found.md`](mysteries-found.md). Findings outside the list are bonuses and do not change the denominator.
+> **Exceção: questões em aberto têm um denominador fixo.** O SIFAP contém **20 espaços canônicos de questões em aberto** agrupados por área de investigação. Use os IDs relevantes para a capacidade que você realmente leu e registre-os em [`mysteries-found.md`](mysteries-found.md). Achados fora da lista são bônus e não alteram o denominador.
 
 ---
 
-## Data discovery versus migration design
+## Descoberta de dados versus projeto da migração
 
-- **Stage 1:** record source definitions, keys, actual declarations, relationships, current measured population, and uncertainties.
-- **Stage 2:** DBA and architects decide PostgreSQL mappings, snapshot/extraction, load order, reject handling, recovery, and QA acceptance in the formal plan.
-- **Stage 3:** implement and execute the approved source-to-target load, reconcile it, and expose real queries.
+- **Etapa 1:** registre definições da origem, chaves, declarações reais, relacionamentos, população atual medida e incertezas.
+- **Etapa 2:** DBA e arquitetos decidem, no plano formal, os mapeamentos para PostgreSQL, snapshot/extração, ordem de carga, tratamento de rejeições, recuperação e aceitação de QA.
+- **Etapa 3:** implemente e execute a carga aprovada da origem para o destino, reconcilie-a e exponha consultas reais.
 
-Follow the [data lifecycle](../docs/DATA-MIGRATION.md). Stage 4 is not part of the individual challenge; judge validation after Stage 3 replaces the former post-change verification block. Source reading can continue offline, but an empty or unavailable Adabas source, or an unverified extraction route, keeps the data-readiness gate blocked. Seed files and archived FDT counts are not current database measurements. Keep restricted records outside Git.
-
----
-
-## C1 self-check
-
-In the final minutes, the participant verifies the following before switching to `@architect`:
-
-1. the selected thin feature and what remains out of scope, without silently reducing the authorized beneficiary population;
-2. the rules that can become requirements, with legacy paths;
-3. the open questions that **cannot** become EARS requirements;
-4. DDM and dependency references only when they affect the feature;
-5. the data evidence: measured source population, agreed beneficiary population, data-quality gaps, and extraction readiness or its blocker.
-
-If the evidence is insufficient to start `.spec/<NNN>-<feature>/spec.md`, record the blocker and reduce capability breadth without reducing the migrated beneficiary population or inventing a source.
+Siga o [ciclo de vida dos dados](../docs/DATA-MIGRATION.md). A Etapa 4 não faz parte do desafio individual; a validação do juiz após a Etapa 3 substitui o antigo bloco de verificação pós-alteração. A leitura da origem pode continuar offline, mas uma origem Adabas vazia ou indisponível, ou uma rota de extração não verificada, mantém bloqueado o gate de prontidão dos dados. Arquivos seed e contagens FDT arquivadas não são medições atuais do banco de dados. Mantenha registros restritos fora do Git.
 
 ---
 
-## Definition of Done
+## Autoavaliação C1
 
-- [ ] The participant read the Natural programs and DDMs needed for beneficiary consultation and legacy validation rules.
-- [ ] The selected behavior has evidence in an `.NSN` or `.ddm` file, or is explicitly separated as a greenfield proposal.
-- [ ] The catalog identifies the source of each candidate rule.
-- [ ] The discovery report records the scope and relevant questions.
-- [ ] Measured source population and extraction readiness are recorded; missing evidence remains a blocker.
-- [ ] The authorized beneficiary population is confirmed; the feature does not reduce it to a sample.
-- [ ] The C1 self-check is complete by 14:50.
+Nos minutos finais, o participante verifica os itens a seguir antes de mudar para `@architect`:
 
----
+1. a funcionalidade enxuta selecionada e o que permanece fora do escopo, sem reduzir silenciosamente a população autorizada de beneficiários;
+2. as regras que podem se tornar requisitos, com caminhos legados;
+3. as questões em aberto que **não podem** se tornar requisitos EARS;
+4. referências a DDMs e dependências somente quando afetarem a funcionalidade;
+5. as evidências de dados: população medida da origem, população de beneficiários acordada, lacunas de qualidade de dados e prontidão da extração ou seu bloqueio.
 
-## References
-
-- [Legacy exploration checklist](LEGACY-EXPLORATION-CHECKLIST.md): C1 gate verification and fixed-capability criteria.
-- [Data migration guide](../docs/DATA-MIGRATION.md): data lifecycle and acceptance gates from source readiness to reconciliation.
-- [Stage 2 guide](../02-modern-spec/GUIDE.md): the next step after C1.
-- [How to read Natural](legacy-sifap/HOW-TO-READ-NATURAL.md): syntax tutorial for non-developers.
+Se as evidências forem insuficientes para iniciar `.spec/<NNN>-<feature>/spec.md`, registre o bloqueio e reduza a amplitude da capacidade sem reduzir a população de beneficiários migrada nem inventar uma origem.
 
 ---
 
-### Continue reading
+## Definição de pronto
 
-| Previous | Next |
+- [ ] O participante leu os programas Natural e DDMs necessários à consulta de beneficiários e às regras legadas de validação.
+- [ ] O comportamento selecionado tem evidências em um arquivo `.NSN` ou `.ddm`, ou está explicitamente separado como proposta greenfield.
+- [ ] O catálogo identifica a origem de cada regra candidata.
+- [ ] O relatório de descoberta registra o escopo e as questões relevantes.
+- [ ] A população medida da origem e a prontidão da extração estão registradas; evidências ausentes permanecem como bloqueio.
+- [ ] A população autorizada de beneficiários está confirmada; a funcionalidade não a reduz a uma amostra.
+- [ ] A autoavaliação C1 está concluída até as 14:50.
+
+---
+
+## Referências
+
+- [Checklist de exploração do legado](LEGACY-EXPLORATION-CHECKLIST.md): verificação do gate C1 e critérios da capacidade fixa.
+- [Guia de migração de dados](../docs/DATA-MIGRATION.md): ciclo de vida dos dados e gates de aceitação, da prontidão da origem à reconciliação.
+- [Guia da Etapa 2](../02-modern-spec/GUIDE.md): o próximo passo após o C1.
+- [Como ler Natural](legacy-sifap/HOW-TO-READ-NATURAL.md): tutorial de sintaxe para não desenvolvedores.
+
+---
+
+### Continue lendo
+
+| Anterior | Próximo |
 |---|---|
-| [Stage 1 README](README.md)<br/><sub>Stage overview.</sub> | [Legacy exploration checklist](LEGACY-EXPLORATION-CHECKLIST.md)<br/><sub>Required gate before Stage 2.</sub> |
+| [README da Etapa 1](README.md)<br/><sub>Visão geral da etapa.</sub> | [Checklist de exploração do legado](LEGACY-EXPLORATION-CHECKLIST.md)<br/><sub>Gate obrigatório antes da Etapa 2.</sub> |
 
-<sub>[Back to the Team Kit index](../README.md)</sub>
+<sub>[Voltar ao índice do Kit da Equipe](../README.md)</sub>

@@ -87,7 +87,7 @@ steps:
 
 Deployed workloads authenticate service-to-service with Managed Identity (see [`infrastructure.instructions.md`](infrastructure.instructions.md)); hardening checklists live in the `pipeline-hardening` skill.
 
-## Conventions
+## Convenções
 
 | Rule | Rationale |
 |---|---|
@@ -97,7 +97,7 @@ Deployed workloads authenticate service-to-service with Managed Identity (see [`
 | `timeout-minutes` on every job | A stuck step fails fast |
 | OIDC federation, never a stored cloud secret | No long-lived credentials in the repo |
 
-## Do / Do Not
+## Faça / Não faça
 
 | Do | Do not |
 |---|---|
@@ -106,7 +106,7 @@ Deployed workloads authenticate service-to-service with Managed Identity (see [`
 | Read the workflow before editing a gate | Guess what a gate checks |
 | Let `detect-changes` skip irrelevant jobs | Run every job on every PR |
 
-## Checklist Before Opening a PR
+## Checklist antes de abrir um PR
 
 - [ ] Every `uses:` is pinned to a full commit SHA with a version comment
 - [ ] The workflow declares a top-level `permissions:` block scoped to least privilege

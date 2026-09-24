@@ -1,14 +1,14 @@
-# Sitemap: visual map of the individual challenge kit
+# Mapa do site: visão visual do kit do desafio individual
 
-> **Track:** [Individual challenge kit](README.md) › **Sitemap**
+> **Trilha:** [Kit do desafio individual](README.md) › **Mapa do site**
 
-Use this map to find stage guides, role responsibilities, artifacts, and submission references.
+Use este mapa para encontrar os guias das etapas, as responsabilidades das funções, os artefatos e as referências de envio.
 
-![Sitemap](https://img.shields.io/badge/Navigation-Sitemap-171717?style=flat-square) ![Use: quick reference](https://img.shields.io/badge/Use-Quick%20reference-737373?style=flat-square)
+![Mapa do site](https://img.shields.io/badge/Navega%C3%A7%C3%A3o-Mapa%20do%20site-171717?style=flat-square) ![Uso: referência rápida](https://img.shields.io/badge/Uso-Refer%C3%AAncia%20r%C3%A1pida-737373?style=flat-square)
 
 ---
 
-## Challenge flow
+## Fluxo do desafio
 
 ```mermaid
 %%{init: {'theme':'neutral','themeVariables':{'fontFamily':'ui-sans-serif, system-ui, sans-serif','primaryColor':'#F5F5F5','primaryTextColor':'#171717','primaryBorderColor':'#171717','lineColor':'#525252','secondaryColor':'#FFFFFF','tertiaryColor':'#FAFAFA','background':'#FFFFFF'}}}%%
@@ -17,45 +17,45 @@ flowchart LR
     classDef check fill:#FFFFFF,stroke:#525252,color:#171717
     classDef result fill:#FFFFFF,stroke:#171717,color:#171717,stroke-width:2px
 
-    E1["Stage 1<br/>Archaeology<br/>@archaeologist"]:::step
-    C1["C1 self-check"]:::check
-    E2["Stage 2<br/>Specification<br/>@architect"]:::step
-    C2["C2 self-check"]:::check
-    E3["Stage 3<br/>Implementation + migration<br/>@builder"]:::step
-    C3["C3 submission PR"]:::check
-    J["Judge validation"]:::result
+    E1["Etapa 1<br/>Arqueologia<br/>@archaeologist"]:::step
+    C1["C1 autoverificação"]:::check
+    E2["Etapa 2<br/>Especificação<br/>@architect"]:::step
+    C2["C2 autoverificação"]:::check
+    E3["Etapa 3<br/>Implementação + migração<br/>@builder"]:::step
+    C3["C3 PR de envio"]:::check
+    J["Validação da banca"]:::result
 
     E1 --> C1 --> E2 --> C2 --> E3 --> C3 --> J
 ```
 
-Stage 4 remains in the repository as post-challenge reference material and is not part of the 14:00-17:40 challenge. See [ADR-0003](docs/adr/0003-individual-challenge-format.md).
+A Etapa 4 permanece no repositório como material de referência pós-desafio e não faz parte do desafio das 14:00 às 17:40. Consulte a [ADR-0003](docs/adr/0003-individual-challenge-format.md).
 
 ---
 
-## Ordered repository structure
+## Estrutura ordenada do repositório
 
-| Prefix | Folder / file | When to read it |
+| Prefixo | Pasta/arquivo | Quando ler |
 |---|---|---|
-| **00** | [`README.md`](README.md) | First arrival - challenge overview |
-| **00** | [`00-START-HERE.md`](00-START-HERE.md) | Pre-work and 14:00 launch |
-| **00** | [`00-SETUP.md`](00-SETUP.md) | Set up laptop, repository, Copilot, Spec-Kit, and data readiness |
-| **00** | [`00-TEAM-FLOW.md`](00-TEAM-FLOW.md) | Canonical 14:00-17:40 schedule |
-| **00** | [`00-SITEMAP.md`](00-SITEMAP.md) | This file |
-| **00** | [`00-GIT-WORKFLOW.md`](00-GIT-WORKFLOW.md) | Branches, PRs, and judge submission |
-| **01** | [`01-archaeology/`](01-archaeology/) | Stage 1 - read legacy SIFAP |
-| **02** | [`02-modern-spec/`](02-modern-spec/) | Stage 2 - EARS, ADRs, design |
-| **03** | [`03-implementation/`](03-implementation/) | Stage 3 - Java + Next.js + tests + migration |
-| **04** | [`04-evolution/`](04-evolution/) | Not used in the individual challenge; post-challenge reference only |
-| **05** | [`05-personas/`](05-personas/) | 10 role responsibilities you cover yourself |
-| **06** | [`06-stage-agents/`](06-stage-agents/) | Stage agents and cross-stage `@dba` |
-| **07** | [`07-concepts/`](07-concepts/) | Core concepts: EARS, ADR, SDD, agents |
-| **09** | [`09-cheat-sheets/`](09-cheat-sheets/) | Quick reference cards |
-| `docs/` | [`docs/`](docs/) | FAQ, troubleshooting, data migration, STATUS, ADRs |
-| `.spec/` | [`.spec/`](.spec/) | Spec-Kit artifacts created in Stage 2 |
+| **00** | [`README.md`](README.md) | Primeira chegada: visão geral do desafio |
+| **00** | [`00-START-HERE.md`](00-START-HERE.md) | Atividades prévias e início às 14:00 |
+| **00** | [`00-SETUP.md`](00-SETUP.md) | Configure computador, repositório, Copilot, Spec-Kit e preparação dos dados |
+| **00** | [`00-TEAM-FLOW.md`](00-TEAM-FLOW.md) | Cronograma oficial das 14:00 às 17:40 |
+| **00** | [`00-SITEMAP.md`](00-SITEMAP.md) | Este arquivo |
+| **00** | [`00-GIT-WORKFLOW.md`](00-GIT-WORKFLOW.md) | Branches, PRs e envio para a banca |
+| **01** | [`01-archaeology/`](01-archaeology/) | Etapa 1: leia o SIFAP legado |
+| **02** | [`02-modern-spec/`](02-modern-spec/) | Etapa 2: EARS, ADRs e design |
+| **03** | [`03-implementation/`](03-implementation/) | Etapa 3: Java + Next.js + testes + migração |
+| **04** | [`04-evolution/`](04-evolution/) | Não usada no desafio individual; apenas referência pós-desafio |
+| **05** | [`05-personas/`](05-personas/) | 10 responsabilidades de função que você cobre sozinho |
+| **06** | [`06-stage-agents/`](06-stage-agents/) | Agentes de etapa e `@dba` entre etapas |
+| **07** | [`07-concepts/`](07-concepts/) | Conceitos fundamentais: EARS, ADR, SDD e agentes |
+| **09** | [`09-cheat-sheets/`](09-cheat-sheets/) | Cartões de referência rápida |
+| `docs/` | [`docs/`](docs/) | FAQ, solução de problemas, migração de dados, STATUS e ADRs |
+| `.spec/` | [`.spec/`](.spec/) | Artefatos do Spec-Kit criados na Etapa 2 |
 
 ---
 
-## Artifact flow
+## Fluxo de artefatos
 
 ```mermaid
 %%{init: {'theme':'neutral','themeVariables':{'fontFamily':'ui-sans-serif, system-ui, sans-serif','primaryColor':'#F5F5F5','primaryTextColor':'#171717','primaryBorderColor':'#171717','lineColor':'#525252','secondaryColor':'#FFFFFF','tertiaryColor':'#FAFAFA','background':'#FFFFFF'}}}%%
@@ -64,35 +64,35 @@ flowchart LR
     classDef artifact fill:#FAFAFA,stroke:#A3A3A3,color:#404040
     classDef result fill:#FFFFFF,stroke:#171717,color:#171717,stroke-width:2px
 
-    LEGACY["legacy sources<br/>DDMs/FDT"]:::artifact
-    DISC["Stage 1 evidence<br/>rules + data questions"]:::artifact
-    SPEC["Stage 2 spec<br/>REQ + source_legacy"]:::artifact
-    PLAN["plan + tasks<br/>migration design"]:::artifact
-    CODE["Stage 3 code<br/>tests + migration"]:::artifact
-    DATA["reconciliation<br/>complete population"]:::artifact
-    PR["submission PR<br/>impl -> develop"]:::result
+    LEGACY["fontes legados<br/>DDMs/FDT"]:::artifact
+    DISC["evidências da Etapa 1<br/>regras + perguntas sobre dados"]:::artifact
+    SPEC["especificação da Etapa 2<br/>REQ + source_legacy"]:::artifact
+    PLAN["plano + tarefas<br/>design da migração"]:::artifact
+    CODE["código da Etapa 3<br/>testes + migração"]:::artifact
+    DATA["reconciliação<br/>população completa"]:::artifact
+    PR["PR de envio<br/>impl -> develop"]:::result
 
     LEGACY --> DISC --> SPEC --> PLAN --> CODE --> DATA --> PR
 ```
 
 ---
 
-## Recommended path
+## Percurso recomendado
 
-| Need | Start with | Then | Then |
+| Necessidade | Comece por | Depois | Em seguida |
 |---|---|---|---|
-| First time here | [00-START-HERE.md](00-START-HERE.md) | [00-TEAM-FLOW.md](00-TEAM-FLOW.md) | [00-SETUP.md](00-SETUP.md) |
-| Stage 1 | [01-archaeology/GUIDE.md](01-archaeology/GUIDE.md) | [legacy checklist](01-archaeology/LEGACY-EXPLORATION-CHECKLIST.md) | [data migration guide](docs/DATA-MIGRATION.md) |
-| Stage 2 | [02-modern-spec/GUIDE.md](02-modern-spec/GUIDE.md) | [.spec README](.spec/README.md) | [ADR index](docs/adr/README.md) |
-| Stage 3 | [03-implementation/GUIDE.md](03-implementation/GUIDE.md) | [Git workflow](00-GIT-WORKFLOW.md) | [PR template](.github/PULL_REQUEST_TEMPLATE.md) |
-| Role responsibility | [05-personas/](05-personas/) | [agents and personas](07-concepts/02-agents-and-personas.md) | [Copilot modes](09-cheat-sheets/copilot-3-modes.md) |
+| Primeira vez aqui | [00-START-HERE.md](00-START-HERE.md) | [00-TEAM-FLOW.md](00-TEAM-FLOW.md) | [00-SETUP.md](00-SETUP.md) |
+| Etapa 1 | [01-archaeology/GUIDE.md](01-archaeology/GUIDE.md) | [checklist do legado](01-archaeology/LEGACY-EXPLORATION-CHECKLIST.md) | [guia de migração de dados](docs/DATA-MIGRATION.md) |
+| Etapa 2 | [02-modern-spec/GUIDE.md](02-modern-spec/GUIDE.md) | [README de .spec](.spec/README.md) | [índice de ADRs](docs/adr/README.md) |
+| Etapa 3 | [03-implementation/GUIDE.md](03-implementation/GUIDE.md) | [fluxo de trabalho Git](00-GIT-WORKFLOW.md) | [template de PR](.github/PULL_REQUEST_TEMPLATE.md) |
+| Responsabilidade de função | [05-personas/](05-personas/) | [agentes e personas](07-concepts/02-agents-and-personas.md) | [modos do Copilot](09-cheat-sheets/copilot-3-modes.md) |
 
 ---
 
-### Continue reading
+### Continue a leitura
 
-| Previous | Next |
+| Anterior | Próximo |
 |---|---|
-| [Start here](00-START-HERE.md)<br/><sub>Pre-work and 14:00 launch.</sub> | [Git workflow](00-GIT-WORKFLOW.md)<br/><sub>Branch and submission rules.</sub> |
+| [Comece aqui](00-START-HERE.md)<br/><sub>Atividades prévias e início às 14:00.</sub> | [Fluxo de trabalho Git](00-GIT-WORKFLOW.md)<br/><sub>Regras de branch e envio.</sub> |
 
-<sub>[Back to the kit index](README.md)</sub>
+<sub>[Voltar ao índice do kit](README.md)</sub>

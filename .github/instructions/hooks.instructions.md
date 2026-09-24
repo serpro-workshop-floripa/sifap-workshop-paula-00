@@ -1,88 +1,88 @@
 ---
-description: "Use when creating, reviewing, or debugging agent hooks (GitHub Copilot CLI, cloud agent, VS Code Local): descriptors in .github/hooks/*.json, hook scripts, policy, events, payloads, decisions, and security."
+description: "Use ao criar, revisar ou depurar hooks de agentes no GitHub Copilot CLI, cloud agent ou VS Code Local: descriptors, scripts, política, eventos, payloads, decisões e segurança."
 applyTo: ".github/hooks/**"
 ---
 
-# Agent Hooks — Authoring Guide
+# Hooks de agentes — Guia de autoria
 
-This file opens when you edit anything under `.github/hooks/`. It defines how to build portable, safe, and testable hooks. The descriptor shape and the flat-file discovery rule are in the [primitive standard](../PRIMITIVE-STANDARD.md#hook-configuration); do not repeat them here.
+Este arquivo define como criar hooks portáveis, seguros e testáveis em `.github/hooks/`. O formato do descriptor e a descoberta de arquivos planos estão no [padrão de primitivos](../PRIMITIVE-STANDARD.md#configuração-de-hooks); não repita essas regras aqui.
 
-## Before Creating a Hook
+## Antes de criar um hook
 
-1. Identify the target harness: Copilot (CLI, Agent Host, cloud agent) or VS Code Local. Events, payloads, and decisions differ.
-2. Confirm the behavior must be **deterministic**. Guidance for the model belongs in instructions, skills, or agents, not in a hook.
-3. Decide the role: observe, inject context, modify, or block. Only `preToolUse`, `permissionRequest`, `agentStop`, and `subagentStop` make decisions.
+1. Identifique o harness: Copilot CLI, Agent Host, cloud agent ou VS Code Local. Eventos, payloads e decisões variam.
+2. Confirme que o comportamento precisa ser determinístico. Orientações ao modelo pertencem a instructions, skills ou agents.
+3. Defina o papel: observar, injetar contexto, modificar ou bloquear. Apenas `preToolUse`, `permissionRequest`, `agentStop` e `subagentStop` tomam decisões.
 
-## Format Rules
+## Regras de formato
 
-| Rule | Rationale |
+| Regra | Motivo |
 |---|---|
-| Descriptors use `version: 1`, camelCase events, `bash` and `powershell`, `cwd: "."`, and `timeoutSec` | Native Copilot format, converted by the Local parser |
-| One entry script with one subcommand per event | Shared normalization and policy, no diverging scripts |
-| No `*.json` other than descriptors at the root of `.github/hooks/` | Every JSON file there loads as a hook; configuration goes in `config/` |
-| Scripts use only the chosen language's standard library | Works in any project without installing dependencies |
-| Paths are relative to the repository root | The harness runs with `cwd` at the root |
+| Use `version: 1`, eventos camelCase, `bash`, `powershell`, `cwd: "."` e `timeoutSec` | Formato nativo do Copilot, convertido pelo parser Local |
+| Use um script de entrada com um subcomando por evento | Centraliza normalização e política |
+| Não deixe outros `*.json` na raiz de `.github/hooks/` | Todo JSON nesse local carrega como hook |
+| Use apenas a biblioteca padrão da linguagem escolhida | Evita instalação de dependências |
+| Use paths relativos à raiz do repositório | O harness executa com `cwd` na raiz |
 
-## Behavior Rules
+## Regras de comportamento
 
-- **Normalize both payloads:** `toolName`/`toolArgs`/`sessionId` (Copilot) and `tool_name`/`tool_input`/`session_id` (Local). `toolArgs` may arrive as a JSON string.
-- **Answer in both formats:** top-level fields (`permissionDecision`, `additionalContext`, `decision`) and `hookSpecificOutput` with `hookEventName`.
-- **Emit exactly one JSON object** on stdout. Two concatenated objects are invalid JSON and are ignored.
-- **Never return an automatic `allow`** from `preToolUse`; with no finding, emit no decision so normal confirmations remain.
-- **Block with a `deny` JSON, a stderr message, and exit code 2.** That blocks in both Copilot and Local.
-- **`preToolUse` fails closed:** invalid JSON or an internal exception results in `deny`. Other events fail open with a stderr message.
-- **Finish well before `timeoutSec`.** A timeout fails open in Copilot; a slow hook protects nothing.
-- **Bound continuations** in `agentStop`/`Stop`: count blocks and release after a maximum; every continuation costs credits.
-- **Run commands as an argv list**, without a shell, and validate inputs before using them.
-- **Make block messages actionable:** name the rule that fired and where to adjust the policy.
+- Normalize payloads Copilot (`toolName`, `toolArgs`, `sessionId`) e Local (`tool_name`, `tool_input`, `session_id`). `toolArgs` pode chegar como string JSON.
+- Responda nos dois formatos: campos no nível superior e `hookSpecificOutput` com `hookEventName`.
+- Emita exatamente um objeto JSON em stdout.
+- Nunca retorne `allow` automático em `preToolUse`; sem finding, não emita decisão.
+- Para bloquear, emita JSON `deny`, mensagem em stderr e exit code 2.
+- `preToolUse` falha fechado: JSON inválido ou exceção interna resulta em `deny`. Outros eventos falham abertos.
+- Termine bem antes de `timeoutSec`; timeout falha aberto no Copilot.
+- Limite continuações em `agentStop` e `Stop`.
+- Execute comandos como lista argv, sem shell, e valide os inputs.
+- Torne mensagens de bloqueio acionáveis: identifique a regra e onde ajustar a política.
 
-## Security and Privacy
+## Segurança e privacidade
 
-- Never log prompts, responses, raw arguments, file contents, or secrets. Audit metadata only (event, tool, result, rule).
-- Never place credentials in descriptors, policy, output, or injected context.
-- Protect `.github/hooks/**` against silent writes by the agent.
-- A command regex is an alarm, not a boundary: combine it with restricted `tools:`, terminal approval, and human review.
-- Do not read the chat transcript as a stable API; its format changes across versions and harnesses.
+- Nunca registre prompts, respostas, argumentos brutos, conteúdo de arquivos ou secrets. Audite apenas metadados.
+- Nunca coloque credenciais em descriptors, políticas, outputs ou contexto injetado.
+- Proteja `.github/hooks/**` contra escrita silenciosa pelo agente.
+- Trate regex de comando como alarme, não como fronteira. Combine-a com `tools:` restritos, aprovação no terminal e revisão humana.
+- Não leia a transcrição do chat como API estável.
 
-## Required Tests
+## Testes obrigatórios
 
-Every script or policy change ships with a test in `.github/hooks/scripts/test_*.py` covering at least: pass-through without a decision, `deny`, `ask`, both payload formats, invalid JSON, and the error path. Run:
+Cada mudança em script ou política inclui teste em `.github/hooks/scripts/test_*.py` para passagem sem decisão, `deny`, `ask`, ambos os payloads, JSON inválido e erro.
 
 ```bash
 python3 -B -m unittest discover -s .github/hooks/scripts -v
 ```
 
-Then validate in a real session of the target harness (Chat: Configure Hooks and the hooks output channel in VS Code; a CLI restart in Copilot CLI). `python3 .github/scripts/verify-hooks-loaded.py` checks the static preconditions.
+Valide também em uma sessão real do harness-alvo. `python3 .github/scripts/verify-hooks-loaded.py` verifica as pré-condições estáticas.
 
-## Conventions
+## Convenções
 
-| Rule | Rationale |
+| Regra | Motivo |
 |---|---|
-| Centralize policy in `.github/hooks/config/policy.json` | One place to review and change a rule |
-| One entry script per harness-neutral hook family | Normalization is written once |
-| Fail closed only in `preToolUse` | Blocking elsewhere breaks sessions without adding safety |
-| Metadata-only audit logs | Hooks never become a data-exfiltration path |
+| Centralize a política em `.github/hooks/config/policy.json` | Mantém um único ponto de revisão |
+| Use um script de entrada por família de hooks | Escreve a normalização uma vez |
+| Falhe fechado apenas em `preToolUse` | Bloquear outros eventos quebra sessões sem aumentar a segurança |
+| Registre apenas metadados | Impede exfiltração de dados pelos hooks |
 
-## Do / Do Not
+## Faça / Não faça
 
-| Do | Do not |
+| Faça | Não faça |
 |---|---|
-| Centralize the policy in `config/policy.json` | Spread rules across several scripts |
-| Test each new rule with a case that fails without it | Rely on reading the code |
-| Document harness differences next to the hook | Assume an event exists in every harness |
-| Use per-agent hooks (`hooks:` in `.agent.md`) only in Local, knowing they are in preview | Expect per-agent hooks to run in Copilot CLI |
+| Centralize regras em `config/policy.json` | Espalhe regras por vários scripts |
+| Teste cada regra com um caso que falha sem ela | Confie apenas na leitura do código |
+| Documente diferenças entre harnesses | Suponha que um evento exista em todos |
+| Use hooks por agente apenas no Local, sabendo que estão em preview | Espere que hooks por agente rodem no Copilot CLI |
 
-## Checklist Before Opening a PR
+## Checklist antes de abrir um PR
 
-- [ ] The event exists in the target harness and its input/output schema was checked against the official reference.
-- [ ] The descriptor uses the standard format and points to the single entry script.
-- [ ] `preToolUse` still fails closed and never returns an automatic `allow`.
-- [ ] No sensitive data is logged or injected.
-- [ ] Execution time stays well below `timeoutSec`.
-- [ ] Tests cover the change and pass; `policy.json` and the script defaults agree.
+- [ ] O evento existe no harness-alvo e o schema foi conferido na referência oficial.
+- [ ] O descriptor usa o formato padrão e aponta para um único script de entrada.
+- [ ] `preToolUse` ainda falha fechado e nunca retorna `allow` automático.
+- [ ] Nenhum dado sensível é registrado ou injetado.
+- [ ] O tempo de execução fica bem abaixo de `timeoutSec`.
+- [ ] Os testes passam e `policy.json` concorda com os defaults do script.
 
-## References
+## Referências
 
-- [Configure agent hooks in VS Code](https://code.visualstudio.com/docs/agent-customization/hooks)
-- [Local hooks reference (VS Code)](https://code.visualstudio.com/docs/agents/reference/hooks-reference)
-- [GitHub Copilot hooks reference](https://docs.github.com/en/copilot/reference/hooks-reference)
+- [Configurar hooks de agentes no VS Code](https://code.visualstudio.com/docs/agent-customization/hooks)
+- [Referência de hooks Local no VS Code](https://code.visualstudio.com/docs/agents/reference/hooks-reference)
+- [Referência de hooks do GitHub Copilot](https://docs.github.com/en/copilot/reference/hooks-reference)

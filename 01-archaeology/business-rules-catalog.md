@@ -1,61 +1,61 @@
-# Business Rules Catalog — Legacy SIFAP
+# Catálogo de regras de negócio — SIFAP legado
 
-> **Track:** [Team Kit](../README.md) › [Stage 1](README.md) › **Business Rules Catalog**
+> **Trilha:** [Kit da Equipe](../README.md) › [Etapa 1](README.md) › **Catálogo de regras de negócio**
 
-**Artifact completed during Stage 1.** The participant extracts rules from the `.NSN` programs and DDMs needed for beneficiary consultation and records them here with mandatory traceability to the source program.
+**Artefato preenchido durante a Etapa 1.** O participante extrai regras dos programas `.NSN` e DDMs necessários à consulta de beneficiários e as registra aqui com rastreabilidade obrigatória ao programa de origem.
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| **Target audience** | Individual participant completing sections for the source members read |
-| **Prerequisites** | Read the `.NSN`, `.NSP`, and `.ddm` evidence needed for the fixed capability |
-| **Stage** | Stage 1 — Archaeology |
-| **Expected outcome** | Catalog with `Source Program` completed for every candidate rule |
+| **Público-alvo** | Participante individual preenchendo seções para os membros de origem lidos |
+| **Pré-requisitos** | Ler as evidências `.NSN`, `.NSP` e `.ddm` necessárias à capacidade fixa |
+| **Etapa** | Etapa 1 — Arqueologia |
+| **Resultado esperado** | Catálogo com `Programa de origem` preenchido para cada regra candidata |
 
 > [!NOTE]
-> Each rule cites the actual source and is classified as **Confirmed** only after evidence-backed human review, **Inferred** while its interpretation is unvalidated, or **Mystery** for an unanswered question. Historical documents can corroborate or contradict code; a keyword match is not approval. Record open questions in [`mysteries-found.md`](mysteries-found.md), with evidence, unconfirmed hypothesis, owner, and actual status. EARS candidates here are pattern labels; formal requirements belong in Stage 2.
+> Cada regra cita a origem real e é classificada como **Confirmada** somente após revisão humana respaldada por evidências, **Inferida** enquanto sua interpretação não estiver validada ou **Mistério** para uma questão sem resposta. Documentos históricos podem corroborar ou contradizer o código; uma correspondência de palavra-chave não é aprovação. Registre as questões em aberto em [`mysteries-found.md`](mysteries-found.md), com evidências, hipótese não confirmada, responsável e status real. As candidatas EARS aqui são rótulos de padrões; os requisitos formais pertencem à Etapa 2.
 
 > [!IMPORTANT]
-> Step-by-step guide: [`GUIDE.md`](GUIDE.md).
+> Guia passo a passo: [`GUIDE.md`](GUIDE.md).
 
-**Team**: <!-- fill in -->
+**Equipe**: <!-- preencher -->
 
 ---
 
-## Rules from `<fill in: PROGRAM.NSN>`
+## Regras de `<preencher: PROGRAM.NSN>`
 
-| # | Rule Statement | EARS Candidate | Source Program | Classification | Notes |
+| # | Declaração da regra | Candidata EARS | Programa de origem | Classificação | Observações |
 |---|---|---|---|---|---|
-| 1 | <!-- fill in --> | <!-- fill in: EARS pattern --> | <!-- fill in: file:line --> | <!-- fill in: Confirmed/Inferred/Mystery --> | <!-- fill in --> |
+| 1 | <!-- preencher --> | <!-- preencher: padrão EARS --> | <!-- preencher: arquivo:linha --> | <!-- preencher: Confirmada/Inferida/Mistério --> | <!-- preencher --> |
 
 > [!NOTE]
-> Duplicate the section above for each `.NSN`, `.NSP`, or `.ddm` source member that supplies a candidate rule.
+> Duplique a seção acima para cada membro de origem `.NSN`, `.NSP` ou `.ddm` que forneça uma regra candidata.
 
 ---
 
-## Overall summary
+## Resumo geral
 
-| Metric | Value |
+| Métrica | Valor |
 |---|---:|
-| Natural programs read | <!-- fill in --> |
-| DDMs cross-referenced | <!-- fill in --> |
-| Confirmed rules | <!-- fill in --> |
-| Inferred rules | <!-- fill in --> |
-| Mysteries | <!-- fill in --> |
+| Programas Natural lidos | <!-- preencher --> |
+| DDMs com referências cruzadas | <!-- preencher --> |
+| Regras confirmadas | <!-- preencher --> |
+| Regras inferidas | <!-- preencher --> |
+| Mistérios | <!-- preencher --> |
 
 ---
 
-## Definition of done
+## Definição de pronto
 
-- [ ] Every relevant conditional block in the read source members was examined.
-- [ ] Every rule cites `file:line`.
-- [ ] Every open question is recorded in `mysteries-found.md` without a conclusion.
+- [ ] Todo bloco condicional relevante nos membros de origem lidos foi examinado.
+- [ ] Toda regra cita `arquivo:linha`.
+- [ ] Toda questão em aberto está registrada em `mysteries-found.md` sem uma conclusão.
 
 ---
 
-### Continue reading
+### Continue lendo
 
-| Previous | Next |
+| Anterior | Próximo |
 |---|---|
-| [Inventory](inventory.md)<br/><sub>Step 1 — file scan.</sub> | [Dependency Map](dependency-map.md)<br/><sub>Step 3 — call and access graph.</sub> |
+| [Inventário](inventory.md)<br/><sub>Etapa 1 — varredura de arquivos.</sub> | [Mapa de dependências](dependency-map.md)<br/><sub>Etapa 3 — grafo de chamadas e acessos.</sub> |
 
-<sub>[Back to the kit index](../README.md)</sub>
+<sub>[Voltar ao índice do kit](../README.md)</sub>

@@ -95,7 +95,7 @@ Use the thresholds the project defines. If none exist, propose thresholds and re
 > [!NOTE]
 > Coverage is a floor, not a goal. A branch without an assertion is untested even when the line counts as covered. Verify behavior, not just the call.
 
-## Conventions
+## Convenções
 
 | Rule | Rationale |
 | --- | --- |
@@ -106,7 +106,7 @@ Use the thresholds the project defines. If none exist, propose thresholds and re
 | RED proven before GREEN | A test that never failed proves nothing |
 | Written during implementation | Untested code is not integrated |
 
-## Do / Do Not
+## Faça / Não faça
 
 | Do | Do not |
 | --- | --- |
@@ -116,7 +116,7 @@ Use the thresholds the project defines. If none exist, propose thresholds and re
 | Write the test together with the code | Add tests after the feature is "done" |
 | Skip or weaken a test only with an issue and justification | Skip tests to force a green pipeline |
 
-## Checklist Before Opening a PR
+## Checklist antes de abrir um PR
 
 - [ ] New behavior has unit tests; persistence has an integration test with a real dependency where applicable.
 - [ ] Tests follow Arrange-Act-Assert and the project naming convention.

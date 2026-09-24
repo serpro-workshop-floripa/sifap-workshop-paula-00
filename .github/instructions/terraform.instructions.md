@@ -1,73 +1,74 @@
 ---
-description: "Use for generic Terraform hygiene (file layout, variables, outputs, formatting, validation, testing, state). Kit-authoritative Azure rules live in infrastructure.instructions.md."
+description: "Use para higiene genérica do Terraform: organização de arquivos, variáveis, outputs, formatação, validação, testes e state. As regras Azure do kit estão em infrastructure.instructions.md."
 applyTo: "**/*.tf"
 ---
 
-# Terraform Conventions — Generic Hygiene
+# Convenções do Terraform — Higiene geral
 
-This file adds language-level Terraform hygiene on top of the kit's authoritative infrastructure rules. **[`infrastructure.instructions.md`](infrastructure.instructions.md) is authoritative** for this kit: Azure provider `azurerm ~> 3.x` (pinned `required_version`), mandatory `project`/`environment`/`owner` tags, secrets only in `azurerm_key_vault_secret`, one module per Azure service area, Managed Identity, and the `terraform fmt` + `terraform validate` gate. Where anything here appears to differ, infrastructure wins. `infra/` is created by the team in Stage 3/4 — there is no inherited stack to copy.
+Este arquivo complementa as regras oficiais de infraestrutura do kit. **[`infrastructure.instructions.md`](infrastructure.instructions.md) é a fonte autoritativa** para `azurerm ~> 3.x`, `required_version`, tags obrigatórias, secrets, módulos Azure, Managed Identity e gates `terraform fmt` + `terraform validate`. Em caso de diferença, siga o arquivo de infraestrutura. A equipe cria `infra/` nas Etapas 3/4; não existe stack herdada.
 
-## File Layout
+## Organização de arquivos
 
-Split each module by function so files stay navigable:
+Separe cada módulo por função:
 
-- `main.tf` — resources
-- `variables.tf` — typed inputs
-- `outputs.tf` — outputs
-- `locals.tf` — computed values and repeated expressions
-- `terraform.tf` — the `terraform {}` block and provider requirements
+- `main.tf`: resources.
+- `variables.tf`: inputs tipados.
+- `outputs.tf`: outputs.
+- `locals.tf`: valores calculados e expressões repetidas.
+- `terraform.tf`: bloco `terraform {}` e requisitos de providers.
 
-Use `snake_case` for variable, local, output, and module names.
+Use `snake_case` em variáveis, locals, outputs e nomes de módulos.
 
-## Variables and Outputs
+## Variáveis e outputs
 
-- Every variable and output declares an explicit `type` and a `description`.
-- Provide defaults only for genuinely optional inputs; never default a secret.
-- Mark secret inputs and any secret-bearing output `sensitive = true`, and avoid outputting secrets at all where possible.
-- Expose through `outputs` only what another module or the caller actually needs.
+- Declare `type` e `description` explícitos em cada variável e output.
+- Defina defaults apenas para inputs realmente opcionais; nunca defina default para um secret.
+- Marque inputs e outputs com secrets como `sensitive = true`. Evite expor secrets em outputs.
+- Exponha apenas os valores necessários para outro módulo ou caller.
 
-## Locals and Data Sources
+## Locals e data sources
 
-- Lift repeated expressions into `locals` (for example the `common_tags` map) so values stay consistent.
-- Use `data` sources to read existing resources instead of hardcoding IDs; avoid data lookups for resources created in the same configuration — reference them directly.
+- Mova expressões repetidas para `locals`, como o mapa `common_tags`.
+- Use data sources para ler resources existentes em vez de fixar IDs.
+- Referencie diretamente resources criados na mesma configuração.
 
-## Idempotency
+## Idempotência
 
-Write configurations that converge: a second `terraform apply` with no input change must report zero changes. Avoid `local-exec` / `null_resource` side effects that re-run on every apply.
+Escreva configurações convergentes. Um segundo `terraform apply`, sem mudança de input, deve informar zero alterações. Evite efeitos colaterais de `local-exec` e `null_resource` que se repetem em cada apply.
 
-## Formatting, Validation, and Testing
+## Formatação, validação e testes
 
-- Run `terraform fmt -recursive` and per-module `terraform validate` before every commit (matches the CI infra gate).
-- Run `tflint` to catch provider-specific issues early.
-- Write module tests with the native `*.tftest.hcl` framework covering a positive and a negative case; keep them idempotent.
+- Execute `terraform fmt -recursive` e `terraform validate` por módulo antes de cada commit.
+- Execute `tflint` para detectar problemas específicos do provider.
+- Escreva testes de módulo com `*.tftest.hcl`, cobrindo um caso positivo e um negativo.
 
 ## State
 
-Store state in a remote backend (Azure Storage) with locking; never commit a `*.tfstate` file. Treat state and fetched `.terraform/` modules as read-only — make every change through HCL and the Terraform CLI.
+Armazene o state em backend remoto no Azure Storage com locking. Nunca versione `*.tfstate`. Trate o state e os módulos obtidos em `.terraform/` como somente leitura; faça alterações por HCL e Terraform CLI.
 
-## Conventions
+## Convenções
 
-| Rule | Rationale |
+| Regra | Motivo |
 |---|---|
-| One concern per file (`main`/`variables`/`outputs`/`locals`) | Navigable modules |
-| `snake_case` names, typed and described variables | Consistent, self-documenting HCL |
-| `sensitive = true` on secret inputs and outputs | Secrets never surface in plan output or state |
-| `fmt` + per-module `validate` + `tflint` clean | Matches the CI infra gate |
-| Remote state, never committed | No conflicts, no leaked state |
+| Uma responsabilidade por arquivo | Mantém os módulos navegáveis |
+| Nomes `snake_case`, tipos e descrições explícitos | Produz HCL consistente e autodocumentado |
+| `sensitive = true` para secrets | Evita exposição em plans e outputs |
+| `fmt`, `validate` por módulo e `tflint` limpos | Corresponde ao gate de infraestrutura |
+| State remoto e nunca versionado | Evita conflitos e vazamento de state |
 
-## Do / Do Not
+## Faça / Não faça
 
-| Do | Do not |
+| Faça | Não faça |
 |---|---|
-| Defer to `infrastructure.instructions.md` for provider, tags, secrets, modules | Re-invent the kit's Azure rules here |
-| Pin versions (kit baseline: `azurerm ~> 3.x`) | Float providers on "latest" |
-| Keep state remote and read-only | Commit `*.tfstate` or edit it by hand |
-| Cover modules with `*.tftest.hcl` tests | Ship untested modules |
+| Siga `infrastructure.instructions.md` para Azure | Reinvente as regras Azure do kit |
+| Fixe versões, com baseline `azurerm ~> 3.x` | Use providers em `latest` |
+| Mantenha o state remoto e somente leitura | Versione ou edite `*.tfstate` manualmente |
+| Cubra módulos com testes `*.tftest.hcl` | Entregue módulos sem testes |
 
-## Checklist Before Opening a PR
+## Checklist antes de abrir um PR
 
-- [ ] Files split into `main`/`variables`/`outputs`/`locals`; names in `snake_case`
-- [ ] Every variable and output has a `type` and `description`; secrets marked `sensitive`
-- [ ] `terraform fmt -recursive`, per-module `validate`, and `tflint` pass locally
-- [ ] Provider versions are pinned to the kit baseline (`azurerm ~> 3.x`)
-- [ ] State stays in the remote backend; no `*.tfstate` is committed
+- [ ] Os arquivos estão separados por função e os nomes usam `snake_case`.
+- [ ] Cada variável e output tem `type` e `description`; secrets usam `sensitive`.
+- [ ] `terraform fmt -recursive`, `validate` por módulo e `tflint` passam localmente.
+- [ ] As versões dos providers estão fixadas no baseline do kit.
+- [ ] O state permanece no backend remoto e nenhum `*.tfstate` está versionado.

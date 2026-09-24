@@ -1,35 +1,35 @@
-# Instructions Index
+# Índice de instruções
 
-This directory contains the GitHub Copilot file-specific instructions for the workshop.
+Este diretório contém as instruções específicas por arquivo do GitHub Copilot para o workshop.
 
-> Important: Copilot discovers `*.instructions.md` files in `.github/instructions/` and its subdirectories. This workshop keeps them directly in this directory so the index and scopes are easy to review.
+> [!IMPORTANT]
+> O Copilot descobre arquivos `*.instructions.md` em `.github/instructions/` e seus subdiretórios. Este workshop os mantém diretamente neste diretório para facilitar a revisão do índice e dos escopos.
 
-## Instruction Files
+## Arquivos de instrução
 
-| File | Description | `applyTo` scope |
+| Arquivo | Descrição | Escopo `applyTo` |
 | --- | --- | --- |
-| `agent-skills.instructions.md` | Use when authoring, reviewing, or debugging GitHub Copilot Agent Skills — SKILL.md frontmatter, the name-equals-directory rule, description tuning, and progressive disclosure. | `.github/skills/**/SKILL.md` |
-| `backend.instructions.md` | Use when implementing backend APIs, services, controllers, request validation, error handling, and business service boundaries. | `backend/src/main/java/**,backend/src/test/java/**` |
-| `cicd.instructions.md` | Use when creating or reviewing GitHub Actions, CI/CD workflows, YAML pipeline gates, build checks, and deployment automation. | `.github/workflows/**,.github/actions/**,**/action.yml,**/action.yaml` |
-| `database.instructions.md` | Use when writing database repositories, migrations, schema changes, SQL queries, indexes, and rollback-safe data changes. | `backend/src/main/java/**/infrastructure/**,backend/src/main/resources/db/migration/**` |
-| `draw-io.instructions.md` | Use when creating, editing, or reviewing draw.io diagrams and mxGraph XML in .drawio, .drawio.svg, or .drawio.png files. | `**/*.drawio,**/*.drawio.svg,**/*.drawio.png` |
-| `frontend-spec.instructions.md` | Use when implementing or reviewing Next.js 15 App Router, TypeScript, Tailwind CSS, shadcn/ui, and server components under frontend/. | `frontend/app/**,frontend/components/**,frontend/src/app/**,frontend/src/components/**,frontend/**/*.ts,frontend/**/*.tsx` |
-| `frontend.instructions.md` | Use when building frontend UI components, pages, client interactions, component state, accessibility, and user-facing flows. | `frontend/app/**,frontend/components/**,frontend/src/app/**,frontend/src/components/**` |
-| `infrastructure.instructions.md` | Use when creating or reviewing infrastructure as code, Terraform, Bicep, Azure resource definitions, and environment configuration. | `infra/**,**/*.tf,**/*.bicep,compose*.yml,compose*.yaml,docker-compose*.yml,docker-compose*.yaml` |
-| `java-junit5-assertions.instructions.md` | Use when writing or reviewing JUnit 5 (Jupiter) assertions in backend Java tests — expected-value ordering, lazy messages, assertAll, assertThrows/assertThrowsExactly, timeouts, and assertInstanceOf. | `**/*Test.java,**/*IT.java,**/*Steps.java,**/*StepDefs.java` |
-| `modular-monolith.instructions.md` | Use when designing or reviewing Modular Monolith architecture, package-by-feature boundaries, JPA mapping, and Strangler Fig migration. | `backend/src/main/java/**,backend/pom.xml,backend/build.gradle*` |
-| `natural-adabas.instructions.md` | Use when reading Natural/Adabas legacy code, language patterns, FDT structure, naming conventions, and batch flows. | `01-archaeology/legacy-sifap/**,**/*.NSP,**/*.nsp,**/*.NSN,**/*.nsn,**/*.NSS,**/*.nss,**/*.NSA,**/*.nsa,**/*.NSL,**/*.nsl,**/*.NSC,**/*.nsc,**/*.NSM,**/*.nsm,**/*.NSD,**/*.nsd,**/*.NAT,**/*.nat,**/*.CPY,**/*.cpy,**/*.DDM,**/*.ddm,**/*.jcl,**/*.JCL` |
-| `security.instructions.md` | Use when implementing or reviewing authentication, authorization, crypto, secure configuration, secrets handling, and security-sensitive code. | `backend/src/main/java/**/auth/**,backend/src/main/java/**/security/**,backend/src/main/java/**/config/**,backend/src/main/resources/**,frontend/**/auth/**,frontend/**/middleware.ts` |
-| `terraform.instructions.md` | Use for generic Terraform hygiene (file layout, variables, outputs, formatting, validation, testing, state); kit Azure rules live in infrastructure.instructions.md. | `**/*.tf` |
-| `tests.instructions.md` | Use when creating or reviewing automated tests, test strategy, specs, coverage gaps, regression tests, and quality gates. | `backend/src/test/**,**/*.test.*,**/*.spec.*,**/tests/**` |
+| `agent-skills.instructions.md` | Use ao criar, revisar ou depurar GitHub Copilot Agent Skills. | `.github/skills/**/SKILL.md` |
+| `backend.instructions.md` | Use ao implementar APIs, serviços, controllers, validação e tratamento de erros no backend. | `backend/src/main/java/**,backend/src/test/java/**` |
+| `cicd.instructions.md` | Use ao criar ou revisar GitHub Actions, workflows de CI/CD e gates YAML. | `.github/workflows/**,.github/actions/**,**/action.yml,**/action.yaml` |
+| `database.instructions.md` | Use ao escrever repositórios, migrações, alterações de schema, SQL e índices. | `backend/src/main/java/**/infrastructure/**,backend/src/main/resources/db/migration/**` |
+| `draw-io.instructions.md` | Use ao criar, editar ou revisar diagramas draw.io e XML mxGraph. | `**/*.drawio,**/*.drawio.svg,**/*.drawio.png` |
+| `frontend-spec.instructions.md` | Use com Next.js 15 App Router, TypeScript, Tailwind CSS, shadcn/ui e Server Components. | `frontend/app/**,frontend/components/**,frontend/src/app/**,frontend/src/components/**,frontend/**/*.ts,frontend/**/*.tsx` |
+| `frontend.instructions.md` | Use ao construir componentes, páginas, interações, estado e fluxos acessíveis. | `frontend/app/**,frontend/components/**,frontend/src/app/**,frontend/src/components/**` |
+| `infrastructure.instructions.md` | Use com IaC, Terraform, Bicep, Azure e configuração de ambientes. | `infra/**,**/*.tf,**/*.bicep,compose*.yml,compose*.yaml,docker-compose*.yml,docker-compose*.yaml` |
+| `java-junit5-assertions.instructions.md` | Use com assertions JUnit 5 em testes Java do backend. | `**/*Test.java,**/*IT.java,**/*Steps.java,**/*StepDefs.java` |
+| `modular-monolith.instructions.md` | Use ao projetar ou revisar o Monólito Modular, limites por funcionalidade, JPA e Strangler Fig. | `backend/src/main/java/**,backend/pom.xml,backend/build.gradle*` |
+| `natural-adabas.instructions.md` | Use ao ler Natural/Adabas, FDTs, convenções legadas e fluxos batch. | `01-archaeology/legacy-sifap/**,**/*.NSP,**/*.nsp,**/*.NSN,**/*.nsn,**/*.NSS,**/*.nss,**/*.NSA,**/*.nsa,**/*.NSL,**/*.nsl,**/*.NSC,**/*.nsc,**/*.NSM,**/*.nsm,**/*.NSD,**/*.nsd,**/*.NAT,**/*.nat,**/*.CPY,**/*.cpy,**/*.DDM,**/*.ddm,**/*.jcl,**/*.JCL` |
+| `security.instructions.md` | Use com autenticação, autorização, criptografia, secrets e código sensível. | `backend/src/main/java/**/auth/**,backend/src/main/java/**/security/**,backend/src/main/java/**/config/**,backend/src/main/resources/**,frontend/**/auth/**,frontend/**/middleware.ts` |
+| `terraform.instructions.md` | Use para higiene genérica do Terraform; as regras Azure ficam em `infrastructure.instructions.md`. | `**/*.tf` |
+| `tests.instructions.md` | Use ao criar ou revisar testes, estratégia, cobertura, regressão e gates de qualidade. | `backend/src/test/**,**/*.test.*,**/*.spec.*,**/tests/**` |
 
-## Maintenance Rule
+## Regra de manutenção
 
-Requirements use the EARS validation skill.
-The executable traceability rules remain in [spec-quality.yml](../workflows/spec-quality.yml).
+Os requisitos usam a skill de validação EARS. As regras executáveis de rastreabilidade permanecem em [spec-quality.yml](../workflows/spec-quality.yml).
 
-- Every file MUST maintain valid YAML frontmatter with exactly the needed `description` and `applyTo` fields.
-- `applyTo` is a single quoted string; multiple globs are comma-separated with no spaces after commas.
-- Avoid `applyTo: "**"`; prefer specific globs that match the files the instruction truly governs.
-- Keep the house pattern consistent: intro paragraph -> topical sections -> `## Conventions` -> `## Do / Do Not` -> `## Checklist Before Opening a PR`.
-- When creating a new area, add a new flat `*.instructions.md` file in this directory and update this index.
+- Cada arquivo deve manter frontmatter YAML válido apenas com os campos necessários `description` e `applyTo`.
+- `applyTo` é uma única string entre aspas; separe vários globs por vírgula, sem espaços.
+- Evite `applyTo: "**"`; prefira globs específicos.
+- Mantenha o padrão: introdução → seções temáticas → `## Convenções` → `## Faça / Não faça` → `## Checklist antes de abrir um PR`.
+- Ao criar uma área, adicione um arquivo `*.instructions.md` plano neste diretório e atualize este índice.

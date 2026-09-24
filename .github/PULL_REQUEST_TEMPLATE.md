@@ -1,39 +1,39 @@
-# Pull Request
+# Pull request
 
-## Description
+## Descrição
 
-<!-- Describe what was implemented in this PR. -->
+<!-- Descreva o que foi implementado neste PR. -->
 
-## Stage
+## Etapa
 
-- [ ] Stage 1 - Archaeology evidence
-- [ ] Stage 2 - Modern specification
-- [ ] Stage 3 - Implementation and data migration
-- [ ] Submission PR: `impl/<NNN>-<feature>` -> `develop`
+- [ ] Etapa 1 - Evidências de arqueologia
+- [ ] Etapa 2 - Especificação moderna
+- [ ] Etapa 3 - Implementação e migração de dados
+- [ ] PR de submissão: `impl/<NNN>-<feature>` -> `develop`
 
-## Responsible participant
+## Participante responsável
 
-<!-- Your name or GitHub handle. You cover all role responsibilities yourself in the individual challenge. -->
+<!-- Seu nome ou identificador do GitHub. No desafio individual, você cobre todas as responsabilidades dos papéis. -->
 
-## REQ-IDs Addressed
+## REQ-IDs atendidos
 
-<!-- Example: REQ-001, REQ-003 -->
+<!-- Exemplo: REQ-001, REQ-003 -->
 
-## Submission checklist
+## Checklist de submissão
 
-- [ ] CI is green, including `legacy-traceability` and test jobs.
-- [ ] Every requirement has a REQ-ID, EARS wording, and `source_legacy:`.
-- [ ] Backend `mvn verify` passes.
-- [ ] Frontend tests pass, if a frontend was built.
-- [ ] Data reconciliation proves source count = loaded + explained rejects.
-- [ ] Source keys and agreed aggregates reconcile with no unexplained losses.
-- [ ] Migration rerun completes without duplicates.
-- [ ] Listing covers the complete migrated beneficiary population, not a sample or first page.
-- [ ] Search covers the complete migrated beneficiary population.
-- [ ] Detail view works for migrated beneficiaries selected from the full population.
-- [ ] No sensitive data is exposed in logs, screenshots, commits, or the PR body.
-- [ ] Workflow changes, if any, use least-privilege permissions and actions pinned by SHA.
+- [ ] A CI está verde, incluindo `legacy-traceability` e os jobs de teste.
+- [ ] Cada requisito tem um REQ-ID, texto EARS e `source_legacy:`.
+- [ ] `mvn verify` passa no backend.
+- [ ] Os testes de frontend passam, caso um frontend tenha sido criado.
+- [ ] A reconciliação comprova: contagem da origem = registros carregados + rejeições explicadas.
+- [ ] As chaves de origem e os agregados acordados reconciliam sem perdas inexplicadas.
+- [ ] A reexecução da migração termina sem duplicidades.
+- [ ] A listagem cobre toda a população migrada de beneficiários, não apenas uma amostra ou a primeira página.
+- [ ] A busca cobre toda a população migrada de beneficiários.
+- [ ] A visualização de detalhes funciona para beneficiários migrados selecionados da população completa.
+- [ ] Nenhum dado sensível aparece em logs, capturas de tela, commits ou no corpo do PR.
+- [ ] Alterações de workflow, quando houver, usam permissões de privilégio mínimo e actions fixadas por SHA.
 
-## How to validate
+## Como validar
 
-<!-- List the exact commands and evidence locations the judge should use. -->
+<!-- Liste os comandos exatos e os locais das evidências que o juiz deve usar. -->

@@ -180,7 +180,7 @@ When approaching a legacy program for the first time:
 7. **Check `IF NO RECORDS FOUND` and record-buffer state.** Trace initialization, successful reads, no-record paths and resets. View-buffer contents do not disappear merely because a `FIND`/`READ` block ends; do not infer lexical scope or freshness.
 8. **Check the actual selection/access form and DDM markers.** Distinguish search selection from descriptor-ordered access. Read all markers in the supplied listing and verify statement/runtime constraints; do not declare compilation or runtime failure from a generic descriptor rule alone.
 
-## Conventions
+## Convenções
 
 | Rule | Rationale |
 |---|---|
@@ -191,7 +191,7 @@ When approaching a legacy program for the first time:
 | Verify statement form, descriptors and runtime assumptions | Selection validity and ordered access are not interchangeable, and static reading does not prove execution |
 | Treat prefixes as clues, not proof | Legacy naming conventions vary and must be verified in code |
 
-## Do / Do Not
+## Faça / Não faça
 
 | Do | Do not |
 |---|---|
@@ -202,7 +202,7 @@ When approaching a legacy program for the first time:
 | Trace view-buffer initialization, reads and no-record paths | Assume the buffer is cleared or out of scope when a block ends |
 | Inspect selection, descriptor ordering and actual listing markers | Assert universal compile/runtime behavior without evidence |
 
-## Checklist Before Opening a PR
+## Checklist antes de abrir um PR
 
 - [ ] `DEFINE DATA` variables, arrays, parameters, and relevant formats were captured before summarizing behavior
 - [ ] Main `READ`, `FIND`, work-file, report, and control-break paths were identified

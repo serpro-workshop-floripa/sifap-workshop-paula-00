@@ -59,7 +59,7 @@ Use one palette across the whole repo so a shape's color always means the same t
 
 Before committing, run the `validate-drawio.py` checker documented in the `draw-io-diagram-generator` skill, then open the file in VS Code to confirm it renders. The skill owns the exact invocation and troubleshooting table; this file owns the invariants the checker enforces.
 
-## Conventions
+## Convenções
 
 | Rule | Rationale |
 |---|---|
@@ -70,7 +70,7 @@ Before committing, run the `validate-drawio.py` checker documented in the `draw-
 | Diagram file names are `kebab-case` and live beside the code | Diagrams are discoverable and diff-friendly in version control |
 | Authoring steps and recipes stay in the skill, not here | One source of procedure avoids two copies drifting apart |
 
-## Do / Do Not
+## Faça / Não faça
 
 | Do | Do not |
 |---|---|
@@ -81,7 +81,7 @@ Before committing, run the `validate-drawio.py` checker documented in the `draw-
 | Keep child coordinates relative to their container | Use canvas coordinates for cells inside a swimlane |
 | Split a busy diagram across pages | Cram more than 40 cells onto one page |
 
-## Checklist Before Opening a PR
+## Checklist antes de abrir um PR
 
 - [ ] `<mxCell id="0" />` and `<mxCell id="1" parent="0" />` are the first two cells of every page
 - [ ] All cell ids are unique within their diagram and every `parent` resolves

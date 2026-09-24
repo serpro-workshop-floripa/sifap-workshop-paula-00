@@ -103,7 +103,7 @@ Spec-Kit's templates in `.specify/templates/` own the lowercase files. `/speckit
 
 Text gates do not prove EARS meaning, human approval, rendering, or behavioral equivalence; review those explicitly.
 
-## Conventions
+## Convenções
 
 | Rule | Rationale |
 |---|---|
@@ -113,7 +113,7 @@ Text gates do not prove EARS meaning, human approval, rendering, or behavioral e
 | Stable IDs: `REQ-`, `NFR-`, `AC-<ID>-NN`, `SRC-`, `RISK-`, `DR-`, `T`, `TST-`, `CON-` | Cross-file references survive edits |
 | Evidence is dated and redacts CPF, NIS, benefit amounts, and secrets | Security rule for every artifact |
 
-## Do / Do Not
+## Faça / Não faça
 
 | Do | Do not |
 |---|---|
@@ -123,7 +123,7 @@ Text gates do not prove EARS meaning, human approval, rendering, or behavioral e
 | State `NOT APPLICABLE: <reason>` | Delete a section that does not apply |
 | Report failing gates as failing | Mark planned work done or simulate approval |
 
-## Checklist Before Opening a PR
+## Checklist antes de abrir um PR
 
 - [ ] The package follows one workflow and has every file its stage requires.
 - [ ] Every section has content or a justified `NOT APPLICABLE`, and no placeholder remains.
