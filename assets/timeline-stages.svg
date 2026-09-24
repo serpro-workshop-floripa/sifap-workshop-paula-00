@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" font-family="Inter, system-ui, sans-serif">
   <rect width="1200" height="200" fill="#F7F7F5"/>
 
-  <text x="60" y="40" fill="#737373" font-family="JetBrains Mono, monospace" font-size="12" font-weight="500" letter-spacing="1.9">DAY 2 · TIMELINE</text>
+  <text x="60" y="40" fill="#737373" font-family="JetBrains Mono, monospace" font-size="12" font-weight="500" letter-spacing="1.9">DIA 2 · CRONOGRAMA</text>
 
   <!-- Timeline rail -->
   <line x1="92" y1="115" x2="1108" y2="115" stroke="#D9D9D4" stroke-width="2"/>
@@ -12,17 +12,17 @@
   <!-- PRE-WORK -->
   <g transform="translate(100, 115)">
     <circle cx="0" cy="0" r="10" fill="#FFFFFF" stroke="#737373" stroke-width="2"/>
-    <text x="0" y="-26" fill="#737373" font-family="JetBrains Mono, monospace" font-size="10" font-weight="500" letter-spacing="1.2" text-anchor="middle">PRE-WORK</text>
-    <text x="0" y="38" fill="#737373" font-size="11" text-anchor="middle">before 14:00</text>
-    <text x="0" y="54" fill="#737373" font-size="11" text-anchor="middle">tools + source ready</text>
+    <text x="0" y="-26" fill="#737373" font-family="JetBrains Mono, monospace" font-size="10" font-weight="500" letter-spacing="1.2" text-anchor="middle">PRÉ-TRABALHO</text>
+    <text x="0" y="38" fill="#737373" font-size="11" text-anchor="middle">antes das 14:00</text>
+    <text x="0" y="54" fill="#737373" font-size="11" text-anchor="middle">ferramentas + fontes prontas</text>
   </g>
 
   <!-- S1 -->
   <g transform="translate(300, 115)">
     <circle cx="0" cy="0" r="14" fill="#F25022" stroke="#B33816" stroke-width="2"/>
     <text x="0" y="4" fill="#FFFFFF" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" letter-spacing="0.5" text-anchor="middle">01</text>
-    <text x="0" y="-30" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="10" font-weight="500" letter-spacing="1.2" text-anchor="middle">STAGE 01</text>
-    <text x="0" y="40" fill="#1A1A1A" font-size="13" font-weight="500" text-anchor="middle">Archaeology</text>
+    <text x="0" y="-30" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="10" font-weight="500" letter-spacing="1.2" text-anchor="middle">ETAPA 01</text>
+    <text x="0" y="40" fill="#1A1A1A" font-size="13" font-weight="500" text-anchor="middle">Arqueologia</text>
     <text x="0" y="58" fill="#737373" font-size="11" text-anchor="middle">14:00 – 14:50</text>
     <text x="0" y="74" fill="#737373" font-size="11" text-anchor="middle">@archaeologist</text>
   </g>
@@ -31,8 +31,8 @@
   <g transform="translate(500, 115)">
     <circle cx="0" cy="0" r="14" fill="#00A4EF" stroke="#0076AC" stroke-width="2"/>
     <text x="0" y="4" fill="#FFFFFF" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" letter-spacing="0.5" text-anchor="middle">02</text>
-    <text x="0" y="-30" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="10" font-weight="500" letter-spacing="1.2" text-anchor="middle">STAGE 02</text>
-    <text x="0" y="40" fill="#1A1A1A" font-size="13" font-weight="500" text-anchor="middle">Modern Spec</text>
+    <text x="0" y="-30" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="10" font-weight="500" letter-spacing="1.2" text-anchor="middle">ETAPA 02</text>
+    <text x="0" y="40" fill="#1A1A1A" font-size="13" font-weight="500" text-anchor="middle">Especificação moderna</text>
     <text x="0" y="58" fill="#737373" font-size="11" text-anchor="middle">14:50 – 15:30</text>
     <text x="0" y="74" fill="#737373" font-size="11" text-anchor="middle">@architect</text>
   </g>
@@ -41,8 +41,8 @@
   <g transform="translate(700, 115)">
     <circle cx="0" cy="0" r="14" fill="#7FBA00" stroke="#5A8500" stroke-width="2"/>
     <text x="0" y="4" fill="#FFFFFF" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" letter-spacing="0.5" text-anchor="middle">03</text>
-    <text x="0" y="-30" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="10" font-weight="500" letter-spacing="1.2" text-anchor="middle">STAGE 03</text>
-    <text x="0" y="40" fill="#1A1A1A" font-size="13" font-weight="500" text-anchor="middle">Build</text>
+    <text x="0" y="-30" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="10" font-weight="500" letter-spacing="1.2" text-anchor="middle">ETAPA 03</text>
+    <text x="0" y="40" fill="#1A1A1A" font-size="13" font-weight="500" text-anchor="middle">Construção</text>
     <text x="0" y="58" fill="#737373" font-size="11" text-anchor="middle">15:30 – 17:10</text>
     <text x="0" y="74" fill="#737373" font-size="11" text-anchor="middle">@builder + @dba</text>
   </g>
@@ -51,17 +51,17 @@
   <g transform="translate(900, 115)">
     <circle cx="0" cy="0" r="14" fill="#FFB900" stroke="#B88500" stroke-width="2"/>
     <text x="0" y="4" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" letter-spacing="0.5" text-anchor="middle">PR</text>
-    <text x="0" y="-30" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="10" font-weight="500" letter-spacing="1.2" text-anchor="middle">SUBMIT</text>
-    <text x="0" y="40" fill="#1A1A1A" font-size="13" font-weight="500" text-anchor="middle">Submission deadline</text>
-    <text x="0" y="58" fill="#737373" font-size="11" text-anchor="middle">17:10 · PR to develop</text>
+    <text x="0" y="-30" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="10" font-weight="500" letter-spacing="1.2" text-anchor="middle">ENVIAR</text>
+    <text x="0" y="40" fill="#1A1A1A" font-size="13" font-weight="500" text-anchor="middle">Prazo de submissão</text>
+    <text x="0" y="58" fill="#737373" font-size="11" text-anchor="middle">17:10 · PR para develop</text>
   </g>
 
   <!-- VALIDATION -->
   <g transform="translate(1100, 115)">
     <circle cx="0" cy="0" r="10" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="2"/>
-    <text x="0" y="-26" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="10" font-weight="500" letter-spacing="1.2" text-anchor="middle">JUDGE VALIDATION</text>
+    <text x="0" y="-26" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="10" font-weight="500" letter-spacing="1.2" text-anchor="middle">VALIDAÇÃO DO JUIZ</text>
     <text x="0" y="38" fill="#737373" font-size="11" text-anchor="middle">17:10 – 17:40</text>
-    <text x="0" y="54" fill="#737373" font-size="11" text-anchor="middle">first two pass win</text>
+    <text x="0" y="54" fill="#737373" font-size="11" text-anchor="middle">os dois primeiros aprovados vencem</text>
   </g>
 
   <!-- Self-checkpoint labels along the rail -->

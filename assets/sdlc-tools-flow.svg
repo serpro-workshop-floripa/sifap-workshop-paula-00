@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 580" font-family="Inter, system-ui, sans-serif">
   <rect width="1200" height="580" fill="#F7F7F5"/>
 
-  <text x="60" y="40" fill="#737373" font-family="JetBrains Mono, monospace" font-size="12" font-weight="500" letter-spacing="1.9">DAY 2 · TOOLS BY STAGE</text>
-  <text x="60" y="76" fill="#1A1A1A" font-size="28" font-weight="500" letter-spacing="-0.4">Agents and Commands for Individual Challenge</text>
+  <text x="60" y="40" fill="#737373" font-family="JetBrains Mono, monospace" font-size="12" font-weight="500" letter-spacing="1.9">DIA 2 · FERRAMENTAS POR ETAPA</text>
+  <text x="60" y="76" fill="#1A1A1A" font-size="28" font-weight="500" letter-spacing="-0.4">Agentes e comandos do desafio individual</text>
 
   <!-- 3 challenge stages plus judge validation -->
   <!-- col width 250, gap 30, total 4*250 + 3*30 = 1090, start x=55 -->
@@ -11,16 +11,16 @@
   <g transform="translate(55, 130)">
     <rect width="250" height="380" fill="#FFFFFF" stroke="#E5E5E0" stroke-width="1"/>
     <rect x="0" y="0" width="250" height="6" fill="#F25022"/>
-    <text x="18" y="38" fill="#B33816" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" letter-spacing="1.2">STAGE 01</text>
-    <text x="18" y="68" fill="#1A1A1A" font-size="20" font-weight="500">Archaeology</text>
+    <text x="18" y="38" fill="#B33816" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" letter-spacing="1.2">ETAPA 01</text>
+    <text x="18" y="68" fill="#1A1A1A" font-size="20" font-weight="500">Arqueologia</text>
     <text x="18" y="92" fill="#737373" font-family="JetBrains Mono, monospace" font-size="11">14:00 – 14:50</text>
 
     <line x1="18" y1="110" x2="232" y2="110" stroke="#E5E5E0" stroke-width="1"/>
 
-    <text x="18" y="138" fill="#737373" font-family="JetBrains Mono, monospace" font-size="10" font-weight="500" letter-spacing="1.2">AGENT</text>
+    <text x="18" y="138" fill="#737373" font-family="JetBrains Mono, monospace" font-size="10" font-weight="500" letter-spacing="1.2">AGENTE</text>
     <text x="18" y="158" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="14" font-weight="500">@archaeologist</text>
 
-    <text x="18" y="192" fill="#737373" font-family="JetBrains Mono, monospace" font-size="10" font-weight="500" letter-spacing="1.2">KEY COMMANDS</text>
+    <text x="18" y="192" fill="#737373" font-family="JetBrains Mono, monospace" font-size="10" font-weight="500" letter-spacing="1.2">COMANDOS PRINCIPAIS</text>
     <text x="18" y="212" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="12">/archaeology-kickoff</text>
     <text x="18" y="230" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="12">/extract-business-rules</text>
     <text x="18" y="248" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="12">/map-source-data</text>
@@ -28,22 +28,22 @@
     <text x="18" y="284" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="12">/catalog-mysteries</text>
     <text x="18" y="302" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="12">/discovery-report</text>
 
-    <text x="18" y="326" fill="#737373" font-family="JetBrains Mono, monospace" font-size="10" font-weight="500" letter-spacing="1.2">DELIVERABLE</text>
-    <text x="18" y="346" fill="#737373" font-size="12">Reading, rules, source data</text>
-    <text x="18" y="364" fill="#737373" font-size="12">and unanswered questions</text>
+    <text x="18" y="326" fill="#737373" font-family="JetBrains Mono, monospace" font-size="10" font-weight="500" letter-spacing="1.2">ENTREGA</text>
+    <text x="18" y="346" fill="#737373" font-size="12">Leitura, regras, dados de origem</text>
+    <text x="18" y="364" fill="#737373" font-size="12">e perguntas sem resposta</text>
   </g>
 
   <!-- Stage 2 -->
   <g transform="translate(335, 130)">
     <rect width="250" height="380" fill="#FFFFFF" stroke="#E5E5E0" stroke-width="1"/>
     <rect x="0" y="0" width="250" height="6" fill="#00A4EF"/>
-    <text x="18" y="38" fill="#0076AC" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" letter-spacing="1.2">STAGE 02</text>
-    <text x="18" y="68" fill="#1A1A1A" font-size="20" font-weight="500">Modern Spec</text>
+    <text x="18" y="38" fill="#0076AC" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" letter-spacing="1.2">ETAPA 02</text>
+    <text x="18" y="68" fill="#1A1A1A" font-size="20" font-weight="500">Especificação moderna</text>
     <text x="18" y="92" fill="#737373" font-family="JetBrains Mono, monospace" font-size="11">14:50 – 15:30</text>
 
     <line x1="18" y1="110" x2="232" y2="110" stroke="#E5E5E0" stroke-width="1"/>
 
-    <text x="18" y="138" fill="#737373" font-family="JetBrains Mono, monospace" font-size="10" font-weight="500" letter-spacing="1.2">AGENT</text>
+    <text x="18" y="138" fill="#737373" font-family="JetBrains Mono, monospace" font-size="10" font-weight="500" letter-spacing="1.2">AGENTE</text>
     <text x="18" y="158" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="14" font-weight="500">@architect</text>
 
     <text x="18" y="192" fill="#737373" font-family="JetBrains Mono, monospace" font-size="10" font-weight="500" letter-spacing="1.2">SPEC-KIT</text>
@@ -53,23 +53,23 @@
 
     <text x="18" y="266" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="12">/speckit.tasks</text>
     <text x="18" y="284" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="12">/speckit.analyze</text>
-    <text x="18" y="316" fill="#737373" font-family="JetBrains Mono, monospace" font-size="10" font-weight="500" letter-spacing="1.2">DBA + ARCHITECTURE</text>
+    <text x="18" y="316" fill="#737373" font-family="JetBrains Mono, monospace" font-size="10" font-weight="500" letter-spacing="1.2">DBA + ARQUITETURA</text>
     <text x="18" y="338" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="12">/migration phase=plan</text>
 
-    <text x="18" y="370" fill="#737373" font-size="12">Deliverable: spec + plan + tasks</text>
+    <text x="18" y="370" fill="#737373" font-size="12">Entrega: spec + plan + tasks</text>
   </g>
 
   <!-- Stage 3 -->
   <g transform="translate(615, 130)">
     <rect width="250" height="380" fill="#FFFFFF" stroke="#E5E5E0" stroke-width="1"/>
     <rect x="0" y="0" width="250" height="6" fill="#7FBA00"/>
-    <text x="18" y="38" fill="#5A8500" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" letter-spacing="1.2">STAGE 03</text>
-    <text x="18" y="68" fill="#1A1A1A" font-size="20" font-weight="500">Build</text>
+    <text x="18" y="38" fill="#5A8500" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" letter-spacing="1.2">ETAPA 03</text>
+    <text x="18" y="68" fill="#1A1A1A" font-size="20" font-weight="500">Construção</text>
     <text x="18" y="92" fill="#737373" font-family="JetBrains Mono, monospace" font-size="11">15:30 – 17:10</text>
 
     <line x1="18" y1="110" x2="232" y2="110" stroke="#E5E5E0" stroke-width="1"/>
 
-    <text x="18" y="138" fill="#737373" font-family="JetBrains Mono, monospace" font-size="10" font-weight="500" letter-spacing="1.2">AGENT</text>
+    <text x="18" y="138" fill="#737373" font-family="JetBrains Mono, monospace" font-size="10" font-weight="500" letter-spacing="1.2">AGENTE</text>
     <text x="18" y="158" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="14" font-weight="500">@builder + @dba</text>
 
     <text x="18" y="192" fill="#737373" font-family="JetBrains Mono, monospace" font-size="10" font-weight="500" letter-spacing="1.2">SPEC-KIT</text>
@@ -77,38 +77,38 @@
     <text x="18" y="230" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="12">/speckit.analyze</text>
     <text x="18" y="248" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="11">/migration phase=implement</text>
 
-    <text x="18" y="282" fill="#737373" font-family="JetBrains Mono, monospace" font-size="10" font-weight="500" letter-spacing="1.2">KEY COMMANDS</text>
+    <text x="18" y="282" fill="#737373" font-family="JetBrains Mono, monospace" font-size="10" font-weight="500" letter-spacing="1.2">COMANDOS PRINCIPAIS</text>
     <text x="18" y="302" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="12">/generate-equivalence-tests</text>
     <text x="18" y="320" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="12">/generate-jpa-from-fdt</text>
     <text x="18" y="338" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="12">/translate-natural-to-java</text>
 
-    <text x="18" y="370" fill="#737373" font-size="12">Code + migrated data + evidence</text>
+    <text x="18" y="370" fill="#737373" font-size="12">Código + dados migrados + evidências</text>
   </g>
 
   <!-- Judge validation -->
   <g transform="translate(895, 130)">
     <rect width="250" height="380" fill="#FFFFFF" stroke="#E5E5E0" stroke-width="1"/>
     <rect x="0" y="0" width="250" height="6" fill="#FFB900"/>
-    <text x="18" y="38" fill="#B88500" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" letter-spacing="1.2">JUDGE</text>
-    <text x="18" y="68" fill="#1A1A1A" font-size="20" font-weight="500">Validation</text>
+    <text x="18" y="38" fill="#B88500" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" letter-spacing="1.2">JUIZ</text>
+    <text x="18" y="68" fill="#1A1A1A" font-size="20" font-weight="500">Validação</text>
     <text x="18" y="92" fill="#737373" font-family="JetBrains Mono, monospace" font-size="11">17:10 – 17:40</text>
 
     <line x1="18" y1="110" x2="232" y2="110" stroke="#E5E5E0" stroke-width="1"/>
 
-    <text x="18" y="138" fill="#737373" font-family="JetBrains Mono, monospace" font-size="10" font-weight="500" letter-spacing="1.2">AGENT</text>
+    <text x="18" y="138" fill="#737373" font-family="JetBrains Mono, monospace" font-size="10" font-weight="500" letter-spacing="1.2">AGENTE</text>
     <text x="18" y="158" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="14" font-weight="500">judge</text>
 
-    <text x="18" y="192" fill="#737373" font-family="JetBrains Mono, monospace" font-size="10" font-weight="500" letter-spacing="1.2">KEY CHECKS</text>
-    <text x="18" y="212" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="12">CI green</text>
+    <text x="18" y="192" fill="#737373" font-family="JetBrains Mono, monospace" font-size="10" font-weight="500" letter-spacing="1.2">VERIFICAÇÕES PRINCIPAIS</text>
+    <text x="18" y="212" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="12">CI verde</text>
     <text x="18" y="230" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="12">legacy-traceability</text>
-    <text x="18" y="248" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="12">tests pass</text>
-    <text x="18" y="266" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="12">data reconciled</text>
+    <text x="18" y="248" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="12">testes aprovados</text>
+    <text x="18" y="266" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="12">dados reconciliados</text>
 
-    <text x="18" y="300" fill="#737373" font-family="JetBrains Mono, monospace" font-size="10" font-weight="500" letter-spacing="1.2">SUBMISSION</text>
-    <text x="18" y="320" fill="#737373" font-size="12">PR impl/* → develop by 17:10</text>
-    <text x="18" y="338" fill="#737373" font-size="12">judge validates continuously</text>
+    <text x="18" y="300" fill="#737373" font-family="JetBrains Mono, monospace" font-size="10" font-weight="500" letter-spacing="1.2">SUBMISSÃO</text>
+    <text x="18" y="320" fill="#737373" font-size="12">PR impl/* → develop até 17:10</text>
+    <text x="18" y="338" fill="#737373" font-size="12">o juiz valida continuamente</text>
 
-    <text x="18" y="370" fill="#737373" font-size="12">First two valid submissions win</text>
+    <text x="18" y="370" fill="#737373" font-size="12">As duas primeiras submissões válidas vencem</text>
   </g>
 
   <!-- C1, C2, C3 between stages -->
@@ -118,5 +118,5 @@
     <text x="880" y="316" fill="#737373">C3 →</text>
   </g>
 
-  <text x="60" y="552" fill="#737373" font-size="13">Each stage has a coordinating agent; one participant uses role skills and self-checks before moving on.</text>
+  <text x="60" y="552" fill="#737373" font-size="13">Cada etapa tem um agente coordenador; um participante usa skills de função e autoverificações antes de avançar.</text>
 </svg>

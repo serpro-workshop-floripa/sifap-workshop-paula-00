@@ -1,48 +1,48 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" font-family="Inter, system-ui, sans-serif">
   <rect width="1200" height="500" fill="#F7F7F5"/>
 
-  <text x="60" y="60" fill="#B33816" font-family="JetBrains Mono, monospace" font-size="16" font-weight="500" letter-spacing="1.9">LEGACY · SIFAP 1.0 · 1997</text>
-  <text x="60" y="110" fill="#1A1A1A" font-size="42" font-weight="500" letter-spacing="-0.8">Why SIFAP Must Change</text>
-  <text x="60" y="148" fill="#737373" font-size="20">Four modernization risks across about 30 years of history</text>
+  <text x="60" y="60" fill="#B33816" font-family="JetBrains Mono, monospace" font-size="16" font-weight="500" letter-spacing="1.9">LEGADO · SIFAP 1.0 · 1997</text>
+  <text x="60" y="110" fill="#1A1A1A" font-size="42" font-weight="500" letter-spacing="-0.8">Por que o SIFAP precisa mudar</text>
+  <text x="60" y="148" fill="#737373" font-size="20">Quatro riscos de modernização em cerca de 30 anos de história</text>
 
   <g transform="translate(60, 200)">
     <rect width="260" height="240" fill="#FFFFFF" stroke="#CECEC7" stroke-width="1"/>
     <rect x="0" y="0" width="260" height="6" fill="#F25022"/>
-    <text x="24" y="50" fill="#B33816" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" letter-spacing="1.2">TECH DEBT</text>
-    <text x="24" y="120" fill="#F25022" font-size="56" font-weight="300" letter-spacing="-2">Code</text>
-    <text x="24" y="155" fill="#737373" font-family="JetBrains Mono, monospace" font-size="12" letter-spacing="1.2">READ THE SOURCE</text>
-    <text x="24" y="195" fill="#3A3A3A" font-size="14">Business rules buried in</text>
-    <text x="24" y="216" fill="#3A3A3A" font-size="14">undocumented routines.</text>
+    <text x="24" y="50" fill="#B33816" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" letter-spacing="1.2">DÍVIDA TÉCNICA</text>
+    <text x="24" y="120" fill="#F25022" font-size="56" font-weight="300" letter-spacing="-2">Código</text>
+    <text x="24" y="155" fill="#737373" font-family="JetBrains Mono, monospace" font-size="12" letter-spacing="1.2">LEIA A FONTE</text>
+    <text x="24" y="195" fill="#3A3A3A" font-size="14">Regras de negócio ocultas em</text>
+    <text x="24" y="216" fill="#3A3A3A" font-size="14">rotinas não documentadas.</text>
   </g>
 
   <g transform="translate(340, 200)">
     <rect width="260" height="240" fill="#FFFFFF" stroke="#CECEC7" stroke-width="1"/>
     <rect x="0" y="0" width="260" height="6" fill="#F25022"/>
-    <text x="24" y="50" fill="#B33816" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" letter-spacing="1.2">KNOWLEDGE LOSS</text>
-    <text x="24" y="120" fill="#F25022" font-size="56" font-weight="300" letter-spacing="-2">Who?</text>
-    <text x="24" y="155" fill="#737373" font-family="JetBrains Mono, monospace" font-size="12" letter-spacing="1.2">VERIFY OWNERSHIP</text>
-    <text x="24" y="195" fill="#3A3A3A" font-size="14">Find an accountable reviewer.</text>
-    <text x="24" y="216" fill="#3A3A3A" font-size="14">Do not invent historical intent.</text>
+    <text x="24" y="50" fill="#B33816" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" letter-spacing="1.2">PERDA DE CONHECIMENTO</text>
+    <text x="24" y="120" fill="#F25022" font-size="56" font-weight="300" letter-spacing="-2">Quem?</text>
+    <text x="24" y="155" fill="#737373" font-family="JetBrains Mono, monospace" font-size="12" letter-spacing="1.2">VERIFIQUE A RESPONSABILIDADE</text>
+    <text x="24" y="195" fill="#3A3A3A" font-size="14">Encontre um revisor responsável.</text>
+    <text x="24" y="216" fill="#3A3A3A" font-size="14">Não invente a intenção histórica.</text>
   </g>
 
   <g transform="translate(620, 200)">
     <rect width="260" height="240" fill="#FFFFFF" stroke="#CECEC7" stroke-width="1"/>
     <rect x="0" y="0" width="260" height="6" fill="#F25022"/>
-    <text x="24" y="50" fill="#B33816" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" letter-spacing="1.2">TEST COVERAGE</text>
-    <text x="24" y="120" fill="#F25022" font-size="56" font-weight="300" letter-spacing="-2">Tests</text>
-    <text x="24" y="155" fill="#737373" font-family="JetBrains Mono, monospace" font-size="12" letter-spacing="1.2">ESTABLISH EVIDENCE</text>
-    <text x="24" y="195" fill="#3A3A3A" font-size="15">Check behavior, not claims.</text>
-    <text x="24" y="216" fill="#3A3A3A" font-size="15">Source reading is not</text>
-    <text x="24" y="237" fill="#3A3A3A" font-size="15">runtime verification.</text>
+    <text x="24" y="50" fill="#B33816" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" letter-spacing="1.2">COBERTURA DE TESTES</text>
+    <text x="24" y="120" fill="#F25022" font-size="56" font-weight="300" letter-spacing="-2">Testes</text>
+    <text x="24" y="155" fill="#737373" font-family="JetBrains Mono, monospace" font-size="12" letter-spacing="1.2">ESTABELEÇA EVIDÊNCIAS</text>
+    <text x="24" y="195" fill="#3A3A3A" font-size="15">Verifique o comportamento, não alegações.</text>
+    <text x="24" y="216" fill="#3A3A3A" font-size="15">Ler o código-fonte não é</text>
+    <text x="24" y="237" fill="#3A3A3A" font-size="15">verificar o runtime.</text>
   </g>
 
   <g transform="translate(900, 200)">
     <rect width="240" height="240" fill="#FFFFFF" stroke="#CECEC7" stroke-width="1"/>
     <rect x="0" y="0" width="240" height="6" fill="#F25022"/>
-    <text x="24" y="50" fill="#B33816" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" letter-spacing="1.2">VELOCITY</text>
-    <text x="24" y="120" fill="#F25022" font-size="56" font-weight="300" letter-spacing="-2">Pace</text>
-    <text x="24" y="155" fill="#737373" font-family="JetBrains Mono, monospace" font-size="12" letter-spacing="1.2">MEASURE DELIVERY</text>
-    <text x="24" y="195" fill="#3A3A3A" font-size="14">Choose a bounded increment.</text>
-    <text x="24" y="216" fill="#3A3A3A" font-size="14">Keep time and blockers honest.</text>
+    <text x="24" y="50" fill="#B33816" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" letter-spacing="1.2">VELOCIDADE</text>
+    <text x="24" y="120" fill="#F25022" font-size="56" font-weight="300" letter-spacing="-2">Ritmo</text>
+    <text x="24" y="155" fill="#737373" font-family="JetBrains Mono, monospace" font-size="12" letter-spacing="1.2">MEÇA A ENTREGA</text>
+    <text x="24" y="195" fill="#3A3A3A" font-size="14">Escolha um incremento delimitado.</text>
+    <text x="24" y="216" fill="#3A3A3A" font-size="14">Registre tempo e bloqueios com precisão.</text>
   </g>
 </svg>

@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" font-family="Inter, system-ui, sans-serif">
   <rect width="1200" height="560" fill="#F7F7F5"/>
 
-  <text x="60" y="60" fill="#737373" font-family="JetBrains Mono, monospace" font-size="16" font-weight="500" letter-spacing="1.9">DAY 2 · SELF-CHECKPOINTS</text>
-  <text x="60" y="110" fill="#1A1A1A" font-size="42" font-weight="500" letter-spacing="-0.8">The Three Checkpoints: C1, C2, C3</text>
-  <text x="60" y="148" fill="#737373" font-size="20">Self-verification at each agent switch. C3 is the submission PR.</text>
+  <text x="60" y="60" fill="#737373" font-family="JetBrains Mono, monospace" font-size="16" font-weight="500" letter-spacing="1.9">DIA 2 · AUTOVERIFICAÇÕES</text>
+  <text x="60" y="110" fill="#1A1A1A" font-size="42" font-weight="500" letter-spacing="-0.8">Os três checkpoints: C1, C2, C3</text>
+  <text x="60" y="148" fill="#737373" font-size="20">Autoverificação a cada troca de agente. C3 é o PR de submissão.</text>
 
   <!-- 3 stage cards plus judge validation -->
   <!-- Card width 220, x at 60, 350, 640, 920 -->
@@ -12,49 +12,49 @@
   <g transform="translate(60, 220)">
     <rect width="220" height="220" fill="#FFFFFF" stroke="#E5E5E0" stroke-width="1"/>
     <rect x="0" y="0" width="220" height="6" fill="#F25022"/>
-    <text x="20" y="44" fill="#B33816" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" letter-spacing="1.2">STAGE 01 · ARCHAEOLOGY</text>
+    <text x="20" y="44" fill="#B33816" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" letter-spacing="1.2">ETAPA 01 · ARQUEOLOGIA</text>
     <text x="20" y="78" fill="#737373" font-family="JetBrains Mono, monospace" font-size="10">14:00 – 14:50</text>
-    <text x="20" y="118" fill="#1A1A1A" font-size="18" font-weight="500">One participant</text>
+    <text x="20" y="118" fill="#1A1A1A" font-size="18" font-weight="500">Um participante</text>
     <text x="20" y="138" fill="#1A1A1A" font-size="18" font-weight="500">@archaeologist</text>
-    <text x="20" y="170" fill="#737373" font-size="13">Reads assigned legacy.</text>
-    <text x="20" y="188" fill="#737373" font-size="13">Rules and data evidence.</text>
-    <text x="20" y="206" fill="#737373" font-size="13">@dba for data discovery.</text>
+    <text x="20" y="170" fill="#737373" font-size="13">Lê o legado atribuído.</text>
+    <text x="20" y="188" fill="#737373" font-size="13">Regras e evidências de dados.</text>
+    <text x="20" y="206" fill="#737373" font-size="13">@dba para descoberta de dados.</text>
   </g>
 
   <g transform="translate(350, 220)">
     <rect width="220" height="220" fill="#FFFFFF" stroke="#E5E5E0" stroke-width="1"/>
     <rect x="0" y="0" width="220" height="6" fill="#FFB900"/>
-    <text x="20" y="44" fill="#B88500" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" letter-spacing="1.2">STAGE 02 · MODERN SPEC</text>
+    <text x="20" y="44" fill="#B88500" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" letter-spacing="1.2">ETAPA 02 · ESPECIFICAÇÃO MODERNA</text>
     <text x="20" y="78" fill="#737373" font-family="JetBrains Mono, monospace" font-size="12" letter-spacing="0.5">14:50 – 15:30</text>
     <text x="20" y="118" fill="#1A1A1A" font-size="18" font-weight="500">@architect</text>
     <text x="20" y="138" fill="#1A1A1A" font-size="18" font-weight="500">EARS + ADRs + design</text>
-    <text x="20" y="170" fill="#737373" font-size="13">Source-backed REQ-IDs.</text>
-    <text x="20" y="188" fill="#737373" font-size="13">DBA: migration design.</text>
-    <text x="20" y="206" fill="#737373" font-size="13">QA: reconciliation tests.</text>
+    <text x="20" y="170" fill="#737373" font-size="13">REQ-IDs respaldados pela fonte.</text>
+    <text x="20" y="188" fill="#737373" font-size="13">DBA: projeto de migração.</text>
+    <text x="20" y="206" fill="#737373" font-size="13">QA: testes de reconciliação.</text>
   </g>
 
   <g transform="translate(640, 220)">
     <rect width="220" height="220" fill="#FFFFFF" stroke="#E5E5E0" stroke-width="1"/>
     <rect x="0" y="0" width="220" height="6" fill="#7FBA00"/>
-    <text x="20" y="44" fill="#5A8500" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" letter-spacing="1.2">STAGE 03 · BUILD</text>
+    <text x="20" y="44" fill="#5A8500" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" letter-spacing="1.2">ETAPA 03 · CONSTRUÇÃO</text>
     <text x="20" y="78" fill="#737373" font-family="JetBrains Mono, monospace" font-size="12" letter-spacing="0.5">15:30 – 17:10</text>
     <text x="20" y="118" fill="#1A1A1A" font-size="18" font-weight="500">@builder + @dba</text>
-    <text x="20" y="138" fill="#1A1A1A" font-size="18" font-weight="500">implement</text>
-    <text x="20" y="170" fill="#737373" font-size="13">Traceable implementation.</text>
-    <text x="20" y="188" fill="#737373" font-size="13">DBA: load PostgreSQL.</text>
-    <text x="20" y="206" fill="#737373" font-size="13">QA: reconcile and query.</text>
+    <text x="20" y="138" fill="#1A1A1A" font-size="18" font-weight="500">implementar</text>
+    <text x="20" y="170" fill="#737373" font-size="13">Implementação rastreável.</text>
+    <text x="20" y="188" fill="#737373" font-size="13">DBA: carregar o PostgreSQL.</text>
+    <text x="20" y="206" fill="#737373" font-size="13">QA: reconciliar e consultar.</text>
   </g>
 
   <g transform="translate(920, 220)">
     <rect width="220" height="220" fill="#FFFFFF" stroke="#E5E5E0" stroke-width="1"/>
     <rect x="0" y="0" width="220" height="6" fill="#1A1A1A"/>
-    <text x="20" y="44" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" letter-spacing="1.2">JUDGE VALIDATION</text>
+    <text x="20" y="44" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" letter-spacing="1.2">VALIDAÇÃO DO JUIZ</text>
     <text x="20" y="78" fill="#737373" font-family="JetBrains Mono, monospace" font-size="12" letter-spacing="0.5">17:10 – 17:40</text>
-    <text x="20" y="118" fill="#1A1A1A" font-size="18" font-weight="500">17:10 deadline</text>
+    <text x="20" y="118" fill="#1A1A1A" font-size="18" font-weight="500">Prazo: 17:10</text>
     <text x="20" y="138" fill="#1A1A1A" font-size="18" font-weight="500">PR impl/* → develop</text>
-    <text x="20" y="170" fill="#737373" font-size="13">Judge checks CI green.</text>
-    <text x="20" y="188" fill="#737373" font-size="13">Data reconciliation evidence.</text>
-    <text x="20" y="206" fill="#737373" font-size="13">Listing, search, detail pass.</text>
+    <text x="20" y="170" fill="#737373" font-size="13">O juiz verifica a CI verde.</text>
+    <text x="20" y="188" fill="#737373" font-size="13">Evidências de reconciliação de dados.</text>
+    <text x="20" y="206" fill="#737373" font-size="13">Listagem, busca e detalhes aprovados.</text>
   </g>
 
   <!-- Self-checkpoint labels between cards (centered) -->
@@ -62,19 +62,19 @@
   <g transform="translate(280, 322)">
     <line x1="0" y1="0" x2="70" y2="0" stroke="#1A1A1A" stroke-width="2" marker-end="url(#arrowBlack)"/>
     <text x="35" y="-12" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="12" font-weight="600" letter-spacing="0.5" text-anchor="middle">C1</text>
-    <text x="35" y="22" fill="#737373" font-size="11" text-anchor="middle">rules → spec</text>
+    <text x="35" y="22" fill="#737373" font-size="11" text-anchor="middle">regras → spec</text>
   </g>
 
   <g transform="translate(570, 322)">
     <line x1="0" y1="0" x2="70" y2="0" stroke="#1A1A1A" stroke-width="2" marker-end="url(#arrowBlack)"/>
     <text x="35" y="-12" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="12" font-weight="600" letter-spacing="0.5" text-anchor="middle">C2</text>
-    <text x="35" y="22" fill="#737373" font-size="11" text-anchor="middle">spec → code</text>
+    <text x="35" y="22" fill="#737373" font-size="11" text-anchor="middle">spec → código</text>
   </g>
 
   <g transform="translate(860, 322)">
     <line x1="0" y1="0" x2="60" y2="0" stroke="#1A1A1A" stroke-width="2" marker-end="url(#arrowBlack)"/>
     <text x="30" y="-12" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="12" font-weight="600" letter-spacing="0.5" text-anchor="middle">C3</text>
-    <text x="30" y="22" fill="#737373" font-size="11" text-anchor="middle">submission PR</text>
+    <text x="30" y="22" fill="#737373" font-size="11" text-anchor="middle">PR de submissão</text>
   </g>
 
   <defs>
@@ -86,7 +86,7 @@
   <!-- Bottom rule callouts -->
   <g transform="translate(60, 480)">
     <rect width="1080" height="60" fill="#FFFFFF" stroke="#E5E5E0" stroke-width="1"/>
-    <text x="20" y="28" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" letter-spacing="1.2">CHECKPOINT RULES</text>
-    <text x="20" y="48" fill="#737373" font-size="12">Self-check artifacts · Fix gaps before switching agents · C3 opens the PR · Judge validation decides winners.</text>
+    <text x="20" y="28" fill="#1A1A1A" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" letter-spacing="1.2">REGRAS DOS CHECKPOINTS</text>
+    <text x="20" y="48" fill="#737373" font-size="12">Autoverifique os artefatos · Corrija lacunas antes de trocar de agente · C3 abre o PR · A validação do juiz define os vencedores.</text>
   </g>
 </svg>

@@ -1,5 +1,5 @@
 name: 📋 Specification Request
-description: Propose a new feature specification (Stage 2 — Spec)
+description: Proponha uma nova especificação de funcionalidade (Etapa 2 — Spec)
 title: "[SPEC] "
 labels: [ "spec", "stage-2" ]
 projects: []
@@ -8,14 +8,14 @@ body:
   - type: markdown
     attributes:
       value: |
-        > Use this template when you are starting a new spec in `.spec/<NNN>-<feature>/`.
-        > The Requirements Engineer or Product Owner typically opens this issue.
+        > Use este modelo ao iniciar uma nova especificação em `.spec/<NNN>-<feature>/`.
+        > Em geral, Requirements Engineer ou Product Owner abre esta issue.
 
   - type: input
     id: feature-id
     attributes:
-      label: Feature ID
-      description: Three-digit number — must match the folder name in `.spec/`
+      label: ID da funcionalidade
+      description: Número de três dígitos — deve corresponder ao nome da pasta em `.spec/`
       placeholder: "003"
     validations:
       required: true
@@ -23,7 +23,7 @@ body:
   - type: input
     id: feature-name
     attributes:
-      label: Feature name (kebab-case)
+      label: Nome da funcionalidade (kebab-case)
       placeholder: "<feature-name>"
     validations:
       required: true
@@ -31,18 +31,18 @@ body:
   - type: textarea
     id: business-goal
     attributes:
-      label: Business goal
-      description: What outcome does this feature enable? Tie to a SIFAP business rule
-        when possible.
-      placeholder: "<describe the outcome identified by the team>"
+      label: Objetivo de negócio
+      description: Qual resultado esta funcionalidade viabiliza? Relacione-o a uma regra de negócio do SIFAP
+        quando possível.
+      placeholder: "<descreva o resultado identificado pela equipe>"
     validations:
       required: true
 
   - type: textarea
     id: ears-requirements
     attributes:
-      label: Initial EARS requirements (draft)
-      description: Use the 6 EARS patterns. The Requirements Engineer will refine these.
+      label: Requisitos EARS iniciais (rascunho)
+      description: Use os 6 padrões EARS. Requirements Engineer refinará estes requisitos.
       value: |
         - REQ-XXX-001 (Ubiquitous): The system shall ...
         - REQ-XXX-002 (Event-driven): When ..., the system shall ...
@@ -53,8 +53,8 @@ body:
   - type: textarea
     id: source-legacy
     attributes:
-      label: Legacy traceability (source_legacy)
-      description: Every REQ-ID must cite a Natural .NSN, an Adabas .ddm, or a justified [GREENFIELD] source.
+      label: Rastreabilidade legada (source_legacy)
+      description: Cada REQ-ID deve citar um .NSN Natural, um .ddm Adabas ou uma fonte [GREENFIELD] justificada.
       value: |
         source_legacy: 01-archaeology/legacy-sifap/natural-programs/<FILE>.NSN#L<start>-L<end>
         # or: source_legacy: "[GREENFIELD] <one-line justification>"
@@ -64,19 +64,19 @@ body:
   - type: textarea
     id: acceptance-criteria
     attributes:
-      label: Acceptance criteria
-      description: How will you verify the spec is complete?
+      label: Critérios de aceitação
+      description: Como você verificará se a especificação está completa?
       placeholder: |
-        - [ ] All requirements use a valid EARS pattern
-        - [ ] Each requirement is testable
-        - [ ] Product Owner has signed off on scope
+        - [ ] Todos os requisitos usam um padrão EARS válido
+        - [ ] Cada requisito pode ser testado
+        - [ ] Product Owner aprovou o escopo
     validations:
       required: true
 
   - type: dropdown
     id: lead-persona
     attributes:
-      label: Lead persona
+      label: Persona líder
       options:
         - Requirements Engineer
         - Product Owner
