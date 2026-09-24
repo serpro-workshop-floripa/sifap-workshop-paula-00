@@ -30,7 +30,7 @@ members are examined.
 - `scope` - source paths the participant authorizes for guided reading.
 - Team, reader, and DBA identities, or unfilled identity fields.
 - Observations and questions the readers have already recorded.
-- Measured source-data evidence, if available; otherwise retain a readiness blocker and route to `/migration phase=readiness`.
+- Measured source-data evidence, if available; otherwise retain a readiness blocker and route it to `@dba` with the [readiness template](../../docs/data-migration/source-readiness.template.md).
 
 ## What I Will Do
 

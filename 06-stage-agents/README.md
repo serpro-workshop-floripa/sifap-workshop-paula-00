@@ -58,7 +58,7 @@ flowchart LR
     classDef step fill:#F5F5F5,stroke:#171717,color:#171717
     classDef result fill:#FFFFFF,stroke:#171717,color:#171717,stroke-width:2px
 
-    A["Stage 1<br/>@archaeologist<br/>11:00–12:00 + 13:30–14:00"]:::step --> B["Stage 2<br/>@architect<br/>14:50–15:30"]:::step
+    A["Stage 1<br/>@archaeologist<br/>14:00–14:50"]:::step --> B["Stage 2<br/>@architect<br/>14:50–15:30"]:::step
     B --> C["Stage 3<br/>@builder<br/>15:30–17:10"]:::step
     C --> D["Stage 4<br/>@evolution<br/>not used in the individual challenge"]:::step
     D --> E["17:00–17:30<br/>Evidence review<br/>Accepted or blocked"]:::result
@@ -66,7 +66,7 @@ flowchart LR
 
 | Stage | Time | Agent | Agent approach | Purpose |
 |---|---|---|---|---|
-| Stage 1 — Archaeology | 11:00–12:00 + 13:30–14:00 | [@archaeologist](01-archaeologist/README.md) | Investigative | Read the legacy system, record evidence, and scope a feature |
+| Stage 1 — Archaeology | 14:00–14:50 | [@archaeologist](01-archaeologist/README.md) | Investigative | Read the legacy system, record evidence, and scope a feature |
 | Stage 2 — Specification | 14:50–15:30 | [@architect](02-architect/README.md) | Analytical | Create `spec.md`, `plan.md`, and `tasks.md` with scope decisions |
 | Stage 3 — Implementation | 15:30–17:10 | [@builder](03-builder/README.md) | Constructive | Build traceable Java/Next.js code, tests, migrations, and endpoints |
 | Stage 4 — Evolution | not used in the individual challenge | [@evolution](04-evolution/README.md) | Operational | Delegate a small Issue and record the review outcome |

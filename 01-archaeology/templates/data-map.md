@@ -1,76 +1,76 @@
-# Template: Source Data Map
+# Template: Mapa de dados de origem
 
-> **Path:** [Team Kit](../../README.md) > [Stage 1](../README.md) > **Templates** > **Data map**
+> **Caminho:** [Kit da Equipe](../../README.md) > [Etapa 1](../README.md) > **Templates** > **Mapa de dados**
 
-**DBA-owned record of the data definitions and population the team actually investigates in Stage 1.**
+**Registro sob responsabilidade do DBA das definições e da população de dados que a equipe realmente investiga na Etapa 1.**
 
 > [!NOTE]
-> Use `/map-source-data` with `@archaeologist` and the DBA after guided source reading.
-> Write findings to `01-archaeology/data-map.md`, not into this template.
-> No field mapping, count, interpretation, or approval is supplied here.
+> Use `/map-source-data` com `@archaeologist` e o DBA após a leitura orientada da origem.
+> Registre os achados em `01-archaeology/data-map.md`, não neste template.
+> Nenhum mapeamento de campo, contagem, interpretação ou aprovação é fornecido aqui.
 
-| Field | Team evidence |
+| Campo | Evidência da equipe |
 |---|---|
-| Participant / DBA-QA review evidence / date | <!-- fill in --> |
-| Source version and authorized reading scope | <!-- fill in --> |
-| DDM/FDT coverage and missing definitions | <!-- fill in --> |
-| Population evidence reference | <!-- fill in: measured source or BLOCKED; not a seed estimate --> |
-| Status | <!-- fill in: draft / awaiting evidence / ready for review --> |
+| Participante / evidência de revisão DBA-QA / data | <!-- preencher --> |
+| Versão da origem e escopo de leitura autorizado | <!-- preencher --> |
+| Cobertura de DDM/FDT e definições ausentes | <!-- preencher --> |
+| Referência de evidência da população | <!-- preencher: origem medida ou BLOQUEADO; não uma estimativa da seed --> |
+| Status | <!-- preencher: rascunho / aguardando evidências / pronto para revisão --> |
 
-## Source files and identifiers
+## Arquivos e identificadores de origem
 
-| DDM / FDT | Observed file binding | Declared keys / descriptors | Code access evidence | Open question |
+| DDM / FDT | Vínculo de arquivo observado | Chaves / descritores declarados | Evidência de acesso pelo código | Questão em aberto |
 |---|---|---|---|---|
-| <!-- fill in --> | <!-- fill in --> | <!-- fill in --> | <!-- fill in: actual path:line --> | <!-- fill in --> |
+| <!-- preencher --> | <!-- preencher --> | <!-- preencher --> | <!-- preencher: caminho:linha real --> | <!-- preencher --> |
 
-## Field-level evidence
+## Evidências no nível de campo
 
-Duplicate rows for the fields actually examined. Keep logical format, physical
-storage, and program declarations separate. Do not infer SQL precision from an
-ambiguous packed length or treat null suppression as a required-value rule.
+Duplique linhas para os campos realmente examinados. Mantenha separados o formato lógico,
+o armazenamento físico e as declarações dos programas. Não infira precisão SQL a partir
+de um tamanho packed ambíguo nem trate a supressão de nulos como regra de valor obrigatório.
 
-| Source field / logical name | Format / length / scale as declared | Storage / descriptor markers | Group / occurrence bounds | Observed meaning and evidence | Uncertainty |
+| Campo de origem / nome lógico | Formato / tamanho / escala declarados | Marcadores de armazenamento / descritor | Limites de grupo / ocorrência | Significado observado e evidência | Incerteza |
 |---|---|---|---|---|---|
-| <!-- fill in --> | <!-- fill in --> | <!-- fill in --> | <!-- fill in --> | <!-- fill in: source path:line --> | <!-- fill in --> |
+| <!-- preencher --> | <!-- preencher --> | <!-- preencher --> | <!-- preencher --> | <!-- preencher: caminho:linha da origem --> | <!-- preencher --> |
 
-## Relationships and access
+## Relacionamentos e acesso
 
-| Source relationship | Reader / writer evidence | Declared or observed? | Integrity not established | Owner |
+| Relacionamento de origem | Evidência de leitura / gravação | Declarado ou observado? | Integridade não estabelecida | Responsável |
 |---|---|---|---|---|
-| <!-- fill in --> | <!-- fill in: path:line --> | <!-- fill in --> | <!-- fill in --> | <!-- fill in --> |
+| <!-- preencher --> | <!-- preencher: caminho:linha --> | <!-- preencher --> | <!-- preencher --> | <!-- preencher --> |
 
-## Population and quality
+## População e qualidade
 
-Use the [source readiness template](../../docs/data-migration/source-readiness.template.md)
-for authorization, measured counts, snapshot/extraction capability, and restricted
-evidence references. Never copy beneficiary records into this document.
+Use o [template de prontidão da origem](../../docs/data-migration/source-readiness.template.md)
+para autorização, contagens medidas, capacidade de snapshot/extração e referências
+restritas de evidências. Nunca copie registros de beneficiários para este documento.
 
-| Source population | Measurement method / time | Count / coverage | Quality observation | Evidence reference / blocker |
+| População de origem | Método / horário da medição | Contagem / cobertura | Observação de qualidade | Referência de evidência / bloqueio |
 |---|---|---|---|---|
-| <!-- fill in --> | <!-- fill in --> | <!-- fill in --> | <!-- fill in --> | <!-- fill in --> |
+| <!-- preencher --> | <!-- preencher --> | <!-- preencher --> | <!-- preencher --> | <!-- preencher --> |
 
-## Cross-source questions
+## Questões entre fontes
 
-| Question | Code evidence | DDM/FDT or historical evidence | Impact / owner | Mystery record reference |
+| Questão | Evidência no código | Evidência DDM/FDT ou histórica | Impacto / responsável | Referência no registro de mistérios |
 |---|---|---|---|---|
-| <!-- fill in: question, not answer --> | <!-- fill in --> | <!-- fill in --> | <!-- fill in --> | <!-- fill in: reader-assigned ID or BONUS --> |
+| <!-- preencher: questão, não resposta --> | <!-- preencher --> | <!-- preencher --> | <!-- preencher --> | <!-- preencher: ID atribuído pelo leitor ou BONUS --> |
 
-## C1 self-check for architecture
+## Autoavaliação C1 para Arquitetura
 
-| Evidence or blocker | Effect on later migration planning | Responsible role | Self-check result |
+| Evidência ou bloqueio | Efeito no planejamento posterior da migração | Papel responsável | Resultado da autoavaliação |
 |---|---|---|---|
-| <!-- fill in --> | <!-- fill in: no approved target design here --> | <!-- fill in --> | <!-- fill in only after actual self-check --> |
+| <!-- preencher --> | <!-- preencher: nenhum projeto-alvo aprovado aqui --> | <!-- preencher --> | <!-- preencher somente após a autoavaliação real --> |
 
-## Completion checks
+## Verificações de conclusão
 
-- [ ] Every populated row cites evidence from actual reading or measurement.
-- [ ] Unread fields and missing physical definitions remain explicit.
-- [ ] Seed recipes, archived FDT statistics, and current population measurements are distinguished.
-- [ ] MU/PE occurrences, identifiers, numeric/date semantics, and data-quality gaps are recorded without silently choosing a resolution.
-- [ ] DBA and QA responsibilities were reviewed against evidence; no PostgreSQL model or C1 approval was fabricated.
+- [ ] Toda linha preenchida cita evidências de leitura ou medição real.
+- [ ] Campos não lidos e definições físicas ausentes permanecem explícitos.
+- [ ] Receitas de seed, estatísticas FDT arquivadas e medições atuais da população estão diferenciadas.
+- [ ] Ocorrências MU/PE, identificadores, semântica numérica/de datas e lacunas de qualidade de dados estão registrados sem escolher silenciosamente uma solução.
+- [ ] As responsabilidades de DBA e QA foram revisadas com base em evidências; nenhum modelo PostgreSQL ou aprovação C1 foi fabricado.
 
-## References
+## Referências
 
-- [Stage 1 guide](../GUIDE.md)
-- [Data migration lifecycle](../../docs/DATA-MIGRATION.md)
-- [Declaration dictionary template](program-data-dictionary.md)
+- [Guia da Etapa 1](../GUIDE.md)
+- [Ciclo de vida da migração de dados](../../docs/DATA-MIGRATION.md)
+- [Template de dicionário de declarações](program-data-dictionary.md)

@@ -72,8 +72,9 @@ or unverified comments.
 | [/catalog-mysteries](../prompts/stage-archaeologist-catalog-mysteries.prompt.md) | Record reader-identified questions without answering them |
 | [/discovery-report](../prompts/stage-archaeologist-discovery-report.prompt.md) | Consolidate actual evidence and unfilled C1 review fields |
 
-For source population and extraction readiness, hand off to
-`@dba` with `/migration phase=readiness`.
+For source population and extraction readiness, switch to `@dba` and record
+`docs/data-migration/source-readiness.md` from its
+[template](../../docs/data-migration/source-readiness.template.md).
 
 ## Stage 1 Definition of Done
 

@@ -98,8 +98,9 @@ Write the complete inventory to `01-archaeology/inventory.md` using the output f
 Initialize the reading ledger from its template without overwriting existing
 team evidence. Do not mark file enumeration as reading or human approval.
 Route field/declaration reading to `/map-source-data`, source population
-readiness to `@dba` with `/migration phase=readiness`, and candidate rules to
-`/extract-business-rules`.
+readiness to `@dba` (recorded from the
+[readiness template](../../docs/data-migration/source-readiness.template.md)),
+and candidate rules to `/extract-business-rules`.
 
 Do not open any file to read its contents. This prompt operates only on file names and folder structure. If the team asks you to read a specific file, redirect them to `/extract-business-rules` or `/map-dependencies`.
 

@@ -1,7 +1,7 @@
 ---
 
-title: "Template: Business Rules Catalog"
-description: "Table skeleton for business rules extracted through /extract-business-rules"
+title: "Template: Catálogo de regras de negócio"
+description: "Estrutura de tabela para regras de negócio extraídas por /extract-business-rules"
 author: "Paula Silva, AI-Native Software Engineer, Americas Global Black Belt at Microsoft"
 date: "2026-04-29"
 version: "1.0.0"
@@ -9,56 +9,56 @@ status: "approved"
 tags: ["template", "business-rules", "archaeology", "stage-1"]
 ---
 
-# Template: Business Rules Catalog
+# Template: Catálogo de regras de negócio
 
-> **Track:** [Team Kit](../../README.md) › [Stage 1](../README.md) › **Templates** › **business-rules-catalog**
+> **Trilha:** [Kit da Equipe](../../README.md) › [Etapa 1](../README.md) › **Templates** › **business-rules-catalog**
 
-**Table template for recording business rules extracted during Stage 1.**
+**Template de tabela para registrar regras de negócio extraídas durante a Etapa 1.**
 
 > [!NOTE]
-> **This file is a template.** Copy it to your team repository and complete it with real data. Do not edit the original.
+> **Este arquivo é um template.** Copie-o para o repositório da sua equipe e preencha-o com dados reais. Não edite o original.
 
 > [!TIP]
-> To complete it: open the `.NSN`, `.NSP`, or `.ddm` evidence needed for the fixed capability, search for conditions and validation rules, record the condition and line, and classify it as Confirmed, Inferred, or Mystery.
+> Para preenchê-lo: abra as evidências `.NSN`, `.NSP` ou `.ddm` necessárias à capacidade fixa, procure condições e regras de validação, registre a condição e a linha e classifique como Confirmada, Inferida ou Mistério.
 
-**Participant:** <!-- placeholder -->
+**Participante:** <!-- espaço reservado -->
 
 ---
 
-## Rules from `<!-- placeholder: file-name.NSN -->`
+## Regras de `<!-- espaço reservado: file-name.NSN -->`
 
-| # | Rule Statement | EARS Candidate | Source Program | Classification | Notes |
+| # | Declaração da regra | Candidata EARS | Programa de origem | Classificação | Observações |
 |---|---|---|---|---|---|
-| 1 | <!-- placeholder --> | <!-- placeholder: EARS pattern --> | <!-- placeholder: file:line --> | <!-- placeholder: Confirmed/Inferred/Mystery --> | <!-- placeholder --> |
+| 1 | <!-- espaço reservado --> | <!-- espaço reservado: padrão EARS --> | <!-- espaço reservado: arquivo:linha --> | <!-- espaço reservado: Confirmada/Inferida/Mistério --> | <!-- espaço reservado --> |
 
 > [!NOTE]
-> Duplicate this section for each source member read for the fixed capability.
+> Duplique esta seção para cada membro de origem lido para a capacidade fixa.
 
 ---
 
-## Summary
+## Resumo
 
-| Classification | Count |
+| Classificação | Contagem |
 |---|---|
-| Confirmed | <!-- placeholder --> |
-| Inferred | <!-- placeholder --> |
-| Mystery | <!-- placeholder --> |
+| Confirmada | <!-- espaço reservado --> |
+| Inferida | <!-- espaço reservado --> |
+| Mistério | <!-- espaço reservado --> |
 
 ---
 
-## Definition of done
+## Definição de pronto
 
-- [ ] Every relevant conditional block in the read source members was examined.
-- [ ] Every rule cites `file:line`.
-- [ ] `Confirmed` means evidence-backed human review, not a keyword match; EARS candidates are pattern labels, not formal requirements.
-- [ ] Open questions are recorded as Mystery in `mysteries-found.md`.
+- [ ] Todo bloco condicional relevante nos membros de origem lidos foi examinado.
+- [ ] Toda regra cita `arquivo:linha`.
+- [ ] `Confirmada` significa revisão humana respaldada por evidências, não correspondência de palavra-chave; candidatas EARS são rótulos de padrões, não requisitos formais.
+- [ ] Questões em aberto são registradas como Mistério em `mysteries-found.md`.
 
 ---
 
-### Continue reading
+### Continue lendo
 
-| Previous | Next |
+| Anterior | Próximo |
 |---|---|
-| [Stage 1 GUIDE](../GUIDE.md)<br/><sub>Step-by-step schedule.</sub> | [Team file](../business-rules-catalog.md)<br/><sub>Where you complete it.</sub> |
+| [GUIA da Etapa 1](../GUIDE.md)<br/><sub>Cronograma passo a passo.</sub> | [Arquivo da equipe](../business-rules-catalog.md)<br/><sub>Onde você o preenche.</sub> |
 
-<sub>[Back to the kit index](../../README.md)</sub>
+<sub>[Voltar ao índice do kit](../../README.md)</sub>

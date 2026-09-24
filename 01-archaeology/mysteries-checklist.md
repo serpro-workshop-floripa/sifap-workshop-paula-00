@@ -1,110 +1,110 @@
-# Open-question checklist: Stage 1
+# Checklist de questões em aberto: Etapa 1
 
-> **Path:** [Team Kit](../README.md) › [Stage 1](README.md) › **Open-question checklist**
+> **Caminho:** [Kit da Equipe](../README.md) › [Etapa 1](README.md) › **Checklist de questões em aberto**
 
-**Trace uncertainties before Stage 2.** This checklist ensures that every open question is recorded with evidence, a hypothesis marked as unconfirmed, and an identified owner.
+**Rastreie as incertezas antes da Etapa 2.** Este checklist garante que toda questão em aberto seja registrada com evidências, uma hipótese marcada como não confirmada e um responsável identificado.
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| **Target audience** | Individual participant, complete during Stage 1 |
-| **Prerequisites** | Read the programs and DDMs needed for the fixed target capability |
-| **Stage** | Stage 1: Archaeology |
-| **Expected outcome** | A list of unanswered questions with traceability and an owner |
+| **Público-alvo** | Participante individual; preencher durante a Etapa 1 |
+| **Pré-requisitos** | Ler os programas e DDMs necessários à capacidade-alvo fixa |
+| **Etapa** | Etapa 1: Arqueologia |
+| **Resultado esperado** | Uma lista de questões sem resposta, com rastreabilidade e responsável |
 
 > [!IMPORTANT]
-> **Traceability gate.** A question remains open until it receives explicit human validation supported by evidence. It cannot become an answer, rule, or requirement without that validation.
+> **Gate de rastreabilidade.** Uma questão permanece em aberto até receber validação humana explícita sustentada por evidências. Ela não pode se tornar resposta, regra ou requisito sem essa validação.
 
 ---
 
-## The denominator is 20
+## O denominador é 20
 
-SIFAP, the Payment Inspection and Administration System, contains **20 canonical open-question slots**: business rules, contradictions, and decisions that were never documented and exist only in the code. They are grouped by investigation area and difficulty so an individual participant can use the IDs relevant to the fixed consultation capability.
+O SIFAP, Payment Inspection and Administration System, contém **20 espaços canônicos de questões em aberto**: regras de negócio, contradições e decisões que nunca foram documentadas e existem somente no código. Eles estão agrupados por área de investigação e dificuldade para que um participante individual possa usar os IDs relevantes à capacidade fixa de consulta.
 
-| Rule | Value |
+| Regra | Valor |
 |---|---|
-| Total canonical open questions for the group | **20** (`SIFAP-M-01` … `SIFAP-M-20`) |
-| Per investigation area | **4** |
-| Capability scope | IDs relevant to consulted beneficiary list/search/detail and validation rules |
-| Complete challenge record | Relevant IDs recorded, with blockers explicit for unread areas |
+| Total de questões em aberto canônicas do grupo | **20** (`SIFAP-M-01` … `SIFAP-M-20`) |
+| Por área de investigação | **4** |
+| Escopo da capacidade | IDs relevantes à lista/pesquisa/detalhe de beneficiários consultados e às regras de validação |
+| Registro completo do desafio | IDs relevantes registrados, com bloqueios explícitos para áreas não lidas |
 
 > [!NOTE]
-> **Why use a fixed number.** Without a denominator, participants report different quantities after reading the same material, depending on aggregation granularity and how many artifacts they open. The denominator **does not change**: findings outside the list are **bonuses** recognized in the debrief, but they do not replace a missing canonical open question, and facilitators do not create canonical IDs during the workshop.
+> **Por que usar um número fixo.** Sem um denominador, participantes relatam quantidades diferentes após ler o mesmo material, dependendo da granularidade de agregação e de quantos artefatos abrem. O denominador **não muda**: achados fora da lista são **bônus** reconhecidos no debriefing, mas não substituem uma questão canônica ausente, e os facilitadores não criam IDs canônicos durante o workshop.
 
-Eight of the 20 are **two-sided**: they count only with both pieces of evidence (code **and** DDM, or code **and** legacy document). Comparing sources is required.
+Oito das 20 são **bilaterais**: contam somente com ambas as evidências (código **e** DDM, ou código **e** documento legado). A comparação das fontes é obrigatória.
 
-### Where to look by investigation area
+### Onde procurar por área de investigação
 
-The labels indicate the open question's **area**, never the finding.
+Os rótulos indicam a **área** da questão em aberto, nunca o achado.
 
-| Area | Domain | IDs | Programs |
+| Área | Domínio | IDs | Programas |
 |---|---|---|---|
-| Registration | Registration | `M-01` … `M-04` | `CADBENEF`, `CADDEPEN`, `CADPROG` |
+| Cadastro | Cadastro | `M-01` … `M-04` | `CADBENEF`, `CADDEPEN`, `CADPROG` |
 | Batch | Batch | `M-05` … `M-08` | `BATCHPGT`, `BATCHREL`, `BATCHCON` |
-| Calculation | Calculation | `M-09` … `M-12` | `CALCBENF`, `CALCCORR`, `CALCDSCT`\* |
-| Validation | Validation | `M-13` … `M-16` | `VALBENEF`, `VALDOCS`, `VALELEG` |
-| Queries and reports | Queries and reports | `M-17` … `M-20` | `CONSBENF`, `RELPGT`, `RELAUDIT` |
+| Cálculo | Cálculo | `M-09` … `M-12` | `CALCBENF`, `CALCCORR`, `CALCDSCT`\* |
+| Validação | Validação | `M-13` … `M-16` | `VALBENEF`, `VALDOCS`, `VALELEG` |
+| Consultas e relatórios | Consultas e relatórios | `M-17` … `M-20` | `CONSBENF`, `RELPGT`, `RELAUDIT` |
 
-\* `CALCDSCT.NSP` is supporting reading for calculation evidence. It contains no canonical open question, but it is worth asking why it exists.
+\* `CALCDSCT.NSP` é uma leitura de apoio para evidências de cálculo. Não contém nenhuma questão canônica em aberto, mas vale perguntar por que existe.
 
 > [!TIP]
-> **If you are stuck for more than 20 minutes, ask workshop support and record the blocker.** A hint does not cost points; remaining stuck takes you out of the exercise.
+> **Se você ficar bloqueado por mais de 20 minutos, peça apoio no workshop e registre o bloqueio.** Uma dica não custa pontos; permanecer bloqueado tira você do exercício.
 
 ---
 
-## For each open question
+## Para cada questão em aberto
 
-- [ ] The question is recorded without an answer or conclusion.
-- [ ] The evidence contains `path:line`.
-- [ ] The impact is recorded.
-- [ ] The hypothesis is explicitly marked as **unconfirmed**.
-- [ ] An accountable person or area is identified.
-- [ ] The status is recorded.
+- [ ] A questão está registrada sem resposta ou conclusão.
+- [ ] A evidência contém `caminho:linha`.
+- [ ] O impacto está registrado.
+- [ ] A hipótese está explicitamente marcada como **não confirmada**.
+- [ ] Uma pessoa ou área responsável está identificada.
+- [ ] O status está registrado.
 
 ---
 
-## Record structure
+## Estrutura do registro
 
-| Open question | Evidence (`path:line`) | Impact | Hypothesis (unconfirmed) | Accountable person/area | Status |
+| Questão em aberto | Evidência (`caminho:linha`) | Impacto | Hipótese (não confirmada) | Pessoa/área responsável | Status |
 |---|---|---|---|---|---|
-| <!-- fill in --> | <!-- fill in: path:line --> | <!-- fill in --> | <!-- fill in: unconfirmed --> | <!-- fill in --> | <!-- fill in: open / awaiting human validation / closed after human validation --> |
+| <!-- preencher --> | <!-- preencher: caminho:linha --> | <!-- preencher --> | <!-- preencher: não confirmada --> | <!-- preencher --> | <!-- preencher: aberta / aguardando validação humana / encerrada após validação humana --> |
 
 ---
 
-## Capability scorecard
+## Quadro de acompanhamento da capacidade
 
-Complete this table with the IDs relevant to the source members you read for the fixed capability.
+Preencha esta tabela com os IDs relevantes aos membros de origem que você leu para a capacidade fixa.
 
-| Canonical ID | Found | Recorded in `mysteries-found.md` |
+| ID canônico | Encontrado | Registrado em `mysteries-found.md` |
 |---|---|---|
 | `SIFAP-M-__` | [ ] | [ ] |
 | `SIFAP-M-__` | [ ] | [ ] |
 | `SIFAP-M-__` | [ ] | [ ] |
 | `SIFAP-M-__` | [ ] | [ ] |
 
-**Additional findings (bonus):** <!-- liste aqui; não mudam o denominador -->
+**Achados adicionais (bônus):** <!-- liste aqui; não mudam o denominador -->
 
 ---
 
-## Methods for finding open questions
+## Métodos para encontrar questões em aberto
 
-None of these tips reveals a finding. They are all reusable legacy-code reading techniques.
+Nenhuma destas dicas revela um achado. Todas são técnicas reutilizáveis de leitura de código legado.
 
-1. **Read comments before code.** In 29-year-old code, a comment is often the only place where someone tried to explain *why*. A comment with a name and date is especially valuable.
-2. **Read the program header.** Lines such as `* CHANGED: yyyy-mm-dd - NAME - reason` tell the system's story in chronological order.
-3. **Compare code with documentation.** When `legacy-docs/` and the code disagree, you have found something.
-4. **Compare code with the DDM.** Type, size, and value domain must agree between the program and `adabas-ddms/`, but they do not always agree.
-5. **Look for numeric literals.** Every unexplained number in a calculation raises questions: where did it come from, who decided it, and what breaks if it changes?
-6. **Ask, "Who writes to this field?"** Choose a DDM field and find every program that writes to it. Sometimes the answer is none.
-7. **Read commented-out code.** Disabled blocks reveal what the system once did and why it stopped.
-8. **Question `ESCAPE`, an `IF` without `ELSE`, and unconditional assignment.** Early exits and rules that always apply hide decisions that nobody recorded.
-9. **Cross-check the relevant programs and DDMs.** Several open questions appear only when you compare two files.
+1. **Leia os comentários antes do código.** Em um código de 29 anos, um comentário costuma ser o único lugar em que alguém tentou explicar o *porquê*. Um comentário com nome e data é especialmente valioso.
+2. **Leia o cabeçalho do programa.** Linhas como `* CHANGED: yyyy-mm-dd - NAME - reason` contam a história do sistema em ordem cronológica.
+3. **Compare o código com a documentação.** Quando `legacy-docs/` e o código divergem, você encontrou algo.
+4. **Compare o código com o DDM.** Tipo, tamanho e domínio de valores devem coincidir entre o programa e `adabas-ddms/`, mas nem sempre coincidem.
+5. **Procure literais numéricos.** Todo número sem explicação em um cálculo levanta questões: de onde veio, quem o decidiu e o que falha se ele mudar?
+6. **Pergunte: "Quem grava neste campo?"** Escolha um campo DDM e encontre todos os programas que gravam nele. Às vezes, a resposta é nenhum.
+7. **Leia código comentado.** Blocos desativados revelam o que o sistema fazia e por que parou.
+8. **Questione `ESCAPE`, um `IF` sem `ELSE` e atribuições incondicionais.** Saídas antecipadas e regras que sempre se aplicam ocultam decisões que ninguém registrou.
+9. **Faça referências cruzadas entre os programas e DDMs relevantes.** Várias questões em aberto aparecem somente quando dois arquivos são comparados.
 
 ---
 
-### Continue reading
+### Continue lendo
 
-| Previous | Next |
+| Anterior | Próximo |
 |---|---|
-| [Stage 1 guide](GUIDE.md)<br/><sub>Step-by-step schedule.</sub> | [Open-question register](mysteries-found.md)<br/><sub>Detailed register with evidence and an owner.</sub> |
+| [Guia da Etapa 1](GUIDE.md)<br/><sub>Cronograma passo a passo.</sub> | [Registro de questões em aberto](mysteries-found.md)<br/><sub>Registro detalhado com evidências e responsável.</sub> |
 
-<sub>[Back to the Team Kit index](../README.md)</sub>
+<sub>[Voltar ao índice do Kit da Equipe](../README.md)</sub>

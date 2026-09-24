@@ -1,84 +1,84 @@
-# Legacy Inventory — Team `<fill in>`
+# Inventário do legado — Equipe `<preencher>`
 
-> **Track:** [Team Kit](../README.md) › [Stage 1](README.md) › **Inventory**
+> **Trilha:** [Kit da Equipe](../README.md) › [Etapa 1](README.md) › **Inventário**
 
-**First Stage 1 artifact.** Scan the structure and count files without opening any program—use only file names and folder structure.
+**Primeiro artefato da Etapa 1.** Examine a estrutura e conte os arquivos sem abrir nenhum programa — use somente nomes de arquivos e a estrutura de diretórios.
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| **Target audience** | Individual participant doing the initial scan |
-| **Prerequisites** | Access to the `legacy-sifap/` directory |
-| **Stage** | Stage 1 — Archaeology, Step 1 |
-| **Expected outcome** | Accurate file counts, observed naming patterns, and a proposed reading scope |
+| **Público-alvo** | Participante individual realizando a varredura inicial |
+| **Pré-requisitos** | Acesso ao diretório `legacy-sifap/` |
+| **Etapa** | Etapa 1 — Arqueologia, Passo 1 |
+| **Resultado esperado** | Contagens precisas de arquivos, padrões de nomenclatura observados e uma proposta de escopo de leitura |
 
 > [!NOTE]
-> Build this inventory without opening any program. Work only from file names and folder structure. It will be revised as the team extracts rules, maps dependencies, and records mysteries.
+> Construa este inventário sem abrir nenhum programa. Trabalhe somente com nomes de arquivos e a estrutura de diretórios. Ele será revisado à medida que a equipe extrair regras, mapear dependências e registrar mistérios.
 
-**Date:** <!-- fill in: YYYY-MM-DD -->
-**Responsible participant:** <!-- fill in -->
-**Scanned path:** `01-archaeology/legacy-sifap/`
+**Data:** <!-- preencher: YYYY-MM-DD -->
+**Participante responsável:** <!-- preencher -->
+**Caminho examinado:** `01-archaeology/legacy-sifap/`
 
 ---
 
-## Folder structure
+## Estrutura de diretórios
 
 ```text
-<!-- fill in: directory tree for legacy-sifap/ -->
+<!-- preencher: árvore de diretórios de legacy-sifap/ -->
 ```
 
 ---
 
-## File count by type
+## Contagem de arquivos por tipo
 
-| Extension | Count | Likely purpose |
+| Extensão | Contagem | Finalidade provável |
 |---|---|---|
-| `.NSP` | <!-- fill in --> | Natural programs |
-| `.NSN` | <!-- fill in --> | Natural subprograms |
-| `.ddm` | <!-- fill in --> | Data Definition Modules (Adabas) |
-| `.md` / `.docx` | <!-- fill in --> | Historical documentation |
+| `.NSP` | <!-- preencher --> | Programas Natural |
+| `.NSN` | <!-- preencher --> | Subprogramas Natural |
+| `.ddm` | <!-- preencher --> | Data Definition Modules (Adabas) |
+| `.md` / `.docx` | <!-- preencher --> | Documentação histórica |
 
 ---
 
-## Naming convention patterns
+## Padrões de nomenclatura
 
-| Prefix | Count | Domain hypothesis |
+| Prefixo | Contagem | Hipótese de domínio |
 |---|---|---|
-| <!-- fill in --> | <!-- fill in --> | <!-- fill in --> |
-| <!-- fill in --> | <!-- fill in --> | <!-- fill in --> |
-| <!-- fill in --> | <!-- fill in --> | <!-- fill in --> |
+| <!-- preencher --> | <!-- preencher --> | <!-- preencher --> |
+| <!-- preencher --> | <!-- preencher --> | <!-- preencher --> |
+| <!-- preencher --> | <!-- preencher --> | <!-- preencher --> |
 
 ---
 
-## Unusual items (top 3)
+## Itens incomuns (3 principais)
 
-| # | File path | What makes it unusual | Suggested investigation |
+| # | Caminho do arquivo | O que o torna incomum | Investigação sugerida |
 |---|---|---|---|
-| 1 | <!-- fill in --> | <!-- fill in --> | <!-- fill in --> |
-| 2 | <!-- fill in --> | <!-- fill in --> | <!-- fill in --> |
-| 3 | <!-- fill in --> | <!-- fill in --> | <!-- fill in --> |
+| 1 | <!-- preencher --> | <!-- preencher --> | <!-- preencher --> |
+| 2 | <!-- preencher --> | <!-- preencher --> | <!-- preencher --> |
+| 3 | <!-- preencher --> | <!-- preencher --> | <!-- preencher --> |
 
 ---
 
-## Proposed reading order
+## Ordem de leitura proposta
 
-1. DDM files first—they reveal the data model before any logic.
-2. <!-- fill in: batch entry points -->
-3. <!-- fill in: supporting members; connectivity requires later source reading -->
-
----
-
-## Definition of done
-
-- [ ] The inventory exists with accurate counts.
-- [ ] Only observed naming patterns and structural anomalies are recorded.
-- [ ] The reading ledger is initialized without marking file enumeration as completed reading.
+1. Arquivos DDM primeiro — eles revelam o modelo de dados antes de qualquer lógica.
+2. <!-- preencher: pontos de entrada do batch -->
+3. <!-- preencher: membros de apoio; a conectividade exige leitura posterior da origem -->
 
 ---
 
-### Continue reading
+## Definição de pronto
 
-| Previous | Next |
+- [ ] O inventário existe com contagens precisas.
+- [ ] Somente padrões de nomenclatura observados e anomalias estruturais estão registrados.
+- [ ] O registro de leitura foi inicializado sem marcar a enumeração de arquivos como leitura concluída.
+
+---
+
+### Continue lendo
+
+| Anterior | Próximo |
 |---|---|
-| [Stage 1 GUIDE](GUIDE.md)<br/><sub>Step-by-step schedule.</sub> | [Rules Catalog](business-rules-catalog.md)<br/><sub>Step 2 — rule extraction.</sub> |
+| [GUIA da Etapa 1](GUIDE.md)<br/><sub>Cronograma passo a passo.</sub> | [Catálogo de regras](business-rules-catalog.md)<br/><sub>Passo 2 — extração de regras.</sub> |
 
-<sub>[Back to the kit index](../README.md)</sub>
+<sub>[Voltar ao índice do kit](../README.md)</sub>

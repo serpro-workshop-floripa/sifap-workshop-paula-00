@@ -1,108 +1,108 @@
-# Stage 3 — Implementation (100 min)
+# Etapa 3 — Implementação (100 min)
 
-> **Path:** [Team Kit](../README.md) › [Stage 3](README.md) › **GUIDE**
+> **Caminho:** [Kit da equipe](../README.md) › [Etapa 3](README.md) › **GUIA**
 
-**This guide leads the participant through building the functional SIFAP 2.0 prototype, from the initial skeleton to features implemented with tests, migrations, and traceability to REQ-IDs.**
+**Este guia conduz o participante pela construção do protótipo funcional do SIFAP 2.0, desde a estrutura inicial até as funcionalidades implementadas com testes, migrações e rastreabilidade até os REQ-IDs.**
 
-![Stage 3](https://img.shields.io/badge/Stage-3%20%C2%B7%20Implementation-171717?style=flat-square) ![Duration 100 min](https://img.shields.io/badge/Duration-70%20min-737373?style=flat-square) ![Time 15:30–17:10](https://img.shields.io/badge/Time-15%3A00--16%3A10-A3A3A3?style=flat-square)
+![Etapa 3](https://img.shields.io/badge/Etapa-3%20%C2%B7%20Implementa%C3%A7%C3%A3o-171717?style=flat-square) ![Duração 100 min](https://img.shields.io/badge/Dura%C3%A7%C3%A3o-100%20min-737373?style=flat-square) ![Horário 15:30–17:10](https://img.shields.io/badge/Hor%C3%A1rio-15%3A30--17%3A10-A3A3A3?style=flat-square)
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| **Target audience** | Developer responsibilities (TL + Developer) and QA responsibilities (DBA + QA) lead; the participant scaffolds CI |
-| **Prerequisites** | C2 checkpoint accepted; `spec.md`, `plan.md`, and `tasks.md` ready with REQ-IDs and `source_legacy:` |
-| **Estimated time** | 100 min |
-| **Stage** | Stage 3 — Implementation |
-| **Expected outcome** | Functional backend and frontend querying reconciled Adabas-origin data in PostgreSQL; passing tests; commits with `Implements REQ-XXX` |
+| **Público-alvo** | As responsabilidades de Desenvolvimento (TL + Developer) e QA (DBA + QA) lideram; o participante prepara a estrutura de CI |
+| **Pré-requisitos** | Checkpoint C2 aceito; `spec.md`, `plan.md` e `tasks.md` prontos com REQ-IDs e `source_legacy:` |
+| **Tempo estimado** | 100 min |
+| **Etapa** | Etapa 3 — Implementação |
+| **Resultado esperado** | Backend e frontend funcionais consultando no PostgreSQL dados reconciliados originados do Adabas; testes aprovados; commits com `Implements REQ-XXX` |
 
 > [!IMPORTANT]
-> See the exact schedule in [`00-TEAM-FLOW.md`](../00-TEAM-FLOW.md). The badges show only the stage duration.
+> Consulte o cronograma exato em [`00-TEAM-FLOW.md`](../00-TEAM-FLOW.md). Os badges mostram apenas a duração da etapa.
 
 ---
 
-## Concept: Modular Monolith
+## Conceito: Monólito Modular
 
-A Modular Monolith is an architecture in which bounded contexts are independent Java modules within a single JVM, with explicit boundaries between them. It is the recommended starting point for modernizing SIFAP before any future microservice extraction.
+Um Monólito Modular é uma arquitetura na qual bounded contexts são módulos Java independentes dentro de uma única JVM, com limites explícitos entre eles. É o ponto de partida recomendado para modernizar o SIFAP antes de qualquer futura extração de microsserviços.
 
-**Why it matters:** the legacy SIFAP has implicit coupling between modules through shared memory (Natural/Adabas). The Modular Monolith makes this coupling explicit and controlled. Each module exposes only the interface that other modules need.
+**Por que isso importa:** o SIFAP legado tem acoplamento implícito entre módulos por meio de memória compartilhada (Natural/Adabas). O Monólito Modular torna esse acoplamento explícito e controlado. Cada módulo expõe apenas a interface de que os outros módulos precisam.
 
-**Strangler Fig:** a migration pattern that gradually surrounds the legacy system. The Stage 3 prototype does not need to replace all of SIFAP. Modernize one bounded context at a time while keeping the legacy system active for parts that have not yet migrated.
-
----
-
-## Concept: Testcontainers
-
-Testcontainers is a Java library that starts real Docker containers during tests. Instead of simulating PostgreSQL with an in-memory database (C2), tests use the actual production database engine.
-
-**Why it matters:** tests against C2 can pass and then fail against PostgreSQL because of differences in SQL, types, and transaction behavior. Testcontainers removes this divergence.
-
-**Common mistake:** forgetting to start Docker Desktop before running `./mvnw test`. The error is `Could not find a valid Docker environment`.
+**Strangler Fig:** um padrão de migração que envolve gradualmente o sistema legado. O protótipo da Etapa 3 não precisa substituir todo o SIFAP. Modernize um bounded context de cada vez, mantendo o sistema legado ativo nas partes que ainda não foram migradas.
 
 ---
 
-## Concept: TDD (Test-Driven Development)
+## Conceito: Testcontainers
 
-TDD is the practice of writing the test before the implementation. The cycle is: write a failing test (red), implement the minimum code needed to pass (green), and improve the code without breaking the test (refactor).
+Testcontainers é uma biblioteca Java que inicia contêineres Docker reais durante os testes. Em vez de simular o PostgreSQL com um banco de dados em memória (C2), os testes usam o mecanismo real do banco de dados de produção.
 
-**Apply this to SIFAP:** choose a requirement from the participant's `spec.md` and write a
-test for its approved acceptance criteria before implementing it. The test fails
-until the specified logic exists; this guide supplies no completed requirement.
+**Por que isso importa:** testes com C2 podem passar e depois falhar com PostgreSQL devido a diferenças em SQL, tipos e comportamento de transações. Testcontainers elimina essa divergência.
+
+**Erro comum:** esquecer de iniciar o Docker Desktop antes de executar `./mvnw test`. O erro é `Could not find a valid Docker environment`.
 
 ---
 
-## Definition of Ready — before starting
+## Conceito: TDD (Test-Driven Development)
+
+TDD é a prática de escrever o teste antes da implementação. O ciclo é: escrever um teste que falha (red), implementar o mínimo de código necessário para passar (green) e melhorar o código sem quebrar o teste (refactor).
+
+**Aplique isto ao SIFAP:** escolha um requisito do `spec.md` do participante e escreva
+um teste para seus critérios de aceitação aprovados antes de implementá-lo. O teste
+falha até que a lógica especificada exista; este guia não fornece nenhum requisito pronto.
+
+---
+
+## Definition of Ready — antes de começar
 
 > [!IMPORTANT]
-> Confirm every item before starting this stage:
+> Confirme todos os itens antes de iniciar esta etapa:
 
-- [ ] The PO accepted the C2 checkpoint.
-- [ ] The `@builder` persona is selected in Copilot Chat.
-- [ ] `.spec/<NNN>-<feature>/spec.md` has REQ-IDs with valid `source_legacy:` entries.
-- [ ] `.spec/<NNN>-<feature>/plan.md` contains the decisions needed for the first task.
-- [ ] The participant defined the prototype's initial paths (`backend/`, `frontend/`, and, if needed, `infra/`).
-- [ ] DBA and architects approved source readiness, snapshot/extraction, mappings, load order, rerun/resume, and target recovery; QA defined independent reconciliation.
-- [ ] PO confirmed full authorized beneficiary coverage and the listing/search/detail acceptance criteria.
-- [ ] Branch `impl/<NNN>-<feature>` was created from the updated `develop` branch.
-
----
-
-## Objective
-
-Create the first functional SIFAP 2.0 prototype from scratch and implement the features prioritized in Stage 2. The kit provides no codebase, ready-made containerization, or prototype symlink. The participant creates the structure, implements features, and writes tests. Every feature must trace to a REQ-ID.
-
-Stage 3 is where the specification meets reality. A well-written EARS requirement from Stage 2 becomes a test that either passes or fails. Every commit includes an `Implements REQ-XXX:` reference in the message. Without it, traceability ends.
+- [ ] O PO aceitou o checkpoint C2.
+- [ ] A persona `@builder` está selecionada no Copilot Chat.
+- [ ] `.spec/<NNN>-<feature>/spec.md` tem REQ-IDs com entradas `source_legacy:` válidas.
+- [ ] `.spec/<NNN>-<feature>/plan.md` contém as decisões necessárias para a primeira tarefa.
+- [ ] O participante definiu os caminhos iniciais do protótipo (`backend/`, `frontend/` e, se necessário, `infra/`).
+- [ ] DBA e arquitetos aprovaram a prontidão da origem, snapshot/extração, mapeamentos, ordem de carga, reexecução/retomada e recuperação do destino; QA definiu a reconciliação independente.
+- [ ] O PO confirmou a cobertura completa dos beneficiários autorizados e os critérios de aceitação de listagem/pesquisa/detalhes.
+- [ ] A branch `impl/<NNN>-<feature>` foi criada a partir da branch `develop` atualizada.
 
 ---
 
-## First 15 minutes: creating the skeleton
+## Objetivo
 
-### Step 1 — Create the prototype folders
+Crie do zero o primeiro protótipo funcional do SIFAP 2.0 e implemente as funcionalidades priorizadas na Etapa 2. O kit não fornece codebase, conteinerização pronta nem symlink para protótipo. O participante cria a estrutura, implementa as funcionalidades e escreve testes. Toda funcionalidade deve ser rastreada até um REQ-ID.
+
+A Etapa 3 é onde a especificação encontra a realidade. Um requisito EARS bem escrito na Etapa 2 se torna um teste que passa ou falha. Cada commit inclui uma referência `Implements REQ-XXX:` na mensagem. Sem ela, a rastreabilidade termina.
+
+---
+
+## Primeiros 15 minutos: criação da estrutura
+
+### Passo 1 — Crie as pastas do protótipo
 
 ```bash
 mkdir -p backend frontend
 ```
 
-### Step 2 — Create the minimum structure
+### Passo 2 — Crie a estrutura mínima
 
-- **Backend:** Spring Boot 3.3, Java 21, Maven Wrapper, and the base package approved in `plan.md`.
-- **Frontend:** Next.js 15 App Router, strict TypeScript, and Tailwind CSS.
-- **Database:** Flyway migrations in `backend/src/main/resources/db/migration/`.
+- **Backend:** Spring Boot 3.3, Java 21, Maven Wrapper e o pacote-base aprovado em `plan.md`.
+- **Frontend:** Next.js 15 App Router, TypeScript strict e Tailwind CSS.
+- **Banco de dados:** migrações Flyway em `backend/src/main/resources/db/migration/`.
 
-Flyway creates and evolves the schema; the DBA also implements the approved
-record-migration pipeline. Test fixtures may support isolated tests, but neither
-fixtures nor schema-only migrations replace the source population.
+O Flyway cria e evolui o schema; o DBA também implementa o pipeline aprovado de
+migração de registros. Fixtures de teste podem apoiar testes isolados, mas nem
+fixtures nem migrações apenas de schema substituem a população da origem.
 
 > [!CAUTION]
-> Do not use code or containerization from external prototypes. The workshop goal is for the participant to build the modern prototype from its reading of the legacy system.
+> Não use código nem conteinerização de protótipos externos. O objetivo do workshop é que o participante construa o protótipo moderno a partir de sua leitura do sistema legado.
 
-### Step 3 — Verify that the minimum setup runs
+### Passo 3 — Verifique se a configuração mínima funciona
 
-- Backend: `cd backend && ./mvnw test` shall pass as soon as the skeleton exists.
-- Frontend: `cd frontend && npm test` (or the participant-defined command) shall pass.
-- Create `infra/` only when the participant starts describing IaC or local composition.
+- Backend: `cd backend && ./mvnw test` deve passar assim que a estrutura existir.
+- Frontend: `cd frontend && npm test` (ou o comando definido pelo participante) deve passar.
+- Crie `infra/` somente quando o participante começar a descrever IaC ou composição local.
 
 ---
 
-## Backend structure
+## Estrutura do backend
 
 ```text
 backend/src/main/java/<approved/base/package>/
@@ -112,97 +112,97 @@ backend/src/main/java/<approved/base/package>/
     └── infrastructure/
 ```
 
-### Layers (inside out)
+### Camadas (de dentro para fora)
 
-| Layer | Responsibility | Examples |
+| Camada | Responsabilidade | Exemplos |
 |---|---|---|
-| **domain** | Pure business rules with no framework dependency | Status enums, repository interfaces, value objects |
-| **application** | Use cases and orchestration | Services, request/response DTOs |
-| **infrastructure** | Technical details and I/O | REST controllers, JPA entities, Spring Data repositories |
+| **domain** | Regras de negócio puras, sem dependência de framework | Enums de status, interfaces de repositório, value objects |
+| **application** | Casos de uso e orquestração | Services, DTOs de request/response |
+| **infrastructure** | Detalhes técnicos e I/O | Controllers REST, entidades JPA, repositórios Spring Data |
 
 > [!IMPORTANT]
-> The `domain` layer never imports classes from `infrastructure`. The flow is always Controller → Service → Repository (interface in domain, implementation in infrastructure).
+> A camada `domain` nunca importa classes de `infrastructure`. O fluxo é sempre Controller → Service → Repository (interface em domain, implementação em infrastructure).
 
 ---
 
-## Step by step: add a feature
+## Passo a passo: adicione uma funcionalidade
 
-- [ ] **Reread the EARS requirement.** Open `spec.md` and reread the REQ-ID to implement.
-- [ ] **Verify the legacy evidence.** Confirm `source_legacy:` and reread the corresponding `.NSN` program.
-- [ ] **Review the model.** Follow the approved mapping, use cases, and REST contracts; return unresolved decisions to Architecture and DBA.
-- [ ] **Write the test first.** Create the mapping/repository or behavior test before implementing the corresponding change.
-- [ ] **Create the Flyway migration.** Add the reviewed schema change under `backend/src/main/resources/db/migration/`.
-- [ ] **Implement the code.** Controller → Service → Repository, following the layers.
-- [ ] **Run the tests.** `./mvnw test` shall pass with Docker running.
-- [ ] **Commit the change.** Include `Implements REQ-XXX` in the message.
+- [ ] **Releia o requisito EARS.** Abra `spec.md` e releia o REQ-ID a ser implementado.
+- [ ] **Verifique a evidência do legado.** Confirme `source_legacy:` e releia o programa `.NSN` correspondente.
+- [ ] **Revise o modelo.** Siga o mapeamento, os casos de uso e os contratos REST aprovados; devolva decisões não resolvidas para Arquitetura e DBA.
+- [ ] **Escreva o teste primeiro.** Crie o teste de mapeamento/repositório ou de comportamento antes de implementar a alteração correspondente.
+- [ ] **Crie a migração Flyway.** Adicione a alteração de schema revisada em `backend/src/main/resources/db/migration/`.
+- [ ] **Implemente o código.** Controller → Service → Repository, seguindo as camadas.
+- [ ] **Execute os testes.** `./mvnw test` deve passar com o Docker em execução.
+- [ ] **Faça o commit da alteração.** Inclua `Implements REQ-XXX` na mensagem.
 
 > [!CAUTION]
-> Use Flyway. Never modify existing migrations. Always create new ones (`V2__`, `V3__`, and so on). Editing an old migration corrupts the schema history and breaks deployments.
+> Use Flyway. Nunca modifique migrações existentes. Sempre crie novas (`V2__`, `V3__` e assim por diante). Editar uma migração antiga corrompe o histórico do schema e interrompe os deployments.
 
 ---
 
-## Flow with Copilot Plan
+## Fluxo com o Copilot Plan
 
-To implement features with traceability:
+Para implementar funcionalidades com rastreabilidade:
 
-1. Select the relevant files in VS Code (Ctrl+click).
-2. Open Copilot in Plan mode.
-3. Describe the change in natural language and request a plan before execution:
-   > "Plan the implementation of EARS `REQ-XXX`. List the files involved, risks, and required tests. Do not implement yet."
-4. Review the plan against the approved architecture; Plan mode does not itself implement the change.
-5. Authorize local Agent mode or implement manually, then review the diff and run the tests.
+1. Selecione os arquivos relevantes no VS Code (Ctrl+clique).
+2. Abra o Copilot no modo Plan.
+3. Descreva a alteração em linguagem natural e solicite um plano antes da execução:
+   > "Planeje a implementação do requisito EARS `REQ-XXX`. Liste os arquivos envolvidos, os riscos e os testes necessários. Ainda não implemente."
+4. Revise o plano em relação à arquitetura aprovada; o modo Plan não implementa a alteração por conta própria.
+5. Autorize o modo Agent local ou implemente manualmente; depois, revise o diff e execute os testes.
 
 > [!TIP]
-> Use Plan for design review and local Agent mode for authorized implementation.
-> Stage 4 explores GitHub's separate issue-to-PR coding agent.
+> Use Plan para a revisão de design e o modo Agent local para a implementação autorizada.
+> A Etapa 4 explora o coding agent separado do GitHub, no fluxo de Issue para PR.
 
 ---
 
-## Data migration: DBA leads, QA verifies, Developer integrates
+## Migração de dados: DBA lidera, QA verifica, Desenvolvimento integra
 
-Follow the [data migration guide](../docs/DATA-MIGRATION.md). Implement these tasks
-alongside application code, not after it:
+Siga o [guia de migração de dados](../docs/DATA-MIGRATION.md). Implemente estas tarefas
+junto com o código da aplicação, não depois:
 
-1. **Test the approved contract first.** Cover conversions, invalid inputs, preserved source identifiers, MU/PE occurrences, and failures against PostgreSQL 16.
-2. **Extract the agreed Adabas snapshot.** Record source version, snapshot boundary, export format and integrity evidence. Do not write to or reset the source.
-3. **Stage and load.** Preserve source lineage, validate each record, load in dependency order, and record rejects with actionable reasons. Keep raw records and credentials outside Git and public logs.
-4. **Reconcile independently.** QA checks complete source-key coverage, loaded/rejected accounting, relationships, field conversions, and agreed aggregates against the same snapshot. Target child rows may outnumber source rows; explain them through mappings rather than comparing unrelated table totals.
-5. **Connect real queries.** Developer implements authorized, paginated listing, search, and detail access over PostgreSQL. Verify complete beneficiary coverage across pages; no mocks or fallback seeds in the acceptance path.
-6. **Exercise rerun and recovery.** Reprocessing the same snapshot must not duplicate records; interruption must have a tested resume or cleanup path. Test target recovery without changing the source.
+1. **Teste primeiro o contrato aprovado.** Cubra conversões, entradas inválidas, identificadores preservados da origem, ocorrências MU/PE e falhas com PostgreSQL 16.
+2. **Extraia o snapshot acordado do Adabas.** Registre versão da origem, limite do snapshot, formato de exportação e evidências de integridade. Não grave nem redefina a origem.
+3. **Prepare o staging e carregue.** Preserve a linhagem da origem, valide cada registro, carregue na ordem de dependência e registre rejeições com motivos acionáveis. Mantenha registros brutos e credenciais fora do Git e de logs públicos.
+4. **Reconcilie de forma independente.** QA verifica a cobertura completa das chaves da origem, a contabilização de carregados/rejeitados, os relacionamentos, as conversões de campos e os agregados acordados usando o mesmo snapshot. Linhas filhas no destino podem superar as linhas da origem; explique-as pelos mapeamentos, em vez de comparar totais de tabelas não relacionadas.
+5. **Conecte consultas reais.** Desenvolvimento implementa listagem, pesquisa e acesso a detalhes autorizados e paginados no PostgreSQL. Verifique a cobertura completa dos beneficiários entre páginas; não use mocks nem seeds de fallback no caminho de aceitação.
+6. **Exercite reexecução e recuperação.** Reprocessar o mesmo snapshot não pode duplicar registros; uma interrupção deve ter um caminho testado de retomada ou limpeza. Teste a recuperação do destino sem alterar a origem.
 
-Record sanitized results and evidence references in the
-[data migration records](../docs/data-migration/). Resolve rejected beneficiaries
-before claiming complete consultation; reporting a reject explains a gap but
-does not make that beneficiary queryable. Do not shrink the population to pass.
+Registre resultados sanitizados e referências de evidências nos
+[registros de migração de dados](../docs/data-migration/). Resolva beneficiários
+rejeitados antes de declarar a consulta completa; relatar uma rejeição explica uma
+lacuna, mas não torna o beneficiário consultável. Não reduza a população para passar.
 
 ---
 
-## Tests
+## Testes
 
-### Run all tests
+### Execute todos os testes
 
 ```bash
 cd backend
 ./mvnw test
 ```
 
-**Prerequisite:** Docker must be running. The tests use Testcontainers to start a real PostgreSQL instance.
+**Pré-requisito:** o Docker deve estar em execução. Os testes usam Testcontainers para iniciar uma instância real do PostgreSQL.
 
-### Expected test types
+### Tipos de teste esperados
 
-| Type | Class | What it tests |
+| Tipo | Classe | O que testa |
 |---|---|---|
-| Unit | `*ServiceTest.java` | Isolated business logic |
-| Integration | `*ControllerTest.java` | Complete endpoint (HTTP → DB) |
-| Repository | `*RepositoryTest.java` | Custom queries |
-| Data migration | Participant-defined integration tests | Snapshot parsing, source-to-target mapping, reconciliation, rejects, rerun/resume and target recovery |
-| Beneficiary consultation | API + UI acceptance tests | Authorized listing/search/detail and complete population coverage across pages |
+| Unitário | `*ServiceTest.java` | Lógica de negócio isolada |
+| Integração | `*ControllerTest.java` | Endpoint completo (HTTP → DB) |
+| Repositório | `*RepositoryTest.java` | Consultas personalizadas |
+| Migração de dados | Testes de integração definidos pelo participante | Leitura do snapshot, mapeamento da origem para o destino, reconciliação, rejeições, reexecução/retomada e recuperação do destino |
+| Consulta de beneficiários | Testes de aceitação de API + UI | Listagem/pesquisa/detalhes autorizados e cobertura completa da população entre páginas |
 
 ---
 
 ## Frontend
 
-### Run the frontend locally
+### Execute o frontend localmente
 
 ```bash
 cd frontend
@@ -210,11 +210,11 @@ npm install
 npm run dev
 ```
 
-Open `http://localhost:3000`.
+Abra `http://localhost:3000`.
 
-### Frontend architecture
+### Arquitetura do frontend
 
-The frontend uses Next.js 15 with App Router and Server Components:
+O frontend usa Next.js 15 com App Router e Server Components:
 
 ```text
 src/app/
@@ -224,109 +224,110 @@ src/app/
     └── page.tsx
 ```
 
-| Component type | When to use it |
+| Tipo de componente | Quando usar |
 |---|---|
-| **Server Component** (default) | Server-side data fetching; no client-side JavaScript |
-| **Client Component** (`"use client"`) | Interactivity: forms, modals, and local state |
+| **Server Component** (padrão) | Busca de dados no servidor; sem JavaScript no cliente |
+| **Client Component** (`"use client"`) | Interatividade: formulários, modais e estado local |
 
 ---
 
-## Traceability: requirement → code → test
+## Rastreabilidade: requisito → código → teste
 
-Document traceability for every implemented feature:
+Documente a rastreabilidade de cada funcionalidade implementada:
 
-| EARS requirement | Implementation file | Test file |
+| Requisito EARS | Arquivo de implementação | Arquivo de teste |
 |---|---|---|
-| `REQ-XXX` | `<!-- fill in -->` | `<!-- fill in -->` |
+| `REQ-XXX` | `<!-- preencha -->` | `<!-- preencha -->` |
 
-Every commit that implements specification behavior must include `Implements REQ-XXX` in the message. This closes the specification → code → test cycle and allows `/speckit.analyze` to detect drift.
+Todo commit que implementa um comportamento da especificação deve incluir `Implements REQ-XXX` na mensagem. Isso fecha o ciclo especificação → código → teste e permite que `/speckit.analyze` detecte desvios.
 
 ---
 
 <details>
-<summary><strong>Common pitfalls — expand</strong></summary>
+<summary><strong>Armadilhas comuns — expandir</strong></summary>
 
-| If you are doing this | Do this instead |
+| Se você está fazendo isto | Faça isto |
 |---|---|
-| One enormous eight-hour branch | Use small commits and small PRs. One feature = one PR |
-| Implementing without tests and planning to "do them later" | Write the test with the code |
-| Editing an old Flyway migration | Never do this. Always create a new migration (`V5__`, `V6__`...) |
-| Creating an endpoint without `@Valid` on the DTO | Always use Bean Validation in the controller |
-| Mixing domain logic into the controller | The controller calls a service. Logic belongs in the service or domain |
-| Importing infrastructure classes between contexts | Preserve the boundaries defined by the participant |
-| Committing without `Implements REQ-XXX` | Traceability validates the work from the previous stage |
+| Uma branch enorme de oito horas | Use commits pequenos e PRs pequenas. Uma funcionalidade = uma PR |
+| Implementar sem testes e planejar "fazê-los depois" | Escreva o teste junto com o código |
+| Editar uma migração Flyway antiga | Nunca faça isso. Sempre crie uma nova migração (`V5__`, `V6__`...) |
+| Criar um endpoint sem `@Valid` no DTO | Sempre use Bean Validation no controller |
+| Misturar lógica de domínio no controller | O controller chama um service. A lógica pertence ao service ou ao domínio |
+| Importar classes de infraestrutura entre contextos | Preserve os limites definidos pelo participante |
+| Fazer commit sem `Implements REQ-XXX` | A rastreabilidade valida o trabalho da etapa anterior |
 
 </details>
 
 ---
 
 <details>
-<summary><strong>Troubleshooting — expand</strong></summary>
+<summary><strong>Solução de problemas — expandir</strong></summary>
 
-| Problem | Solution |
+| Problema | Solução |
 |---|---|
-| Local environment does not start | Check Java 21, Node, environment variables, and whether ports 5432/8080/3000 are free |
-| Backend cannot connect to PostgreSQL | Check the configured URL and whether the participant's selected PostgreSQL instance is running |
-| Frontend shows "Failed to load" | Is the backend running? Test with `curl http://localhost:8080/actuator/health` |
-| Testcontainers test fails | Check Docker Desktop and the test configuration. Unit tests with Mockito do not replace the PostgreSQL migration/integration gate |
-| Migration fails at startup | Never edit an existing migration. Create a new one (`V5__`, `V6__`...) |
-| `mvn test-compile` import error | Verify that the package follows `domain/` → `application/` → `infrastructure/` |
-| Swagger UI does not appear | Try `http://localhost:8080/swagger-ui/index.html` |
+| O ambiente local não inicia | Verifique Java 21, Node, variáveis de ambiente e se as portas 5432/8080/3000 estão livres |
+| O backend não consegue se conectar ao PostgreSQL | Verifique a URL configurada e se a instância PostgreSQL selecionada pelo participante está em execução |
+| O frontend mostra "Failed to load" | O backend está em execução? Teste com `curl http://localhost:8080/actuator/health` |
+| O teste com Testcontainers falha | Verifique o Docker Desktop e a configuração do teste. Testes unitários com Mockito não substituem o gate de migração/integração com PostgreSQL |
+| A migração falha na inicialização | Nunca edite uma migração existente. Crie uma nova (`V5__`, `V6__`...) |
+| Erro de import em `mvn test-compile` | Verifique se o pacote segue `domain/` → `application/` → `infrastructure/` |
+| A Swagger UI não aparece | Tente `http://localhost:8080/swagger-ui/index.html` |
 
 </details>
 
 ---
 
-## Completion criteria
+## Critérios de conclusão
 
-- [ ] The participant-prioritized flow is implemented and documented.
-- [ ] The interface required for that flow is available.
-- [ ] Participant-defined tests pass with `./mvnw test`.
-- [ ] Local execution is documented in the prototype.
-- [ ] Exposed contracts are documented with Swagger/OpenAPI.
-- [ ] The prioritized Stage 1 rule is implemented and tested.
-- [ ] PostgreSQL is populated from the approved Adabas snapshot, with source lineage and no unexplained record loss.
-- [ ] DBA and QA reconciled keys, relationships, conversions, rejects, and agreed aggregates; no unresolved beneficiary gap is hidden.
-- [ ] Authorized listing, search, and detail queries cover all beneficiaries in the agreed population, including records beyond the first page.
-- [ ] Rerun/resume and target recovery were tested without changing the source; restricted extracts remain outside Git.
-- [ ] Every commit includes `Implements REQ-XXX` in the message.
+- [ ] O fluxo priorizado pelo participante está implementado e documentado.
+- [ ] A interface necessária para esse fluxo está disponível.
+- [ ] Os testes definidos pelo participante passam com `./mvnw test`.
+- [ ] A execução local está documentada no protótipo.
+- [ ] Os contratos expostos estão documentados com Swagger/OpenAPI.
+- [ ] A regra priorizada na Etapa 1 está implementada e testada.
+- [ ] O PostgreSQL está populado a partir do snapshot aprovado do Adabas, com linhagem da origem e sem perda inexplicada de registros.
+- [ ] DBA e QA reconciliaram chaves, relacionamentos, conversões, rejeições e agregados acordados; nenhuma lacuna não resolvida de beneficiários está oculta.
+- [ ] Consultas autorizadas de listagem, pesquisa e detalhes cobrem todos os beneficiários da população acordada, incluindo registros além da primeira página.
+- [ ] Reexecução/retomada e recuperação do destino foram testadas sem alterar a origem; extratos restritos permanecem fora do Git.
+- [ ] Todo commit inclui `Implements REQ-XXX` na mensagem.
 
 ---
 
-## Next step
+## Próximo passo
 
-During the C3 checkpoint (around 16:10), the participant using `@builder` and `@dba` deliver working code,
-populated PostgreSQL, and QA-reviewed migration evidence to the participant (Operations).
-QA responsibilities continues final data and query validation. An empty schema, test seed, or
-unresolved reconciliation difference blocks data acceptance even if unit tests pass.
+Durante o checkpoint C3 (por volta das 16:10), o participante usando `@builder` e `@dba`
+entrega ao participante (Operações) o código funcional, o PostgreSQL populado e as evidências
+de migração revisadas por QA. As responsabilidades de QA continuam a validação final dos dados
+e das consultas. Um schema vazio, um seed de teste ou uma diferença de reconciliação não
+resolvida bloqueia a aceitação dos dados, mesmo que os testes unitários passem.
 
-See [`../04-evolution/GUIDE.md`](../04-evolution/GUIDE.md) for the next stage.
+Consulte [`../04-evolution/GUIDE.md`](../04-evolution/GUIDE.md) para a próxima etapa.
 
 ---
 
 <details>
-<summary><strong>Useful prompts for Copilot Chat — expand</strong></summary>
+<summary><strong>Prompts úteis para o Copilot Chat — expandir</strong></summary>
 
-1. "Create a REST endpoint for [feature] following the existing architecture."
-2. "Write an integration test for the [endpoint] endpoint."
-3. "Add Bean Validation to the [class] DTO."
-4. "Create a Flyway migration to add [table/column]."
-5. "Implement business rule BR-XXX: [rule description]."
-6. "Create a React Server Component to list [entity]."
-7. "Add error handling for [scenario]."
-8. "Refactor this service to separate [responsibility] logic."
+1. "Crie um endpoint REST para [funcionalidade] seguindo a arquitetura existente."
+2. "Escreva um teste de integração para o endpoint [endpoint]."
+3. "Adicione Bean Validation ao DTO [classe]."
+4. "Crie uma migração Flyway para adicionar [tabela/coluna]."
+5. "Implemente a regra de negócio BR-XXX: [descrição da regra]."
+6. "Crie um React Server Component para listar [entidade]."
+7. "Adicione tratamento de erros para [cenário]."
+8. "Refatore este service para separar a lógica de [responsabilidade]."
 
 </details>
 
 > [!TIP]
-> Do not try to implement everything. Focus on quality over quantity. One well-built endpoint with tests, validation, and documentation is worth more than five broken endpoints.
+> Não tente implementar tudo. Priorize qualidade em vez de quantidade. Um endpoint bem construído, com testes, validação e documentação, vale mais do que cinco endpoints quebrados.
 
 ---
 
-### Continue reading
+### Continue lendo
 
-| Previous | Next |
+| Anterior | Próximo |
 |---|---|
-| [Stage 2 — Specification](../02-modern-spec/GUIDE.md)<br/><sub>14:50–15:30 · Write EARS requirements, ADRs, and C4 diagrams.</sub> | [Stage 4 — Evolution](../04-evolution/GUIDE.md)<br/><sub>not used in the individual challenge · Copilot Agent + Terraform + CI/CD.</sub> |
+| [Etapa 2 — Especificação](../02-modern-spec/GUIDE.md)<br/><sub>14:50–15:30 · Escreva requisitos EARS, ADRs e diagramas C4.</sub> | [Etapa 4 — Evolução](../04-evolution/GUIDE.md)<br/><sub>não utilizada no desafio individual · Copilot Agent + Terraform + CI/CD.</sub> |
 
-<sub>[Back to the kit index](../README.md)</sub>
+<sub>[Voltar ao índice do kit](../README.md)</sub>

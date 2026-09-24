@@ -1,15 +1,15 @@
 ---
-description: "Use when creating or reviewing infrastructure as code, Terraform, Bicep, Azure resource definitions, and environment configuration."
+description: "Use ao criar ou revisar infraestrutura como código, Terraform, Bicep, resources Azure e configuração de ambientes."
 applyTo: "infra/**,**/*.tf,**/*.bicep,compose*.yml,compose*.yaml,docker-compose*.yml,docker-compose*.yaml"
 ---
 
-# Infrastructure Conventions — Terraform and Compose
+# Convenções de infraestrutura — Terraform e Compose
 
-This file activates when you edit files under `infra/`, any `*.tf` or `*.bicep`, or a `compose`/`docker-compose` YAML file. It teaches how to provision Azure with Terraform (`azurerm ~> 3.x`, the primary tool) and how to keep local Compose parity safe. Prefer Terraform; use Bicep only where a module genuinely requires it. `infra/` is created by the team in Stage 3/4 — there is no inherited stack to copy.
+Este arquivo se aplica a `infra/`, `*.tf`, `*.bicep` e YAML de Compose. Use Terraform com `azurerm ~> 3.x` como ferramenta principal. Use Bicep apenas quando um módulo realmente exigir. A equipe cria `infra/` nas Etapas 3/4; não existe stack herdada.
 
-## Provider and Versions
+## Provider e versões
 
-Pin the provider and the minimum Terraform version. Keep one `provider "azurerm"` block per configuration.
+Fixe o provider e a versão mínima do Terraform. Mantenha um bloco `provider "azurerm"` por configuração.
 
 ```hcl
 terraform {
@@ -27,21 +27,21 @@ provider "azurerm" {
 }
 ```
 
-## Module Layout
+## Organização de módulos
 
-One module per Azure service area, so blast radius and ownership stay clear.
+Use um módulo por área de serviço Azure para limitar blast radius e esclarecer ownership.
 
 ```text
 infra/
-├── networking/   # VNet, subnets, NSGs
-├── compute/      # App Service / Container Apps
-├── database/     # PostgreSQL Flexible Server
-└── monitoring/   # Log Analytics, alerts
+├── networking/
+├── compute/
+├── database/
+└── monitoring/
 ```
 
-## Required Tags on Every Resource
+## Tags obrigatórias
 
-Every resource carries `project`, `environment`, and `owner` (add `cost-center` where the team tracks it). Define them once in `locals` and spread them.
+Cada resource inclui `project`, `environment` e `owner`. Adicione `cost-center` quando a equipe o controlar. Defina as tags uma vez em `locals`.
 
 ```hcl
 locals {
@@ -51,87 +51,67 @@ locals {
     owner       = var.owner
   }
 }
-
-resource "azurerm_resource_group" "main" {
-  name     = "${var.project}-${var.environment}-rg-${var.location_short}"
-  location = var.location
-  tags     = local.common_tags
-}
 ```
 
 ## Secrets
 
 > [!WARNING]
-> Secrets live only in `azurerm_key_vault_secret` — never in `locals`, `variables` defaults, `.tfvars`, or committed state. Mark secret inputs `sensitive = true` and inject them from the pipeline's OIDC session.
-
-```hcl
-variable "db_password" {
-  type      = string
-  sensitive = true
-}
-
-resource "azurerm_key_vault_secret" "db_password" {
-  name         = "db-password"
-  value        = var.db_password
-  key_vault_id = azurerm_key_vault.main.id
-  tags         = local.common_tags
-}
-```
+> Secrets ficam apenas em `azurerm_key_vault_secret`, nunca em defaults de variables, `locals`, `.tfvars` ou state versionado. Marque inputs secretos com `sensitive = true` e injete-os pela sessão OIDC do pipeline.
 
 ## Managed Identity
 
-Service-to-service authentication uses Managed Identity (`azurerm_user_assigned_identity` or a system-assigned identity), not connection strings with embedded passwords. Assign the identity and grant it Key Vault access via role assignment.
+Use Managed Identity na autenticação entre serviços, não connection strings com senhas. Atribua a identidade e conceda acesso ao Key Vault por role assignment.
 
-## Naming Convention
+## Nomenclatura
 
-Resource names follow `{project}-{env}-{resource}-{region}`.
+Resources usam `{project}-{env}-{resource}-{region}`.
 
-| Resource | Example |
+| Resource | Exemplo |
 |---|---|
 | Resource group | `sifap-prod-rg-brs` |
 | PostgreSQL server | `sifap-prod-psql-brs` |
 
-## Formatting and Validation Gate
+## Formatação e validação
 
-CI runs `terraform fmt -check -recursive`, then per module `terraform init -backend=false` followed by `terraform validate` (see [`ci.yml`](../workflows/ci.yml)). Before pushing, run `terraform fmt -recursive` and `terraform -chdir=<module> validate` locally. The `iac-review` skill owns drift detection and deeper module review.
+A CI executa `terraform fmt -check -recursive`, `terraform init -backend=false` e `terraform validate` por módulo. Antes do push, execute `terraform fmt -recursive` e `terraform -chdir=<module> validate`.
 
-## Docker Compose Parity
+## Paridade com Docker Compose
 
-Compose is for local development only. Pin images by digest, keep secrets in a git-ignored `.env`, and never commit real credentials.
+Use Compose apenas no desenvolvimento local. Fixe imagens por digest, mantenha secrets em `.env` ignorado pelo Git e nunca versione credenciais.
 
 ```yaml
 services:
   db:
-    image: postgres:16@sha256:<digest> # pin the digest
+    image: postgres:16@sha256:<digest>
     environment:
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD} # from .env, never hardcoded
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
 ```
 
 ## Convenções
 
-| Rule | Rationale |
+| Regra | Motivo |
 |---|---|
-| `azurerm ~> 3.x`, pinned `required_version` | Reproducible plans across machines |
-| One module per service area | Clear ownership, small blast radius |
-| `project` + `environment` + `owner` tags on all resources | Cost, audit, and cleanup traceability |
-| Secrets only in `azurerm_key_vault_secret` | No credentials in code or state |
-| Managed Identity for service auth | No stored passwords between services |
-| `fmt` + per-module `validate` clean | Matches the CI infra gate |
+| `azurerm ~> 3.x` e `required_version` fixados | Produz plans reproduzíveis |
+| Um módulo por área de serviço | Reduz blast radius |
+| Tags obrigatórias em todos os resources | Permite rastrear custo, auditoria e limpeza |
+| Secrets apenas no Key Vault | Evita credenciais no código |
+| Managed Identity | Evita senhas entre serviços |
+| `fmt` e `validate` limpos | Corresponde ao gate da CI |
 
 ## Faça / Não faça
 
-| Do | Do not |
+| Faça | Não faça |
 |---|---|
-| Spread `local.common_tags` on every resource | Ship an untagged resource |
-| Mark secret vars `sensitive = true` | Put a secret in a `variable` default or `.tfvars` |
-| Pin Compose images by digest | Use `postgres:latest` |
-| Authenticate via Managed Identity | Embed a password in a connection string |
+| Aplique `local.common_tags` em todo resource | Entregue resource sem tags |
+| Marque secret como `sensitive = true` | Coloque secret em default ou `.tfvars` |
+| Fixe imagens Compose por digest | Use `postgres:latest` |
+| Autentique por Managed Identity | Incorpore senha em connection string |
 
 ## Checklist antes de abrir um PR
 
-- [ ] Provider is `azurerm ~> 3.x` with a pinned `required_version`
-- [ ] Every resource carries `project`, `environment`, and `owner` tags
-- [ ] No secret appears outside `azurerm_key_vault_secret`; secret vars are `sensitive`
-- [ ] Service-to-service auth uses Managed Identity
-- [ ] `terraform fmt -check -recursive` and per-module `validate` pass locally
-- [ ] Compose files pin image digests and read secrets from a git-ignored `.env`
+- [ ] O provider é `azurerm ~> 3.x` e `required_version` está fixado.
+- [ ] Cada resource tem tags `project`, `environment` e `owner`.
+- [ ] Secrets aparecem apenas no Key Vault e inputs secretos usam `sensitive`.
+- [ ] A autenticação entre serviços usa Managed Identity.
+- [ ] `terraform fmt` e `validate` por módulo passam.
+- [ ] Compose fixa digests e lê secrets de `.env` ignorado.

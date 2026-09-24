@@ -1,82 +1,82 @@
-# @architect — Stage 2: Specification
+# @architect — Etapa 2: Especificação
 
-> **Path:** [Team Kit](../../README.md) › [Stage Agents](../README.md) › **@architect**
+> **Caminho:** [Kit da equipe](../../README.md) › [Agentes de etapa](../README.md) › **@architect**
 
-**The `@architect` agent transforms evidence collected in Stage 1 into a traceable modern specification, using GitHub Spec-Kit to produce `spec.md`, `plan.md`, and `tasks.md`.**
+**O agente `@architect` transforma as evidências coletadas na Etapa 1 em uma especificação moderna e rastreável, usando o GitHub Spec-Kit para produzir `spec.md`, `plan.md` e `tasks.md`.**
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| **Target audience** | Architecture pair (Enterprise Architect + Software Architect) during Stage 2 |
-| **Prerequisites** | Stage 1 checkpoint with a rule catalog and available `source_legacy:` entries |
-| **Estimated time** | 14:50–15:30 |
-| **Stage** | Stage 2 — Specification |
-| **Expected outcome** | `spec.md`, `plan.md`, and `tasks.md` in `.spec/<NNN>-<feature>/`, approved by the Product Owner |
+| **Público-alvo** | Dupla de arquitetura (Arquiteto Corporativo + Arquiteto de Software) durante a Etapa 2 |
+| **Pré-requisitos** | Checkpoint da Etapa 1 com catálogo de regras e entradas `source_legacy:` disponíveis |
+| **Tempo estimado** | 14:50–15:30 |
+| **Etapa** | Etapa 2 — Especificação |
+| **Resultado esperado** | `spec.md`, `plan.md` e `tasks.md` em `.spec/<NNN>-<feature>/`, aprovados pelo Product Owner |
 
-![Stage 2](https://img.shields.io/badge/Stage-2%20%C2%B7%20Specification-171717?style=flat-square)
-![Analytical approach](https://img.shields.io/badge/Approach-Analytical-404040?style=flat-square)
-
----
-
-## When to use
-
-Use this agent after the participant has legacy discoveries and needs to transform them into a modern specification. `@architect` helps define bounded contexts, write EARS requirements, record ADRs, and prepare for implementation.
-
-- **Lead:** Software Architect
-- **Strong support:** Requirements Engineer, Enterprise Architect, Product Owner, and Technical Lead
-- **Data design:** DBA co-leads migration planning; QA defines independent reconciliation and complete beneficiary consultation checks
-- **Hard-gate prerequisite:** Stage 1 evidence with `source_legacy:` for every rule
+![Etapa 2](https://img.shields.io/badge/Stage-2%20%C2%B7%20Specification-171717?style=flat-square)
+![Abordagem analítica](https://img.shields.io/badge/Approach-Analytical-404040?style=flat-square)
 
 ---
 
-## What the agent does
+## Quando usar
 
-- Transforms cataloged business rules into EARS requirements with `source_legacy:`
-- Compares bounded context alternatives and identifies pros and cons
-- Generates ADRs with context, options, decision, consequences, and risks
-- Runs `/speckit.specify`, `/speckit.clarify`, and `/speckit.plan` guided by the specification
-- Identifies specification gaps before implementation
+Use este agente depois que o participante tiver descobertas sobre o legado e precisar transformá-las em uma especificação moderna. O `@architect` ajuda a definir contextos delimitados, escrever requisitos EARS, registrar ADRs e preparar a implementação.
 
----
-
-## What the agent does NOT do
-
-- It does not accept a requirement without legacy evidence or a `[GREENFIELD]` rationale
-- It does not write implementation code (that is the `@builder` role)
-- It does not fill ambiguous fields or flows without explicit resolution
-- It does not decide scope without Product Owner validation
+- **Liderança:** Arquiteto de Software
+- **Apoio importante:** Engenheiro de Requisitos, Arquiteto Corporativo, Product Owner e Líder Técnico
+- **Projeto de dados:** o DBA colidera o planejamento da migração; a equipe de QA define verificações independentes de reconciliação e consulta completa de beneficiários
+- **Pré-requisito obrigatório:** evidências da Etapa 1 com `source_legacy:` para cada regra
 
 ---
 
-## Inputs
+## O que o agente faz
 
-| Input | Location |
+- Transforma regras de negócio catalogadas em requisitos EARS com `source_legacy:`
+- Compara alternativas de contextos delimitados e identifica prós e contras
+- Gera ADRs com contexto, opções, decisão, consequências e riscos
+- Executa `/speckit.specify`, `/speckit.clarify` e `/speckit.plan` orientados pela especificação
+- Identifica lacunas da especificação antes da implementação
+
+---
+
+## O que o agente NÃO faz
+
+- Não aceita um requisito sem evidência do legado ou uma justificativa `[GREENFIELD]`
+- Não escreve código de implementação (essa é a função do `@builder`)
+- Não preenche campos ou fluxos ambíguos sem resolução explícita
+- Não decide o escopo sem validação do Product Owner
+
+---
+
+## Entradas
+
+| Entrada | Local |
 |---|---|
-| Stage 1 rule catalog | `01-archaeology/business-rules-catalog.md` |
-| Dependency map | In the catalog or a separate Mermaid file |
-| Open questions | Catalog section |
-| Source map, declarations, and reading ledger | Participant-generated Stage 1 data artifacts |
-| Source readiness | DBA/QA record from preparation and Stage 1 |
-| Legacy exploration checklist | `01-archaeology/LEGACY-EXPLORATION-CHECKLIST.md` |
+| Catálogo de regras da Etapa 1 | `01-archaeology/business-rules-catalog.md` |
+| Mapa de dependências | No catálogo ou em um arquivo Mermaid separado |
+| Questões em aberto | Seção do catálogo |
+| Mapa da origem, declarações e registro de leitura | Artefatos de dados da Etapa 1 gerados pelo participante |
+| Prontidão da origem | Registro de DBA/QA da preparação e da Etapa 1 |
+| Checklist de exploração do legado | `01-archaeology/LEGACY-EXPLORATION-CHECKLIST.md` |
 
 ---
 
-## Expected outputs
+## Saídas esperadas
 
-| Artifact | Location |
+| Artefato | Local |
 |---|---|
-| Feature specification | `.spec/<NNN>-<feature>/spec.md` |
-| Technical plan | `.spec/<NNN>-<feature>/plan.md` |
-| Implementable task list | `.spec/<NNN>-<feature>/tasks.md` |
-| Supporting scope decisions | `02-modern-spec/` (support only, not a second specification location) |
+| Especificação da funcionalidade | `.spec/<NNN>-<feature>/spec.md` |
+| Plano técnico | `.spec/<NNN>-<feature>/plan.md` |
+| Lista de tarefas implementáveis | `.spec/<NNN>-<feature>/tasks.md` |
+| Decisões de apoio sobre o escopo | `02-modern-spec/` (somente apoio, não um segundo local de especificação) |
 
 ---
 
-## How to select the agent in Copilot Chat
+## Como selecionar o agente no Copilot Chat
 
-- [ ] **Open Copilot Chat** in VS Code (`Ctrl+Alt+I` / `Cmd+Alt+I`).
-- [ ] **Select `@architect`** from the agent selector.
-- [ ] **Open the Stage 1 rule catalog** in the editor.
-- [ ] **Paste the opening prompt** below and press Enter.
+- [ ] **Abra o Copilot Chat** no VS Code (`Ctrl+Alt+I` / `Cmd+Alt+I`).
+- [ ] **Selecione `@architect`** no seletor de agentes.
+- [ ] **Abra o catálogo de regras da Etapa 1** no editor.
+- [ ] **Cole o prompt inicial** abaixo e pressione Enter.
 
 ```text
 I am starting Stage 2 — Specification.
@@ -88,44 +88,44 @@ without a source, and record open questions separately.
 
 ---
 
-## Example prompts
+## Exemplos de prompts
 
-| Situation | Useful prompt |
+| Situação | Prompt útil |
 |---|---|
-| Raw business rule | "Confirm the source of this rule before proposing an EARS requirement with `source_legacy:`." |
-| Uncertain bounded context boundary | "Compare 2 or 3 possible bounded contexts and show pros and cons." |
-| Architectural decision | "Generate an ADR with context, options, decision, consequences, and risks." |
-| Technical plan | "Prepare `/speckit.plan` considering a Modular Monolith, JPA, and PostgreSQL." |
-| Data migration | "/migration phase=plan: review source-to-target mappings, snapshot, load, recovery, and QA consultation tests with the DBA." |
+| Regra de negócio bruta | "Confirme a fonte desta regra antes de propor um requisito EARS com `source_legacy:`." |
+| Limite incerto de contexto delimitado | "Compare 2 ou 3 contextos delimitados possíveis e apresente prós e contras." |
+| Decisão de arquitetura | "Gere uma ADR com contexto, opções, decisão, consequências e riscos." |
+| Plano técnico | "Prepare `/speckit.plan` considerando um Monólito Modular, JPA e PostgreSQL." |
+| Migração de dados | "/migration phase=plan: revise com o DBA os mapeamentos entre origem e destino, snapshot, carga, recuperação e testes de consulta da equipe de QA." |
 
 ---
 
-## Definition of Done
+## Definição de pronto
 
-- [ ] The complete artifact set (`spec.md`, `research.md`, `plan.md`, `data-model.md`, `contracts/`, `quickstart.md`, `tasks.md`, `checklists/`) exists in `.spec/<NNN>-<feature>/`, and `.specify/feature.json` points at it; a file that does not apply states why.
-- [ ] Every requirement has an unbulleted `source_legacy:` with an actual supported Natural/JCL/DDM/FDT path or justified `[GREENFIELD]`, following the [exploration gate](../../01-archaeology/LEGACY-EXPLORATION-CHECKLIST.md).
-- [ ] Supporting scope decisions are in `02-modern-spec/`.
-- [ ] The Product Owner reviewed and approved the scope during the 15:00 checkpoint.
-- [ ] The [SDD skill](../../.github/skills/sdd-requirements-engineer/SKILL.md) was applied without uppercase files, a second specification tree, or changes to `REQ-NNN`/`source_legacy:`.
-- [ ] DBA/QA reviewed migration and full beneficiary coverage; unresolved extraction or mapping decisions remain C2 blockers.
+- [ ] O conjunto completo de artefatos (`spec.md`, `research.md`, `plan.md`, `data-model.md`, `contracts/`, `quickstart.md`, `tasks.md`, `checklists/`) existe em `.spec/<NNN>-<feature>/`, e `.specify/feature.json` aponta para ele; um arquivo não aplicável informa o motivo.
+- [ ] Todo requisito tem um `source_legacy:` sem marcador, com um caminho real e válido de Natural/JCL/DDM/FDT ou `[GREENFIELD]` justificado, seguindo o [gate de exploração](../../01-archaeology/LEGACY-EXPLORATION-CHECKLIST.md).
+- [ ] As decisões de apoio sobre o escopo estão em `02-modern-spec/`.
+- [ ] O Product Owner revisou e aprovou o escopo durante o checkpoint das 15:00.
+- [ ] A [skill de SDD](../../.github/skills/sdd-requirements-engineer/SKILL.md) foi aplicada sem arquivos em maiúsculas, uma segunda árvore de especificação ou alterações em `REQ-NNN`/`source_legacy:`.
+- [ ] DBA/QA revisaram a migração e a cobertura completa de beneficiários; decisões de extração ou mapeamento não resolvidas continuam sendo bloqueios de C2.
 
 ---
 
-## Common mistakes
+## Erros comuns
 
-| Symptom | Cause | Correction |
+| Sintoma | Causa | Correção |
 |---|---|---|
-| Requirement without `source_legacy:` | Rule inferred without legacy evidence | Return to the Stage 1 catalog and find the line reference |
-| Architecture is too complex for the available time | Ambition exceeds workshop scope | Prefer simple, testable decisions that can be implemented in one hour |
-| ADR mixed with unstructured opinion | The record lacks structure | Use the template: context, options, decision, consequences |
-| Specification has no acceptance criterion | Requirement is not testable | Every requirement needs at least one verifiable scenario |
+| Requisito sem `source_legacy:` | Regra inferida sem evidência do legado | Volte ao catálogo da Etapa 1 e encontre a referência de linha |
+| A arquitetura é complexa demais para o tempo disponível | A ambição excede o escopo do workshop | Prefira decisões simples e testáveis que possam ser implementadas em uma hora |
+| ADR misturada com opinião não estruturada | O registro não tem estrutura | Use o template: contexto, opções, decisão, consequências |
+| A especificação não tem critério de aceitação | O requisito não é testável | Todo requisito precisa de pelo menos um cenário verificável |
 
 ---
 
-### Continue reading
+### Continue lendo
 
-| Previous | Next |
+| Anterior | Próximo |
 |---|---|
-| [@archaeologist](../01-archaeologist/README.md)<br/><sub>Stage 1: read the Natural/Adabas legacy system.</sub> | [@builder](../03-builder/README.md)<br/><sub>Stage 3: build the traceable implementation.</sub> |
+| [@archaeologist](../01-archaeologist/README.md)<br/><sub>Etapa 1: leia o sistema legado Natural/Adabas.</sub> | [@builder](../03-builder/README.md)<br/><sub>Etapa 3: construa a implementação rastreável.</sub> |
 
-<sub>[Back to the kit index](../../README.md)</sub>
+<sub>[Voltar ao índice do kit](../../README.md)</sub>

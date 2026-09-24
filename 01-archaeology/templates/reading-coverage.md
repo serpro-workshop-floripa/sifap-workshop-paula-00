@@ -1,49 +1,49 @@
-# Template: Reading Coverage
+# Template: Cobertura de leitura
 
-> **Path:** [Team Kit](../../README.md) > [Stage 1](../README.md) > **Templates** > **Reading coverage**
+> **Caminho:** [Kit da Equipe](../../README.md) > [Etapa 1](../README.md) > **Templates** > **Cobertura de leitura**
 
-**Record who read which source intervals, what remains unread, and what was independently reviewed.**
+**Registre quem leu quais intervalos da origem, o que permanece não lido e o que foi revisado de forma independente.**
 
 > [!NOTE]
-> `/archaeology-kickoff` initializes `01-archaeology/reading-coverage.md`
-> with unfilled rows. Reading prompts update only intervals actually examined.
-> File discovery, opening a file, and generated summaries do not prove full reading.
+> `/archaeology-kickoff` inicializa `01-archaeology/reading-coverage.md`
+> com linhas não preenchidas. Prompts de leitura atualizam somente os intervalos realmente examinados.
+> Descobrir ou abrir um arquivo e gerar resumos não comprovam uma leitura completa.
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| Participant / date / source version | <!-- fill in --> |
-| Agreed reading scope and denominator | <!-- fill in: from inventory, not copied success counts --> |
-| Program reading coverage | <!-- fill in: measured numerator / agreed denominator --> |
-| DDM/FDT reading coverage | <!-- fill in --> |
-| Runtime checks performed | <!-- fill in or not performed --> |
+| Participante / data / versão da origem | <!-- preencher --> |
+| Escopo e denominador de leitura acordados | <!-- preencher: a partir do inventário, não de contagens de sucesso copiadas --> |
+| Cobertura de leitura dos programas | <!-- preencher: numerador medido / denominador acordado --> |
+| Cobertura de leitura de DDM/FDT | <!-- preencher --> |
+| Verificações de runtime realizadas | <!-- preencher ou não realizadas --> |
 
-## Reading ledger
+## Registro de leitura
 
-| Source member / artifact | Responsible role | Intervals actually read | Unread intervals | Notes / linked findings | Reviewer / status |
+| Membro / artefato de origem | Papel responsável | Intervalos realmente lidos | Intervalos não lidos | Observações / achados vinculados | Revisor / status |
 |---|---|---|---|---|---|
-| <!-- fill in --> | <!-- fill in --> | <!-- fill in --> | <!-- fill in --> | <!-- fill in --> | <!-- fill in --> |
+| <!-- preencher --> | <!-- preencher --> | <!-- preencher --> | <!-- preencher --> | <!-- preencher --> | <!-- preencher --> |
 
-## Supporting members and missing sources
+## Membros de apoio e fontes ausentes
 
-| Referenced artifact | Reason to inspect | Available? | Reader / evidence or blocker |
+| Artefato referenciado | Motivo para inspecionar | Disponível? | Leitor / evidência ou bloqueio |
 |---|---|---|---|
-| <!-- fill in --> | <!-- fill in --> | <!-- fill in --> | <!-- fill in --> |
+| <!-- preencher --> | <!-- preencher --> | <!-- preencher --> | <!-- preencher --> |
 
-## Verification boundaries
+## Limites da verificação
 
-| Check | Planned or executed? | Evidence / result | What it does not establish |
+| Verificação | Planejada ou executada? | Evidência / resultado | O que não estabelece |
 |---|---|---|---|
-| <!-- fill in --> | <!-- fill in --> | <!-- fill in --> | <!-- fill in --> |
+| <!-- preencher --> | <!-- preencher --> | <!-- preencher --> | <!-- preencher --> |
 
-## C1 self-check review
+## Revisão da autoavaliação C1
 
-| Role / next stage | Evidence reviewed | Open gaps | Acknowledgment / date |
+| Papel / próxima etapa | Evidência revisada | Lacunas em aberto | Reconhecimento / data |
 |---|---|---|---|
-| <!-- fill in --> | <!-- fill in --> | <!-- fill in --> | <!-- fill in only after actual review --> |
+| <!-- preencher --> | <!-- preencher --> | <!-- preencher --> | <!-- preencher somente após a revisão real --> |
 
-## Completion checks
+## Verificações de conclusão
 
-- [ ] Counts derive from the selected inventory and recorded intervals.
-- [ ] Partial reading, missing sources, and unexecuted checks remain visible.
-- [ ] No checked box, signature, date, runtime result, or C1 acceptance was copied from an example.
-- [ ] Mystery IDs and discovery findings link to the participant's own records.
+- [ ] As contagens derivam do inventário selecionado e dos intervalos registrados.
+- [ ] Leituras parciais, fontes ausentes e verificações não executadas permanecem visíveis.
+- [ ] Nenhuma caixa marcada, assinatura, data, resultado de runtime ou aceitação C1 foi copiada de um exemplo.
+- [ ] IDs de mistérios e achados da descoberta apontam para os registros do próprio participante.

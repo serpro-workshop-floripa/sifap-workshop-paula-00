@@ -1,35 +1,35 @@
-# Template: C1 Evidence Review
+# Template: Revisão de evidências C1
 
-> **Path:** [Team Kit](../../README.md) > [Stage 1](../README.md) > **Templates** > **C1 evidence review**
+> **Caminho:** [Kit da Equipe](../../README.md) > [Etapa 1](../README.md) > **Templates** > **Revisão de evidências C1**
 
-**Blank self-check record for the participant; it does not certify reading or approve a feature.**
+**Registro em branco de autoavaliação do participante; não certifica a leitura nem aprova uma funcionalidade.**
 
-The [stage exploration checklist](../LEGACY-EXPLORATION-CHECKLIST.md) is the
-authoritative gate. This template supplies only the record, not a second set
-of rules. `/discovery-report` uses these fields in the team's discovery report.
+O [checklist de exploração da etapa](../LEGACY-EXPLORATION-CHECKLIST.md) é o
+gate oficial. Este template fornece somente o registro, não um segundo conjunto
+de regras. `/discovery-report` usa estes campos no relatório de descoberta da equipe.
 
-| Gate | Participant evidence reference | Actual self-check result | Blocker / owner / next action |
+| Gate | Referência de evidência do participante | Resultado real da autoavaliação | Bloqueio / responsável / próxima ação |
 |---|---|---|---|
-| Assigned reading and supporting sources | <!-- fill in --> | <!-- fill in --> | <!-- fill in --> |
-| Candidate rules and source references | <!-- fill in --> | <!-- fill in --> | <!-- fill in --> |
-| Source data map and declaration dictionary | <!-- fill in --> | <!-- fill in --> | <!-- fill in --> |
-| Populated Adabas and extraction readiness | <!-- fill in --> | <!-- fill in --> | <!-- fill in --> |
-| Mystery record: evidence, unconfirmed hypothesis, owner | <!-- fill in --> | <!-- fill in --> | <!-- fill in --> |
-| Selected feature and complete authorized beneficiary population | <!-- fill in --> | <!-- fill in --> | <!-- fill in --> |
-| Architecture readiness acknowledgment | <!-- fill in --> | <!-- fill in only after self-check --> | <!-- fill in --> |
+| Leitura atribuída e fontes de apoio | <!-- preencher --> | <!-- preencher --> | <!-- preencher --> |
+| Regras candidatas e referências às fontes | <!-- preencher --> | <!-- preencher --> | <!-- preencher --> |
+| Mapa de dados de origem e dicionário de declarações | <!-- preencher --> | <!-- preencher --> | <!-- preencher --> |
+| Adabas populado e prontidão da extração | <!-- preencher --> | <!-- preencher --> | <!-- preencher --> |
+| Registro de mistério: evidência, hipótese não confirmada, responsável | <!-- preencher --> | <!-- preencher --> | <!-- preencher --> |
+| Funcionalidade selecionada e população autorizada completa de beneficiários | <!-- preencher --> | <!-- preencher --> | <!-- preencher --> |
+| Reconhecimento da prontidão de Arquitetura | <!-- preencher --> | <!-- preencher somente após a autoavaliação --> | <!-- preencher --> |
 
-## Review record
+## Registro da revisão
 
-- Participant / date: <!-- fill in -->
-- PO scope decision: <!-- fill in -->
-- DBA data-readiness decision: <!-- fill in -->
-- QA evidence review: <!-- fill in -->
-- Architecture readiness: <!-- fill in -->
-- C1 status: <!-- fill in: pending / blocked / accepted, with actual evidence -->
+- Participante / data: <!-- preencher -->
+- Decisão de escopo do PO: <!-- preencher -->
+- Decisão do DBA sobre prontidão dos dados: <!-- preencher -->
+- Revisão de evidências por QA: <!-- preencher -->
+- Prontidão de Arquitetura: <!-- preencher -->
+- Status do C1: <!-- preencher: pendente / bloqueado / aceito, com evidências reais -->
 
-## Completion checks
+## Verificações de conclusão
 
-- [ ] Every claimed result has a reviewable evidence reference.
-- [ ] Unresolved questions were not silently answered, closed, or turned into requirements.
-- [ ] No source counts, selected feature, or human approval is prefilled.
-- [ ] Data-readiness blockers remain blocking; a seed recipe alone is not acceptance.
+- [ ] Todo resultado declarado tem uma referência de evidência revisável.
+- [ ] Questões não resolvidas não foram silenciosamente respondidas, encerradas nem transformadas em requisitos.
+- [ ] Nenhuma contagem de origem, funcionalidade selecionada ou aprovação humana está pré-preenchida.
+- [ ] Bloqueios de prontidão dos dados continuam bloqueando; uma receita de seed isolada não representa aceitação.

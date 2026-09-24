@@ -1,15 +1,15 @@
 ---
-description: "Use when implementing or reviewing authentication, authorization, crypto, secure configuration, secrets handling, and security-sensitive code."
+description: "Use ao implementar ou revisar autenticação, autorização, criptografia, configuração segura, tratamento de secrets e código sensível à segurança."
 applyTo: "backend/src/main/java/**/auth/**,backend/src/main/java/**/security/**,backend/src/main/java/**/config/**,backend/src/main/resources/**,frontend/**/auth/**,frontend/**/middleware.ts"
 ---
 
-# Security Conventions — Auth, Secrets, and Injection
+# Convenções de segurança — Autenticação, secrets e injeção
 
-This file activates on security-sensitive code: `auth/`, `security/`, and `config/` packages, everything under `backend/src/main/resources/`, plus `frontend/**/auth/**` and `frontend/middleware.ts`. It teaches authentication, authorization, input validation, CORS, secret handling, and sensitive-data protection following the repo's OWASP Top 10 rules. Generic REST shape lives in [`backend.instructions.md`](backend.instructions.md); Terraform secret storage lives in [`infrastructure.instructions.md`](infrastructure.instructions.md).
+Este arquivo se aplica a `auth/`, `security/`, `config/`, `backend/src/main/resources/`, `frontend/**/auth/**` e `frontend/middleware.ts`. Ele orienta autenticação, autorização, validação, CORS, secrets e dados sensíveis conforme o OWASP Top 10. O formato REST está em [`backend.instructions.md`](backend.instructions.md), e o armazenamento de secrets do Terraform em [`infrastructure.instructions.md`](infrastructure.instructions.md).
 
-## Authentication (OAuth2 / JWT)
+## Autenticação (OAuth2/JWT)
 
-The backend is a stateless OAuth2 resource server validating JWTs via Spring Security. Never hand-roll token parsing or crypto.
+O backend é um OAuth2 resource server stateless que valida JWTs com Spring Security. Nunca implemente parsing de token ou criptografia manualmente.
 
 ```java
 @Configuration
@@ -25,43 +25,42 @@ class SecurityConfig {
                 .anyRequest().authenticated())
             .oauth2ResourceServer(oauth -> oauth.jwt(Customizer.withDefaults()))
             .cors(Customizer.withDefaults())
-            .csrf(csrf -> csrf.disable()); // stateless token API; no session cookie
+            .csrf(csrf -> csrf.disable());
         return http.build();
     }
 }
 ```
 
-If passwords are ever stored, hash with argon2 or bcrypt (never a bare digest), rate-limit login, and require MFA for administrators.
+Se houver armazenamento de senhas, use argon2 ou bcrypt, nunca digest puro. Aplique rate limiting no login e MFA para administradores.
 
-## Authorization
+## Autorização
 
-Authorize every request, deny by default, and enforce the least privilege. Use method security for role checks and verify resource ownership explicitly.
+Autorize cada request, negue por padrão e aplique privilégio mínimo. Use method security para papéis e verifique explicitamente a propriedade do resource.
 
 ```java
 @PreAuthorize("hasRole('AUDITOR')")
 public AuditReport generate(UUID resourceId, Authentication principal) {
     Resource resource = resourceService.getOwned(resourceId, principal.getName());
-    // ownership is checked in the service; a role alone is not enough
     return AuditReport.of(resource);
 }
 ```
 
-## Input Validation and Injection
+## Validação de input e injeção
 
-Validate at every boundary with `@Valid` (see [`backend.instructions.md`](backend.instructions.md)). Build queries only with JPA/JPQL bound parameters, escape HTML on output, and validate uploads by type and size.
+Valide cada fronteira com `@Valid`. Crie queries apenas com parâmetros vinculados em JPA/JPQL, escape HTML no output e valide tipo e tamanho de uploads.
 
 > [!WARNING]
-> Never concatenate user input into a query, a shell command, or markup. String-built SQL is the classic injection vector; parameter binding is not optional.
+> Nunca concatene input do usuário em query, comando shell ou markup. Parameter binding é obrigatório.
 
 ## CORS
 
-Configure allowed origins explicitly. A `*` wildcard is forbidden in production.
+Configure origens permitidas explicitamente. O curinga `*` é proibido em produção.
 
 ```java
 @Bean
 CorsConfigurationSource corsConfigurationSource() {
     CorsConfiguration config = new CorsConfiguration();
-    config.setAllowedOrigins(List.of("https://app.example.gov.br")); // never "*" in prod
+    config.setAllowedOrigins(List.of("https://app.example.gov.br"));
     config.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE"));
     config.setAllowedHeaders(List.of("Authorization", "Content-Type"));
     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
@@ -70,23 +69,22 @@ CorsConfigurationSource corsConfigurationSource() {
 }
 ```
 
-## Secrets and Secure Config
+## Secrets e configuração segura
 
-No secret is hardcoded, committed, or logged. Read secrets from the environment or Key Vault; authenticate Azure service-to-service with Managed Identity. In the frontend, only non-secret values may use the `NEXT_PUBLIC_` prefix — anything prefixed is shipped to the browser.
+Não fixe, versione nem registre secrets. Leia-os do ambiente ou do Key Vault. Use Managed Identity na autenticação entre serviços Azure. No frontend, apenas valores não secretos podem usar `NEXT_PUBLIC_`, pois esse prefixo envia o valor ao navegador.
 
-## Sensitive Data (CPF, Amounts)
+## Dados sensíveis
 
 > [!IMPORTANT]
-> Mask regulated fields (CPF, benefit amounts) in logs, error responses, and URLs. Never place them in query strings or unencrypted storage, and always transmit over TLS.
+> Mascare CPF e valores de benefícios em logs, erros e URLs. Nunca os coloque em query strings ou armazenamento sem criptografia. Sempre transmita por TLS.
 
 ```java
-// keep the first 3 and last 2 digits of an 11-digit CPF
 String masked = cpf.replaceAll("(\\d{3})\\d{6}(\\d{2})", "$1******$2");
 ```
 
-## Frontend Auth Boundary (`middleware.ts`)
+## Fronteira de autenticação no frontend
 
-Gate protected routes in middleware; never trust the client to enforce access. Keep tokens and secrets server-side.
+Proteja rotas no middleware e nunca confie no cliente para impor acesso. Mantenha tokens e secrets no servidor.
 
 ```ts
 import { NextResponse, type NextRequest } from 'next/server';
@@ -100,35 +98,35 @@ export function middleware(request: NextRequest) {
 export const config = { matcher: ['/dashboard/:path*'] };
 ```
 
-## Automation and Agent Boundaries
+## Fronteiras de automação e agentes
 
-An AI agent or automation never grants itself new permissions and never touches a production database without explicit human approval. Changes to auth, roles, or secret handling require peer review before merge.
+Agentes de IA e automações nunca concedem novas permissões a si mesmos nem acessam banco de produção sem aprovação humana explícita. Alterações de autenticação, papéis ou secrets exigem revisão antes do merge.
 
 ## Convenções
 
-| Rule | Rationale |
+| Regra | Motivo |
 |---|---|
-| OAuth2/JWT via Spring Security | No custom, error-prone auth code |
-| Authorize every request, deny by default | Least privilege at each boundary |
-| JPA/JPQL bound parameters only | Eliminates SQL injection |
-| Explicit CORS origins, no `*` in prod | Blocks cross-origin abuse |
-| Secrets from env/Key Vault, Managed Identity | No credentials in code or logs |
-| Mask CPF and amounts everywhere | Protects regulated data |
+| OAuth2/JWT pelo Spring Security | Evita código de autenticação customizado e propenso a erros |
+| Autorize cada request e negue por padrão | Aplica privilégio mínimo |
+| Use apenas parâmetros vinculados | Elimina SQL injection |
+| Configure origens CORS explícitas | Bloqueia abuso entre origens |
+| Leia secrets do ambiente ou Key Vault | Evita credenciais no código e nos logs |
+| Mascare CPF e valores | Protege dados regulados |
 
 ## Faça / Não faça
 
-| Do | Do not |
+| Faça | Não faça |
 |---|---|
-| Hash passwords with argon2/bcrypt | Store or log plaintext or a bare digest |
-| Check role **and** resource ownership | Treat a role as sufficient authorization |
-| Keep secrets server-side | Prefix a secret with `NEXT_PUBLIC_` |
-| Mask sensitive fields before logging | Put CPF/amounts in logs or query strings |
+| Use argon2 ou bcrypt para senhas | Armazene texto puro ou digest sem salt |
+| Verifique papel e propriedade do resource | Considere o papel autorização suficiente |
+| Mantenha secrets no servidor | Prefixe um secret com `NEXT_PUBLIC_` |
+| Mascare campos antes do log | Coloque CPF ou valores em logs e query strings |
 
 ## Checklist antes de abrir um PR
 
-- [ ] Endpoints authenticate via Spring Security; no custom token parsing
-- [ ] Every request is authorized, denying by default, with ownership checks where relevant
-- [ ] All queries use bound parameters; uploads and inputs are validated
-- [ ] CORS lists explicit origins; no `*` in production configuration
-- [ ] No secret is hardcoded, committed, or logged; Azure auth uses Managed Identity
-- [ ] CPF, amounts, and tokens are masked in logs, errors, and URLs
+- [ ] Endpoints autenticam pelo Spring Security, sem parsing customizado de token.
+- [ ] Cada request é autorizada com negação por padrão e verificação de propriedade quando relevante.
+- [ ] Queries usam parâmetros vinculados; uploads e inputs são validados.
+- [ ] CORS lista origens explícitas e não usa `*` em produção.
+- [ ] Nenhum secret está fixado, versionado ou registrado; Azure usa Managed Identity.
+- [ ] CPF, valores e tokens estão mascarados em logs, erros e URLs.

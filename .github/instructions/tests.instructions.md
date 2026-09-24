@@ -1,42 +1,37 @@
 ---
-description: "Use when creating or reviewing automated tests, test strategy, coverage gaps, regression tests, and quality gates in any stack."
+description: "Use ao criar ou revisar testes automatizados, estratégia, lacunas de cobertura, regressões e gates de qualidade em qualquer stack."
 applyTo: "**/*.test.*,**/*.spec.*,**/test_*.py,**/*_test.*,**/*Test.java,**/*Tests.cs,**/tests/**,**/test/**,**/__tests__/**"
 ---
 
-# Test Conventions — Structure, Traceability, and Coverage
+# Convenções de testes — Estrutura, rastreabilidade e cobertura
 
-This file opens for any test file, backend or frontend. It covers test structure and naming, tool choice per stack, REQ-ID traceability, and coverage targets. Tests are written **during** implementation, never afterwards. JUnit assertion detail lives in [java-junit5-assertions.instructions.md](java-junit5-assertions.instructions.md).
+Este arquivo se aplica a testes de backend e frontend. Ele orienta estrutura, nomenclatura, ferramentas, rastreabilidade por REQ-ID e cobertura. Escreva testes durante a implementação. Detalhes de assertions JUnit estão em [java-junit5-assertions.instructions.md](java-junit5-assertions.instructions.md).
 
-The effective test stack (framework, commands, and coverage thresholds) is the one declared in [copilot-instructions.md](../copilot-instructions.md) or the project constitution. The tables below are a reference until the project decides.
+## Pirâmide de testes
 
-## Test Pyramid
+| Camada | O que comprova | Proporção |
+|---|---|---|
+| Unitário | Regras de negócio sem I/O | Maior |
+| Integração | Comportamento com dependências reais ou renderização | Menor |
+| End to end | Fluxo crítico do usuário | Poucos |
 
-| Layer | What it proves | Share |
-| --- | --- | --- |
-| Unit (pure logic, services) | Business rules without I/O | Most |
-| Integration (repositories, APIs, components) | Behavior with real dependencies or rendering | Fewer |
-| End to end | Critical user flow | Few |
+## Ferramentas de referência
 
-## Reference Tools per Stack
-
-| Stack | Unit | Integration | E2E |
-| --- | --- | --- | --- |
-| JavaScript/TypeScript (Node) | `node:test`, Vitest, or Jest | Supertest, Testcontainers | Playwright |
-| Frontend (React/Vue) | Vitest + Testing Library | Testing Library + MSW | Playwright |
+| Stack | Unitário | Integração | E2E |
+|---|---|---|---|
+| JavaScript/TypeScript | `node:test`, Vitest ou Jest | Supertest, Testcontainers | Playwright |
+| Frontend | Vitest + Testing Library | Testing Library + MSW | Playwright |
 | Java | JUnit 5 + AssertJ | Testcontainers | Playwright |
 | Python | pytest | pytest + Testcontainers | Playwright |
-| .NET | xUnit or NUnit | Testcontainers | Playwright |
+| .NET | xUnit ou NUnit | Testcontainers | Playwright |
 
-Adopt only tools the project already uses or that an ADR approved.
+Adote apenas ferramentas já usadas pelo projeto ou aprovadas em ADR.
 
-## Structure: Arrange-Act-Assert
+## Estrutura Arrange-Act-Assert
 
-Each test has three visible phases and verifies one behavior. Mock only external boundaries (network, clock, third-party services), never the class or function under test.
+Cada teste tem três fases visíveis e verifica um comportamento. Mocke apenas fronteiras externas, nunca a classe ou função testada.
 
 ```ts
-import { describe, it, expect } from 'vitest';
-import { calculateTotal } from './cart';
-
 describe('calculateTotal', () => {
   it('should_apply_discount_when_coupon_is_valid', () => { // REQ-002
     const items = [{ price: 100 }, { price: 50 }];            // Arrange
@@ -46,81 +41,59 @@ describe('calculateTotal', () => {
 });
 ```
 
-## Naming
+## Nomenclatura
 
-Name tests `should_<expected behavior>_when_<condition>`, or express the same intent in natural language in `it(...)` or `@DisplayName`. Keep one language per project.
+Use `should_<expected behavior>_when_<condition>` ou intenção equivalente em `it(...)` ou `@DisplayName`. Mantenha um idioma por projeto.
 
-```text
-should_return_409_when_identifier_already_exists
-should_render_empty_state_when_no_items
-should_reject_sequence_when_fewer_than_three_numbers
-```
+## Dependências reais e test doubles
 
-## Real Dependencies Versus Test Doubles
-
-- When data behavior matters (queries, transactions, constraints), use the real dependency in a container (Testcontainers or equivalent) instead of an in-memory substitute with different semantics.
-- Use doubles only for slow, non-deterministic, or non-existent collaborators.
-- Do not mock types you do not own; wrap them in a thin abstraction first.
+- Quando o comportamento dos dados importar, use a dependência real em container.
+- Use doubles apenas para collaborators lentos, não determinísticos ou inexistentes.
+- Não mocke tipos externos diretamente; envolva-os em uma abstração fina.
 
 ## Frontend
 
-Query elements by accessible role or label, never by `data-testid` when a role exists. Drive interaction with `user-event`. Avoid snapshot-only tests.
+Consulte elementos por role ou label, nunca por `data-testid` quando houver role. Use `user-event` e evite testes apenas de snapshot.
 
-```tsx
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { describe, it, expect, vi } from 'vitest';
-import { ArchiveButton } from './ArchiveButton';
+## Rastreabilidade e TDD
 
-describe('ArchiveButton', () => {
-  it('should call onArchive when clicked', async () => { // REQ-032
-    const onArchive = vi.fn().mockResolvedValue(undefined);
-    render(<ArchiveButton id="1" onArchive={onArchive} />);
-    await userEvent.click(screen.getByRole('button', { name: /archive/i }));
-    expect(onArchive).toHaveBeenCalledWith('1');
-  });
-});
-```
+Cada teste que verifica requisito cita o ID na mesma linha ou logo acima: `// REQ-NNN` ou `# NFR-NNN`.
 
-## REQ-ID Traceability and TDD
+Para cada regra de negócio, a tarefa RED executa primeiro e falha pela ausência do comportamento. `python3 .github/scripts/validate-red-phase.py -- <test command>` comprova a falha antes da tarefa GREEN.
 
-Every test that verifies a requirement cites its ID in a comment on the same line or just above (`// REQ-NNN`, `# NFR-NNN`). That feeds the test-binding check in [sdd-artifacts.instructions.md](sdd-artifacts.instructions.md), which lists requirements no test references yet.
+## Metas de cobertura
 
-For every business rule, the RED task in `tasks.md` runs first and must fail for the missing behavior; `python3 .github/scripts/validate-red-phase.py -- <test command>` proves the failure before the GREEN task starts.
-
-## Coverage Targets
-
-Use the thresholds the project defines. If none exist, propose thresholds and record them as a team decision (a common start is 80% lines and 70% branches, higher for business rules). Configure them in the coverage tool so the test command fails below the minimum.
+Use os limites definidos pelo projeto. Sem limite, proponha e registre uma decisão. Configure a ferramenta para falhar abaixo do mínimo.
 
 > [!NOTE]
-> Coverage is a floor, not a goal. A branch without an assertion is untested even when the line counts as covered. Verify behavior, not just the call.
+> Cobertura é piso, não objetivo. Uma branch sem assertion permanece sem teste mesmo quando a linha aparece coberta.
 
 ## Convenções
 
-| Rule | Rationale |
-| --- | --- |
-| Arrange-Act-Assert, one behavior per test | Readable and isolates the failure |
-| Mock only external boundaries | Real dependencies catch real bugs |
-| Names `should_<behavior>_when_<condition>` | Clear intent in the report |
-| `REQ-NNN` or `NFR-NNN` comment in requirement tests | Keeps spec-to-test traceability live |
-| RED proven before GREEN | A test that never failed proves nothing |
-| Written during implementation | Untested code is not integrated |
+| Regra | Motivo |
+|---|---|
+| Arrange-Act-Assert e um comportamento por teste | Facilita leitura e diagnóstico |
+| Mock apenas em fronteiras externas | Dependências reais encontram bugs reais |
+| Nomes `should_<behavior>_when_<condition>` | Expõem intenção no relatório |
+| Comentário `REQ-NNN` ou `NFR-NNN` | Mantém rastreabilidade viva |
+| RED comprovado antes de GREEN | Um teste que nunca falhou não comprova nada |
+| Testes escritos durante a implementação | Código sem teste não está integrado |
 
 ## Faça / Não faça
 
-| Do | Do not |
-| --- | --- |
-| Use the real containerized dependency when data matters | Replace the database with an in-memory equivalent with different semantics |
-| Query by role or label | Query by `data-testid` when a role exists |
-| Verify behavior and edge branches | Rely only on snapshots or line coverage |
-| Write the test together with the code | Add tests after the feature is "done" |
-| Skip or weaken a test only with an issue and justification | Skip tests to force a green pipeline |
+| Faça | Não faça |
+|---|---|
+| Use dependência real em container quando os dados importarem | Troque banco real por substituto com outra semântica |
+| Consulte elementos por role ou label | Use `data-testid` quando houver role |
+| Verifique comportamento e edge cases | Confie apenas em snapshots ou cobertura de linhas |
+| Escreva teste junto com o código | Adicione testes depois da funcionalidade pronta |
+| Enfraqueça teste apenas com issue e justificativa | Pule teste para deixar a pipeline verde |
 
 ## Checklist antes de abrir um PR
 
-- [ ] New behavior has unit tests; persistence has an integration test with a real dependency where applicable.
-- [ ] Tests follow Arrange-Act-Assert and the project naming convention.
-- [ ] Requirement-driven tests carry a `REQ-NNN` or `NFR-NNN` comment.
-- [ ] Business rules cover the happy path, validation failure, and authorization failure where it exists.
-- [ ] Coverage meets the project minimum.
-- [ ] Every external boundary is mocked and no required real dependency was replaced by a mock.
+- [ ] Novo comportamento tem teste unitário; persistência tem integração real quando aplicável.
+- [ ] Testes seguem Arrange-Act-Assert e a convenção de nomes.
+- [ ] Testes de requisitos citam `REQ-NNN` ou `NFR-NNN`.
+- [ ] Regras cobrem sucesso, validação e autorização quando aplicável.
+- [ ] A cobertura atende ao mínimo.
+- [ ] Apenas fronteiras externas usam mocks.

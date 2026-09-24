@@ -1,107 +1,107 @@
-# Start here: individual challenge pre-work
+# Comece aqui: atividades prévias do desafio individual
 
-> **Track:** [Individual challenge kit](README.md) › **Start here**
+> **Trilha:** [Kit do desafio individual](README.md) › **Comece aqui**
 
-Use this page before the 14:00 start. The challenge starts directly in `@archaeologist`; there is no opening block during the timed exercise.
+Use esta página antes do início às 14:00. O desafio começa diretamente em `@archaeologist`; não há um bloco de abertura durante o exercício cronometrado.
 
-![Start](https://img.shields.io/badge/Start-00-171717?style=flat-square) ![When: before 14:00](https://img.shields.io/badge/When-Before%2014%3A00-737373?style=flat-square) ![Audience: individual participant](https://img.shields.io/badge/Audience-Individual-A3A3A3?style=flat-square)
+![Início](https://img.shields.io/badge/In%C3%ADcio-00-171717?style=flat-square) ![Quando: antes das 14:00](https://img.shields.io/badge/Quando-Antes%20das%2014%3A00-737373?style=flat-square) ![Público: participante individual](https://img.shields.io/badge/P%C3%BAblico-Participante%20individual-A3A3A3?style=flat-square)
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| **Target audience** | One participant working alone |
-| **Prerequisites** | Git, VS Code, Copilot, Spec-Kit, Java, Node, Docker, repository clone, and authorized populated Adabas source/extraction route ready before 14:00 |
-| **Estimated time** | 15 minutes of reading after setup |
-| **Expected result** | You know what to open at 14:00, how to self-check C1/C2/C3, and how to submit |
+| **Público-alvo** | Um participante trabalhando sozinho |
+| **Pré-requisitos** | Git, VS Code, Copilot, Spec-Kit, Java, Node, Docker, clone do repositório e uma origem Adabas autorizada e populada, com rota de extração, prontos antes das 14:00 |
+| **Tempo estimado** | 15 minutos de leitura após a configuração |
+| **Resultado esperado** | Você sabe o que abrir às 14:00, como realizar as autoverificações C1/C2/C3 e como enviar |
 
 ---
 
-## Pre-work checklist (complete before 14:00)
+## Checklist de atividades prévias (conclua antes das 14:00)
 
-- [ ] Follow [`00-SETUP.md`](00-SETUP.md) and verify your laptop tools.
-- [ ] Clone your own private repository and create or pull `develop`.
-- [ ] Confirm Copilot Ask, Plan, Agent, and the stage agents load in VS Code.
-- [ ] Install and verify official Spec-Kit (`specify version`).
-- [ ] Confirm the local legacy sources are present under [`01-archaeology/legacy-sifap/`](01-archaeology/legacy-sifap/).
-- [ ] Confirm the authorized, populated Adabas source and supported extraction route are ready; keep credentials out of Git.
-- [ ] Read the challenge flow in [`00-TEAM-FLOW.md`](00-TEAM-FLOW.md) and Git rules in [`00-GIT-WORKFLOW.md`](00-GIT-WORKFLOW.md).
-- [ ] Open the visual glossary: [`07-concepts/03-visual-glossary.md`](07-concepts/03-visual-glossary.md).
-- [ ] Skim all 10 role responsibilities in [`05-personas/`](05-personas/). You cover them yourself; roles are skills, not teammates.
+- [ ] Siga [`00-SETUP.md`](00-SETUP.md) e verifique as ferramentas de seu computador.
+- [ ] Clone seu próprio repositório privado e crie ou atualize `develop`.
+- [ ] Confirme que Copilot Ask, Plan, Agent e os agentes de etapa são carregados no VS Code.
+- [ ] Instale e verifique o Spec-Kit oficial (`specify version`).
+- [ ] Confirme que os fontes legados locais estão presentes em [`01-archaeology/legacy-sifap/`](01-archaeology/legacy-sifap/).
+- [ ] Confirme que a origem Adabas autorizada e populada e a rota de extração suportada estão prontas; mantenha as credenciais fora do Git.
+- [ ] Leia o fluxo do desafio em [`00-TEAM-FLOW.md`](00-TEAM-FLOW.md) e as regras do Git em [`00-GIT-WORKFLOW.md`](00-GIT-WORKFLOW.md).
+- [ ] Abra o glossário visual: [`07-concepts/03-visual-glossary.md`](07-concepts/03-visual-glossary.md).
+- [ ] Leia rapidamente as responsabilidades das 10 funções em [`05-personas/`](05-personas/). Você as cobre sozinho; as funções são skills, não colegas de equipe.
 
 > [!IMPORTANT]
-> Do not run parallel sub-agent orchestration, worker harnesses, or Copilot CLI fan-out during the challenge. Use Copilot Ask, Plan, and Agent modes with the active stage agent.
+> Não execute orquestração paralela de subagentes, worker harnesses nem fan-out do Copilot CLI durante o desafio. Use os modos Ask, Plan e Agent do Copilot com o agente de etapa ativo.
 
 ---
 
-## At 14:00: open `@archaeologist`
+## Às 14:00: abra `@archaeologist`
 
-At 14:00, open Copilot Chat in VS Code and select `@archaeologist`.
+Às 14:00, abra o Copilot Chat no VS Code e selecione `@archaeologist`.
 
-Use the first prompt to begin Stage 1:
+Use o primeiro prompt para iniciar a Etapa 1:
 
 ```text
 @archaeologist Start Stage 1 for the individual SIFAP challenge. Help me discover the legacy rules for listing, searching, and viewing all beneficiaries migrated from Adabas to PostgreSQL. Keep every finding tied to legacy files and lines, and prepare me for checkpoint C1.
 ```
 
-Use `@dba` when data-source discovery, DDM/FDT interpretation, extraction, or reconciliation questions appear.
+Use `@dba` quando surgirem perguntas sobre descoberta da origem de dados, interpretação de DDM/FDT, extração ou reconciliação.
 
 ---
 
-## Challenge schedule
+## Cronograma do desafio
 
-Reference budgets are in [`00-TEAM-FLOW.md`](00-TEAM-FLOW.md):
+Os orçamentos de tempo de referência estão em [`00-TEAM-FLOW.md`](00-TEAM-FLOW.md):
 
-| Time | Step | Agent | Checkpoint |
+| Horário | Etapa | Agente | Checkpoint |
 |---|---|---|---|
-| 14:00-14:50 | Stage 1 — Archaeology | `@archaeologist` + `@dba` as needed | C1 |
-| 14:50-15:30 | Stage 2 — Specification | `@architect` + `@dba` as needed | C2 |
-| 15:30-17:10 | Stage 3 — Implementation and data migration | `@builder` + `@dba` | C3 submission |
-| 17:10-17:40 | Final judge validation | Judge | Acceptance or rejection |
+| 14:00-14:50 | Etapa 1 — Arqueologia | `@archaeologist` + `@dba` conforme necessário | C1 |
+| 14:50-15:30 | Etapa 2 — Especificação | `@architect` + `@dba` conforme necessário | C2 |
+| 15:30-17:10 | Etapa 3 — Implementação e migração de dados | `@builder` + `@dba` | Envio C3 |
+| 17:10-17:40 | Validação final da banca | Banca | Aceitação ou rejeição |
 
-The fixed target capability is to consult — list, search, and detail — **all** beneficiaries migrated from Adabas to PostgreSQL, applying the validation rules you discover from the legacy system.
-
----
-
-## Self-checkpoints
-
-C1, C2, and C3 replace handoffs. Before switching agents, check your own artifacts against the same definition of done.
-
-- **C1 (end of Stage 1):** legacy programs/DDMs read, business rules recorded with evidence, data questions and blockers captured.
-- **C2 (end of Stage 2):** EARS requirements, REQ-IDs, `source_legacy:`, plan, tasks, ADRs, and migration design are traceable.
-- **C3 (end of Stage 3):** implementation, tests, data load, reconciliation, rerun behavior, and consultation coverage are ready for the submission PR.
-
-If you are stuck for 20 minutes, ask workshop support and record the blocker. Reduce capability breadth if needed, never the migrated population or verification standard.
+A capacidade-alvo fixa é consultar — listar, pesquisar e detalhar — **todos** os beneficiários migrados do Adabas para o PostgreSQL, aplicando as regras de validação que você descobrir no sistema legado.
 
 ---
 
-## Finish line
+## Autoverificações
 
-Your submission is accepted only if all of these pass:
+C1, C2 e C3 substituem os handoffs. Antes de trocar de agente, verifique seus próprios artefatos em relação à mesma definição de pronto.
 
-1. CI is green, including `legacy-traceability` and test jobs.
-2. Every requirement has a REQ-ID, EARS wording, and `source_legacy:`.
-3. Tests pass: backend `mvn verify`; frontend tests if a frontend was built.
-4. Data is reconciled: source count = loaded + explained rejects; source keys and agreed aggregates reconcile; no unexplained losses; rerun without duplicates.
-5. Listing, search, and detail cover the complete migrated beneficiary population, not a sample or first page.
+- **C1 (fim da Etapa 1):** programas/DDMs legados lidos, regras de negócio registradas com evidências, perguntas sobre dados e bloqueios documentados.
+- **C2 (fim da Etapa 2):** requisitos EARS, REQ-IDs, `source_legacy:`, plano, tarefas, ADRs e design da migração rastreáveis.
+- **C3 (fim da Etapa 3):** implementação, testes, carga de dados, reconciliação, comportamento de reexecução e cobertura da consulta prontos para o PR de envio.
 
----
-
-## How to submit
-
-1. Work in your own repository.
-2. Create `spec/<NNN>-<feature>` from `develop` during Stage 2.
-3. Create `impl/<NNN>-<feature>` from `develop` during Stage 3.
-4. Open the submission PR from `impl/<NNN>-<feature>` to `develop`.
-5. Complete the PR checklist in [`.github/PULL_REQUEST_TEMPLATE.md`](.github/PULL_REQUEST_TEMPLATE.md).
-6. Notify the judge.
-
-The PR creation time is the submission timestamp. The first two participants whose submissions pass judge validation win. The submission deadline is 17:10; rejected submissions may be fixed and resubmitted with a new timestamp.
+Se estiver travado por 20 minutos, peça ajuda ao suporte do workshop e registre o bloqueio. Reduza a abrangência da capacidade, se necessário, mas nunca a população migrada nem o padrão de verificação.
 
 ---
 
-### Continue reading
+## Linha de chegada
 
-| Previous | Next |
+Seu envio será aceito somente se todos estes itens passarem:
+
+1. A CI está verde, incluindo `legacy-traceability` e os jobs de teste.
+2. Todo requisito tem um REQ-ID, redação EARS e `source_legacy:`.
+3. Os testes passam: `mvn verify` no backend; testes do frontend, caso um frontend tenha sido criado.
+4. Os dados estão reconciliados: contagem da origem = carregados + rejeições explicadas; chaves da origem e agregados acordados são reconciliados; nenhuma perda sem explicação; reexecução sem duplicidades.
+5. Listagem, pesquisa e detalhes cobrem toda a população migrada de beneficiários, não apenas uma amostra ou a primeira página.
+
+---
+
+## Como enviar
+
+1. Trabalhe em seu próprio repositório.
+2. Crie `spec/<NNN>-<feature>` a partir de `develop` durante a Etapa 2.
+3. Crie `impl/<NNN>-<feature>` a partir de `develop` durante a Etapa 3.
+4. Abra o PR de envio de `impl/<NNN>-<feature>` para `develop`.
+5. Preencha o checklist do PR em [`.github/PULL_REQUEST_TEMPLATE.md`](.github/PULL_REQUEST_TEMPLATE.md).
+6. Notifique a banca.
+
+O horário de criação do PR é o horário do envio. Os dois primeiros participantes cujos envios passarem na validação da banca vencem. O prazo de envio é 17:10; envios rejeitados podem ser corrigidos e reenviados com um novo horário.
+
+---
+
+### Continue a leitura
+
+| Anterior | Próximo |
 |---|---|
-| [Individual challenge kit](README.md)<br/><sub>Main hub for this repository.</sub> | [Challenge flow](00-TEAM-FLOW.md)<br/><sub>14:00-17:40 schedule, C1/C2/C3, finish line.</sub> |
+| [Kit do desafio individual](README.md)<br/><sub>Página principal deste repositório.</sub> | [Fluxo do desafio](00-TEAM-FLOW.md)<br/><sub>Cronograma das 14:00 às 17:40, C1/C2/C3 e linha de chegada.</sub> |
 
-<sub>[Back to the kit index](README.md)</sub>
+<sub>[Voltar ao índice do kit](README.md)</sub>

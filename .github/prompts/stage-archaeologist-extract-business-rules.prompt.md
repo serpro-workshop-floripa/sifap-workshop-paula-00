@@ -1,7 +1,7 @@
 ---
 name: "extract-business-rules"
 description: "Extracts business rules from a Natural program by reading IF/THEN/ELSE blocks and confirming them against documentation."
-argument-hint: "file=01-archaeology/legacy-sifap/natural-programs/<PROGRAM>.NSN docs=01-archaeology/legacy-sifap/legacy-docs/"
+argument-hint: "file=01-archaeology/legacy-sifap/natural-programs/<PROGRAM>.NSP docs=01-archaeology/legacy-sifap/legacy-docs/"
 agent: "archaeologist"
 tools: ["read", "search", "edit"]
 ---
@@ -23,7 +23,7 @@ After the team completes the initial inventory (`/archaeology-kickoff`) and sele
 
 ## Inputs the Team Must Provide
 
-- The full path to the Natural program to analyze (for example, `01-archaeology/legacy-sifap/natural-programs/PGXXXXXX.NSN`)
+- The full path to the Natural program to analyze (for example, `01-archaeology/legacy-sifap/natural-programs/<PROGRAM>.NSP`, or `.NSN` for a subprogram)
 - Any available documentation paths in `01-archaeology/legacy-sifap/legacy-docs/` (optional — used for confirmation)
 
 ## What I Will Do

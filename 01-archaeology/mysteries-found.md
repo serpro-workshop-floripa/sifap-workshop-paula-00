@@ -1,59 +1,59 @@
-# Open Questions Record — Stage 1
+# Registro de questões em aberto — Etapa 1
 
-> **Track:** [Team Kit](../README.md) › [Stage 1](README.md) › **Open Questions**
+> **Trilha:** [Kit da Equipe](../README.md) › [Etapa 1](README.md) › **Questões em aberto**
 
-**Traceable record of Stage 1 uncertainties.** Each entry documents an unanswered question with evidence, a hypothesis marked as unconfirmed, and a validation owner.
+**Registro rastreável das incertezas da Etapa 1.** Cada entrada documenta uma questão sem resposta, com evidências, uma hipótese marcada como não confirmada e um responsável pela validação.
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| **Target audience** | Individual participant |
-| **Prerequisites** | Read the source members needed for the fixed capability |
-| **Stage** | Stage 1 — Archaeology |
-| **Expected outcome** | Questions without conclusions, with evidence and an identified owner |
+| **Público-alvo** | Participante individual |
+| **Pré-requisitos** | Ler os membros de origem necessários à capacidade fixa |
+| **Etapa** | Etapa 1 — Arqueologia |
+| **Resultado esperado** | Questões sem conclusões, com evidências e um responsável identificado |
 
 > [!IMPORTANT]
-> A question does not become a business rule, requirement, or conclusion until it has explicit human validation and evidence preserved as `path:line`. This record is not an answer and does not replace that validation.
+> Uma questão não se torna regra de negócio, requisito ou conclusão até receber validação humana explícita e ter evidências preservadas como `caminho:linha`. Este registro não é uma resposta e não substitui essa validação.
 
 ---
 
-## Record
+## Registro
 
-Use one row per mystery. Enter the relevant **canonical ID** (`SIFAP-M-01` … `SIFAP-M-20`—see the [checklist](mysteries-checklist.md)) or `BONUS` for findings outside the list.
+Use uma linha por mistério. Informe o **ID canônico** relevante (`SIFAP-M-01` … `SIFAP-M-20` — consulte o [checklist](mysteries-checklist.md)) ou `BONUS` para achados fora da lista.
 
-| ID | Open question | Evidence (`path:line`) | Impact | Hypothesis (unconfirmed) | Responsible person/area | Status |
+| ID | Questão em aberto | Evidência (`caminho:linha`) | Impacto | Hipótese (não confirmada) | Pessoa/área responsável | Status |
 |---|---|---|---|---|---|---|
-| `SIFAP-M-__` | <!-- fill in: a real question ending with a question mark --> | <!-- fill in: path:line --> | <!-- fill in: what breaks in the Java migration --> | <!-- fill in: unconfirmed --> | <!-- fill in --> | <!-- fill in: open / awaiting human validation / closed after human validation --> |
-| `SIFAP-M-__` | <!-- fill in --> | <!-- fill in: path:line --> | <!-- fill in --> | <!-- fill in: unconfirmed --> | <!-- fill in --> | <!-- fill in --> |
-| `SIFAP-M-__` | <!-- fill in --> | <!-- fill in: path:line --> | <!-- fill in --> | <!-- fill in: unconfirmed --> | <!-- fill in --> | <!-- fill in --> |
-| `SIFAP-M-__` | <!-- fill in --> | <!-- fill in: path:line --> | <!-- fill in --> | <!-- fill in: unconfirmed --> | <!-- fill in --> | <!-- fill in --> |
+| `SIFAP-M-__` | <!-- preencher: uma questão real terminada com ponto de interrogação --> | <!-- preencher: caminho:linha --> | <!-- preencher: o que falha na migração Java --> | <!-- preencher: não confirmada --> | <!-- preencher --> | <!-- preencher: aberta / aguardando validação humana / encerrada após validação humana --> |
+| `SIFAP-M-__` | <!-- preencher --> | <!-- preencher: caminho:linha --> | <!-- preencher --> | <!-- preencher: não confirmada --> | <!-- preencher --> | <!-- preencher --> |
+| `SIFAP-M-__` | <!-- preencher --> | <!-- preencher: caminho:linha --> | <!-- preencher --> | <!-- preencher: não confirmada --> | <!-- preencher --> | <!-- preencher --> |
+| `SIFAP-M-__` | <!-- preencher --> | <!-- preencher: caminho:linha --> | <!-- preencher --> | <!-- preencher: não confirmada --> | <!-- preencher --> | <!-- preencher --> |
 
-### Additional findings (bonus)
+### Achados adicionais (bônus)
 
-Additional distinct questions beyond the 20 canonical investigation slots.
-They **do not** change the denominator or replace an unfilled relevant slot.
-The IDs organize the exercise; they do not identify a hidden answer catalogue.
+Questões distintas adicionais além dos 20 espaços canônicos de investigação.
+Elas **não** alteram o denominador nem substituem um espaço relevante não preenchido.
+Os IDs organizam o exercício; eles não identificam um catálogo oculto de respostas.
 
-| ID | Open question | Evidence (`path:line`) | Impact | Hypothesis (unconfirmed) | Responsible person/area | Status |
+| ID | Questão em aberto | Evidência (`caminho:linha`) | Impacto | Hipótese (não confirmada) | Pessoa/área responsável | Status |
 |---|---|---|---|---|---|---|
-| `BONUS` | <!-- fill in --> | <!-- fill in: path:line --> | <!-- fill in --> | <!-- fill in: unconfirmed --> | <!-- fill in --> | <!-- fill in --> |
+| `BONUS` | <!-- preencher --> | <!-- preencher: caminho:linha --> | <!-- preencher --> | <!-- preencher: não confirmada --> | <!-- preencher --> | <!-- preencher --> |
 
 ---
 
-## Integrity rules
+## Regras de integridade
 
-- Record only open questions; do not write an answer in the catalog.
-- Keep evidence in `path:line` format to preserve traceability.
-- Mark every hypothesis explicitly as **unconfirmed**.
-- Only the responsible person may provide human validation and change the status.
-- Without human evidence, the question remains open.
-- Preserve the initial question and hypothesis. Any later validation or target-policy decision links to its accountable reviewer and evidence; a status word alone is not approval.
+- Registre somente questões em aberto; não escreva uma resposta no catálogo.
+- Mantenha as evidências no formato `caminho:linha` para preservar a rastreabilidade.
+- Marque toda hipótese explicitamente como **não confirmada**.
+- Somente a pessoa responsável pode fornecer validação humana e alterar o status.
+- Sem evidência humana, a questão permanece em aberto.
+- Preserve a questão e a hipótese iniciais. Qualquer validação posterior ou decisão de política-alvo deve apontar para o revisor responsável e suas evidências; uma palavra de status, isoladamente, não é aprovação.
 
 ---
 
-### Continue reading
+### Continue lendo
 
-| Previous | Next |
+| Anterior | Próximo |
 |---|---|
-| [Open Questions Checklist](mysteries-checklist.md)<br/><sub>Traceability verification.</sub> | [Discovery Report](discovery-report.md)<br/><sub>Final consolidation for the stage.</sub> |
+| [Checklist de questões em aberto](mysteries-checklist.md)<br/><sub>Verificação de rastreabilidade.</sub> | [Relatório de descoberta](discovery-report.md)<br/><sub>Consolidação final da etapa.</sub> |
 
-<sub>[Back to the kit index](../README.md)</sub>
+<sub>[Voltar ao índice do kit](../README.md)</sub>

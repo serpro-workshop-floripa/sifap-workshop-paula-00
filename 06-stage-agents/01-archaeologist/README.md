@@ -1,86 +1,86 @@
-# @archaeologist — Stage 1: Archaeology
+# @archaeologist — Etapa 1: Arqueologia
 
-> **Path:** [Team Kit](../../README.md) › [Stage Agents](../README.md) › **@archaeologist**
+> **Caminho:** [Kit da equipe](../../README.md) › [Agentes de etapa](../README.md) › **@archaeologist**
 
-**The `@archaeologist` agent guides the participant through a systematic reading of legacy Natural/Adabas code, extracting traceable business rules and mapping dependencies to define the Stage 2 scope.**
+**O agente `@archaeologist` orienta o participante em uma leitura sistemática do código legado Natural/Adabas, extraindo regras de negócio rastreáveis e mapeando dependências para definir o escopo da Etapa 2.**
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| **Target audience** | Entire participant during Stage 1, with all participants working in parallel |
-| **Prerequisites** | `01-archaeology/legacy-sifap/` available in the workspace |
-| **Estimated time** | 11:00–12:00 + 13:30–14:00 |
-| **Stage** | Stage 1 — Archaeology |
-| **Expected outcome** | Rule catalog with sources, mapped DDMs, open questions, and defined feature scope |
+| **Público-alvo** | Todo o participante durante a Etapa 1, com todos os participantes trabalhando em paralelo |
+| **Pré-requisitos** | `01-archaeology/legacy-sifap/` disponível no workspace |
+| **Tempo estimado** | 11:00–12:00 + 13:30–14:00 |
+| **Etapa** | Etapa 1 — Arqueologia |
+| **Resultado esperado** | Catálogo de regras com fontes, DDMs mapeados, questões em aberto e escopo da funcionalidade definido |
 
-![Stage 1](https://img.shields.io/badge/Stage-1%20%C2%B7%20Archaeology-171717?style=flat-square)
-![Investigative approach](https://img.shields.io/badge/Approach-Investigative-404040?style=flat-square)
-
----
-
-## When to use
-
-Use this agent while the participant reads legacy code. `@archaeologist` helps the participant observe, catalog, and formulate questions. It does not write modern code or invent business rules.
-
-- **Lead:** Requirements Engineer
-- **Data lead:** DBA, with independent QA evidence review
-- **Strong support:** Tech Writer and Enterprise Architect
-- **Hard-gate prerequisite:** read the assigned Natural programs before writing any specification
+![Etapa 1](https://img.shields.io/badge/Stage-1%20%C2%B7%20Archaeology-171717?style=flat-square)
+![Abordagem investigativa](https://img.shields.io/badge/Approach-Investigative-404040?style=flat-square)
 
 ---
 
-## What the agent does
+## Quando usar
 
-- Guides line-by-line reading of `.NSN` programs and Adabas DDM structures
-- Identifies inputs, processing, outputs, and business rules in each program
-- Maps dependencies between programs through `CALLNAT`
-- Guides DDM/FDT and declaration reading with DBA; source mapping belongs here, PostgreSQL design belongs in Stage 2
-- Records evidence with file paths and line references
-- Identifies open questions without inventing answers
+Use este agente enquanto o participante lê o código legado. O `@archaeologist` ajuda o participante a observar, catalogar e formular perguntas. Ele não escreve código moderno nem inventa regras de negócio.
 
----
-
-## What the agent does NOT do
-
-- It does not read legacy code unless the participant opens the file
-- It does not turn a hypothesis into a confirmed requirement
-- It does not suggest modern architecture (that is the `@architect` role in Stage 2)
-- It does not edit files in `01-archaeology/legacy-sifap/` (read-only)
+- **Liderança:** Engenheiro de Requisitos
+- **Liderança de dados:** DBA, com revisão independente das evidências pela equipe de QA
+- **Apoio importante:** Redator Técnico e Arquiteto Corporativo
+- **Pré-requisito obrigatório:** ler os programas Natural atribuídos antes de escrever qualquer especificação
 
 ---
 
-## Inputs
+## O que o agente faz
 
-| Input | Location |
+- Orienta a leitura linha a linha dos programas `.NSN` e das estruturas DDM do Adabas
+- Identifica entradas, processamento, saídas e regras de negócio em cada programa
+- Mapeia dependências entre programas por meio de `CALLNAT`
+- Orienta a leitura de DDM/FDT e declarações com o DBA; o mapeamento da origem pertence a esta etapa, enquanto o projeto PostgreSQL pertence à Etapa 2
+- Registra evidências com caminhos de arquivos e referências de linhas
+- Identifica questões em aberto sem inventar respostas
+
+---
+
+## O que o agente NÃO faz
+
+- Não lê código legado a menos que o participante abra o arquivo
+- Não transforma uma hipótese em requisito confirmado
+- Não sugere arquitetura moderna (essa é a função do `@architect` na Etapa 2)
+- Não edita arquivos em `01-archaeology/legacy-sifap/` (somente leitura)
+
+---
+
+## Entradas
+
+| Entrada | Local |
 |---|---|
-| Assigned Natural programs | `01-archaeology/legacy-sifap/natural-programs/*.NSN` |
-| Adabas DDMs | `01-archaeology/legacy-sifap/adabas-ddms/*.ddm` |
-| Exploration checklist | `01-archaeology/LEGACY-EXPLORATION-CHECKLIST.md` |
+| Programas Natural atribuídos | `01-archaeology/legacy-sifap/natural-programs/*.NSN` |
+| DDMs do Adabas | `01-archaeology/legacy-sifap/adabas-ddms/*.ddm` |
+| Checklist de exploração | `01-archaeology/LEGACY-EXPLORATION-CHECKLIST.md` |
 
 ---
 
-## Expected outputs
+## Saídas esperadas
 
-| Artifact | Location |
+| Artefato | Local |
 |---|---|
-| Business-rule catalog | `01-archaeology/business-rules-catalog.md` |
-| Dependency map (Mermaid) | `01-archaeology/dependency-map.md` |
-| Source data map and declaration dictionary | `01-archaeology/data-map.md`, `program-data-dictionary.md` (generated through `/map-source-data`) |
-| Actual reading coverage | `01-archaeology/reading-coverage.md` |
-| Open-question list | `01-archaeology/mysteries-found.md`: four investigation slots per pair, 20 per participant, using the [difficulty/evidence checklist](../../01-archaeology/mysteries-checklist.md) |
-| Selected feature scope | Recorded before the 14:00 checkpoint |
+| Catálogo de regras de negócio | `01-archaeology/business-rules-catalog.md` |
+| Mapa de dependências (Mermaid) | `01-archaeology/dependency-map.md` |
+| Mapa dos dados de origem e dicionário de declarações | `01-archaeology/data-map.md`, `program-data-dictionary.md` (gerados por meio de `/map-source-data`) |
+| Cobertura real da leitura | `01-archaeology/reading-coverage.md` |
+| Lista de questões em aberto | `01-archaeology/mysteries-found.md`: quatro espaços de investigação por dupla, 20 por participante, usando o [checklist de dificuldade/evidência](../../01-archaeology/mysteries-checklist.md) |
+| Escopo da funcionalidade selecionada | Registrado antes do checkpoint das 14:00 |
 
-Use the [blank templates](../../01-archaeology/templates/) and
-[data lifecycle](../../docs/DATA-MIGRATION.md). The participant generates these
-documents during archaeology; no complete source analysis or approval is supplied.
+Use os [templates em branco](../../01-archaeology/templates/) e o
+[ciclo de vida dos dados](../../docs/DATA-MIGRATION.md). O participante gera esses
+documentos durante a arqueologia; nenhuma análise completa da origem ou aprovação é fornecida.
 
 ---
 
-## How to select the agent in Copilot Chat
+## Como selecionar o agente no Copilot Chat
 
-- [ ] **Open Copilot Chat** in VS Code (`Ctrl+Alt+I` / `Cmd+Alt+I`).
-- [ ] **Select `@archaeologist`** from the agent selector.
-- [ ] **Open the first assigned Natural program** in the editor before sending the first prompt.
-- [ ] **Paste the opening prompt** below and press Enter.
+- [ ] **Abra o Copilot Chat** no VS Code (`Ctrl+Alt+I` / `Cmd+Alt+I`).
+- [ ] **Selecione `@archaeologist`** no seletor de agentes.
+- [ ] **Abra o primeiro programa Natural atribuído** no editor antes de enviar o primeiro prompt.
+- [ ] **Cole o prompt inicial** abaixo e pressione Enter.
 
 ```text
 I am starting Stage 1 — Archaeology.
@@ -91,44 +91,44 @@ and open questions for the scope we will select. Do not infer answers.
 
 ---
 
-## Example prompts
+## Exemplos de prompts
 
-| Situation | Useful prompt |
+| Situação | Prompt útil |
 |---|---|
-| Unknown Natural program | "Read this program with me and separate input, processing, output, and business rules." |
-| Adabas DDM | "/map-source-data: read the selected DDM/FDT and declarations with me; record evidence and unknowns, not PostgreSQL decisions." |
-| Ambiguous rule | "Do not invent an answer. Record it as a mystery with a hypothesis, evidence, and impact." |
-| CALLNAT | "Map who calls whom and generate a simple Mermaid diagram." |
+| Programa Natural desconhecido | "Leia este programa comigo e separe entrada, processamento, saída e regras de negócio." |
+| DDM do Adabas | "/map-source-data: leia comigo o DDM/FDT selecionado e as declarações; registre evidências e incógnitas, não decisões sobre PostgreSQL." |
+| Regra ambígua | "Não invente uma resposta. Registre-a como um mistério com hipótese, evidência e impacto." |
+| CALLNAT | "Mapeie quem chama quem e gere um diagrama Mermaid simples." |
 
 ---
 
-## Definition of Done
+## Definição de pronto
 
-- [ ] The pair read every assigned Natural program in full.
-- [ ] Every rule considered for the scope has `source_legacy:` with a file and line.
-- [ ] The participant consulted DDMs and dependencies when they affect the selected feature.
-- [ ] Open questions are recorded without invented answers.
-- [ ] The discovery report is ready for the 14:00 checkpoint.
-- [ ] Source map, dictionary, and actual reading ledger were generated from participant evidence.
-- [ ] DBA/QA verified populated-source and extraction readiness; missing evidence blocks C1 data acceptance.
+- [ ] A dupla leu integralmente todos os programas Natural atribuídos.
+- [ ] Toda regra considerada para o escopo tem `source_legacy:` com arquivo e linha.
+- [ ] O participante consultou DDMs e dependências quando eles afetam a funcionalidade selecionada.
+- [ ] As questões em aberto estão registradas sem respostas inventadas.
+- [ ] O relatório de descoberta está pronto para o checkpoint das 14:00.
+- [ ] O mapa da origem, o dicionário e o registro real de leitura foram gerados a partir das evidências do participante.
+- [ ] DBA/QA verificaram a prontidão da origem preenchida e da extração; a ausência de evidências bloqueia a aceitação de dados em C1.
 
 ---
 
-## Common mistakes
+## Erros comuns
 
-| Symptom | Cause | Correction |
+| Sintoma | Causa | Correção |
 |---|---|---|
-| Copilot gives vague generalizations | No file is open in the editor | Open the `.NSN` file and cite the specific section in the prompt |
-| Business rule has no source | The participant accepted a hypothesis as fact | Mark it as a mystery until code evidence exists |
-| Time is lost detailing out-of-scope areas | No scope decision was made | Select the thin feature before 12:00 and limit reading to it |
-| Legacy files are edited | Confusion about the stage's role | `01-archaeology/legacy-sifap/` is read-only |
+| O Copilot apresenta generalizações vagas | Nenhum arquivo está aberto no editor | Abra o arquivo `.NSN` e cite a seção específica no prompt |
+| A regra de negócio não tem fonte | O participante aceitou uma hipótese como fato | Marque-a como mistério até que exista evidência no código |
+| Perde-se tempo detalhando áreas fora do escopo | Nenhuma decisão de escopo foi tomada | Selecione a funcionalidade enxuta antes das 12:00 e limite a leitura a ela |
+| Arquivos legados são editados | Confusão sobre a função da etapa | `01-archaeology/legacy-sifap/` é somente leitura |
 
 ---
 
-### Continue reading
+### Continue lendo
 
-| Previous | Next |
+| Anterior | Próximo |
 |---|---|
-| [Stage Agents — overview](../README.md)<br/><sub>The 4 agents, schedule, and responsibility matrix.</sub> | [@architect](../02-architect/README.md)<br/><sub>Stage 2: transform evidence into a modern specification.</sub> |
+| [Agentes de etapa — visão geral](../README.md)<br/><sub>Os 4 agentes, o cronograma e a matriz de responsabilidades.</sub> | [@architect](../02-architect/README.md)<br/><sub>Etapa 2: transforme evidências em uma especificação moderna.</sub> |
 
-<sub>[Back to the kit index](../../README.md)</sub>
+<sub>[Voltar ao índice do kit](../../README.md)</sub>

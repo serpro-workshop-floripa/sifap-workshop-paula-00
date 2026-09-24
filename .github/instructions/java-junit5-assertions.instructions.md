@@ -1,173 +1,114 @@
 ---
-description: "Use when writing or reviewing JUnit 5 (Jupiter) assertions in backend Java tests — expected-value ordering, lazy Supplier messages, assertAll grouping, assertThrows and assertThrowsExactly, timeouts, and assertInstanceOf."
+description: "Use ao escrever ou revisar assertions JUnit 5 em testes Java do backend: ordem expected/actual, mensagens lazy, assertAll, exceções, timeouts e assertInstanceOf."
 applyTo: "**/*Test.java,**/*IT.java,**/*Steps.java,**/*StepDefs.java"
 ---
 
-# JUnit 5 Assertions — Jupiter Assertion Conventions
+# Assertions JUnit 5 — Convenções do Jupiter
 
-This file activates on backend Java test files (`*Test.java`, `*IT.java`, `*Steps.java`, `*StepDefs.java`). It teaches how to use JUnit Jupiter's built-in `org.junit.jupiter.api.Assertions` correctly and precisely on Java 21: expected-value ordering, lazy failure messages, grouped assertions, exception and type checks, and timeouts. It teaches you how to assert — it does not decide your test strategy, slice choice, mocking policy, or coverage targets. Test structure and the pyramid live in the [`java-junit`](../skills/java-junit/SKILL.md) skill, Spring slice and integration testing in the [`spring-boot-testing`](../skills/spring-boot-testing/SKILL.md) skill, and traceability plus coverage in [`tests.instructions.md`](tests.instructions.md).
+Este arquivo orienta o uso de `org.junit.jupiter.api.Assertions` em Java 21. Estratégia, slices, mocks e cobertura estão nas skills `java-junit`, `spring-boot-testing` e em [`tests.instructions.md`](tests.instructions.md).
 
 > [!NOTE]
-> These are Jupiter's built-in `Assertions`. For fluent chains and rich object or collection checks, the kit prefers AssertJ (`assertThat(...)`), as used in [`tests.instructions.md`](tests.instructions.md) and the [`spring-boot-testing`](../skills/spring-boot-testing/SKILL.md) skill. Reach for the Jupiter assertions below for grouped, exception, timeout, and exact-type checks, and for simple equality.
+> Para chains fluentes e objetos complexos, prefira AssertJ. Use as assertions Jupiter para agrupamento, exceções, timeouts, tipos exatos e igualdade simples.
 
-## Static Imports
+## Imports estáticos
 
-Import each assertion statically so test methods read as intent, not boilerplate. Prefer explicit imports over the wildcard unless your module already standardizes on it.
+Importe assertions estaticamente e sempre de `org.junit.jupiter.api.Assertions`. Nunca misture `org.junit.Assert` do JUnit 4.
 
 ```java
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertAll;
-
-assertEquals(expected, actual);
 ```
 
-Always import from `org.junit.jupiter.api.Assertions`. Never mix in `org.junit.Assert` (JUnit 4) — the argument orders differ and the two APIs are not interchangeable.
+## Expected antes de actual
 
-## Expected Value First
-
-`expected` is always the **first** argument and `actual` the **second**, so the failure log reads "expected X but was Y" correctly.
+Em `assertEquals`, `expected` é o primeiro argumento e `actual` o segundo.
 
 ```java
-// Avoid — swapped; the failure message is misleading
-assertEquals(resourceService.count(), 2);
-
-// Prefer
 assertEquals(2, resourceService.count());
-
-// Unavoidable floating point (never money — that is BigDecimal): pass a delta
 assertEquals(0.3, 0.1 + 0.2, 1e-9);
 ```
 
 > [!WARNING]
-> `assertEquals` on `BigDecimal` uses `equals`, which is scale-sensitive: `new BigDecimal("10.0")` is **not** equal to `new BigDecimal("10.00")`. For monetary values compare by value — `assertEquals(0, expected.compareTo(actual))` — or use AssertJ's `isEqualByComparingTo`.
+> `BigDecimal.equals` considera scale. Compare valores monetários com `compareTo` ou AssertJ `isEqualByComparingTo`.
 
-## Failure Messages: Supplier vs String
+## Mensagens de falha
 
-Pass the message as a `Supplier<String>` when building it is expensive, so the string is only constructed on failure. A constant literal can stay a plain `String`.
+Use `Supplier<String>` para mensagens caras, de modo que sejam construídas apenas na falha. Literais constantes podem usar `String`.
 
 ```java
-// Avoid — the formatted message is built even when the assertion passes
-assertEquals(expected, actual, "expected %s but got %s".formatted(expected, actual));
-
-// Prefer — evaluated lazily, only on failure
 assertEquals(expected, actual,
     () -> "expected %s but got %s".formatted(expected, actual));
-
-// Fine — a constant literal has zero overhead
-assertTrue(account.isActive(), "account must be active");
 ```
 
-## Grouping with assertAll
+## Agrupamento com assertAll
 
-Use `assertAll` to check several properties of one result; every assertion runs even when an earlier one fails, so you see all mismatches at once.
+Use `assertAll` para várias propriedades de um resultado. Todas as assertions executam, mesmo se uma falhar.
 
 ```java
-record PaymentView(String beneficiary, BigDecimal amount, PaymentStatus status) {}
-
-@Test
-void should_map_all_fields_when_building_view() { // REQ-042
-    PaymentView view = mapper.toView(payment);
-    assertAll("payment view",
-        () -> assertEquals("ACME LTDA", view.beneficiary()),
-        () -> assertEquals(0, new BigDecimal("1500.00").compareTo(view.amount())),
-        () -> assertEquals(PaymentStatus.APPROVED, view.status())
-    );
-}
+assertAll("payment view",
+    () -> assertEquals("ACME LTDA", view.beneficiary()),
+    () -> assertEquals(0, new BigDecimal("1500.00").compareTo(view.amount())),
+    () -> assertEquals(PaymentStatus.APPROVED, view.status())
+);
 ```
 
-Do not hand-roll a sequence of bare assertions to check one object — the first failure hides the rest.
+## Exceções
 
-## Exceptions: assertThrows vs assertThrowsExactly
-
-`assertThrows` returns the thrown exception so you can assert on it, and it accepts subtypes of the expected class. Use `assertThrowsExactly` (JUnit 5.8+) when the exact class is part of the contract.
+`assertThrows` aceita subclasses e retorna a exceção. Use `assertThrowsExactly` quando a classe exata fizer parte do contrato.
 
 ```java
-@Test
-void should_reject_duplicate_label_when_it_exists() { // REQ-021
-    var request = new CreateResourceRequest("alpha", new BigDecimal("5.00"));
-    ResourceConflictException ex = assertThrows(
-        ResourceConflictException.class,
-        () -> resourceService.create(request));
-    assertEquals("alpha", ex.conflictingLabel());
-}
-
-// Exact type required — a subclass must NOT satisfy this assertion
-assertThrowsExactly(IllegalArgumentException.class, () -> ResourceLabel.of(""));
+ResourceConflictException ex = assertThrows(
+    ResourceConflictException.class,
+    () -> resourceService.create(request));
+assertEquals("alpha", ex.conflictingLabel());
 ```
 
-## assertDoesNotThrow
-
-Use `assertDoesNotThrow` only when the absence of an exception is the contract under test; it returns the value for further assertions.
-
-```java
-BigDecimal total = assertDoesNotThrow(() -> invoiceService.total(batch));
-assertEquals(0, new BigDecimal("2500.00").compareTo(total));
-```
+Use `assertDoesNotThrow` apenas quando a ausência de exceção for o contrato.
 
 ## Timeouts
 
-Use `assertTimeout` to check a duration without interrupting the work. Use `assertTimeoutPreemptively` only when a hard abort is required.
-
-```java
-assertTimeout(Duration.ofSeconds(1), () -> reportService.generate(batch));
-
-assertTimeoutPreemptively(Duration.ofMillis(500), () -> validator.check(payload));
-```
+Use `assertTimeout` sem interromper o trabalho. Use `assertTimeoutPreemptively` apenas quando precisar abortar.
 
 > [!WARNING]
-> `assertTimeoutPreemptively` runs the code on a **separate thread**, so `ThreadLocal` state does not propagate — a `@Transactional` test's bound `EntityManager` and any security context are absent inside it. Never wrap a transactional persistence call in it.
+> `assertTimeoutPreemptively` executa em outra thread. `ThreadLocal`, `EntityManager` transacional e contexto de segurança não são propagados.
 
-## Type Checks: assertInstanceOf
+## Verificação de tipos
 
-Prefer `assertInstanceOf` (JUnit 5.8+) over `assertTrue(x instanceof T)`; it fails with a useful message and returns the value already cast — a natural fit for the kit's sealed result types.
+Prefira `assertInstanceOf` a `assertTrue(x instanceof T)`, pois retorna o valor convertido e produz mensagem melhor.
 
-```java
-sealed interface PaymentResult permits Approved, Rejected {}
+## Coleções e arrays
 
-Approved approved = assertInstanceOf(Approved.class, paymentService.process(request));
-assertEquals(42L, approved.paymentId());
-```
-
-## Collections and Arrays
-
-Use the dedicated assertions so failures show an element-by-element diff instead of an opaque `false`.
-
-```java
-assertIterableEquals(List.of("alpha", "beta"), resourceService.labels()); // ordered deep diff
-assertArrayEquals(expectedBytes, actualBytes);
-```
+Use `assertIterableEquals` e `assertArrayEquals` para obter diffs por elemento.
 
 ## Convenções
 
-| Rule | Rationale |
+| Regra | Motivo |
 |---|---|
-| `expected` first, `actual` second in `assertEquals` | The failure log reads "expected X but was Y" correctly |
-| Compare `BigDecimal` by value, not `equals` | `equals` is scale-sensitive and silently fails on money |
-| Wrap expensive failure messages in a `Supplier<String>` | The message is only built when the assertion fails |
-| Group related checks with `assertAll` | Every property is reported, not just the first mismatch |
-| `assertThrows` for a hierarchy, `assertThrowsExactly` for a precise class | Matches how strictly the exception type is part of the contract |
-| `assertInstanceOf` over `assertTrue(... instanceof ...)` | Returns the cast value and fails with a useful message |
-| Import from `org.junit.jupiter.api.Assertions` only | JUnit 4 `org.junit.Assert` has different argument orders |
+| `expected` antes de `actual` | Produz mensagem de falha correta |
+| Compare `BigDecimal` por valor | `equals` considera scale |
+| Use `Supplier<String>` para mensagens caras | Evita trabalho quando o teste passa |
+| Agrupe checks com `assertAll` | Relata todas as diferenças |
+| Escolha deliberadamente entre `assertThrows` e `assertThrowsExactly` | Reflete o contrato de tipo |
+| Use apenas imports Jupiter | Evita ordens de argumentos incompatíveis |
 
 ## Faça / Não faça
 
-| Do | Do not |
+| Faça | Não faça |
 |---|---|
-| Put `expected` before `actual` | Swap them and get misleading failure logs |
-| Compare money with `compareTo` or `isEqualByComparingTo` | Assert `BigDecimal` equality with scale-sensitive `equals` |
-| Use `assertEquals(2, result)` for values | Use `assertTrue(result == 2)` and lose both values in the log |
-| Assert the value when you can | Settle for `assertNotNull` when a real check is possible |
-| Use a `Supplier` for costly messages | Build a formatted message that runs on every pass |
-| Keep `assertTimeoutPreemptively` off transactional code | Wrap a `@Transactional` persistence call and lose the `EntityManager` |
-| Let assertions fail loudly | Catch `AssertionError` to hide a failure |
+| Coloque `expected` antes de `actual` | Inverta-os |
+| Compare dinheiro com `compareTo` | Use `BigDecimal.equals` |
+| Use `assertEquals` para valores | Use `assertTrue(result == 2)` |
+| Verifique o valor real | Pare em `assertNotNull` |
+| Mantenha timeout preemptivo fora de código transacional | Perda o contexto da thread |
+| Deixe assertions falharem claramente | Capture `AssertionError` |
 
 ## Checklist antes de abrir um PR
 
-- [ ] Every `assertEquals` lists `expected` first and `actual` second
-- [ ] `BigDecimal` and other monetary values are compared by value, not scale-sensitive `equals`
-- [ ] Multi-property checks use `assertAll`; expensive messages use a `Supplier<String>`
-- [ ] Exception tests pick `assertThrows` or `assertThrowsExactly` deliberately and assert on the returned exception
-- [ ] `assertTimeoutPreemptively` is not wrapped around transactional or `ThreadLocal`-bound code
-- [ ] Imports are Jupiter-only; no `org.junit.Assert` (JUnit 4) is mixed in
-- [ ] Requirement-driven tests keep their inline `// REQ-NNN` comment (see [`tests.instructions.md`](tests.instructions.md))
+- [ ] Cada `assertEquals` usa `expected` antes de `actual`.
+- [ ] Valores monetários são comparados por valor.
+- [ ] Checks de várias propriedades usam `assertAll`.
+- [ ] Testes de exceção escolhem a assertion adequada e verificam a exceção retornada.
+- [ ] `assertTimeoutPreemptively` não envolve código transacional.
+- [ ] Imports são apenas Jupiter.
+- [ ] Testes de requisitos mantêm comentário `// REQ-NNN`.

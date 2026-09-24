@@ -1,25 +1,25 @@
-# Synthetic legacy dataset
+# Conjunto de dados legado sintético
 
-> **Path:** [Team Kit](../../README.md) › [Stage 1](../README.md) › **Synthetic legacy dataset**
+> **Caminho:** [Kit da Equipe](../../README.md) › [Etapa 1](../README.md) › **Conjunto de dados legado sintético**
 
-**Synthetic records for legacy SIFAP exercises.** This folder contains the fixed-width files used to populate the authorized Adabas instance before 14:00 for comparing legacy behavior with the modern system.
+**Registros sintéticos para exercícios do SIFAP legado.** Esta pasta contém os arquivos de largura fixa usados para popular a instância Adabas autorizada antes das 14:00, permitindo comparar o comportamento legado com o sistema moderno.
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| **Target audience** | Individual participant covering DBA, QA, and implementation responsibilities |
-| **Prerequisites** | Read the DDMs in [`legacy-sifap/adabas-ddms/`](../legacy-sifap/adabas-ddms/) |
-| **Estimated time** | 15 min |
-| **Stage** | Stage 1: Archaeology; input to Stage 3 |
-| **Expected outcome** | Decoded records for validating the modern system |
+| **Público-alvo** | Participante individual responsável por DBA, QA e implementação |
+| **Pré-requisitos** | Ler os DDMs em [`legacy-sifap/adabas-ddms/`](../legacy-sifap/adabas-ddms/) |
+| **Tempo estimado** | 15 min |
+| **Etapa** | Etapa 1: Arqueologia; entrada para a Etapa 3 |
+| **Resultado esperado** | Registros decodificados para validar o sistema moderno |
 
 > [!IMPORTANT]
-> **100% synthetic data.** It contains no real personal data, no CPF or NIS assigned to a real person, and no production records. The check digits are valid only to exercise the legacy validators.
+> **Dados 100% sintéticos.** Não contêm dados pessoais reais, CPF ou NIS atribuído a uma pessoa real nem registros de produção. Os dígitos verificadores são válidos somente para exercitar os validadores legados.
 
 ---
 
-## Files and volumes
+## Arquivos e volumes
 
-| File | Records | Bytes per record (excluding the line break) | Source layout |
+| Arquivo | Registros | Bytes por registro (sem a quebra de linha) | Layout de origem |
 |---|---:|---:|---|
 | `beneficiary.dat` | 500 | 1739 | `layout-beneficiary.txt`, file 150 BENEFICIARY |
 | `payment.dat` | 2000 | 855 | `layout-payment.txt`, file 152 PAYMENT |
@@ -28,44 +28,44 @@
 
 ---
 
-## Regeneration
+## Regeneração
 
-Run from the repository root:
+Execute a partir da raiz do repositório:
 
 ```bash
 python3 01-archaeology/legacy-seed-data/generate_seed.py
 ```
 
-The generator uses only the Python 3 standard library and a fixed seed, so its output is reproducible byte for byte. This README is generated. Translators must update the text inside `write_readme()`, not only this generated file.
+O gerador usa somente a biblioteca padrão do Python 3 e uma seed fixa, portanto sua saída é reproduzível byte a byte. Este README é gerado. Tradutores devem atualizar o texto dentro de `write_readme()`, não somente este arquivo gerado.
 
 ---
 
-## Layout notes
+## Observações sobre o layout
 
-There is one physical record per line. Alphanumeric fields are ASCII padded with spaces on the right. Unpacked numeric fields are digits padded with zeros on the left.
+Há um registro físico por linha. Campos alfanuméricos são preenchidos em ASCII com espaços à direita. Campos numéricos unpacked são preenchidos com zeros à esquerda.
 
 > [!WARNING]
-> Packed decimal fields are binary BCD with the scale declared in the DDM/FDT. **They are not readable as text and require decoding before any PostgreSQL load.** For the same reason, converting identifiers to numbers discards leading zeros from CPF and NIS values.
+> Campos decimais packed são BCD binário, com a escala declarada no DDM/FDT. **Eles não podem ser lidos como texto e exigem decodificação antes de qualquer carga no PostgreSQL.** Pelo mesmo motivo, converter identificadores em números descarta zeros à esquerda de valores de CPF e NIS.
 
-Periodic groups and MU fields are emitted with the maximum number of occurrences so that ADACMP/ADALOD scripts load deterministic, full-width records. The line break is not part of the record width.
-
----
-
-## Learning fixtures
-
-- CPF and NIS check digits use the modulo 11 algorithms from [`SUBVALCP.NSN`](../legacy-sifap/natural-programs/SUBVALCP.NSN) and [`SUBVALNI.NSN`](../legacy-sifap/natural-programs/SUBVALNI.NSN).
-- Some beneficiaries have a valid CPF beginning with `000` for the government test exception path.
-- Family income values cross the 300, 600, 1000, and 1500 calculation bands.
-- Beneficiaries in region `99` exercise the international or diplomatic eligibility branch.
-- Dependents cover none, several, inactive and terminated situations, and one record with the maximum of 10 occurrences.
-- Payments include reversals, divergent reconciliation, bank returns, and rows with deliberately unbalanced gross, discount, and net values for the reporting labs.
+Grupos periódicos e campos MU são emitidos com o número máximo de ocorrências para que scripts ADACMP/ADALOD carreguem registros determinísticos de largura total. A quebra de linha não faz parte da largura do registro.
 
 ---
 
-### Continue reading
+## Fixtures de aprendizagem
 
-| Previous | Next |
+- Os dígitos verificadores de CPF e NIS usam os algoritmos de módulo 11 de [`SUBVALCP.NSN`](../legacy-sifap/natural-programs/SUBVALCP.NSN) e [`SUBVALNI.NSN`](../legacy-sifap/natural-programs/SUBVALNI.NSN).
+- Alguns beneficiários têm CPF válido iniciado por `000` para o caminho de exceção de testes governamentais.
+- Os valores de renda familiar atravessam as faixas de cálculo 300, 600, 1000 e 1500.
+- Beneficiários da região `99` exercitam o ramo de elegibilidade internacional ou diplomática.
+- Os dependentes abrangem situações sem dependentes, com vários, inativos e encerrados, além de um registro com o máximo de 10 ocorrências.
+- Os pagamentos incluem estornos, reconciliação divergente, devoluções bancárias e linhas com valores bruto, de desconto e líquido deliberadamente desequilibrados para os laboratórios de relatórios.
+
+---
+
+### Continue lendo
+
+| Anterior | Próximo |
 |---|---|
-| [Stage 1: Archaeology](../README.md)<br/><sub>Stage index and its artifacts.</sub> | [Adabas DDMs](../legacy-sifap/adabas-ddms/README.md)<br/><sub>Field definitions that describe these records.</sub> |
+| [Etapa 1: Arqueologia](../README.md)<br/><sub>Índice da etapa e seus artefatos.</sub> | [DDMs Adabas](../legacy-sifap/adabas-ddms/README.md)<br/><sub>Definições de campos que descrevem estes registros.</sub> |
 
-<sub>[Back to the Team Kit index](../../README.md)</sub>
+<sub>[Voltar ao índice do Kit da Equipe](../../README.md)</sub>
