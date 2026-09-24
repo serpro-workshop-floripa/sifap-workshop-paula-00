@@ -5,6 +5,8 @@ title: '[BUG] '
 labels: bug
 ---
 
+# Relatório de bug
+
 ## Descrição do bug
 
 ## Como reproduzir

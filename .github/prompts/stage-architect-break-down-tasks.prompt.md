@@ -1,49 +1,49 @@
 ---
 name: "break-down-tasks"
-description: "Writes the complete stage of an architect SDD package — TASKS.md with RED/GREEN tasks, TESTING.md, and the plan-to-tasks and test-coverage checkpoints — then derives the generated files."
+description: "Escreve a etapa completa de um pacote SDD do architect — TASKS.md com tarefas RED/GREEN, TESTING.md e os checkpoints de plano para tarefas e cobertura de testes — e então deriva os arquivos gerados."
 argument-hint: "feature=NNN-feature-name"
 agent: "architect"
 tools: ["read", "search", "edit", "execute"]
 ---
 # /break-down-tasks
 
-## Objective
+## Objetivo
 
-Turn the design of `.spec/<NNN>-<feature>/` into dependency-ordered, test-first work: `TASKS.md`, `TESTING.md`, `checkpoints/plan-to-tasks.yaml`, and `checkpoints/test-coverage.yaml`, then generate `TDD.md`, `SOURCE_TRACEABILITY.md`, `CHECKLIST.md`, `CROSS_ANALYSIS.md`, and `VERIFICATION.md`.
+Transforme o projeto de `.spec/<NNN>-<feature>/` em trabalho test-first ordenado por dependência: `TASKS.md`, `TESTING.md`, `checkpoints/plan-to-tasks.yaml` e `checkpoints/test-coverage.yaml`; depois, gere `TDD.md`, `SOURCE_TRACEABILITY.md`, `CHECKLIST.md`, `CROSS_ANALYSIS.md` e `VERIFICATION.md`.
 
-## When to Invoke
+## Quando invocar
 
-After `/design-modular-monolith` completed the design stage, before C2. For a Spec-Kit package use `/speckit.tasks`.
+Depois que `/design-modular-monolith` concluir a etapa de projeto, antes do C2. Para um pacote Spec-Kit, use `/speckit.tasks`.
 
-## Preconditions
+## Pré-condições
 
-- The design-stage gate passes for the package
-- The team agreed the first increment and the test levels it needs
-- The [tests instruction](../instructions/tests.instructions.md) is loaded
+- O gate da etapa de projeto passa para o pacote
+- A equipe concordou com o primeiro incremento e os níveis de teste necessários
+- A [instrução de testes](../instructions/tests.instructions.md) está carregada
 
-## Inputs the Team Must Provide
+## Inputs que a equipe deve fornecer
 
 - `feature=<NNN>-<feature-name>`
-- The test commands the project uses, or `PENDING` with an owner
-- Any ordering constraint (data load before consultation, for example)
+- Os comandos de teste usados pelo projeto, ou `PENDING` com um responsável
+- Qualquer restrição de ordem (carga de dados antes da consulta, por exemplo)
 
-## What I Will Do
+## O que farei
 
-- Write one RED task before one GREEN task for every requirement, with `Files:` and `Acceptance:` sub-bullets
-- Add data migration, consultation, and independent QA reconciliation tasks where the design needs them
-- Draw the dependency graph with every task once and no cycle
-- Declare every test as `TST-NNN` in the `TESTING.md` catalog with location, level, command, and status
-- Map plan items to tasks and requirements to tests in the two checkpoints
-- Generate the derived files and run every gate
+- Escreverei uma tarefa RED antes de uma tarefa GREEN para cada requisito, com subitens `Files:` e `Acceptance:`
+- Adicionarei tarefas de migração de dados, consulta e reconciliação independente de QA quando o projeto exigir
+- Desenharei o grafo de dependências com cada tarefa uma única vez e sem ciclos
+- Declararei cada teste como `TST-NNN` no catálogo `TESTING.md`, com local, nível, comando e status
+- Mapearei itens do plano para tarefas e requisitos para testes nos dois checkpoints
+- Gerarei os arquivos derivados e executarei todos os gates
 
-## What I Will NOT Do
+## O que NÃO farei
 
-- Check a task, or claim a test ran, without evidence in `evidence/`
-- Write implementation code or tests themselves; Stage 3 does that
-- Mark a GREEN task before its RED task
-- Hand-edit a generated file
+- Marcar uma tarefa ou afirmar que um teste foi executado sem evidências em `evidence/`
+- Escrever código de implementação ou os próprios testes; a Etapa 3 faz isso
+- Marcar uma tarefa GREEN antes de sua tarefa RED
+- Editar manualmente um arquivo gerado
 
-## Output Format
+## Formato de saída
 
 ```markdown
 - [ ] **T001 [S] [Plan:P1.1] RED** Add a failing test for the rule. Traces REQ-001.
@@ -54,42 +54,42 @@ After `/design-modular-monolith` completed the design stage, before C2. For a Sp
   - Acceptance: TST-001 passes.
 ```
 
-## Definition of Done
+## Definição de pronto
 
-- [ ] `TASKS.md`, `TESTING.md`, and both checkpoints exist with `mapping_status: complete`
-- [ ] Every requirement has RED before GREEN and at least one `TST-NNN`
-- [ ] `python3 .github/scripts/generate-sdd-support-artifacts.py --package <NNN> --include-supplements` succeeded
-- [ ] `python3 .github/scripts/validate-specs.py --package <NNN> --strict` passes, or its failures are reported
+- [ ] `TASKS.md`, `TESTING.md` e ambos os checkpoints existem com `mapping_status: complete`
+- [ ] Todo requisito tem RED antes de GREEN e pelo menos um `TST-NNN`
+- [ ] `python3 .github/scripts/generate-sdd-support-artifacts.py --package <NNN> --include-supplements` foi concluído com sucesso
+- [ ] `python3 .github/scripts/validate-specs.py --package <NNN> --strict` passa, ou suas falhas são relatadas
 
-## Prompt Body
+## Corpo do prompt
 
-You are the `@architect`. Break the approved design into test-first tasks a builder can execute without guessing.
+Você é o `@architect`. Divida o projeto aprovado em tarefas test-first que um builder possa executar sem adivinhar.
 
-**Step 1 — Read the design.**
+**Etapa 1 — Leia o projeto.**
 
-- Open `DESIGN.md`, `DECISIONS.md`, `checkpoints/spec-to-plan.yaml`, and `SPECIFICATION.md`.
+- Abra `DESIGN.md`, `DECISIONS.md`, `checkpoints/spec-to-plan.yaml` e `SPECIFICATION.md`.
 
-**Step 2 — Write the tests first.**
+**Etapa 2 — Escreva primeiro os testes.**
 
-- Declare `TST-NNN` rows in `TESTING.md` for every acceptance ID, and fill the commands, failure and measurement, evidence contract, and exit criteria sections.
+- Declare linhas `TST-NNN` em `TESTING.md` para cada ID de aceitação e preencha as seções de comandos, falha e medição, contrato de evidências e critérios de saída.
 
-**Step 3 — Write the tasks.**
+**Etapa 3 — Escreva as tarefas.**
 
-- For each plan item, write a RED task then a GREEN task per requirement; mark `[P]` only for independent tasks.
-- Draw the dependency graph in the neutral Mermaid theme.
+- Para cada item do plano, escreva uma tarefa RED e depois uma tarefa GREEN por requisito; marque `[P]` somente para tarefas independentes.
+- Desenhe o grafo de dependências no tema neutro do Mermaid.
 
-**Step 4 — Checkpoint.**
+**Etapa 4 — Crie o checkpoint.**
 
-- Fill `plan-to-tasks.yaml` (with a `gate` block) and `test-coverage.yaml` (requirements and tests with commands).
+- Preencha `plan-to-tasks.yaml` (com um bloco `gate`) e `test-coverage.yaml` (requisitos e testes com comandos).
 
-**Step 5 — Generate and validate.**
+**Etapa 5 — Gere e valide.**
 
-- Run the generator, then `python3 .github/scripts/validate-specs.py --package <NNN> --strict`; report the result verbatim.
+- Execute o gerador e depois `python3 .github/scripts/validate-specs.py --package <NNN> --strict`; relate o resultado literalmente.
 
-## Invocation Example
+## Exemplo de invocação
 
 ```text
 /break-down-tasks feature=001-benefit-calculation
 ```
 
-Expect a complete `.spec/001-benefit-calculation/` package whose gates pass, with no task checked.
+Espere um pacote `.spec/001-benefit-calculation/` completo, com todos os gates passando e nenhuma tarefa marcada.

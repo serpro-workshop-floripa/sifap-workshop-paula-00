@@ -8,7 +8,7 @@
 
 | Campo | Valor |
 |---|---|
-| **Público-alvo** | Todas as personas |
+| **Público-alvo** | Todos os participantes |
 | **Pré-requisitos** | Ler [Agentes e personas](02-agents-and-personas.md) |
 | **Tempo estimado** | 15 minutos |
 | **Estágio** | Todos os estágios |
@@ -67,9 +67,9 @@ flowchart TD
 
 | Critério | Ask | Plan | Agent |
 |---|---|---|---|
-| **O que faz** | Responde a perguntas em texto | Propõe um plano de mudança sem executá-lo | Implementa de forma autônoma e abre um PR |
-| **Autonomia** | Nenhuma | Baixa (você aprova cada passo) | Alta (roda sem intervenção) |
-| **Custo de tempo** | Baixo | Médio | Alto — só se justifica para tarefas grandes |
+| **O que faz** | Explica o contexto selecionado | Propõe um plano sem implementar | Executa ações autorizadas no workspace local; não atribui automaticamente uma GitHub Issue |
+| **Autonomia** | Nenhuma mudança solicitada no workspace | Somente planejamento | Limitada pela tarefa, pelas permissões e pela revisão humana |
+| **Custo de tempo** | Depende do escopo | Inclui a revisão do plano | Inclui implementação, execução de ferramentas e verificação |
 | **Quando usar** | Explorar, entender, responder a perguntas | Mudança em vários arquivos com revisão humana | Issue totalmente especificada, com contexto e critérios de aceitação |
 | **Pré-requisito** | Nenhum | Contexto do que mudar | Issue com contexto, REQ-IDs, critérios de aceitação e rastreabilidade |
 | **Risco de retrabalho** | Nenhum | Baixo | Alto se a Issue estiver incompleta |
@@ -81,8 +81,9 @@ flowchart TD
 ### Ask — explorar o legado
 
 ```text
-"Explique linha a linha o que o CALCDSCT.NSP faz.
-Foque nas decisões de negócio. Ignore as rotinas de entrada e saída."
+"Leia comigo o intervalo selecionado da fonte.
+Inclua declarações, dependências, E/S e caminhos de erro/transação
+que afetem o comportamento observado. Mantenha explícitas as incertezas."
 ```
 
 ```text
@@ -93,28 +94,34 @@ são obrigatórios e quais são campos de valores múltiplos (MU)?"
 ### Plan — implementar um requisito com revisão
 
 ```text
-"Plan: implementar o REQ-042 (calcular o valor líquido do benefício).
+"Planeje a implementação do REQ-NNN selecionado.
 Liste os arquivos a criar ou modificar, a ordem das mudanças
 e os testes de integração necessários.
-NÃO implemente ainda — estou aguardando a aprovação do time."
+NÃO implemente ainda — estou concluindo o checkpoint de autoavaliação C2."
 ```
 
 ```text
-"Plan: criar a migração Flyway V3 para adicionar a coluna
-status_pagamento à tabela beneficiario.
-Mostre o script SQL e as mudanças necessárias na entidade JPA."
+"Planeje a próxima mudança de schema revisada a partir do mapeamento do DBA.
+Inspecione as versões Flyway existentes e o contrato real de consulta.
+Não invente um campo de destino nem resolva uma ambiguidade dos dados de origem."
 ```
 
-### Agent — delegar uma tarefa completa (Estágio 4)
+### Agent local e GitHub coding agent
 
 ```text
-[Crie uma GitHub Issue contendo:]
-- Título: Implementar o endpoint GET /api/v1/beneficiarios/{id}
-- Contexto: REQ-042 especificado no Estágio 2 e mapeado para BeneficiarioService
-- Critérios de aceitação: retorna 200 com um DTO, retorna 404 quando não encontrado,
-  valida o UUID no path e inclui testes com Testcontainers para os dois cenários
-- Rastreabilidade: REQ-042 › CALCDSCT.NSP#L120-L198
-[Selecione o modo Agent e referencie a Issue]
+[Para uma tarefa local revisada:]
+- Requisito e tarefa regentes: <referências reais>
+- Arquivos e ações permitidos: <escopo revisado>
+- Evidência da fonte: <paths e intervalos reais>
+- Verificação: <testes de aceitação aprovados>
+
+[Para trabalho de Issue para PR no Estágio 4 posterior ao desafio:]
+Verifique a disponibilidade do GitHub coding agent e atribua a Issue revisada
+pela ação compatível do repositório. Selecionar o modo Agent local
+não atribui uma Issue. Registre a indisponibilidade em vez de inventar uma execução.
+
+O Estágio 4 não é usado no desafio individual; não execute orquestração paralela
+de subagentes nem worker harnesses durante o desafio das 14:00 às 17:40.
 ```
 
 ---
@@ -133,13 +140,7 @@ Mostre o script SQL e as mudanças necessárias na entidade JPA."
 
 ## Custo de tempo estimado
 
-Use estas estimativas para escolher um modo durante a imersão. O tempo real varia com a complexidade da tarefa:
-
-| Modo | Tarefa simples | Tarefa média | Tarefa complexa |
-|---|---|---|---|
-| Ask | 1–2 min | 3–5 min | 5–10 min |
-| Plan | 5–10 min (incluindo a revisão) | 15–20 min | 30+ min |
-| Agent | Não recomendado | 20–30 min (incluindo a revisão do PR) | 45–90 min |
+Meça o trabalho real do participante. Raciocínio local, execução de ferramentas, filas de agentes remotos e revisão têm custos diferentes; nenhuma duração fixa decorre do nome do modo. Use os orçamentos dos estágios e a regra de escalonamento de 20 minutos sem enfraquecer os requisitos de evidência.
 
 > [!WARNING]
 > O tempo do Agent inclui a revisão do PR gerado. PRs com contexto incompleto podem exigir várias iterações.
@@ -150,7 +151,7 @@ Use estas estimativas para escolher um modo durante a imersão. O tempo real var
 
 - [Cartão de uma página dos 3 modos](../09-cheat-sheets/copilot-3-modes.md)
 - [Agentes e personas](02-agents-and-personas.md)
-- [Guia do Estágio 4 — o modo Agent na prática](../04-evolution/GUIDE.md)
+- [Guia do Estágio 4 — o modo Agent na prática](../04-evolution/GUIDE.md) (posterior ao desafio; não usado no desafio individual)
 
 ---
 

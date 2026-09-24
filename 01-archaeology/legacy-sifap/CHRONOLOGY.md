@@ -44,7 +44,7 @@ de uma fonte é um defeito.
 > Escreva "aproximadamente 30 anos" ou "aproximadamente três décadas" em prosa e
 > **29 anos** sempre que um número for apresentado como medição. Nunca altere a
 > data de uma fonte para deixar a aritmética mais redonda. Consulte a
-> [política de cronologia](../../README.md).
+> [política de cronologia](../../README.md#cenário-cronologia-e-evidências).
 
 ---
 

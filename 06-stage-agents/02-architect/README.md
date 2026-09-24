@@ -96,7 +96,7 @@ without a source, and record open questions separately.
 | Limite incerto de contexto delimitado | "Compare 2 ou 3 contextos delimitados possíveis e apresente prós e contras." |
 | Decisão de arquitetura | "Gere uma ADR com contexto, opções, decisão, consequências e riscos." |
 | Plano técnico | "Prepare `/speckit.plan` considerando um Monólito Modular, JPA e PostgreSQL." |
-| Migração de dados | "/migration phase=plan: revise com o DBA os mapeamentos entre origem e destino, snapshot, carga, recuperação e testes de consulta da equipe de QA." |
+| Migração de dados | Selecione `@dba` e peça: "Revise os mapeamentos entre origem e destino, snapshot, carga, recuperação e testes de consulta usando o [template de migração](../../docs/data-migration/migration-plan.template.md)." |
 
 ---
 

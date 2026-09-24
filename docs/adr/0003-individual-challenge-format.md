@@ -1,79 +1,79 @@
-# ADR-0003: The workshop is an individual challenge from Stage 1 to Stage 3
+# ADR-0003: O workshop é um desafio individual da Etapa 1 à Etapa 3
 
-> **Path:** [Team Kit](../../README.md) › [Docs](../README.md) › [ADRs](README.md) › **ADR-0003**
+> **Caminho:** [Kit da equipe](../../README.md) › [Documentação](../README.md) › [ADRs](README.md) › **ADR-0003**
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
 | **Status** | accepted |
-| **Date** | 2026-09-24 |
-| **Authors** | Kit maintainers |
-| **Supersedes** | The team/pair format described in `00-TEAM-FLOW.md` before this date |
+| **Data** | 2026-09-24 |
+| **Autores** | Mantenedores do kit |
+| **Substitui** | O formato de equipe/duplas descrito em `00-TEAM-FLOW.md` antes desta data |
 
 ---
 
-## Context
+## Contexto
 
-The kit was designed for five participants working as five role pairs over an
-eight-hour day. It had four stages with 260 minutes of stage work, plus three
-live handoffs (H1, H2, H3) between pairs.
+O kit foi projetado para cinco participantes trabalhando como cinco duplas de
+papéis ao longo de um dia de oito horas. Ele tinha quatro etapas, com 260 minutos
+de trabalho, além de três handoffs ao vivo (H1, H2, H3) entre as duplas.
 
-The event now runs from 14:00 to 17:40 (220 minutes). Each participant works
-alone and does the whole modernization. The first two participants who prove a
-correct result win. With that format:
+O evento agora ocorre das 14:00 às 17:40 (220 minutos). Cada participante
+trabalha sozinho e realiza toda a modernização. Os dois primeiros participantes
+que comprovarem um resultado correto vencem. Com esse formato:
 
-- the team-based stage budget does not fit;
-- pairs and handoffs between different people no longer exist;
-- independent QA cannot come from a second participant;
-- Stage 4 (evolution with the coding agent) does not fit in the time available.
+- o orçamento de etapas baseado em equipe não cabe;
+- duplas e handoffs entre pessoas diferentes deixam de existir;
+- o QA independente não pode vir de um segundo participante;
+- a Etapa 4 (evolução com o coding agent) não cabe no tempo disponível.
 
-We also evaluated a parallel sub-agent orchestrator for Stage 3. Its gain is
-limited by serial work (data migration, reconciliation, test runs). It would
-make comparisons between participants unfair and hide the exercise behind
-automation.
+Também avaliamos um orquestrador paralelo de subagentes para a Etapa 3. Seu ganho
+é limitado pelo trabalho serial (migração de dados, reconciliação, execução de
+testes). Isso tornaria injusta a comparação entre participantes e ocultaria o
+exercício por trás da automação.
 
-## Decision
+## Decisão
 
-1. **Individual format.** Each participant covers all 10 roles. Roles stay
-   skills ([ADR-0002](0002-team-roles-as-skills-not-agents.md)); the participant
-   only switches stage agents.
-2. **Schedule.** The participant starts directly in `@archaeologist` at 14:00.
+1. **Formato individual.** Cada participante cobre todos os 10 papéis. Os papéis
+   continuam como skills ([ADR-0002](0002-team-roles-as-skills-not-agents.md)); o
+   participante alterna apenas os agentes de etapa.
+2. **Cronograma.** O participante começa diretamente em `@archaeologist` às 14:00.
 
-   | Time | Step | Agent |
+   | Horário | Etapa | Agente |
    |---|---|---|
-   | 14:00-14:50 | Stage 1 - Archaeology | `@archaeologist` + `@dba` |
-   | 14:50-15:30 | Stage 2 - Specification | `@architect` + `@dba` |
-   | 15:30-17:10 | Stage 3 - Implementation and data migration | `@builder` + `@dba` |
-   | 17:10-17:40 | Final judge validation | Judge |
+   | 14:00-14:50 | Etapa 1 - Arqueologia | `@archaeologist` + `@dba` |
+   | 14:50-15:30 | Etapa 2 - Especificação | `@architect` + `@dba` |
+   | 15:30-17:10 | Etapa 3 - Implementação e migração de dados | `@builder` + `@dba` |
+   | 17:10-17:40 | Validação final do juiz | Juiz |
 
-   Setup and the authorized, populated Adabas source are pre-work, finished
-   before 14:00.
-3. **Stage 4 is out of the challenge.** Its files stay in the kit, marked as not
-   used.
-4. **Handoffs become self-checkpoints** C1, C2, and C3. They use the same
-   artifacts and definition of done as before. C3 is the submission.
-5. **Fixed target capability.** Everyone must list, search, and show the detail
-   of **all** beneficiaries migrated from Adabas to PostgreSQL, applying the
-   legacy validation rules they discover.
-6. **Finish line.** CI is green (including `legacy-traceability`), every
-   requirement has a REQ-ID, EARS, and `source_legacy:`, tests pass, the data is
-   reconciled (source = loaded + explained rejects; keys and aggregates match;
-   rerun without duplicates), and the queries cover the whole population.
-7. **Winners.** The first two submissions that pass judge validation win. The
-   timestamp is the creation of the PR `impl/<NNN>-<feature>` -> `develop`.
-   17:10 is the submission deadline. A rejected submission can be fixed and
-   resubmitted with a new timestamp.
-8. **Independence.** The judge's verification replaces cross-pair review and
-   independent QA. Judge scripts and expected values stay in the private
-   instructor repository.
-9. **No orchestrator.** Parallel sub-agent orchestration is not allowed.
+   O setup e a fonte Adabas autorizada e populada são pré-trabalho, concluído
+   antes das 14:00.
+3. **A Etapa 4 está fora do desafio.** Seus arquivos permanecem no kit, marcados
+   como não utilizados.
+4. **Handoffs tornam-se checkpoints de autoverificação** C1, C2 e C3. Eles usam
+   os mesmos artefatos e a mesma definição de pronto de antes. C3 é a submissão.
+5. **Capacidade-alvo fixa.** Todos devem listar, pesquisar e mostrar os detalhes
+   de **todos** os beneficiários migrados do Adabas para o PostgreSQL, aplicando
+   as regras de validação legadas que descobrirem.
+6. **Linha de chegada.** A CI está verde (incluindo `legacy-traceability`), todo
+   requisito tem REQ-ID, EARS e `source_legacy:`, os testes passam, os dados estão
+   reconciliados (origem = carregados + rejeições explicadas; chaves e agregados
+   correspondem; nova execução sem duplicidades) e as consultas cobrem toda a população.
+7. **Vencedores.** As duas primeiras submissões que passarem na validação do juiz
+   vencem. O timestamp é o da criação do PR `impl/<NNN>-<feature>` -> `develop`.
+   17:10 é o prazo de submissão. Uma submissão rejeitada pode ser corrigida e
+   reenviada com um novo timestamp.
+8. **Independência.** A verificação do juiz substitui a revisão entre duplas e o
+   QA independente. Scripts do juiz e valores esperados permanecem no repositório
+   privado do instrutor.
+9. **Sem orquestrador.** A orquestração paralela de subagentes não é permitida.
 
-## Consequences
+## Consequências
 
-- Faster to run and easy to compare: one fixed capability and one objective
-  finish line.
-- Less practice in collaboration and delegation. Stage 4 content remains
-  available for a later session.
-- The judge becomes a single point of verification, so the judge validates
-  continuously as submissions arrive.
-- The rule "reduce capability breadth, never the migrated population or the
-  verification standard" still applies. An incomplete submission does not win.
+- Execução mais rápida e comparação fácil: uma capacidade fixa e uma linha de
+  chegada objetiva.
+- Menos prática de colaboração e delegação. O conteúdo da Etapa 4 permanece
+  disponível para uma sessão posterior.
+- O juiz se torna um ponto único de verificação, portanto valida continuamente
+  à medida que as submissões chegam.
+- A regra “reduza a abrangência da capacidade, nunca a população migrada nem o
+  padrão de verificação” continua válida. Uma submissão incompleta não vence.

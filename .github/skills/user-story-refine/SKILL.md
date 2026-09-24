@@ -10,14 +10,16 @@ description: "Use ao refinar itens da lista priorizada, dividir épicos ou valid
 - "Transforme esta descrição de funcionalidade em histórias de usuário com critérios de aceitação."
 - "Verifique se estas histórias atendem ao INVEST."
 
-## Entradas obrigatórias
+## Procedimento
 
-- Descrição da funcionalidade ou do épico
-- Persona ou tipo de usuário
-- Objetivo de negócio atendido pela funcionalidade
-- Restrições conhecidas (regulatórias, técnicas ou de UX)
+### Reúna as entradas obrigatórias
 
-## Etapas de refinamento
+- Descrição da funcionalidade ou do épico.
+- Persona ou tipo de usuário.
+- Objetivo de negócio atendido pela funcionalidade.
+- Restrições conhecidas (regulatórias, técnicas ou de UX).
+
+### Refine as histórias
 
 1. **Confirme o resultado**. Cada história deve responder: qual persona, qual resultado e por que ele importa.
 2. **Aplique INVEST** (independente, negociável, valiosa, estimável, pequena e testável) a cada rascunho.
@@ -25,7 +27,7 @@ description: "Use ao refinar itens da lista priorizada, dividir épicos ou valid
 4. **Escreva os critérios de aceitação no formato Dado/Quando/Então**. Inclua um fluxo de sucesso, um caso-limite e um fluxo de erro.
 5. **Rastreie até um REQ-ID**. Cada história deve se vincular a pelo menos um requisito.
 
-## Padrões de divisão
+### Use padrões de divisão
 
 Use estes padrões quando uma história for grande demais para ser concluída em uma iteração:
 
@@ -38,7 +40,7 @@ Use estes padrões quando uma história for grande demais para ser concluída em
 | Sucesso versus limite | Fluxo de sucesso primeiro, depois casos-limite | Entrada válida antes da entrada rejeitada |
 | Pesquisa exploratória | Separe a incerteza como uma pesquisa com tempo limitado | Primeiro, crie um protótipo da integração |
 
-## Antipadrões
+### Evite antipadrões
 
 - Histórias escritas como tarefas ("Adicionar um botão").
 - Critérios de aceitação que descrevem a interface em vez do comportamento.
@@ -61,6 +63,7 @@ Use estes padrões quando uma história for grande demais para ser concluída em
 **Esforço**: S / M / L
 **Dependências**: US-NNN (se houver)
 ```
+
 ## Gate de qualidade
 
 - [ ] A história atende a todos os critérios INVEST.

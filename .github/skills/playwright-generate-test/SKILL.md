@@ -1,71 +1,69 @@
 ---
 name: "playwright-generate-test"
-description: "Generate a Playwright end-to-end test in TypeScript from a described scenario by driving the Playwright MCP step by step, then run it until it passes. Use when the user asks to create or record a browser or E2E test with Playwright for a web flow."
+description: "Use quando a pessoa pedir para criar ou gravar um teste de navegador ou E2E com Playwright para um fluxo web. Explore o cenário passo a passo com o servidor Playwright MCP, gere uma spec TypeScript com `@playwright/test` e execute-a até que passe de forma confiável."
 ---
-# Playwright end-to-end test generation
+# Geração de teste end-to-end com Playwright
 
-Generate a Playwright end-to-end (E2E) test in TypeScript by exploring a described user flow with the Playwright MCP server one step at a time, then emitting a `@playwright/test` spec and running it until it passes. This skill covers browser-level regression tests for the SIFAP 2.0 Next.js 15 frontend; unit and component behavior stays in Vitest + Testing Library (see [`tests.instructions.md`](../../instructions/tests.instructions.md)).
+Gere um teste end-to-end (E2E) em TypeScript explorando o fluxo descrito com o servidor Playwright MCP, uma etapa por vez. Depois, crie uma spec com `@playwright/test` e execute-a até que passe. Esta skill cobre regressões no navegador para o frontend SIFAP 2.0 com Next.js 15. Testes unitários e de componentes permanecem em Vitest + Testing Library, conforme [`tests.instructions.md`](../../instructions/tests.instructions.md).
+
+## Quando invocar
+
+- "Gere um teste Playwright para este fluxo."
+- "Grave um teste end-to-end que faça login e abra o dashboard."
+- "Crie um teste de regressão no navegador para este cenário."
+- "Transforme esta jornada de usuário em uma spec Playwright."
+
+## Procedimento
 
 > [!NOTE]
-> This skill drives the **Playwright MCP server**, which must be installed and running against a reachable frontend. If the MCP server is unavailable, install and start it before invoking the skill — do not hand-write the test from the scenario alone.
+> Esta skill controla o **servidor Playwright MCP**, que precisa estar instalado, em execução e conectado a um frontend acessível. Se ele não estiver disponível, instale-o e inicie-o antes de usar a skill. Não escreva o teste somente a partir da descrição do cenário.
 
-## When to invoke
+Nunca escreva o código do teste antes de observar o DOM real com o MCP.
 
-- "Generate a Playwright test for the payment approval flow."
-- "Record an end-to-end test that logs in and opens the dashboard."
-- "Create a browser regression test for this scenario."
-- "Turn this user journey into a Playwright spec."
-
-## Explore-then-generate workflow
-
-Never write test code from the scenario description alone. Observe the real DOM through the MCP first, then generate.
-
-1. **Get the scenario.** If the user did not describe a flow, ask for one. Confirm the base URL of the running frontend.
-2. **Explore step by step.** Drive the flow one action at a time with the Playwright MCP tools (navigate, click, fill, assert). Let each observed page state inform the next step.
-3. **Prefer accessible locators.** Select elements by role, label, or text (`getByRole`, `getByLabel`) — not brittle CSS or `data-testid` when a role exists. This mirrors the Testing Library convention used elsewhere in the kit.
-4. **Generate the spec.** Only after every step is confirmed, emit a `@playwright/test` TypeScript test built from the recorded interactions. Structure it Arrange-Act-Assert and add an inline `// REQ-NNN` comment when the flow traces to a requirement.
-5. **Save it** under the frontend's `tests/` directory as `<feature>.spec.ts`.
-6. **Run and iterate.** Execute `npx playwright test <name>` and fix locators or waits until the test passes reliably. Never leave a failing or flaky spec behind.
+1. **Obtenha o cenário.** Se nenhum fluxo tiver sido descrito, solicite um. Confirme a URL base do frontend em execução.
+2. **Explore etapa por etapa.** Controle o fluxo com as ferramentas do Playwright MCP, como navegação, clique, preenchimento e assertion. Use cada estado observado para decidir a próxima ação.
+3. **Prefira locators acessíveis.** Selecione elementos por role, label ou texto, com `getByRole` e `getByLabel`. Evite CSS frágil ou `data-testid` quando existir uma role.
+4. **Gere a spec.** Somente depois de confirmar todas as etapas, crie um teste TypeScript com `@playwright/test`, baseado nas interações observadas. Estruture-o com Arrange-Act-Assert e inclua `// REQ-NNN` quando o fluxo rastrear um requisito.
+5. **Salve o arquivo** no diretório `tests/` do frontend como `<feature>.spec.ts`.
+6. **Execute e ajuste.** Rode `npx playwright test <name>` e corrija locators ou esperas até que o teste passe de forma confiável. Não deixe uma spec falhando ou instável.
 
 > [!WARNING]
-> Keep secrets and environment-specific data out of the spec. Read base URLs and credentials from environment variables or Playwright config — never hardcode them.
+> Não inclua secrets nem dados específicos do ambiente na spec. Leia URLs base e credenciais de variáveis de ambiente ou da configuração do Playwright.
 
-## Scope boundary
+### Limites de escopo
 
-| Layer | Tool | Owned by |
-|---|---|---|
-| End-to-end (browser) | Playwright | this skill |
-| Component / interaction | Vitest + Testing Library | [`tests.instructions.md`](../../instructions/tests.instructions.md) |
-| Unit / pure logic | Vitest (frontend) or JUnit 5 (backend) | [`test-strategy`](../test-strategy/SKILL.md) |
+| Camada | Ferramenta | Responsável |
+|--------|------------|-------------|
+| End-to-end no navegador | Playwright | Esta skill |
+| Componente e interação | Vitest + Testing Library | [`tests.instructions.md`](../../instructions/tests.instructions.md) |
+| Unidade e lógica pura | Vitest no frontend ou JUnit 5 no backend | [`test-strategy`](../test-strategy/SKILL.md) |
 
-## Output template
+## Modelo de saída
 
 ```markdown
-## UI verification - <reviewed flow>
-- Governing REQ-ID: <actual requirement>
-- Preconditions / actor: <approved scope>
-- Actions and accessible selectors: <observed page structure>
-- Expected result: <reviewed acceptance criterion>
-- Test path: <actual generated file>
-- Run command / result: <actual evidence or not run>
+## Verificação da UI: <fluxo revisado>
+- REQ-ID aplicável: <requisito real>
+- Pré-condições / ator: <escopo aprovado>
+- Ações e seletores acessíveis: <estrutura observada da página>
+- Resultado esperado: <critério de aceitação revisado>
+- Path do teste: <arquivo real gerado>
+- Comando / resultado da execução: <evidência real ou não executado>
 ```
 
-Run result to report back:
+Resultado da execução:
 
 ```text
-Command: <actual targeted test command>
-Result: <observed passes/failures, duration and environment, or not run>
+Comando: <comando real do teste direcionado>
+Resultado: <aprovações/falhas observadas, duração e ambiente, ou não executado>
 ```
 
-No payment-approval workflow, role, state transition, or successful run is
-supplied by this template. Use Playwright only when already available or
-explicitly approved; Vitest/Testing Library remain the kit's default frontend tests.
+O template não pressupõe fluxo de aprovação de pagamento, papel, transição de estado nem execução bem-sucedida. Use Playwright somente quando já estiver disponível ou tiver aprovação explícita. Vitest e Testing Library continuam como padrão do kit para testes de frontend.
 
-## Quality gate
+## Gate de qualidade
 
-- [ ] The flow was explored step by step through the Playwright MCP before any code was written.
-- [ ] The spec uses `@playwright/test` and lives in the frontend `tests/` directory.
-- [ ] Elements are selected by accessible role or label, not brittle selectors.
-- [ ] Requirement-driven flows carry an inline `// REQ-NNN` comment.
-- [ ] The test runs green and is not flaky; no secrets are hardcoded.
-- [ ] Unit and component coverage remains in Vitest + Testing Library.
+- [ ] O fluxo foi explorado etapa por etapa com o Playwright MCP antes da escrita do código.
+- [ ] A spec usa `@playwright/test` e está no diretório `tests/` do frontend.
+- [ ] Os elementos são selecionados por role ou label acessível, não por seletores frágeis.
+- [ ] Fluxos baseados em requisitos contêm um comentário inline `// REQ-NNN`.
+- [ ] O teste passa e não é instável; nenhum secret está gravado diretamente.
+- [ ] A cobertura unitária e de componentes permanece em Vitest + Testing Library.

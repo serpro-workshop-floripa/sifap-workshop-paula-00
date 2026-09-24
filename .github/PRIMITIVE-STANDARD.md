@@ -123,8 +123,8 @@ O script `scripts/validate-copilot-primitives.py` verifica a estrutura.
 
 | Primitivo | Seções `##` obrigatórias, na ordem |
 |---|---|
-| Agent | `Missão`, `Personas líderes`, `Princípios operacionais`, `O que este agent sabe`, `O que este agent NÃO sabe`, `Prompts disponíveis`, heading terminado em `Definição de pronto`, `Antipadrões rejeitados por este agent`, `Integração com Spec-Kit` |
-| Prompt | `Objetivo`, `Quando invocar`, `Pré-condições`, `Inputs que a equipe deve fornecer`, `O que farei`, `O que NÃO farei`, `Formato de saída`, opcional `Regras de <arquivo>`, `Definição de pronto`, `Corpo do prompt`, `Exemplo de invocação` |
+| Agent | `Missão`, `Personas líderes`, `Princípios operacionais`, `O que este agente sabe`, `O que este agente NÃO sabe`, `Prompts disponíveis`, heading iniciado por `Definição de pronto`, `Antipadrões que este agente rejeita`, `Integração com Spec-Kit` |
+| Prompt | `Objetivo`, `Quando invocar`, `Pré-condições`, `Entradas que a equipe deve fornecer`, `O que farei`, `O que NÃO farei`, `Formato de saída`, opcional `Regras de <arquivo>`, `Definição de pronto`, `Corpo do prompt`, `Exemplo de invocação` |
 | Instruction | Seções temáticas, depois `Convenções`, `Faça / Não faça`, `Checklist antes de abrir um PR` |
 | Skill | `Quando invocar`, uma seção de procedimento, `Modelo de saída`, `Gate de qualidade` |
 

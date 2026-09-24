@@ -5,6 +5,8 @@ title: '[FEATURE] '
 labels: feature
 ---
 
+# Solicitação de funcionalidade
+
 ## REQ-ID de referência
 
 <!-- Exemplo: REQ-001 de .spec/<NNN>-<feature>/spec.md -->

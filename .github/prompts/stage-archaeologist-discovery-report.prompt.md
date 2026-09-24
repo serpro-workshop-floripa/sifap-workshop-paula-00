@@ -1,55 +1,56 @@
 ---
 name: "discovery-report"
-description: "Consolidates the participant's actual Stage 1 reading, source-data evidence, and unanswered mysteries into an honest C1 report."
+description: "Consolida a leitura real do participante na Etapa 1, as evidências dos dados da fonte e os mistérios sem resposta em um relatório C1 honesto."
 argument-hint: "team=<team-name>"
 agent: "archaeologist"
 tools: ["read", "search", "edit"]
 ---
 # /discovery-report
 
-## Objective
+## Objetivo
 
-Consolidate findings the team actually produced during archaeology into
-`01-archaeology/discovery-report.md`. Preserve traceability and explicit gaps;
-never substitute a completed reference report or invent C1 completion.
+Consolide em `01-archaeology/discovery-report.md` as descobertas que a equipe
+realmente produziu durante a arqueologia. Preserve a rastreabilidade e as lacunas
+explícitas; nunca substitua por um relatório de referência preenchido nem invente
+a conclusão do C1.
 
-## When to Invoke
+## Quando invocar
 
-During Stage 1 synthesis before checkpoint C1. A blocked draft is useful
-when evidence is incomplete; it must not be labeled accepted.
+Durante a síntese da Etapa 1, antes do checkpoint C1. Um rascunho bloqueado é útil
+quando as evidências estão incompletas; ele não deve ser rotulado como aceito.
 
-## Preconditions
+## Pré-condições
 
-- Inspect the [Stage 1 guide](../../01-archaeology/GUIDE.md) and [exploration gate](../../01-archaeology/LEGACY-EXPLORATION-CHECKLIST.md).
-- Read existing team artifacts and preserve prior evidence.
-- Use the [report template](../../01-archaeology/templates/discovery-report.template.md) and [C1 review template](../../01-archaeology/templates/LEGACY-EXPLORATION-CHECKLIST.md), not worked examples.
+- Inspecione o [guia da Etapa 1](../../01-archaeology/GUIDE.md) e o [gate de exploração](../../01-archaeology/LEGACY-EXPLORATION-CHECKLIST.md).
+- Leia os artefatos existentes da equipe e preserve as evidências anteriores.
+- Use o [modelo de relatório](../../01-archaeology/templates/discovery-report.template.md) e o [modelo de revisão C1](../../01-archaeology/templates/LEGACY-EXPLORATION-CHECKLIST.md), não exemplos preenchidos.
 
-## Inputs the Team Must Provide
+## Inputs que a equipe deve fornecer
 
-- Team name, selected scope, and reviewer identities, or unfilled fields.
-- Actual inventory, reading coverage, rule catalogue, dependency map, data map, declaration dictionary, and mystery record.
-- DBA/QA source-readiness evidence and PO-approved beneficiary population.
-- Any actual review/acceptance evidence; otherwise leave it pending.
+- Nome da equipe, escopo selecionado e identidades dos revisores, ou campos não preenchidos.
+- Inventário real, cobertura de leitura, catálogo de regras, mapa de dependências, mapa de dados, dicionário de declarações e registro de mistérios.
+- Evidências de prontidão da fonte por DBA/QA e população de beneficiários aprovada pelo PO.
+- Qualquer evidência real de revisão/aceitação; caso contrário, deixe pendente.
 
-## What I Will Do
+## O que farei
 
-- Check content, not only file existence: templates and unchecked placeholders are not completed evidence.
-- Summarize confirmed findings with source links and identify incomplete reading or data readiness.
-- Carry open questions through with reader-assigned IDs, evidence, unconfirmed hypotheses, and unchanged status.
-- Link data discovery to the [DBA lifecycle](../../docs/DATA-MIGRATION.md) without deciding target schema.
-- Record only participant-reviewed boundary hypotheses relevant to the selected feature, without numerical quotas.
+- Verificarei o conteúdo, não apenas a existência dos arquivos: modelos e placeholders não marcados não são evidências concluídas.
+- Resumirei descobertas confirmadas com links para as fontes e identificarei leitura ou prontidão de dados incompleta.
+- Levarei adiante perguntas em aberto com IDs atribuídos pelo leitor, evidências, hipóteses não confirmadas e status inalterado.
+- Vincularei a descoberta de dados ao [ciclo de vida do DBA](../../docs/DATA-MIGRATION.md) sem decidir o schema de destino.
+- Registrarei somente hipóteses de limites revisadas pelo participante e relevantes para a funcionalidade selecionada, sem cotas numéricas.
 
-## What I Will NOT Do
+## O que NÃO farei
 
-- Add new source analysis, mystery answers, target mappings, or business conclusions during synthesis.
-- Invent counts, review dates, signatures, acceptance, or a selected feature.
-- Treat all supplied files as read because an inventory exists.
-- Turn blocked data readiness or unresolved beneficiary coverage into a completed C1.
-- Change mystery status or promote a hypothesis automatically.
+- Adicionar nova análise da fonte, respostas de mistérios, mapeamentos de destino ou conclusões de negócio durante a síntese.
+- Inventar contagens, datas de revisão, assinaturas, aceitação ou uma funcionalidade selecionada.
+- Tratar todos os arquivos fornecidos como lidos porque existe um inventário.
+- Transformar prontidão de dados bloqueada ou cobertura de beneficiários não resolvida em um C1 concluído.
+- Alterar o status de mistérios ou promover uma hipótese automaticamente.
 
-## Output Format
+## Formato de saída
 
-Use the template to update `01-archaeology/discovery-report.md`:
+Use o modelo para atualizar `01-archaeology/discovery-report.md`:
 
 ```markdown
 # Discovery Report - Stage 1
@@ -62,50 +63,50 @@ Use the template to update `01-archaeology/discovery-report.md`:
 ## C1 evidence review and participant acknowledgment
 ```
 
-When an input is missing or only a placeholder, list it as `BLOCKED` or
-`awaiting evidence` with the responsible prompt/role. Do not fill the gap.
+Quando um input estiver ausente ou for apenas um placeholder, liste-o como
+`BLOCKED` ou `awaiting evidence` com o prompt/papel responsável. Não preencha a lacuna.
 
-## Definition of Done
+## Definição de pronto
 
-- [ ] Every finding cites a team artifact containing actual source or measurement evidence.
-- [ ] Data map, dictionary, reading coverage, and readiness are linked or explicitly blocked.
-- [ ] Mystery IDs, hypotheses, evidence, and actual status are preserved.
-- [ ] Target mapping and architecture are left to Stage 2.
-- [ ] Approval fields reflect human evidence or remain pending; no template is passed off as a completed report.
+- [ ] Toda descoberta cita um artefato da equipe que contém evidências reais da fonte ou de medição.
+- [ ] Mapa de dados, dicionário, cobertura de leitura e prontidão estão vinculados ou explicitamente bloqueados.
+- [ ] IDs de mistérios, hipóteses, evidências e status real estão preservados.
+- [ ] Mapeamento de destino e arquitetura ficam para a Etapa 2.
+- [ ] Campos de aprovação refletem evidências humanas ou permanecem pendentes; nenhum modelo é apresentado como relatório concluído.
 
-## Prompt Body
+## Corpo do prompt
 
-You are the `@archaeologist`, synthesizing participant evidence.
+Você é o `@archaeologist`, sintetizando as evidências do participante.
 
-**Step 1 - Check actual inputs.**
+**Etapa 1 — Verifique os inputs reais.**
 
-- Inspect `inventory.md`, `reading-coverage.md`, `business-rules-catalog.md`, `dependency-map.md`, `data-map.md`, `program-data-dictionary.md`, and `mysteries-found.md` under `01-archaeology/`.
-- Inspect `docs/data-migration/source-readiness.md`; glossary findings may support terminology.
-- For missing or unfilled inputs, record the gap and route to kickoff, `/map-source-data`, `/catalog-mysteries`, or the DBA readiness phase as appropriate.
+- Inspecione `inventory.md`, `reading-coverage.md`, `business-rules-catalog.md`, `dependency-map.md`, `data-map.md`, `program-data-dictionary.md` e `mysteries-found.md` em `01-archaeology/`.
+- Inspecione `docs/data-migration/source-readiness.md`; descobertas do glossário podem apoiar a terminologia.
+- Para inputs ausentes ou não preenchidos, registre a lacuna e encaminhe para kickoff, `/map-source-data`, `/catalog-mysteries` ou a fase de prontidão do DBA, conforme apropriado.
 
-**Step 2 - Summarize established evidence.**
+**Etapa 2 — Resuma as evidências estabelecidas.**
 
-- Write no more than five executive-summary sentences.
-- Include only actual findings and measured counts. Code-only interpretations without human review remain unconfirmed.
-- Link detailed evidence rather than copying a full data dictionary into the report.
+- Escreva no máximo cinco frases no resumo executivo.
+- Inclua somente descobertas reais e contagens medidas. Interpretações apenas do código, sem revisão humana, permanecem não confirmadas.
+- Vincule evidências detalhadas em vez de copiar um dicionário de dados completo para o relatório.
 
-**Step 3 - Carry data constraints and mysteries.**
+**Etapa 3 — Leve adiante restrições de dados e mistérios.**
 
-- Summarize declared versus measured source state, authorized population, quality gaps, and supported extraction readiness.
-- Preserve all relevant mystery fields and human-supplied status. Never add a resolution or turn an unanswered question into a requirement.
+- Resuma o estado declarado versus medido da fonte, a população autorizada, as lacunas de qualidade e a prontidão de extração suportada.
+- Preserve todos os campos relevantes dos mistérios e o status fornecido por humanos. Nunca adicione uma resolução nem transforme uma pergunta sem resposta em requisito.
 
-**Step 4 - Record scope without deciding it.**
+**Etapa 4 — Registre o escopo sem decidi-lo.**
 
-- Capture the PO's selected feature, deferrals, and complete authorized beneficiary scope.
-- Record only team-reviewed boundary hypotheses, labeled as hypotheses. Do not invent enough to meet a quota.
+- Capture a funcionalidade selecionada pelo PO, os adiamentos e o escopo completo de beneficiários autorizados.
+- Registre somente hipóteses de limites revisadas pela equipe, rotuladas como hipóteses. Não invente itens para cumprir uma cota.
 
-**Step 5 - Prepare C1 review.**
+**Etapa 5 — Prepare a revisão C1.**
 
-- Use the C1 evidence-review template and leave each review pending unless actual human evidence is provided.
-- Hand off the report to Architecture, with DBA/QA readiness and unresolved blockers explicit.
-- Generate no requirements, target schema, or acceptance claims as part of this prompt.
+- Use o modelo de revisão de evidências C1 e deixe cada revisão pendente, a menos que sejam fornecidas evidências humanas reais.
+- Transfira o relatório para Arquitetura, com a prontidão de DBA/QA e os bloqueios não resolvidos explícitos.
+- Não gere requisitos, schema de destino nem afirmações de aceitação como parte deste prompt.
 
-## Invocation Example
+## Exemplo de invocação
 
 ```text
 /discovery-report team=<team-name>

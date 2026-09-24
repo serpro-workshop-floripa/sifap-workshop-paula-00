@@ -1,24 +1,25 @@
-# Data Migration Records
+# Registros de migração de dados
 
-> **Path:** [Team Kit](../../README.md) > [Documentation](../README.md) > **Data migration records**
+> **Caminho:** [Kit da equipe](../../README.md) > [Documentação](../README.md) > **Registros de migração de dados**
 
-**Blank supporting records for the DBA-led [data lifecycle](../DATA-MIGRATION.md).**
+**Registros de apoio em branco para o [ciclo de vida dos dados](../DATA-MIGRATION.md) liderado pelo DBA.**
 
-| Template | When the team fills it | Generated team file | Owner / reviewer |
+| Modelo | Quando a equipe o preenche | Arquivo gerado pela equipe | Responsável / revisor |
 |---|---|---|---|
-| [Source readiness](source-readiness.template.md) | Preparation and Stage 1 | `docs/data-migration/source-readiness.md` | DBA / QA and source owner |
-| [Migration plan](migration-plan.template.md) | Stage 2, linked from feature `plan.md` | `docs/data-migration/migration-plan.md` | DBA + architects / QA |
-| [Source-to-target mapping](source-to-target.template.md) | Stage 2, from actual source reading | `docs/data-migration/source-to-target.md` | DBA / architects + Developer |
-| [Reconciliation and consultation](reconciliation.template.md) | Stages 3-4, after execution | `docs/data-migration/reconciliation.md` | DBA / independent QA + PO |
+| [Prontidão da fonte](source-readiness.template.md) | Preparação e Etapa 1 | [planejado] `docs/data-migration/source-readiness.md` | DBA / QA e responsável pela fonte |
+| [Plano de migração](migration-plan.template.md) | Etapa 2, vinculado ao `plan.md` da funcionalidade | [planejado] `docs/data-migration/migration-plan.md` | DBA + arquitetos / QA |
+| [Mapeamento origem-destino](source-to-target.template.md) | Etapa 2, a partir da leitura real da fonte | [planejado] `docs/data-migration/source-to-target.md` | DBA / arquitetos + Desenvolvedor |
+| [Reconciliação e consulta](reconciliation.template.md) | Etapa 3, após a execução | [planejado] `docs/data-migration/reconciliation.md` | Participante nos papéis DBA / QA / PO; validação independente pela banca |
 
-Use `/migration phase=readiness`, `phase=plan`, or `phase=implement` for the
-appropriate step, and `/query-audit` for actual query paths. Do not overwrite
-existing team evidence or mark a template complete merely because it exists.
+Selecione `@dba` e solicite, em texto livre, a fase necessária: prontidão,
+planejamento, execução autorizada ou validação. Informe os templates e as
+evidências disponíveis; para auditar consultas, indique os arquivos reais.
+Não sobrescreva evidências existentes nem marque um modelo como concluído apenas porque ele existe.
 
-Stage 1 source maps, declaration dictionaries, reading coverage, and open
-questions use the [archaeology templates](../../01-archaeology/templates/).
-Formal requirements, architecture plans, and tasks remain in the existing
-`.spec/<NNN>-<feature>/` tree; these records do not replace Spec-Kit artifacts.
+Mapas de origem, dicionários de declarações, cobertura de leitura e questões em
+aberto da Etapa 1 usam os [modelos de arqueologia](../../01-archaeology/templates/).
+Requisitos formais, planos de arquitetura e tarefas permanecem na árvore
+`.spec/<NNN>-<feature>/` existente; estes registros não substituem artefatos do Spec-Kit.
 
-All execution results and approvals are unfilled. Keep sensitive extracts and
-record-level evidence outside the repository.
+Todos os resultados de execução e aprovações estão em branco. Mantenha extratos
+sensíveis e evidências no nível de registro fora do repositório.

@@ -1,75 +1,75 @@
-# Documentation
+# Documentação
 
-> **Path:** [Individual challenge kit](../README.md) › **Docs**
+> **Caminho:** [Kit do desafio individual](../README.md) › **Documentação**
 
-**Language:** English (`main`). Use the [language selector](../README.md#repository-languages) for translated documentation and branch-specific Copilot instructions.
+**Idioma:** português brasileiro (`develop`). Use o [seletor de idioma](../README.md#idiomas-do-repositório) para acessar a documentação traduzida e as instruções do Copilot específicas de cada branch.
 
-Cross-cutting documentation used during the individual challenge.
+Documentação transversal usada durante o desafio individual.
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| **Target audience** | Individual participant |
-| **Prerequisites** | Read [`00-TEAM-FLOW.md`](../00-TEAM-FLOW.md) |
-| **Estimated time** | 5 min |
-| **Expected outcome** | Know where to find decisions, data migration guidance, status tracking, and troubleshooting |
+| **Público-alvo** | Participante individual |
+| **Pré-requisitos** | Ler [`00-TEAM-FLOW.md`](../00-TEAM-FLOW.md) |
+| **Tempo estimado** | 5 min |
+| **Resultado esperado** | Saber onde encontrar decisões, orientações de migração de dados, acompanhamento de status e solução de problemas |
 
 ---
 
-## How to use this folder
+## Como usar esta pasta
 
-- [ ] **Before 14:00** — read [STATUS.md](STATUS.md) and [DATA-MIGRATION.md](DATA-MIGRATION.md).
-- [ ] **During Stage 1** — update the [Stage 1 glossary](../01-archaeology/glossary.md) and record legacy sources.
-- [ ] **During Stage 2** — create ADRs in [adr/](adr/) for non-trivial design decisions.
-- [ ] **During Stage 3** — record migration, reconciliation, and validation evidence without sensitive data.
-- [ ] **Before submission** — complete the PR checklist and STATUS C3 section.
+- [ ] **Antes das 14:00** — leia [STATUS.md](STATUS.md) e [DATA-MIGRATION.md](DATA-MIGRATION.md).
+- [ ] **Durante a Etapa 1** — atualize o [glossário da Etapa 1](../01-archaeology/glossary.md) e registre as fontes legadas.
+- [ ] **Durante a Etapa 2** — crie ADRs em [adr/](adr/) para decisões de design não triviais.
+- [ ] **Durante a Etapa 3** — registre evidências de migração, reconciliação e validação sem dados sensíveis.
+- [ ] **Antes da submissão** — preencha o checklist do PR e a seção C3 de STATUS.
 
-## Structure
+## Estrutura
 
-| Path | Purpose |
+| Caminho | Finalidade |
 |---|---|
-| [`adr/`](adr/) | Architecture decision records, including challenge-format ADR-0003 |
-| [`../01-archaeology/glossary.md`](../01-archaeology/glossary.md) | Domain glossary completed during Stage 1 |
-| [`DATA-MIGRATION.md`](DATA-MIGRATION.md) | Source readiness, discovery, migration, reconciliation, and beneficiary consultation |
-| [Scenario chronology](../README.md#scenario-chronology-and-evidence) | Approximately 30 years of history, original source dates, and the 2026 workshop reference year |
-| [Canonical chronology](../01-archaeology/legacy-sifap/CHRONOLOGY.md) | Dates, authors, and name index transcribed from source headers |
-| [Declared drift](../01-archaeology/legacy-sifap/DECLARED-DRIFT.md) | Deliberate contradictions between period documents and code |
-| [Mystery evidence and difficulty](../01-archaeology/mysteries-checklist.md) | Investigation levels, source comparison, escalation, and honest unresolved outcomes |
-| [`data-migration/`](data-migration/) | Blank records for your own data evidence and decisions |
-| [`4-agents-explained.md`](4-agents-explained.md) | Explanation of the stage agents and role skills |
-| [`persona-agent-matrix.md`](persona-agent-matrix.md) | Role responsibilities across stages |
-| [`sdlc-flow-guide.md`](sdlc-flow-guide.md) | Extended process reference; [`00-TEAM-FLOW.md`](../00-TEAM-FLOW.md) remains the challenge schedule source of truth |
-| [`STATUS.md`](STATUS.md) | Individual progress, C1/C2/C3, and judge submission tracker |
-| [`runbook.md`](runbook.md) | How to run the system locally, in CI, and on Azure if built |
+| [`adr/`](adr/) | Registros de decisões arquiteturais, incluindo a ADR-0003 sobre o formato do desafio |
+| [`../01-archaeology/glossary.md`](../01-archaeology/glossary.md) | Glossário do domínio preenchido durante a Etapa 1 |
+| [`DATA-MIGRATION.md`](DATA-MIGRATION.md) | Prontidão da fonte, descoberta, migração, reconciliação e consulta de beneficiários |
+| [Cronologia do cenário](../README.md#cenário-cronologia-e-evidências) | Aproximadamente 30 anos de história, datas originais das fontes e o ano de referência 2026 do workshop |
+| [Cronologia canônica](../01-archaeology/legacy-sifap/CHRONOLOGY.md) | Datas, autores e índice de nomes transcritos dos cabeçalhos-fonte |
+| [Divergências declaradas](../01-archaeology/legacy-sifap/DECLARED-DRIFT.md) | Contradições deliberadas entre documentos de época e código |
+| [Evidências e dificuldade dos mistérios](../01-archaeology/mysteries-checklist.md) | Níveis de investigação, comparação de fontes, escalonamento e resultados honestos não resolvidos |
+| [`data-migration/`](data-migration/) | Registros em branco para suas próprias evidências e decisões sobre dados |
+| [`4-agents-explained.md`](4-agents-explained.md) | Explicação dos agentes de etapa e das skills de papel |
+| [`persona-agent-matrix.md`](persona-agent-matrix.md) | Responsabilidades dos papéis entre as etapas |
+| [`sdlc-flow-guide.md`](sdlc-flow-guide.md) | Referência ampliada do processo; [`00-TEAM-FLOW.md`](../00-TEAM-FLOW.md) continua sendo a fonte de verdade do cronograma do desafio |
+| [`STATUS.md`](STATUS.md) | Acompanhamento do progresso individual, C1/C2/C3 e submissão ao juiz |
+| [`runbook.md`](runbook.md) | Como executar o sistema localmente, na CI e no Azure, caso seja construído |
 
-## Conventions
+## Convenções
 
-- Use one ADR per durable decision. Number them sequentially: `0001-title.md`, `0002-title.md`.
-- Keep glossary terms alphabetical with citations to the legacy source where each term originated.
-- Every important decision becomes an ADR. A chat conversation is not a sufficient record.
-- Every glossary term originating in the legacy system needs a source (`.NSN`, `.ddm`, or historical document).
-- Never record credentials, CPF, NIS, benefit amounts, or source administration details in Git.
+- Use uma ADR por decisão duradoura. Numere-as sequencialmente: `0001-title.md`, `0002-title.md`.
+- Mantenha os termos do glossário em ordem alfabética, com citações da fonte legada em que cada termo se originou.
+- Toda decisão importante se torna uma ADR. Uma conversa no chat não é um registro suficiente.
+- Todo termo do glossário originado no sistema legado precisa de uma fonte (`.NSN`, `.ddm` ou documento histórico).
+- Nunca registre credenciais, CPF, NIS, valores de benefícios nem detalhes de administração da fonte no Git.
 
-## Documentation definition of done
+## Definição de pronto da documentação
 
-- [ ] Glossary includes legacy sources.
-- [ ] ADRs include context, options, decision, and consequences.
-- [ ] Migration records link to sanitized readiness, load, reconciliation, and consultation evidence.
-- [ ] Internal links point to the correct files.
-- [ ] Documents explain the reason before the procedure.
+- [ ] O glossário inclui fontes legadas.
+- [ ] As ADRs incluem contexto, opções, decisão e consequências.
+- [ ] Os registros de migração apontam para evidências sanitizadas de prontidão, carga, reconciliação e consulta.
+- [ ] Os links internos apontam para os arquivos corretos.
+- [ ] Os documentos explicam o motivo antes do procedimento.
 
-## Quick links
+## Links rápidos
 
-- [Challenge flow](../00-TEAM-FLOW.md)
-- [Role responsibilities](../05-personas/)
-- [Stage 1 guide](../01-archaeology/GUIDE.md)
-- [Git workflow](../00-GIT-WORKFLOW.md)
+- [Fluxo do desafio](../00-TEAM-FLOW.md)
+- [Responsabilidades dos papéis](../05-personas/)
+- [Guia da Etapa 1](../01-archaeology/GUIDE.md)
+- [Fluxo Git](../00-GIT-WORKFLOW.md)
 
 ---
 
-### Continue reading
+### Continue lendo
 
-| Previous | Next |
+| Anterior | Próximo |
 |---|---|
-| [Reference Cards](../09-cheat-sheets/README.md)<br/><sub>Quick Copilot, Spec-Kit, and model references.</sub> | [Visual Glossary](../07-concepts/03-visual-glossary.md)<br/><sub>Domain and technical terms from SIFAP.</sub> |
+| [Cartões de referência](../09-cheat-sheets/README.md)<br/><sub>Referências rápidas de Copilot, Spec-Kit e modelos.</sub> | [Glossário visual](../07-concepts/03-visual-glossary.md)<br/><sub>Termos técnicos e de domínio do SIFAP.</sub> |
 
-<sub>[Back to the kit index](../README.md)</sub>
+<sub>[Voltar ao índice do kit](../README.md)</sub>

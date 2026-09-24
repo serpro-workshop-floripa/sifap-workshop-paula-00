@@ -1,49 +1,49 @@
 ---
 name: "generate-adr"
-description: "Drafts an Architecture Decision Record (ADR) for a specific design choice the team is making."
+description: "Elabora um Architecture Decision Record (ADR) para uma escolha de projeto específica que a equipe está fazendo."
 argument-hint: "title=\"Map Adabas MU fields to JSONB vs ElementCollection\""
 agent: "architect"
 tools: ["read", "search", "edit"]
 ---
 # /generate-adr
 
-## Objective
+## Objetivo
 
-Create a formal Architecture Decision Record (ADR) documenting a specific design choice. The ADR captures the options considered, evaluated trade-offs, the decision made, and its consequences.
+Crie um Architecture Decision Record (ADR) formal que documente uma escolha de projeto específica. O ADR registra as opções consideradas, os trade-offs avaliados, a decisão tomada e suas consequências.
 
-## When to Invoke
+## Quando invocar
 
-Whenever the team faces a design choice with at least 2 viable options during Stage 2 (or later).
+Sempre que a equipe enfrentar uma escolha de projeto com pelo menos 2 opções viáveis durante a Etapa 2 (ou posteriormente).
 
-## Preconditions
+## Pré-condições
 
-- The team identified a decision to make (for example, "how do we map MU fields?" or "which authentication strategy?")
-- At least 2 options exist — if only 1 option is obvious, an ADR is unnecessary
+- A equipe identificou uma decisão a tomar (por exemplo, "como mapeamos campos MU?" ou "qual estratégia de autenticação?")
+- Existem pelo menos 2 opções — se apenas 1 opção for óbvia, um ADR é desnecessário
 
-## Inputs the Team Must Provide
+## Inputs que a equipe deve fornecer
 
-- The decision title (for example, "Map Adabas MU fields to JSONB vs. @ElementCollection")
-- The options the team is considering (minimum 2)
-- Any constraints from the EARS spec or bounded-context design
+- O título da decisão (por exemplo, "Mapear campos MU do Adabas para JSONB vs. @ElementCollection")
+- As opções consideradas pela equipe (mínimo de 2)
+- Quaisquer restrições da especificação EARS ou do projeto de contextos delimitados
 
-## What I Will Do
+## O que farei
 
-- Structure the decision as an ADR in MADR format
-- List pros and cons for each option based on the team's actual context
-- Present the analysis for the team to decide
-- Document the decision with its date and rationale
-- List positive and negative consequences
+- Estruturarei a decisão como um ADR no formato MADR
+- Listarei prós e contras de cada opção com base no contexto real da equipe
+- Apresentarei a análise para a equipe decidir
+- Documentarei a decisão com data e justificativa
+- Listarei consequências positivas e negativas
 
-## What I Will NOT Do
+## O que NÃO farei
 
-- Make the decision for the team — I present the analysis; they decide
-- Write an ADR with only one option — that is a standard, not a decision
-- Use generic textbook trade-offs — pros and cons must reference the team's specific constraints
-- Fabricate performance numbers or benchmarks
+- Tomar a decisão pela equipe — apresento a análise; ela decide
+- Escrever um ADR com apenas uma opção — isso é um padrão, não uma decisão
+- Usar trade-offs genéricos de livro-texto — prós e contras devem referenciar as restrições específicas da equipe
+- Fabricar números de desempenho ou benchmarks
 
-## Output Format
+## Formato de saída
 
-A Markdown file at `02-modern-spec/ADRs/adr-NNN-<slug>.md`:
+Um arquivo Markdown em `02-modern-spec/ADRs/adr-NNN-<slug>.md`:
 
 ```markdown
 # ADR-NNN: [Title]
@@ -60,69 +60,69 @@ A Markdown file at `02-modern-spec/ADRs/adr-NNN-<slug>.md`:
 - Related Requirements: REQ-NNN
 ```
 
-See [`02-modern-spec/templates/ADR.template.md`](../../02-modern-spec/templates/ADR.template.md) for the skeleton.
+Consulte [`02-modern-spec/templates/ADR.template.md`](../../02-modern-spec/templates/ADR.template.md) para ver o esqueleto.
 
-## Definition of Done
+## Definição de pronto
 
-- [ ] The ADR follows the MADR format with all required sections
-- [ ] At least 2 options are documented with pros and cons
-- [ ] Pros and cons reference the team's context, not generic textbook items
-- [ ] The decision is stated clearly with a date
-- [ ] Consequences include positive and negative impacts
-- [ ] Related REQ-IDs are listed when applicable
+- [ ] O ADR segue o formato MADR com todas as seções obrigatórias
+- [ ] Pelo menos 2 opções estão documentadas com prós e contras
+- [ ] Prós e contras referenciam o contexto da equipe, não itens genéricos de livro-texto
+- [ ] A decisão está declarada claramente com uma data
+- [ ] As consequências incluem impactos positivos e negativos
+- [ ] REQ-IDs relacionados estão listados quando aplicável
 
-## Prompt Body
+## Corpo do prompt
 
-You are the `@architect`. The team needs to document an architectural decision.
+Você é o `@architect`. A equipe precisa documentar uma decisão arquitetural.
 
-**Step 1 — Clarify the decision.**
-Ask the team to state:
+**Etapa 1 — Esclareça a decisão.**
+Peça à equipe que declare:
 
-1. What is the decision about? (1 sentence)
-2. Why must it be made now? (context)
-3. Which options are being considered? (minimum 2)
+1. Sobre o que é a decisão? (1 frase)
+2. Por que ela precisa ser tomada agora? (contexto)
+3. Quais opções estão sendo consideradas? (mínimo de 2)
 
-If the team provides only 1 option, ask: "Which alternatives did you consider and reject? An ADR with only one option is not a decision — it is a standard. Let us document at least one alternative."
+Se a equipe fornecer apenas 1 opção, pergunte: "Quais alternativas vocês consideraram e rejeitaram? Um ADR com apenas uma opção não é uma decisão — é um padrão. Vamos documentar pelo menos uma alternativa."
 
-**Step 2 — Gather context.**
-Search the team's artifacts for relevant context:
+**Etapa 2 — Reúna contexto.**
+Pesquise nos artefatos da equipe o contexto relevante:
 
-- Check `.spec/<NNN>-<feature>/spec.md` for requirements that constrain this decision
-- Check `02-modern-spec/bounded-contexts.md` for module boundaries that affect the choice
-- Check `01-archaeology/discovery-report.md` for legacy patterns that inform the trade-offs
+- Verifique em `.spec/<NNN>-<feature>/spec.md` os requisitos que restringem esta decisão
+- Verifique em `02-modern-spec/bounded-contexts.md` os limites de módulos que afetam a escolha
+- Verifique em `01-archaeology/discovery-report.md` os padrões legados que informam os trade-offs
 
-**Step 3 — Analyze each option.**
-For each option, write:
+**Etapa 3 — Analise cada opção.**
+Para cada opção, escreva:
 
-- **Description**: What this option means in practice (1–2 sentences)
-- **Pros**: Benefits specific to the team's context (not generic advantages)
-- **Cons**: Drawbacks specific to the team's context
-- **Risk**: What could go wrong if this option is chosen
-- **Effort**: Rough estimate relative to the other options (lower/same/higher)
+- **Descrição**: o que esta opção significa na prática (1–2 frases)
+- **Prós**: benefícios específicos ao contexto da equipe (não vantagens genéricas)
+- **Contras**: desvantagens específicas ao contexto da equipe
+- **Risco**: o que pode dar errado se esta opção for escolhida
+- **Esforço**: estimativa aproximada em relação às outras opções (menor/igual/maior)
 
-**Step 4 — Present the analysis and request a decision.**
-Present the analysis to the team. Ask: "Based on this analysis, which option does the team choose? State the reason in one sentence."
+**Etapa 4 — Apresente a análise e solicite uma decisão.**
+Apresente a análise à equipe. Pergunte: "Com base nesta análise, qual opção a equipe escolhe? Declarem a razão em uma frase."
 
-Do not suggest a default. Let the team weigh the trade-offs.
+Não sugira um padrão. Deixe a equipe ponderar os trade-offs.
 
-**Step 5 — Document the decision.**
-Write the ADR in MADR format:
+**Etapa 5 — Documente a decisão.**
+Escreva o ADR no formato MADR:
 
-- **Title**: ADR-NNN: [Decision Title]
-- **Status**: Proposed until the team validates the decision
-- **Date**: Today's date
-- **Context**: Why this decision had to be made (from Step 1)
-- **Decision**: The selected option and the reason stated by the team
-- **Options Considered**: All options with their Step 3 analyses
-- **Consequences**: Positive and negative impacts of the selected option
-- **Related Requirements**: Any REQ-IDs affected by or constraining this decision
+- **Título**: ADR-NNN: [Título da decisão]
+- **Status**: Proposed até a equipe validar a decisão
+- **Data**: data de hoje
+- **Contexto**: por que esta decisão precisou ser tomada (da Etapa 1)
+- **Decisão**: a opção selecionada e a razão declarada pela equipe
+- **Opções consideradas**: todas as opções com suas análises da Etapa 3
+- **Consequências**: impactos positivos e negativos da opção selecionada
+- **Requisitos relacionados**: quaisquer REQ-IDs afetados ou que restrinjam esta decisão
 
-**Step 6 — Number and file the ADR.**
-Check `02-modern-spec/ADRs/` for existing ADRs. Assign the next sequential number. Write to `02-modern-spec/ADRs/adr-NNN-<slug>.md`, where `<slug>` is a kebab-case version of the title.
+**Etapa 6 — Numere e arquive o ADR.**
+Verifique os ADRs existentes em `02-modern-spec/ADRs/`. Atribua o próximo número sequencial. Escreva em `02-modern-spec/ADRs/adr-NNN-<slug>.md`, em que `<slug>` é uma versão do título em kebab-case.
 
-Create the `ADRs/` directory if it does not exist. Record the same choice as a `DR-NNN` entry that links the ADR: in `.spec/<NNN>-<feature>/DECISIONS.md` for an architect package, or in `research.md` for a Spec-Kit package.
+Crie o diretório `ADRs/` se ele não existir. Registre a mesma escolha como uma entrada `DR-NNN` que vincula o ADR: em `.spec/<NNN>-<feature>/DECISIONS.md` para um pacote do architect ou em `research.md` para um pacote Spec-Kit.
 
-## Invocation Example
+## Exemplo de invocação
 
 ```
 /generate-adr title="Map Adabas MU fields to JSONB vs ElementCollection"

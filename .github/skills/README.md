@@ -1,81 +1,78 @@
-# Skills Index
+# Índice de skills
 
-This directory contains the GitHub Copilot Agent Skills for the workshop — **54** in total, each in its own `<name>/SKILL.md`.
-
-> [!NOTE]
-> Copilot discovers `SKILL.md` files under `.github/skills/<name>/` and auto-loads a skill by semantically matching your request against its `description`. That matching is invisible to people, which is what this index is for. The descriptions below are load-bearing: each states *when to use* the skill, so keep them accurate.
-
-## Skills by area
-
-All 54 skills, grouped by what they do. Every skill appears in exactly one group.
-
-### Team roles (11 skills)
-
-These carry the responsibilities that used to be persona agents. They load
-automatically into whichever stage agent is active, so nobody has to re-select a
-role. The reasoning is in [ADR-0002](../../docs/adr/0002-team-roles-as-skills-not-agents.md).
-
-| Skill | Description |
-| --- | --- |
-| [`ux-research-design`](ux-research-design/) | Jobs-to-be-Done, user journeys, information architecture, and accessibility acceptance criteria — research, never component code. |
+Este diretório contém as skills de agent do GitHub Copilot para o workshop: **54** no total, cada uma em seu próprio arquivo `<name>/SKILL.md`.
 
 > [!NOTE]
-> The DBA role is **not** in this list. It stays an agent (`@dba`) because the
-> data lifecycle spans all four stages and owns tool-scoped prompts.
+> O Copilot descobre arquivos `SKILL.md` em `.github/skills/<name>/` e carrega automaticamente uma skill ao comparar semanticamente a solicitação com sua `description`. Essa comparação não é visível para as pessoas, por isso este índice existe. As descrições abaixo são essenciais: cada uma informa quando usar a skill e deve permanecer precisa.
 
-### Workshop, SDD & requirements (7 skills)
+## Skills por área
 
-| Skill | Description |
-| --- | --- |
-| [`sdd-requirements-engineer`](sdd-requirements-engineer/) | Use for evidence-backed EARS authoring, validation, and checkpoint preparation with official Spec-Kit, `REQ-NNN`, `source_legacy:`, and data migration acceptance. Does not create a parallel SDD tree or prefilled exercise solutions. |
-| [`user-story-refine`](user-story-refine/) | Use when refining backlog items, splitting epics, or validating INVEST criteria. Triggers include "refine story", "split epic", "acceptance criteria", "user story", and "INVEST". |
-| [`code-modernization`](code-modernization/) | Use when modernizing a legacy system with a disciplined, behavior-preserving workflow. Triggers include "modernize", "legacy code", "COBOL", "business-rule extraction", and "behavior-preserving rewrite". |
+As 54 skills estão agrupadas pela finalidade. Cada skill aparece em exatamente um grupo.
 
-### Java & Spring Boot backend (6 skills)
+### Papéis de equipe (11 skills)
 
-| Skill | Description |
-| --- | --- |
-| [`create-spring-boot-java-project`](create-spring-boot-java-project/) | Scaffold a Spring Boot (Java 21) project skeleton via start.spring.io with Maven, springdoc-openapi, and ArchUnit, ready to run with Docker Compose. Use when the user wants to bootstrap a new Spring Boot backend or generate a starter project. Aligns to the kit's Java 21 + Spring Boot 3.3 stack. |
-| [`java-springboot`](java-springboot/) | Spring Boot application best practices — package-by-feature structure, constructor injection, DTOs and validation, service-layer transactions, Spring Data JPA, and configuration/secrets handling. Use when building or reviewing Spring Boot backend code and you want idiomatic structure and conventions. Complements the kit's Java 21 + Spring Boot 3.3 stack. |
-| [`java-docs`](java-docs/) | Apply Javadoc best practices so Java types and members are documented correctly — summary sentences, @param/@return/@throws, {@code} blocks, @since, and inherited docs. Use when the user asks to write, review, or improve Javadoc or API documentation for Java code. |
-| [`java-junit`](java-junit/) | JUnit 5 unit-testing best practices — test structure (Arrange-Act-Assert), lifecycle, parameterized/data-driven tests, assertions, Mockito isolation, and test organization. Use when writing or reviewing plain JUnit 5 unit tests for Java business logic. For Spring Boot slice/integration tests (@WebMvcTest, @DataJpaTest, Testcontainers), use spring-boot-testing. |
-| [`spring-boot-testing`](spring-boot-testing/) | Select the right Spring Boot test technique for a scenario — test slices (@WebMvcTest, @DataJpaTest, @RestClientTest, @JsonTest, @SpringBootTest), Testcontainers, Mockito, and AssertJ. Use when writing or reviewing Spring Boot integration or slice tests. Targets the kit's Spring Boot 3.3 + JUnit 5; newer 3.4+/4.0 APIs (MockMvcTester, @MockitoBean, RestTestClient) are noted as out of scope for the kit. |
+Estas skills contêm as responsabilidades que antes pertenciam a agents de personas. Elas carregam automaticamente no agent de etapa ativo, sem exigir uma nova seleção de papel. A justificativa está em [ADR-0002](../../docs/adr/0002-team-roles-as-skills-not-agents.md).
 
-### Data & database (4 skills)
+| Skill | Descrição |
+|-------|-----------|
+| [`ux-research-design`](ux-research-design/) | Jobs-to-be-Done, jornadas de usuário, arquitetura da informação e critérios de aceitação de acessibilidade. Produz pesquisa, nunca código de componentes. |
 
-| Skill | Description |
-| --- | --- |
+> [!NOTE]
+> O papel de DBA não está nesta lista. Ele permanece como agent (`@dba`) porque o ciclo de vida dos dados atravessa as quatro etapas e possui prompts com ferramentas específicas.
 
-### Frontend & testing (4 skills)
+### Workshop, SDD e requisitos (7 skills)
 
-| Skill | Description |
-| --- | --- |
-| [`playwright-generate-test`](playwright-generate-test/) | Generate a Playwright end-to-end test in TypeScript from a described scenario by driving the Playwright MCP step by step, then run it until it passes. Use when the user asks to create or record a browser or E2E test with Playwright for a web flow. |
-| [`tdd-workflow`](tdd-workflow/) | Use when practicing test-driven development, writing a failing test first, or guiding red-green-refactor. Triggers include "TDD", "red-green-refactor", "test first", "failing test", and "write a test". |
-| [`test-strategy`](test-strategy/) | Use when designing a test strategy, choosing the test-pyramid shape, defining coverage targets, or evaluating testing investments across unit, integration, and E2E layers. Triggers include "test strategy", "test pyramid", "coverage target", "E2E vs integration", and "testing investment". |
+| Skill | Descrição |
+|-------|-----------|
+| [`sdd-requirements-engineer`](sdd-requirements-engineer/) | Use para autoria e validação de EARS baseada em evidências e preparação de checkpoints com Spec-Kit oficial, `REQ-NNN`, `source_legacy:` e critérios de aceitação da migração de dados. Não cria uma árvore SDD paralela nem soluções preenchidas dos exercícios. |
+| [`user-story-refine`](user-story-refine/) | Use ao refinar itens do backlog, dividir épicos ou validar critérios INVEST. Acione para "refinar história", "dividir épico", "critérios de aceitação", "história de usuário" e "INVEST". |
+| [`code-modernization`](code-modernization/) | Use ao modernizar um sistema legado com um fluxo disciplinado que preserve o comportamento. Acione para modernização, código legado, COBOL, extração de regras de negócio e reescrita com preservação de comportamento. |
 
-### Azure, IaC & CI/CD (14 skills)
+### Backend Java e Spring Boot (6 skills)
 
-| Skill | Description |
-| --- | --- |
+| Skill | Descrição |
+|-------|-----------|
+| [`create-spring-boot-java-project`](create-spring-boot-java-project/) | Use para iniciar um backend Spring Boot ou gerar um projeto-base. Cria um esqueleto Java 21 por start.spring.io com Maven, springdoc-openapi, ArchUnit e Docker Compose, alinhado à stack Spring Boot 3.3 do kit. |
+| [`java-springboot`](java-springboot/) | Use ao criar ou revisar backend Spring Boot com estrutura idiomática: organização por funcionalidade, injeção por construtor, DTOs e validação, transações em serviços, Spring Data JPA e configuração segura. |
+| [`java-docs`](java-docs/) | Use ao escrever, revisar ou melhorar Javadoc e documentação de API Java, com sentenças de resumo, `@param`, `@return`, `@throws`, `{@code}`, `@since` e documentação herdada. |
+| [`java-junit`](java-junit/) | Use ao escrever ou revisar testes unitários JUnit 5 de lógica de negócio Java, com Arrange-Act-Assert, ciclo de vida, testes parametrizados, assertions e Mockito. Para testes slice ou de integração do Spring Boot, use `spring-boot-testing`. |
+| [`spring-boot-testing`](spring-boot-testing/) | Use ao escolher ou implementar testes slice e de integração do Spring Boot, como `@WebMvcTest`, `@DataJpaTest`, `@RestClientTest`, `@JsonTest`, `@SpringBootTest`, Testcontainers, Mockito e AssertJ. Destina-se a Spring Boot 3.3 + JUnit 5. |
 
-### Documentation & diagrams (4 skills)
+### Dados e banco de dados (4 skills)
 
-| Skill | Description |
-| --- | --- |
-| [`doc-style-lint`](doc-style-lint/) | Use when reviewing documentation for style, clarity, inclusive language, or compliance with Microsoft or Google style guides. Triggers include "doc review", "style guide", "plain language", "inclusive language", and "readability". |
+| Skill | Descrição |
+|-------|-----------|
 
-### Codebase context & Copilot tooling (4 skills)
+### Frontend e testes (4 skills)
 
-| Skill | Description |
-| --- | --- |
-| [`acquire-codebase-knowledge`](acquire-codebase-knowledge/) | Use this skill when the user explicitly asks to map, document, or onboard into an existing codebase. Trigger for prompts like "map this codebase", "document this architecture", "onboard me to this repo", or "create codebase docs". Do not trigger for routine feature implementation, bug fixes, or narrow code edits unless the user asks for repository-level discovery. |
-| [`copilot-sdk`](copilot-sdk/) | Build agentic applications with GitHub Copilot SDK. Use when embedding AI agents in apps, creating custom tools, implementing streaming responses, managing sessions, connecting to MCP servers, or creating custom agents. Triggers on Copilot SDK, GitHub SDK, agentic app, embed Copilot, programmable agent, MCP server, custom agent. |
+| Skill | Descrição |
+|-------|-----------|
+| [`playwright-generate-test`](playwright-generate-test/) | Use para gerar um teste end-to-end Playwright em TypeScript a partir de um cenário. Controle o Playwright MCP etapa por etapa e execute o teste até que passe. |
+| [`tdd-workflow`](tdd-workflow/) | Use ao praticar desenvolvimento orientado a testes, escrever primeiro um teste que falha ou seguir red-green-refactor. Acione para "TDD", "red-green-refactor", "test first", "failing test" e "write a test". |
+| [`test-strategy`](test-strategy/) | Use ao definir estratégia de testes, formato da pirâmide, metas de cobertura ou investimentos entre testes unitários, de integração e E2E. |
 
-## Maintenance Rule
+### Azure, IaC e CI/CD (14 skills)
 
-- The `name:` in a `SKILL.md` **must exactly equal its parent directory name** (lowercase letters, digits, and hyphens; 64 characters max) or Copilot silently fails to load the skill.
-- Only `name` and `description` are valid frontmatter keys; any other key (for example `license`, `allowed-tools`, `compatibility`, or `metadata`) fails the `copilot-primitives` gate.
-- `description` is capped at **1024 characters** and must state *when to use* the skill, because it is the only signal Copilot uses to auto-load it.
-- Every skill body needs, in order: `## When to invoke`, a substantive procedure section, `## Output template`, and `## Quality gate`.
-- The full schema and section contract live in [`../PRIMITIVE-STANDARD.md`](../PRIMITIVE-STANDARD.md) and are enforced by [`../scripts/validate-copilot-primitives.py`](../scripts/validate-copilot-primitives.py). When you add a skill, add its row to the matching group above and keep the total count current.
+| Skill | Descrição |
+|-------|-----------|
+
+### Documentação e diagramas (4 skills)
+
+| Skill | Descrição |
+|-------|-----------|
+| [`doc-style-lint`](doc-style-lint/) | Use ao revisar documentação quanto a estilo, clareza, linguagem inclusiva, legibilidade ou conformidade com guias de estilo da Microsoft ou do Google. |
+
+### Contexto da base de código e ferramentas do Copilot (4 skills)
+
+| Skill | Descrição |
+|-------|-----------|
+| [`acquire-codebase-knowledge`](acquire-codebase-knowledge/) | Use quando a pessoa pedir explicitamente para mapear, documentar ou facilitar a integração em uma base de código existente. Não use em implementações rotineiras, correções de bugs ou alterações restritas sem descoberta em todo o repositório. |
+| [`copilot-sdk`](copilot-sdk/) | Use ao criar aplicações agênticas com GitHub Copilot SDK, incorporar agents, criar ferramentas personalizadas, transmitir respostas, gerenciar sessões, conectar servidores MCP ou criar agents personalizados. |
+
+## Regra de manutenção
+
+- O valor de `name:` em `SKILL.md` deve corresponder exatamente ao nome do diretório pai, com letras minúsculas, números e hífens e no máximo 64 caracteres. Caso contrário, o Copilot não carrega a skill.
+- Somente `name` e `description` são chaves válidas no frontmatter. Outras chaves, como `license`, `allowed-tools`, `compatibility` ou `metadata`, falham no gate `copilot-primitives`.
+- `description` aceita no máximo **1024 caracteres** e deve informar quando usar a skill, pois é o único sinal usado pelo Copilot para carregamento automático.
+- O corpo de cada skill precisa conter, nesta ordem: `## Quando invocar`, uma seção substantiva de procedimento, `## Modelo de saída` e `## Gate de qualidade`.
+- O schema completo e o contrato das seções estão em [`../PRIMITIVE-STANDARD.md`](../PRIMITIVE-STANDARD.md) e são aplicados por [`../scripts/validate-copilot-primitives.py`](../scripts/validate-copilot-primitives.py). Ao adicionar uma skill, inclua sua linha no grupo correspondente e atualize a contagem total.

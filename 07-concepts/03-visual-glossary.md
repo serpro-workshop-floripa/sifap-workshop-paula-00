@@ -8,7 +8,7 @@
 
 | Campo | Valor |
 |---|---|
-| **Público-alvo** | Qualquer pessoa do time, principalmente Product Owner, Tech Writer e pessoas de análise |
+| **Público-alvo** | Qualquer participante, principalmente ao cobrir responsabilidades de Product Owner, Tech Writer ou análise |
 | **Como usar** | Mantenha esta aba aberta durante a imersão. Você não precisa memorizar nada — consulte sempre que encontrar um termo desconhecido. |
 
 ---
@@ -20,7 +20,7 @@
 | Estágio 1 — Arqueologia | Natural, NSN, DDM, Adabas, MU, PE, BR-NNN |
 | Estágio 2 — Especificação | EARS, REQ-ID, source_legacy, ADR, C4, bounded context, greenfield, Spec-Kit |
 | Estágio 3 — Implementação | JPA, Flyway, migração, Testcontainers, controller, service, repository, Bean Validation, Server Component, Swagger |
-| Estágio 4 — Evolução | Agent, Issue, PR, Terraform, IaC, CI/CD, Actions |
+| Estágio 4 — Evolução posterior ao desafio | Agent, Issue, PR, Terraform, IaC, CI/CD, Actions |
 
 ---
 
@@ -28,11 +28,11 @@
 
 | Termo | Significado em linguagem simples | Contexto de uso |
 |---|---|---|
-| handoff | transferência de responsabilidade | Transição entre estágios |
+| self-checkpoint | autoavaliação segundo a definição de pronto do estágio | Transição entre estágios |
 | stakeholder | parte interessada ou afetada | Personas Product Owner e Requirements Engineer |
 | backlog | lista de trabalho pendente | Gestão de tarefas no GitHub Projects |
 | commit | versão registrada | Controle de versão com Git |
-| push | enviar mudanças para o repositório remoto | Git — compartilhar mudanças com o time |
+| push | enviar mudanças para o repositório remoto | Git — compartilhar mudanças para revisão |
 | pull request (PR) | proposta de mudança | Revisão de código antes do merge |
 | merge | integrar uma branch | Incorporação de mudanças na branch principal |
 | code review | avaliação do código por pares | Revisão do PR antes do merge |
@@ -58,7 +58,7 @@
 
 ### Adabas
 
-O banco de dados de mainframe onde o SIFAP (Sistema de Fiscalização e Administração de Pagamentos) armazena dados há 29 anos. Diferentemente dos bancos relacionais convencionais, ele suporta campos de valores múltiplos (MU) e grupos periódicos (PE). Os DDMs contêm as definições de arquivo dele. Aparece no Estágio 1, ao inspecionar `01-archaeology/legacy-sifap/adabas-ddms/`.
+O banco de dados do cenário de aproximadamente 30 anos do SIFAP. Seus campos de valores múltiplos (MU), grupos periódicos (PE) e definições de origem exigem investigação. Arquivos DDM/FDT descrevem a estrutura, não comprovam a existência de um banco de dados atualmente populado.
 
 ### DDM — Data Definition Module
 
@@ -66,7 +66,7 @@ Um arquivo `.ddm` do Adabas que descreve a estrutura de um "file" (equivalente a
 
 ### MU — Multiple-Value field
 
-Campo do Adabas que armazena vários valores em um único registro — por exemplo, um campo `TELEFONES` com até cinco números. O equivalente em SQL seria uma tabela filha com chave estrangeira. O time precisa documentar em um ADR como preservar essa multiplicidade no modelo moderno.
+Campo do Adabas que armazena vários valores em um único registro — por exemplo, um campo `TELEFONES` com até cinco números. O equivalente em SQL seria uma tabela filha com chave estrangeira. Documente em um ADR como preservar essa multiplicidade no modelo moderno.
 
 ### Natural (linguagem de programação)
 
@@ -114,11 +114,11 @@ Ferramenta oficial do GitHub para Spec-Driven Development. Fornece os comandos `
 
 ### ADR — Architecture Decision Record
 
-Arquivo Markdown curto que registra uma decisão de arquitetura: o contexto, a decisão tomada, as alternativas consideradas e as consequências. Garante que quem entrar no time no futuro entenda as decisões tomadas hoje. Template: `02-modern-spec/ADR-TEMPLATE.md`. Detalhes em [06 — Architecture Decision Records](06-architecture-decision-records.md).
+Arquivo Markdown curto que registra uma decisão de arquitetura: o contexto, a decisão tomada, as alternativas consideradas e as consequências. Garante que futuras pessoas mantenedoras entendam as decisões tomadas hoje. Template: `02-modern-spec/ADR-TEMPLATE.md`. Detalhes em [06 — Architecture Decision Records](06-architecture-decision-records.md).
 
 ### Bounded Context
 
-Segmento do sistema claramente delimitado, com vocabulário e regras próprios. No SIFAP, "beneficiário" significa coisas diferentes nos contextos de Cadastro, Cálculo e Fiscalização. As fronteiras são hipóteses que o time valida e documenta em um ADR. Este conceito aparece nos Estágios 2 e 3.
+Segmento do sistema claramente delimitado, com vocabulário e regras próprios. No SIFAP, "beneficiário" significa coisas diferentes nos contextos de Cadastro, Cálculo e Fiscalização. As fronteiras são hipóteses que você valida e documenta em um ADR. Este conceito aparece nos Estágios 2 e 3.
 
 ### C4 (modelo C4)
 
@@ -158,7 +158,7 @@ O padrão Java para mapear classes em tabelas de banco de dados. Uma classe anot
 
 ### JWT — JSON Web Token
 
-Token cifrado emitido pelo backend após uma autenticação bem-sucedida. O cliente envia o JWT em toda requisição seguinte, no cabeçalho `Authorization`. Autentica chamadas de API sem manter sessões no servidor.
+Formato de token usado em alguns projetos de autenticação. JWTs geralmente são assinados, não cifrados; um payload legível não deve ser tratado como confidencial. Valide assinatura, emissor, público e expiração na fronteira aprovada. Não presuma que o projeto já tenha implementado um emissor ou fluxo de autenticação.
 
 ### Repository (Spring Data)
 
@@ -174,7 +174,7 @@ Classe Java que contém a lógica de negócio. Fica entre o Controller (que rece
 
 ### Swagger UI
 
-Interface web gerada automaticamente pelo SpringDoc que documenta e permite testar os endpoints da API. Fica disponível em `http://localhost:8080/swagger-ui.html` durante o desenvolvimento local.
+Interface web que pode documentar e exercitar as APIs quando o SpringDoc estiver configurado. Verifique o path, a porta e a política de acesso reais depois que o backend existir; o kit não inclui um endpoint Swagger em execução.
 
 ### Testcontainers
 
@@ -186,7 +186,7 @@ Biblioteca Java que sobe um container Docker com uma instância real do PostgreS
 
 ### CI/CD — Continuous Integration and Continuous Delivery
 
-CI (integração contínua): roda os testes automaticamente a cada commit. CD (entrega contínua): faz o deploy automaticamente depois que o CI passa. Na imersão, é configurado em `.github/workflows/`. Um pipeline de CI bem-sucedido é obrigatório antes do merge em `main`.
+CI valida mudanças integradas por meio de jobs e gatilhos configurados. Continuous delivery mantém uma versão pronta para deploy; continuous deployment publica automaticamente mudanças elegíveis. O kit fornece workflows de validação, não um deployment ativo, e as verificações aplicáveis bloqueiam merges revisados.
 
 ### DoD — Definition of Done
 
@@ -194,25 +194,25 @@ Lista de critérios verificáveis que comprovam que um entregável está complet
 
 ### IaC — Infrastructure as Code
 
-A prática de descrever servidores, bancos de dados e redes em arquivos de código (Terraform) em vez de configurá-los manualmente no portal do Azure. Torna a infraestrutura reproduzível e auditável. Na imersão, arquivos `.tf` são criados em `infra/` quando o time chega ao Estágio 4.
+A prática de descrever servidores, bancos de dados e redes em arquivos de código (Terraform) em vez de configurá-los manualmente no portal do Azure. Torna a infraestrutura reproduzível e auditável. Neste desafio individual, o Estágio 4 não é usado; arquivos `.tf` em `infra/` ficam para trabalho posterior ao desafio ou trabalho de infraestrutura separado.
 
 ### Issue (GitHub Issue)
 
-Ticket do GitHub que descreve uma tarefa, funcionalidade ou defeito. No Estágio 4, Issues bem escritas — com contexto, critérios de aceitação e rastreabilidade — são delegadas ao modo Agent do Copilot para geração automática de PR.
+Ticket do GitHub que descreve uma tarefa, funcionalidade ou defeito. A delegação de Issue para PR do Estágio 4 permanece para trabalho posterior ao desafio; ela não faz parte do desafio individual.
 
 ### PR — Pull Request
 
-Pedido para incorporar as mudanças de uma branch na branch principal. Todo PR exige pelo menos uma revisão por pares antes do merge em `main`. O CI precisa estar verde antes do merge.
+Pedido para integrar uma branch a outra. O trabalho da imersão tem `develop` como destino; depois, uma promoção revisada tem `main` como destino. Todos os prefixos de branch de trabalho nascem de `develop`; a aprovação das verificações aplicáveis e a revisão do juiz são obrigatórias para a submissão do desafio.
 
 ### Terraform
 
-Ferramenta de IaC que descreve a infraestrutura Azure em arquivos `.tf`. O comando `terraform plan` mostra o que seria criado sem fazer mudanças; `terraform apply` cria os recursos. Nas demonstrações da imersão, rode apenas `terraform plan` — nunca execute um `apply` real sem aprovação.
+Ferramenta de IaC para descrever infraestrutura. `plan` antecipa as mudanças propostas; `apply` modifica recursos. Durante esta imersão, use somente validação e planejamento com escopo; o provisionamento está fora do escopo.
 
 ---
 
 ## Cadeia de rastreabilidade
 
-![Cadeia de rastreabilidade: o .NSN/.ddm legado vira BR-NNN, depois um REQ-ID EARS, depois código Java, um teste com Testcontainers e um PR no GitHub](../assets/traceability-chain.svg)
+![Cadeia de rastreabilidade: evidência da fonte, regra revisada, requisito EARS, teste primeiro, implementação e verificação, depois PR revisado](../assets/traceability-chain.svg)
 
 Essa cadeia é o que o CI verifica em cada PR. Sempre que você ficar em dúvida sobre o que está fazendo, volte ao elo anterior da cadeia.
 

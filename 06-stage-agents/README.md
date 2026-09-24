@@ -46,7 +46,7 @@ Os papéis são **skills**, e não agentes, para que possam ser combinados com q
 ativo: você mantém `@builder` selecionado, e o papel de QA é carregado automaticamente quando você pergunta
 sobre lacunas de cobertura. Um papel é exceção. O `@dba` continua sendo um agente porque o
 ciclo de vida dos dados abrange as quatro etapas e possui prompts com escopo de ferramentas. Consulte a
-[ADR-0002](../docs/adr/0002-participant-roles-as-skills-not-agents.md).
+[ADR-0002](../docs/adr/0002-team-roles-as-skills-not-agents.md).
 
 ---
 
@@ -60,8 +60,7 @@ flowchart LR
 
     A["Etapa 1<br/>@archaeologist<br/>14:00–14:50"]:::step --> B["Etapa 2<br/>@architect<br/>14:50–15:30"]:::step
     B --> C["Etapa 3<br/>@builder<br/>15:30–17:10"]:::step
-    C --> D["Etapa 4<br/>@evolution<br/>não utilizada no desafio individual"]:::step
-    D --> E["17:00–17:30<br/>Revisão das evidências<br/>Aceito ou bloqueado"]:::result
+    C --> E["17:10–17:40<br/>Validação da banca<br/>Aceito ou bloqueado"]:::result
 ```
 
 | Etapa | Horário | Agente | Abordagem do agente | Objetivo |
@@ -106,8 +105,9 @@ O **Líder** conduz a conversa com o agente. Um **Colaborador** participa ativam
 
 Para obter a versão detalhada, consulte [docs/persona-agent-matrix.md](../docs/persona-agent-matrix.md).
 Cada participante cobre todas as responsabilidades dos papéis. A verificação
-independente dos dados exige outro participante; cada dupla ainda lê suas fontes
-atribuídas. Use o período das 17:10 às 17:40 para preparar evidências para a validação das 17:10 às 17:40.
+independente cabe à banca, conforme a [ADR-0003](../docs/adr/0003-individual-challenge-format.md).
+Prepare as evidências e envie o PR até 17:10. A validação final ocorre das 17:10 às 17:40;
+a Etapa 4 permanece apenas como referência após o desafio.
 
 ---
 

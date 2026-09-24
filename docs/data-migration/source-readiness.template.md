@@ -1,45 +1,45 @@
-# Template: Source Data Readiness
+# Modelo: prontidão dos dados de origem
 
-> **Path:** [Team Kit](../../README.md) > [Data migration](../DATA-MIGRATION.md) > **Source readiness**
+> **Caminho:** [Kit da equipe](../../README.md) > [Migração de dados](../DATA-MIGRATION.md) > **Prontidão da fonte**
 
-**Complete during pre-work before 14:00 and confirm during Stage 1 using `/migration phase=readiness`.**
+**Preencha durante o pré-trabalho antes das 14:00 e confirme durante a Etapa 1: selecione `@dba` e solicite o registro das medições e evidências disponíveis, mantendo bloqueios explícitos.**
 
-| Field | Participant evidence |
+| Campo | Evidência do participante |
 |---|---|
-| Participant / source owner / DBA-QA evidence | <!-- fill in --> |
-| Authorized environment identity, without access address or credentials | <!-- fill in --> |
-| Source version and synthetic population provenance | <!-- fill in --> |
-| Population action performed by authorized owner / evidence | <!-- fill in or BLOCKED --> |
-| Measurement time and read method | <!-- fill in --> |
-| Approved beneficiary population and required related data | <!-- fill in --> |
+| Participante / responsável pela fonte / evidência de DBA-QA | <!-- preencher --> |
+| Identidade do ambiente autorizado, sem endereço de acesso nem credenciais | <!-- preencher --> |
+| Versão da fonte e proveniência da população sintética | <!-- preencher --> |
+| Ação de população realizada pelo responsável autorizado / evidência | <!-- preencher ou BLOCKED --> |
+| Horário da medição e método de leitura | <!-- preencher --> |
+| População de beneficiários aprovada e dados relacionados necessários | <!-- preencher --> |
 
-## Measured population
+## População medida
 
-| Source file | Seed expectation reference, if known | Current measured count | Integrity / quality observation | Restricted evidence reference |
+| Arquivo de origem | Referência da expectativa do seed, se conhecida | Contagem atual medida | Observação de integridade / qualidade | Referência de evidência restrita |
 |---|---|---|---|---|
-| <!-- fill in --> | <!-- fill in: recipe only --> | <!-- fill in or unknown --> | <!-- fill in --> | <!-- fill in --> |
+| <!-- preencher --> | <!-- preencher: somente a receita --> | <!-- preencher ou unknown --> | <!-- preencher --> | <!-- preencher --> |
 
-## Extraction readiness
+## Prontidão da extração
 
-| Concern | Evidence / decision / blocker |
+| Questão | Evidência / decisão / bloqueio |
 |---|---|
-| Supported read-only extraction method and owner | <!-- fill in --> |
-| Consistent snapshot across related files and concurrent writes | <!-- fill in --> |
-| Format, layout, encoding, and source-key availability | <!-- fill in --> |
-| Coverage, truncation and integrity checks | <!-- fill in --> |
-| Authorized restricted storage, retention, and cleanup | <!-- fill in --> |
-| Missing access, capability, or source definitions | <!-- fill in --> |
+| Método de extração somente leitura compatível e responsável | <!-- preencher --> |
+| Snapshot consistente entre arquivos relacionados e escritas concorrentes | <!-- preencher --> |
+| Formato, layout, codificação e disponibilidade de chaves de origem | <!-- preencher --> |
+| Verificações de cobertura, truncamento e integridade | <!-- preencher --> |
+| Armazenamento restrito autorizado, retenção e limpeza | <!-- preencher --> |
+| Acesso, capacidade ou definições da fonte ausentes | <!-- preencher --> |
 
-## Review
+## Revisão
 
-| Gate | Result / evidence | Owner / next action |
+| Gate | Resultado / evidência | Responsável / próxima ação |
 |---|---|---|
-| Populated source verified | <!-- fill in --> | <!-- fill in --> |
-| Extractable consistent population | <!-- fill in --> | <!-- fill in --> |
-| Baseline evidence check | <!-- fill in --> | <!-- fill in --> |
-| Population coverage | <!-- fill in --> | <!-- fill in --> |
-| C1 readiness | <!-- fill in: pending / blocked / accepted with evidence --> | <!-- fill in --> |
+| Fonte populada verificada | <!-- preencher --> | <!-- preencher --> |
+| População consistente e extraível | <!-- preencher --> | <!-- preencher --> |
+| Verificação de evidências da linha de base | <!-- preencher --> | <!-- preencher --> |
+| Cobertura da população | <!-- preencher --> | <!-- preencher --> |
+| Prontidão para C1 | <!-- preencher: pending / blocked / accepted com evidência --> | <!-- preencher --> |
 
-- [ ] No current count is inferred from a seed recipe or archived FDT.
-- [ ] Source administration and sensitive records remain outside this kit.
-- [ ] Unavailable source or extraction is an explicit blocker.
+- [ ] Nenhuma contagem atual é inferida de uma receita de seed ou FDT arquivado.
+- [ ] A administração da fonte e os registros sensíveis permanecem fora deste kit.
+- [ ] Fonte ou extração indisponível é um bloqueio explícito.

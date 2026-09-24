@@ -2,13 +2,13 @@
 
 > **Trilha:** [Kit do Time](../README.md) › **Conceitos centrais**
 
-**Este índice apresenta os conceitos essenciais da imersão de modernização do SIFAP — o que você vai aprender, em que ordem, quanto tempo leva e como cada conceito se conecta aos quatro estágios de trabalho.**
+**Este índice apresenta os conceitos essenciais da imersão de modernização do SIFAP — o que você vai aprender, em que ordem, quanto tempo leva e como cada conceito se conecta aos estágios do desafio individual.**
 
 ![Seção de conceitos](https://img.shields.io/badge/Se%C3%A7%C3%A3o-07%20Conceitos-171717?style=flat-square) ![Público todos](https://img.shields.io/badge/P%C3%BAblico-Todos-737373?style=flat-square) ![Leia antes do Estágio 1](https://img.shields.io/badge/Leitura-Antes%20do%20Est%C3%A1gio%201-A3A3A3?style=flat-square)
 
 | Campo | Valor |
 |---|---|
-| **Público-alvo** | Qualquer pessoa do time, inclusive quem não é desenvolvedor |
+| **Público-alvo** | Qualquer participante, inclusive quem não é desenvolvedor |
 | **Pré-requisitos** | Nenhum — este é o ponto de partida |
 | **Tempo estimado** | 60–90 min para ler todos os documentos |
 | **Resultado esperado** | Vocabulário compartilhado antes do Estágio 1 |
@@ -24,6 +24,7 @@ Cada arquivo desta pasta explica um conceito técnico de forma direta, usando ex
 - Escolher o modo certo do Copilot (Ask, Plan ou Agent) para cada situação
 - Escrever ou revisar um requisito EARS com `source_legacy:`
 - Escrever ou avaliar um Architecture Decision Record (ADR)
+- Aplicar o método de modernização a um sistema legado que não seja mainframe
 
 ---
 
@@ -60,18 +61,21 @@ flowchart TD
 | 04 | [Os 3 modos do Copilot](04-3-copilot-modes.md) | Ask · Plan · Agent — critérios e antipadrões | Todos |
 | 05 | [Notação EARS](05-ears-notation.md) | 6 padrões EARS (5 básicos + Complex), REQ-ID e `source_legacy:` | Estágio 2 |
 | 06 | [Architecture Decision Records](06-architecture-decision-records.md) | Anatomia, quando escrever e o ciclo de vida do ADR | Estágio 2 |
-| 07 | [O método além do mainframe](07-method-beyond-mainframe.md) | Os mesmos quatro estágios aplicados a COBOL, Delphi, VB6, PL/SQL e monólitos sem documentação | Todos |
+| 07 | [O método além do mainframe](07-method-beyond-mainframe.md) | O mesmo método orientado por evidências aplicado a COBOL, Delphi, VB6, PL/SQL e monólitos sem documentação | Todos |
 
 ---
 
-## Conexão com os quatro estágios
+## Conexão com os estágios do desafio
 
 | Estágio | Documentos de referência nesta pasta |
 |---|---|
 | Estágio 1 — Arqueologia | Glossário (termos do legado: Natural, DDM, MU, PE, BR-NNN) |
 | Estágio 2 — Especificação | Spec-Kit, agentes, EARS, ADR, glossário (EARS, REQ-ID, source_legacy) |
 | Estágio 3 — Implementação | Os 3 modos do Copilot, glossário (JPA, Flyway, Testcontainers, Controller) |
-| Estágio 4 — Evolução | Os 3 modos do Copilot (modo Agent), glossário (IaC, Terraform, CI/CD) |
+| Validação final do juiz | Os 3 modos do Copilot, glossário (CI verde, PR, DoD) |
+
+> [!NOTE]
+> O Estágio 4 — Evolução permanece no kit para trabalho posterior ao desafio, mas não é usado no desafio individual. O desafio termina no Estágio 3 e na validação do juiz. Consulte o [ADR-0003](../docs/adr/0003-individual-challenge-format.md).
 
 ---
 
@@ -85,7 +89,7 @@ Antes de começar o Estágio 1, confirme que você consegue responder a estas pe
 - [ ] O que é EARS e por que o campo `source_legacy:` é obrigatório?
 - [ ] O que é um ADR e em que situação você escreveria um?
 
-Se você respondeu quatro das cinco, siga para [`../05-personas/`](../05-personas/) e leia os seus dois arquivos `PERSONA.md`.
+Se você respondeu quatro das cinco, siga para [`../05-personas/`](../05-personas/) e revise as responsabilidades dos papéis que você cobrirá sozinho.
 
 ---
 

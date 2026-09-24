@@ -61,7 +61,7 @@ description: "Template de lista de tarefas para implementação de funcionalidad
 
 **Purpose**: Infraestrutura principal que DEVE estar concluída antes da implementação de QUALQUER história de usuário
 
-**⚠️ CRÍTICO**: Nenhum trabalho em histórias de usuário pode começar até que esta fase esteja concluída
+**⚠️ CRITICAL**: Nenhum trabalho em histórias de usuário pode começar até que esta fase esteja concluída
 
 Exemplos de tarefas fundamentais (ajuste conforme o seu projeto):
 

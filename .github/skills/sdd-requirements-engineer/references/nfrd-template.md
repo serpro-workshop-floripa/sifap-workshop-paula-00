@@ -1,4 +1,4 @@
-# Modelo de Non-Functional Requirements Document
+# Modelo de NFRD
 
 Use este modelo para restrições de qualidade mensuráveis. As declarações normativas seguem a [notação EARS](./ears-notation.md). Nunca preencha uma meta com um valor padrão que apenas pareça comum no setor quando não houver evidência de carga de trabalho, política ou definição de um responsável.
 
@@ -8,44 +8,44 @@ não funcional é um metadado; os requisitos continuam usando `REQ-NNN` e `sourc
 
 ```markdown
 ---
-title: "<Project or Feature> Non-Functional Requirements Document"
-description: "Measurable quality constraints and verification envelopes."
+title: "NFRD: <Project or Feature>"
+description: "Restrições de qualidade mensuráveis e envelopes de verificação."
 date: "<YYYY-MM-DD>"
 version: "0.1.0"
 status: "Draft"
 companion_frd: "<relative path or not-created>"
 ---
 
-# Non-Functional Requirements Document: <Project or Feature>
+# NFRD: <Project or Feature>
 
 ## 1. Document control
 
-| Field | Value |
+| Campo | Valor |
 | --- | --- |
-| Owner | <accountable owner> |
-| Reviewers | <roles or names> |
-| Status | Draft |
-| Governing sources | <SRC-IDs> |
-| Last reviewed | <YYYY-MM-DD or not-reviewed> |
+| Responsável | <accountable owner> |
+| Revisores | <roles or names> |
+| Status | Rascunho |
+| Fontes regentes | <SRC-IDs> |
+| Última revisão | <YYYY-MM-DD or not-reviewed> |
 
 ## 2. Applicability
 
-| Category | Applies | Rationale | Owner |
+| Categoria | Aplicável | Justificativa | Responsável |
 | --- | --- | --- | --- |
-| Performance and capacity | yes/no/unknown | <reason> | <owner> |
-| Security and identity | yes/no/unknown | <reason> | <owner> |
-| Reliability and recovery | yes/no/unknown | <reason> | <owner> |
-| Privacy and compliance | yes/no/unknown | <reason> | <owner> |
-| Observability and supportability | yes/no/unknown | <reason> | <owner> |
-| Accessibility and localization | yes/no/unknown | <reason> | <owner> |
-| Testability and maintainability | yes/no/unknown | <reason> | <owner> |
-| Delivery and operability | yes/no/unknown | <reason> | <owner> |
-| Data quality, retention, and migration | yes/no/unknown | <reason> | <owner> |
-| Cost and resource efficiency | yes/no/unknown | <reason> | <owner> |
+| Desempenho e capacidade | sim/não/desconhecido | <reason> | <owner> |
+| Segurança e identidade | sim/não/desconhecido | <reason> | <owner> |
+| Confiabilidade e recuperação | sim/não/desconhecido | <reason> | <owner> |
+| Privacidade e conformidade | sim/não/desconhecido | <reason> | <owner> |
+| Observabilidade e capacidade de suporte | sim/não/desconhecido | <reason> | <owner> |
+| Acessibilidade e localização | sim/não/desconhecido | <reason> | <owner> |
+| Testabilidade e manutenibilidade | sim/não/desconhecido | <reason> | <owner> |
+| Entrega e operabilidade | sim/não/desconhecido | <reason> | <owner> |
+| Qualidade, retenção e migração de dados | sim/não/desconhecido | <reason> | <owner> |
+| Custo e eficiência de recursos | sim/não/desconhecido | <reason> | <owner> |
 
 ## 3. Deployment and measurement contexts
 
-| Context | Workload and data shape | Region or topology | Dependencies | Measurement tooling | Owner |
+| Contexto | Carga de trabalho e formato dos dados | Região ou topologia | Dependências | Ferramentas de medição | Responsável |
 | --- | --- | --- | --- | --- | --- |
 | <context> | <users, rate, payload, dataset> | <scope> | <services> | <tool or BLOCKED> | <owner> |
 
@@ -58,44 +58,44 @@ companion_frd: "<relative path or not-created>"
 - Status: Proposed
 - Source: <SRC-###>
 source_legacy: <actual supported source path or justified [GREENFIELD]>
-- Rationale: <why the constraint is needed>
-- Applies to: <contexts>
-- Owner: <accountable owner>
+- Justificativa: <why the constraint is needed>
+- Aplica-se a: <contexts>
+- Responsável: <accountable owner>
 
 > <Canonical EARS statement with an approved measurable constraint, or a statement whose unresolved target is explicitly blocked.>
 
-**Measurement envelope**
+**Envelope de medição**
 
-| Field | Value |
+| Campo | Valor |
 | --- | --- |
-| Metric | <metric> |
-| Target | <approved target or BLOCKED> |
-| Aggregation | <p95, maximum, rate, count, percentage, or other> |
-| Observation window | <duration or BLOCKED> |
-| Workload | <load and data shape or BLOCKED> |
-| Environment | <context or BLOCKED> |
-| Instrumentation | <source of evidence or BLOCKED> |
+| Métrica | <metric> |
+| Meta | <approved target or BLOCKED> |
+| Agregação | <p95, maximum, rate, count, percentage, or other> |
+| Janela de observação | <duration or BLOCKED> |
+| Carga de trabalho | <load and data shape or BLOCKED> |
+| Ambiente | <context or BLOCKED> |
+| Instrumentação | <source of evidence or BLOCKED> |
 
-**Acceptance signals**
+**Sinais de aceitação**
 - AC-REQ-NNN-NN: <observable pass/fail result under the measurement envelope>
 
-**Verification**
+**Verificação**
 - <test|inspection|analysis|measurement>: <planned evidence>
 
 <Repeat for every applicable quality category.>
 
 ## 5. Security and compliance decisions
 
-| Decision | Requirement IDs | Source or policy | Owner | State |
+| Decisão | IDs de requisitos | Fonte ou política | Responsável | Estado |
 | --- | --- | --- | --- | --- |
-| Authentication method | REQ-NNN | <source> | <owner> | <actual status> |
-| Authorization model | REQ-NNN | <source> | <owner> | <actual status> |
-| Data classification and protection | REQ-NNN | <source> | <owner> | <actual status> |
-| Compliance applicability | REQ-NNN | <source> | <owner> | <actual status> |
+| Método de autenticação | REQ-NNN | <source> | <owner> | <actual status> |
+| Modelo de autorização | REQ-NNN | <source> | <owner> | <actual status> |
+| Classificação e proteção de dados | REQ-NNN | <source> | <owner> | <actual status> |
+| Aplicabilidade de conformidade | REQ-NNN | <source> | <owner> | <actual status> |
 
 ## 6. Technology constraints
 
-| Constraint | Rationale | Source | Requirement IDs | Revisit trigger |
+| Restrição | Justificativa | Fonte | IDs de requisitos | Gatilho de revisão |
 | --- | --- | --- | --- | --- |
 | <technology or platform constraint> | <why it is mandatory> | <source> | REQ-NNN | <condition> |
 
@@ -103,21 +103,21 @@ source_legacy: <actual supported source path or justified [GREENFIELD]>
 
 ## 7. Requirement summary
 
-| ID | Category | Priority | Contexts | Target state | Source | Status |
+| ID | Categoria | Prioridade | Contextos | Estado-alvo | Fonte | Status |
 | --- | --- | --- | --- | --- | --- | --- |
 | REQ-NNN | <category> | <priority> | <contexts> | <target state> | <source> | <actual status> |
 
 ## 8. Blockers and open questions
 
-| ID | Missing fact or decision | Affected requirement IDs | Owner | Resolution evidence |
+| ID | Fato ou decisão ausente | IDs de requisitos afetados | Responsável | Evidência de resolução |
 | --- | --- | --- | --- | --- |
 | <blocker ID> | <unknown target or policy> | REQ-NNN | <owner> | <expected evidence> |
 
 ## 9. Review record
 
-| Reviewer | Decision | Date | Evidence or comments |
+| Revisor | Decisão | Data | Evidência ou comentários |
 | --- | --- | --- | --- |
-| <reviewer> | pending | <date> | <notes> |
+| <reviewer> | pendente | <date> | <notes> |
 ```
 
 ## Verificações do modelo

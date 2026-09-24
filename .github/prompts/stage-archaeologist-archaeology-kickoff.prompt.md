@@ -1,111 +1,115 @@
 ---
 name: "archaeology-kickoff"
-description: "Starts Stage 1 — guides the team through the legacy folder and produces an initial inventory."
+description: "Inicia a Etapa 1: orienta o participante na pasta do legado e produz um inventário inicial sem ler os programas."
 argument-hint: "path=01-archaeology/legacy-sifap/"
 agent: "archaeologist"
 tools: ["read", "search", "edit"]
 ---
 # /archaeology-kickoff
 
-## Objective
+## Objetivo
 
-Guide the team through the legacy codebase with a top-down inventory before reading any individual program. This is the first activity in Stage 1 — map the terrain before digging.
+Orientar o participante por meio de um inventário da estrutura do legado antes da leitura dos programas. Esta é a primeira atividade da Etapa 1.
 
-## When to Invoke
+## Quando invocar
 
-At the very beginning of Stage 1, immediately after the team receives access to the `01-archaeology/legacy-sifap/` folder.
+No início da Etapa 1, após obter acesso à pasta `01-archaeology/legacy-sifap/`.
 
-## Preconditions
+## Pré-condições
 
-- The `01-archaeology/legacy-sifap/` folder is available in the workspace; it is part of the kit and does not depend on a setup script
-- The team has not opened individual programs yet
+- A pasta `01-archaeology/legacy-sifap/` está disponível no workspace; faz parte do kit e não depende de um script de setup.
+- A atividade atual é o inventário, não a leitura aprofundada de programas.
 
-## Inputs the Team Must Provide
+## Entradas que a equipe deve fornecer
 
-- The path to the legacy folder (normally `01-archaeology/legacy-sifap/`)
-- Confirmation that the team has not started reading individual files (this prompt is for orientation, not deep reading)
+- Caminho da pasta do legado, normalmente `01-archaeology/legacy-sifap/`.
+- Identificação do participante e indicação de registros anteriores que devem ser preservados, se houver.
 
-## What I Will Do
+## O que farei
 
-- Scan the `01-archaeology/legacy-sifap/` folder recursively and list all directories
-- Count files by extension (`.NSN`, `.cpy`, `.ddm`, `.map`, and any others)
-- Group observed naming patterns without assigning a business purpose
-- Flag up to 3 structurally unusual items, only when evidence supports them
-- Propose a reading order based on the classification
-- Initialize `01-archaeology/reading-coverage.md` from its [blank template](../../01-archaeology/templates/reading-coverage.md), without claiming any source was read
+- Listar recursivamente os diretórios em `01-archaeology/legacy-sifap/`.
+- Contar arquivos pelas extensões realmente encontradas, como `.NSP`, `.NSN`, `.NSC` e `.ddm`.
+- Agrupar padrões de nomes sem atribuir uma finalidade de negócio.
+- Apontar até três itens estruturalmente incomuns, somente com evidências.
+- Propor uma ordem de leitura baseada na classificação e no escopo do desafio.
+- Inicializar `01-archaeology/reading-coverage.md` pelo [template em branco](../../01-archaeology/templates/reading-coverage.md), sem afirmar que alguma fonte foi lida.
 
-## What I Will NOT Do
+## O que NÃO farei
 
-- Open or read individual program files (that comes in later prompts)
-- Tell the team what the programs do — the team discovers that independently
-- Fabricate explanations for naming conventions — if a prefix is unclear, I mark it as unknown
-- Reference any system-specific internals — I work only with what the folder structure reveals
+- Abrir ou ler programas individuais; isso pertence aos prompts seguintes.
+- Dizer o que os programas fazem antes da leitura das fontes.
+- Inventar explicações para nomes; prefixos ambíguos permanecem desconhecidos.
+- Inferir detalhes internos que a estrutura de diretórios não demonstra.
 
-## Output Format
+## Formato de saída
 
-A Markdown file at `01-archaeology/inventory.md` using the
-[inventory template](../../01-archaeology/templates/inventory.template.md), plus
-an unfilled reading ledger at `01-archaeology/reading-coverage.md`:
+Atualize `01-archaeology/inventory.md` com o
+[template de inventário](../../01-archaeology/templates/inventory.template.md).
+Inicialize `01-archaeology/reading-coverage.md` somente se ainda não existir;
+preserve qualquer evidência registrada anteriormente.
 
 ```markdown
-# Legacy Inventory — [Team Name]
-## Folder Structure
-## File Count by Type
-## Naming Convention Patterns
-## Unusual Items (Top 3)
-## Proposed Reading Order
+# Inventário do legado - [Participante]
+## Estrutura de diretórios
+## Contagem de arquivos por tipo
+## Padrões de nomenclatura
+## Itens incomuns (até 3)
+## Ordem de leitura proposta
 ```
 
-## Definition of Done
+## Definição de pronto
 
-- [ ] The inventory file exists and documents the folder structure
-- [ ] File counts are correct (verifiable by a second team member running `find`)
-- [ ] Observed naming patterns are recorded without invented purposes or quantity targets
-- [ ] Structurally unusual items have file paths and reasons; no items were invented to fill a quota
-- [ ] The proposed reading order is justified by naming patterns or structural position
-- [ ] The reading ledger is initialized with assignments still unfilled unless the team supplied them; no interval is marked read
+- [ ] O inventário existe e documenta a estrutura de diretórios.
+- [ ] As contagens podem ser reproduzidas pelo participante, por exemplo com `find`.
+- [ ] Os padrões observados não recebem finalidades inventadas nem metas de quantidade.
+- [ ] Cada item incomum tem caminho e justificativa; nenhum foi inventado para preencher uma cota.
+- [ ] A ordem proposta é justificada pela estrutura e permanece provisória.
+- [ ] O registro de leitura foi inicializado sem marcar novos intervalos como lidos; evidências anteriores foram preservadas.
 
-## Prompt Body
+## Corpo do prompt
 
-You are the `@archaeologist`, starting a Stage 1 orientation with the team. The team has just received its legacy codebase and has not opened any files yet.
+Você é o `@archaeologist` e orienta o participante no inventário inicial da Etapa 1.
+Execute os passos na ordem abaixo.
 
-Perform the following steps in order. Do not skip any step.
+**Passo 1 - Mapear a árvore.**
+Liste diretórios e subdiretórios do caminho informado, apresente a árvore e conte os diretórios.
 
-**Step 1 — Map the folder tree.**
-List all directories and subdirectories under the provided legacy path. Display the tree structure. Count the total number of directories.
+**Passo 2 - Contar arquivos por extensão.**
+Apresente `| Extensão | Contagem | Tipo geral de membro |` para as extensões encontradas.
+Consulte o [guia de leitura](../instructions/natural-adabas.instructions.md):
+`.NSP` é programa, `.NSN` é subprograma, `.NSC` é copycode e `.ddm` é
+Data Definition Module. Não deduza o comportamento de um membro.
 
-**Step 2 — Count files by extension.**
-For each file extension actually found, report the count. Present it as a table:
-`| Extension | Count | General member type |`. Use the [legacy reading guide](../instructions/natural-adabas.instructions.md):
-`.NSP` is a program, `.NSN` a subprogram, `.NSC` a copycode, and `.ddm`
-a Data Definition Module. Do not guess individual member behavior.
+**Passo 3 - Identificar padrões de nomenclatura.**
+Examine nomes sem abrir as fontes. Agrupe prefixos observados de dois ou três caracteres,
+considerando delimitadores como `-`, `_` ou dígitos. Para padrões com dois ou mais arquivos,
+apresente `| Prefixo | Contagem | Hipótese |`. Use somente convenções gerais de Natural;
+marque interpretações incertas como desconhecidas, a investigar na leitura.
 
-**Step 3 — Identify naming convention patterns.**
-Scan all file names (without opening the files). Group files by prefix pattern (the first 2–3 characters before a delimiter such as `-`, `_`, or a digit). For each pattern with 2+ files, report: `| Prefix | Count | Hypothesis |`. Base the hypothesis only on general knowledge of Natural conventions. If a prefix has no clear pattern, mark the hypothesis as `Unknown — investigate in the next step`.
+**Passo 4 - Apontar itens incomuns.**
+Identifique até três itens sustentados por evidências: maior tamanho, diretório mais profundo,
+padrão de nome único ou extensão única. Registre caminho, característica e investigação sugerida.
 
-**Step 4 — Flag unusual items.**
-Identify the 3 most unusual items in the folder. "Unusual" means any of the following: largest file by size, deepest nesting, naming pattern that occurs only once, or extension that appears only once. For each item, provide the file path, what makes it unusual, and a suggested investigation action.
+**Passo 5 - Propor a ordem de leitura.**
+Use o escopo individual do [guia da Etapa 1](../../01-archaeology/GUIDE.md), incluindo
+DDM/FDT com o papel de DBA. Nomes não comprovam relações `CALLNAT` ou conectividade;
+isso será examinado em `/map-dependencies`. Ampliações do escopo permanecem provisórias.
 
-**Step 5 — Propose a reading order.**
-Use the individual Stage 1 scope in the [Stage 1 guide](../../01-archaeology/GUIDE.md)
-and include DDM/FDT reading with the DBA. File names do not establish CALLNAT
-relationships or connectivity; those are discovered through `/map-dependencies`.
-Leave any proposed extension to the reading scope explicitly provisional.
+**Passo 6 - Registrar o inventário.**
+Atualize `01-archaeology/inventory.md`, incluindo data e identificação fornecida pelo participante
+ou campo pendente. Indique que é uma primeira passagem, sujeita à revisão durante a leitura.
+Preserve evidências existentes; enumerar arquivos não comprova leitura ou aprovação humana.
 
-**Step 6 — Generate the inventory.**
-Write the complete inventory to `01-archaeology/inventory.md` using the output format above. Include the date, a placeholder for the team name, and a note that this is the first pass — to be revised as the team reads individual files.
+Encaminhe campos e declarações para `/map-source-data`, regras candidatas para
+`/extract-business-rules` e prontidão da origem para `@dba`, com o
+[template de prontidão](../../docs/data-migration/source-readiness.template.md).
 
-Initialize the reading ledger from its template without overwriting existing
-team evidence. Do not mark file enumeration as reading or human approval.
-Route field/declaration reading to `/map-source-data`, source population
-readiness to `@dba` (recorded from the
-[readiness template](../../docs/data-migration/source-readiness.template.md)),
-and candidate rules to `/extract-business-rules`.
+Não abra fontes legadas para ler seu conteúdo neste inventário. Guias, templates e registros
+existentes podem ser consultados para orientar e preservar o trabalho. Para ler um programa,
+use `/extract-business-rules` ou `/map-dependencies`.
 
-Do not open any file to read its contents. This prompt operates only on file names and folder structure. If the team asks you to read a specific file, redirect them to `/extract-business-rules` or `/map-dependencies`.
+## Exemplo de invocação
 
-## Invocation Example
-
-```
+```text
 /archaeology-kickoff path=01-archaeology/legacy-sifap/
 ```

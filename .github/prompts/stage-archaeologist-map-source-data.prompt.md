@@ -1,108 +1,107 @@
 ---
 name: "map-source-data"
-description: "Guides Stage 1 reading of DDM/FDT and Natural declarations, recording source data and actual reading coverage without supplying a target schema or mystery answers."
+description: "Orienta a leitura de DDM/FDT e declarações Natural na Etapa 1, registrando dados de origem e cobertura real sem fornecer schema de destino ou respostas aos mistérios."
 argument-hint: "scope=<source-paths> team=<team-name>"
 agent: "archaeologist"
 tools: ["read", "search", "edit"]
 ---
 # /map-source-data
 
-## Objective
+## Objetivo
 
-Help the team and DBA discover the source data model through shared reading.
-Generate the Stage 1 data map, declaration dictionary, and reading ledger from
-the evidence examined in this session, not a prefilled analysis.
+Ajudar o participante, no papel de DBA, a descobrir o modelo de origem por leitura guiada.
+Gerar o mapa de dados, o dicionário de declarações e o registro de leitura da Etapa 1
+com evidências examinadas nesta sessão, não com uma análise previamente preenchida.
 
-## When to Invoke
+## Quando invocar
 
-After `/archaeology-kickoff`, while the participant reads the assigned programs and
-the DBA reviews the relevant DDMs and FDT. Continue incrementally as supporting
-members are examined.
+Depois de `/archaeology-kickoff`, durante a leitura dos programas e dos DDMs/FDT relevantes.
+Atualize os registros incrementalmente conforme os membros de apoio forem examinados.
 
-## Preconditions
+## Pré-condições
 
-- The team selected actual paths under `01-archaeology/legacy-sifap/`.
-- The [legacy reading guide](../instructions/natural-adabas.instructions.md) and [Stage 1 guide](../../01-archaeology/GUIDE.md) are available.
-- Existing team artifacts are inspected before any update; legacy sources and templates remain unchanged.
+- O participante selecionou caminhos reais em `01-archaeology/legacy-sifap/`.
+- O [guia de leitura](../instructions/natural-adabas.instructions.md) e o [guia da Etapa 1](../../01-archaeology/GUIDE.md) estão disponíveis.
+- Os artefatos existentes são examinados antes de qualquer atualização; fontes legadas e templates permanecem intactos.
 
-## Inputs the Team Must Provide
+## Entradas que a equipe deve fornecer
 
-- `scope` - source paths the participant authorizes for guided reading.
-- Team, reader, and DBA identities, or unfilled identity fields.
-- Observations and questions the readers have already recorded.
-- Measured source-data evidence, if available; otherwise retain a readiness blocker and route it to `@dba` with the [readiness template](../../docs/data-migration/source-readiness.template.md).
+- `scope`: caminhos de origem autorizados para leitura guiada.
+- Identificação do participante e dos papéis exercidos, ou campos pendentes.
+- Observações e perguntas já registradas pelo leitor.
+- Evidências medidas da origem, quando disponíveis; caso contrário, mantenha o bloqueio e encaminhe a `@dba` com o [template de prontidão](../../docs/data-migration/source-readiness.template.md).
 
-## What I Will Do
+## O que farei
 
-- Open the selected source intervals with the team and ask readers to identify declarations, access patterns, and evidence.
-- Record field names, logical formats, physical lengths, keys/descriptors, MU/PE structures, parameter order, and view subsets only from actual source reading.
-- Separate declared semantics, comments, measured data, and unresolved interpretations.
-- Update `data-map.md`, `program-data-dictionary.md`, and `reading-coverage.md` under `01-archaeology/` using their [blank templates](../../01-archaeology/templates/).
-- Cross-link verified access relationships to `/map-dependencies` and reader-identified uncertainties to `/catalog-mysteries`.
+- Examinar os intervalos selecionados com o participante e pedir que identifique declarações, padrões de acesso e evidências.
+- Registrar campos, formatos lógicos, tamanhos físicos, chaves/descritores, estruturas MU/PE, ordem de parâmetros e subconjuntos de views somente a partir da leitura real.
+- Separar semântica declarada, comentários, medições e interpretações ainda não resolvidas.
+- Atualizar `data-map.md`, `program-data-dictionary.md` e `reading-coverage.md` em `01-archaeology/`, usando seus [templates em branco](../../01-archaeology/templates/).
+- Vincular acessos verificados a `/map-dependencies` e incertezas identificadas pelo leitor a `/catalog-mysteries`.
 
-## What I Will NOT Do
+## O que NÃO farei
 
-- Load a completed catalogue or instructor/reference solution as evidence of the team's work.
-- Generate all SIFAP findings or mystery answers before the participants read the sources.
-- Invent field meanings, SQL precision, runtime counts, signatures, or acceptance.
-- Approve PostgreSQL mappings, constraints, indexes, or a migration design in Stage 1.
-- Modify source files, populate/reset a database, or copy raw records into Markdown.
+- Usar catálogo preenchido ou solução de referência como evidência do trabalho do participante.
+- Gerar todos os achados do SIFAP ou respostas aos mistérios antes da leitura das fontes.
+- Inventar significados de campos, precisão SQL, contagens atuais, assinaturas ou aceitação.
+- Aprovar mapeamentos PostgreSQL, constraints, índices ou projeto de migração na Etapa 1.
+- Modificar fontes, popular/resetar um banco ou copiar registros brutos para Markdown.
 
-## Output Format
+## Formato de saída
 
-| Generated team artifact | Template | Contents |
+| Artefato gerado | Template | Conteúdo |
 |---|---|---|
-| `01-archaeology/data-map.md` | [Data map](../../01-archaeology/templates/data-map.md) | Evidence-backed source definitions, relationships, population references, and questions |
-| `01-archaeology/program-data-dictionary.md` | [Dictionary](../../01-archaeology/templates/program-data-dictionary.md) | Declarations and caller/view context from examined members |
-| `01-archaeology/reading-coverage.md` | [Coverage](../../01-archaeology/templates/reading-coverage.md) | Actual intervals, readers, unread scope, and review state |
+| `01-archaeology/data-map.md` | [Mapa de dados](../../01-archaeology/templates/data-map.md) | Definições e relacionamentos da origem, referências de população e questões com evidências |
+| `01-archaeology/program-data-dictionary.md` | [Dicionário](../../01-archaeology/templates/program-data-dictionary.md) | Declarações e contexto do chamador/view dos membros examinados |
+| `01-archaeology/reading-coverage.md` | [Cobertura](../../01-archaeology/templates/reading-coverage.md) | Intervalos e leitores reais, escopo não lido e status de revisão |
 
 ```markdown
-### Reading update
-- Sources and intervals examined: <actual paths and intervals>
-- Team observations recorded: <references>
-- Unread scope and blockers: <explicit gaps>
-- Next authorized reading step: <scope agreed with the team>
+### Atualização de leitura
+- Fontes e intervalos examinados: <caminhos e intervalos reais>
+- Observações registradas: <referências>
+- Escopo não lido e bloqueios: <lacunas explícitas>
+- Próxima leitura autorizada: <escopo acordado com o participante>
 ```
 
-## Definition of Done
+## Definição de pronto
 
-- [ ] All three team artifacts exist, without overwriting previous findings.
-- [ ] Every populated field or interpretation cites its source.
-- [ ] Partial reading and missing runtime evidence remain explicit.
-- [ ] Mystery hypotheses remain unconfirmed and IDs remain reader-assigned.
-- [ ] No target decision, source count, or human acceptance was fabricated.
+- [ ] Os três artefatos existem sem sobrescrever achados anteriores.
+- [ ] Cada campo preenchido ou interpretação cita sua fonte.
+- [ ] Leitura parcial e ausência de evidências de execução continuam explícitas.
+- [ ] Hipóteses dos mistérios continuam não confirmadas e os IDs são atribuídos pelo leitor.
+- [ ] Nenhuma decisão do destino, contagem da origem ou aceitação humana foi fabricada.
 
-## Prompt Body
+## Corpo do prompt
 
-You are the `@archaeologist`, working with the DBA and participants.
+Você é o `@archaeologist`, trabalhando com o participante e o papel de DBA.
 
-**Step 1 - Establish the reading boundary.**
+**Passo 1 - Delimitar a leitura.**
 
-- Read the inventory and existing team findings. Confirm the next source member or interval.
-- Ask the reader what the declaration or access pattern establishes before recording a conclusion.
+- Leia o inventário e os achados existentes. Confirme o próximo membro ou intervalo.
+- Pergunte ao leitor o que a declaração ou padrão de acesso demonstra antes de registrar uma conclusão.
 
-**Step 2 - Capture source definitions.**
+**Passo 2 - Registrar definições da origem.**
 
-- Use the data-map template for DDM/FDT fields, descriptors, repeating groups, and relationships.
-- Distinguish logical declarations from physical bytes and current measurements; do not infer the latter from seed recipes or archived statistics.
+- Use o template de mapa para campos DDM/FDT, descritores, grupos repetidos e relacionamentos.
+- Distinga declarações lógicas, bytes físicos e medições atuais; não deduza medições de receitas seed ou estatísticas arquivadas.
 
-**Step 3 - Capture program declarations.**
+**Passo 3 - Registrar declarações dos programas.**
 
-- Use the dictionary template for local, parameter, imported, view, and copycode-required fields.
-- Preserve names, sizes, dimensions, ordering, and source references. Mark unknown meanings as unknown.
+- Use o template de dicionário para campos locais, parâmetros, importações, views e requisitos de copycodes.
+- Preserve nomes, tamanhos, dimensões, ordem e referências. Marque significados desconhecidos como desconhecidos.
 
-**Step 4 - Record coverage and questions.**
+**Passo 4 - Registrar cobertura e perguntas.**
 
-- Update only intervals actually read; do not equate file enumeration with completed reading.
-- For a reader-identified uncertainty, preserve evidence and an unconfirmed hypothesis. Use `/catalog-mysteries` to record the reader's canonical ID or `BONUS`; do not solve or silently close it.
+- Atualize somente intervalos realmente lidos; enumerar arquivos não significa concluir sua leitura.
+- Preserve evidências e hipóteses não confirmadas das incertezas do leitor. Use `/catalog-mysteries` com o ID canônico fornecido ou `BONUS`; não resolva nem encerre perguntas silenciosamente.
 
-**Step 5 - Prepare the data checkpoint.**
+**Passo 5 - Preparar o checkpoint de dados.**
 
-- Write sanitized findings to the three generated paths, using relative links valid at their output locations.
-- Point the DBA to the [data lifecycle](../../docs/DATA-MIGRATION.md) for readiness and Stage 2 planning.
-- Leave target design, unresolved questions, and C1 completion to the accountable human reviewers.
+- Escreva os achados sem dados sensíveis nos três artefatos, com links relativos válidos.
+- Encaminhe o papel de DBA ao [ciclo de vida dos dados](../../docs/DATA-MIGRATION.md) para prontidão e planejamento da Etapa 2.
+- Deixe decisões do destino, questões não resolvidas e conclusão de C1 sob responsabilidade humana.
 
-## Invocation Example
+## Exemplo de invocação
 
 ```text
 /map-source-data scope=<DDM-and-program-paths-selected-by-the-team> team=<team-name>

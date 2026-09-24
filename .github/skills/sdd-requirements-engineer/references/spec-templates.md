@@ -8,7 +8,7 @@ Estes são os modelos para **pacotes do architect**: as especificações que o a
 
 ```text
 .spec/
-├── CONSTITUTION.md                 # one per repository
+├── CONSTITUTION.md                 # um por repositório
 └── <NNN>-<feature>/
     ├── checkpoints/
     │   ├── spec-to-plan.yaml
@@ -20,18 +20,18 @@ Estes são os modelos para **pacotes do architect**: as especificações que o a
     ├── evidence/
     │   └── README.md
     ├── ANALYSIS.md
-    ├── CHECKLIST.md                # generated
-    ├── CROSS_ANALYSIS.md           # generated
+    ├── CHECKLIST.md                # gerado
+    ├── CROSS_ANALYSIS.md           # gerado
     ├── DECISIONS.md
     ├── DESIGN.md
     ├── FRD.md
     ├── NFRD.md
-    ├── SOURCE_TRACEABILITY.md      # generated
+    ├── SOURCE_TRACEABILITY.md      # gerado
     ├── SPECIFICATION.md
     ├── TASKS.md
-    ├── TDD.md                      # generated unless hand-authored
+    ├── TDD.md                      # gerado, exceto quando escrito manualmente
     ├── TESTING.md
-    └── VERIFICATION.md             # generated
+    └── VERIFICATION.md             # gerado
 ```
 
 ## Responsabilidades dos artefatos
@@ -58,38 +58,38 @@ Nunca edite manualmente um arquivo gerado; altere suas fontes e gere-o novamente
 ## CONSTITUTION.md
 
 ```markdown
-# Constitution: <Repository or Product>
+# Constituição: <Repository or Product>
 
-- Status: Draft
-- Owner: <accountable role>
+- Status: Rascunho
+- Responsável: <accountable role>
 - Version: 0.1.0
 
-## Principles
+## Princípios
 
 ### CON-001: <Principle>
 
-- Rule: <testable, non-negotiable rule>
-- Source: <instruction file, ADR, or policy that justifies it>
-- Enforcement: <gate or review that detects a violation>
-- Consequence: <what happens on violation>
+- Regra: <testable, non-negotiable rule>
+- Fonte: <instruction file, ADR, or policy that justifies it>
+- Aplicação: <gate or review that detects a violation>
+- Consequência: <what happens on violation>
 
-## Governance
+## Governança
 
-- Amendment: <who approves and how the version changes>
+- Alteração: <who approves and how the version changes>
 ```
 
 ## SPECIFICATION.md
 
 ```markdown
 ---
-title: "Specification: <Feature>"
+title: "SPECIFICATION: <Feature>"
 feature_id: "<NNN>-<feature>"
 status: "Draft"
 implementation_status: "Not started"
 constitution: "../CONSTITUTION.md"
 ---
 
-# Specification: <Feature>
+# SPECIFICATION: <Feature>
 
 ## Problem and outcome
 
@@ -97,20 +97,20 @@ constitution: "../CONSTITUTION.md"
 
 ## Scope and non-goals
 
-- In scope: <items>
-- Out of scope: <items>
+- Incluído no escopo: <items>
+- Fora do escopo: <items>
 
 ## Actors and dependencies
 
-| Actor or dependency | Role | Source |
+| Ator ou dependência | Papel | Fonte |
 | --- | --- | --- |
 | <actor> | <responsibility> | SRC-001 |
 
 ## Source register
 
-| Source ID | Evidence | Relevance | Confidence |
+| ID da fonte | Evidência | Relevância | Confiança |
 | --- | --- | --- | --- |
-| SRC-001 | `<repository path>` | <requirements it governs> | High |
+| SRC-001 | `<repository path>` | <requirements it governs> | Alta |
 
 ## Requirements
 
@@ -118,58 +118,58 @@ constitution: "../CONSTITUTION.md"
   source_legacy: <repository path#Lstart-Lend or [GREENFIELD] justification>
   - Priority: P0. Source: SRC-001. Status: Draft.
   - Pattern: Event-driven
-  - Rationale: <why>
+  - Justificativa: <why>
   - Acceptance: AC-REQ-001-01 Given <state>, When <trigger>, Then <outcome>.
   - Verification: TST-001
 - **NFR-001:** While <state>, the <system> shall <measurable response>.
   source_legacy: <repository path#Lstart-Lend or [GREENFIELD] justification>
   - Priority: P1. Source: SRC-001. Status: Draft.
   - Pattern: State-driven
-  - Rationale: <why>
+  - Justificativa: <why>
   - Acceptance: AC-NFR-001-01 Given <workload>, When <measurement>, Then <threshold>.
   - Verification: TST-002
 
 ## Assumptions, blockers, and open questions
 
-| ID | Type | Statement | Owner | Impact |
+| ID | Tipo | Declaração | Responsável | Impacto |
 | --- | --- | --- | --- | --- |
-| Q-001 | question | <open question> | <owner> | <affected IDs> |
+| Q-001 | pergunta | <open question> | <owner> | <affected IDs> |
 
 ## Dispositions
 
-NOT APPLICABLE: no requirement has been split, merged, or retired.
+NÃO APLICÁVEL: nenhum requisito foi dividido, mesclado ou retirado.
 
 ## Review record
 
-NOT APPLICABLE: no review has taken place yet.
+NÃO APLICÁVEL: nenhuma revisão ocorreu até o momento.
 ```
 
 ## ANALYSIS.md
 
 ```markdown
-# Analysis: <Feature>
+# Análise: <Feature>
 
 ## Evidence inventory
 
-| Source ID | Evidence | Relevance | Confidence |
+| ID da fonte | Evidência | Relevância | Confiança |
 | --- | --- | --- | --- |
-| SRC-001 | `<repository path>` | <requirements> | High |
+| SRC-001 | `<repository path>` | <requirements> | Alta |
 
 ## Gap analysis
 
-| Finding | Affected | Resolution |
+| Achado | Afetado | Resolução |
 | --- | --- | --- |
 | <gap> | REQ-001 | <question or decision> |
 
 ## Options and trade-offs
 
-| Option | Decision |
+| Opção | Decisão |
 | --- | --- |
 | <option> | <DR-NNN or open> |
 
 ## Risk register
 
-| Risk | Mitigation |
+| Risco | Mitigação |
 | --- | --- |
 | RISK-001 <trigger and impact> | <mitigation> |
 ```
@@ -177,7 +177,7 @@ NOT APPLICABLE: no review has taken place yet.
 ## DESIGN.md
 
 ````markdown
-# Design: <Feature>
+# DESIGN: <Feature>
 
 ## Architecture Overview
 
@@ -191,14 +191,14 @@ flowchart LR
   classDef default fill:#F5F5F5,stroke:#171717,color:#171717
   classDef zone fill:#FFFFFF,stroke:#525252,color:#171717
   classDef external fill:#FAFAFA,stroke:#A3A3A3,color:#404040
-  Actor["Actor"] -->|"requests"| Boundary["Feature boundary"]
+  Actor["Ator"] -->|"solicita"| Boundary["Limite da funcionalidade"]
   class Actor external
   class Boundary zone
 ```
 
 ## Component Map
 
-| Component | Responsibility | Requirements |
+| Componente | Responsabilidade | Requisitos |
 | --- | --- | --- |
 | C-01 <name> | <responsibility> | REQ-001 |
 
@@ -224,11 +224,11 @@ flowchart LR
 
 ## Interfaces and Contracts
 
-See `contracts/manifest.yaml`.
+Consulte `contracts/manifest.yaml`.
 
 ## Error Model
 
-| Failure | Response | Requirement |
+| Falha | Resposta | Requisito |
 | --- | --- | --- |
 | <failure> | <response> | REQ-001 |
 
@@ -238,7 +238,7 @@ See `contracts/manifest.yaml`.
 
 ## Threat Model
 
-| Threat | Mitigation | Residual risk |
+| Ameaça | Mitigação | Risco residual |
 | --- | --- | --- |
 | <threat> | <mitigation> | <level> |
 
@@ -252,13 +252,13 @@ See `contracts/manifest.yaml`.
 
 ## Implementation Surface
 
-| Surface | Current state | Planned change |
+| Superfície | Estado atual | Mudança planejada |
 | --- | --- | --- |
-| `<path>` | exists/planned | <bounded delta> |
+| `<path>` | existente/planejado | <bounded delta> |
 
 ## Delivery and Traceability View
 
-| Requirements | Component | Plan item | Tasks | Tests |
+| Requisitos | Componente | Item do plano | Tarefas | Testes |
 | --- | --- | --- | --- | --- |
 | REQ-001 | C-01 | P1.1 | T001, T002 | TST-001 |
 
@@ -268,7 +268,7 @@ See `contracts/manifest.yaml`.
 
 ## Phased Development
 
-| Phase | Scope |
+| Fase | Escopo |
 | --- | --- |
 | P1 | REQ-001 |
 ````
@@ -276,31 +276,31 @@ See `contracts/manifest.yaml`.
 ## DECISIONS.md
 
 ```markdown
-# Decisions: <Feature>
+# Decisões: <Feature>
 
 ## DR-001: <Decision>
 
-- Status: proposed
-- Requirements: REQ-001
-- Context: <decision driver>
-- Decision: <selected option>
-- Alternatives: <rejected options and why>
-- Consequences: <positive and negative>
-- Revisit trigger: <condition>
+- Status: proposto
+- Requisitos: REQ-001
+- Contexto: <decision driver>
+- Decisão: <selected option>
+- Alternativas: <rejected options and why>
+- Consequências: <positive and negative>
+- Gatilho de revisão: <condition>
 ```
 
 ## TASKS.md
 
 ````markdown
-# Tasks: <Feature>
+# TASKS: <Feature>
 
 ## Pre-Implementation Gate
 
-- [ ] Requirements are ready for review.
+- [ ] Os requisitos estão prontos para revisão.
 
 ## Execution Rules
 
-`[S]` is sequential, `[P]` is parallel, and RED precedes GREEN for every requirement.
+`[S]` é sequencial, `[P]` é paralelo e RED precede GREEN para cada requisito.
 
 ## Dependency Graph
 
@@ -313,22 +313,22 @@ flowchart TD
   T001 --> T002
 ```
 
-## Phase 1
+## Fase 1
 
-- [ ] **T001 [S] [Plan:P1.1] RED** Add a failing test for the rule. Traces REQ-001.
-  - Files: `<test path>`.
-  - Acceptance: TST-001 fails for the missing behavior.
-- [ ] **T002 [S] [Plan:P1.1] GREEN** Implement the minimum behavior. Traces REQ-001.
-  - Files: `<implementation path>`, `<test path>`.
-  - Acceptance: TST-001 passes.
+- [ ] **T001 [S] [Plan:P1.1] RED** Adicione um teste que falhe para a regra. Rastreia REQ-001.
+  - Arquivos: `<test path>`.
+  - Aceitação: TST-001 falha devido ao comportamento ausente.
+- [ ] **T002 [S] [Plan:P1.1] GREEN** Implemente o comportamento mínimo. Rastreia REQ-001.
+  - Arquivos: `<implementation path>`, `<test path>`.
+  - Aceitação: TST-001 passa.
 
 ## Completion Gate
 
-- [ ] Every checked task cites its evidence in `evidence/`.
+- [ ] Toda tarefa marcada cita sua evidência em `evidence/`.
 
 ## Execution log
 
-Task closure: 0 of 2. No task is checked until acceptance evidence exists.
+Encerramento de tarefas: 0 de 2. Nenhuma tarefa é marcada até que exista evidência de aceitação.
 ````
 
 Uma tarefa marcada adiciona `- Evidence: evidence/<date>-T001.md` e aparece em uma linha `Marked complete by verification sweep: T001`.
@@ -336,29 +336,29 @@ Uma tarefa marcada adiciona `- Evidence: evidence/<date>-T001.md` e aparece em u
 ## TESTING.md
 
 ```markdown
-# Testing: <Feature>
+# TESTING: <Feature>
 
 ## Test catalog
 
-| Test | Requirements | Location | Level | Status |
+| Teste | Requisitos | Local | Nível | Status |
 | --- | --- | --- | --- | --- |
-| TST-001 | REQ-001 | `<test path>` | unit | Planned |
+| TST-001 | REQ-001 | `<test path>` | unitário | Planejado |
 
 ## Commands
 
-Run `<targeted test command>`.
+Execute `<targeted test command>`.
 
 ## Failure and measurement
 
-TST-001 must fail before its GREEN task; state measurement windows for NFR tests.
+TST-001 deve falhar antes de sua tarefa GREEN; declare as janelas de medição dos testes NFR.
 
 ## Evidence contract
 
-Each run stores command, revision, date, and exit status in `evidence/`.
+Cada execução armazena comando, revisão, data e status de saída em `evidence/`.
 
 ## Exit criteria
 
-Every test passes and its evidence is stored in `evidence/`.
+Todos os testes passam e suas evidências são armazenadas em `evidence/`.
 ```
 
 ## TDD.md
@@ -370,10 +370,10 @@ Gerado a partir dos checkpoints por `generate-sdd-support-artifacts.py --include
 
 ## Ordered RED and GREEN steps
 
-| Step | Task | Requirement | Test | Expected result |
+| Etapa | Tarefa | Requisito | Teste | Resultado esperado |
 | --- | --- | --- | --- | --- |
-| 1 | T001 RED | REQ-001 | TST-001 | Fails |
-| 2 | T002 GREEN | REQ-001 | TST-001 | Passes |
+| 1 | T001 RED | REQ-001 | TST-001 | Falha |
+| 2 | T002 GREEN | REQ-001 | TST-001 | Passa |
 ```
 
 ## CHECKLIST.md
@@ -383,7 +383,7 @@ Gerado. Execute `python3 .github/scripts/generate-sdd-support-artifacts.py --pac
 ```markdown
 # Checklist: <Feature>
 
-Generated from SPECIFICATION.md, DESIGN.md, TASKS.md, TESTING.md, and the checkpoints.
+Gerado a partir de SPECIFICATION.md, DESIGN.md, TASKS.md, TESTING.md e dos checkpoints.
 ```
 
 ## CROSS_ANALYSIS.md
@@ -391,9 +391,9 @@ Generated from SPECIFICATION.md, DESIGN.md, TASKS.md, TESTING.md, and the checkp
 Gerado. Ele mapeia cada requisito para design, itens de plano, tarefas e testes.
 
 ```markdown
-# Cross Analysis: <Feature>
+# Análise cruzada: <Feature>
 
-Generated from the checkpoints; every gap is a hard error at generation time.
+Gerada a partir dos checkpoints; toda lacuna é um erro impeditivo no momento da geração.
 ```
 
 ## VERIFICATION.md
@@ -401,9 +401,9 @@ Generated from the checkpoints; every gap is a hard error at generation time.
 Gerado. Ele registra a verificação planejada por requisito e nunca alega execução.
 
 ```markdown
-# Verification: <Feature>
+# Verificação: <Feature>
 
-Generated from test-coverage.yaml and TESTING.md.
+Gerada a partir de test-coverage.yaml e TESTING.md.
 ```
 
 ## SOURCE_TRACEABILITY.md
@@ -411,9 +411,9 @@ Generated from test-coverage.yaml and TESTING.md.
 Gerado. Ele projeta o registro de fontes em cada requisito.
 
 ```markdown
-# Source Traceability: <Feature>
+# Rastreabilidade de fontes: <Feature>
 
-Generated from SPECIFICATION.md and ANALYSIS.md.
+Gerada a partir de SPECIFICATION.md e ANALYSIS.md.
 ```
 
 ## checkpoints/spec-to-plan.yaml
@@ -462,9 +462,9 @@ Um contrato que a funcionalidade não expõe usa `{status: not_applicable, reaso
 ## evidence/README.md
 
 ```markdown
-# Evidence
+# Evidências
 
-Dated execution evidence for checked tasks. Empty until a task runs.
+Evidências de execução datadas para tarefas marcadas. Permanece vazio até que uma tarefa seja executada.
 ```
 
 ## Regras de consistência

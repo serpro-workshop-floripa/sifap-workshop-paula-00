@@ -1,100 +1,100 @@
-# Persona-Agent Matrix
+# Matriz de personas e agentes
 
-![Reference Type](https://img.shields.io/badge/Type-Reference-171717?style=flat-square)
-![Use Who does what](https://img.shields.io/badge/Use-Who%20does%20what-737373?style=flat-square)
+![Tipo: referência](https://img.shields.io/badge/Type-Reference-171717?style=flat-square)
+![Uso: quem faz o quê](https://img.shields.io/badge/Use-Who%20does%20what-737373?style=flat-square)
 
-> **Path:** [Team Kit](../README.md) › [Docs](README.md) › **Persona-Agent Matrix**
+> **Caminho:** [Kit da equipe](../README.md) › [Documentação](README.md) › **Matriz de personas e agentes**
 
-**Maps each role persona to the stage agents used in the individual challenge.** One participant covers every role; this matrix is a role-by-stage checklist, not an assignment chart.
+**Mapeia cada persona de papel aos agentes de etapa usados no desafio individual.** Um participante cobre todos os papéis; esta matriz é um checklist de papéis por etapa, não um quadro de atribuições.
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| **Target audience** | Individual workshop participants |
-| **When to consult** | At the start of each stage and before each self-checkpoint |
-| **Expected outcome** | You know which responsibility to emphasize while using the current stage agent |
+| **Público-alvo** | Participantes individuais do workshop |
+| **Quando consultar** | No início de cada etapa e antes de cada checkpoint de autoverificação |
+| **Resultado esperado** | Saber qual responsabilidade enfatizar ao usar o agente da etapa atual |
 
 ---
 
-## How to read this matrix
+## Como ler esta matriz
 
-1. Start the stage agent listed for the current challenge stage.
-2. Read down the column and apply the relevant role responsibilities yourself.
-3. Use `@dba` whenever data discovery, mapping, migration, reconciliation, or rerun/recovery evidence is involved.
-4. Stop at C1, C2, and C3 to verify the artifacts before moving on.
+1. Inicie o agente de etapa indicado para a etapa atual do desafio.
+2. Leia a coluna de cima para baixo e aplique por conta própria as responsabilidades pertinentes dos papéis.
+3. Use `@dba` sempre que houver descoberta, mapeamento, migração, reconciliação ou evidências de nova execução/recuperação de dados.
+4. Pare em C1, C2 e C3 para verificar os artefatos antes de avançar.
 
 > [!NOTE]
-> **Rows are skills; columns are agents.** You select the column once per stage with `@name`. Role rows load automatically from skill descriptions and compose into whichever stage agent is active. The DBA is also an agent because its data lifecycle spans every stage. See [ADR-0002](adr/0002-team-roles-as-skills-not-agents.md) and [ADR-0003](adr/0003-individual-challenge-format.md).
+> **As linhas são skills; as colunas são agentes.** Você seleciona a coluna uma vez por etapa com `@name`. As linhas de papéis são carregadas automaticamente pelas descrições das skills e se compõem com o agente de etapa ativo. O DBA também é um agente porque seu ciclo de vida dos dados abrange todas as etapas. Consulte a [ADR-0002](adr/0002-team-roles-as-skills-not-agents.md) e a [ADR-0003](adr/0003-individual-challenge-format.md).
 
 ---
 
-## The challenge matrix
+## A matriz do desafio
 
-| # | Persona | Stage 1 `@archaeologist` | Stage 2 `@architect` | Stage 3 `@builder` | Final judge validation |
+| # | Persona | Etapa 1 `@archaeologist` | Etapa 2 `@architect` | Etapa 3 `@builder` | Validação final do juiz |
 |---|---|---|---|---|---|
-| 01 | Product Owner | Confirm business meaning and target beneficiary population | Decide v1 scope and acceptance criteria | Validate real migrated-data behavior | Accept or record blockers |
-| 02 | Requirements Engineer | Capture candidate rules with evidence | Write EARS requirements with REQ-IDs and `source_legacy:` | Keep code/tests tied to requirements | Verify traceability |
-| 03 | Enterprise Architect | Identify external systems, batch sources, and constraints | Validate context and integration decisions | Check implementation still fits context | Review unresolved architecture blockers |
-| 04 | Software Architect | Observe boundaries emerging from legacy evidence | Define module boundaries, ADRs, and implementation plan | Guard boundaries during code generation | Confirm deviations are documented |
-| 05 | Technical Lead | Track risks and sequence | Keep tasks small and implementable | Enforce standards and self-review before PR | Confirm C3 submission readiness |
-| 06 | Developer | Understand legacy behavior before coding | Estimate implementation path from tasks | Implement Java/Next.js slice and tests | Fix judge-reported defects if rejected |
-| 07 | DBA | Profile DDM/FDT fields and source population | Design source-to-target mapping and recovery | Load PostgreSQL, reconcile, and prove rerun safety | Prove no unexplained losses |
-| 08 | QA Engineer | Define evidence needed for acceptance | Define tests and reconciliation checks | Run happy/error paths and data checks | Verify all required tests and data evidence |
-| 09 | DevOps Engineer | Confirm local tools and pre-work readiness | Review execution constraints | Keep required CI jobs green for submission | Provide CI evidence |
-| 10 | Tech Writer | Maintain glossary and discovery notes | Keep spec/ADRs readable and consistent | Update README/run notes from real commands | Ensure checklist and PR text are clear |
+| 01 | Product Owner | Confirmar o significado de negócio e a população-alvo de beneficiários | Decidir o escopo da v1 e os critérios de aceitação | Validar o comportamento real dos dados migrados | Aceitar ou registrar bloqueios |
+| 02 | Requirements Engineer | Registrar regras candidatas com evidências | Escrever requisitos EARS com REQ-IDs e `source_legacy:` | Manter código/testes vinculados aos requisitos | Verificar a rastreabilidade |
+| 03 | Enterprise Architect | Identificar sistemas externos, fontes batch e restrições | Validar decisões de contexto e integração | Verificar se a implementação ainda se ajusta ao contexto | Revisar bloqueios arquiteturais não resolvidos |
+| 04 | Software Architect | Observar limites emergentes das evidências legadas | Definir limites dos módulos, ADRs e plano de implementação | Proteger os limites durante a geração de código | Confirmar que os desvios estão documentados |
+| 05 | Technical Lead | Acompanhar riscos e sequência | Manter tarefas pequenas e implementáveis | Aplicar padrões e autorrevisão antes do PR | Confirmar a prontidão da submissão C3 |
+| 06 | Developer | Entender o comportamento legado antes de programar | Estimar o caminho de implementação a partir das tarefas | Implementar o recorte Java/Next.js e os testes | Corrigir defeitos informados pelo juiz em caso de rejeição |
+| 07 | DBA | Analisar campos DDM/FDT e população da fonte | Projetar mapeamento origem-destino e recuperação | Carregar o PostgreSQL, reconciliar e comprovar a segurança da nova execução | Comprovar que não há perdas inexplicadas |
+| 08 | QA Engineer | Definir as evidências necessárias para aceitação | Definir testes e verificações de reconciliação | Executar caminhos de sucesso/erro e verificações de dados | Verificar todos os testes e evidências de dados obrigatórios |
+| 09 | DevOps Engineer | Confirmar ferramentas locais e prontidão do pré-trabalho | Revisar restrições de execução | Manter verdes os jobs de CI obrigatórios para a submissão | Fornecer evidências da CI |
+| 10 | Tech Writer | Manter o glossário e as notas de descoberta | Manter especificação/ADRs legíveis e consistentes | Atualizar README/notas de execução com comandos reais | Garantir que o checklist e o texto do PR estejam claros |
 
 ---
 
-## Stage checklists
+## Checklists das etapas
 
-### Stage 1 — `@archaeologist` + `@dba`
+### Etapa 1 — `@archaeologist` + `@dba`
 
-- Read the Natural/Adabas sources for the fixed capability.
-- Capture rules, glossary terms, data fields, relationships, and open questions with source citations.
-- Agree the complete authorized beneficiary population for migration and consultation.
-- Do not write requirements without evidence; record unknowns honestly.
+- Leia as fontes Natural/Adabas da capacidade fixa.
+- Registre regras, termos do glossário, campos de dados, relacionamentos e questões em aberto com citações das fontes.
+- Defina a população completa de beneficiários autorizados para migração e consulta.
+- Não escreva requisitos sem evidências; registre as incógnitas com honestidade.
 
-**C1 self-check:** discovery artifacts cite sources, data facts are recorded, and no rule is promoted without evidence.
+**Autoverificação C1:** os artefatos de descoberta citam as fontes, os fatos dos dados estão registrados e nenhuma regra é promovida sem evidências.
 
-### Stage 2 — `@architect` + `@dba`
+### Etapa 2 — `@architect` + `@dba`
 
-- Convert confirmed rules into EARS requirements with REQ-IDs and `source_legacy:`.
-- Define scope, out-of-scope, module boundaries, and ADRs only for real decisions.
-- Design migration, reject handling, reconciliation, rerun/resume, and recovery.
-- Define tests for listing, search, detail, and data reconciliation before coding.
+- Converta regras confirmadas em requisitos EARS com REQ-IDs e `source_legacy:`.
+- Defina escopo, fora de escopo, limites dos módulos e ADRs somente para decisões reais.
+- Projete migração, tratamento de rejeições, reconciliação, nova execução/retomada e recuperação.
+- Defina testes de listagem, pesquisa, detalhes e reconciliação dos dados antes de programar.
 
-**C2 self-check:** formal artifacts are traceable, implementation tasks are small, and data acceptance is testable.
+**Autoverificação C2:** os artefatos formais são rastreáveis, as tarefas de implementação são pequenas e a aceitação dos dados pode ser testada.
 
-### Stage 3 — `@builder` + `@dba`
+### Etapa 3 — `@builder` + `@dba`
 
-- Implement only the scoped consultation capability.
-- Populate PostgreSQL from the approved source route; do not replace migration with sample seed data.
-- Run backend `mvn verify` and frontend tests if a frontend exists.
-- Keep required CI green and document real commands/results.
+- Implemente apenas a capacidade de consulta no escopo.
+- Popule o PostgreSQL pela rota de origem aprovada; não substitua a migração por seed data de amostra.
+- Execute `mvn verify` no backend e os testes do frontend, se houver frontend.
+- Mantenha verde a CI obrigatória e documente comandos/resultados reais.
 
-**C3 self-check:** CI green, tests pass, every requirement is traceable, source count = loaded + explained rejects, rerun has no duplicates, and listing/search/detail cover the complete migrated beneficiary population.
-
----
-
-## Suggested reading order
-
-- [ ] Read [OVERVIEW.md](../05-personas/OVERVIEW.md) to see the one-person role checklist.
-- [ ] Read the `PERSONA.md` files most relevant to the current stage.
-- [ ] Open the current stage agent README in [`06-stage-agents/`](../06-stage-agents/).
-- [ ] Activate the stage agent in Copilot Chat and begin working.
-
-## References
-
-- [Agent kits](../06-stage-agents/README.md)
-- [Agent architecture](4-agents-explained.md)
-- [Challenge flow](../00-TEAM-FLOW.md)
-- [Persona kits](../05-personas/README.md)
+**Autoverificação C3:** CI verde, testes passando, todos os requisitos rastreáveis, contagem da origem = carregados + rejeições explicadas, nova execução sem duplicidades e listagem/pesquisa/detalhes cobrindo a população completa de beneficiários migrados.
 
 ---
 
-### Continue reading
+## Ordem de leitura sugerida
 
-| Previous | Next |
+- [ ] Leia [OVERVIEW.md](../05-personas/OVERVIEW.md) para ver o checklist de papéis para uma pessoa.
+- [ ] Leia os arquivos `PERSONA.md` mais pertinentes à etapa atual.
+- [ ] Abra o README do agente da etapa atual em [`06-stage-agents/`](../06-stage-agents/).
+- [ ] Ative o agente de etapa no Copilot Chat e comece a trabalhar.
+
+## Referências
+
+- [Kits de agentes](../06-stage-agents/README.md)
+- [Arquitetura dos agentes](4-agents-explained.md)
+- [Fluxo do desafio](../00-TEAM-FLOW.md)
+- [Kits de personas](../05-personas/README.md)
+
+---
+
+### Continue lendo
+
+| Anterior | Próximo |
 |---|---|
-| [Four Agents Explained](4-agents-explained.md)<br/><sub>Why the challenge uses stage agents plus `@dba`.</sub> | [Challenge Flow](../00-TEAM-FLOW.md)<br/><sub>Schedule and self-checkpoints.</sub> |
+| [Agentes explicados](4-agents-explained.md)<br/><sub>Por que o desafio usa agentes de etapa mais `@dba`.</sub> | [Fluxo do desafio](../00-TEAM-FLOW.md)<br/><sub>Cronograma e checkpoints de autoverificação.</sub> |
 
-<sub>[Back to the kit index](../README.md)</sub>
+<sub>[Voltar ao índice do kit](../README.md)</sub>

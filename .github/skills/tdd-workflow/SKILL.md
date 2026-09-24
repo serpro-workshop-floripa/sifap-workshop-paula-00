@@ -7,19 +7,22 @@ description: "Use ao praticar desenvolvimento orientado a testes, escrever prime
 ## Quando invocar
 
 - Ao iniciar um novo comportamento ou uma correção de erro.
-- Ao trabalhar em programação em par ou em grupo em código desconhecido e precisar de uma rede de segurança.
+- Ao trabalhar em programação em par ou em grupo com código desconhecido e precisar de uma rede de segurança.
 - Quando as alterações continuam causando falhas inesperadas.
 
-## O ciclo
+## Procedimento
+
+### Execute o ciclo
 
 ```
 VERMELHO → escreva o menor teste com falha que expresse o próximo comportamento
 VERDE → escreva a menor quantidade de código que faça o teste passar
 REFATORAR → melhore o projeto enquanto os testes permanecem verdes
 ```
+
 Faça um commit em cada etapa verde. Cubra um comportamento por ciclo.
 
-## Regras
+### Siga as regras
 
 1. **Não escreva código de produção sem um teste com falha.** Sem teste, sem alteração.
 2. **Mantenha apenas um teste com falha por vez.** Nunca tenha dois testes vermelhos.
@@ -28,7 +31,7 @@ Faça um commit em cada etapa verde. Cubra um comportamento por ciclo.
 5. Use a estrutura **Dado-Quando-Então / Preparar-Agir-Verificar** no corpo do teste.
 6. **A fase de refatoração não é opcional**. Nela está a maior parte do valor.
 
-## Como escolher o próximo teste
+### Escolha o próximo teste
 
 Ordene os testes para orientar o projeto:
 
@@ -36,19 +39,19 @@ Ordene os testes para orientar o projeto:
 - Em seguida, adicione uma única variação (um limite, uma ramificação ou um erro).
 - Evite escrever um teste enorme que cubra tudo.
 
-## Objetos falsos e respostas programadas
+### Use dublês de teste com critério
 
 - Use um substituto de teste apenas quando o colaborador real for lento, não determinístico ou ainda não existir.
-- Não crie objetos simulados de tipos que você não controla. Primeiro, envolva-os em uma abstração fina.
-- Um teste que simula tudo não testa nada.
+- Não crie mocks de tipos que você não controla. Primeiro, envolva-os em uma abstração pequena.
+- Um teste que usa mocks para tudo não testa nada.
 
-## Quando o TDD é difícil, o problema costuma estar no projeto
+### Interprete dificuldades como sinais de design
 
 - Dificuldade para construir o objeto testado → colaboradores demais, violação do princípio de responsabilidade única (SRP).
 - Impossibilidade de criar uma asserção sem ler três outros objetos → problema na Lei de Demeter ou no encapsulamento.
-- Necessidade de simular o mundo inteiro → acoplamento oculto; introduza uma abstração.
+- Necessidade de criar mocks para o mundo inteiro → acoplamento oculto; introduza uma abstração.
 
-## Antipadrões
+### Evite antipadrões
 
 - Escrever o código e depois o teste (isso é verificação, não TDD).
 - Ignorar a fase de refatoração.

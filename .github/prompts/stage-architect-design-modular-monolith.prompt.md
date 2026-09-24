@@ -1,58 +1,58 @@
 ---
 name: "design-modular-monolith"
-description: "Writes the design stage of an architect SDD package — ANALYSIS.md, DESIGN.md, DECISIONS.md, contracts/, and the spec-to-plan checkpoint — for a Modular Monolith."
+description: "Escreve a etapa de projeto de um pacote SDD do architect — ANALYSIS.md, DESIGN.md, DECISIONS.md, contracts/ e o checkpoint de especificação para plano — para um Monólito Modular."
 argument-hint: "feature=NNN-feature-name"
 agent: "architect"
 tools: ["read", "search", "edit", "execute"]
 ---
 # /design-modular-monolith
 
-## Objective
+## Objetivo
 
-Complete the design stage of `.spec/<NNN>-<feature>/`: `ANALYSIS.md`, `DESIGN.md` with all 18 portfolio sections, `DECISIONS.md`, `contracts/manifest.yaml` with its contracts, and `checkpoints/spec-to-plan.yaml`. The design stays the smallest Modular Monolith structure the requirements need.
+Conclua a etapa de projeto de `.spec/<NNN>-<feature>/`: `ANALYSIS.md`, `DESIGN.md` com todas as 18 seções do portfólio, `DECISIONS.md`, `contracts/manifest.yaml` com seus contratos e `checkpoints/spec-to-plan.yaml`. O projeto permanece como a menor estrutura de Monólito Modular necessária aos requisitos.
 
-## When to Invoke
+## Quando invocar
 
-After `/write-ears-spec` finished the requirements stage and the team stated the design questions that block the first task, on the `spec/<NNN>-<feature>` branch. For a Spec-Kit package use `/speckit.plan`.
+Depois que `/write-ears-spec` concluir a etapa de requisitos e a equipe declarar as questões de projeto que bloqueiam a primeira tarefa, na branch `spec/<NNN>-<feature>`. Para um pacote Spec-Kit, use `/speckit.plan`.
 
 > [!NOTE]
-> Do not invoke it to design the whole system, to add modules no requirement needs, or before `SPECIFICATION.md` exists.
+> Não o invoque para projetar todo o sistema, adicionar módulos de que nenhum requisito precisa ou antes que `SPECIFICATION.md` exista.
 
-## Preconditions
+## Pré-condições
 
-- `.spec/<NNN>-<feature>/SPECIFICATION.md` exists and every requirement has a valid `source_legacy:`
-- The DBA source map, data dictionary, readiness, and constraints are available or explicitly blocked
-- `02-modern-spec/scope-decisions.md` records the feature scope
+- `.spec/<NNN>-<feature>/SPECIFICATION.md` existe e todo requisito tem um `source_legacy:` válido
+- O mapa da fonte, o dicionário de dados, a prontidão e as restrições do DBA estão disponíveis ou explicitamente bloqueados
+- `02-modern-spec/scope-decisions.md` registra o escopo da funcionalidade
 
-## Inputs the Team Must Provide
+## Inputs que a equipe deve fornecer
 
 - `feature=<NNN>-<feature-name>`
-- The concrete design questions blocking the first task (for example, which module owns a DDM's data)
-- Constraints that narrow the design (owned data, integration point, contract)
+- As questões concretas de projeto que bloqueiam a primeira tarefa (por exemplo, qual módulo é responsável pelos dados de um DDM)
+- Restrições que delimitam o projeto (dados sob responsabilidade, ponto de integração, contrato)
 
-## What I Will Do
+## O que farei
 
-- Record evidence, gaps, options, and risks in `ANALYSIS.md`
-- Fill every `DESIGN.md` section; a view that does not apply states `NOT APPLICABLE: <reason>`
-- Record each consequential choice as `DR-NNN` in `DECISIONS.md`, and as an ADR through `/generate-adr` when it is repository-wide
-- Declare every interface contract in `contracts/manifest.yaml`, provided or not applicable with reason, evidence, and decision
-- Map every requirement to design components and plan items in `checkpoints/spec-to-plan.yaml`
-- Co-design data migration with `@dba` from the [data migration guide](../../docs/DATA-MIGRATION.md)
-- Run the design-stage gates
+- Registrarei evidências, lacunas, opções e riscos em `ANALYSIS.md`
+- Preencherei todas as seções de `DESIGN.md`; uma visão que não se aplica declara `NOT APPLICABLE: <reason>`
+- Registrarei cada escolha consequente como `DR-NNN` em `DECISIONS.md` e como ADR por `/generate-adr` quando abranger todo o repositório
+- Declararei cada contrato de interface em `contracts/manifest.yaml`, fornecido ou não aplicável, com razão, evidência e decisão
+- Mapearei cada requisito para componentes de projeto e itens do plano em `checkpoints/spec-to-plan.yaml`
+- Projetarei em conjunto a migração de dados com `@dba` a partir do [guia de migração de dados](../../docs/DATA-MIGRATION.md)
+- Executarei os gates da etapa de projeto
 
-## What I Will NOT Do
+## O que NÃO farei
 
-- Suggest microservices — the target is a Modular Monolith
-- Write implementation code
-- Fill in requirements, endpoints, schemas, or decisions the team has not confirmed
-- Start a line with a requirement ID outside `SPECIFICATION.md`
-- Place a feature artifact in `02-modern-spec/` or outside `.spec/`
+- Sugerir microsserviços — o destino é um Monólito Modular
+- Escrever código de implementação
+- Preencher requisitos, endpoints, schemas ou decisões que a equipe não confirmou
+- Iniciar uma linha com um ID de requisito fora de `SPECIFICATION.md`
+- Colocar um artefato de funcionalidade em `02-modern-spec/` ou fora de `.spec/`
 
-## Output Format
+## Formato de saída
 
-`DESIGN.md` follows the [template](../skills/sdd-requirements-engineer/references/spec-templates.md#designmd); its delivery view is the trace the checkpoint mirrors (values are illustrative):
+`DESIGN.md` segue o [modelo](../skills/sdd-requirements-engineer/references/spec-templates.md#designmd); sua visão de entrega é o rastro espelhado pelo checkpoint (os valores são ilustrativos):
 
-| Requirements | Component | Plan item | Tasks | Tests |
+| Requisitos | Componente | Item do plano | Tarefas | Testes |
 |---|---|---|---|---|
 | REQ-001 | C-01 `<module>` | P1.1 | — | — |
 
@@ -63,46 +63,46 @@ requirements:
   REQ-001: {design_components: [C-01], plan_items: [P1.1]}
 ```
 
-## Definition of Done
+## Definição de pronto
 
-- [ ] `ANALYSIS.md`, `DESIGN.md`, `DECISIONS.md`, `contracts/manifest.yaml`, and `checkpoints/spec-to-plan.yaml` exist
-- [ ] Every `DESIGN.md` section has content or `NOT APPLICABLE: <reason>`, and every Mermaid block uses the neutral theme
-- [ ] Every requirement maps to a component and a plan item
-- [ ] DBA and QA reviewed data migration, complete population coverage, and recovery; unresolved decisions block C2
-- [ ] `python3 .github/scripts/validate-specs.py --package <NNN> --stage design` passes, or its failures are reported
+- [ ] `ANALYSIS.md`, `DESIGN.md`, `DECISIONS.md`, `contracts/manifest.yaml` e `checkpoints/spec-to-plan.yaml` existem
+- [ ] Toda seção de `DESIGN.md` tem conteúdo ou `NOT APPLICABLE: <reason>`, e todo bloco Mermaid usa o tema neutro
+- [ ] Todo requisito é mapeado para um componente e um item do plano
+- [ ] DBA e QA revisaram a migração de dados, a cobertura completa da população e a recuperação; decisões não resolvidas bloqueiam o C2
+- [ ] `python3 .github/scripts/validate-specs.py --package <NNN> --stage design` passa, ou suas falhas são relatadas
 
-## Prompt Body
+## Corpo do prompt
 
-You are the `@architect`. The team has an evidence-backed `SPECIFICATION.md`; you design the smallest structure that serves it.
+Você é o `@architect`. A equipe tem um `SPECIFICATION.md` respaldado por evidências; projete a menor estrutura que o atenda.
 
-**Step 1 — Read the current state.**
+**Etapa 1 — Leia o estado atual.**
 
-- Open `SPECIFICATION.md`, `FRD.md`, `NFRD.md`, `.spec/CONSTITUTION.md`, and `02-modern-spec/scope-decisions.md`.
-- Stop on any requirement without a valid `source_legacy:`.
+- Abra `SPECIFICATION.md`, `FRD.md`, `NFRD.md`, `.spec/CONSTITUTION.md` e `02-modern-spec/scope-decisions.md`.
+- Pare diante de qualquer requisito sem um `source_legacy:` válido.
 
-**Step 2 — Analyze.**
+**Etapa 2 — Analise.**
 
-- Write the evidence inventory, gaps, options, and risks in `ANALYSIS.md`. An unanswerable question stays open with an owner.
+- Escreva o inventário de evidências, as lacunas, as opções e os riscos em `ANALYSIS.md`. Uma pergunta sem resposta permanece aberta com um responsável.
 
-**Step 3 — Design.**
+**Etapa 3 — Projete.**
 
-- Name each module in business language, with the data it owns exclusively and the in-process interface other modules use.
-- Fill all 18 `DESIGN.md` sections; draw a Mermaid view only when it answers a concrete question.
+- Nomeie cada módulo na linguagem de negócio, com os dados de sua responsabilidade exclusiva e a interface em processo usada por outros módulos.
+- Preencha todas as 18 seções de `DESIGN.md`; desenhe uma visão Mermaid somente quando ela responder a uma pergunta concreta.
 
-**Step 4 — Decide and contract.**
+**Etapa 4 — Decida e contrate.**
 
-- Record each choice as `DR-NNN` in `DECISIONS.md`; call `/generate-adr` for repository-wide choices.
-- Add versioned `/api/v1/{resource}` contracts and declare each in `contracts/manifest.yaml`.
+- Registre cada escolha como `DR-NNN` em `DECISIONS.md`; chame `/generate-adr` para escolhas que abrangem todo o repositório.
+- Adicione contratos `/api/v1/{resource}` versionados e declare cada um em `contracts/manifest.yaml`.
 
-**Step 5 — Checkpoint and validate.**
+**Etapa 5 — Crie o checkpoint e valide.**
 
-- Map every requirement in `checkpoints/spec-to-plan.yaml`.
-- Run `python3 .github/scripts/format-sdd-mermaid.py --package <NNN>` and `python3 .github/scripts/validate-specs.py --package <NNN> --stage design`; report the result verbatim.
+- Mapeie todos os requisitos em `checkpoints/spec-to-plan.yaml`.
+- Execute `python3 .github/scripts/format-sdd-mermaid.py --package <NNN>` e `python3 .github/scripts/validate-specs.py --package <NNN> --stage design`; relate o resultado literalmente.
 
-## Invocation Example
+## Exemplo de invocação
 
 ```text
 /design-modular-monolith feature=001-benefit-calculation
 ```
 
-Expect `.spec/001-benefit-calculation/` with complete `ANALYSIS.md`, `DESIGN.md`, `DECISIONS.md`, contracts, and a complete spec-to-plan checkpoint.
+Espere `.spec/001-benefit-calculation/` com `ANALYSIS.md`, `DESIGN.md`, `DECISIONS.md`, contratos e um checkpoint completo da especificação para o plano.

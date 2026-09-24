@@ -1,274 +1,273 @@
-# FAQ — Frequently Asked Questions
+# FAQ — Perguntas frequentes
 
-> **Path:** [Team Kit](../README.md) › [Docs](README.md) › **FAQ**
+> **Caminho:** [Kit da equipe](../README.md) › [Documentação](README.md) › **FAQ**
 
-**Direct answers to common questions about the SIFAP modernization workshop.**
+**Respostas diretas para perguntas comuns sobre o workshop de modernização do SIFAP.**
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| **Target audience** | Every participant |
-| **How to use** | Search the question with `Ctrl+F`. If it is not here, see [troubleshooting.md](troubleshooting.md) |
-| **Estimated time** | Selective reading |
+| **Público-alvo** | Todas as pessoas participantes |
+| **Como usar** | Pesquise a pergunta com `Ctrl+F`. Se ela não estiver aqui, consulte [troubleshooting.md](troubleshooting.md) |
+| **Tempo estimado** | Leitura seletiva |
 
 ---
 
-## About the workshop
+## Sobre o workshop
 
 <details>
-<summary><strong>I do not code. Can I participate?</strong></summary>
+<summary><strong>Não programo. Posso participar?</strong></summary>
 
-Yes. The Product Owner and Tech Writer personas, and part of QA, do not require coding. Read [`07-concepts/`](../07-concepts/) first to become familiar with the concepts. Every `PERSONA.md` includes an "emergency defaults" section.
+Sim. As personas Product Owner e Tech Writer, além de parte de QA, não exigem programação. Leia primeiro [`07-concepts/`](../07-concepts/) para conhecer os conceitos. Cada `PERSONA.md` inclui uma seção de orientações para emergências.
 
 </details>
 
 <details>
-<summary><strong>How long does it last?</strong></summary>
+<summary><strong>Quanto tempo dura?</strong></summary>
 
-The individual challenge runs 14:00-17:40. The exact schedule is in [`00-TEAM-FLOW.md`](../00-TEAM-FLOW.md).
-
-</details>
-
-<details>
-<summary><strong>How many people work together?</strong></summary>
-
-One. Each participant works individually and covers all 10 role responsibilities through role skills.
+O desafio individual ocorre das 14:00 às 17:40. O cronograma exato está em [`00-TEAM-FLOW.md`](../00-TEAM-FLOW.md).
 
 </details>
 
 <details>
-<summary><strong>Can I choose only two personas?</strong></summary>
+<summary><strong>Quantas pessoas trabalham juntas?</strong></summary>
 
-No pair assignment is used in the individual challenge. You cover all 10 role responsibilities yourself; the relevant role skills load as your requests match their descriptions.
-
-</details>
-
-<details>
-<summary><strong>What is SIFAP?</strong></summary>
-
-SIFAP (Payment Inspection and Administration System) models a government payment
-system with approximately 30 years of history in Natural/Adabas. The supplied
-history begins in 1997; 2026 is the workshop reference year. See the
-[chronology](../README.md#scenario-chronology-and-evidence). You modernize a
-bounded increment, not the entire system in one day.
-
-</details>
-
----
-
-## About Copilot
-
-<details>
-<summary><strong>Which Copilot model should I use?</strong></summary>
-
-Sonnet 4.6 for most tasks. Haiku for mechanical, repetitive tasks. Opus for complex architectural decisions. See [`09-cheat-sheets/model-routing.md`](../09-cheat-sheets/model-routing.md).
+Uma. Cada participante trabalha individualmente e cobre as responsabilidades dos 10 papéis por meio das skills de papel.
 
 </details>
 
 <details>
-<summary><strong>When should I use Ask, Plan, or Agent?</strong></summary>
+<summary><strong>Posso escolher somente duas personas?</strong></summary>
 
-- **Ask** — discuss and understand.
-- **Plan** — plan a change across multiple files.
-- **Agent** — delegate a complete Issue.
-
-Reference: [`07-concepts/04-3-copilot-modes.md`](../07-concepts/04-3-copilot-modes.md).
+Não há atribuição em duplas no desafio individual. Você cobre por conta própria as responsabilidades dos 10 papéis. As skills pertinentes são carregadas quando suas solicitações correspondem às descrições delas.
 
 </details>
 
 <details>
-<summary><strong>Can Agent merge by itself?</strong></summary>
+<summary><strong>O que é o SIFAP?</strong></summary>
 
-No. Agent opens a pull request. Review it with the same care you would apply to a human contribution.
-
-</details>
-
-<details>
-<summary><strong>Can I use Cursor, Codeium, or another assistant?</strong></summary>
-
-No. The toolchain is fixed: use only GitHub Copilot. See [`.github/copilot-instructions.md`](../.github/copilot-instructions.md).
+O SIFAP (Sistema de Fiscalização e Administração de Pagamentos) representa um
+sistema governamental de pagamentos com aproximadamente 30 anos de história em
+Natural/Adabas. O histórico fornecido começa em 1997; 2026 é o ano de referência
+do workshop. Consulte a [cronologia](../README.md#cenário-cronologia-e-evidências).
+Você moderniza um incremento limitado, não o sistema inteiro em um dia.
 
 </details>
 
 ---
 
-## About Spec-Kit and EARS
+## Sobre o Copilot
 
 <details>
-<summary><strong>Why does every EARS requirement need `source_legacy:`?</strong></summary>
+<summary><strong>Qual modelo do Copilot devo usar?</strong></summary>
 
-To ensure you modernized the real system, not only the briefing. CI rejects pull requests without this field. See [`01-archaeology/LEGACY-EXPLORATION-CHECKLIST.md`](../01-archaeology/LEGACY-EXPLORATION-CHECKLIST.md).
+Sonnet 4.6 para a maioria das tarefas. Haiku para tarefas mecânicas e repetitivas. Opus para decisões arquiteturais complexas. Consulte [`09-cheat-sheets/model-routing.md`](../09-cheat-sheets/model-routing.md).
 
 </details>
 
 <details>
-<summary><strong>What if the feature is new and has no legacy equivalent?</strong></summary>
+<summary><strong>Quando devo usar Ask, Plan ou Agent?</strong></summary>
 
-Use `source_legacy: "[GREENFIELD] <justification>"`. Confirm that
-the selected capability has no supplied legacy equivalent; a terminal type
-alone does not establish which authentication the system used.
+- **Ask** — discutir e entender.
+- **Plan** — planejar uma mudança em vários arquivos.
+- **Agent** — delegar uma Issue completa.
 
-</details>
-
-<details>
-<summary><strong>Can I skip `/speckit.clarify`?</strong></summary>
-
-No. Skipping it means ambiguities become Stage 3 bugs, when they cost much more to fix.
+Referência: [`07-concepts/04-3-copilot-modes.md`](../07-concepts/04-3-copilot-modes.md).
 
 </details>
 
 <details>
-<summary><strong>`/speckit.analyze` reports problems. What should I do?</strong></summary>
+<summary><strong>O Agent pode fazer merge sozinho?</strong></summary>
 
-Resolve them before implementation. Each finding prevents later rework.
-
-</details>
-
----
-
-## About Git and branches
-
-<details>
-<summary><strong>Can I commit directly to `main`?</strong></summary>
-
-No. Always use a pull request. See rule 1 in [`00-GIT-WORKFLOW.md`](../00-GIT-WORKFLOW.md).
+Não. O Agent abre um pull request. Revise-o com o mesmo cuidado que você dedicaria à contribuição de uma pessoa.
 
 </details>
 
 <details>
-<summary><strong>Which branch prefix should I use?</strong></summary>
+<summary><strong>Posso usar Cursor, Codeium ou outro assistente?</strong></summary>
 
-- `spec/<NNN>-<feature>` in Stage 2
-- `impl/<NNN>-<feature>` in Stage 3
-
-Both feature branches start from `develop`. `infra/` branch prefixes are not used in the individual challenge. See the complete table in [`00-GIT-WORKFLOW.md`](../00-GIT-WORKFLOW.md).
-
-</details>
-
-<details>
-<summary><strong>How is my PR approved?</strong></summary>
-
-Green CI plus judge validation. The submission PR is `impl/<NNN>-<feature>` → `develop` in your repository, with the checklist filled in.
-
-</details>
-
-<details>
-<summary><strong>Can I run `git push --force`?</strong></summary>
-
-Only on your own branch, and only with `--force-with-lease`. Never on `develop` or `main`.
+Não. A toolchain é fixa: use somente o GitHub Copilot. Consulte [`.github/copilot-instructions.md`](../.github/copilot-instructions.md).
 
 </details>
 
 ---
 
-## About Terraform and Azure
+## Sobre Spec-Kit e EARS
 
 <details>
-<summary><strong>Can I run `terraform apply`?</strong></summary>
+<summary><strong>Por que todo requisito EARS precisa de `source_legacy:`?</strong></summary>
+
+Para garantir que você modernizou o sistema real, não somente o briefing. A CI rejeita pull requests sem esse campo. Consulte [`01-archaeology/LEGACY-EXPLORATION-CHECKLIST.md`](../01-archaeology/LEGACY-EXPLORATION-CHECKLIST.md).
+
+</details>
+
+<details>
+<summary><strong>E se a funcionalidade for nova e não tiver equivalente no legado?</strong></summary>
+
+Use `source_legacy: "[GREENFIELD] <justification>"`. Confirme que a capacidade
+selecionada não tem equivalente nas fontes legadas fornecidas. Somente o tipo
+de terminal não estabelece qual autenticação o sistema usava.
+
+</details>
+
+<details>
+<summary><strong>Posso pular `/speckit.clarify`?</strong></summary>
+
+Não. Ignorá-lo transforma ambiguidades em defeitos da Etapa 3, quando o custo de correção é muito maior.
+
+</details>
+
+<details>
+<summary><strong>O `/speckit.analyze` informa problemas. O que devo fazer?</strong></summary>
+
+Resolva-os antes da implementação. Cada apontamento evita retrabalho posterior.
+
+</details>
+
+---
+
+## Sobre Git e branches
+
+<details>
+<summary><strong>Posso fazer commit diretamente em `main`?</strong></summary>
+
+Não. Sempre use um pull request. Consulte a regra 1 em [`00-GIT-WORKFLOW.md`](../00-GIT-WORKFLOW.md).
+
+</details>
+
+<details>
+<summary><strong>Qual prefixo de branch devo usar?</strong></summary>
+
+- `spec/<NNN>-<feature>` na Etapa 2
+- `impl/<NNN>-<feature>` na Etapa 3
+
+As duas branches de funcionalidade nascem de `develop`. Prefixos de branch `infra/` não são usados no desafio individual. Consulte a tabela completa em [`00-GIT-WORKFLOW.md`](../00-GIT-WORKFLOW.md).
+
+</details>
+
+<details>
+<summary><strong>Como meu PR é aprovado?</strong></summary>
+
+CI verde e validação do juiz. O PR de submissão é `impl/<NNN>-<feature>` → `develop` no seu repositório, com o checklist preenchido.
+
+</details>
+
+<details>
+<summary><strong>Posso executar `git push --force`?</strong></summary>
+
+Somente na sua própria branch e somente com `--force-with-lease`. Nunca em `develop` ou `main`.
+
+</details>
+
+---
+
+## Sobre Terraform e Azure
+
+<details>
+<summary><strong>Posso executar `terraform apply`?</strong></summary>
 
 > [!CAUTION]
-> No. Only `terraform plan` is authorized during the workshop. Running `apply` creates real Azure resources and incurs costs.
+> Não. Somente `terraform plan` é autorizado durante o workshop. Executar `apply` cria recursos reais no Azure e gera custos.
 
 </details>
 
 <details>
-<summary><strong>Where should I store secrets?</strong></summary>
+<summary><strong>Onde devo armazenar secrets?</strong></summary>
 
-In Azure Key Vault. Never in `variables.tf` or committed `.env` files. When creating `infra/`, model secrets through Key Vault and Managed Identity.
-
-</details>
-
----
-
-## About stages and self-checkpoints
-
-<details>
-<summary><strong>What are "self-checkpoints C1, C2, and C3"?</strong></summary>
-
-They are self-verification points at each agent switch. You check the same artifacts formerly reviewed at stage boundaries before moving on. Details are in [`00-TEAM-FLOW.md`](../00-TEAM-FLOW.md).
-
-</details>
-
-<details>
-<summary><strong>Can I start Stage 2 while Stage 1 is still in progress?</strong></summary>
-
-No. Without completed Stage 1 archaeology, EARS requirements will lack `source_legacy:` and CI will reject the pull request.
-
-</details>
-
-<details>
-<summary><strong>Who leads each stage?</strong></summary>
-
-See [`05-personas/OVERVIEW.md`](../05-personas/OVERVIEW.md). Summary:
-
-- Stage 1 — you work in `@archaeologist`, with `@dba` for data discovery
-- Stage 2 — you work in `@architect`, with `@dba` for migration design
-- Stage 3 — you work in `@builder` and `@dba`
-- Final validation — the judge validates the submission
-
-Stage 4 is not part of the individual challenge.
-
-</details>
-
-
-<details>
-<summary><strong>Who wins the individual challenge?</strong></summary>
-
-The first two participants whose submissions pass judge validation win. A submission is the PR `impl/<NNN>-<feature>` → `develop` in the participant repository, with the checklist filled in and the judge notified. The PR creation time is the timestamp; rejected submissions may be fixed and resubmitted with a new timestamp.
-
-</details>
-
-<details>
-<summary><strong>What counts as finishing?</strong></summary>
-
-CI must be green, every requirement must have REQ-ID, EARS and `source_legacy:`, tests must pass, source data must reconcile, reruns must avoid duplicates, and list/search/detail must cover the complete migrated beneficiary population.
-
-</details>
-
-<details>
-<summary><strong>Can I use parallel subagents or an orchestrator?</strong></summary>
-
-No. Use Copilot Ask, Plan and Agent modes with the stage agents. Copilot CLI fan-out, worker harnesses and parallel subagent orchestration are not allowed in the individual challenge.
-
-</details>
-
-<details>
-<summary><strong>Is Stage 4 included?</strong></summary>
-
-No. The individual challenge ends at Stage 3 and judge validation. Stage 4 files remain in the kit for post-challenge work only.
+No Azure Key Vault. Nunca em `variables.tf` nem em arquivos `.env` versionados. Ao criar `infra/`, modele secrets por meio do Key Vault e de Managed Identity.
 
 </details>
 
 ---
 
-## About blockers
+## Sobre etapas e checkpoints de autoverificação
 
 <details>
-<summary><strong>I am blocked. What should I do?</strong></summary>
+<summary><strong>O que são os checkpoints de autoverificação C1, C2 e C3?</strong></summary>
 
-Use the 20-minute rule ([`00-TEAM-FLOW.md`](../00-TEAM-FLOW.md) §6):
+São pontos de autoverificação em cada troca de agente. Antes de avançar, você verifica os mesmos artefatos antes revisados nos limites entre as etapas. Os detalhes estão em [`00-TEAM-FLOW.md`](../00-TEAM-FLOW.md).
 
-| Time blocked | Action |
+</details>
+
+<details>
+<summary><strong>Posso iniciar a Etapa 2 enquanto a Etapa 1 ainda está em andamento?</strong></summary>
+
+Não. Sem concluir a arqueologia da Etapa 1, os requisitos EARS não terão `source_legacy:` e a CI rejeitará o pull request.
+
+</details>
+
+<details>
+<summary><strong>Quem conduz cada etapa?</strong></summary>
+
+Consulte [`05-personas/OVERVIEW.md`](../05-personas/OVERVIEW.md). Resumo:
+
+- Etapa 1 — você trabalha com `@archaeologist` e usa `@dba` para a descoberta de dados
+- Etapa 2 — você trabalha com `@architect` e usa `@dba` para o projeto da migração
+- Etapa 3 — você trabalha com `@builder` e `@dba`
+- Validação final — o juiz valida a submissão
+
+A Etapa 4 não faz parte do desafio individual.
+
+</details>
+
+<details>
+<summary><strong>Quem vence o desafio individual?</strong></summary>
+
+Vencem os dois primeiros participantes cujas submissões passarem na validação do juiz. Uma submissão é o PR `impl/<NNN>-<feature>` → `develop` no repositório do participante, com o checklist preenchido e o juiz notificado. O horário de criação do PR é o timestamp. Submissões rejeitadas podem ser corrigidas e reenviadas com um novo timestamp.
+
+</details>
+
+<details>
+<summary><strong>O que conta como conclusão?</strong></summary>
+
+A CI deve estar verde, todo requisito deve ter REQ-ID, EARS e `source_legacy:`, os testes devem passar, os dados da origem devem reconciliar, novas execuções devem evitar duplicidades e a listagem/pesquisa/detalhes devem cobrir toda a população de beneficiários migrados.
+
+</details>
+
+<details>
+<summary><strong>Posso usar subagentes paralelos ou um orquestrador?</strong></summary>
+
+Não. Use os modos Ask, Plan e Agent do Copilot com os agentes de etapa. Fan-out do Copilot CLI, harnesses de workers e orquestração paralela de subagentes não são permitidos no desafio individual.
+
+</details>
+
+<details>
+<summary><strong>A Etapa 4 está incluída?</strong></summary>
+
+Não. O desafio individual termina na Etapa 3 e na validação do juiz. Os arquivos da Etapa 4 permanecem no kit somente para atividades após o desafio.
+
+</details>
+
+---
+
+## Sobre bloqueios
+
+<details>
+<summary><strong>Estou com um bloqueio. O que devo fazer?</strong></summary>
+
+Use a regra dos 20 minutos ([`00-TEAM-FLOW.md`](../00-TEAM-FLOW.md) §6):
+
+| Tempo de bloqueio | Ação |
 |---|---|
-| 5 min | Try to resolve it yourself |
-| 10 min | Re-read the relevant guide and evidence |
-| 20 min | Ask workshop support and record the blocker |
-| 30 min | Reduce capability breadth, never the migrated population or verification standard |
+| 5 min | Tente resolver por conta própria |
+| 10 min | Releia o guia e as evidências pertinentes |
+| 20 min | Peça apoio do workshop e registre o bloqueio |
+| 30 min | Reduza a amplitude da capacidade, nunca a população migrada nem o padrão de verificação |
 
 </details>
 
 <details>
-<summary><strong>How do I ask for help efficiently?</strong></summary>
+<summary><strong>Como peço ajuda com eficiência?</strong></summary>
 
-Use three lines: (1) Objective, (2) What I tried, (3) The blocker. See the example in [`00-TEAM-FLOW.md`](../00-TEAM-FLOW.md) §6.
+Use três linhas: (1) Objetivo, (2) O que tentei, (3) O bloqueio. Consulte o exemplo em [`00-TEAM-FLOW.md`](../00-TEAM-FLOW.md) §6.
 
 </details>
 
 ---
 
-### Continue reading
+### Continue lendo
 
-| Previous | Next |
+| Anterior | Próximo |
 |---|---|
-| [Troubleshooting](troubleshooting.md)<br/><sub>Common errors and solutions.</sub> | [PT-BR Kit](../README.md)<br/><sub>Main hub.</sub> |
+| [Solução de problemas](troubleshooting.md)<br/><sub>Erros comuns e soluções.</sub> | [Kit em PT-BR](../README.md)<br/><sub>Hub principal.</sub> |
 
-<sub>[Back to the kit index](../README.md)</sub>
+<sub>[Voltar ao índice do kit](../README.md)</sub>

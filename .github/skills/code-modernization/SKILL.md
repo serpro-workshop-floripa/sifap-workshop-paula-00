@@ -1,87 +1,87 @@
 ---
 name: "code-modernization"
-description: "Use when modernizing a legacy system with a disciplined, behavior-preserving workflow. Triggers include \"modernize\", \"legacy code\", \"COBOL\", \"business-rule extraction\", and \"behavior-preserving rewrite\"."
+description: "Use ao modernizar um sistema legado com um fluxo disciplinado que preserve o comportamento. Acione para pedidos sobre modernização, código legado, COBOL, extração de regras de negócio, avaliação antes de reescrita e transformação com equivalência comportamental."
 ---
-# Code modernization
+# Modernização de código
 
-Use this skill to guide behavior-preserving modernization of legacy systems. The workflow is intentionally staged so the team understands the system before transforming it.
+Use esta skill para orientar a modernização de sistemas legados com preservação de comportamento. O fluxo é dividido em etapas para que a equipe compreenda o sistema antes de transformá-lo.
 
-## When to invoke
+## Quando invocar
 
-- "Plan the modernization of this legacy module."
-- "Assess this codebase before we rewrite anything."
-- "Extract the business rules hidden in this program."
-- "Transform this module while preserving its behavior."
+- "Planeje a modernização deste módulo legado."
+- "Avalie esta base de código antes de reescrever qualquer parte."
+- "Extraia as regras de negócio ocultas neste programa."
+- "Transforme este módulo preservando seu comportamento."
 
-## Workflow
+## Procedimento
 
-1. **Brief**: define what is being modernized, why now, constraints, non-goals, and success criteria.
-2. **Assess**: inventory languages, modules, integrations, build, test coverage, complexity, and risk.
-3. **Extract rules**: turn hidden procedural logic into business rule cards with source evidence.
-4. **Map**: map legacy modules to target domains, packages, services, and migration sequence.
-5. **Reimagine**: design the target API, data model, runtime, and operational model.
-6. **Transform**: rewrite module by module under `backend/` and `frontend/`, with tests that pin legacy behavior.
-7. **Harden**: review security, tests, error handling, observability, and deployment readiness.
+1. **Brief**: defina o que será modernizado, o motivo, as restrições, os itens fora do escopo e os critérios de sucesso.
+2. **Assess**: inventarie linguagens, módulos, integrações, build, cobertura de testes, complexidade e riscos.
+3. **Extract rules**: transforme a lógica procedural oculta em cartões de regras de negócio com evidências da fonte.
+4. **Map**: relacione módulos legados a domínios, pacotes, serviços e sequência de migração no destino.
+5. **Reimagine**: projete API, modelo de dados, runtime e modelo operacional de destino.
+6. **Transform**: reescreva um módulo por vez em `backend/` e `frontend/`, com testes que fixem o comportamento legado.
+7. **Harden**: revise segurança, testes, tratamento de erros, observabilidade e preparo para implantação.
 
-## GitHub Copilot primitives
+### Primitivos do GitHub Copilot
 
-| Need | Primitive |
-| --- | --- |
-| Deep legacy discovery | [`@archaeologist`](../../agents/archaeologist.agent.md) agent (Stage 1) |
-| Business-rule extraction | [`/extract-business-rules`](../../prompts/stage-archaeologist-extract-business-rules.prompt.md) prompt |
-| Target design and ADRs | [`@architect`](../../agents/architect.agent.md) agent (Stage 2) |
-| Module translation and tests | [`@builder`](../../agents/builder.agent.md) agent (Stage 3) |
-| Security and delivery hardening | [`@evolution`](../../agents/evolution.agent.md) agent, retained for post-challenge work; not used in the individual challenge |
-| Reading legacy code safely | [`natural-adabas`](../../instructions/natural-adabas.instructions.md) instructions |
+| Necessidade | Primitivo |
+|-------------|-----------|
+| Descoberta profunda do legado | Agent [`@archaeologist`](../../agents/archaeologist.agent.md), Etapa 1 |
+| Extração de regras de negócio | Prompt [`/extract-business-rules`](../../prompts/stage-archaeologist-extract-business-rules.prompt.md) |
+| Design de destino e ADRs | Agent [`@architect`](../../agents/architect.agent.md), Etapa 2 |
+| Tradução de módulos e testes | Agent [`@builder`](../../agents/builder.agent.md), Etapa 3 |
+| Reforço de segurança e entrega | Agent [`@evolution`](../../agents/evolution.agent.md), mantido para trabalho após o desafio e não usado no desafio individual |
+| Leitura segura do código legado | Instructions [`natural-adabas`](../../instructions/natural-adabas.instructions.md) |
 
-## Folder contract
+### Contrato de pastas
 
-- `01-archaeology/legacy-sifap/**`: legacy source evidence and behavior. Read-only.
-- `01-archaeology/**` and `.spec/<NNN>-<feature>/`: briefs, assessments, maps, rule catalogs, EARS specs, and reports.
-- `backend/**` and `frontend/**`: transformed or replacement implementation and tests.
+- `01-archaeology/legacy-sifap/**`: evidência da fonte legada e do comportamento. Somente leitura.
+- `01-archaeology/**` e `.spec/<NNN>-<feature>/`: briefs, avaliações, mapas, catálogos de regras, especificações EARS e relatórios.
+- `backend/**` e `frontend/**`: implementação transformada ou substituta e seus testes.
 
-## Rules
+### Regras
 
-- Do not transform code before assessment and business-rule extraction.
-- Cite source files for findings. If line numbers are unavailable, cite the file and explain why.
-- Distinguish observed behavior from inferred intent.
-- Prefer multiple focused artifacts over one oversized report.
-- Use characterization tests to preserve legacy behavior before intentional behavior changes.
-- Do not invent complexity, cost, runtime, or risk metrics. Use measured values or state assumptions.
+- Não transforme código antes da avaliação e da extração das regras de negócio.
+- Cite os arquivos-fonte de cada descoberta. Quando não houver números de linha, cite o arquivo e explique o motivo.
+- Diferencie comportamento observado de intenção inferida.
+- Prefira vários artefatos focados a um relatório extenso.
+- Use testes de caracterização para preservar o comportamento legado antes de alterações intencionais.
+- Não invente métricas de complexidade, custo, runtime ou risco. Use valores medidos ou identifique as suposições.
 
-## Validation
+### Validação
 
-- Run available inventory tools such as `scc`, `cloc`, or language-specific analyzers when present.
-- Run available test suites before and after transformation.
-- For transformed modules, provide evidence that tests compare or pin legacy behavior.
-- For hardening, report findings by severity with concrete remediation.
+- Execute ferramentas de inventário disponíveis, como `scc`, `cloc` ou analisadores da linguagem.
+- Execute as suítes de testes disponíveis antes e depois da transformação.
+- Nos módulos transformados, forneça evidências de testes que comparem ou fixem o comportamento legado.
+- Na etapa de reforço, informe descobertas por severidade e inclua correções concretas.
 
-## Output template
+## Modelo de saída
 
-Record each modernized module as an assessment note under `01-archaeology/`, linked to its target under `backend/` or `frontend/`:
+Registre cada módulo modernizado como uma nota de avaliação em `01-archaeology/`, vinculada ao destino em `backend/` ou `frontend/`:
 
 ```markdown
-## Modernization record - <legacy module>
+## Registro de modernização: <módulo legado>
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| Legacy source | 01-archaeology/legacy-sifap/natural-programs/<FILE>.NSN |
-| Target module | backend/src/main/java/<package>/ |
-| Stage reached | Brief / Assess / Extract / Map / Reimagine / Transform / Harden |
-| Behavior evidence | <characterization test path> |
-| Traces to | REQ-NNN |
+| Fonte legada | 01-archaeology/legacy-sifap/natural-programs/<FILE>.NSN |
+| Módulo de destino | backend/src/main/java/<package>/ |
+| Etapa alcançada | Brief / Assess / Extract / Map / Reimagine / Transform / Harden |
+| Evidência de comportamento | <path do teste de caracterização> |
+| Rastreia | REQ-NNN |
 
-### Observed behavior
-- <fact drawn from the legacy code, with path:line evidence>
+### Comportamento observado
+- <fato obtido no código legado, com evidência path:line>
 
-### Open questions
-- <mystery that needs human validation>
+### Perguntas em aberto
+- <dúvida que exige validação humana>
 ```
 
-## Quality gate
+## Gate de qualidade
 
-- [ ] Assessment and business-rule extraction completed before any transformation.
-- [ ] Every finding cites a legacy source file, with line numbers when available.
-- [ ] Observed behavior is separated from inferred intent.
-- [ ] Characterization tests pin legacy behavior before intentional changes.
-- [ ] No invented complexity, cost, runtime, or risk metrics - values are measured or flagged as assumptions.
+- [ ] A avaliação e a extração das regras de negócio ocorreram antes de qualquer transformação.
+- [ ] Cada descoberta cita um arquivo-fonte legado e, quando disponíveis, números de linha.
+- [ ] O comportamento observado está separado da intenção inferida.
+- [ ] Testes de caracterização fixam o comportamento legado antes de alterações intencionais.
+- [ ] Nenhuma métrica de complexidade, custo, runtime ou risco foi inventada. Os valores foram medidos ou marcados como suposições.

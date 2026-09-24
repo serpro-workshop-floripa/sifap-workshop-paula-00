@@ -1,24 +1,24 @@
-# Participant Runbook Template
+# Modelo de runbook do participante
 
-![Runbook Type](https://img.shields.io/badge/Type-Runbook-171717?style=flat-square)
-![Owner DevOps](https://img.shields.io/badge/Owner-DevOps-737373?style=flat-square)
+![Tipo: runbook](https://img.shields.io/badge/Type-Runbook-171717?style=flat-square)
+![Responsável: DevOps](https://img.shields.io/badge/Owner-DevOps-737373?style=flat-square)
 
-> **Path:** [Team Kit](../README.md) › [Docs](README.md) › **Runbook**
+> **Caminho:** [Kit da equipe](../README.md) › [Documentação](README.md) › **Runbook**
 
-**Template for documenting how to run, verify and diagnose the participants' own solution.**
-Fill it in with the participant's commands and evidence; it does not describe or grant access to instructor environments.
+**Modelo para documentar como executar, verificar e diagnosticar a solução do próprio participante.**
+Preencha-o com os comandos e as evidências do participante; ele não descreve nem concede acesso aos ambientes do instrutor.
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| **Target audience** | Participant, especially when covering DevOps responsibilities |
-| **Prerequisites** | Local setup completed according to [`00-SETUP.md`](../00-SETUP.md) |
-| **Expected outcome** | Working local environment, readable CI, and correct escalation |
+| **Público-alvo** | Participante, especialmente ao cobrir responsabilidades de DevOps |
+| **Pré-requisitos** | Setup local concluído conforme [`00-SETUP.md`](../00-SETUP.md) |
+| **Resultado esperado** | Ambiente local funcional, CI legível e escalonamento correto |
 
 ---
 
-## Initial checks (first use)
+## Verificações iniciais (primeiro uso)
 
-- [ ] **Verify prerequisites** — run each line and confirm that no errors occur:
+- [ ] **Verifique os pré-requisitos** — execute cada linha e confirme que não ocorrem erros:
 
 ```bash
 git --version
@@ -29,34 +29,34 @@ specify version
 ```
 
 > [!NOTE]
-> The kit does not include a ready-made prototype. When you create `backend/`, `frontend/`, and, if needed after the challenge, `infra/`, record the actual execution commands here.
+> O kit não inclui um protótipo pronto. Quando você criar `backend/`, `frontend/` e, se necessário após o desafio, `infra/`, registre aqui os comandos reais de execução.
 
-After creating the prototype, document:
+Depois de criar o protótipo, documente:
 
-| Service | URL / Command |
+| Serviço | URL / Comando |
 |---|---|
-| Backend health | — |
+| Health do backend | — |
 | Swagger UI | — |
-| Local frontend | — |
-| How to configure local authentication, without recording passwords | — |
+| Frontend local | — |
+| Como configurar a autenticação local, sem registrar senhas | — |
 
 ---
 
-## Daily routine
+## Rotina diária
 
-- [ ] **Check repository state:**
+- [ ] **Verifique o estado do repositório:**
 
 ```bash
 git status
 ```
 
-- [ ] **Run backend tests** (when `backend/` exists):
+- [ ] **Execute os testes do backend** (quando `backend/` existir):
 
 ```bash
 (cd backend && ./mvnw test)
 ```
 
-- [ ] **Run frontend tests** (when `frontend/` exists):
+- [ ] **Execute os testes do frontend** (quando `frontend/` existir):
 
 ```bash
 (cd frontend && pnpm test)
@@ -64,87 +64,87 @@ git status
 
 ---
 
-## Data migration operations (DBA owns, QA verifies)
+## Operações de migração de dados (responsabilidade do DBA, verificação do QA)
 
-Complete this table using your [data migration records](data-migration/)
-and [approved lifecycle](DATA-MIGRATION.md). These are unfilled participant
-instructions, not commands for administering the source environment.
+Preencha esta tabela usando seus [registros de migração de dados](data-migration/)
+e o [ciclo de vida aprovado](DATA-MIGRATION.md). Estas são instruções não
+preenchidas para o participante, não comandos para administrar o ambiente de origem.
 
-| Item | Participant-owned command or sanitized evidence reference |
+| Item | Comando sob responsabilidade do participante ou referência de evidência sanitizada |
 |---|---|
-| Authorized source version, measured population, and snapshot identifier | — |
-| Supported extraction and integrity verification | — |
-| Target schema version and staging/load execution | — |
-| Record accounting, rejects, and independent reconciliation | — |
-| Complete beneficiary listing/search/detail checks | — |
-| Same-snapshot rerun/resume without duplicates | — |
-| Target recovery without changing the source | — |
-| Restricted evidence retention and cleanup | — |
-| DBA owner, QA reviewer, and PO acceptance or blockers | — |
+| Versão da fonte autorizada, população medida e identificador do snapshot | — |
+| Extração compatível e verificação de integridade | — |
+| Versão do schema de destino e execução de staging/carga | — |
+| Contabilização de registros, rejeições e reconciliação independente | — |
+| Verificações completas de listagem/pesquisa/detalhes de beneficiários | — |
+| Nova execução/retomada do mesmo snapshot sem duplicidades | — |
+| Recuperação do destino sem alterar a origem | — |
+| Retenção e limpeza de evidências restritas | — |
+| DBA responsável, revisor de QA e aceitação ou bloqueios do PO | — |
 
-Do not commit source records, personal data, secrets, or access addresses.
-Unresolved data differences block acceptance; test seeds and passing builds do
-not substitute for the migrated population.
+Não faça commit de registros de origem, dados pessoais, secrets nem endereços de
+acesso. Diferenças de dados não resolvidas bloqueiam a aceitação; seeds de teste
+e builds aprovados não substituem a população migrada.
 
 ---
 
-## CI — Understand the workflows
+## CI — Entenda os workflows
 
-Use the actual workflow definitions as the source of truth for triggers and
-commands. Application jobs are path-filtered; a green docs-only run does not
-prove that a backend, frontend, or migration was tested.
+Use as definições reais dos workflows como fonte de verdade para gatilhos e
+comandos. Os jobs da aplicação são filtrados por path; uma execução verde apenas
+de documentação não comprova que backend, frontend ou migração foram testados.
 
-| Workflow file | What it verifies | When it runs |
+| Arquivo de workflow | O que verifica | Quando executa |
 |---|---|---|
-| [`ci.yml`](../.github/workflows/ci.yml) | Natural-format guard; conditional backend `./mvnw -B verify`, pnpm frontend checks, Terraform validation | Configured branch pushes and PRs; application jobs depend on changed paths |
-| [`spec-quality.yml`](../.github/workflows/spec-quality.yml) | Markdown/primitive validation, blocking source-reference gate, non-blocking test-reference report | Configured branch pushes and path-filtered PRs |
+| [`ci.yml`](../.github/workflows/ci.yml) | Proteção de formato Natural; `./mvnw -B verify` condicional no backend, verificações pnpm no frontend e validação Terraform | Pushes e PRs nas branches configuradas; jobs da aplicação dependem dos paths alterados |
+| [`spec-quality.yml`](../.github/workflows/spec-quality.yml) | Validação de Markdown/primitivos, gate bloqueante de referência à fonte e relatório não bloqueante de referência a testes | Pushes nas branches configuradas e PRs filtrados por path |
 
-- [ ] **When CI fails** — open the Actions tab on GitHub, select the failed run, and read the log.
-- [ ] **Fix locally** — reproduce the error with the commands for the prototype you created before pushing again.
+- [ ] **Quando a CI falhar** — abra a aba Actions no GitHub, selecione a execução com falha e leia o log.
+- [ ] **Corrija localmente** — reproduza o erro com os comandos do protótipo criado antes de fazer novo push.
 
 ---
 
-## Participant-created infrastructure — post-challenge Stage 4
+## Infraestrutura criada pelo participante — Etapa 4 pós-desafio
 
 > [!NOTE]
-> Not used in the individual challenge (14:00-17:40). The challenge ends at Stage 3 and judge validation. See [ADR-0003](../docs/adr/0003-individual-challenge-format.md).
+> Não é usada no desafio individual (14:00-17:40). O desafio termina na Etapa 3 e na validação do juiz. Consulte a [ADR-0003](../docs/adr/0003-individual-challenge-format.md).
 
-The kit does not include provisioned resources, state files or a configured subscription. If post-challenge scope includes infrastructure, follow the [Stage 4 guide](../04-evolution/GUIDE.md) and document only what you create.
+O kit não inclui recursos provisionados, arquivos de state nem uma assinatura configurada. Se o escopo pós-desafio incluir infraestrutura, siga o [guia da Etapa 4](../04-evolution/GUIDE.md) e documente apenas o que você criar.
 
-- [ ] Record the modules and configuration files that actually exist.
-- [ ] Record validation commands and the plan review outcome.
-- [ ] Record planning permissions and limits; do not deploy or provision during this workshop.
-- [ ] Describe authentication without committing secrets, tokens or state files.
-- [ ] If nothing was deployed, state that limitation instead of presenting an environment as ready.
+- [ ] Registre os módulos e arquivos de configuração que realmente existem.
+- [ ] Registre os comandos de validação e o resultado da revisão do plano.
+- [ ] Registre permissões e limites de planejamento; não faça deployment nem provisionamento durante este workshop.
+- [ ] Descreva a autenticação sem fazer commit de secrets, tokens ou arquivos de state.
+- [ ] Se nada foi implantado, declare essa limitação em vez de apresentar um ambiente como pronto.
 
 ---
 
-## Common problems
+## Problemas comuns
 
-| Symptom | Likely cause | Fix | How to confirm |
+| Sintoma | Causa provável | Correção | Como confirmar |
 |---|---|---|---|
-| Local environment hangs | A required port may be in use | Identify the process owner and approved port configuration; do not stop another participant's process | The selected service starts without a port error |
-| `mvn verify` fails in Testcontainers | Docker is not running | Start Docker Desktop | Tests pass on the next run |
-| `pnpm test` fails on snapshots | An intentional behavior change or a regression | Compare with the approved requirement; update only reviewed expectations, never bulk-accept to force green | Tests and review confirm the intended behavior |
-| Infrastructure plan is rejected | Configuration does not meet the authorized limits or policies | Read the diagnostic and review the plan before deploying | The reviewed plan passes validation |
-| GitHub Actions cannot access Azure | Authentication does not match the repository, branch or environment | Check the authorized OIDC configuration and ask the access owner for help | The workflow authenticates without committed secrets |
+| O ambiente local trava | Uma porta necessária pode estar em uso | Identifique o responsável pelo processo e a configuração de porta aprovada; não pare o processo de outro participante | O serviço selecionado inicia sem erro de porta |
+| `mvn verify` falha no Testcontainers | O Docker não está em execução | Inicie o Docker Desktop | Os testes passam na próxima execução |
+| `pnpm test` falha nos snapshots | Uma mudança intencional de comportamento ou uma regressão | Compare com o requisito aprovado; atualize apenas expectativas revisadas, nunca aceite em massa para forçar o verde | Os testes e a revisão confirmam o comportamento pretendido |
+| O plano de infraestrutura é rejeitado | A configuração não atende aos limites ou políticas autorizados | Leia o diagnóstico e revise o plano antes do deployment | O plano revisado passa na validação |
+| O GitHub Actions não consegue acessar o Azure | A autenticação não corresponde ao repositório, branch ou ambiente | Verifique a configuração OIDC autorizada e peça ajuda ao responsável pelo acesso | O workflow autentica sem secrets em commits |
 
 ---
 
-## When to escalate to the facilitator
+## Quando escalar para o facilitador
 
-- [ ] Build has failed for more than 20 minutes without a solution.
-- [ ] Azure subscription appears to be suspended.
-- [ ] Any irreversible action was run by mistake, such as `terraform destroy`.
+- [ ] O build falhou por mais de 20 minutos sem solução.
+- [ ] A assinatura do Azure parece estar suspensa.
+- [ ] Alguma ação irreversível foi executada por engano, como `terraform destroy`.
 
-Use the three-line escalation format in [the 20-minute rule](../00-TEAM-FLOW.md#6-the-20-minute-rule).
+Use o formato de escalonamento em três linhas da [regra dos 20 minutos](../00-TEAM-FLOW.md#6-a-regra-dos-20-minutos).
 
 ---
 
-### Continue reading
+### Continue lendo
 
-| Previous | Next |
+| Anterior | Próximo |
 |---|---|
-| [FAQ](FAQ.md)<br/><sub>Frequently asked questions.</sub> | [Troubleshooting](troubleshooting.md)<br/><sub>Common errors and solutions.</sub> |
+| [FAQ](FAQ.md)<br/><sub>Perguntas frequentes.</sub> | [Solução de problemas](troubleshooting.md)<br/><sub>Erros comuns e soluções.</sub> |
 
-<sub>[Back to the kit index](README.md)</sub>
+<sub>[Voltar ao índice do kit](README.md)</sub>

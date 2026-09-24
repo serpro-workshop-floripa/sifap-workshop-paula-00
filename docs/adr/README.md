@@ -1,62 +1,62 @@
-# Architecture Decision Records (ADRs)
+# Registros de decisões arquiteturais (ADRs)
 
-> **Path:** [Individual challenge kit](../../README.md) › [Docs](../README.md) › **ADRs**
+> **Caminho:** [Kit do desafio individual](../../README.md) › [Documentação](../README.md) › **ADRs**
 
-Index of architecture decision records — one decision per file, numbered sequentially.
+Índice dos registros de decisões arquiteturais — uma decisão por arquivo, numerada sequencialmente.
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| **Target audience** | Individual participant, especially when acting as architect or technical lead |
-| **When to create** | For every decision that is difficult to revisit later (more than one hour to reverse) |
-| **Expected outcome** | Auditable history of decisions made under time pressure |
+| **Público-alvo** | Participante individual, especialmente ao atuar como arquiteto ou Technical Lead |
+| **Quando criar** | Para toda decisão difícil de revisitar depois (mais de uma hora para reverter) |
+| **Resultado esperado** | Histórico auditável das decisões tomadas sob pressão de tempo |
 
 ---
 
-## Why write ADRs
+## Por que escrever ADRs
 
-An ADR preserves the context and trade-offs of a decision for later review. Its value depends on evidence and clarity; this kit does not claim a measured writing-time or rework-saving ratio.
+Uma ADR preserva o contexto e as compensações de uma decisão para revisão posterior. Seu valor depende de evidências e clareza; este kit não alega uma proporção medida de tempo de escrita ou redução de retrabalho.
 
-## When to write an ADR
+## Quando escrever uma ADR
 
-Write one when:
+Escreva uma quando:
 
-- A decision will be difficult to revisit later (more than one hour to reverse).
-- Reasonable maintainers could choose different options.
-- A decision affects more than one bounded context, data migration path, or deployment concern.
+- Uma decisão for difícil de revisitar depois (mais de uma hora para reverter).
+- Mantenedores razoáveis puderem escolher opções diferentes.
+- Uma decisão afetar mais de um contexto delimitado, caminho de migração de dados ou questão de implantação.
 
-Do not write an ADR for variable names, formatting configuration, or minor library versions.
+Não escreva uma ADR para nomes de variáveis, configuração de formatação ou versões menores de bibliotecas.
 
 ---
 
-## Index
+## Índice
 
-| ADR | Title | Status | Date |
+| ADR | Título | Status | Data |
 |---|---|---|---|
-| 0000 | [Template](0000-template.md) | template | 2026-04-29 |
-| 0001 | [Agent instructions single source of truth](0001-agent-instructions-single-source-of-truth.md) | accepted | 2026-08-17 |
-| 0002 | [Team roles as skills, not agents](0002-team-roles-as-skills-not-agents.md) | accepted | 2026-09-15 |
-| 0003 | [Individual challenge format](0003-individual-challenge-format.md) | accepted | 2026-09-24 |
+| 0000 | [Modelo](0000-template.md) | template | 2026-04-29 |
+| 0001 | [Fonte única de verdade das instruções dos agentes](0001-agent-instructions-single-source-of-truth.md) | accepted | 2026-08-17 |
+| 0002 | [Papéis da equipe como skills, não agentes](0002-team-roles-as-skills-not-agents.md) | accepted | 2026-09-15 |
+| 0003 | [Formato de desafio individual](0003-individual-challenge-format.md) | accepted | 2026-09-24 |
 
 > [!NOTE]
-> Add new ADRs to this table as they are created, first with status `proposed` and then `accepted` after accountable review.
-> ADRs 0001-0003 govern maintenance of the kit and challenge format. They are not completed SIFAP exercise decisions or approval of a participant's architecture.
+> Adicione novas ADRs a esta tabela à medida que forem criadas, primeiro com status `proposed` e depois `accepted` após uma revisão responsável.
+> As ADRs 0001-0003 regem a manutenção do kit e o formato do desafio. Elas não são decisões preenchidas do exercício SIFAP nem aprovação da arquitetura de um participante.
 
 ---
 
-## How to add an ADR
+## Como adicionar uma ADR
 
-- [ ] **Open an issue** using the [ADR issue template](../../.github/ISSUE_TEMPLATE/adr.yml), if time allows.
-- [ ] **Copy the template** — `0000-template.md` → `NNNN-your-title.md` (next sequential number).
-- [ ] **Complete every section** — context, decision, alternatives, consequences, and status.
-- [ ] **Link it from the relevant spec, plan, task, or PR.**
-- [ ] **Record the actual review state** in this index. A proposed ADR may remain a draft; acceptance needs accountable review.
+- [ ] **Abra uma issue** usando o [modelo de issue de ADR](../../.github/ISSUE_TEMPLATE/adr.yml), se houver tempo.
+- [ ] **Copie o modelo** — `0000-template.md` → `NNNN-your-title.md` (próximo número sequencial).
+- [ ] **Preencha todas as seções** — contexto, decisão, alternativas, consequências e status.
+- [ ] **Vincule-a à especificação, ao plano, à tarefa ou ao PR pertinente.**
+- [ ] **Registre o estado real da revisão** neste índice. Uma ADR proposta pode permanecer como rascunho; a aceitação exige revisão responsável.
 
 ---
 
-### Continue reading
+### Continue lendo
 
-| Previous | Next |
+| Anterior | Próximo |
 |---|---|
-| [Cross-cutting Documentation](../README.md)<br/><sub>Glossary, data migration, STATUS, and runbook.</sub> | [Stage 2 — Modern Specification](../../02-modern-spec/GUIDE.md)<br/><sub>Write EARS, ADRs, and design artifacts.</sub> |
+| [Documentação transversal](../README.md)<br/><sub>Glossário, migração de dados, STATUS e runbook.</sub> | [Etapa 2 — Especificação moderna](../../02-modern-spec/GUIDE.md)<br/><sub>Escreva EARS, ADRs e artefatos de design.</sub> |
 
-<sub>[Back to the kit index](../../README.md)</sub>
+<sub>[Voltar ao índice do kit](../../README.md)</sub>

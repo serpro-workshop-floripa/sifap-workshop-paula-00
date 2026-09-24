@@ -54,8 +54,9 @@ Dois arquivos:
 1. Entity JPA no package de persistência aprovado do módulo backend proprietário.
 2. Migration Flyway em `backend/src/main/resources/db/migration/`.
 
-Essas saídas criam o schema, não os registros migrados. Siga
-/migration phase=implement e a reconciliação de QA
+Essas saídas criam o schema, não os registros migrados. Selecione `@dba` e
+solicite a execução das tarefas de carga aprovadas e a reconciliação de QA,
+conforme o [ciclo de vida dos dados](../../docs/DATA-MIGRATION.md),
 para a população source-to-target e a consulta completa de beneficiários.
 
 ## Definição de pronto
@@ -90,20 +91,22 @@ desse campo e registre o bloqueio; não crie uma coluna presumida com um FIXME.
 **Passo 2 — Mapeie os tipos.**
 Aplique estas regras de mapeamento:
 
-| Adabas | Java | JPA | Notes |
+| Adabas | Java | JPA | Observações |
 |--------|------|-----|-------|
 | A(n) | `String` | `@Column(length = n)` | |
-| Numeric quantity | Reviewed integer type | `@Column` | Identifiers may require strings to preserve leading zeros |
-| Numeric decimal | `BigDecimal` | Reviewed precision and scale | Verify integer and fractional digits |
-| Packed decimal | `BigDecimal` | Reviewed precision and scale | Physical byte length is not numeric precision |
-| D | `LocalDate` | `@Column` | Ask the team for the source format |
+| Quantidade numérica | Tipo inteiro revisado | `@Column` | Identificadores podem exigir strings para preservar zeros à esquerda |
+| Decimal numérico | `BigDecimal` | Precisão e escala revisadas | Verifique os dígitos inteiros e fracionários |
+| Packed decimal | `BigDecimal` | Precisão e escala revisadas | O tamanho físico em bytes não é a precisão numérica |
+| D | `LocalDate` | `@Column` | Pergunte à equipe qual é o formato da fonte |
 | T | `LocalDateTime` | `@Column` | |
-| B(n) | `byte[]` | `@Lob` | Rare |
-| MU field | Reviewed collection type | Related table by default | JSONB only with a reviewed exception |
-| PE group | `List<EmbeddedEntity>` | `@OneToMany` | Separate entity class |
+| B(n) | `byte[]` | `@Lob` | Raro |
+| Campo MU | Tipo de coleção revisado | Tabela relacionada por padrão | JSONB somente com uma exceção revisada |
+| Grupo PE | `List<EmbeddedEntity>` | `@OneToMany` | Classe de entity separada |
 
 Implemente a escolha da Etapa 2. Se ainda houver alternativas não decididas,
-retorne a `/migration phase=plan` em vez de tomar uma decisão de arquitetura implícita.
+retorne ao planejamento com `@dba` e `@architect`, usando o
+[template de migração](../../docs/data-migration/migration-plan.template.md),
+em vez de tomar uma decisão de arquitetura implícita.
 
 **Passo 3 — Trate os grupos PE.**
 Para cada grupo PE, crie uma classe `@Entity` separada com:

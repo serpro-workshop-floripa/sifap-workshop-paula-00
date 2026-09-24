@@ -62,7 +62,16 @@ Esta habilidade ajuda a escolher a técnica de teste do Spring Boot adequada par
 - [references/context-caching.md](references/context-caching.md): aceleração das suítes de teste
 - [references/sb4-migration.md](references/sb4-migration.md): alterações do Spring Boot 4.0
 
-## Árvore de decisão rápida
+## Procedimento
+
+1. Identifique a unidade sob teste e o comportamento que precisa ser comprovado.
+2. Escolha a fatia mais restrita que carregue somente as dependências necessárias.
+3. Use JUnit 5 e Mockito sem contexto Spring para lógica de negócio isolada.
+4. Use Testcontainers com PostgreSQL 16 nos testes de persistência e de integração completa.
+5. No Spring Boot 3.3, use MockMvc clássico e `@MockBean`; não adote APIs 3.4+/4.0.
+6. Escreva asserções AssertJ focadas no comportamento e execute `./mvnw test`.
+
+### Árvore de decisão rápida
 
 ```
 Testando um ponto de acesso de controlador?

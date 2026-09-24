@@ -1,102 +1,119 @@
-# ADR-0002: Team roles are skills; only stages and the data lifecycle are agents
+# ADR-0002: Papéis da equipe são skills; apenas etapas e o ciclo de vida dos dados são agentes
 
-> **Path:** [Team Kit](../../README.md) › [Docs](../README.md) › [ADRs](README.md) › **ADR-0002**
+> **Caminho:** [Kit da equipe](../../README.md) › [Documentação](../README.md) › [ADRs](README.md) › **ADR-0002**
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
 | **Status** | accepted |
-| **Date** | 2026-09-15 |
-| **Authors** | Kit maintainers |
-| **Supersedes** | N/A |
+| **Data** | 2026-09-15 |
+| **Autores** | Mantenedores do kit |
+| **Substitui** | N/A |
 
 ---
 
-## Context
+## Contexto
 
-The kit shipped **17 agents**: 4 stage agents, 10 persona agents, and 3 depth
-specialists. Two of those groups were doing different jobs under one primitive.
+O kit fornecia **17 agentes**: quatro agentes de etapa, 10 agentes de persona e
+três especialistas de aprofundamento. Dois desses grupos realizavam trabalhos
+diferentes sob o mesmo primitivo.
 
-A **stage** is a phase the whole team enters and leaves together. It has a start,
-a definition of done, and a handoff to the next stage. Selecting it deliberately
-is the point — the selection *is* the ritual.
+Uma **etapa** é uma fase na qual toda a equipe entra e da qual sai em conjunto.
+Ela tem início, definição de pronto e handoff para a etapa seguinte. A seleção
+deliberada é o objetivo: a seleção *é* o ritual.
 
-A **role** is a responsibility one person carries through every stage. The
-Product Owner does not stop being the Product Owner when Stage 3 begins. Yet the
-persona-agent design required that person to re-select `@product-owner` in every
-conversation, and to re-select the stage agent afterwards to get stage context
-back. The two layers competed for a single selector instead of composing.
+Um **papel** é uma responsabilidade que uma pessoa mantém em todas as etapas. O
+Product Owner não deixa de ser Product Owner quando a Etapa 3 começa. Porém, o
+design de agentes de persona exigia selecionar novamente `@product-owner` em
+cada conversa e depois selecionar outra vez o agente de etapa para recuperar o
+contexto. As duas camadas disputavam um único seletor em vez de se comporem.
 
-Three concrete costs followed:
+Isso gerou três custos concretos:
 
-1. **Selector load.** Seventeen entries for a five-person, eight-hour workshop.
-2. **Teaching load.** Three separate documents existed to explain why two layers
-   are "not duplicates" — a reliable sign that the abstraction, not the
-   documentation, was wrong.
-3. **Dead weight.** The three specialist agents owned **zero** prompts. They were
-   pure knowledge already, wearing an agent's frontmatter.
+1. **Carga do seletor.** Dezessete entradas para um workshop de cinco pessoas e
+   oito horas.
+2. **Carga de ensino.** Três documentos separados explicavam por que duas camadas
+   “não eram duplicadas”, um sinal confiável de que a abstração estava errada,
+   não a documentação.
+3. **Peso morto.** Os três agentes especialistas não tinham **nenhum** prompt.
+   Eles já eram conhecimento puro revestido pelo frontmatter de um agente.
 
-Skills solve the role half directly: they load from their `description` through
-semantic matching, so the knowledge arrives without a selection step and composes
-with whatever agent is active.
+As skills resolvem diretamente a parte dos papéis: elas são carregadas a partir
+da `description` por correspondência semântica. Assim, o conhecimento chega sem
+uma etapa de seleção e se combina com qualquer agente ativo.
 
-One role does not fit the rule. The **DBA** owns the data lifecycle, which the
-persona matrix marks as `Data lead` in **all four** stages, and which owns
-tool-scoped prompts (`persona-dba-migration`, `persona-dba-query-audit`,
-`postgresql-code-review`, `postgresql-optimization`). It is cross-stage by
-definition, so it cannot be folded into a stage agent, and its prompts need a
-binding target that only an agent provides.
+Um papel não se enquadra na regra. O **DBA** é responsável pelo ciclo de vida dos
+dados, marcado como `Data lead` na matriz de personas em **todas as quatro**
+etapas, e possui prompts com escopo de ferramenta (`persona-dba-migration`,
+`persona-dba-query-audit`, `postgresql-code-review`,
+`postgresql-optimization`). Por definição, ele atua entre etapas, portanto não
+pode ser incorporado a um agente de etapa. Seus prompts precisam de um destino
+de vinculação que somente um agente fornece.
 
-## Decision
+## Decisão
 
-Keep **five agents**: the four stage agents (`archaeologist`, `architect`,
-`builder`, `evolution`) plus `dba`.
+Manter **cinco agentes**: os quatro agentes de etapa (`archaeologist`,
+`architect`, `builder`, `evolution`) e o `dba`.
 
-Convert the nine remaining persona agents and the three specialists to skills
-under `.github/skills/`. Rebind each orphaned prompt to the stage agent that owns
-the moment when that prompt is used, and open each rebound prompt's body by
-loading the role skill that carries its boundary, procedure, and quality gate.
+Converter os nove agentes de persona restantes e os três especialistas em skills
+em `.github/skills/`. Vincular cada prompt órfão ao agente de etapa responsável
+pelo momento em que o prompt é usado. Iniciar o corpo de cada prompt revinculado
+carregando a skill do papel que contém seus limites, procedimento e gate de
+qualidade.
 
-The governing rule for future primitives: **a new phase is an agent; a new role
-is a skill.**
+A regra para futuros primitivos é: **uma nova fase é um agente; um novo papel é
+uma skill.**
 
-## Alternatives considered
+## Alternativas consideradas
 
-| Alternative | Why it was rejected |
+| Alternativa | Por que foi rejeitada |
 |---|---|
-| Keep all 17 agents | Preserves every cost above and keeps two primitives competing for one selector. |
-| Hide personas with `user-invocable: false` | Cheap and reversible, and it does declutter the selector — but the knowledge still fails to compose into the active agent, which is the actual defect. Useful as a trial, not as the destination. |
-| Convert the DBA too, and drop its agent | The data lifecycle spans all four stages and owns four tool-scoped prompts. Folding it into one stage agent would misrepresent when the work happens. |
-| Merge persona prompts into the stage agents' bodies | Destroys the slash commands, which are the part participants actually use. |
+| Manter todos os 17 agentes | Preserva todos os custos anteriores e mantém dois primitivos disputando um seletor. |
+| Ocultar personas com `user-invocable: false` | É uma opção econômica e reversível que reduz a poluição do seletor. Porém, o conhecimento ainda não se combina com o agente ativo, que é o defeito real. É útil como experimento, não como destino. |
+| Converter também o DBA e remover seu agente | O ciclo de vida dos dados abrange todas as quatro etapas e possui quatro prompts com escopo de ferramenta. Incorporá-lo a um agente de etapa representaria incorretamente quando o trabalho acontece. |
+| Mesclar os prompts das personas ao corpo dos agentes de etapa | Elimina os comandos slash, que são a parte realmente usada pelas pessoas participantes. |
 
-## Consequences
+## Consequências
 
-- **Easier:** five entries in the selector; role knowledge arrives without being requested; the two-layer model needs one table instead of three documents; twelve fewer primitives to keep in sync.
-- **Harder:** a participant who wants a role's full context on demand must name it (`persona-qa-engineer`) rather than `@`-mention it. Skill matching is semantic, so a `description` that drifts silently degrades loading — descriptions now carry more weight and are reviewed accordingly.
-- **Risks:** 37 prompts changed their `agent:` binding in one commit. A partial application would fail the `copilot-primitives` gate, which is the intended safety net.
-- **Mitigations:** the gate validates `prompt -> agent` integrity and skill `name`-to-directory equality on every PR; [`.github/agents/README.md`](../../.github/agents/README.md) carries the former-agent-to-skill mapping so a stale reference is traceable.
+- **Mais fácil:** há cinco entradas no seletor; o conhecimento do papel chega sem
+  solicitação; o modelo de duas camadas precisa de uma tabela em vez de três
+  documentos; há 12 primitivos a menos para manter sincronizados.
+- **Mais difícil:** uma pessoa participante que queira o contexto completo de um
+  papel sob demanda precisa nomeá-lo (`persona-qa-engineer`) em vez de mencioná-lo
+  com `@`. A correspondência de skills é semântica, portanto uma `description`
+  divergente degrada silenciosamente o carregamento. As descrições passam a ter
+  mais peso e são revisadas de acordo.
+- **Riscos:** 37 prompts mudaram sua vinculação `agent:` em um único commit. Uma
+  aplicação parcial falharia no gate `copilot-primitives`, que é a proteção
+  esperada.
+- **Mitigações:** o gate valida a integridade de `prompt -> agent` e a igualdade
+  entre o `name` da skill e o diretório em cada PR. O arquivo
+  [`.github/agents/README.md`](../../.github/agents/README.md) contém o mapeamento
+  de agente anterior para skill, permitindo rastrear uma referência desatualizada.
 
+## Observação de 2026-09-24
 
-## 2026-09-24 note
+A [ADR-0003](0003-individual-challenge-format.md) muda o workshop para o formato
+de desafio individual. Esta decisão continua válida: uma pessoa participante
+alterna os agentes de etapa durante o desafio, enquanto todas as skills de papel
+permanecem disponíveis e são carregadas conforme o trabalho exige.
 
-[ADR-0003](0003-individual-challenge-format.md) moves the workshop to an individual challenge format. This decision still holds: one participant switches stage agents across the challenge while all role skills remain available and load as the work requires them.
-
-## Related
+## Relacionados
 
 - REQ-IDs: N/A
 - ADRs: [ADR-0001](0001-agent-instructions-single-source-of-truth.md)
-- Instruction files: [`.github/PRIMITIVE-STANDARD.md`](../../.github/PRIMITIVE-STANDARD.md), [`.github/instructions/agent-skills.instructions.md`](../../.github/instructions/agent-skills.instructions.md)
+- Arquivos relacionados: [`.github/PRIMITIVE-STANDARD.md`](../../.github/PRIMITIVE-STANDARD.md), [`.github/skills/README.md`](../../.github/skills/README.md)
 
-## References
+## Referências
 
-- GitHub Docs — About customizing GitHub Copilot responses: <https://docs.github.com/en/copilot/concepts/response-customization>
-- GitHub Docs — Support for different types of custom instructions: <https://docs.github.com/en/copilot/reference/custom-instructions-support>
+- GitHub Docs — Sobre a personalização das respostas do GitHub Copilot: <https://docs.github.com/en/copilot/concepts/response-customization>
+- GitHub Docs — Compatibilidade com diferentes tipos de instruções personalizadas: <https://docs.github.com/en/copilot/reference/custom-instructions-support>
 
 ---
 
-### Continue reading
+### Continue lendo
 
-| Previous | Next |
+| Anterior | Próximo |
 |---|---|
-| [ADR-0001](0001-agent-instructions-single-source-of-truth.md)<br/><sub>Single source of truth for agent instructions.</sub> | [ADRs — Index](README.md)<br/><sub>Index of recorded decisions.</sub> |
+| [ADR-0001](0001-agent-instructions-single-source-of-truth.md)<br/><sub>Fonte única de verdade para instruções de agentes.</sub> | [ADRs — Índice](README.md)<br/><sub>Índice das decisões registradas.</sub> |
 
-<sub>[Back to the kit index](../../README.md)</sub>
+<sub>[Voltar ao índice do kit](../../README.md)</sub>

@@ -1,57 +1,57 @@
 ---
 name: "write-ears-spec"
-description: "Writes the requirements stage of an architect SDD package — FRD.md, NFRD.md, and SPECIFICATION.md — from confirmed Stage 1 rules, with EARS statements and source_legacy traceability."
+description: "Escreve a etapa de requisitos de um pacote SDD do architect — FRD.md, NFRD.md e SPECIFICATION.md — a partir de regras confirmadas da Etapa 1, com declarações EARS e rastreabilidade source_legacy."
 argument-hint: "feature=NNN-feature-name rules=01-archaeology/business-rules-catalog.md"
 agent: "architect"
 tools: ["read", "search", "edit", "execute"]
 ---
 # /write-ears-spec
 
-## Objective
+## Objetivo
 
-Create or update the requirements stage of the architect package in `.spec/<NNN>-<feature>/`: `FRD.md`, `NFRD.md`, and `SPECIFICATION.md`, complete to their templates, holding only confirmed Stage 1 rules as EARS requirements. Open questions stay questions.
+Crie ou atualize a etapa de requisitos do pacote do architect em `.spec/<NNN>-<feature>/`: `FRD.md`, `NFRD.md` e `SPECIFICATION.md`, completos conforme seus modelos e contendo somente regras confirmadas da Etapa 1 como requisitos EARS. Perguntas em aberto permanecem perguntas.
 
-## When to Invoke
+## Quando invocar
 
-At the start of Stage 2, after C1, on the `spec/<NNN>-<feature>` branch, when the participant chose Option A (architect workflow). For Option B use `/speckit.specify` instead.
+No início da Etapa 2, após o C1, na branch `spec/<NNN>-<feature>`, quando o participante escolher a Opção A (fluxo do architect). Para a Opção B, use `/speckit.specify`.
 
 > [!NOTE]
-> This prompt does not explore the legacy system (use `/catalog-mysteries`) or design modules (use `/design-modular-monolith`).
+> Este prompt não explora o sistema legado (use `/catalog-mysteries`) nem projeta módulos (use `/design-modular-monolith`).
 
-## Preconditions
+## Pré-condições
 
-- `01-archaeology/business-rules-catalog.md` holds the confirmed rules for the feature
-- The team read each legacy source before drafting
-- The [SDD skill](../skills/sdd-requirements-engineer/SKILL.md), its [EARS reference](../skills/sdd-requirements-engineer/references/ears-notation.md), and the [SDD artifacts instruction](../instructions/sdd-artifacts.instructions.md) are loaded
+- `01-archaeology/business-rules-catalog.md` contém as regras confirmadas da funcionalidade
+- A equipe leu cada fonte legada antes de elaborar o rascunho
+- A [skill de SDD](../skills/sdd-requirements-engineer/SKILL.md), sua [referência EARS](../skills/sdd-requirements-engineer/references/ears-notation.md) e a [instrução de artefatos SDD](../instructions/sdd-artifacts.instructions.md) estão carregadas
 
-## Inputs the Team Must Provide
+## Inputs que a equipe deve fornecer
 
-- `feature=<NNN>-<feature-name>` — the next free zero-padded number under `.spec/`
-- `rules=01-archaeology/business-rules-catalog.md` — only its **Confirmed** rows may be promoted
-- The subset of confirmed rules in scope, and any `[GREENFIELD]` justification the team stands behind
-- DBA-reviewed data readiness and the PO-approved beneficiary consultation scope
+- `feature=<NNN>-<feature-name>` — o próximo número livre preenchido com zeros em `.spec/`
+- `rules=01-archaeology/business-rules-catalog.md` — somente suas linhas **Confirmed** podem ser promovidas
+- O subconjunto de regras confirmadas no escopo e qualquer justificativa `[GREENFIELD]` assumida pela equipe
+- Prontidão dos dados revisada pelo DBA e escopo de consulta de beneficiários aprovado pelo PO
 
-## What I Will Do
+## O que farei
 
-- Scaffold the package with `python3 .github/scripts/export-spec-library.py --new-package <NNN>-<feature>` when it does not exist
-- Record the workflow choice and deferrals in `02-modern-spec/scope-decisions.md`
-- Verify each cited legacy line range before writing a requirement
-- Write each requirement once in `SPECIFICATION.md` in the template record shape, with the next `REQ-NNN` or `NFR-NNN`
-- Fill every section of `FRD.md` and `NFRD.md`, citing requirement IDs without restating them
-- Copy every unvalidated item from `01-archaeology/mysteries-found.md` into the open-questions table unchanged
-- Run the requirements-stage gates; derived files follow once the checkpoints exist
+- Criarei o scaffold do pacote com `python3 .github/scripts/export-spec-library.py --new-package <NNN>-<feature>` quando ele não existir
+- Registrarei a escolha do fluxo e os adiamentos em `02-modern-spec/scope-decisions.md`
+- Verificarei cada intervalo de linhas legado citado antes de escrever um requisito
+- Escreverei cada requisito uma vez em `SPECIFICATION.md`, no formato de registro do modelo, com o próximo `REQ-NNN` ou `NFR-NNN`
+- Preencherei todas as seções de `FRD.md` e `NFRD.md`, citando IDs de requisitos sem repeti-los
+- Copiarei sem alterações cada item não validado de `01-archaeology/mysteries-found.md` para a tabela de perguntas em aberto
+- Executarei os gates da etapa de requisitos; os arquivos derivados virão quando os checkpoints existirem
 
-## What I Will NOT Do
+## O que NÃO farei
 
-- Create a requirement without a valid `source_legacy:` or justified `[GREENFIELD]`
-- Promote a hypothesis or open question, answer it, or change its status
-- Write `spec.md`, `plan.md`, or `tasks.md` in an architect package, or any file outside `.spec/`
-- Leave a template section empty or a placeholder unfilled; I write `NOT APPLICABLE: <reason>` instead
-- Invent SIFAP business facts, targets, or approvals
+- Criar um requisito sem `source_legacy:` válido ou `[GREENFIELD]` justificado
+- Promover uma hipótese ou pergunta em aberto, respondê-la ou alterar seu status
+- Escrever `spec.md`, `plan.md` ou `tasks.md` em um pacote do architect, ou qualquer arquivo fora de `.spec/`
+- Deixar uma seção do modelo vazia ou um placeholder sem preencher; escreverei `NOT APPLICABLE: <reason>`
+- Inventar fatos de negócio, metas ou aprovações do SIFAP
 
-## Output Format
+## Formato de saída
 
-Each record in `.spec/<NNN>-<feature>/SPECIFICATION.md` (values are illustrative):
+Cada registro em `.spec/<NNN>-<feature>/SPECIFICATION.md` (os valores são ilustrativos):
 
 ```markdown
 - **REQ-001:** If <unwanted condition from the confirmed rule>, then the <system> shall <one observable response>.
@@ -63,55 +63,55 @@ Each record in `.spec/<NNN>-<feature>/SPECIFICATION.md` (values are illustrative
   - Verification: TST-001
 ```
 
-`FRD.md` and `NFRD.md` follow the [FRD](../skills/sdd-requirements-engineer/references/frd-template.md) and [NFRD](../skills/sdd-requirements-engineer/references/nfrd-template.md) templates.
+`FRD.md` e `NFRD.md` seguem os modelos [FRD](../skills/sdd-requirements-engineer/references/frd-template.md) e [NFRD](../skills/sdd-requirements-engineer/references/nfrd-template.md).
 
-## Definition of Done
+## Definição de pronto
 
-- [ ] `FRD.md`, `NFRD.md`, and `SPECIFICATION.md` exist in `.spec/<NNN>-<feature>/`
-- [ ] Every requirement has one EARS statement with `shall`, a CI-valid `source_legacy:`, and an `AC-<ID>-NN`
-- [ ] Every section has content or `NOT APPLICABLE: <reason>`; open questions are unchanged in status
-- [ ] `python3 .github/scripts/validate-specs.py --package <NNN> --only validate-sdd-documents --only validate-spec-artifacts` passes, or its failures are reported
-- [ ] DBA/QA and PO reviewed migration and consultation criteria
+- [ ] `FRD.md`, `NFRD.md` e `SPECIFICATION.md` existem em `.spec/<NNN>-<feature>/`
+- [ ] Todo requisito tem uma declaração EARS com `shall`, um `source_legacy:` válido na CI e um `AC-<ID>-NN`
+- [ ] Toda seção tem conteúdo ou `NOT APPLICABLE: <reason>`; perguntas em aberto permanecem com o status inalterado
+- [ ] `python3 .github/scripts/validate-specs.py --package <NNN> --only validate-sdd-documents --only validate-spec-artifacts` passa, ou suas falhas são relatadas
+- [ ] DBA/QA e PO revisaram os critérios de migração e consulta
 
-## Prompt Body
+## Corpo do prompt
 
-You are the `@architect`. Promote confirmed Stage 1 rules into the requirements stage of an architect package. You transcribe evidence into requirements; you never invent it. Load [sdd-requirements-engineer](../skills/sdd-requirements-engineer/SKILL.md) in `Requirements` mode first.
+Você é o `@architect`. Promova regras confirmadas da Etapa 1 para a etapa de requisitos de um pacote do architect. Você transcreve evidências em requisitos; nunca as inventa. Primeiro, carregue [sdd-requirements-engineer](../skills/sdd-requirements-engineer/SKILL.md) no modo `Requirements`.
 
-**Step 1 — Confirm the workflow and scope.**
+**Etapa 1 — Confirme o fluxo e o escopo.**
 
-- Confirm the team chose Option A; otherwise stop and point to `/speckit.specify`.
-- List only **Confirmed** catalog rows assigned to the feature; record deferrals in `02-modern-spec/scope-decisions.md`.
+- Confirme que a equipe escolheu a Opção A; caso contrário, pare e indique `/speckit.specify`.
+- Liste somente linhas **Confirmed** do catálogo atribuídas à funcionalidade; registre adiamentos em `02-modern-spec/scope-decisions.md`.
 
-**Step 2 — Scaffold the package.**
+**Etapa 2 — Crie o scaffold do pacote.**
 
-- Run `python3 .github/scripts/export-spec-library.py --new-package <NNN>-<feature>` if `.spec/<NNN>-<feature>/` does not exist. It never overwrites a file.
+- Execute `python3 .github/scripts/export-spec-library.py --new-package <NNN>-<feature>` se `.spec/<NNN>-<feature>/` não existir. Ele nunca sobrescreve um arquivo.
 
-**Step 3 — Validate each source.**
+**Etapa 3 — Valide cada fonte.**
 
-- Open the cited member (`.NSP`, `.NSN`, `.NSC`, `.NSA`, `.NSL`, `.jcl`, or `.ddm`) and confirm the line range holds the logic. An unresolved citation returns to the team as an open question.
+- Abra o membro citado (`.NSP`, `.NSN`, `.NSC`, `.NSA`, `.NSL`, `.jcl` ou `.ddm`) e confirme que o intervalo de linhas contém a lógica. Uma citação não resolvida retorna à equipe como pergunta em aberto.
 
-**Step 4 — Write the EARS records.**
+**Etapa 4 — Escreva os registros EARS.**
 
-- One record per behavior with the matching EARS pattern and exactly one `shall`.
-- Put `source_legacy:` on the line after the statement, indented and not bulleted; register the source as `SRC-NNN` in the source register.
-- Give every acceptance criterion an `AC-<ID>-NN` ID in Given/When/Then form.
+- Um registro por comportamento com o padrão EARS correspondente e exatamente um `shall`.
+- Coloque `source_legacy:` na linha após a declaração, indentado e sem marcador; registre a fonte como `SRC-NNN` no registro de fontes.
+- Dê a cada critério de aceitação um ID `AC-<ID>-NN` no formato Dado/Quando/Então.
 
-**Step 5 — Complete FRD.md and NFRD.md.**
+**Etapa 5 — Conclua FRD.md e NFRD.md.**
 
-- Fill every section; cite requirement IDs in tables or mid-sentence; state `NOT APPLICABLE: <reason>` where a section does not apply.
+- Preencha todas as seções; cite IDs de requisitos em tabelas ou no meio de frases; declare `NOT APPLICABLE: <reason>` quando uma seção não se aplicar.
 
-**Step 6 — Carry open questions through.**
+**Etapa 6 — Leve adiante as perguntas em aberto.**
 
-- Copy every unvalidated item from `01-archaeology/mysteries-found.md` into the open-questions table with its evidence, owner, and status unchanged.
+- Copie cada item não validado de `01-archaeology/mysteries-found.md` para a tabela de perguntas em aberto, mantendo evidência, responsável e status inalterados.
 
-**Step 7 — Validate.**
+**Etapa 7 — Valide.**
 
-- Run `python3 .github/scripts/validate-specs.py --package <NNN> --stage requirements` and report its result verbatim.
+- Execute `python3 .github/scripts/validate-specs.py --package <NNN> --stage requirements` e relate o resultado literalmente.
 
-## Invocation Example
+## Exemplo de invocação
 
 ```text
 /write-ears-spec feature=001-benefit-calculation rules=01-archaeology/business-rules-catalog.md
 ```
 
-Expect `.spec/001-benefit-calculation/` with complete `FRD.md`, `NFRD.md`, and `SPECIFICATION.md`, each requirement sourced and accepted, and open questions carried through unchanged.
+Espere `.spec/001-benefit-calculation/` com `FRD.md`, `NFRD.md` e `SPECIFICATION.md` completos, cada requisito com fonte e aceitação, e perguntas em aberto levadas adiante sem alterações.

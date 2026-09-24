@@ -1,44 +1,44 @@
 ---
 name: "validate-spec"
-description: "Regenerates derived SDD files and runs every SDD, EARS, and TDD gate on a package under .spec/, for either the architect or the Spec-Kit workflow, and reports the results without hiding failures."
+description: "Gera novamente arquivos SDD derivados, executa todos os gates de SDD, EARS e TDD em um pacote em .spec/, para o fluxo do architect ou do Spec-Kit, e relata os resultados sem ocultar falhas."
 argument-hint: "feature=NNN-feature-name"
 agent: "architect"
 tools: ["read", "search", "edit", "execute"]
 ---
 # /validate-spec
 
-## Objective
+## Objetivo
 
-Report whether `.spec/<NNN>-<feature>/` is ready for C2 by running the repository's SDD gates and listing every failure with its owner and fix.
+Relate se `.spec/<NNN>-<feature>/` está pronto para o C2 executando os gates de SDD do repositório e listando cada falha com seu responsável e correção.
 
-## When to Invoke
+## Quando invocar
 
-After any change to a package, before opening a PR, and at C2, for either workflow.
+Depois de qualquer alteração em um pacote, antes de abrir um PR e no C2, para qualquer um dos fluxos.
 
-## Preconditions
+## Pré-condições
 
-- The package exists under `.spec/`
-- Python 3 and PyYAML are available (`python3 -m pip install pyyaml`)
+- O pacote existe em `.spec/`
+- Python 3 e PyYAML estão disponíveis (`python3 -m pip install pyyaml`)
 
-## Inputs the Team Must Provide
+## Inputs que a equipe deve fornecer
 
 - `feature=<NNN>-<feature-name>`
-- Whether warnings count as failures (`--strict`) for this review
+- Se warnings contam como falhas (`--strict`) nesta revisão
 
-## What I Will Do
+## O que farei
 
-- Detect the workflow from `SPECIFICATION.md` or `spec.md`
-- For an architect package, run `generate-sdd-support-artifacts.py --package <NNN> --include-supplements` and then its `--check`
-- Run `python3 .github/scripts/validate-specs.py --package <NNN>`, plus `audit-task-evidence.py` and `validate-test-bindings.py --report`
-- Group findings by gate and propose the smallest fix for each
+- Detectarei o fluxo por `SPECIFICATION.md` ou `spec.md`
+- Para um pacote do architect, executarei `generate-sdd-support-artifacts.py --package <NNN> --include-supplements` e depois seu `--check`
+- Executarei `python3 .github/scripts/validate-specs.py --package <NNN>`, além de `audit-task-evidence.py` e `validate-test-bindings.py --report`
+- Agruparei os achados por gate e proporei a menor correção para cada um
 
-## What I Will NOT Do
+## O que NÃO farei
 
-- Weaken a gate, add an exception, or edit a generated file to get a green result
-- Claim semantic EARS correctness, approval, or runtime behavior from a text gate
-- Fix a finding by inventing evidence
+- Enfraquecer um gate, adicionar uma exceção ou editar um arquivo gerado para obter um resultado verde
+- Afirmar correção semântica de EARS, aprovação ou comportamento em runtime a partir de um gate textual
+- Corrigir um achado inventando evidências
 
-## Output Format
+## Formato de saída
 
 ```markdown
 ## Validation — <NNN>-<feature> (<workflow>, <stage>)
@@ -50,36 +50,36 @@ After any change to a package, before opening a PR, and at C2, for either workfl
 Blocking for C2: <list or none>
 ```
 
-## Definition of Done
+## Definição de pronto
 
-- [ ] Every gate ran and its verbatim result is reported
-- [ ] Each failure has an owner and a proposed fix
-- [ ] Nothing was changed except regenerated derived files
+- [ ] Todos os gates foram executados e seus resultados literais foram relatados
+- [ ] Cada falha tem um responsável e uma correção proposta
+- [ ] Nada foi alterado, exceto arquivos derivados gerados novamente
 
-## Prompt Body
+## Corpo do prompt
 
-You are the `@architect`. Measure the package against the gates and report exactly what they say.
+Você é o `@architect`. Avalie o pacote em relação aos gates e relate exatamente o que eles dizem.
 
-**Step 1 — Identify the package.**
+**Etapa 1 — Identifique o pacote.**
 
-- Resolve `.spec/<NNN>-<feature>/`, its workflow, and its stage.
+- Resolva `.spec/<NNN>-<feature>/`, seu fluxo e sua etapa.
 
-**Step 2 — Regenerate derived files.**
+**Etapa 2 — Gere novamente os arquivos derivados.**
 
-- Architect packages only: run the generator, then its `--check`.
+- Somente para pacotes do architect: execute o gerador e depois seu `--check`.
 
-**Step 3 — Run the gates.**
+**Etapa 3 — Execute os gates.**
 
-- Run `validate-specs.py --package <NNN>` and the evidence and binding reports.
+- Execute `validate-specs.py --package <NNN>` e os relatórios de evidências e vínculos.
 
-**Step 4 — Report.**
+**Etapa 4 — Relate.**
 
-- Fill the output table; mark C2 blocked while any error remains.
+- Preencha a tabela de saída; marque o C2 como bloqueado enquanto restar qualquer erro.
 
-## Invocation Example
+## Exemplo de invocação
 
 ```text
 /validate-spec feature=001-benefit-calculation
 ```
 
-Expect a gate table for `.spec/001-benefit-calculation/` with every failure and its fix.
+Espere uma tabela de gates para `.spec/001-benefit-calculation/` com cada falha e sua correção.

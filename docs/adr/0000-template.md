@@ -1,86 +1,86 @@
-# ADR-NNNN: Short, Decisive Title
+# ADR-NNNN: Título curto e decisivo
 
-> **Path:** [Team Kit](../../README.md) › [Docs](../README.md) › [ADRs](README.md) › **Template**
+> **Caminho:** [Kit da equipe](../../README.md) › [Documentação](../README.md) › [ADRs](README.md) › **Modelo**
 
 > [!NOTE]
-> This is the ADR template. Copy this file to `NNNN-your-title.md`, replacing `NNNN` with the next sequential number, such as `0007`. Replace each instruction block with the actual decision content.
+> Este é o modelo de ADR. Copie este arquivo para `NNNN-your-title.md`, substituindo `NNNN` pelo próximo número sequencial, como `0007`. Substitua cada bloco de instruções pelo conteúdo real da decisão.
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
 | **Status** | proposed \| accepted \| deprecated \| superseded |
-| **Date** | YYYY-MM-DD |
-| **Authors** | Persona — Name |
-| **Supersedes** | ADR-NNNN \| N/A |
+| **Data** | YYYY-MM-DD |
+| **Autores** | Persona — Nome |
+| **Substitui** | ADR-NNNN \| N/A |
 
 ---
 
-## Context
+## Contexto
 
 > [!NOTE]
-> Describe the problem motivating this decision. Reference the business objective, legacy constraint, or stakeholder need. Be specific. Cite REQ-IDs or programs in `01-archaeology/legacy-sifap/` when relevant.
+> Descreva o problema que motiva esta decisão. Faça referência ao objetivo de negócio, à restrição do legado ou à necessidade da parte interessada. Seja específico. Cite REQ-IDs ou programas em `01-archaeology/legacy-sifap/` quando pertinente.
 
-_Complete this section._
+_Preencha esta seção._
 
 ---
 
-## Decision
+## Decisão
 
 > [!NOTE]
-> State the proposed change in active voice. Use one or two paragraphs. Examples: "We will adopt …", "We will not migrate …".
+> Declare a mudança proposta na voz ativa. Use um ou dois parágrafos. Exemplos: “Adotaremos …”, “Não migraremos …”.
 
-_Complete this section._
+_Preencha esta seção._
 
 ---
 
-## Alternatives considered
+## Alternativas consideradas
 
 > [!NOTE]
-> List at least two alternatives. Explain why each was rejected.
+> Liste pelo menos duas alternativas. Explique por que cada uma foi rejeitada.
 
-| Alternative | Why it was rejected |
+| Alternativa | Por que foi rejeitada |
 |---|---|
-| Option A | — |
-| Option B | — |
+| Opção A | — |
+| Opção B | — |
 
 ---
 
-## Consequences
+## Consequências
 
 > [!NOTE]
-> What becomes easier? What becomes harder? Are there new risks?
+> O que fica mais fácil? O que fica mais difícil? Há novos riscos?
 
-- **Easier:** —
-- **Harder:** —
-- **Risks:** —
-- **Mitigations:** —
+- **Mais fácil:** —
+- **Mais difícil:** —
+- **Riscos:** —
+- **Mitigações:** —
 
 ---
 
-## Related
+## Relacionados
 
 - REQ-IDs: —
 - ADRs: —
-- Legacy source files: —
+- Arquivos-fonte legados: —
 
 ---
 
-## References
+## Referências
 
 > [!NOTE]
-> Cite documents, RFCs, or research that informed the decision.
+> Cite documentos, RFCs ou pesquisas que embasaram a decisão.
 
 ---
 
 > [!IMPORTANT]
-> Leave decision content and approval status unfilled until the team has reviewed
-> the evidence. This kit does not supply completed exercise ADRs.
+> Deixe o conteúdo da decisão e o status de aprovação em branco até que a equipe
+> tenha revisado as evidências. Este kit não fornece ADRs de exercício preenchidos.
 
 ---
 
-### Continue reading
+### Continue lendo
 
-| Previous | Next |
+| Anterior | Próximo |
 |---|---|
-| [ADRs — Index](README.md)<br/><sub>Index of recorded decisions.</sub> | [Modern Specification](../../02-modern-spec/GUIDE.md)<br/><sub>Where ADRs are produced.</sub> |
+| [ADRs — Índice](README.md)<br/><sub>Índice das decisões registradas.</sub> | [Especificação moderna](../../02-modern-spec/GUIDE.md)<br/><sub>Onde os ADRs são produzidos.</sub> |
 
-<sub>[Back to the kit index](../../README.md)</sub>
+<sub>[Voltar ao índice do kit](../../README.md)</sub>

@@ -1,48 +1,48 @@
 ---
 name: "carve-bounded-contexts"
-description: "Evaluates the Stage 1 boundary hypotheses and decides bounded contexts for the Modular Monolith."
+description: "Avalia as hipóteses de limites da Etapa 1 e decide os contextos delimitados do Monólito Modular."
 argument-hint: "report=01-archaeology/discovery-report.md"
 agent: "architect"
 tools: ["read", "search", "edit"]
 ---
 # /carve-bounded-contexts
 
-## Objective
+## Objetivo
 
-Transform the boundary hypotheses from the Stage 1 discovery report into evaluated and decided bounded contexts. Each context receives a name, responsibilities, owned data, and inter-context communication rules.
+Transforme as hipóteses de limites do relatório de descoberta da Etapa 1 em contextos delimitados avaliados e decididos. Cada contexto recebe nome, responsabilidades, dados sob sua responsabilidade e regras de comunicação entre contextos.
 
-## When to Invoke
+## Quando invocar
 
-At the beginning of Stage 2, immediately after reviewing the Stage 1 discovery report.
+No início da Etapa 2, imediatamente após revisar o relatório de descoberta da Etapa 1.
 
-## Preconditions
+## Pré-condições
 
-- `01-archaeology/discovery-report.md` contains the team's actual boundary evidence or a scoped design question, without a required hypothesis count
-- The team reviewed the discovery report and is ready to make architectural decisions
+- `01-archaeology/discovery-report.md` contém as evidências reais de limites da equipe ou uma questão de projeto delimitada, sem contagem obrigatória de hipóteses
+- A equipe revisou o relatório de descoberta e está pronta para tomar decisões arquiteturais
 
-## Inputs the Team Must Provide
+## Inputs que a equipe deve fornecer
 
-- Path to the discovery report
-- Any additional team constraints or preferences
+- Path do relatório de descoberta
+- Quaisquer restrições ou preferências adicionais da equipe
 
-## What I Will Do
+## O que farei
 
-- Read the boundary hypotheses from the discovery report
-- Evaluate each hypothesis against three criteria: cohesion, coupling, and frequency of change
-- Present the analysis for each hypothesis to the team
-- Document rejections with rationale
-- Formalize accepted contexts with names, responsibilities, and data ownership
+- Lerei as hipóteses de limites no relatório de descoberta
+- Avaliarei cada hipótese segundo três critérios: coesão, acoplamento e frequência de mudança
+- Apresentarei à equipe a análise de cada hipótese
+- Documentarei rejeições com justificativa
+- Formalizarei os contextos aceitos com nomes, responsabilidades e propriedade dos dados
 
-## What I Will NOT Do
+## O que NÃO farei
 
-- Automatically decide which hypotheses to accept — the team makes the final decision
-- Propose microservices — this is a Modular Monolith
-- Fabricate business context for the hypotheses — I work only with what Stage 1 discovered
-- Skip the evaluation criteria — every hypothesis receives the complete analysis
+- Decidir automaticamente quais hipóteses aceitar — a equipe toma a decisão final
+- Propor microsserviços — este é um Monólito Modular
+- Fabricar contexto de negócio para as hipóteses — trabalho somente com o que a Etapa 1 descobriu
+- Pular os critérios de avaliação — toda hipótese recebe a análise completa
 
-## Output Format
+## Formato de saída
 
-A Markdown file at `02-modern-spec/bounded-contexts.md`:
+Um arquivo Markdown em `02-modern-spec/bounded-contexts.md`:
 
 ```markdown
 # Bounded Context Map
@@ -59,73 +59,75 @@ A Markdown file at `02-modern-spec/bounded-contexts.md`:
 ## Context Map Mermaid Diagram
 ```
 
-## Definition of Done
+## Definição de pronto
 
-- [ ] Every discovery-report hypothesis is evaluated against the three criteria
-- [ ] Rejected hypotheses have documented rationale
-- [ ] Only the bounded contexts needed by the selected slice are defined and reviewed
-- [ ] Each context has a responsibility paragraph, owned-data list, and public-interface outline
-- [ ] A Mermaid context-map diagram shows relationships between contexts
-- [ ] Communication paths are defined only where evidence and requirements need them; no artificial coupling is added
+- [ ] Toda hipótese do relatório de descoberta foi avaliada segundo os três critérios
+- [ ] Hipóteses rejeitadas têm justificativa documentada
+- [ ] Somente os contextos delimitados necessários ao recorte selecionado estão definidos e revisados
+- [ ] Cada contexto tem um parágrafo de responsabilidade, lista de dados sob sua responsabilidade e esboço da interface pública
+- [ ] Um diagrama Mermaid do mapa de contextos mostra as relações entre contextos
+- [ ] Caminhos de comunicação são definidos somente onde evidências e requisitos os exigem; nenhum acoplamento artificial é adicionado
 
-## Prompt Body
+## Corpo do prompt
 
-You are the `@architect`. The team is starting Stage 2 and needs to decide bounded contexts for the Modular Monolith.
+Você é o `@architect`. A equipe está iniciando a Etapa 2 e precisa decidir os contextos delimitados do Monólito Modular.
 
-**Step 1 — Read the discovery report.**
-Open `01-archaeology/discovery-report.md`. Extract the boundary-hypothesis section. List each hypothesis with its name, included programs, owned DDMs, and rationale.
+**Etapa 1 — Leia o relatório de descoberta.**
+Abra `01-archaeology/discovery-report.md`. Extraia a seção de hipóteses de limites. Liste cada hipótese com nome, programas incluídos, DDMs sob sua responsabilidade e justificativa.
 
-**Step 2 — Evaluate against three criteria.**
-For each hypothesis, analyze:
+**Etapa 2 — Avalie segundo três critérios.**
+Para cada hipótese, analise:
 
-**Cohesion** — Do the business rules in this group relate to the same business capability? Check by reviewing the confirmed rules in `01-archaeology/business-rules-catalog.md` that belong to this group. High cohesion = strong candidate.
+**Coesão** — As regras de negócio deste grupo estão relacionadas à mesma capacidade de negócio? Verifique revisando as regras confirmadas em `01-archaeology/business-rules-catalog.md` que pertencem a este grupo. Alta coesão = candidato forte.
 
-**Coupling** — How many dependencies cross this boundary? Check the dependency map in `01-archaeology/dependency-map.md`. Count edges that would cross between this context and others. Low coupling = strong candidate. High coupling suggests the boundary may be misplaced.
+**Acoplamento** — Quantas dependências atravessam este limite? Verifique o mapa de dependências em `01-archaeology/dependency-map.md`. Conte as arestas que cruzariam este contexto e outros. Baixo acoplamento = candidato forte. Alto acoplamento sugere que o limite pode estar mal posicionado.
 
-**Frequency of change** - Use dated change records or actual version history when
-available. A file name or call edge does not prove co-change frequency; mark
-this criterion unknown when the historical evidence is insufficient.
+**Frequência de mudança** — Use registros datados de alterações ou o histórico
+real de versões quando disponíveis. Um nome de arquivo ou aresta de chamada não
+comprova frequência de mudança conjunta; marque este critério como desconhecido
+quando as evidências históricas forem insuficientes.
 
-Present each evaluation as a scorecard: High/Medium/Low for each criterion.
+Apresente cada avaliação como um scorecard: Alto/Médio/Baixo para cada critério.
 
-**Step 3 — Present to the team for a decision.**
-For each hypothesis, present:
+**Etapa 3 — Apresente à equipe para decisão.**
+Para cada hipótese, apresente:
 
-- The scorecard
-- A recommendation (accept, reject, or merge with another hypothesis)
-- The rationale
+- O scorecard
+- Uma recomendação (aceitar, rejeitar ou mesclar com outra hipótese)
+- A justificativa
 
-Then ask the team: "Do you accept this recommendation? If not, what would you change?"
+Então pergunte à equipe: "Vocês aceitam esta recomendação? Caso contrário, o que mudariam?"
 
-The team makes the final decision. If the team overrides your recommendation, document its rationale.
+A equipe toma a decisão final. Se ela substituir sua recomendação, documente a justificativa.
 
-**Step 4 — Formalize accepted contexts.**
-For each accepted bounded context, write:
+**Etapa 4 — Formalize os contextos aceitos.**
+Para cada contexto delimitado aceito, escreva:
 
-- **Name**: A team-confirmed business-language name, not a technical service name
-- **Responsibility**: One paragraph describing what this context owns
-- **Owned data**: Which DDMs/tables belong exclusively to this context
-- **Public interface**: Which operations this context exposes to other contexts (method signatures or event names — not implementation)
-- **Why it's its own context**: One sentence connecting it to the evaluation criteria
+- **Nome**: um nome na linguagem de negócio confirmado pela equipe, não um nome técnico de serviço
+- **Responsabilidade**: um parágrafo descrevendo pelo que este contexto responde
+- **Dados sob responsabilidade**: quais DDMs/tabelas pertencem exclusivamente a este contexto
+- **Interface pública**: quais operações este contexto expõe a outros contextos (assinaturas de métodos ou nomes de eventos — não implementação)
+- **Por que é um contexto próprio**: uma frase conectando-o aos critérios de avaliação
 
-**Step 5 — Define inter-context communication.**
-For each two contexts that needs to communicate, specify:
+**Etapa 5 — Defina a comunicação entre contextos.**
+Para cada par de contextos que precisa se comunicar, especifique:
 
-- The direction (A calls B, or bidirectional)
-- The mechanism: in-process method call through an interface, domain event, or shared-kernel type
-- The exchanged data (IDs only? Complete DTOs? Events?)
+- A direção (A chama B ou bidirecional)
+- O mecanismo: chamada de método em processo por uma interface, evento de domínio ou tipo do kernel compartilhado
+- Os dados trocados (somente IDs? DTOs completos? Eventos?)
 
-Reinforce that this is a Modular Monolith. Communication is in-process, not HTTP between services.
+Reforce que este é um Monólito Modular. A comunicação é em processo, não HTTP entre serviços.
 
-**Step 6 — Draw the context map.**
-Create a diagram only when it clarifies the design question. Use the
-[kit's neutral theme](../../docs/DOC-STYLE-GUIDE.md), with source-backed ownership
-and communication relationships, never a prefilled SIFAP architecture.
+**Etapa 6 — Desenhe o mapa de contextos.**
+Crie um diagrama somente quando ele esclarecer a questão de projeto. Use o
+[tema neutro do kit](../../docs/DOC-STYLE-GUIDE.md), com responsabilidades e
+relações de comunicação respaldadas pela fonte, nunca uma arquitetura SIFAP
+preenchida previamente.
 
-**Step 7 — Write the output.**
-Write to `02-modern-spec/bounded-contexts.md`.
+**Etapa 7 — Escreva a saída.**
+Escreva em `02-modern-spec/bounded-contexts.md`.
 
-## Invocation Example
+## Exemplo de invocação
 
 ```
 /carve-bounded-contexts report=01-archaeology/discovery-report.md

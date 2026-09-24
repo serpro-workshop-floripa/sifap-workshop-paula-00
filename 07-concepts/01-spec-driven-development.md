@@ -18,17 +18,17 @@
 
 ## Conceito
 
-Spec-Driven Development é uma abordagem em que o time produz uma especificação formal — com requisitos, plano de arquitetura e tarefas — antes de escrever qualquer código. Com isso, cinco pessoas trabalhando em paralelo constroem partes compatíveis do mesmo sistema em vez de cinco versões divergentes.
+Spec-Driven Development é uma abordagem em que um participante produz uma especificação formal — com requisitos, plano de arquitetura e tarefas — antes de escrever qualquer código. Com isso, a implementação segue uma compreensão única e rastreável do sistema, em vez de uma suposição baseada na memória.
 
-O **Spec-Kit** (repositório oficial: [github/spec-kit](https://github.com/github/spec-kit)) é a implementação prática de SDD para times que usam o GitHub Copilot. Ele fornece uma sequência de comandos no GitHub Copilot que conduz o time de uma ideia vaga até tarefas concretas com responsáveis e rastreabilidade.
+O **Spec-Kit** (repositório oficial: [github/spec-kit](https://github.com/github/spec-kit)) é a implementação prática de SDD para pessoas que usam o GitHub Copilot. Ele fornece uma sequência de comandos no GitHub Copilot que conduz um participante de uma ideia vaga até tarefas concretas com responsáveis e rastreabilidade.
 
 ---
 
 ## Por que isso importa nesta imersão
 
-Na imersão do SIFAP, cinco pessoas têm algumas horas para modernizar um sistema de 29 anos. Sem uma especificação compartilhada, cada pessoa implementa a sua interpretação do legado — o que resulta em código incompatível, regras duplicadas ou funcionalidade faltando.
+Cada participante tem das 14:00 às 17:40 para modernizar o incremento fixo de consulta de beneficiários do SIFAP a partir de aproximadamente 30 anos de histórico das fontes. Uma especificação ajuda a evitar interpretações incompatíveis, regras duplicadas e comportamentos ausentes; ela não substitui a revisão das fontes, a reconciliação de dados nem a validação do juiz.
 
-O Spec-Kit resolve esse problema ao impor o ciclo:
+O Spec-Kit oficial dá suporte ao ciclo a seguir; os checkpoints de autoavaliação, o CI e a validação do juiz fornecem os gates aplicáveis:
 
 > especificar o comportamento esperado → planejar a arquitetura → distribuir tarefas → implementar
 
@@ -67,51 +67,39 @@ flowchart TD
 | `/speckit.specify` | Requisitos EARS com REQ-IDs e `source_legacy:` | No início do Estágio 2, para cada funcionalidade confirmada |
 | `/speckit.clarify` | Perguntas sobre comportamentos sem evidência no legado | Depois de `specify`, antes de planejar |
 | `/speckit.plan` | Módulos, contratos de API, modelo de dados e riscos | Depois de responder a todas as perguntas do `clarify` |
-| `/speckit.tasks` | Tarefas com estimativas, responsáveis e dependências | Depois que o time aprova o plano |
+| `/speckit.tasks` | Tarefas com estimativas, responsáveis e dependências | Depois que o C2 confirmar que o plano está pronto |
 | `/speckit.analyze` | Relatório de consistência: lacunas, conflitos e cobertura | Antes da implementação — obrigatório |
 | `/speckit.implement` | Código, testes e migrações com REQ-IDs rastreáveis | Só depois que o `analyze` não reportar lacunas críticas |
 
 ---
 
-## Exemplo no SIFAP
+## Aplique o fluxo às suas evidências
 
-Suponha que o Estágio 1 tenha revelado que `CALCDSCT.NSP` calcula o valor líquido do benefício descontando as contribuições. O fluxo do Estágio 2 seria:
+Selecione um comportamento que os participantes realmente revisaram no Estágio 1. Leia primeiro a constituição e os artefatos de descoberta. Depois, use estes comandos no **GitHub Copilot**, não em um terminal:
 
-```bash
-# 1. Verifique os princípios do sistema
-cat .specify/memory/constitution.md
+```text
+/speckit.specify <comportamento revisado e população autorizada>
+Use os intervalos reais das fontes que você leu e inclua source_legacy.
 
-# 2. Especifique a funcionalidade
-/speckit.specify calcular o valor líquido do benefício conforme CALCDSCT.NSP.
-Inclua source_legacy em todos os requisitos.
-
-# 3. Resolva as perguntas em aberto
 /speckit.clarify
-# Exemplo de pergunta gerada: "Quando uma contribuição está em atraso, o desconto
-# é calculado sobre o valor bruto ou sobre o valor após os demais descontos?"
-# → Responda consultando o código legado ou o PO antes de continuar.
+Preserve evidências ausentes como bloqueios. Não invente intenção histórica.
 
-# 4. Planeje a arquitetura
 /speckit.plan
-# Use a stack da imersão: Java 21 + Spring Boot 3.3 + PostgreSQL 16.
+Use a stack fixa da imersão e as restrições de migração revisadas pelo DBA.
 
-# 5. Distribua as tarefas
 /speckit.tasks
-
-# 6. Verifique a consistência
 /speckit.analyze
-
-# 7. Implemente
+Depois do checkpoint de autoavaliação C2, implemente a próxima tarefa aprovada com testes primeiro:
 /speckit.implement
 ```
 
-Todo REQ-ID gerado por `/speckit.specify` precisa conter uma linha `source_legacy:` apontando para o trecho exato do `.NSN`. Sem ela, o job de CI `legacy-traceability` rejeita o PR.
+Todo novo `REQ-NNN` precisa conter uma linha `source_legacy:` sem marcador nas 20 linhas seguintes, usando um caminho de fonte compatível ou `[GREENFIELD]` justificado. Uma verificação de sintaxe aprovada não prova que a fonte sustenta o comportamento.
 
 ---
 
 ## Caso de uso
 
-Use o Spec-Kit sempre que o time iniciar uma nova funcionalidade no Estágio 2. Mesmo quando a funcionalidade parece simples, rodar o ciclo completo evita o principal risco da imersão: **modernizar o que o time acha que o sistema faz em vez do que ele realmente faz**.
+Use o Spec-Kit sempre que iniciar a especificação do Estágio 2. Mesmo quando uma funcionalidade parece simples, rodar o ciclo completo evita o principal risco da imersão: **modernizar o que você acha que o sistema faz em vez do que ele realmente faz**.
 
 ---
 
@@ -119,7 +107,7 @@ Use o Spec-Kit sempre que o time iniciar uma nova funcionalidade no Estágio 2. 
 
 | Sintoma | Causa | Correção |
 |---|---|---|
-| Código escrito antes do `plan` | O time pulou os passos iniciais | Volte ao `specify`. Código sem spec garante retrabalho. |
+| Código escrito antes do `plan` | Os passos iniciais foram pulados | Volte ao `specify`. Código sem spec garante retrabalho. |
 | `source_legacy:` ausente em um REQ-ID | Requisito escrito de memória, sem evidência no legado | Abra o `.NSN` correspondente e localize o trecho exato. |
 | Doze perguntas vindas do `clarify` | Normal — não é problema | Responda a todas. Toda pergunta sem resposta vira um bug. |
 | `analyze` reporta lacunas | Plano incompleto ou inconsistente | Não avance para o `implement`. Corrija o plano e rode de novo. |
@@ -132,7 +120,7 @@ Use o Spec-Kit sempre que o time iniciar uma nova funcionalidade no Estágio 2. 
 - [ ] **Leia o `constitution.md` primeiro.** Confirme a stack, os padrões e as restrições do projeto.
 - [ ] **Rode `/speckit.specify` com base em evidência do legado.** Nunca confie na memória.
 - [ ] **Responda a todas as perguntas do `/speckit.clarify`.** Registre as decisões.
-- [ ] **Faça o time aprovar o plano antes do `/speckit.tasks`.** O plano é um artefato compartilhado.
+- [ ] **Conclua o checkpoint de autoavaliação C2 antes do `/speckit.tasks`.** O plano precisa estar pronto para implementação e validação do juiz.
 - [ ] **Rode `/speckit.analyze` e corrija as lacunas antes de implementar.**
 - [ ] **Todo REQ-ID tem `source_legacy:` ou `[GREENFIELD] + justificativa`.**
 

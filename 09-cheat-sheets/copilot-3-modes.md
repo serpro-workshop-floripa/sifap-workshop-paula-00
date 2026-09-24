@@ -112,7 +112,7 @@ flowchart TD
 - [ ] **Estabeleça limites** — o que o Agent deve e o que NÃO deve alterar.
 - [ ] **Identifique os arquivos relevantes** — `"leia docs/adr/001.md antes de começar"`.
 
-**Acompanhamento:** não interfira enquanto o Agent estiver rodando. Deixe-o terminar. Verifique o progresso a cada 10 minutos, se precisar.
+**Acompanhamento:** mantenha a execução dentro da tarefa autorizada. Intervenha ou interrompa quando as ações forem inseguras, estiverem bloqueadas ou saírem do escopo. Use o status real da ferramenta ou da execução em vez de presumir um tempo fixo de conclusão ou consultar repetidamente.
 
 **Revisão do PR do Agent:** revise exatamente como você revisaria um PR humano. Uma revisão rápida ainda é uma revisão.
 

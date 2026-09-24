@@ -1,214 +1,225 @@
-# Data Migration: Adabas to PostgreSQL
+# Migração de dados: Adabas para PostgreSQL
 
-> **Path:** [Team Kit](../README.md) > [Documentation](README.md) > **Data migration**
+> **Caminho:** [Kit da equipe](../README.md) > [Documentação](README.md) > **Migração de dados**
 
-**The participant covers DBA responsibilities for the source-data lifecycle, from a verified populated Adabas source to reconciled PostgreSQL records that the modern application can consult.**
+**O participante cobre as responsabilidades de DBA no ciclo de vida dos dados de origem, desde uma fonte Adabas populada e verificada até registros reconciliados no PostgreSQL que a aplicação moderna consegue consultar.**
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| Audience | Individual participant covering DBA, QA, PO/RE, Architecture, Developer, and DevOps responsibilities |
-| Prerequisites | Authorized populated Adabas source and agreed extraction route ready before 14:00, plus source-reading evidence |
-| Stage | Pre-work and Stages 1-3; final judge validation |
-| Expected outcome | Source-derived records, judge-verifiable reconciliation, complete beneficiary consultation, and tested recovery |
+| Público-alvo | Participante individual que cobre as responsabilidades de DBA, QA, PO/RE, Arquitetura, Desenvolvimento e DevOps |
+| Pré-requisitos | Fonte Adabas populada e autorizada, com rota de extração acordada e pronta antes das 14:00, além de evidências da leitura da origem |
+| Etapa | Pré-trabalho e Etapas 1-3; validação final do juiz |
+| Resultado esperado | Registros derivados da origem, reconciliação verificável pelo juiz, consulta completa de beneficiários e recuperação testada |
 
-## What the kit supplies
+## O que o kit fornece
 
-The [local legacy corpus](../01-archaeology/legacy-sifap/) supplies read-only
-Natural sources, DDMs, an archived FDT listing, and historical documents.
-These establish evidence to investigate, not a running database, completed data
-map, approved schema, or migration solution.
+O [corpus legado local](../01-archaeology/legacy-sifap/) fornece fontes Natural,
+DDMs, uma listagem FDT arquivada e documentos históricos somente para leitura.
+Esses materiais estabelecem evidências para investigação, não um banco de dados
+em execução, um mapa de dados concluído, um schema aprovado nem uma solução de migração.
 
-The [synthetic legacy dataset](../01-archaeology/legacy-seed-data/README.md)
-documents the fixed-width records the source owner loads into Adabas and their
-layouts. Use it as population provenance, decoding practice, independent test
-expectations, and edge-case fixtures. It is neither the migration source nor
-proof of what Adabas currently contains.
+O [conjunto de dados legados sintéticos](../01-archaeology/legacy-seed-data/README.md)
+documenta os registros de largura fixa que a pessoa responsável pela origem
+carrega no Adabas e seus layouts. Use-o como proveniência da população, prática
+de decodificação, expectativas independentes de teste e fixtures de casos extremos.
+Ele não é a fonte da migração nem prova o conteúdo atual do Adabas.
 
-The authorized legacy system has its own population process. The participant coordinates
-with the source owner during pre-work to ensure Adabas is populated before 14:00 and records
-the source version, synthetic-data provenance, and measured counts. A generator's
-intended counts, fixed-width seed files, or archived FDT statistics do not prove
-the current contents of Adabas.
+O sistema legado autorizado tem seu próprio processo de população. Durante o
+pré-trabalho, o participante coordena com a pessoa responsável pela origem para
+garantir que o Adabas esteja populado antes das 14:00 e registra a versão da
+origem, a proveniência dos dados sintéticos e as contagens medidas. As contagens
+pretendidas por um gerador, os arquivos seed de largura fixa ou as estatísticas
+arquivadas da FDT não comprovam o conteúdo atual do Adabas.
 
-Source access, population administration, and credentials stay outside this kit.
-Never reset a shared database or run a load against an unconfirmed environment.
-If the source is unavailable or empty, record the owner and blocker. Code reading
-may continue, but the data-readiness gate cannot pass.
+O acesso à origem, a administração da população e as credenciais permanecem fora
+deste kit. Nunca redefina um banco de dados compartilhado nem execute uma carga
+em um ambiente não confirmado. Se a origem estiver indisponível ou vazia,
+registre a pessoa responsável e o bloqueio. A leitura do código pode continuar,
+mas o gate de prontidão dos dados não pode ser aprovado.
 
-## Ownership throughout the stages
+## Responsabilidades ao longo das etapas
 
-| Stage | DBA responsibility | Collaboration and evidence |
+| Etapa | Responsabilidade de DBA | Colaboração e evidências |
 |---|---|---|
-| Pre-work | Confirm authorized, populated source and supported read/extract capability before 14:00 | Source owner supplies population evidence; DevOps supports availability; participant records baseline measurements |
-| 1 - Archaeology | Inventory definitions, records, keys, formats, relationships, and data-quality uncertainties | Participant agrees population and query needs while reading only the source needed for the fixed capability |
-| 2 - Specification | Design mappings, snapshot/extraction contract, staging, load order, reject handling, rerun/resume, and recovery | Participant defines module boundaries, scope, reconciliation, and consultation tests |
-| 3 - Implementation | Create schema and implement/run the approved source-to-target data pipeline | Participant integrates API/UI, reconciles the snapshot, and tests complete beneficiary access |
-| Judge validation | Verify reconciliation, full beneficiary queries, rerun/resume, recovery evidence, and CI | Judge scripts and expected values provide independence |
+| Pré-trabalho | Confirmar a origem autorizada e populada e a capacidade compatível de leitura/extração antes das 14:00 | A pessoa responsável pela origem fornece evidências da população; DevOps apoia a disponibilidade; o participante registra as medições de referência |
+| 1 - Arqueologia | Inventariar definições, registros, chaves, formatos, relacionamentos e incertezas sobre a qualidade dos dados | O participante define as necessidades de população e consulta enquanto lê somente a origem necessária para a capacidade fixa |
+| 2 - Especificação | Projetar mapeamentos, contrato de snapshot/extração, staging, ordem de carga, tratamento de rejeições, nova execução/retomada e recuperação | O participante define limites dos módulos, escopo, reconciliação e testes de consulta |
+| 3 - Implementação | Criar o schema e implementar/executar o pipeline aprovado de dados da origem ao destino | O participante integra API/UI, reconcilia o snapshot e testa o acesso completo aos beneficiários |
+| Validação do juiz | Verificar reconciliação, consultas completas de beneficiários, nova execução/retomada, evidências de recuperação e CI | Scripts do juiz e valores esperados fornecem independência |
 
-The participant covers DBA and QA responsibilities themselves. Independence comes from judge verification, not another participant or a second persona under the same operator. Record how the data was loaded, how it was verified, and which evidence the judge can inspect.
+O participante cobre por conta própria as responsabilidades de DBA e QA.
+A independência vem da verificação do juiz, não de outro participante nem de
+uma segunda persona sob a mesma pessoa operadora. Registre como os dados foram
+carregados, como foram verificados e quais evidências o juiz pode inspecionar.
 
-## Feasible workshop boundary
+## Limite viável do workshop
 
-Before 14:00, the source owner must provide authorized populated Adabas and
-a supported, verifiable snapshot/extraction route. Access requests, licenses,
-source provisioning, and reverse-engineering an unknown binary export are not
-hidden tasks for the Stage 3 implementation budget.
+Antes das 14:00, a pessoa responsável pela origem deve fornecer um Adabas
+autorizado e populado e uma rota compatível e verificável de snapshot/extração.
+Solicitações de acesso, licenças, provisionamento da origem e engenharia reversa
+de uma exportação binária desconhecida não são tarefas ocultas no orçamento de
+implementação da Etapa 3.
 
-The participant selects the smallest end-to-end capability breadth that preserves
-the agreed source population and required related data. Full population coverage
-does not mean reimplementing every payment, report, batch, or historical
-workflow. Record field treatment, lineage, and deferred capabilities explicitly;
-never silently omit records or fields that acceptance requires.
+O participante seleciona a menor amplitude de capacidade ponta a ponta que
+preserva a população acordada da origem e os dados relacionados obrigatórios.
+Cobrir toda a população não significa reimplementar todos os pagamentos,
+relatórios, batches ou fluxos de trabalho históricos. Registre explicitamente
+o tratamento dos campos, a linhagem e as capacidades adiadas. Nunca omita
+silenciosamente registros ou campos exigidos pela aceitação.
 
-At C2, compare the remaining work with actual source complexity and participant
-readiness. If it does not fit, retain a blocked/incomplete migration and a
-reviewable continuation plan. A smaller verified increment is a valid learning
-result, but not proof that the full migration succeeded. No elapsed-time estimate
-in this kit has been established by a timed participant trial.
+Em C2, compare o trabalho restante com a complexidade real da origem e a
+prontidão do participante. Se ele não couber no prazo, mantenha a migração como
+bloqueada/incompleta e registre um plano de continuação revisável. Um incremento
+menor e verificado é um resultado de aprendizagem válido, mas não comprova que
+a migração completa foi bem-sucedida. Nenhuma estimativa de duração deste kit
+foi comprovada por um teste cronometrado com participantes.
 
-## Source to target, not seed to seed
+## Da origem ao destino, não de seed para seed
 
 ```mermaid
 %%{init: {'theme':'neutral','themeVariables':{'fontFamily':'ui-sans-serif, system-ui, sans-serif','primaryColor':'#F5F5F5','primaryTextColor':'#171717','primaryBorderColor':'#171717','lineColor':'#525252','secondaryColor':'#FFFFFF','tertiaryColor':'#FAFAFA','background':'#FFFFFF'}}}%%
 flowchart LR
     classDef step fill:#F5F5F5,stroke:#171717,color:#171717
     classDef result fill:#FFFFFF,stroke:#171717,color:#171717,stroke-width:2px
-    A["Populated Adabas<br/>Authorized snapshot"]:::step --> E["Supported extraction<br/>Manifest and lineage"]:::step
-    E --> S["Restricted staging<br/>Validation and rejects"]:::step
-    S --> P["PostgreSQL 16<br/>Reviewed transformations"]:::step
-    P --> Q["Authorized API and UI<br/>All beneficiaries"]:::result
-    E --> R["Judge-verifiable<br/>Reconciliation"]:::step
+    A["Adabas populado<br/>Snapshot autorizado"]:::step --> E["Extração compatível<br/>Manifesto e linhagem"]:::step
+    E --> S["Staging restrito<br/>Validação e rejeições"]:::step
+    S --> P["PostgreSQL 16<br/>Transformações revisadas"]:::step
+    P --> Q["API e UI autorizadas<br/>Todos os beneficiários"]:::result
+    E --> R["Verificável pelo juiz<br/>Reconciliação"]:::step
     P --> R
     R --> Q
 ```
 
-Flyway versions the schema and applies each version once. It does not extract
-Adabas records, track record-level retries, or automatically undo a data load.
-The record pipeline needs its own run identifiers, checkpoints, transaction
-boundaries, duplicate prevention, and recovery evidence. Isolated test fixtures
-are useful, but cannot replace the population in the acceptance path.
+O Flyway versiona o schema e aplica cada versão uma vez. Ele não extrai registros
+do Adabas, não acompanha novas tentativas por registro nem desfaz automaticamente
+uma carga de dados. O pipeline de registros precisa de seus próprios
+identificadores de execução, checkpoints, limites de transação, prevenção de
+duplicidades e evidências de recuperação. Fixtures de teste isoladas são úteis,
+mas não substituem a população no caminho de aceitação.
 
-## Stage 1: generate evidence through guided archaeology
+## Etapa 1: gerar evidências por meio de arqueologia orientada
 
-These are outputs the participant creates during reading, not supplied answers:
+Estas são saídas que o participante cria durante a leitura, não respostas fornecidas:
 
-| Output | Template | Prompt |
+| Saída | Modelo | Prompt |
 |---|---|---|
-| Source inventory and reading ledger | [Inventory](../01-archaeology/templates/inventory.template.md), [coverage](../01-archaeology/templates/reading-coverage.md) | `/archaeology-kickoff`, then update actual reading coverage |
-| DDM/FDT source map and program declarations | [Data map](../01-archaeology/templates/data-map.md), [dictionary](../01-archaeology/templates/program-data-dictionary.md) | `/map-source-data` with DBA and `@archaeologist` |
-| Populated-source readiness | [Readiness](data-migration/source-readiness.template.md) | `/migration phase=readiness` with DBA |
-| Open questions | [Mystery record](../01-archaeology/templates/mysteries-found.template.md) | `/catalog-mysteries` using reader-assigned IDs |
-| C1 report | [Discovery report](../01-archaeology/templates/discovery-report.template.md) | `/discovery-report` after evidence review |
+| Inventário da origem e registro de leitura | [Inventário](../01-archaeology/templates/inventory.template.md), [cobertura](../01-archaeology/templates/reading-coverage.md) | `/archaeology-kickoff`, depois atualize a cobertura real da leitura |
+| Mapa da origem DDM/FDT e declarações dos programas | [Mapa de dados](../01-archaeology/templates/data-map.md), [dicionário](../01-archaeology/templates/program-data-dictionary.md) | `/map-source-data` com DBA e `@archaeologist` |
+| Prontidão da origem populada | [Prontidão](data-migration/source-readiness.template.md) | Selecione `@dba` e peça o preenchimento do registro com medições reais e bloqueios explícitos |
+| Questões em aberto | [Registro de mistérios](../01-archaeology/templates/mysteries-found.template.md) | `/catalog-mysteries` usando IDs atribuídos pela pessoa leitora |
+| Relatório C1 | [Relatório de descoberta](../01-archaeology/templates/discovery-report.template.md) | `/discovery-report` após a revisão das evidências |
 
-Data discovery records **what the source declares or contains**. It does not
-approve PostgreSQL tables or resolve inconsistencies. Distinguish logical DDM
-formats, physical FDT byte lengths, and Natural declarations; preserve ambiguity
-as a question. Read-only access queries and screenshots alone do not establish
-a complete extraction contract.
+A descoberta de dados registra **o que a origem declara ou contém**. Ela não
+aprova tabelas do PostgreSQL nem resolve inconsistências. Diferencie formatos
+lógicos de DDM, tamanhos físicos de bytes da FDT e declarações Natural. Preserve
+ambiguidades como questões. Consultas de acesso somente leitura e capturas de
+tela, isoladamente, não estabelecem um contrato completo de extração.
 
 > [!NOTE]
-> Stage 4 is not used in the individual challenge (14:00-17:40). The challenge ends at Stage 3 and judge validation. See [ADR-0003](adr/0003-individual-challenge-format.md).
+> A Etapa 4 não é usada no desafio individual (14:00-17:40). O desafio termina na Etapa 3 e na validação do juiz. Consulte a [ADR-0003](adr/0003-individual-challenge-format.md).
 
-## Stage 2: define a verifiable migration contract
+## Etapa 2: definir um contrato de migração verificável
 
-Use the [migration plan template](data-migration/migration-plan.template.md) and
-[source-to-target mapping template](data-migration/source-to-target.template.md)
-as supporting records linked from the feature's `spec.md`, `plan.md`, and `tasks.md`.
-Formal requirements remain in `.spec/<NNN>-<feature>/`, with `REQ-NNN` and
-`source_legacy:` or a justified `[GREENFIELD]`.
+Use o [modelo de plano de migração](data-migration/migration-plan.template.md) e
+o [modelo de mapeamento origem-destino](data-migration/source-to-target.template.md)
+como registros de apoio vinculados a `spec.md`, `plan.md` e `tasks.md` da
+funcionalidade. Os requisitos formais permanecem em `.spec/<NNN>-<feature>/`,
+com `REQ-NNN` e `source_legacy:` ou um `[GREENFIELD]` justificado.
 
-Before C2, the participant records decisions for DBA, Architecture, and QA responsibilities:
+Antes de C2, o participante registra decisões para as responsabilidades de DBA, Arquitetura e QA:
 
-- Authorized source version, population, and consistent snapshot boundary, including concurrent writes and related files.
-- Supported extraction method, format/version, field layout, encoding, record framing, checksums, source keys, and completeness checks. Unknown extraction is a blocker, not permission to invent an API.
-- Field-level treatment of identifiers and leading zeros, empty/null/suppressed values, dates and time zones, exact decimals, relationships, MU/PE occurrences, and ordering.
-- Source-to-target lineage and dependency-aware load order. Normalize structured repeating data unless measured evidence justifies another representation.
-- Validation and rejection rules, who may approve remediation, and preservation of the original evidence. Never silently truncate, default, drop, or "fix" source values.
-- Run identifiers, bounded batches, restart checkpoints, replay behavior, and isolation from unrelated target data.
-- Target recovery and application compatibility, separately from schema rollback. Do not assume a licensed Flyway undo feature exists.
-- Acceptance queries for authorized listing, search, and detail access across **all beneficiaries in the agreed population**, with pagination and access checks.
+- Versão e população autorizadas da origem e limite consistente do snapshot, incluindo gravações simultâneas e arquivos relacionados.
+- Método de extração compatível, formato/versão, layout dos campos, codificação, enquadramento dos registros, checksums, chaves da origem e verificações de completude. Uma extração desconhecida é um bloqueio, não uma permissão para inventar uma API.
+- Tratamento no nível dos campos para identificadores e zeros à esquerda, valores vazios/nulos/suprimidos, datas e fusos horários, decimais exatos, relacionamentos, ocorrências MU/PE e ordenação.
+- Linhagem da origem ao destino e ordem de carga orientada por dependências. Normalize dados repetidos estruturados, exceto quando evidências medidas justificarem outra representação.
+- Regras de validação e rejeição, quem pode aprovar a correção e preservação das evidências originais. Nunca trunque, preencha com valor padrão, descarte nem "corrija" silenciosamente os valores da origem.
+- Identificadores de execução, batches limitados, checkpoints de reinício, comportamento de repetição e isolamento de dados não relacionados no destino.
+- Recuperação do destino e compatibilidade da aplicação, separadamente do rollback do schema. Não suponha a existência de um recurso licenciado de undo do Flyway.
+- Consultas de aceitação para listagem, pesquisa e detalhes autorizados de **todos os beneficiários da população acordada**, com paginação e verificações de acesso.
 
-Do not translate packed lengths mechanically: establish source integer digits,
-fractional digits, sign, and runtime representation before choosing PostgreSQL
-`NUMERIC(precision, scale)` and Java `BigDecimal`. Never use floating point for
-financial data.
+Não traduza tamanhos packed mecanicamente. Determine os dígitos inteiros e
+fracionários, o sinal e a representação em runtime na origem antes de escolher
+`NUMERIC(precision, scale)` no PostgreSQL e `BigDecimal` no Java. Nunca use
+ponto flutuante para dados financeiros.
 
-## Stage 3: populate, reconcile, and consult
+## Etapa 3: popular, reconciliar e consultar
 
-1. Write tests for mappings, invalid records, key preservation, repeat occurrences, and failures before implementing the pipeline.
-2. Extract the agreed Adabas snapshot through the approved route. Record a manifest with version, snapshot/run IDs, population, files, integrity checks, and restricted evidence locations.
-3. Stage immutable input and validate it. Load PostgreSQL using the approved mappings and order, with recoverable batches and explicit rejects.
-4. Reconcile the same snapshot in a judge-verifiable way: source-key sets, accepted/rejected accounting, required fields, relationships, occurrence counts, and agreed financial aggregates.
-5. Exercise the real API and UI over PostgreSQL, not mocks or success-shaped fallbacks. Verify stable pagination, search and detail behavior, authorization, and complete population coverage.
-6. Rerun or resume the same snapshot without duplicates; test target recovery in an isolated environment without altering Adabas.
+1. Escreva testes para mapeamentos, registros inválidos, preservação de chaves, ocorrências repetidas e falhas antes de implementar o pipeline.
+2. Extraia o snapshot acordado do Adabas pela rota aprovada. Registre um manifesto com versão, IDs de snapshot/execução, população, arquivos, verificações de integridade e locais restritos das evidências.
+3. Armazene a entrada imutável em staging e valide-a. Carregue o PostgreSQL usando os mapeamentos e a ordem aprovados, com batches recuperáveis e rejeições explícitas.
+4. Reconcilie o mesmo snapshot de forma verificável pelo juiz: conjuntos de chaves da origem, contabilização de registros aceitos/rejeitados, campos obrigatórios, relacionamentos, contagens de ocorrências e agregados financeiros acordados.
+5. Exercite a API e a UI reais sobre o PostgreSQL, sem mocks nem fallbacks que apenas simulam sucesso. Verifique paginação estável, comportamento da pesquisa e dos detalhes, autorização e cobertura completa da população.
+6. Execute novamente ou retome o mesmo snapshot sem duplicidades. Teste a recuperação do destino em um ambiente isolado sem alterar o Adabas.
 
-Use the [reconciliation template](data-migration/reconciliation.template.md).
-Keep the unit of comparison explicit: one source record can create several
-related rows, so unrelated table totals need not be equal. Every source record
-still needs an explained disposition and traceable target representation.
+Use o [modelo de reconciliação](data-migration/reconciliation.template.md).
+Mantenha explícita a unidade de comparação: um registro da origem pode criar
+várias linhas relacionadas, portanto os totais de tabelas diferentes não
+precisam ser iguais. Cada registro da origem ainda precisa de uma destinação
+explicada e uma representação rastreável no destino.
 
-**Accounting is not successful migration.** A reject can explain where a record
-went, but cannot make that beneficiary queryable. Unresolved rejects or data
-differences keep acceptance blocked. Never silently reduce the approved
-population to a convenient sample or accept equal counts as proof of field parity.
+**Contabilização não significa migração bem-sucedida.** Uma rejeição pode
+explicar o destino de um registro, mas não torna esse beneficiário consultável.
+Rejeições ou diferenças de dados não resolvidas mantêm a aceitação bloqueada.
+Nunca reduza silenciosamente a população aprovada a uma amostra conveniente nem
+aceite contagens iguais como prova de paridade dos campos.
 
-## What the modern system must contain
+## O que o sistema moderno deve conter
 
-Migration succeeds when the modern system holds and shows the legacy
-information, not when the schema exists or the counts match. For every
-beneficiary in the agreed population, PostgreSQL and the authorized
-consultation carry the source data that acceptance requires, traced to its
-source record:
+A migração tem sucesso quando o sistema moderno armazena e apresenta as
+informações legadas, não quando o schema existe ou as contagens coincidem.
+Para cada beneficiário da população acordada, o PostgreSQL e a consulta
+autorizada apresentam os dados da origem exigidos pela aceitação, rastreados
+até seu registro de origem:
 
-- identification exactly as stored, including CPF and NIS leading zeros;
-- registration, program, and status, including inactive or terminated situations;
-- benefit and payment values as exact decimals, with their statuses and reference periods, including reversals and returns when in scope;
-- dependents and other MU/PE occurrences, with their counts and order;
-- audit history, when the agreed scope includes it.
+- identificação exatamente como armazenada, incluindo zeros à esquerda no CPF e no NIS;
+- cadastro, programa e status, incluindo situações inativas ou encerradas;
+- valores de benefícios e pagamentos como decimais exatos, com seus status e períodos de referência, incluindo estornos e devoluções quando estiverem no escopo;
+- dependentes e outras ocorrências MU/PE, com suas contagens e ordem;
+- histórico de auditoria, quando o escopo acordado o incluir.
 
-The team establishes the exact fields from its own DDM, FDT, and program
-reading; these categories are what QA checks, not a supplied mapping. A
-category outside the agreed scope is recorded as an explicit deferral in the
-scope decisions, never silently omitted.
+O participante determina os campos exatos por meio de sua própria leitura de
+DDMs, FDTs e programas. Essas categorias orientam as verificações de QA, não um
+mapeamento fornecido. Registre uma categoria fora do escopo acordado como um
+adiamento explícito nas decisões de escopo. Nunca a omita silenciosamente.
 
-The participant compares every accepted source record with its target representation field
-by field, using automated checks against the same snapshot. Agreed financial
-aggregates, such as totals by program, status, and reference period, are an
-additional control, not a substitute. The participant also opens ordinary and
-edge-case beneficiaries in the modern application, for example those behind
-the dataset's [learning fixtures](../01-archaeology/legacy-seed-data/README.md#learning-fixtures),
-and compare what it shows with the decoded source record.
+O participante compara cada registro aceito da origem com sua representação no
+destino, campo a campo, usando verificações automatizadas sobre o mesmo snapshot.
+Agregados financeiros acordados, como totais por programa, status e período de
+referência, são um controle adicional, não um substituto. O participante também
+abre na aplicação moderna beneficiários comuns e de casos extremos, por exemplo
+aqueles relacionados às [fixtures de aprendizagem](../01-archaeology/legacy-seed-data/README.md#fixtures-de-aprendizagem)
+do conjunto de dados, e compara o conteúdo apresentado com o registro decodificado da origem.
 
-## Self-check and acceptance gates
+## Autoverificação e gates de aceitação
 
-| Gate | Required evidence | Who reviews |
+| Gate | Evidências obrigatórias | Quem revisa |
 |---|---|---|
-| C1 | Actual reading, populated-source baseline, data-quality gaps, authorized population, supported extraction readiness | Participant self-checks; judge can inspect evidence later |
-| C2 | Approved mappings and snapshot/load/recovery design, traceable requirements, tasks, and validation plan | Participant self-checks before implementation |
-| C3 | Source-derived PostgreSQL population, reconciliation, full beneficiary queries, rerun/resume and recovery results | Participant submits for judge validation |
-| Final judge validation | Data reconciles; queries meet scope; CI is green; evidence and limitations are recorded | Judge validates independently |
+| C1 | Leitura real, linha de base da origem populada, lacunas de qualidade dos dados, população autorizada e prontidão da extração compatível | O participante faz a autoverificação; o juiz pode inspecionar as evidências depois |
+| C2 | Mapeamentos e projeto de snapshot/carga/recuperação aprovados, requisitos rastreáveis, tarefas e plano de validação | O participante faz a autoverificação antes da implementação |
+| C3 | População do PostgreSQL derivada da origem, reconciliação, consultas completas de beneficiários e resultados de nova execução/retomada e recuperação | O participante submete para validação do juiz |
+| Validação final do juiz | Os dados reconciliam; as consultas atendem ao escopo; a CI está verde; evidências e limitações estão registradas | O juiz valida de forma independente |
 
-## Evidence handling
+## Tratamento das evidências
 
-- Use synthetic data authorized for this exercise; do not import production personal data.
-- Keep raw extracts, credentials, snapshots, dumps, and record-level rejects in approved restricted storage outside Git, prompts, PRs, and public logs.
-- Commit only sanitized counts, methods, decisions, hashes, and non-sensitive evidence references.
-- Record owners, access controls, retention and cleanup for restricted artifacts.
-- Leave approval and execution fields blank until the corresponding person or check supplies evidence.
+- Use dados sintéticos autorizados para este exercício. Não importe dados pessoais de produção.
+- Mantenha extrações brutas, credenciais, snapshots, dumps e rejeições no nível dos registros em armazenamento restrito aprovado, fora do Git, dos prompts, dos PRs e dos logs públicos.
+- Faça commit somente de contagens, métodos, decisões, hashes e referências de evidências sanitizadas.
+- Registre responsáveis, controles de acesso, retenção e limpeza dos artefatos restritos.
+- Deixe os campos de aprovação e execução em branco até que a pessoa ou verificação correspondente forneça evidências.
 
-## Completion criteria
+## Critérios de conclusão
 
-- [ ] Adabas population and source version were verified, not assumed.
-- [ ] Participant-generated archaeology artifacts and migration decisions are traceable.
-- [ ] PostgreSQL contains the approved source-derived population with no unexplained differences.
-- [ ] Required legacy information, including benefit and payment values, matches the source record by record, not only in totals.
-- [ ] All authorized beneficiaries are accessible through the approved application queries.
-- [ ] Reconciliation, rerun/resume, and recovery are automated or evidenced so the judge can verify them independently.
-- [ ] Judge validation outcome is evidenced; unresolved blockers remain visible.
+- [ ] A população do Adabas e a versão da origem foram verificadas, não presumidas.
+- [ ] Os artefatos de arqueologia e as decisões de migração produzidos pelo participante são rastreáveis.
+- [ ] O PostgreSQL contém a população aprovada derivada da origem, sem diferenças inexplicadas.
+- [ ] As informações legadas obrigatórias, incluindo valores de benefícios e pagamentos, correspondem à origem registro a registro, não somente nos totais.
+- [ ] Todos os beneficiários autorizados estão acessíveis pelas consultas aprovadas da aplicação.
+- [ ] A reconciliação, a nova execução/retomada e a recuperação são automatizadas ou comprovadas para que o juiz consiga verificá-las de forma independente.
+- [ ] O resultado da validação do juiz está comprovado; bloqueios não resolvidos permanecem visíveis.
 
-## References
+## Referências
 
-- [Challenge flow](../00-TEAM-FLOW.md)
-- [Stage 1 guide](../01-archaeology/GUIDE.md)
-- [DBA persona](../05-personas/07-dba/PERSONA.md)
-- [Blank migration records](data-migration/README.md)
+- [Fluxo do desafio](../00-TEAM-FLOW.md)
+- [Guia da Etapa 1](../01-archaeology/GUIDE.md)
+- [Persona DBA](../05-personas/07-dba/PERSONA.md)
+- [Registros em branco da migração](data-migration/README.md)

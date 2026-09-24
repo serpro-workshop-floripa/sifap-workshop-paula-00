@@ -1,96 +1,96 @@
-# Lessons Learned — Common Challenge Mistakes
+# Lições aprendidas — erros comuns do desafio
 
-![Reference Type](https://img.shields.io/badge/Type-Reference-171717?style=flat-square)
-![5 min read](https://img.shields.io/badge/Read-5%20min-737373?style=flat-square)
+![Tipo: referência](https://img.shields.io/badge/Type-Reference-171717?style=flat-square)
+![Leitura de 5 min](https://img.shields.io/badge/Read-5%20min-737373?style=flat-square)
 
-> **Path:** [Team Kit](../README.md) › [Docs](README.md) › **Lessons Learned**
+> **Caminho:** [Kit da equipe](../README.md) › [Documentação](README.md) › **Lições aprendidas**
 
-**Ten failure patterns to watch for**, with plausible consequences and preventive actions. These are learning risks, not measured frequency or timing results.
+**Dez padrões de falha aos quais prestar atenção**, com consequências plausíveis e ações preventivas. São riscos de aprendizagem, não resultados medidos de frequência ou tempo.
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| **Target audience** | Every participant, especially when covering Technical Lead responsibilities |
-| **When to read** | Before the workshop starts |
-| **Expected outcome** | Recognize failure patterns and know the remedy before it is needed |
+| **Público-alvo** | Todo participante, especialmente ao cobrir responsabilidades de Technical Lead |
+| **Quando ler** | Antes do início do workshop |
+| **Resultado esperado** | Reconhecer padrões de falha e conhecer a solução antes que ela seja necessária |
 
 ---
 
-## The ten most common mistakes
+## Os dez erros mais comuns
 
-### 1. "We do not need to inspect the legacy system — the briefing is enough"
+### 1. “Não precisamos inspecionar o sistema legado — o briefing é suficiente”
 
-- **Consequence:** requirements can lack valid evidence; CI rejects missing/invalid citations, and reviewers may find unsupported behavior even when syntax passes.
-- **Remedy:** enforce the Stage 1 hard gate — the facilitator validates it at 13:50. See [`01-archaeology/LEGACY-EXPLORATION-CHECKLIST.md`](../01-archaeology/LEGACY-EXPLORATION-CHECKLIST.md).
+- **Consequência:** requisitos podem não ter evidências válidas; a CI rejeita citações ausentes/inválidas, e revisores podem encontrar comportamentos sem respaldo mesmo quando a sintaxe passa.
+- **Solução:** aplique o gate obrigatório da Etapa 1 — o facilitador o valida às 13:50. Consulte [`01-archaeology/LEGACY-EXPLORATION-CHECKLIST.md`](../01-archaeology/LEGACY-EXPLORATION-CHECKLIST.md).
 
-### 2. "I will start coding while someone else writes the specification"
+### 2. “Vou começar a programar enquanto outra pessoa escreve a especificação”
 
-- **Consequence:** the code does not match the EARS requirements. Refactoring happens at the end of the day, and acceptance remains incomplete.
-- **Remedy:** Stage 3 starts only after the C2 self-check confirms `spec.md`, `plan.md`, `tasks.md`, and migration design are ready.
+- **Consequência:** o código não corresponde aos requisitos EARS. A refatoração acontece no fim do dia e a aceitação permanece incompleta.
+- **Solução:** a Etapa 3 começa somente depois que a autoverificação C2 confirmar que `spec.md`, `plan.md`, `tasks.md` e o design da migração estão prontos.
 
-### 3. The Product Owner approves everything and nothing becomes out of scope
+### 3. O Product Owner aprova tudo e nada fica fora do escopo
 
-- **Consequence:** the participant tries to implement 12 features in the timebox and completes none.
-- **Remedy:** PO and architects choose a thin, evidence-backed capability with DBA/QA. Defer unrelated work explicitly; do not preselect the payment cycle or invent a rejection quota.
+- **Consequência:** o participante tenta implementar 12 funcionalidades no timebox e não conclui nenhuma.
+- **Solução:** PO e arquitetos escolhem com DBA/QA uma capacidade enxuta e respaldada por evidências. Adie explicitamente o trabalho não relacionado; não pré-selecione o ciclo de pagamentos nem invente uma cota de rejeições.
 
-### 4. Everyone uses Copilot differently
+### 4. Cada pessoa usa o Copilot de um jeito
 
-- **Consequence:** responses are inconsistent. The participant debates with the assistant instead of producing artifacts.
-- **Remedy:** select the stage agent for the current block (`@archaeologist`, `@architect`, `@builder`, plus `@dba` for data work) in Chat.
+- **Consequência:** as respostas ficam inconsistentes. O participante debate com o assistente em vez de produzir artefatos.
+- **Solução:** selecione no Chat o agente de etapa do bloco atual (`@archaeologist`, `@architect`, `@builder`, além de `@dba` para trabalho com dados).
 
-### 5. Skipping `/speckit.clarify` to save time
+### 5. Pular `/speckit.clarify` para economizar tempo
 
-- **Consequence:** unresolved ambiguities can become implementation errors; this kit does not assign a measured time saving to clarification.
-- **Remedy:** resolve questions that block the selected behavior using evidence. Leave unavailable answers blocked or defer affected scope through review.
+- **Consequência:** ambiguidades não resolvidas podem se tornar erros de implementação; este kit não atribui à clarificação uma economia de tempo medida.
+- **Solução:** resolva com evidências as questões que bloqueiam o comportamento selecionado. Mantenha respostas indisponíveis como bloqueadas ou adie o escopo afetado mediante revisão.
 
-### 6. Running `git push --force` on `develop`
+### 6. Executar `git push --force` em `develop`
 
-- **Consequence:** two people's work is lost without a straightforward recovery path.
-- **Remedy:** protect `develop` (Step 4 of `00-SETUP.md`). Never use `--force` on a shared branch.
+- **Consequência:** o trabalho de duas pessoas é perdido sem um caminho simples de recuperação.
+- **Solução:** proteja `develop` (Etapa 4 de `00-SETUP.md`). Nunca use `--force` em uma branch compartilhada.
 
-### 7. Editing an old migration instead of creating a new one
+### 7. Editar uma migração antiga em vez de criar uma nova
 
-- **Consequence:** Flyway detects a checksum mismatch and the database stops starting.
-- **Remedy:** never edit an applied migration file. Always create `V<N+1>__description.sql`. See [`docs/troubleshooting.md`](troubleshooting.md).
+- **Consequência:** o Flyway detecta incompatibilidade de checksum e o banco de dados deixa de iniciar.
+- **Solução:** nunca edite um arquivo de migração já aplicado. Sempre crie `V<N+1>__description.sql`. Consulte [`docs/troubleshooting.md`](troubleshooting.md).
 
-### 8. Delegating a vague Issue to Copilot Agent
+### 8. Delegar uma Issue vaga ao Copilot Agent
 
-- **Consequence:** the generated pull request is unusable and the work is discarded.
-- **Remedy:** link the Issue to evidence and verifiable acceptance criteria. Clear input improves reviewability but does not guarantee a correct or timely PR.
+- **Consequência:** o pull request gerado não pode ser usado e o trabalho é descartado.
+- **Solução:** vincule a Issue a evidências e critérios de aceitação verificáveis. Uma entrada clara melhora a revisabilidade, mas não garante um PR correto ou pontual.
 
-### 9. Running `terraform apply` instead of `plan`
+### 9. Executar `terraform apply` em vez de `plan`
 
-- **Consequence:** Azure resources are created and billed immediately. The workshop does not authorize `apply`.
-- **Remedy:** do not run Stage 4 infrastructure during the individual challenge. Post-challenge infrastructure work may use `terraform plan`; see [`04-evolution/GUIDE.md`](../04-evolution/GUIDE.md).
+- **Consequência:** recursos do Azure são criados e cobrados imediatamente. O workshop não autoriza `apply`.
+- **Solução:** não execute a infraestrutura da Etapa 4 durante o desafio individual. O trabalho de infraestrutura pós-desafio pode usar `terraform plan`; consulte [`04-evolution/GUIDE.md`](../04-evolution/GUIDE.md).
 
-### 10. Treating schema creation or a test seed as a data migration
+### 10. Tratar a criação do schema ou um seed de teste como migração de dados
 
-- **Consequence:** the application runs but cannot account for or query the original beneficiary population.
-- **Remedy:** DBA leads source readiness and migration from the start; QA independently reconciles the snapshot and checks all beneficiary queries. Use [`DATA-MIGRATION.md`](DATA-MIGRATION.md), and retain blockers instead of inventing a successful outcome.
-
----
-
-## Five habits that distinguish strong submissions
-
-1. **Self-checkpoint at each stage boundary** — C1, C2, and C3 are verified before moving on.
-2. **Every pull request has a description** — use the GitHub template and fill in the checklist.
-3. **Small commits include a REQ-ID** in the commit message.
-4. **The 20-minute rule** — blocked? Ask workshop support and record the blocker.
-5. **Trust the process** — do not invent a different workflow halfway through the day.
+- **Consequência:** a aplicação executa, mas não consegue contabilizar nem consultar a população original de beneficiários.
+- **Solução:** o DBA lidera a prontidão da fonte e a migração desde o início; o QA reconcilia o snapshot de forma independente e verifica todas as consultas de beneficiários. Use [`DATA-MIGRATION.md`](DATA-MIGRATION.md) e mantenha os bloqueios em vez de inventar um resultado bem-sucedido.
 
 ---
 
-## The fundamental rule
+## Cinco hábitos que distinguem boas submissões
 
-> **Modernization is digital archaeology, not a greenfield project.**
-> Treating SIFAP as greenfield risks losing behavior accumulated over approximately 30 years. Preserve the [historical evidence](../README.md#scenario-chronology-and-evidence) before making modern decisions.
-> Archaeology supports a defensible increment; production replacement still requires evidence beyond this timeboxed exercise.
+1. **Checkpoint de autoverificação em cada limite de etapa** — C1, C2 e C3 são verificados antes de avançar.
+2. **Todo pull request tem uma descrição** — use o modelo do GitHub e preencha o checklist.
+3. **Commits pequenos incluem um REQ-ID** na mensagem de commit.
+4. **A regra dos 20 minutos** — está bloqueado? Peça apoio do workshop e registre o bloqueio.
+5. **Confie no processo** — não invente um fluxo de trabalho diferente no meio do dia.
 
 ---
 
-### Continue reading
+## A regra fundamental
 
-| Previous | Next |
+> **Modernização é arqueologia digital, não um projeto greenfield.**
+> Tratar o SIFAP como greenfield arrisca perder comportamentos acumulados ao longo de aproximadamente 30 anos. Preserve as [evidências históricas](../README.md#cenário-cronologia-e-evidências) antes de tomar decisões modernas.
+> A arqueologia sustenta um incremento defensável; a substituição em produção ainda exige evidências além deste exercício com tempo limitado.
+
+---
+
+### Continue lendo
+
+| Anterior | Próximo |
 |---|---|
-| [Leader Checklist](CHECKLIST-LIDER.md)<br/><sub>Hour-by-hour checks for the day.</sub> | [Data Migration](DATA-MIGRATION.md)<br/><sub>DBA-led migration and acceptance.</sub> |
+| [Checklist do participante](CHECKLIST-LIDER.md)<br/><sub>Verificações ao longo do dia.</sub> | [Migração de dados](DATA-MIGRATION.md)<br/><sub>Migração e aceitação lideradas pelo DBA.</sub> |
 
-<sub>[Back to the kit index](../README.md)</sub>
+<sub>[Voltar ao índice do kit](../README.md)</sub>

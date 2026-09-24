@@ -1,6 +1,6 @@
 ---
 name: "ux-research-design"
-description: "Use ao estabelecer quem usa a interface modernizada do SIFAP e do que essas pessoas precisam — Jobs-to-be-Done, jornadas de usuário, arquitetura de informação e requisitos de acessibilidade que alimentam a construção do frontend. Produz documentos de pesquisa, nunca código de componente. Os gatilhos incluem \"jornada de usuário\", \"jobs to be done\", \"pesquisa de UX\", \"especificação de acessibilidade\" e \"quem usa esta tela\"."
+description: "Use ao estabelecer quem usa a interface modernizada do SIFAP e do que essas pessoas precisam: Jobs-to-be-Done, jornadas de usuário, arquitetura de informação e requisitos de acessibilidade que orientam a construção do frontend. Produz documentos de pesquisa, nunca código de componente. Os gatilhos incluem \"jornada de usuário\", \"jobs to be done\", \"pesquisa de UX\", \"especificação de acessibilidade\" e \"quem usa esta tela\"."
 ---
 # Pesquisa de UX e intenção de design
 
@@ -17,26 +17,25 @@ description: "Use ao estabelecer quem usa a interface modernizada do SIFAP e do 
 |---|---|
 | Documentos de pesquisa em Markdown | Arquivos `.tsx` ou classes Tailwind |
 | Declarações de job e jornadas | Implementações de componentes |
-| Critérios de aceitação de acessibilidade | Ativos de design visual |
+| Critérios de aceitação de acessibilidade | Elementos de design visual |
 | Arquitetura de informação | Escolhas de framework ou biblioteca |
 
-Entregue a saída para a habilidade react-nextjs-frontend ou para a habilidade
-developer construírem.
+Entregue a saída para a skill `react-nextjs-frontend` ou para a skill `developer` prosseguir com a construção.
 
 ## Procedimento
 
-**Etapa 1 — Estabeleça quem usa antes da tela.**
+### Etapa 1: estabeleça quem usa antes da tela
 
-- Um wireframe sem declaração de job é rejeitado.
+- Rejeite um wireframe sem declaração de job.
 - No domínio do SIFAP, nomeie a pessoa que opera de verdade: quem abre isto, de onde, sob qual pressão de tempo e o que acontece se errar.
 - Fundamente o papel em evidência onde ela existe. Os códigos de transação 3270 e os fluxos de tela legados descrevem trabalho real; cite-os em vez de inventar uma persona.
 
-**Etapa 2 — Escreva o job, não a funcionalidade.**
+### Etapa 2: escreva o job, não a funcionalidade
 
 - Formato: `When <situation>, I want to <motivation>, so I can <expected outcome>`.
 - Um job sobrevive a um redesenho. Uma funcionalidade não.
 
-**Etapa 3 — Mapeie a jornada de ponta a ponta.**
+### Etapa 3: mapeie a jornada de ponta a ponta
 
 | Etapa | O que a pessoa faz | Do que precisa | Onde falha hoje |
 |---|---|---|---|
@@ -44,7 +43,7 @@ developer construírem.
 - Inclua os caminhos infelizes: não encontrado, correspondência ambígua, dado desatualizado, permissão parcial.
 - Os modos de falha legados são evidência. Um design moderno que os repete em silêncio não melhorou nada.
 
-**Etapa 4 — Faça da acessibilidade um requisito, não uma revisão.**
+### Etapa 4: transforme a acessibilidade em requisito
 
 - Caminho por teclado para cada ação, foco visível e ordem de tabulação lógica.
 - Estrutura e rótulos semânticos, não ARIA remendado sobre uma `div`.
@@ -52,12 +51,12 @@ developer construírem.
 - Mensagens de erro que digam o que fazer a seguir, não apenas o que falhou.
 - Escreva isto como critérios de aceitação, para que possam reprovar em um teste.
 
-**Etapa 5 — Respeite as regras de dados.**
+### Etapa 5: respeite as regras de dados
 
 - Dados sensíveis como CPF e valores de benefício ficam mascarados por padrão, revelados apenas por uma ação autorizada explícita.
 - Uma tela que mostra tudo para todo mundo é um achado de segurança, não uma conveniência.
 
-## Antipadrões a rejeitar
+### Rejeite antipadrões
 
 | Solicitação | Resposta |
 |---|---|
@@ -92,6 +91,7 @@ developer construírem.
 | Campo | Estado padrão | Revelar exige |
 |---|---|---|
 ```
+
 ## Gate de qualidade
 
 - [ ] Cada tela rastreia até pelo menos uma declaração de job.

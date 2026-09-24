@@ -1,35 +1,35 @@
-# Template: Source-to-Target Mapping
+# Modelo: mapeamento origem-destino
 
-> **Path:** [Team Kit](../../README.md) > [Data migration](../DATA-MIGRATION.md) > **Mapping**
+> **Caminho:** [Kit da equipe](../../README.md) > [Migração de dados](../DATA-MIGRATION.md) > **Mapeamento**
 
-**Complete from the team's Stage 1 data map and declaration dictionary; no SIFAP target model is supplied.**
+**Preencha a partir do mapa de dados e do dicionário de declarações da Etapa 1 da equipe; nenhum modelo de destino do SIFAP é fornecido.**
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| Source version / data-map and dictionary references | <!-- fill in --> |
-| Feature / requirements / design reference | <!-- fill in --> |
-| DBA / architect reviewer / approval state | <!-- fill in --> |
+| Versão da fonte / referências do mapa de dados e do dicionário | <!-- preencher --> |
+| Referência da funcionalidade / dos requisitos / do design | <!-- preencher --> |
+| DBA / arquiteto revisor / estado da aprovação | <!-- preencher --> |
 
-## Mapping rows
+## Linhas de mapeamento
 
-| Source file / field / evidence | Logical format and physical representation | Target owner / field / type | Conversion, null and precision policy | Source-key / relationship / occurrence lineage | Validation / reject rule |
+| Arquivo / campo / evidência de origem | Formato lógico e representação física | Responsável / campo / tipo no destino | Política de conversão, nulos e precisão | Linhagem de chave de origem / relacionamento / ocorrência | Regra de validação / rejeição |
 |---|---|---|---|---|---|
-| <!-- fill in --> | <!-- fill in --> | <!-- fill in --> | <!-- fill in --> | <!-- fill in --> | <!-- fill in --> |
+| <!-- preencher --> | <!-- preencher --> | <!-- preencher --> | <!-- preencher --> | <!-- preencher --> | <!-- preencher --> |
 
-## Ambiguities requiring review
+## Ambiguidades que exigem revisão
 
-| Question | Competing evidence | Potential data loss or behavior change | Owner / required decision |
+| Questão | Evidências conflitantes | Possível perda de dados ou mudança de comportamento | Responsável / decisão necessária |
 |---|---|---|---|
-| <!-- fill in --> | <!-- fill in --> | <!-- fill in --> | <!-- fill in --> |
+| <!-- preencher --> | <!-- preencher --> | <!-- preencher --> | <!-- preencher --> |
 
-## Mapping tests
+## Testes de mapeamento
 
-| Mapping row / REQ-ID | Scenario | Expected outcome from evidence | Test reference / status |
+| Linha de mapeamento / REQ-ID | Cenário | Resultado esperado conforme a evidência | Referência / status do teste |
 |---|---|---|---|
-| <!-- fill in --> | <!-- fill in: boundaries, nulls, leading zeros, invalid values, MU/PE order --> | <!-- fill in --> | <!-- fill in --> |
+| <!-- preencher --> | <!-- preencher: limites, nulos, zeros à esquerda, valores inválidos, ordem MU/PE --> | <!-- preencher --> | <!-- preencher --> |
 
-- [ ] Every relevant source field has a destination or explicit approved treatment; no silent discard.
-- [ ] Source identifiers, decimal precision, date/null semantics, and MU/PE meaning are preserved.
-- [ ] Physical byte lengths are not mistaken for numeric precision.
-- [ ] Normalization choices and exceptions were reviewed with architects.
-- [ ] Unknown meanings remain blocked until evidence or a recorded decision resolves them.
+- [ ] Todo campo de origem pertinente tem um destino ou tratamento explícito aprovado; nenhum descarte silencioso.
+- [ ] Identificadores de origem, precisão decimal, semântica de datas/nulos e significado de MU/PE são preservados.
+- [ ] Comprimentos físicos em bytes não são confundidos com precisão numérica.
+- [ ] Escolhas e exceções de normalização foram revisadas com os arquitetos.
+- [ ] Significados desconhecidos permanecem bloqueados até que evidências ou uma decisão registrada os resolvam.

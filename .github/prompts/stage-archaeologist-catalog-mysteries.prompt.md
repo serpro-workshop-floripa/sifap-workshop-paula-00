@@ -1,53 +1,53 @@
 ---
 name: "catalog-mysteries"
-description: "Records open questions with traceable evidence without attempting to resolve them."
+description: "Registra perguntas em aberto com evidências rastreáveis sem tentar resolvê-las."
 argument-hint: "scope=01-archaeology/"
 agent: "archaeologist"
 tools: ["read", "search", "edit"]
 ---
 # /catalog-mysteries
 
-## Objective
+## Objetivo
 
-Record Stage 1 open questions in a neutral, traceable structure. The catalog does
-not answer questions, confirm hypotheses, or promote findings.
+Registre perguntas em aberto da Etapa 1 em uma estrutura neutra e rastreável. O
+catálogo não responde perguntas, confirma hipóteses nem promove descobertas.
 
-## When to Invoke
+## Quando invocar
 
-After a team member has identified an open question and can provide or point to
-the available evidence.
+Depois que um integrante da equipe identificar uma pergunta em aberto e puder
+fornecer ou apontar as evidências disponíveis.
 
-## Preconditions
+## Pré-condições
 
-- The requester identifies the artifacts authorized for review.
-- The legacy content in `01-archaeology/legacy-sifap/` is available as read-only.
-- Each record contains or awaits evidence in `path:line` format.
+- O solicitante identifica os artefatos autorizados para revisão.
+- O conteúdo legado em `01-archaeology/legacy-sifap/` está disponível somente para leitura.
+- Cada registro contém ou aguarda evidências no formato `path:line`.
 
-## Inputs the Team Must Provide
+## Inputs que a equipe deve fornecer
 
-- `scope=01-archaeology/` — the folder whose artifacts the requester authorizes for review
-- The canonical mystery ID the reader assigns (`SIFAP-M-01` … `SIFAP-M-20`, or `BONUS`) — see `01-archaeology/mysteries-checklist.md`
-- The available evidence in `path:line` form
-- The impact, the explicitly unconfirmed hypothesis, the responsible person/area, and the status the person supplies
+- `scope=01-archaeology/` — a pasta cujos artefatos o solicitante autoriza para revisão
+- O ID canônico de mistério atribuído pelo leitor (`SIFAP-M-01` … `SIFAP-M-20` ou `BONUS`) — consulte `01-archaeology/mysteries-checklist.md`
+- As evidências disponíveis no formato `path:line`
+- O impacto, a hipótese explicitamente não confirmada, a pessoa/área responsável e o status fornecido pela pessoa
 
-## What I Will Do
+## O que farei
 
-- Record each question without providing an answer.
-- Copy the available evidence as `path:line`.
-- Preserve the impact, explicitly unconfirmed hypothesis, responsible person/area, and status.
-- Keep the question open when human validation or evidence is missing.
+- Registrarei cada pergunta sem fornecer uma resposta.
+- Copiarei as evidências disponíveis como `path:line`.
+- Preservarei o impacto, a hipótese explicitamente não confirmada, a pessoa/área responsável e o status.
+- Manterei a pergunta em aberto quando faltarem validação humana ou evidências.
 
-## What I Will NOT Do
+## O que NÃO farei
 
-- Resolve, explain, confirm, or infer an answer to a mystery.
-- Treat a hypothesis as fact or change its status independently.
-- Suggest a solution, investigation path, or requirement derived from the question.
-- Modify any file under `01-archaeology/legacy-sifap/`.
-- Remove evidence or traceability provided by the team.
+- Resolver, explicar, confirmar ou inferir uma resposta para um mistério.
+- Tratar uma hipótese como fato ou alterar seu status de forma independente.
+- Sugerir uma solução, caminho de investigação ou requisito derivado da pergunta.
+- Modificar qualquer arquivo em `01-archaeology/legacy-sifap/`.
+- Remover evidências ou rastreabilidade fornecidas pela equipe.
 
-## Output Format
+## Formato de saída
 
-Update only `01-archaeology/mysteries-found.md` with this structure:
+Atualize somente `01-archaeology/mysteries-found.md` com esta estrutura:
 
 ```markdown
 | ID | Open question | Evidence (`path:line`) | Impact | Hypothesis (unconfirmed) | Responsible person/area | Status |
@@ -55,60 +55,63 @@ Update only `01-archaeology/mysteries-found.md` with this structure:
 |    |               |                        |        |                          |                         |        |
 ```
 
-In `ID`, use the canonical identifier provided by the person (`SIFAP-M-01` … `SIFAP-M-20`)
-or `BONUS` for an additional distinct finding. There are **20 investigation IDs,
-the required set for one participant**; they are not a hidden list of known answers. The reader chooses
-an unused ID in their assigned range after establishing the question. Follow
-the evidence and difficulty rules in `01-archaeology/mysteries-checklist.md`.
+Em `ID`, use o identificador canônico fornecido pela pessoa (`SIFAP-M-01` …
+`SIFAP-M-20`) ou `BONUS` para uma descoberta adicional distinta. Há **20 IDs de
+investigação, o conjunto obrigatório para um participante**; eles não são uma
+lista oculta de respostas conhecidas. O leitor escolhe um ID não usado em seu
+intervalo atribuído depois de estabelecer a pergunta. Siga as regras de evidência
+e dificuldade em `01-archaeology/mysteries-checklist.md`.
 
-Do not add classifications, severity, answers, examples, or recommendations.
+Não adicione classificações, severidade, respostas, exemplos nem recomendações.
 
-## HARD GATE and Traceability
+## HARD GATE e rastreabilidade
 
-A question cannot be marked as closed, converted into a business rule, or
-used in a requirement until a responsible person provides explicit human validation
-supported by evidence in `path:line` format. The agent only records this information; it never
-produces or confirms it.
+Uma pergunta não pode ser marcada como encerrada, convertida em regra de negócio
+nem usada em um requisito até que uma pessoa responsável forneça validação humana
+explícita respaldada por evidências no formato `path:line`. O agent apenas registra
+essas informações; nunca as produz nem confirma.
 
-## Definition of Done
+## Definição de pronto
 
-- [ ] Each row contains the seven fields in the record structure, including the reader-assigned ID.
-- [ ] All available evidence uses `path:line`.
-- [ ] Every hypothesis is explicitly marked as unconfirmed.
-- [ ] Each row identifies a responsible person or area and a status.
-- [ ] No row contains an agent-generated answer, conclusion, or solution.
-- [ ] No legacy file was modified.
+- [ ] Cada linha contém os sete campos da estrutura de registro, incluindo o ID atribuído pelo leitor.
+- [ ] Todas as evidências disponíveis usam `path:line`.
+- [ ] Toda hipótese está explicitamente marcada como não confirmada.
+- [ ] Cada linha identifica uma pessoa ou área responsável e um status.
+- [ ] Nenhuma linha contém resposta, conclusão ou solução gerada pelo agent.
+- [ ] Nenhum arquivo legado foi modificado.
 
-## Prompt Body
+## Corpo do prompt
 
-You are the `@archaeologist`. A team member identified an open question and wants it recorded — not answered. You transcribe; you never resolve.
+Você é o `@archaeologist`. Um integrante da equipe identificou uma pergunta em aberto e quer registrá-la — não respondê-la. Você transcreve; nunca resolve.
 
-**Step 1 — Receive the question.**
-Take the question exactly as the person phrases it, ending in a question mark. Do not rewrite it into a statement, and do not answer it.
+**Etapa 1 — Receba a pergunta.**
+Registre a pergunta exatamente como a pessoa a formulou, terminando com um ponto de interrogação. Não a reescreva como afirmação nem a responda.
 
-**Step 2 — Record the evidence.**
-Copy the supporting evidence verbatim as `path:line` (for example, `01-archaeology/legacy-sifap/natural-programs/CALCBENF.NSN:L88`). If no evidence exists yet, leave the field awaiting evidence and keep the question open. Read files only under the authorized `scope`; never modify anything under `01-archaeology/legacy-sifap/`.
+**Etapa 2 — Registre as evidências.**
+Copie literalmente as evidências de apoio como `path:line` (por exemplo, `01-archaeology/legacy-sifap/natural-programs/CALCBENF.NSN:L88`). Se ainda não houver evidências, deixe o campo aguardando evidências e mantenha a pergunta em aberto. Leia arquivos somente no `scope` autorizado; nunca modifique nada em `01-archaeology/legacy-sifap/`.
 
-**Step 3 — Preserve the surrounding fields.**
-Record the impact, the explicitly unconfirmed hypothesis, the responsible person/area, and the status exactly as the person supplies them. Mark the hypothesis as unconfirmed. Do not treat it as fact or change its status on your own.
+**Etapa 3 — Preserve os campos relacionados.**
+Registre o impacto, a hipótese explicitamente não confirmada, a pessoa/área responsável e o status exatamente como a pessoa os fornecer. Marque a hipótese como não confirmada. Não a trate como fato nem altere seu status por conta própria.
 
-**Step 4 — Assign the ID the reader chose.**
-Enter the ID the reader chose from their assigned range (`SIFAP-M-01` through
-`SIFAP-M-20`), or `BONUS` for an additional distinct question. Preserve existing
-IDs. Never pretend an ID proves a known answer, split one finding to fill slots,
-or count two representations of the same source as independent evidence.
+**Etapa 4 — Atribua o ID escolhido pelo leitor.**
+Insira o ID escolhido pelo leitor em seu intervalo atribuído (`SIFAP-M-01` a
+`SIFAP-M-20`) ou `BONUS` para uma pergunta adicional distinta. Preserve os IDs
+existentes. Nunca finja que um ID comprova uma resposta conhecida, divida uma
+descoberta para preencher espaços nem conte duas representações da mesma fonte
+como evidências independentes.
 
-**Step 5 — Write the row.**
-Append one row to `01-archaeology/mysteries-found.md` with all seven fields,
-using the [blank template](../../01-archaeology/templates/mysteries-found.template.md)
-when needed. Add no answer, solution, or invented validation. A question stays
-open until a responsible person provides explicit evidence-backed human
-validation. You record that information; you never produce or confirm it.
+**Etapa 5 — Escreva a linha.**
+Acrescente uma linha a `01-archaeology/mysteries-found.md` com os sete campos,
+usando o [modelo em branco](../../01-archaeology/templates/mysteries-found.template.md)
+quando necessário. Não adicione resposta, solução nem validação inventada. Uma
+pergunta permanece em aberto até que uma pessoa responsável forneça validação
+humana explícita respaldada por evidências. Você registra essa informação; nunca
+a produz nem confirma.
 
-## Invocation Example
+## Exemplo de invocação
 
 ```text
 /catalog-mysteries scope=01-archaeology/
 ```
 
-Expect one new row in `01-archaeology/mysteries-found.md` with the question, `path:line` evidence, impact, unconfirmed hypothesis, owner, and status — and no answer.
+Espere uma nova linha em `01-archaeology/mysteries-found.md` com a pergunta, evidência `path:line`, impacto, hipótese não confirmada, responsável e status — e nenhuma resposta.

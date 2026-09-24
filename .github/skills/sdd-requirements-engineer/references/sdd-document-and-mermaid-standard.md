@@ -80,9 +80,9 @@ completar um diagrama.
 Use uma entrada com checkbox por tarefa:
 
 ```text
-- [ ] **T001 [S] [Plan:P1.1] RED** Add a failing contract test. Traces REQ-001.
-  - Files: `<actual test path for the selected Java or TypeScript feature>`.
-  - Acceptance: TST-C001 fails before implementation and passes afterward.
+- [ ] **T001 [S] [Plan:P1.1] RED** Adicione um teste de contrato que falhe. Rastreia REQ-001.
+  - Arquivos: `<actual test path for the selected Java or TypeScript feature>`.
+  - Aceitação: TST-C001 falha antes da implementação e passa depois dela.
 ```
 
 - `[S]` significa sequencial; `[P]` significa independente nas dependências e na superfície de mudança.

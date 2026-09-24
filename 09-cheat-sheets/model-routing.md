@@ -7,7 +7,7 @@
 | Campo | Valor |
 |---|---|
 | **Público-alvo** | Qualquer pessoa do time antes de enviar um prompt ao Copilot |
-| **Pré-requisitos** | Nenhum |
+| **Pré-requisitos** | Acesso ao Copilot e disponibilidade dos modelos confirmados conforme a política da organização do participante |
 | **Tempo estimado** | 2 min |
 | **Estágio** | Todos |
 | **Resultado esperado** | Escolher o modelo certo sem desperdiçar tempo nem custo |
@@ -90,7 +90,7 @@ flowchart TB
 |---|---|
 | Revisar um PR de tamanho médio | Sonnet |
 | Decidir um padrão para todo o projeto | Opus no início; Sonnet para aplicar |
-| Verificar se um trecho compila | Haiku |
+| Verificar se um trecho compila | Execute o compilador ou build real; um modelo pode explicar os diagnósticos, não substituir a verificação |
 
 ### Developer
 
@@ -140,7 +140,7 @@ flowchart TB
 |---|---|---|
 | Esperar 30 segundos por uma resposta trivial | O modelo é maior que o necessário | Troque por um modelo menor |
 | Resposta superficial para uma decisão crítica | O modelo é menor que o necessário | Suba para o Opus |
-| Resposta correta, mas sem discussão | O modelo é menor que o necessário | Suba para o Opus |
+| Resposta correta e concisa | Nenhuma lacuna de raciocínio demonstrada | Verifique o resultado; não escale apenas para obter mais prosa |
 | Empilhar prompts para gerar centenas de arquivos | Modelo errado para uma tarefa em lote | Troque por Sonnet ou Haiku |
 
 ---

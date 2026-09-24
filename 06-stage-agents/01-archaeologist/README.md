@@ -22,7 +22,7 @@
 Use este agente enquanto o participante lê o código legado. O `@archaeologist` ajuda o participante a observar, catalogar e formular perguntas. Ele não escreve código moderno nem inventa regras de negócio.
 
 - **Liderança:** Engenheiro de Requisitos
-- **Liderança de dados:** DBA, com revisão independente das evidências pela equipe de QA
+- **Liderança de dados:** participante no papel de DBA, com autoverificação de QA e validação final pela banca
 - **Apoio importante:** Redator Técnico e Arquiteto Corporativo
 - **Pré-requisito obrigatório:** ler os programas Natural atribuídos antes de escrever qualquer especificação
 
@@ -41,7 +41,7 @@ Use este agente enquanto o participante lê o código legado. O `@archaeologist`
 
 ## O que o agente NÃO faz
 
-- Não lê código legado a menos que o participante abra o arquivo
+- Não lê código legado fora do escopo indicado pelo participante; o caminho no prompt é suficiente, sem exigir uma aba aberta
 - Não transforma uma hipótese em requisito confirmado
 - Não sugere arquitetura moderna (essa é a função do `@architect` na Etapa 2)
 - Não edita arquivos em `01-archaeology/legacy-sifap/` (somente leitura)
@@ -64,8 +64,8 @@ Use este agente enquanto o participante lê o código legado. O `@archaeologist`
 |---|---|
 | Catálogo de regras de negócio | `01-archaeology/business-rules-catalog.md` |
 | Mapa de dependências (Mermaid) | `01-archaeology/dependency-map.md` |
-| Mapa dos dados de origem e dicionário de declarações | `01-archaeology/data-map.md`, `program-data-dictionary.md` (gerados por meio de `/map-source-data`) |
-| Cobertura real da leitura | `01-archaeology/reading-coverage.md` |
+| Mapa dos dados de origem e dicionário de declarações | [planejado] `01-archaeology/data-map.md`, `01-archaeology/program-data-dictionary.md`, gerados incrementalmente por `/map-source-data` |
+| Cobertura real da leitura | [planejado] `01-archaeology/reading-coverage.md`, inicializado pelo kickoff e atualizado somente com leituras reais |
 | Lista de questões em aberto | `01-archaeology/mysteries-found.md`: IDs canônicos `SIFAP-M-01` … `SIFAP-M-20` relevantes para a capacidade, usando o [checklist de dificuldade/evidência](../../01-archaeology/mysteries-checklist.md) |
 | Escopo da funcionalidade selecionada | Registrado antes da autoverificação C1 (14:50) |
 
@@ -79,15 +79,19 @@ documentos durante a arqueologia; nenhuma análise completa da origem ou aprova�
 
 - [ ] **Abra o Copilot Chat** no VS Code (`Ctrl+Alt+I` / `Cmd+Alt+I`).
 - [ ] **Selecione `@archaeologist`** no seletor de agentes.
-- [ ] **Abra o primeiro programa Natural atribuído** no editor antes de enviar o primeiro prompt.
-- [ ] **Cole o prompt inicial** abaixo e pressione Enter.
+- [ ] **Execute o kickoff** abaixo para inventariar nomes e diretórios, sem ler programas.
+- [ ] **Depois do inventário, indique o caminho do membro** no prompt de leitura; abrir o arquivo no editor é opcional.
 
 ```text
-I am starting Stage 1 — Archaeology.
-We have Natural/Adabas code in 01-archaeology/legacy-sifap/.
-Help the participant examine the assigned programs and record only evidence
-and open questions for the scope we will select. Do not infer answers.
+/archaeology-kickoff path=01-archaeology/legacy-sifap/
 ```
+
+Comece pelo inventário. Depois, repita `/map-dependencies`, `/map-source-data`
+e `/extract-business-rules` apenas para os membros necessários à consulta e
+validação de beneficiários. Use `/catalog-mysteries` quando identificar uma
+pergunta e `/discovery-report` ao consolidar as evidências para C1.
+Para prontidão da origem, selecione `@dba` e solicite o registro a partir do
+[template](../../docs/data-migration/source-readiness.template.md), sem inventar medições.
 
 ---
 
@@ -105,7 +109,7 @@ and open questions for the scope we will select. Do not infer answers.
 ## Definição de pronto
 
 - [ ] O participante leu os programas Natural e DDMs necessários para a capacidade-alvo.
-- [ ] Toda regra considerada para o escopo tem `source_legacy:` com arquivo e linha.
+- [ ] Toda regra candidata tem programa de origem e linhas de evidência; `source_legacy:` será obrigatório nos requisitos formais da Etapa 2.
 - [ ] O participante consultou DDMs e dependências quando eles afetam a funcionalidade selecionada.
 - [ ] As questões em aberto estão registradas sem respostas inventadas.
 - [ ] O relatório de descoberta está pronto para a autoverificação C1 às 14:50.
@@ -118,7 +122,7 @@ and open questions for the scope we will select. Do not infer answers.
 
 | Sintoma | Causa | Correção |
 |---|---|---|
-| O Copilot apresenta generalizações vagas | Nenhum arquivo está aberto no editor | Abra o membro Natural e cite a seção específica no prompt |
+| O Copilot apresenta generalizações vagas | O escopo de leitura não foi informado | Indique o caminho do membro Natural e o intervalo a examinar no prompt |
 | A regra de negócio não tem fonte | O participante aceitou uma hipótese como fato | Marque-a como mistério até que exista evidência no código |
 | Perde-se tempo detalhando áreas fora do escopo | Nenhuma decisão de escopo foi tomada | Confirme a capacidade-alvo até 14:05 e limite a leitura a ela |
 | Arquivos legados são editados | Confusão sobre a função da etapa | `01-archaeology/legacy-sifap/` é somente leitura |

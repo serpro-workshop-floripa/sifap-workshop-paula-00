@@ -105,9 +105,9 @@ Se o bounded context já tiver padrões de teste, referencie-os para que o Copil
 **Passo 6 — Marque o que está Out of Scope.**
 Declare explicitamente o que esta issue NÃO cobre. Isso evita scope creep no PR gerado por IA. Exemplos:
 
-- "Does not change the database schema"
-- "Does not modify the authentication flow"
-- "Frontend changes are tracked in a separate issue"
+- "Não altera o schema do banco de dados"
+- "Não modifica o fluxo de authentication"
+- "As alterações no frontend são acompanhadas em uma issue separada"
 
 **Passo 7 — Adicione metadados.**
 Sugira labels: `enhancement` ou `bug`, o nome do bounded context e `copilot-agent`.

@@ -11,7 +11,7 @@ description: "Use ao elaborar uma estratégia de testes, escolher o formato da p
 - "Qual é a meta de cobertura adequada?"
 - "Audite nossa pirâmide de testes."
 
-## Fluxo de trabalho
+## Procedimento
 
 1. **Faça o inventário** do código testado: módulos, APIs públicas, integrações externas e fluxos críticos.
 2. **Classifique o risco** por módulo (P0 / P1 / P2) com base no raio de impacto de uma falha.
@@ -21,16 +21,16 @@ description: "Use ao elaborar uma estratégia de testes, escolher o formato da p
 6. **Escolha as ferramentas por camada**: unitária (Vitest/JUnit/pytest), integração (Testcontainers) e E2E (Playwright).
 7. **Produza a saída**: um documento de estratégia de uma página com metas, ferramentas, limites de cobertura e regras de quarentena por camada.
 
-## Heurísticas
+### Aplique as heurísticas
 
 - Se um teste E2E puder ser reescrito como testes de integração e contrato, faça isso. Testes E2E são caros e instáveis.
-- Testes de contrato são melhores que objetos simulados para tudo que cruza os limites de um serviço.
+- Testes de contrato são melhores que mocks para tudo que cruza os limites de um serviço.
 - Testes de mutação (Stryker, PIT) são a única forma honesta de detectar testes que não comprovam nada.
 
-## Antipadrões
+### Evite antipadrões
 
 - Pirâmide invertida: muitos testes E2E lentos sobre poucos testes unitários.
-- Um único número global de cobertura, sem meta superior para módulos P0.
+- Um único percentual global de cobertura, sem meta superior para módulos P0.
 - Limites de serviço simulados que nunca detectam uma falha real de integração.
 - Cobertura tratada como objetivo, não como indicador de confiança.
 
@@ -48,6 +48,7 @@ description: "Use ao elaborar uma estratégia de testes, escolher o formato da p
 **Orçamento de testes instáveis**: <=1% (acima disso, quarentena)
 **Classificação de risco**: P0 <módulos> / P1 <módulos> / P2 <módulos>
 ```
+
 ## Gate de qualidade
 
 - [ ] Cada módulo está classificado por risco (P0/P1/P2) e tem uma meta de cobertura.

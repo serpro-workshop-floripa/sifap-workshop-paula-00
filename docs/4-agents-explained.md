@@ -1,71 +1,71 @@
-# The Challenge Stage Agents — Explained
+# Agentes de etapa do desafio — explicados
 
-![Concept Type](https://img.shields.io/badge/Type-Concept-171717?style=flat-square)
-![Use Understand agent kits](https://img.shields.io/badge/Use-Understand%20agent--kits-737373?style=flat-square)
+![Tipo: conceito](https://img.shields.io/badge/Type-Concept-171717?style=flat-square)
+![Uso: entender kits de agentes](https://img.shields.io/badge/Use-Understand%20agent--kits-737373?style=flat-square)
 
-> **Path:** [Team Kit](../README.md) › [Docs](README.md) › **Challenge Agents Explained**
+> **Caminho:** [Kit da equipe](../README.md) › [Documentação](README.md) › **Agentes do desafio explicados**
 
-**Explains why the individual challenge uses stage agents while roles remain auto-loading skills.** Read this when someone asks: "Why do I select a stage agent if I cover every role?"
+**Explica por que o desafio individual usa agentes de etapa enquanto os papéis permanecem como skills de carregamento automático.** Leia quando alguém perguntar: “Por que seleciono um agente de etapa se cubro todos os papéis?”
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| **Target audience** | Individual workshop participants |
-| **Prerequisites** | Skim the persona overview |
-| **Expected outcome** | Understand why a phase is an agent and a role is a skill |
+| **Público-alvo** | Participantes individuais do workshop |
+| **Pré-requisitos** | Ler rapidamente a visão geral das personas |
+| **Resultado esperado** | Entender por que uma fase é um agente e um papel é uma skill |
 
 ---
 
-## Concept
+## Conceito
 
-A **role skill** answers: "What responsibility am I applying?" A **stage agent** answers: "How should Copilot behave in this phase?"
+Uma **skill de papel** responde: “Qual responsabilidade estou aplicando?” Um **agente de etapa** responde: “Como o Copilot deve se comportar nesta fase?”
 
-Both are necessary and complementary. In the individual challenge, one participant covers all 10 roles, and those role skills load automatically by description. You deliberately select only the current stage agent because each stage has different boundaries, allowed outputs, and definition of done.
+Ambos são necessários e complementares. No desafio individual, um participante cobre todos os 10 papéis, e essas skills de papel são carregadas automaticamente pela descrição. Você seleciona deliberadamente apenas o agente da etapa atual porque cada etapa tem limites, entregas permitidas e definição de pronto diferentes.
 
 > [!NOTE]
-> The challenge uses three stage agents — `@archaeologist`, `@architect`, and `@builder` — plus cross-stage `@dba`. `@evolution` remains in the repository for the longer SDLC kit, but it is not used in the individual challenge, which ends at Stage 3 and judge validation. See [ADR-0003](adr/0003-individual-challenge-format.md).
+> O desafio usa três agentes de etapa — `@archaeologist`, `@architect` e `@builder` — além do agente transversal `@dba`. `@evolution` permanece no repositório para o kit de SDLC mais longo, mas não é usado no desafio individual, que termina na Etapa 3 e na validação do juiz. Consulte a [ADR-0003](adr/0003-individual-challenge-format.md).
 
 ---
 
-## Why there are three challenge stage agents plus `@dba`
+## Por que existem três agentes de etapa do desafio mais o `@dba`
 
-| Stage | Working mode | Agent | Primary rule |
+| Etapa | Modo de trabalho | Agente | Regra principal |
 |---|---|---|---|
-| 1 — Archaeology | Observe and catalog | `@archaeologist` | Do not write code; cite legacy evidence |
-| 2 — Specification | Structure and decide | `@architect` | Do not accept a requirement without `source_legacy:` |
-| 3 — Implementation and data migration | Build, migrate, and verify | `@builder` | Do not code without a REQ-ID and test path |
-| Cross-stage data lifecycle | Discover, map, load, reconcile, recover | `@dba` | Do not replace migrated data with seed data |
+| 1 — Arqueologia | Observar e catalogar | `@archaeologist` | Não escrever código; citar evidências do legado |
+| 2 — Especificação | Estruturar e decidir | `@architect` | Não aceitar um requisito sem `source_legacy:` |
+| 3 — Implementação e migração de dados | Construir, migrar e verificar | `@builder` | Não programar sem REQ-ID e caminho de teste |
+| Ciclo de vida dos dados entre etapas | Descobrir, mapear, carregar, reconciliar e recuperar | `@dba` | Não substituir dados migrados por seed data |
 
-Stage 1 is read-only **for legacy inputs** but writes discovery artifacts. Stage 2 writes traceable requirements and design. Stage 3 writes code, migration artifacts, tests, and evidence. Separating these bounds makes the workflow clearer.
+A Etapa 1 é somente leitura **para as entradas legadas**, mas produz artefatos de descoberta. A Etapa 2 produz requisitos rastreáveis e design. A Etapa 3 produz código, artefatos de migração, testes e evidências. Separar esses limites torna o fluxo de trabalho mais claro.
 
 ---
 
-## Agent anatomy
+## Anatomia do agente
 
-![Agent anatomy: five layers (Agent + Instructions + Prompts + Skills + MCP)](../assets/agent-anatomy.svg)
+![Anatomia do agente: cinco camadas (Agente + Instruções + Prompts + Skills + MCP)](../assets/agent-anatomy.svg)
 
-| Layer | Purpose | Example |
+| Camada | Finalidade | Exemplo |
 |---|---|---|
-| Agent | Defines mission, tools, and behavior for a phase | `@builder` knows how to implement and test |
-| Skill | Carries a role or technique, loaded automatically by description | `persona-qa-engineer`, TDD, ADR, business-rule extraction |
-| Instructions | Rules sensitive to file type | Natural/Adabas, Java, frontend |
-| Prompts | Reusable actions bound to the agent that owns their moment | `/translate-natural-to-java`, `/write-ears-spec` |
-| MCP | Connects the agent to external systems | GitHub, databases, and Azure when configured |
+| Agente | Define missão, ferramentas e comportamento para uma fase | `@builder` sabe como implementar e testar |
+| Skill | Contém um papel ou técnica, carregado automaticamente pela descrição | `persona-qa-engineer`, TDD, ADR, extração de regras de negócio |
+| Instruções | Regras sensíveis ao tipo de arquivo | Natural/Adabas, Java, frontend |
+| Prompts | Ações reutilizáveis vinculadas ao agente responsável pelo momento | `/translate-natural-to-java`, `/write-ears-spec` |
+| MCP | Conecta o agente a sistemas externos | GitHub, bancos de dados e Azure, quando configurados |
 
 ---
 
-## How to use the agents during the challenge
+## Como usar os agentes durante o desafio
 
-- [ ] **Start with the stage.** Check [`00-TEAM-FLOW.md`](../00-TEAM-FLOW.md) for the current budget and self-checkpoint.
-- [ ] **Select the stage agent in Copilot Chat.** Example: `@architect` in Stage 2.
-- [ ] **Use role personas as checklists.** You cover Product Owner through Tech Writer yourself; the role skills compose automatically.
-- [ ] **Call on `@dba` for data work.** Use it during discovery, mapping, loading, reconciliation, and rerun/recovery evidence.
-- [ ] **Stop at C1, C2, and C3.** Advance only when the self-check definition of done is satisfied.
+- [ ] **Comece pela etapa.** Consulte [`00-TEAM-FLOW.md`](../00-TEAM-FLOW.md) para ver o orçamento atual e o checkpoint de autoverificação.
+- [ ] **Selecione o agente de etapa no Copilot Chat.** Exemplo: `@architect` na Etapa 2.
+- [ ] **Use as personas de papel como checklists.** Você cobre por conta própria do Product Owner ao Tech Writer; as skills de papel se compõem automaticamente.
+- [ ] **Acione `@dba` para o trabalho com dados.** Use-o durante descoberta, mapeamento, carga, reconciliação e evidências de nova execução/recuperação.
+- [ ] **Pare em C1, C2 e C3.** Avance apenas quando a definição de pronto da autoverificação estiver atendida.
 
 ---
 
-## Interaction flow
+## Fluxo de interação
 
-During Stage 2, bring a confirmed finding to `@architect` and ask for traceable requirements:
+Durante a Etapa 2, leve uma descoberta confirmada ao `@architect` e peça requisitos rastreáveis:
 
 ```text
 @architect
@@ -74,7 +74,7 @@ I confirmed this rule in the legacy sources:
 Help structure it in EARS with a REQ-ID, acceptance criteria, and source_legacy.
 ```
 
-The artifact must record only evidence you reviewed:
+O artefato deve registrar apenas evidências que você revisou:
 
 ```yaml
 REQ-XXX:
@@ -86,41 +86,41 @@ REQ-XXX:
 
 ---
 
-## Rule: no supplied exercise answers
+## Regra: nenhuma resposta pronta do exercício
 
-Agents guide reading and record participant-reviewed evidence. They do not use a worked solution as a substitute for discovery, and they do not answer or close mysteries without accountable validation. Persona prompts can select the relevant specialist, such as `@dba`, within the current stage's boundaries.
+Os agentes orientam a leitura e registram evidências revisadas pelo participante. Eles não usam uma solução pronta como substituta da descoberta nem respondem ou encerram mistérios sem validação responsável. Prompts de persona podem selecionar o especialista pertinente, como `@dba`, dentro dos limites da etapa atual.
 
-| If you ask... | The agent responds... |
+| Se você pedir... | O agente responderá... |
 |---|---|
-| "Tell me the bounded contexts" | "Show me the program catalog and data map." |
-| "Create requirements for everything" | "Let us start with one rule that has a legacy source." |
-| "Implement this feature without a specification" | "The REQ-ID, acceptance criterion, and `source_legacy` are missing." |
+| “Diga quais são os bounded contexts” | “Mostre-me o catálogo de programas e o mapa de dados.” |
+| “Crie requisitos para tudo” | “Vamos começar com uma regra que tenha uma fonte legada.” |
+| “Implemente esta funcionalidade sem uma especificação” | “Faltam o REQ-ID, o critério de aceitação e `source_legacy`.” |
 
 ---
 
-## How to know you understand
+## Como saber se você entendeu
 
-You understand the model when you can explain these three statements to someone else:
+Você entende o modelo quando consegue explicar estas três afirmações a outra pessoa:
 
-1. A role skill defines a responsibility and loads itself; a stage agent defines a phase and is selected.
-2. The stage agent changes during the challenge; the 10 role responsibilities remain available automatically.
-3. Every important artifact must survive outside chat in a version-controlled file.
-
----
-
-## References
-
-- [Agent kits](../06-stage-agents/README.md)
-- [Persona-agent matrix](persona-agent-matrix.md)
-- [Challenge flow](../00-TEAM-FLOW.md)
-- [Persona kits](../05-personas/README.md)
+1. Uma skill de papel define uma responsabilidade e carrega a si mesma; um agente de etapa define uma fase e é selecionado.
+2. O agente de etapa muda durante o desafio; as responsabilidades dos 10 papéis permanecem disponíveis automaticamente.
+3. Todo artefato importante deve sobreviver fora do chat em um arquivo versionado.
 
 ---
 
-### Continue reading
+## Referências
 
-| Previous | Next |
+- [Kits de agentes](../06-stage-agents/README.md)
+- [Matriz de personas e agentes](persona-agent-matrix.md)
+- [Fluxo do desafio](../00-TEAM-FLOW.md)
+- [Kits de personas](../05-personas/README.md)
+
+---
+
+### Continue lendo
+
+| Anterior | Próximo |
 |---|---|
-| [Persona-Agent Matrix](persona-agent-matrix.md)<br/><sub>Role checklist by stage.</sub> | [Challenge Flow](../00-TEAM-FLOW.md)<br/><sub>Schedule and self-checkpoints.</sub> |
+| [Matriz de personas e agentes](persona-agent-matrix.md)<br/><sub>Checklist de papéis por etapa.</sub> | [Fluxo do desafio](../00-TEAM-FLOW.md)<br/><sub>Cronograma e checkpoints de autoverificação.</sub> |
 
-<sub>[Back to the kit index](../README.md)</sub>
+<sub>[Voltar ao índice do kit](../README.md)</sub>
