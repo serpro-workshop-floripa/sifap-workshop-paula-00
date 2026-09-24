@@ -58,7 +58,7 @@ flowchart LR
     classDef step fill:#F5F5F5,stroke:#171717,color:#171717
     classDef result fill:#FFFFFF,stroke:#171717,color:#171717,stroke-width:2px
 
-    A["Etapa 1<br/>@archaeologist<br/>11:00–12:00 + 13:30–14:00"]:::step --> B["Etapa 2<br/>@architect<br/>14:50–15:30"]:::step
+    A["Etapa 1<br/>@archaeologist<br/>14:00–14:50"]:::step --> B["Etapa 2<br/>@architect<br/>14:50–15:30"]:::step
     B --> C["Etapa 3<br/>@builder<br/>15:30–17:10"]:::step
     C --> D["Etapa 4<br/>@evolution<br/>não utilizada no desafio individual"]:::step
     D --> E["17:00–17:30<br/>Revisão das evidências<br/>Aceito ou bloqueado"]:::result
@@ -66,7 +66,7 @@ flowchart LR
 
 | Etapa | Horário | Agente | Abordagem do agente | Objetivo |
 |---|---|---|---|---|
-| Etapa 1 — Arqueologia | 11:00–12:00 + 13:30–14:00 | [@archaeologist](01-archaeologist/README.md) | Investigativa | Ler o sistema legado, registrar evidências e definir o escopo de uma funcionalidade |
+| Etapa 1 — Arqueologia | 14:00–14:50 | [@archaeologist](01-archaeologist/README.md) | Investigativa | Ler o sistema legado, registrar evidências e definir o escopo de uma funcionalidade |
 | Etapa 2 — Especificação | 14:50–15:30 | [@architect](02-architect/README.md) | Analítica | Criar `spec.md`, `plan.md` e `tasks.md` com decisões de escopo |
 | Etapa 3 — Implementação | 15:30–17:10 | [@builder](03-builder/README.md) | Construtiva | Construir código Java/Next.js, testes, migrações e endpoints rastreáveis |
 | Etapa 4 — Evolução | Não utilizada no desafio individual | [@evolution](04-evolution/README.md) | Operacional | Delegar uma Issue pequena e registrar o resultado da revisão |

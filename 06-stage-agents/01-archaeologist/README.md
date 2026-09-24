@@ -6,9 +6,9 @@
 
 | Campo | Valor |
 |---|---|
-| **Público-alvo** | Todo o participante durante a Etapa 1, com todos os participantes trabalhando em paralelo |
+| **Público-alvo** | Participante individual durante a Etapa 1 |
 | **Pré-requisitos** | `01-archaeology/legacy-sifap/` disponível no workspace |
-| **Tempo estimado** | 11:00–12:00 + 13:30–14:00 |
+| **Tempo estimado** | 50 min (14:00–14:50) |
 | **Etapa** | Etapa 1 — Arqueologia |
 | **Resultado esperado** | Catálogo de regras com fontes, DDMs mapeados, questões em aberto e escopo da funcionalidade definido |
 
@@ -30,7 +30,7 @@ Use este agente enquanto o participante lê o código legado. O `@archaeologist`
 
 ## O que o agente faz
 
-- Orienta a leitura linha a linha dos programas `.NSN` e das estruturas DDM do Adabas
+- Orienta a leitura linha a linha dos membros Natural (`.NSP`, `.NSN`) e das estruturas DDM do Adabas
 - Identifica entradas, processamento, saídas e regras de negócio em cada programa
 - Mapeia dependências entre programas por meio de `CALLNAT`
 - Orienta a leitura de DDM/FDT e declarações com o DBA; o mapeamento da origem pertence a esta etapa, enquanto o projeto PostgreSQL pertence à Etapa 2
@@ -52,7 +52,7 @@ Use este agente enquanto o participante lê o código legado. O `@archaeologist`
 
 | Entrada | Local |
 |---|---|
-| Programas Natural atribuídos | `01-archaeology/legacy-sifap/natural-programs/*.NSN` |
+| Programas Natural atribuídos | `01-archaeology/legacy-sifap/natural-programs/*.NSP`, `*.NSN` |
 | DDMs do Adabas | `01-archaeology/legacy-sifap/adabas-ddms/*.ddm` |
 | Checklist de exploração | `01-archaeology/LEGACY-EXPLORATION-CHECKLIST.md` |
 
@@ -66,8 +66,8 @@ Use este agente enquanto o participante lê o código legado. O `@archaeologist`
 | Mapa de dependências (Mermaid) | `01-archaeology/dependency-map.md` |
 | Mapa dos dados de origem e dicionário de declarações | `01-archaeology/data-map.md`, `program-data-dictionary.md` (gerados por meio de `/map-source-data`) |
 | Cobertura real da leitura | `01-archaeology/reading-coverage.md` |
-| Lista de questões em aberto | `01-archaeology/mysteries-found.md`: quatro espaços de investigação por dupla, 20 por participante, usando o [checklist de dificuldade/evidência](../../01-archaeology/mysteries-checklist.md) |
-| Escopo da funcionalidade selecionada | Registrado antes do checkpoint das 14:00 |
+| Lista de questões em aberto | `01-archaeology/mysteries-found.md`: IDs canônicos `SIFAP-M-01` … `SIFAP-M-20` relevantes para a capacidade, usando o [checklist de dificuldade/evidência](../../01-archaeology/mysteries-checklist.md) |
+| Escopo da funcionalidade selecionada | Registrado antes da autoverificação C1 (14:50) |
 
 Use os [templates em branco](../../01-archaeology/templates/) e o
 [ciclo de vida dos dados](../../docs/DATA-MIGRATION.md). O participante gera esses
@@ -104,11 +104,11 @@ and open questions for the scope we will select. Do not infer answers.
 
 ## Definição de pronto
 
-- [ ] A dupla leu integralmente todos os programas Natural atribuídos.
+- [ ] O participante leu os programas Natural e DDMs necessários para a capacidade-alvo.
 - [ ] Toda regra considerada para o escopo tem `source_legacy:` com arquivo e linha.
 - [ ] O participante consultou DDMs e dependências quando eles afetam a funcionalidade selecionada.
 - [ ] As questões em aberto estão registradas sem respostas inventadas.
-- [ ] O relatório de descoberta está pronto para o checkpoint das 14:00.
+- [ ] O relatório de descoberta está pronto para a autoverificação C1 às 14:50.
 - [ ] O mapa da origem, o dicionário e o registro real de leitura foram gerados a partir das evidências do participante.
 - [ ] DBA/QA verificaram a prontidão da origem preenchida e da extração; a ausência de evidências bloqueia a aceitação de dados em C1.
 
@@ -118,9 +118,9 @@ and open questions for the scope we will select. Do not infer answers.
 
 | Sintoma | Causa | Correção |
 |---|---|---|
-| O Copilot apresenta generalizações vagas | Nenhum arquivo está aberto no editor | Abra o arquivo `.NSN` e cite a seção específica no prompt |
+| O Copilot apresenta generalizações vagas | Nenhum arquivo está aberto no editor | Abra o membro Natural e cite a seção específica no prompt |
 | A regra de negócio não tem fonte | O participante aceitou uma hipótese como fato | Marque-a como mistério até que exista evidência no código |
-| Perde-se tempo detalhando áreas fora do escopo | Nenhuma decisão de escopo foi tomada | Selecione a funcionalidade enxuta antes das 12:00 e limite a leitura a ela |
+| Perde-se tempo detalhando áreas fora do escopo | Nenhuma decisão de escopo foi tomada | Confirme a capacidade-alvo até 14:05 e limite a leitura a ela |
 | Arquivos legados são editados | Confusão sobre a função da etapa | `01-archaeology/legacy-sifap/` é somente leitura |
 
 ---
